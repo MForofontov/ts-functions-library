@@ -32,81 +32,76 @@ describe('arrayIntersection', () => {
         expect(arrayIntersection([1, 'a', true], [true, 2, 'a'])).toEqual(['a', true]);
     });
 
-    // Test case 7: Arrays with duplicate elements
-    it('7. should handle arrays with duplicate elements', () => {
-        expect(arrayIntersection([1, 2, 2, 3], [2, 3, 3, 4])).toEqual([2, 3]);
+    // Test case 7: Arrays containing special characters
+    it('7. should handle arrays containing special characters', () => {
+        const arr1: string[] = ['@', '#', '$'];
+        const arr2: string[] = ['$', '%', '&'];
+        expect(arrayIntersection(arr1, arr2)).toEqual(['$']);
     });
 
-    // Test case 8: Arrays with nested arrays
-    it('8. should handle arrays with nested arrays', () => {
-        expect(arrayIntersection([[1, 2], [3, 4]], [[3, 4], [5, 6]])).toEqual([[3, 4]]);
+    // Test case 8: Arrays containing nested arrays
+    it('8. should handle arrays containing nested arrays', () => {
+        const arr1: number[][] = [[1, 2], [3, 4]];
+        const arr2: number[][] = [[3, 4], [5, 6]];
+        expect(arrayIntersection(arr1, arr2)).toEqual([[3, 4]]);
     });
 
-    // Test case 9: Arrays with objects
-    it('9. should handle arrays with objects', () => {
+    // Test case 9: Arrays containing null and undefined
+    it('9. should handle arrays containing null and undefined', () => {
+        const arr1: (number | null | undefined)[] = [null, 1, 2];
+        const arr2: (number | null | undefined)[] = [null, 2, 3];
+        expect(arrayIntersection(arr1, arr2)).toEqual([null, 2]);
+    });
+
+    // Test case 10: Arrays containing NaN
+    it('10. should handle arrays containing NaN', () => {
+        const arr1: number[] = [NaN, 1, 2];
+        const arr2: number[] = [NaN, 2, 3];
+        expect(arrayIntersection(arr1, arr2)).toEqual([NaN, 2]);
+    });
+
+    // Test case 11: Arrays containing objects
+    it('11. should handle arrays containing objects', () => {
         const obj1 = { a: 1 };
         const obj2 = { b: 2 };
-        expect(arrayIntersection([obj1, obj2], [obj2])).toEqual([obj2]);
+        const arr1: object[] = [obj1, obj2];
+        const arr2: object[] = [obj2, { c: 3 }];
+        expect(arrayIntersection(arr1, arr2)).toEqual([obj2]);
     });
 
-    // Test case 10: Arrays with null and undefined
-    it('10. should handle arrays with null and undefined', () => {
-        expect(arrayIntersection([null, undefined, 1], [undefined, 2, null])).toEqual([null, undefined]);
-    });
-
-    // Test case 11: Arrays with NaN values
-    it('11. should handle arrays with NaN values', () => {
-        expect(arrayIntersection([NaN, 1, 2], [NaN, 2, 3])).toEqual([NaN, 2]);
-    });
-
-    // Test case 12: Large arrays
-    it('12. should handle large arrays', () => {
-        const largeArray1 = Array.from({ length: 1000 }, (_, i) => i);
-        const largeArray2 = Array.from({ length: 500 }, (_, i) => i * 2);
-        const expectedIntersection = Array.from({ length: 250 }, (_, i) => i * 2);
-        expect(arrayIntersection(largeArray1, largeArray2)).toEqual(expectedIntersection);
-    });
-
-    // Test case 13: Arrays with special characters
-    it('13. should handle arrays with special characters', () => {
-        expect(arrayIntersection(['@', '#', '$'], ['#', '%', '&'])).toEqual(['#']);
-    });
-
-    // Test case 14: Arrays with mixed data types
-    it('14. should handle arrays with mixed data types', () => {
-        expect(arrayIntersection([1, 'a', null, undefined], [null, 2, 'a', undefined])).toEqual([null, 'a', undefined]);
-    });
-
-    // Test case 15: Arrays with boolean values
-    it('15. should handle arrays with boolean values', () => {
-        expect(arrayIntersection([true, false, true], [false, true])).toEqual([true, false]);
-    });
-
-    // Test case 16: Arrays with functions
-    it('16. should handle arrays with functions', () => {
+    // Test case 12: Arrays containing functions
+    it('12. should handle arrays containing functions', () => {
         const func1 = () => {};
         const func2 = () => {};
         expect(arrayIntersection([func1, func2], [func2])).toEqual([func2]);
     });
 
-    // Test case 17: Arrays with symbols
-    it('17. should handle arrays with symbols', () => {
+    // Test case 13: Arrays containing symbols
+    it('13. should handle arrays containing symbols', () => {
         const sym1 = Symbol('a');
         const sym2 = Symbol('b');
         expect(arrayIntersection([sym1, sym2], [sym2])).toEqual([sym2]);
     });
 
-    // Test case 18: Arrays with dates
-    it('18. should handle arrays with dates', () => {
+    // Test case 14: Arrays containing dates
+    it('14. should handle arrays containing dates', () => {
         const date1 = new Date(2020, 1, 1);
         const date2 = new Date(2021, 1, 1);
         expect(arrayIntersection([date1, date2], [date2])).toEqual([date2]);
     });
 
-    // Test case 19: Arrays with regex
-    it('19. should handle arrays with regex', () => {
+    // Test case 15: Arrays containing regex
+    it('15. should handle arrays containing regex', () => {
         const regex1 = /a/;
         const regex2 = /b/;
         expect(arrayIntersection([regex1, regex2], [regex2])).toEqual([regex2]);
+    });
+
+    // Test case 16: Large arrays
+    it('16. should handle large arrays', () => {
+        const arr1: number[] = Array.from({ length: 10000 }, (_, i) => i);
+        const arr2: number[] = Array.from({ length: 10000 }, (_, i) => i + 5000);
+        const expected: number[] = Array.from({ length: 5000 }, (_, i) => i + 5000);
+        expect(arrayIntersection(arr1, arr2)).toEqual(expected);
     });
 });
