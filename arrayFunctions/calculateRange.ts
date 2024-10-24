@@ -9,7 +9,13 @@
  * @returns The range of the numbers in the array.
  */
 export function calculateRange(arr: number[]): number {
-    return Math.max(...arr) - Math.min(...arr);
+    if (arr.length === 0) {
+        return NaN;
+    }
+
+    const min: number = Math.min(...arr);
+    const max: number = Math.max(...arr);
+    return max - min;
 }
 
 // Example usage:

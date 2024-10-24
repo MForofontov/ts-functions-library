@@ -1,3 +1,5 @@
+import { deepEqual } from '.././objectFunctions/deepEqual';
+
 /**
  * Returns the intersection of two arrays, i.e., elements that are present in both arrays.
  * 
@@ -6,7 +8,7 @@
  * @returns A new array containing the elements that exist in both arrays.
  */
 export function arrayIntersection<T>(arr1: T[], arr2: T[]): T[] {
-    return arr1.filter(value => arr2.includes(value));
+    return arr1.filter(item1 => arr2.some(item2 => deepEqual(item1, item2)));
 }
 
 // Example usage:

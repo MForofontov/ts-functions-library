@@ -1,4 +1,4 @@
-import { calculateAverage } from './calculateAverage';
+import { calculateVariance } from './calculateVariance';
 
 /**
  * Calculates the standard deviation of an array of numbers.
@@ -7,8 +7,11 @@ import { calculateAverage } from './calculateAverage';
  * @returns The standard deviation of the numbers in the array.
  */
 export function calculateStandardDeviation(arr: number[]): number {
-    const mean = calculateAverage(arr);
-    const variance = arr.reduce((sum, num) => sum + Math.pow(num - mean, 2), 0) / arr.length;
+    if (arr.length === 0) {
+        return NaN;
+    }
+
+    const variance: number = calculateVariance(arr);
     return Math.sqrt(variance);
 }
 

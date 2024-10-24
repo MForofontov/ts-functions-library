@@ -1,3 +1,5 @@
+import { deepEqual } from '.././objectFunctions/deepEqual';
+
 /**
  * Finds duplicate elements in an array.
  * 
@@ -5,16 +7,20 @@
  * @returns A new array containing the duplicate values.
  */
 export function findDuplicates<T>(arr: T[]): T[] {
-    const seen = new Set<T>();
-    const duplicates = new Set<T>();
-    arr.forEach(value => {
-        if (seen.has(value)) {
-            duplicates.add(value);
+    const duplicates: T[] = [];
+    const seen: T[] = [];
+
+    for (const item of arr) {
+        if (seen.some(seenItem => deepEqual(seenItem, item))) {
+            if (!duplicates.some(duplicate => deepEqual(duplicate, item))) {
+                duplicates.push(item);
+            }
         } else {
-            seen.add(value);
+            seen.push(item);
         }
-    });
-    return Array.from(duplicates);
+    }
+
+    return duplicates;
 }
 
 // Example usage:

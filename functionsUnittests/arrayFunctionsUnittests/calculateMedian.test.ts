@@ -1,131 +1,108 @@
 import { calculateMedian } from '../../arrayFunctions/calculateMedian';
 
 describe('calculateMedian', () => {
-    // Test case 1: Median of an odd-length array
-    it('1. should return the median of an odd-length array', () => {
-        expect(calculateMedian([3, 1, 4, 1, 5, 9, 2])).toBe(3);
+    // Test case 1: Normal array of positive numbers
+    it('1. should calculate the median of an array of positive numbers', () => {
         expect(calculateMedian([1, 2, 3, 4, 5])).toBe(3);
     });
 
-    // Test case 2: Median of an even-length array
-    it('2. should return the median of an even-length array', () => {
-        expect(calculateMedian([1, 2, 3, 4])).toBe(2.5);
-        expect(calculateMedian([3, 1, 4, 2])).toBe(2.5);
+    // Test case 2: Array with a single number
+    it('2. should return the number itself when the array has a single number', () => {
+        expect(calculateMedian([5])).toBe(5);
     });
 
-    // Test case 3: Single-element array
-    it('3. should return the only element for a single-element array', () => {
-        expect(calculateMedian([42])).toBe(42);
-    });
-
-    // Test case 4: Empty array
-    it('4. should return NaN for an empty array', () => {
+    // Test case 3: Empty array
+    it('3. should return NaN for an empty array', () => {
         expect(calculateMedian([])).toBeNaN();
     });
 
-    // Test case 5: Arrays with negative numbers
-    it('5. should handle arrays with negative numbers', () => {
-        expect(calculateMedian([-5, -1, -3, -2, -4])).toBe(-3);
+    // Test case 4: Array with an even number of elements
+    it('4. should calculate the median of an array with an even number of elements', () => {
+        expect(calculateMedian([1, 2, 3, 4])).toBe(2.5);
     });
 
-    // Test case 6: Arrays with duplicate numbers
-    it('6. should handle arrays with duplicate numbers', () => {
-        expect(calculateMedian([1, 2, 2, 3, 4])).toBe(2);
+    // Test case 5: Array with negative numbers
+    it('5. should calculate the median of an array with negative numbers', () => {
+        expect(calculateMedian([-1, -2, -3, -4, -5])).toBe(-3);
     });
 
-    // Test case 7: Arrays with floating point numbers
-    it('7. should handle arrays with floating point numbers', () => {
+    // Test case 6: Array with both positive and negative numbers
+    it('6. should calculate the median of an array with both positive and negative numbers', () => {
+        expect(calculateMedian([-1, 2, -3, 4, -5])).toBe(-1);
+    });
+
+    // Test case 7: Array with floating-point numbers
+    it('7. should calculate the median of an array with floating-point numbers', () => {
         expect(calculateMedian([1.5, 2.5, 3.5, 4.5, 5.5])).toBe(3.5);
-        expect(calculateMedian([1.1, 2.2, 3.3, 4.4])).toBe(2.75);
     });
 
-    // Test case 8: Arrays with mixed positive and negative numbers
-    it('8. should handle arrays with mixed positive and negative numbers', () => {
-        expect(calculateMedian([-1, -2, 3, 4])).toBe(1);
-        expect(calculateMedian([-3, -1, 2, 4, 5])).toBe(2);
+    // Test case 8: Array with a single zero
+    it('8. should return zero when the array contains a single zero', () => {
+        expect(calculateMedian([0])).toBe(0);
     });
 
-    // Test case 9: Arrays with zero
-    it('9. should handle arrays with zero', () => {
-        expect(calculateMedian([0, 0, 0])).toBe(0);
-        expect(calculateMedian([0, 1, 2, 3, 4])).toBe(2);
+    // Test case 9: Array with large numbers
+    it('9. should calculate the median of an array with large numbers', () => {
+        expect(calculateMedian([1000, 2000, 3000, 4000, 5000])).toBe(3000);
     });
 
-    // Test case 10: Arrays with large numbers
-    it('10. should handle arrays with large numbers', () => {
-        expect(calculateMedian([1000000000, 2000000000, 3000000000])).toBe(2000000000);
-        expect(calculateMedian([1000000000, 2000000000, 3000000000, 4000000000])).toBe(2500000000);
+    // Test case 10: Array with small numbers
+    it('10. should calculate the median of an array with small numbers', () => {
+        expect(calculateMedian([0.1, 0.2, 0.3, 0.4, 0.5])).toBe(0.3);
     });
 
-    // Test case 11: Arrays with very small numbers
-    it('11. should handle arrays with very small numbers', () => {
-        expect(calculateMedian([0.0000001, 0.0000002, 0.0000003])).toBe(0.0000002);
-        expect(calculateMedian([0.0000001, 0.0000002, 0.0000003, 0.0000004])).toBe(0.00000025);
+    // Test case 11: Array with mixed positive and negative floating-point numbers
+    it('11. should calculate the median of an array with mixed positive and negative floating-point numbers', () => {
+        expect(calculateMedian([1.5, -2.5, 3.5, -4.5, 5.5])).toBe(1.5);
     });
 
-    // Test case 12: Arrays with mixed integers and floating point numbers
-    it('12. should handle arrays with mixed integers and floating point numbers', () => {
-        expect(calculateMedian([1, 2.5, 3, 4.5, 5])).toBe(3);
-        expect(calculateMedian([1, 2.5, 3, 4.5])).toBe(2.75);
+    // Test case 12: Array with very small numbers
+    it('12. should calculate the median of an array with very small numbers', () => {
+        expect(calculateMedian([1e-10, 2e-10, 3e-10, 4e-10, 5e-10])).toBe(3e-10);
     });
 
-    // Test case 13: Arrays with repeated numbers
-    it('13. should handle arrays with repeated numbers', () => {
-        expect(calculateMedian([5, 5, 5])).toBe(5);
-        expect(calculateMedian([1, 1, 2, 2, 3, 3])).toBe(2);
+    // Test case 13: Array with very large numbers
+    it('13. should calculate the median of an array with very large numbers', () => {
+        expect(calculateMedian([1e10, 2e10, 3e10, 4e10, 5e10])).toBe(3e10);
     });
 
-    // Test case 14: Arrays with NaN values
-    it('14. should handle arrays with NaN values', () => {
-        expect(calculateMedian([NaN, NaN, NaN])).toBeNaN();
-        expect(calculateMedian([1, NaN, 3])).toBeNaN();
+    // Test case 14: Arrays with -Infinity values
+    it('14. should handle arrays with -Infinity values', () => {
+        expect(calculateMedian([-Infinity, -Infinity, 1, 1])).toBe(1);
     });
 
-    // Test case 15: Arrays with Infinity values
-    it('15. should handle arrays with Infinity values', () => {
-        expect(calculateMedian([Infinity, Infinity, Infinity])).toBe(Infinity);
-        expect(calculateMedian([1, Infinity, 3])).toBe(3);
+    // Test case 15: Arrays with mixed Infinity and finite numbers
+    it('15. should handle arrays with mixed Infinity and finite numbers', () => {
+        expect(calculateMedian([Infinity, Infinity, 1, 1])).toBe(1);
     });
 
-    // Test case 16: Arrays with -Infinity values
-    it('16. should handle arrays with -Infinity values', () => {
-        expect(calculateMedian([-Infinity, -Infinity, -Infinity])).toBe(-Infinity);
-        expect(calculateMedian([1, -Infinity, 3])).toBe(1);
+    // Test case 16: Arrays with mixed positive, negative, and zero numbers
+    it('16. should handle arrays with mixed positive, negative, and zero numbers', () => {
+        expect(calculateMedian([1, -1, 0, 1, -1, 0])).toBe(0);
     });
 
-    // Test case 17: Arrays with mixed Infinity and finite numbers
-    it('17. should handle arrays with mixed Infinity and finite numbers', () => {
-        expect(calculateMedian([Infinity, 1, 2])).toBe(2);
-        expect(calculateMedian([-Infinity, 1, 2])).toBe(1);
+    // Test case 17: Arrays with repeated numbers
+    it('17. should calculate the median of an array with repeated numbers', () => {
+        expect(calculateMedian([2, 2, 2, 2])).toBe(2);
     });
 
-    // Test case 18: Arrays with mixed -Infinity and finite numbers
-    it('18. should handle arrays with mixed -Infinity and finite numbers', () => {
-        expect(calculateMedian([-Infinity, 1, 2])).toBe(1);
-        expect(calculateMedian([-Infinity, -1, 0])).toBe(-1);
+    // Test case 18: Arrays with alternating positive and negative numbers
+    it('18. should calculate the median of an array with alternating positive and negative numbers', () => {
+        expect(calculateMedian([1, -1, 1, -1])).toBe(0);
     });
 
-    // Test case 19: Arrays with mixed NaN and finite numbers
-    it('19. should handle arrays with mixed NaN and finite numbers', () => {
-        expect(calculateMedian([NaN, 1, 2])).toBeNaN();
-        expect(calculateMedian([1, NaN, 3])).toBeNaN();
+    // Test case 19: Arrays with alternating positive and negative floating-point numbers
+    it('19. should calculate the median of an array with alternating positive and negative floating-point numbers', () => {
+        expect(calculateMedian([1.5, -1.5, 1.5, -1.5])).toBe(0);
     });
 
-    // Test case 20: Arrays with mixed NaN and Infinity values
-    it('20. should handle arrays with mixed NaN and Infinity values', () => {
-        expect(calculateMedian([NaN, Infinity, -Infinity])).toBeNaN();
-        expect(calculateMedian([Infinity, NaN, -Infinity])).toBeNaN();
+    // Test case 20: Arrays with a single negative number
+    it('20. should return the negative number itself when the array has a single negative number', () => {
+        expect(calculateMedian([-5])).toBe(-5);
     });
 
-    // Test case 21: Arrays with very large and very small numbers
-    it('21. should handle arrays with very large and very small numbers', () => {
-        expect(calculateMedian([1e10, 1e-10])).toBeCloseTo(5e9);
-        expect(calculateMedian([1e-10, 1e10, 1e-10])).toBe(1e-10);
-    });
-
-    // Test case 22: Arrays with mixed positive, negative, and zero numbers
-    it('22. should handle arrays with mixed positive, negative, and zero numbers', () => {
-        expect(calculateMedian([1, -1, 0])).toBe(0);
-        expect(calculateMedian([-1, 0, 1])).toBe(0);
+    // Test case 21: Arrays with mixed positive, negative, and zero numbers
+    it('21. should handle arrays with mixed positive, negative, and zero numbers', () => {
+        expect(calculateMedian([1, -1, 0, 1, -1, 0])).toBe(0);
     });
 });

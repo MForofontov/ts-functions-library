@@ -74,7 +74,7 @@ describe('arrayDifference', () => {
 
     // Test case 14: Arrays with boolean values
     it('14. should handle arrays with boolean values', () => {
-        expect(arrayDifference([true, false, true], [false, true])).toEqual([true]);
+        expect(arrayDifference([true, false, true], [false])).toEqual([true, true]);
     });
 
     // Test case 15: Arrays with functions

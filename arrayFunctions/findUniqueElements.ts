@@ -1,11 +1,21 @@
+import { deepEqual } from '.././objectFunctions/deepEqual';
+
 /**
- * Returns the unique elements in an array.
+ * Finds unique elements in an array using deep equality.
  * 
- * @param arr - The array to find unique elements from.
- * @returns A new array with only unique values.
+ * @param arr - The array to search for unique elements.
+ * @returns An array containing the unique elements.
  */
 export function findUniqueElements<T>(arr: T[]): T[] {
-    return [...new Set(arr)];
+    const uniqueElements: T[] = [];
+
+    for (const item of arr) {
+        if (!uniqueElements.some(uniqueItem => deepEqual(uniqueItem, item))) {
+            uniqueElements.push(item);
+        }
+    }
+
+    return uniqueElements;
 }
 
 // Example usage:

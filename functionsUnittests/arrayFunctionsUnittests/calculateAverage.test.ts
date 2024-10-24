@@ -12,9 +12,9 @@ describe('calculateAverage', () => {
     });
 
     // Test case 2: Empty array
-    it('2. should return 0 for an empty array', () => {
+    it('2. should return NaN for an empty array', () => {
         (sumArrayElements as jest.Mock).mockReturnValueOnce(0);
-        expect(calculateAverage([])).toBe(0);
+        expect(calculateAverage([])).toBe(NaN);
     });
 
     // Test case 3: Arrays with negative numbers

@@ -134,7 +134,7 @@ describe('findCommonWithCondition', () => {
         const arr1: number[] = Array.from({ length: 10000 }, (_, i) => i);
         const arr2: number[] = Array.from({ length: 10000 }, (_, i) => i + 5000);
         const condition = (x: number) => x % 2 === 0;
-        const expected: number[] = Array.from({ length: 5000 }, (_, i) => i * 2 + 5000);
+        const expected: number[] = Array.from({ length: 2500 }, (_, i) => i * 2 + 5000);
         expect(findCommonWithCondition(arr1, arr2, condition)).toEqual(expected);
     });
 });

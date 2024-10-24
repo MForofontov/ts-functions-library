@@ -5,5 +5,5 @@ export function calculateAverage(arr: number[]): number {
     // Get the total sum of the array
     const total = sumArrayElements(arr);
     // If the array is not empty, return the average, otherwise return 0
-    return arr.length ? total / arr.length : 0;
+    return arr.length ? total / arr.length : NaN;
 }

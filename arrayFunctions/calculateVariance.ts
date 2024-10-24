@@ -1,4 +1,4 @@
-import { calculateAverage } from "./calculateAverage";
+import { calculateAverage } from './calculateAverage';
 
 /**
  * Calculates the variance of an array of numbers.
@@ -7,8 +7,13 @@ import { calculateAverage } from "./calculateAverage";
  * @returns The variance of the numbers in the array.
  */
 export function calculateVariance(arr: number[]): number {
-    const mean = calculateAverage(arr);
-    return arr.reduce((sum, num) => sum + Math.pow(num - mean, 2), 0) / arr.length;
+    if (arr.length === 0) {
+        return NaN;
+    }
+
+    const mean: number = calculateAverage(arr);
+    const sumOfSquares: number = arr.reduce((sum, num) => sum + Math.pow(num - mean, 2), 0);
+    return sumOfSquares / arr.length;
 }
 
 // Example usage:
