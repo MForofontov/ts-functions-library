@@ -4,7 +4,7 @@
  * @param arr - The array of numbers.
  * @returns The highest value in the array.
  */
-export function findMin(arr: number[]): number {
+export function findMax(arr: number[]): number {
     return Math.max(...arr);
 }
 
