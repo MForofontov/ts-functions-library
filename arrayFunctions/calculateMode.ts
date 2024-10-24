@@ -5,13 +5,16 @@
  * @returns An array containing the mode(s) of the numbers in the array.
  */
 export function calculateMode(arr: number[]): number[] {
-    const frequency: { [key: number]: number } = {};
-    arr.forEach(num => {
+    const frequency: { [key: string]: number } = {};
+    arr.forEach((num: number) => {
         frequency[num] = (frequency[num] || 0) + 1;
     });
-    
-    const maxFreq = Math.max(...Object.values(frequency));
-    return Object.keys(frequency).filter(num => frequency[+num] === maxFreq).map(Number);
+
+    const maxFreq: number = Math.max(...Object.values(frequency));
+    return Object.keys(frequency)
+        .filter((num: string) => frequency[num] === maxFreq)
+        .map(Number)
+        .sort((a: number, b: number) => a - b); // Ensure the result is sorted
 }
 
 // Example usage:

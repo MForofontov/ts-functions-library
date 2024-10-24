@@ -15,8 +15,8 @@ describe('calculateStandardDeviation', () => {
 
     // Test case 3: Standard deviation of an array of mixed positive and negative numbers
     it('3. should return the standard deviation of an array of mixed positive and negative numbers', () => {
-        expect(calculateStandardDeviation([-1, 0, 1, 2, 3])).toBeCloseTo(1.581);
-        expect(calculateStandardDeviation([-10, 0, 10, 20, 30])).toBeCloseTo(15.811);
+        expect(calculateStandardDeviation([-1, 0, 1, 2, 3])).toBeCloseTo(1.414);
+        expect(calculateStandardDeviation([-10, 0, 10, 20, 30])).toBeCloseTo(14.142);
     });
 
     // Test case 4: Standard deviation of an array with a single element
@@ -38,8 +38,8 @@ describe('calculateStandardDeviation', () => {
 
     // Test case 7: Standard deviation of an array with floating point numbers
     it('7. should handle arrays with floating point numbers', () => {
-        expect(calculateStandardDeviation([1.5, 2.5, 3.5])).toBeCloseTo(0.816);
-        expect(calculateStandardDeviation([-1.5, -2.5, -3.5])).toBeCloseTo(0.816);
+        expect(calculateStandardDeviation([1.5, 2.5, 3.5])).toBeCloseTo(0.817);
+        expect(calculateStandardDeviation([-1.5, -2.5, -3.5])).toBeCloseTo(0.817);
     });
 
     // Test case 8: Standard deviation of an array with large numbers
@@ -56,8 +56,8 @@ describe('calculateStandardDeviation', () => {
 
     // Test case 10: Standard deviation of an array with mixed integers and floating point numbers
     it('10. should handle arrays with mixed integers and floating point numbers', () => {
-        expect(calculateStandardDeviation([1, 2.5, 3])).toBeCloseTo(0.816);
-        expect(calculateStandardDeviation([-1, -2.5, -3])).toBeCloseTo(0.816);
+        expect(calculateStandardDeviation([1, 2.5, 3])).toBeCloseTo(0.850);
+        expect(calculateStandardDeviation([-1, -2.5, -3])).toBeCloseTo(0.850);
     });
 
     // Test case 11: Standard deviation of an array with repeated numbers

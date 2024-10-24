@@ -99,6 +99,6 @@ describe('calculateProduct', () => {
 
     // Test case 20: Arrays with mixed positive, negative, and zero numbers
     it('20. should handle arrays with mixed positive, negative, and zero numbers', () => {
-        expect(calculateProduct([1, -1, 0])).toBe(0);
+        expect(calculateProduct([1, -1, 0])).toEqual(-0);
     });
 });

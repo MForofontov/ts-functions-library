@@ -57,21 +57,21 @@ describe('generatePrimes', () => {
         ]);
     });
 
-    // Test case 10: Limit as a floating-point number
+    // Test case 10: Should handle or throw an error when the limit is a floating-point number
     it('10. should handle or throw an error when the limit is a floating-point number', () => {
-        const limit: number = 10.5;
-        expect(generatePrimes(limit)).toEqual([2, 3, 5, 7]);
+        expect(() => generatePrimes(10.5)).toThrow(RangeError);
+        expect(() => generatePrimes(10.5)).toThrow('Limit must be an integer');
     });
 
     // Test case 11: Limit as Infinity
     it('11. should handle or throw an error when the limit is Infinity', () => {
         const limit: number = Infinity;
-        expect(() => generatePrimes(limit)).toThrowError();
+        expect(() => generatePrimes(limit)).toThrow();
     });
 
     // Test case 12: Limit as NaN
     it('12. should handle or throw an error when the limit is NaN', () => {
         const limit: number = NaN;
-        expect(() => generatePrimes(limit)).toThrowError();
+        expect(() => generatePrimes(limit)).toThrow();
     });
 });

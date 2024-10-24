@@ -1,17 +1,28 @@
-import { isPrime } from '../mathFunctions/isPrime';
-/**
- * Generates an array of prime numbers up to a specified limit.
- * 
- * @param limit - The upper limit to generate primes.
- * @returns An array of prime numbers up to the specified limit.
- */
+// generatePrimes.ts
 export function generatePrimes(limit: number): number[] {
+    if (limit < 2) return [];
+    if (!Number.isInteger(limit)) {
+        throw new RangeError('Limit must be an integer');
+    }
+
+    const sieve: boolean[] = new Array(limit + 1).fill(true);
+    sieve[0] = sieve[1] = false;
+
+    for (let i = 2; i * i <= limit; i++) {
+        if (sieve[i]) {
+            for (let j = i * i; j <= limit; j += i) {
+                sieve[j] = false;
+            }
+        }
+    }
+
     const primes: number[] = [];
     for (let i = 2; i <= limit; i++) {
-        if (isPrime(i)) {
+        if (sieve[i]) {
             primes.push(i);
         }
     }
+
     return primes;
 }
 

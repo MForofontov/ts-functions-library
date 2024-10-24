@@ -98,14 +98,11 @@ describe('joinStrings', () => {
         expect(joinStrings(stringArr, separator)).toBe("hello [object Object] world");
     });
 
-    // Test case 14: Array containing functions
+    // Test case 14: Array with functions
     it('14. should handle an array containing functions', () => {
-        const func1: () => string = () => "func1";
-        const func2: () => string = () => "func2";
-        const arr: (string | Function)[] = ["hello", func1, "world", func2];
-        const separator: string = " ";
-        const stringArr: string[] = arr.map(String);
-        expect(joinStrings(stringArr, separator)).toBe("hello func1 world func2");
+        const func1 = () => 'func1';
+        const func2 = () => 'func2';
+        expect(joinStrings(['hello', func1, 'world', func2], ' ')).toBe('hello func1 world func2');
     });
 
     // Test case 15: Array containing symbols
