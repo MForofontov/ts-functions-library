@@ -1,4 +1,1 @@
-{"scripts": {
-      "test": "jest"
-    }
-}
+{"scripts":{"test":"jest"},"devDependencies":{"@types/jest":"^29.5.14"}}
