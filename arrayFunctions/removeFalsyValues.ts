@@ -4,8 +4,8 @@
  * @param arr - The array with possible falsy values.
  * @returns A new array without any falsy values.
  */
-export function removeFalsyValues<T>(arr: T[]): T[] {
-    return arr.filter(Boolean);
+export function removeFalsyValues<T>(arr: any[]): any[] {
+    return arr.filter((value): value is T => Boolean(value));
 }
 
 // Example usage:
