@@ -127,7 +127,7 @@ describe('removeFalsyValues', () => {
   test('16. should remove falsy values from an array with NaN values', () => {
     const array: (number | null | undefined | boolean)[] = [1, NaN, null, undefined, false, NaN, 3];
     const result: number[] = removeFalsyValues(array);
-    expect(result).toEqual([1, NaN, NaN, 3]);
+    expect(result).toEqual([1, 3]);
   });
 
   // Test case 18: Removing falsy values from an array with mixed data types
@@ -166,7 +166,7 @@ describe('removeFalsyValues', () => {
   test('21. should remove falsy values from an array with NaN and undefined values', () => {
     const array: (number | null | undefined | boolean)[] = [1, NaN, null, undefined, false, NaN, 3];
     const result: number[] = removeFalsyValues(array);
-    expect(result).toEqual([1, NaN, NaN, 3]);
+    expect(result).toEqual([1, 3]);
   });
 
   // Test case 23: Removing falsy values from an array with null and boolean values

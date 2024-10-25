@@ -41,12 +41,12 @@ describe('rotateArrayLeft', () => {
     expect(result).toEqual([1, 2, 3, 4, 5]);
   });
 
-  // Test case 6: Rotating an array by a negative number of positions
-  test('6. should return the original array when rotating by a negative number of positions', () => {
+  // Test case 6: Rotating an array to the left by a negative number of positions
+  test('6. should rotate an array to the right by the absolute value of the negative number of positions', () => {
     const array: number[] = [1, 2, 3, 4, 5];
     const positions: number = -2;
     const result: number[] = rotateArrayLeft(array, positions);
-    expect(result).toEqual([1, 2, 3, 4, 5]);
+    expect(result).toEqual([4, 5, 1, 2, 3]);
   });
 
   // Test case 7: Rotating an array by a number of positions greater than the array length
