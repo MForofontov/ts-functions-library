@@ -19,14 +19,19 @@ export function deepEqual(a: any, b: any): boolean {
         return false;
     }
 
+    // Special case for Date objects
+    if (a instanceof Date && b instanceof Date) {
+        return a.getTime() === b.getTime();
+    }
+
     // Special case for RegExp objects
     if (a instanceof RegExp && b instanceof RegExp) {
         return a.source === b.source && a.flags === b.flags;
     }
 
-    // Special case for Date objects
-    if (a instanceof Date && b instanceof Date) {
-        return a.getTime() === b.getTime();
+    // If one is a Date and the other is a RegExp, they are not deeply equal
+    if ((a instanceof Date && b instanceof RegExp) || (a instanceof RegExp && b instanceof Date)) {
+        return false;
     }
 
     // Special case for boolean values
@@ -50,5 +55,6 @@ export function deepEqual(a: any, b: any): boolean {
     }
 
     // If all keys and values are deeply equal, return true.
+
     return true;
 }

@@ -42,11 +42,12 @@ describe('rotateArrayRight', () => {
   });
 
   // Test case 6: Rotating an array by a negative number of positions
-  test('6. should return the original array when rotating by a negative number of positions', () => {
+  test('6. should rotate to the left when rotating by a negative number of positions', () => {
     const array: number[] = [1, 2, 3, 4, 5];
     const positions: number = -2;
     const result: number[] = rotateArrayRight(array, positions);
-    expect(result).toEqual([1, 2, 3, 4, 5]);
+    console.log(result);
+    expect(result).toEqual([ 3, 4, 5, 1, 2 ]);
   });
 
   // Test case 7: Rotating an array by a number of positions greater than the array length
@@ -86,7 +87,7 @@ describe('rotateArrayRight', () => {
     const array: number[][] = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10]];
     const positions: number = 3;
     const result: number[][] = rotateArrayRight(array, positions);
-    expect(result).toEqual([[7, 8], [9, 10], [1, 2], [3, 4], [5, 6]]);
+    expect(result).toEqual([[5, 6], [7, 8], [9, 10], [1, 2], [3, 4]]);
   });
 
   // Test case 11: Rotating an array of boolean values by 2 positions

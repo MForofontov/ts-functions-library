@@ -153,7 +153,7 @@ describe('removeDuplicates', () => {
 
   // Test case 20: Removing duplicates from an array with dates and regular expressions
   test('20. should remove duplicates from an array with dates and regular expressions', () => {
-    const date1: Date = new Date('2021-01-01');
+    const date1: Date = new Date('2021-01-01T00:00:00.000Z');
     const regex1: RegExp = /abc/;
     const array: (number | Date | RegExp)[] = [1, date1, 1, regex1, date1];
     const result: (number | Date | RegExp)[] = removeDuplicates(array);

@@ -191,8 +191,8 @@ describe('uniqueElementsWithCounts', () => {
 
   // Test case 18: Unique elements with counts in an array of dates and regular expressions
   test('18. should return unique elements with counts in an array of dates and regular expressions', () => {
-    const date1: Date = new Date('2021-01-01');
-    const regex1: RegExp = /abc/;
+    const date1: Date = new Date('2021-01-01T00:00:00.000Z');
+    const regex1: RegExp = /abcdf/;
     const array: (Date | RegExp)[] = [date1, regex1, date1, regex1];
     const result: { element: Date | RegExp; count: number }[] = uniqueElementsWithCounts(array);
     expect(result).toEqual([
