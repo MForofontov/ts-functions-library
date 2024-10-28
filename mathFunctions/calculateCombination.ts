@@ -7,10 +7,10 @@ import { calculateFactorial } from './calculateFactorial';
  * @param k - The number of items to choose.
  * @returns The number of ways to choose k items from n items.
  */
-export function combination(n: number, k: number): number {
+export function calculateCombination(n: number, k: number): number {
     if (k > n) return 0;
     return calculateFactorial(n) / (calculateFactorial(k) * calculateFactorial(n - k));
 }
 
 // Example usage:
-// combination(5, 2); // 10
+// calculateCombination(5, 2); // 10

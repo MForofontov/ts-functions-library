@@ -4,7 +4,7 @@
  * @param n - The number to calculate the logarithm of.
  * @returns The base 10 logarithm of the number.
  */
-export function logBase10(n: number): number {
+export function calculatLogBase10(n: number): number {
     return Math.log10(n);
 }
 
