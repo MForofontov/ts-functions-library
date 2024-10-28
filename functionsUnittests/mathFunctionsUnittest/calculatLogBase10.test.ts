@@ -81,4 +81,12 @@ describe('calculatLogBase10', () => {
         const result: number = calculatLogBase10(input);
         expect(result).toBeCloseTo(expected, 5);
     });
+
+    // Test case 11: Logarithm of a very large positive number
+    it('11. should return the correct logarithm for a very large positive number', () => {
+        const input: number = 1e+10;
+        const expected: number = 10;
+        const result: number = calculatLogBase10(input);
+        expect(result).toBeCloseTo(expected, 5);
+    });
 });
