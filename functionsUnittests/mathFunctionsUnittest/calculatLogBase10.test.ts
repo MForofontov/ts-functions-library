@@ -1,8 +1,5 @@
 import { calculatLogBase10 } from '../../mathFunctions/calculateLogBase10';
 
-/**
- * Unit tests for the calculatLogBase10 function.
- */
 describe('calculatLogBase10', () => {
     // Test case 1: Logarithm of a positive number
     it('1. should return the correct logarithm for a positive number', () => {
