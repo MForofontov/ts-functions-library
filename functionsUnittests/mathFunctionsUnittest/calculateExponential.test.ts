@@ -79,4 +79,84 @@ describe('calculateExponential', () => {
         const result: number = calculateExponential(input);
         expect(result).toBe(expected);
     });
+
+    // Test case 11: Exponent of a very small positive number
+    it('11. should return the correct value for a very small positive exponent', () => {
+        const input: number = 1e-10;
+        const expected: number = Math.exp(1e-10);
+        const result: number = calculateExponential(input);
+        expect(result).toBeCloseTo(expected, 5);
+    });
+
+    // Test case 12: Exponent of a very small negative number
+    it('12. should return the correct value for a very small negative exponent', () => {
+        const input: number = -1e-10;
+        const expected: number = Math.exp(-1e-10);
+        const result: number = calculateExponential(input);
+        expect(result).toBeCloseTo(expected, 5);
+    });
+
+    // Test case 13: Exponent of a very large positive number
+    it('13. should return the correct value for a very large positive exponent', () => {
+        const input: number = 1e10;
+        const expected: number = Math.exp(1e10);
+        const result: number = calculateExponential(input);
+        expect(result).toBeCloseTo(expected, 5);
+    });
+
+    // Test case 14: Exponent of a very large negative number
+    it('14. should return the correct value for a very large negative exponent', () => {
+        const input: number = -1e10;
+        const expected: number = Math.exp(-1e10);
+        const result: number = calculateExponential(input);
+        expect(result).toBeCloseTo(expected, 5);
+    });
+
+    // Test case 15: Exponent of a fractional positive number
+    it('15. should return the correct value for a fractional positive exponent', () => {
+        const input: number = 0.25;
+        const expected: number = Math.exp(0.25);
+        const result: number = calculateExponential(input);
+        expect(result).toBeCloseTo(expected, 5);
+    });
+
+    // Test case 16: Exponent of a fractional negative number
+    it('16. should return the correct value for a fractional negative exponent', () => {
+        const input: number = -0.25;
+        const expected: number = Math.exp(-0.25);
+        const result: number = calculateExponential(input);
+        expect(result).toBeCloseTo(expected, 5);
+    });
+
+    // Test case 17: Exponent of a very large fractional positive number
+    it('17. should return the correct value for a very large fractional positive exponent', () => {
+        const input: number = 1.0000000001;
+        const expected: number = Math.exp(1.0000000001);
+        const result: number = calculateExponential(input);
+        expect(result).toBeCloseTo(expected, 5);
+    });
+
+    // Test case 18: Exponent of a very large fractional negative number
+    it('18. should return the correct value for a very large fractional negative exponent', () => {
+        const input: number = -1.0000000001;
+        const expected: number = Math.exp(-1.0000000001);
+        const result: number = calculateExponential(input);
+        expect(result).toBeCloseTo(expected, 5);
+    });
+
+    // Test case 19: Exponent of a very small fractional positive number
+    it('19. should return the correct value for a very small fractional positive exponent', () => {
+        const input: number = 1e-10;
+        const expected: number = Math.exp(1e-10);
+        const result: number = calculateExponential(input);
+        expect(result).toBeCloseTo(expected, 5);
+    });
+
+    // Test case 20: Exponent of a very small fractional negative number
+    it('20. should return the correct value for a very small fractional negative exponent', () => {
+        const input: number = -1e-10;
+        const expected: number = Math.exp(-1e-10);
+        const result: number = calculateExponential(input);
+        expect(result).toBeCloseTo(expected, 5);
+    });
 });
