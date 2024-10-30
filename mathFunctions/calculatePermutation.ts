@@ -7,7 +7,7 @@ import { calculateFactorial } from './calculateFactorial';
  * @param k - The number of items to arrange.
  * @returns The number of ways to arrange k items from n items.
  */
-export function permutation(n: number, k: number): number {
+export function calculatePermutation(n: number, k: number): number {
     return calculateFactorial(n) / calculateFactorial(n - k);
 }
 
