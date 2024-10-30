@@ -1,4 +1,4 @@
-import { fibonacciRecursive } from './fibonacciRecursive';
+import { fibonacciRecursive } from '../../mathFunctions/fibonacciRecursive';
 
 describe('fibonacciRecursive', () => {
     // Test case 1: Fibonacci number for a positive integer
