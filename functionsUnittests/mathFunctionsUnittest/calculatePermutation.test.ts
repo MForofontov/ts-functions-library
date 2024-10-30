@@ -1,7 +1,6 @@
 import { calculatePermutation } from '../../mathFunctions/calculatePermutation';
 
-// Test suite for permutation function
-describe('permutation', () => {
+describe('calculatePermutation', () => {
     // Test case 1: Permutation of 5 items taken 3 at a time
     it('1. should return the correct permutation for 5 items taken 3 at a time', () => {
         const n: number = 5;
