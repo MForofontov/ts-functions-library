@@ -1,8 +1,5 @@
 import { lcm } from '../../mathFunctions/lcm';
 
-/**
- * Unit tests for the lcm function.
- */
 describe('lcm', () => {
     // Test case 1: LCM of two positive integers
     it('1. should return the correct LCM for two positive integers', () => {

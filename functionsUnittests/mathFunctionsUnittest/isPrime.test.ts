@@ -1,8 +1,5 @@
 import { isPrime } from '../../mathFunctions/isPrime';
 
-/**
- * Unit tests for the isPrime function.
- */
 describe('isPrime', () => {
     // Test case 1: Check if a small prime number is identified correctly
     it('1. should return true for a small prime number', () => {
