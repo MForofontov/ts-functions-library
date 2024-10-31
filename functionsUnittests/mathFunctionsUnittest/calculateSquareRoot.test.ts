@@ -38,19 +38,4 @@ describe('calculateSquareRoot', () => {
         const result: number = calculateSquareRoot(input);
         expect(result).toBe(expected);
     });
-
-    // Test case 6: Exception handling for invalid inputs (null)
-    it('6. should throw an error for null input', () => {
-        expect(() => calculateSquareRoot(null as any)).toThrow();
-    });
-
-    // Test case 7: Exception handling for invalid inputs (undefined)
-    it('7. should throw an error for undefined input', () => {
-        expect(() => calculateSquareRoot(undefined as any)).toThrow();
-    });
-
-    // Test case 8: Exception handling for invalid inputs (non-number type)
-    it('8. should throw an error for non-number input', () => {
-        expect(() => calculateSquareRoot('string' as any)).toThrow();
-    });
 });

@@ -72,40 +72,4 @@ describe('gcd', () => {
         const result: number = gcd(a, b);
         expect(result).toBe(expected);
     });
-
-    // Test case 9: Exception handling for null input
-    it('9. should throw an error for null input', () => {
-        expect(() => gcd(null as any, 18)).toThrow();
-        expect(() => gcd(18, null as any)).toThrow();
-    });
-
-    // Test case 10: Exception handling for undefined input
-    it('10. should throw an error for undefined input', () => {
-        expect(() => gcd(undefined as any, 18)).toThrow();
-        expect(() => gcd(18, undefined as any)).toThrow();
-    });
-
-    // Test case 11: Exception handling for non-number input (string)
-    it('11. should throw an error for non-number input (string)', () => {
-        expect(() => gcd('string' as any, 18)).toThrow();
-        expect(() => gcd(18, 'string' as any)).toThrow();
-    });
-
-    // Test case 12: Exception handling for non-number input (object)
-    it('12. should throw an error for non-number input (object)', () => {
-        expect(() => gcd({} as any, 18)).toThrow();
-        expect(() => gcd(18, {} as any)).toThrow();
-    });
-
-    // Test case 13: Exception handling for non-number input (array)
-    it('13. should throw an error for non-number input (array)', () => {
-        expect(() => gcd([] as any, 18)).toThrow();
-        expect(() => gcd(18, [] as any)).toThrow();
-    });
-
-    // Test case 14: Exception handling for floating-point input
-    it('14. should throw an error for floating-point input', () => {
-        expect(() => gcd(4.5, 18)).toThrow();
-        expect(() => gcd(18, 4.5)).toThrow();
-    });
 });

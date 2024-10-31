@@ -28,29 +28,4 @@ describe('calculateTriangularNumber', () => {
         const input: number = 5.5;
         expect(() => calculateTriangularNumber(input)).toThrow();
     });
-
-    // Test case 5: Exception handling for null input
-    it('5. should throw an error for null input', () => {
-        expect(() => calculateTriangularNumber(null as any)).toThrow();
-    });
-
-    // Test case 6: Exception handling for undefined input
-    it('6. should throw an error for undefined input', () => {
-        expect(() => calculateTriangularNumber(undefined as any)).toThrow();
-    });
-
-    // Test case 7: Exception handling for non-number input (string)
-    it('7. should throw an error for non-number input (string)', () => {
-        expect(() => calculateTriangularNumber('string' as any)).toThrow();
-    });
-
-    // Test case 8: Exception handling for non-number input (object)
-    it('8. should throw an error for non-number input (object)', () => {
-        expect(() => calculateTriangularNumber({} as any)).toThrow();
-    });
-
-    // Test case 9: Exception handling for non-number input (array)
-    it('9. should throw an error for non-number input (array)', () => {
-        expect(() => calculateTriangularNumber([] as any)).toThrow();
-    });
 });

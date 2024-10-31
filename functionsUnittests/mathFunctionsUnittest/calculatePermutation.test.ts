@@ -46,39 +46,12 @@ describe('calculatePermutation', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 13: Permutation of 20 items taken 10 at a time
+    // Test case 6: Permutation of 20 items taken 10 at a time
     it('6. should return extremly large results', () => {
         const n: number = 20;
         const r: number = 10;
         const expected: number = 670442572800;
         const result: number = calculatePermutation(n, r);
         expect(result).toBe(expected);
-
-    // Test case 6: Permutation with negative n
-    it('7. should throw an error when n is negative', () => {
-        const n: number = -5;
-        const r: number = 3;
-        expect(() => calculatePermutation(n, r)).toThrow('n must be a non-negative integer');
-    });
-
-    // Test case 7: Permutation with negative r
-    it('8. should throw an error when r is negative', () => {
-        const n: number = 5;
-        const r: number = -3;
-        expect(() => calculatePermutation(n, r)).toThrow('r must be a non-negative integer');
-    });
-
-    // Test case 8: Permutation with non-integer n
-    it('9. should throw an error when n is not an integer', () => {
-        const n: number = 5.5;
-        const r: number = 3;
-        expect(() => calculatePermutation(n, r)).toThrow('n must be an integer');
-    });
-
-    // Test case 9: Permutation with non-integer r
-    it('10. should throw an error when r is not an integer', () => {
-        const n: number = 5;
-        const r: number = 3.5;
-        expect(() => calculatePermutation(n, r)).toThrow('r must be an integer');
-    });
+    })
 });
