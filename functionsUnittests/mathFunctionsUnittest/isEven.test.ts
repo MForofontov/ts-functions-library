@@ -1,8 +1,5 @@
 import { isEven } from '../../mathFunctions/isEven';
 
-/**
- * Unit tests for the isEven function.
- */
 describe('isEven', () => {
     // Test case 1: Check if a positive even number is even
     it('1. should return true for a positive even number', () => {

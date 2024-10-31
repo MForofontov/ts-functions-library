@@ -1,8 +1,5 @@
 import { isOdd } from '../../mathFunctions/isOdd';
 
-/**
- * Unit tests for the isOdd function.
- */
 describe('isOdd', () => {
     // Test case 1: Check if a positive odd number is odd
     it('1. should return true for a positive odd number', () => {
