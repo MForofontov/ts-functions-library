@@ -49,4 +49,11 @@ describe('isPrime', () => {
         const result: boolean = isPrime(input);
         expect(result).toBe(false);
     });
+
+    // Test case 8: Check if a floating-point number is identified correctly
+    it('16. should return false for a floating-point number', () => {
+        const input: number = 7.5;
+        const result: boolean = isPrime(input);
+        expect(result).toBe(false);
+    });
 });

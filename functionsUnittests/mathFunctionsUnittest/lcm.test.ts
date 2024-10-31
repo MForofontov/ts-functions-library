@@ -90,4 +90,13 @@ describe('lcm', () => {
         const result: number = lcm(a, b);
         expect(result).toBe(expected);
     });
+
+    // Test case 11: LCM of two floating-point numbers
+    it('11. should return the correct LCM for two floating-point numbers', () => {
+        const a: number = 4.5;
+        const b: number = 3.5;
+        const expected: number = 31.5; // LCM of 4.5 and 3.5 is 31.5
+        const result: number = lcm(a, b);
+        expect(result).toBeCloseTo(expected, 5);
+    });
 });

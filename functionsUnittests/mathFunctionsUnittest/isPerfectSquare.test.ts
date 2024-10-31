@@ -42,4 +42,25 @@ describe('isPerfectSquare', () => {
         const result: boolean = isPerfectSquare(input);
         expect(result).toBe(false);
     });
+
+    // Test case 7: Check if a small perfect square is identified correctly
+    it('7. should return true for a small perfect square', () => {
+        const input: number = 1;
+        const result: boolean = isPerfectSquare(input);
+        expect(result).toBe(true);
+    });
+
+    // Test case 8: Check if a small non-perfect square is identified correctly
+    it('8. should return false for a small non-perfect square', () => {
+        const input: number = 2;
+        const result: boolean = isPerfectSquare(input);
+        expect(result).toBe(false);
+    });
+
+    // Test case 9: Check if a floating-point number is identified correctly
+    it('9. should return false for a floating-point number', () => {
+        const input: number = 4.5;
+        const result: boolean = isPerfectSquare(input);
+        expect(result).toBe(false);
+    });
 });
