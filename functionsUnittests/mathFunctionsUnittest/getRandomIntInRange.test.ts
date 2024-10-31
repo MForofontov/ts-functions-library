@@ -42,4 +42,14 @@ describe('getRandomIntInRange', () => {
         const max: number = 1;
         expect(() => getRandomIntInRange(min, max)).toThrow();
     });
+
+    // Test case 6: Test for floating-point inputs
+    it('6. should return an integer when given floating-point inputs', () => {
+        const min: number = 1.5;
+        const max: number = 5.5;
+        const result: number = getRandomIntInRange(min, max);
+        expect(Number.isInteger(result)).toBe(true);
+        expect(result).toBeGreaterThanOrEqual(Math.ceil(min));
+        expect(result).toBeLessThanOrEqual(Math.floor(max));
+    });
 });

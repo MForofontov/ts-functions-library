@@ -40,4 +40,10 @@ describe('fibonacciRecursive', () => {
         const result: number = fibonacciRecursive(input);
         expect(result).toBe(expected);
     });
+
+    // Test case 6: Fibonacci number for a floating-point number (should throw an error)
+    it('6. should throw an error for a floating-point number', () => {
+        const input: number = 5.5;
+        expect(() => fibonacciRecursive(input)).toThrow();
+    });
 });

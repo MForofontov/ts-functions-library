@@ -47,10 +47,10 @@ describe('calculateFactorial', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 7: Factorial of a non-integer number
-    it('7. should throw an error for a non-integer number', () => {
+    // Test case 7: Factorial of a floating-point number
+    it('7. should throw an error for a floating-point number', () => {
         const input: number = 5.5;
-        expect(() => calculateFactorial(input)).toThrow("Factorial is not defined for non-integer numbers");
+        expect(() => calculateFactorial(input)).toThrow("Factorial is not defined for floating-point numbers");
     });
 
     // Test case 8: Factorial of a very large number

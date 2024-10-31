@@ -72,4 +72,13 @@ describe('gcd', () => {
         const result: number = gcd(a, b);
         expect(result).toBe(expected);
     });
+
+    // Test case 9: GCD of two floating-point numbers
+    it('9. should return the correct GCD for two floating-point numbers', () => {
+        const a: number = 4.5;
+        const b: number = 1.5;
+        const expected: number = 1.5; // GCD of 4.5 and 1.5 is 1.5
+        const result: number = gcd(a, b);
+        expect(result).toBeCloseTo(expected, 5);
+    });
 });

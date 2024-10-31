@@ -64,8 +64,8 @@ describe('calculatePower', () => {
         expect(result).toBeCloseTo(expected, 5);
     });
 
-    // Test case 8: Non-integer base and exponent
-    it('8. should return the correct power for a non-integer base and exponent', () => {
+    // Test case 8: floating-point base and exponent
+    it('8. should return the correct square root for a floating-point number', () => {
         const base: number = 2.5;
         const exponent: number = 1.5;
         const expected: number = Math.pow(2.5, 1.5);

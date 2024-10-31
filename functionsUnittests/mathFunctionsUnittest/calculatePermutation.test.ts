@@ -54,4 +54,18 @@ describe('calculatePermutation', () => {
         const result: number = calculatePermutation(n, r);
         expect(result).toBe(expected);
     })
+
+    // Test case 7: Permutation with floating-point inputs
+    it('7. should throw an error for floating-point inputs', () => {
+        const n: number = 5.5;
+        const r: number = 3;
+        expect(() => calculatePermutation(n, r)).toThrow();
+    });
+
+    // Test case 8: Permutation with negative inputs
+    it('8. should throw an error for negative inputs', () => {
+        const n: number = -5;
+        const r: number = 3;
+        expect(() => calculatePermutation(n, r)).toThrow();
+    });
 });
