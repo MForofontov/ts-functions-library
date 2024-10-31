@@ -176,4 +176,13 @@ describe('calculatePercentage', () => {
         const result: number = calculatePercentage(total, part);
         expect(result).toBeNaN();
     });
+
+    // Test case 9: Calculate percentage for floating-point total and part
+    it('21. should return the correct percentage for floating-point total and part', () => {
+        const total: number = 200.5;
+        const part: number = 50.5;
+        const expected: number = (50.5 / 200.5) * 100;
+        const result: number = calculatePercentage(total, part);
+        expect(result).toBeCloseTo(expected, 5);
+    });
 });

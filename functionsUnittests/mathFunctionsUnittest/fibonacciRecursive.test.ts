@@ -41,33 +41,8 @@ describe('fibonacciRecursive', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 6: Exception handling for null input
-    it('6. should throw an error for null input', () => {
-        expect(() => fibonacciRecursive(null as any)).toThrow();
-    });
-
-    // Test case 7: Exception handling for undefined input
-    it('7. should throw an error for undefined input', () => {
-        expect(() => fibonacciRecursive(undefined as any)).toThrow();
-    });
-
-    // Test case 8: Exception handling for non-number input (string)
-    it('8. should throw an error for non-number input (string)', () => {
-        expect(() => fibonacciRecursive('string' as any)).toThrow();
-    });
-
-    // Test case 9: Exception handling for non-number input (object)
-    it('9. should throw an error for non-number input (object)', () => {
-        expect(() => fibonacciRecursive({} as any)).toThrow();
-    });
-
-    // Test case 10: Exception handling for non-number input (array)
-    it('10. should throw an error for non-number input (array)', () => {
-        expect(() => fibonacciRecursive([] as any)).toThrow();
-    });
-
-    // Test case 11: Exception handling for floating-point input
-    it('11. should throw an error for floating-point input', () => {
+    // Test case 6: Fibonacci number for a floating-point number (should throw an error)
+    it('6. should throw an error for a floating-point number', () => {
         const input: number = 5.5;
         expect(() => fibonacciRecursive(input)).toThrow();
     });

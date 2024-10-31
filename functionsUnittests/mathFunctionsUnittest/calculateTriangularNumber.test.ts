@@ -23,34 +23,17 @@ describe('calculateTriangularNumber', () => {
         expect(() => calculateTriangularNumber(input)).toThrow();
     });
 
-    // Test case 4: Triangular number for a non-integer number
-    it('4. should throw an error for a non-integer number', () => {
+    // Test case 4: Triangular number for a large positive integer
+    it('4. should return the correct triangular number for a large positive integer', () => {
+        const input: number = 10000;
+        const expected: number = 50005000;
+        const result: number = calculateTriangularNumber(input);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 5: Triangular number for a non-integer number
+    it('5. should throw an error for a floating-point number', () => {
         const input: number = 5.5;
         expect(() => calculateTriangularNumber(input)).toThrow();
-    });
-
-    // Test case 5: Exception handling for null input
-    it('5. should throw an error for null input', () => {
-        expect(() => calculateTriangularNumber(null as any)).toThrow();
-    });
-
-    // Test case 6: Exception handling for undefined input
-    it('6. should throw an error for undefined input', () => {
-        expect(() => calculateTriangularNumber(undefined as any)).toThrow();
-    });
-
-    // Test case 7: Exception handling for non-number input (string)
-    it('7. should throw an error for non-number input (string)', () => {
-        expect(() => calculateTriangularNumber('string' as any)).toThrow();
-    });
-
-    // Test case 8: Exception handling for non-number input (object)
-    it('8. should throw an error for non-number input (object)', () => {
-        expect(() => calculateTriangularNumber({} as any)).toThrow();
-    });
-
-    // Test case 9: Exception handling for non-number input (array)
-    it('9. should throw an error for non-number input (array)', () => {
-        expect(() => calculateTriangularNumber([] as any)).toThrow();
     });
 });

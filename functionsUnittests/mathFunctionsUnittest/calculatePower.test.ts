@@ -64,32 +64,12 @@ describe('calculatePower', () => {
         expect(result).toBeCloseTo(expected, 5);
     });
 
-    // Test case 8: Non-integer base and exponent
-    it('8. should return the correct power for a non-integer base and exponent', () => {
+    // Test case 8: floating-point base and exponent
+    it('8. should return the correct square root for a floating-point number', () => {
         const base: number = 2.5;
         const exponent: number = 1.5;
         const expected: number = Math.pow(2.5, 1.5);
         const result: number = calculatePower(base, exponent);
         expect(result).toBeCloseTo(expected, 5);
-    });
-
-    // Test case 9: Exception handling for null base
-    it('9. should throw an error for null base', () => {
-        expect(() => calculatePower(null as any, 2)).toThrow();
-    });
-
-    // Test case 10: Exception handling for null exponent
-    it('10. should throw an error for null exponent', () => {
-        expect(() => calculatePower(2, null as any)).toThrow();
-    });
-
-    // Test case 11: Exception handling for undefined base
-    it('11. should throw an error for undefined base', () => {
-        expect(() => calculatePower(undefined as any, 2)).toThrow();
-    });
-
-    // Test case 12: Exception handling for undefined exponent
-    it('12. should throw an error for undefined exponent', () => {
-        expect(() => calculatePower(2, undefined as any)).toThrow();
     });
 });

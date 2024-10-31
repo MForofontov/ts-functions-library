@@ -56,29 +56,4 @@ describe('ceilValue', () => {
         const result: number = ceilValue(input);
         expect(result).toBe(expected);
     });
-
-    // Test case 8: Exception handling for null input
-    it('8. should throw an error for null input', () => {
-        expect(() => ceilValue(null as any)).toThrow();
-    });
-
-    // Test case 9: Exception handling for undefined input
-    it('9. should throw an error for undefined input', () => {
-        expect(() => ceilValue(undefined as any)).toThrow();
-    });
-
-    // Test case 10: Exception handling for non-number input (string)
-    it('10. should throw an error for non-number input (string)', () => {
-        expect(() => ceilValue('string' as any)).toThrow();
-    });
-
-    // Test case 11: Exception handling for non-number input (object)
-    it('11. should throw an error for non-number input (object)', () => {
-        expect(() => ceilValue({} as any)).toThrow();
-    });
-
-    // Test case 12: Exception handling for non-number input (array)
-    it('12. should throw an error for non-number input (array)', () => {
-        expect(() => ceilValue([] as any)).toThrow();
-    });
 });

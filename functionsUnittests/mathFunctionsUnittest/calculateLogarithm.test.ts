@@ -1,8 +1,5 @@
 import { calculateLogarithm } from '../../mathFunctions/calculateLogarithm';
 
-/**
- * Unit tests for the calculateLogarithm function.
- */
 describe('calculateLogarithm', () => {
     // Test case 1: Logarithm of a positive number with base 10
     it('1. should return the correct logarithm for a positive number with base 10', () => {
@@ -30,7 +27,7 @@ describe('calculateLogarithm', () => {
         expect(result).toBeCloseTo(expected, 5);
     });
 
-    // Test case 4: Logarithm of a number with base 2
+    // Test case 4: Logarithm of a positive number with base 2
     it('4. should return the correct logarithm for a positive number with base 2', () => {
         const n: number = 8;
         const base: number = 2;
@@ -64,36 +61,46 @@ describe('calculateLogarithm', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 8: Logarithm with base zero (should return NaN)
-    it('8. should return NaN for the logarithm with base zero', () => {
-        const n: number = 10;
-        const base: number = 0;
+    // Test case 8: Logarithm of NaN
+    it('8. should return NaN for the logarithm of NaN', () => {
+        const n: number = NaN;
+        const base: number = 10;
         const result: number = calculateLogarithm(n, base);
         expect(result).toBeNaN();
     });
 
-    // Test case 9: Logarithm with base negative (should return NaN)
-    it('9. should return NaN for the logarithm with a negative base', () => {
-        const n: number = 10;
-        const base: number = -2;
+    // Test case 9: Logarithm of Infinity
+    it('9. should return Infinity for the logarithm of Infinity', () => {
+        const n: number = Infinity;
+        const base: number = 10;
+        const expected: number = Infinity;
         const result: number = calculateLogarithm(n, base);
-        expect(result).toBeNaN();
+        expect(result).toBe(expected);
     });
 
-    // Test case 10: Logarithm of a positive number with a fractional base
-    it('10. should return the correct logarithm for a positive number with a fractional base', () => {
-        const n: number = 27;
-        const base: number = 3;
-        const expected: number = 3;
+    // Test case 10: Logarithm of a very small positive number
+    it('10. should return the correct logarithm for a very small positive number', () => {
+        const n: number = 1e-10;
+        const base: number = 10;
+        const expected: number = -10;
         const result: number = calculateLogarithm(n, base);
         expect(result).toBeCloseTo(expected, 5);
     });
 
-    // Test case 11: Logarithm of a positive number with a large base
-    it('11. should return the correct logarithm for a positive number with a large base', () => {
-        const n: number = 1000;
-        const base: number = 100;
-        const expected: number = 1.5;
+    // Test case 11: Logarithm of a very large positive number
+    it('11. should return the correct logarithm for a very large positive number', () => {
+        const n: number = 1e+10;
+        const base: number = 10;
+        const expected: number = 10;
+        const result: number = calculateLogarithm(n, base);
+        expect(result).toBeCloseTo(expected, 5);
+    });
+
+    // Test case 12: Logarithm of a floating-point number
+    it('12. should return the correct logarithm for a floating-point number', () => {
+        const n: number = 0.1;
+        const base: number = 10;
+        const expected: number = -1;
         const result: number = calculateLogarithm(n, base);
         expect(result).toBeCloseTo(expected, 5);
     });

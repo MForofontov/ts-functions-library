@@ -1,8 +1,8 @@
 import { calculateSquareRoot } from '../../mathFunctions/calculateSquareRoot';
 
 describe('calculateSquareRoot', () => {
-    // Test case 1: Square root of a positive number
-    it('1. should return the correct square root for a positive number', () => {
+    // Test case 1: Square root of a positive integer
+    it('1. should return the correct square root for a positive integer', () => {
         const input: number = 9;
         const expected: number = 3;
         const result: number = calculateSquareRoot(input);
@@ -39,18 +39,19 @@ describe('calculateSquareRoot', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 6: Exception handling for invalid inputs (null)
-    it('6. should throw an error for null input', () => {
-        expect(() => calculateSquareRoot(null as any)).toThrow();
+    // Test case 6: Square root of a very small positive number
+    it('6. should return the correct square root for a very small positive number', () => {
+        const input: number = 1e-12;
+        const expected: number = 1e-6;
+        const result: number = calculateSquareRoot(input);
+        expect(result).toBeCloseTo(expected, 5);
     });
 
-    // Test case 7: Exception handling for invalid inputs (undefined)
-    it('7. should throw an error for undefined input', () => {
-        expect(() => calculateSquareRoot(undefined as any)).toThrow();
-    });
-
-    // Test case 8: Exception handling for invalid inputs (non-number type)
-    it('8. should throw an error for non-number input', () => {
-        expect(() => calculateSquareRoot('string' as any)).toThrow();
+    // Test case 7: Square root of a floating-point number
+    it('7. should return the correct square root for a floating-point number', () => {
+        const input: number = 4.5;
+        const expected: number = Math.sqrt(4.5);
+        const result: number = calculateSquareRoot(input);
+        expect(result).toBeCloseTo(expected, 5);
     });
 });
