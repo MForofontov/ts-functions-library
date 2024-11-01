@@ -1,8 +1,5 @@
 import { calculatePermutation } from '../../mathFunctions/calculatePermutation';
 
-/**
- * Unit tests for the calculatePermutation function.
- */
 describe('calculatePermutation', () => {
     // Test case 1: Permutation of 5 items taken 3 at a time
     it('1. should return the correct permutation for 5 items taken 3 at a time', () => {
