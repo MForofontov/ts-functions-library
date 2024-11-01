@@ -56,4 +56,18 @@ describe('ceilValue', () => {
         const result: number = ceilValue(input);
         expect(result).toBe(expected);
     });
+
+    // Test case 8: Ceil value for a floating-point number
+    it('8. should return the correct ceil value for a floating-point number', () => {
+        const input: number = 4.5;
+        const expected: number = 5;
+        const result: number = ceilValue(input);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 9: Ceil value for NaN (should throw an error)
+    it('9. should throw an error for NaN input', () => {
+        const input: number = NaN;
+        expect(() => ceilValue(input)).toThrow('Input must be a number');
+    });
 });
