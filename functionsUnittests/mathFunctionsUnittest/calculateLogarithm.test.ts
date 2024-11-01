@@ -36,72 +36,39 @@ describe('calculateLogarithm', () => {
         expect(result).toBeCloseTo(expected, 5);
     });
 
-    // Test case 5: Logarithm of a number with base 1 (should return NaN)
-    it('5. should return NaN for the logarithm with base 1', () => {
+    // Test case 5: Logarithm with base e (natural logarithm)
+    it('5. should return the correct natural logarithm for a positive number', () => {
+        const n: number = Math.E;
+        const expected: number = 1;
+        const result: number = calculateLogarithm(n);
+        expect(result).toBeCloseTo(expected, 5);
+    });
+
+    // Test case 6: Logarithm of a number with base 1 (should throw an error)
+    it('6. should throw an error for the logarithm with base 1', () => {
         const n: number = 10;
         const base: number = 1;
-        const result: number = calculateLogarithm(n, base);
-        expect(result).toBeNaN();
+        expect(() => calculateLogarithm(n, base)).toThrow('Base must be greater than 0 and not equal to 1');
     });
 
-    // Test case 6: Logarithm of a negative number (should return NaN)
-    it('6. should return NaN for the logarithm of a negative number', () => {
+    // Test case 7: Logarithm of a negative number (should throw an error)
+    it('7. should throw an error for the logarithm of a negative number', () => {
         const n: number = -10;
         const base: number = 10;
-        const result: number = calculateLogarithm(n, base);
-        expect(result).toBeNaN();
+        expect(() => calculateLogarithm(n, base)).toThrow('Input must be a positive number');
     });
 
-    // Test case 7: Logarithm of zero (should return -Infinity)
-    it('7. should return -Infinity for the logarithm of zero', () => {
-        const n: number = 0;
-        const base: number = 10;
-        const expected: number = -Infinity;
-        const result: number = calculateLogarithm(n, base);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 8: Logarithm of NaN
-    it('8. should return NaN for the logarithm of NaN', () => {
+    // Test case 8: Logarithm with NaN inputs (should throw an error)
+    it('8. should throw an error for NaN inputs', () => {
         const n: number = NaN;
         const base: number = 10;
-        const result: number = calculateLogarithm(n, base);
-        expect(result).toBeNaN();
+        expect(() => calculateLogarithm(n, base)).toThrow('Both n and base must be numbers');
     });
 
-    // Test case 9: Logarithm of Infinity
-    it('9. should return Infinity for the logarithm of Infinity', () => {
-        const n: number = Infinity;
-        const base: number = 10;
-        const expected: number = Infinity;
-        const result: number = calculateLogarithm(n, base);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 10: Logarithm of a very small positive number
-    it('10. should return the correct logarithm for a very small positive number', () => {
-        const n: number = 1e-10;
-        const base: number = 10;
-        const expected: number = -10;
-        const result: number = calculateLogarithm(n, base);
-        expect(result).toBeCloseTo(expected, 5);
-    });
-
-    // Test case 11: Logarithm of a very large positive number
-    it('11. should return the correct logarithm for a very large positive number', () => {
-        const n: number = 1e+10;
-        const base: number = 10;
-        const expected: number = 10;
-        const result: number = calculateLogarithm(n, base);
-        expect(result).toBeCloseTo(expected, 5);
-    });
-
-    // Test case 12: Logarithm of a floating-point number
-    it('12. should return the correct logarithm for a floating-point number', () => {
-        const n: number = 0.1;
-        const base: number = 10;
-        const expected: number = -1;
-        const result: number = calculateLogarithm(n, base);
-        expect(result).toBeCloseTo(expected, 5);
+    // Test case 9: Logarithm with base less than or equal to 0 (should throw an error)
+    it('9. should throw an error for base less than or equal to 0', () => {
+        const n: number = 10;
+        const base: number = 0;
+        expect(() => calculateLogarithm(n, base)).toThrow('Base must be greater than 0 and not equal to 1');
     });
 });

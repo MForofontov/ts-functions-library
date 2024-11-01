@@ -73,12 +73,35 @@ describe('gcd', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 9: GCD of two floating-point numbers
-    it('9. should return the correct GCD for two floating-point numbers', () => {
-        const a: number = 4.5;
-        const b: number = 1.5;
-        const expected: number = 1.5; // GCD of 4.5 and 1.5 is 1.5
+    // Test case 9: GCD of two prime numbers
+    it('9. should return 1 when both numbers are prime', () => {
+        const a: number = 7;
+        const b: number = 11;
+        const expected: number = 1;
         const result: number = gcd(a, b);
-        expect(result).toBeCloseTo(expected, 5);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 10: GCD of a prime number and a composite number
+    it('10. should return the correct GCD for a prime number and a composite number', () => {
+        const a: number = 7;
+        const b: number = 14;
+        const expected: number = 7;
+        const result: number = gcd(a, b);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 11: GCD with floating-point inputs
+    it('11. should throw an error for floating-point inputs', () => {
+        const a: number = 48.5;
+        const b: number = 18;
+        expect(() => gcd(a, b)).toThrow('Both a and b must be integers');
+    });
+
+    // Test case 12: GCD with NaN inputs
+    it('12. should throw an error for NaN inputs', () => {
+        const a: number = NaN;
+        const b: number = 18;
+        expect(() => gcd(a, b)).toThrow('Both a and b must be numbers');
     });
 });

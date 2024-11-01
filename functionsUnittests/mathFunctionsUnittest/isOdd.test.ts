@@ -1,5 +1,8 @@
 import { isOdd } from '../../mathFunctions/isOdd';
 
+/**
+ * Unit tests for the isOdd function.
+ */
 describe('isOdd', () => {
     // Test case 1: Check if a positive odd number is identified correctly
     it('1. should return true for a positive odd number', () => {
@@ -64,10 +67,15 @@ describe('isOdd', () => {
         expect(result).toBe(false);
     });
 
-    // Test case 10: Check if a floating-point number is identified correctly
-    it('10. should return false for a floating-point number', () => {
+    // Test case 10: Check if a floating-point number throws an error
+    it('10. should throw an error for a floating-point number', () => {
         const input: number = 3.5;
-        const result: boolean = isOdd(input);
-        expect(result).toBe(false);
+        expect(() => isOdd(input)).toThrow('Input must be an integer');
+    });
+
+    // Test case 11: Check if NaN throws an error
+    it('11. should throw an error for NaN input', () => {
+        const input: number = NaN;
+        expect(() => isOdd(input)).toThrow('Input must be a number');
     });
 });

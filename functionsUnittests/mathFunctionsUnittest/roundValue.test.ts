@@ -1,8 +1,5 @@
 import { roundValue } from '../../mathFunctions/roundValue';
 
-/**
- * Unit tests for the roundValue function.
- */
 describe('roundValue', () => {
     // Test case 1: Round a positive decimal number
     it('1. should round a positive decimal number to the nearest integer', () => {
@@ -90,5 +87,18 @@ describe('roundValue', () => {
         const expected: number = 0;
         const result: number = roundValue(input);
         expect(result).toBe(expected);
+    });
+
+    // Test case 12: Round a floating-point number
+    it('12. should return an integer when rounding a floating-point number', () => {
+        const input: number = 4.5;
+        const result: number = roundValue(input);
+        expect(Number.isInteger(result)).toBe(true);
+    });
+
+    // Test case 13: Round NaN (should throw an error)
+    it('13. should throw an error for NaN input', () => {
+        const input: number = NaN;
+        expect(() => roundValue(input)).toThrow('Input must be a number');
     });
 });

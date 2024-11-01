@@ -28,7 +28,7 @@ describe('calculateCubeRoot', () => {
     // Test case 4: Positive decimal
     it('4. should return the correct cube root for a positive decimal', () => {
         const input: number = 8.125;
-        const expected: number = 2;
+        const expected: number = Math.cbrt(8.125);
         const result: number = calculateCubeRoot(input);
         expect(result).toBeCloseTo(expected, 5);
     });
@@ -36,7 +36,7 @@ describe('calculateCubeRoot', () => {
     // Test case 5: Negative decimal
     it('5. should return the correct cube root for a negative decimal', () => {
         const input: number = -8.125;
-        const expected: number = -2;
+        const expected: number = Math.cbrt(-8.125);
         const result: number = calculateCubeRoot(input);
         expect(result).toBeCloseTo(expected, 5);
     });
@@ -59,40 +59,39 @@ describe('calculateCubeRoot', () => {
 
     // Test case 8: Large positive number
     it('8. should return the correct cube root for a large positive number', () => {
-        const input: number = 1000000;
-        const expected: number = 100;
+        const input: number = 1e12;
+        const expected: number = 1e4;
         const result: number = calculateCubeRoot(input);
-        expect(result).toBe(expected);
+        expect(result).toBeCloseTo(expected, 5);
     });
 
     // Test case 9: Large negative number
     it('9. should return the correct cube root for a large negative number', () => {
-        const input: number = -1000000;
-        const expected: number = -100;
+        const input: number = -1e12;
+        const expected: number = -1e4;
         const result: number = calculateCubeRoot(input);
-        expect(result).toBe(expected);
+        expect(result).toBeCloseTo(expected, 5);
     });
 
-    // Test case 10: NaN
-    it('10. should return NaN for an input of NaN', () => {
-        const input: number = NaN;
-        const result: number = calculateCubeRoot(input);
-        expect(result).toBeNaN();
-    });
-
-    // Test case 11: Positive Infinity
-    it('11. should return Infinity for an input of Infinity', () => {
+    // Test case 10: Positive Infinity
+    it('10. should return Infinity for an input of Infinity', () => {
         const input: number = Infinity;
         const expected: number = Infinity;
         const result: number = calculateCubeRoot(input);
         expect(result).toBe(expected);
     });
 
-    // Test case 12: Negative Infinity
-    it('12. should return -Infinity for an input of -Infinity', () => {
+    // Test case 11: Negative Infinity
+    it('11. should return -Infinity for an input of -Infinity', () => {
         const input: number = -Infinity;
         const expected: number = -Infinity;
         const result: number = calculateCubeRoot(input);
         expect(result).toBe(expected);
+    });
+
+    // Test case 12: NaN input (should throw an error)
+    it('12. should throw an error for NaN input', () => {
+        const input: number = NaN;
+        expect(() => calculateCubeRoot(input)).toThrow('Input must be a number');
     });
 });
