@@ -70,4 +70,10 @@ describe('isOdd', () => {
         const result: boolean = isOdd(input);
         expect(result).toBe(false);
     });
+
+    // Test case 11: Check if NaN throws an error
+    it('11. should throw an error for NaN input', () => {
+        const input: number = NaN;
+        expect(() => isOdd(input)).toThrow('Input must be a number');
+    });
 });
