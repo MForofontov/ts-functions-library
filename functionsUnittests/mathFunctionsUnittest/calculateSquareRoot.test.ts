@@ -1,5 +1,8 @@
 import { calculateSquareRoot } from '../../mathFunctions/calculateSquareRoot';
 
+/**
+ * Unit tests for the calculateSquareRoot function.
+ */
 describe('calculateSquareRoot', () => {
     // Test case 1: Square root of a positive integer
     it('1. should return the correct square root for a positive integer', () => {
@@ -20,7 +23,7 @@ describe('calculateSquareRoot', () => {
     // Test case 3: Square root of a negative number
     it('3. should throw an error for the square root of a negative number', () => {
         const input: number = -9;
-        expect(() => calculateSquareRoot(input)).toThrow();
+        expect(() => calculateSquareRoot(input)).toThrow('Input must be a non-negative number');
     });
 
     // Test case 4: Square root of a non-integer number
@@ -53,5 +56,11 @@ describe('calculateSquareRoot', () => {
         const expected: number = Math.sqrt(4.5);
         const result: number = calculateSquareRoot(input);
         expect(result).toBeCloseTo(expected, 5);
+    });
+
+    // Test case 8: Square root of NaN (should throw an error)
+    it('8. should throw an error for NaN input', () => {
+        const input: number = NaN;
+        expect(() => calculateSquareRoot(input)).toThrow('Input must be a number');
     });
 });

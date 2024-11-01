@@ -40,16 +40,19 @@ describe('getRandomIntInRange', () => {
     it('5. should throw an error when min is greater than max', () => {
         const min: number = 10;
         const max: number = 1;
-        expect(() => getRandomIntInRange(min, max)).toThrow();
+        expect(() => getRandomIntInRange(min, max)).toThrow('min must be less than or equal to max');
     });
 
-    // Test case 6: Test for floating-point inputs
-    it('6. should return an integer when given floating-point inputs', () => {
+    // Test case 11: Test for floating-point inputs
+    it('6. should throw an error for floating-point inputs', () => {
         const min: number = 1.5;
         const max: number = 5.5;
-        const result: number = getRandomIntInRange(min, max);
-        expect(Number.isInteger(result)).toBe(true);
-        expect(result).toBeGreaterThanOrEqual(Math.ceil(min));
-        expect(result).toBeLessThanOrEqual(Math.floor(max));
+        expect(() => getRandomIntInRange(min, max)).toThrow('Both min and max must be integers');
+    });
+
+    // Test case 7: Test for NaN inputs
+    it('7. should throw an error for NaN inputs', () => {
+        expect(() => getRandomIntInRange(NaN, 10)).toThrow('Both min and max must be numbers');
+        expect(() => getRandomIntInRange(1, NaN)).toThrow('Both min and max must be numbers');
     });
 });
