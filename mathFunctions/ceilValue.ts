@@ -9,7 +9,8 @@ export function ceilValue(n: number): number {
     if (isNaN(n)) {
         throw new Error('Input must be a number');
     }
-    return Math.ceil(n);
+    const result = Math.ceil(n);
+    return result === -0 ? 0 : result;
 }
 
 // Example usage:
