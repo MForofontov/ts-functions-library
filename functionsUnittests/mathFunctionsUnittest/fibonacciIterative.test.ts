@@ -25,25 +25,29 @@ describe('fibonacciIterative', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 4: Fibonacci number for a negative integer
-    it('4. should return -1 for a negative integer', () => {
-        const input: number = -5;
-        const expected: number = -1;
-        const result: number = fibonacciIterative(input);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 5: Fibonacci number for a large integer
-    it('5. should return the correct Fibonacci number for a large integer', () => {
+    // Test case 4: Fibonacci number for a large integer
+    it('4. should return the correct Fibonacci number for a large integer', () => {
         const input: number = 20;
         const expected: number = 6765;
         const result: number = fibonacciIterative(input);
         expect(result).toBe(expected);
     });
 
+    // Test case 5: Fibonacci number for a negative integer
+    it('5. should throw an error for a negative integer', () => {
+        const input: number = -5;
+        expect(() => fibonacciIterative(input)).toThrow('Input must be a non-negative integer');
+    });
+
     // Test case 6: Fibonacci number for a floating-point number (should throw an error)
     it('6. should throw an error for a floating-point number', () => {
         const input: number = 5.5;
-        expect(() => fibonacciIterative(input)).toThrow();
+        expect(() => fibonacciIterative(input)).toThrow('Input must be an integer');
+    });
+
+    // Test case 7: Fibonacci number for NaN (should throw an error)
+    it('7. should throw an error for NaN input', () => {
+        const input: number = NaN;
+        expect(() => fibonacciIterative(input)).toThrow('Input must be a number');
     });
 });

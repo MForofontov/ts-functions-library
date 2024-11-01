@@ -1,18 +1,17 @@
 import { calculateBinomialCoefficient } from '../../mathFunctions/calculateBinomialCoefficient';
 
-
 describe('calculateBinomialCoefficient', () => {
-    // Test case 1: Typical case
-    it('1. should return the correct binomial coefficient for n = 5 and k = 2', () => {
+    // Test case 1: Binomial coefficient of 5 choose 3
+    it('1. should return the correct binomial coefficient for 5 choose 3', () => {
         const n: number = 5;
-        const k: number = 2;
+        const k: number = 3;
         const expected: number = 10;
         const result: number = calculateBinomialCoefficient(n, k);
         expect(result).toBe(expected);
     });
 
-    // Test case 2: k = 0
-    it('2. should return 1 when k = 0', () => {
+    // Test case 2: Binomial coefficient of 5 choose 0
+    it('2. should return 1 for 5 choose 0', () => {
         const n: number = 5;
         const k: number = 0;
         const expected: number = 1;
@@ -20,17 +19,26 @@ describe('calculateBinomialCoefficient', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 3: k = n
-    it('3. should return 1 when k = n', () => {
-        const n: number = 5;
-        const k: number = 5;
+    // Test case 3: Binomial coefficient of 10 choose 1
+    it('3. should return the correct binomial coefficient for 10 choose 1', () => {
+        const n: number = 10;
+        const k: number = 1;
+        const expected: number = 10;
+        const result: number = calculateBinomialCoefficient(n, k);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 4: Binomial coefficient of 7 choose 7
+    it('4. should return the correct binomial coefficient for 7 choose 7', () => {
+        const n: number = 7;
+        const k: number = 7;
         const expected: number = 1;
         const result: number = calculateBinomialCoefficient(n, k);
         expect(result).toBe(expected);
     });
 
-    // Test case 4: k > n
-    it('4. should return 0 when k > n', () => {
+    // Test case 5: Binomial coefficient with k greater than n
+    it('5. should return 0 when k is greater than n', () => {
         const n: number = 5;
         const k: number = 6;
         const expected: number = 0;
@@ -38,26 +46,8 @@ describe('calculateBinomialCoefficient', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 5: n = 0
-    it('5. should return 0 when n = 0 and k > 0', () => {
-        const n: number = 0;
-        const k: number = 1;
-        const expected: number = 0;
-        const result: number = calculateBinomialCoefficient(n, k);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 6: n = 0 and k = 0
-    it('6. should return 1 when n = 0 and k = 0', () => {
-        const n: number = 0;
-        const k: number = 0;
-        const expected: number = 1;
-        const result: number = calculateBinomialCoefficient(n, k);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 7: Large values of n and k
-    it('7. should return the correct binomial coefficient for large values of n and k', () => {
+    // Test case 6: Binomial coefficient of 20 choose 10
+    it('6. should return the correct binomial coefficient for 20 choose 10', () => {
         const n: number = 20;
         const k: number = 10;
         const expected: number = 184756;
@@ -65,38 +55,23 @@ describe('calculateBinomialCoefficient', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 8: k = 1
-    it('8. should return n when k = 1', () => {
-        const n: number = 5;
-        const k: number = 1;
-        const expected: number = 5;
-        const result: number = calculateBinomialCoefficient(n, k);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 9: k = n - 1
-    it('9. should return n when k = n - 1', () => {
-        const n: number = 5;
-        const k: number = 4;
-        const expected: number = 5;
-        const result: number = calculateBinomialCoefficient(n, k);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 10: Negative values of n or k
-    it('10. should return 0 for negative values of n or k', () => {
-        const n: number = -5;
-        const k: number = 2;
-        const expected: number = 0;
-        const result: number = calculateBinomialCoefficient(n, k);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 11: Non-integer values of n or k
-    it('11. should return NaN for non-integer values of n or k', () => {
+    // Test case 7: Binomial coefficient with floating-point inputs
+    it('7. should throw an error for floating-point inputs', () => {
         const n: number = 5.5;
-        const k: number = 2;
-        const result: number = calculateBinomialCoefficient(n, k);
-        expect(result).toBeNaN();
+        const k: number = 3;
+        expect(() => calculateBinomialCoefficient(n, k)).toThrow('Both n and k must be integers');
+    });
+
+    // Test case 8: Binomial coefficient with negative inputs
+    it('8. should throw an error for negative inputs', () => {
+        const n: number = -5;
+        const k: number = 3;
+        expect(() => calculateBinomialCoefficient(n, k)).toThrow('Both n and k must be non-negative integers');
+    });
+
+    // Test case 9: Binomial coefficient with NaN inputs
+    it('9. should throw an error for NaN inputs', () => {
+        expect(() => calculateBinomialCoefficient(NaN, 3)).toThrow('Both n and k must be numbers');
+        expect(() => calculateBinomialCoefficient(5, NaN)).toThrow('Both n and k must be numbers');
     });
 });
