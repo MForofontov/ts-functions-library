@@ -1,20 +1,20 @@
 import { roundToDecimals } from '../../mathFunctions/roundToDecimals';
 
 describe('roundToDecimals', () => {
-    // Test case 1: Round a positive number to 0 decimal places
-    it('1. should round a positive number to 0 decimal places', () => {
+    // Test case 1: Round to 2 decimal places
+    it('1. should round to 2 decimal places', () => {
         const value: number = 5.6789;
-        const decimals: number = 0;
-        const expected: number = 6;
+        const decimals: number = 2;
+        const expected: number = 5.68;
         const result: number = roundToDecimals(value, decimals);
         expect(result).toBe(expected);
     });
 
-    // Test case 2: Round a positive number to 2 decimal places
-    it('2. should round a positive number to 2 decimal places', () => {
+    // Test case 2: Round to 0 decimal places
+    it('2. should round to 0 decimal places', () => {
         const value: number = 5.6789;
-        const decimals: number = 2;
-        const expected: number = 5.68;
+        const decimals: number = 0;
+        const expected: number = 6;
         const result: number = roundToDecimals(value, decimals);
         expect(result).toBe(expected);
     });
@@ -46,44 +46,51 @@ describe('roundToDecimals', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 6: Round zero to any number of decimal places
-    it('6. should round zero to any number of decimal places', () => {
-        const value: number = 0;
-        const decimals: number = 5;
-        const expected: number = 0;
-        const result: number = roundToDecimals(value, decimals);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 7: Round a large number to 2 decimal places
-    it('7. should round a large number to 2 decimal places', () => {
-        const value: number = 123456.789;
-        const decimals: number = 2;
-        const expected: number = 123456.79;
-        const result: number = roundToDecimals(value, decimals);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 8: Round a small number to 2 decimal places
-    it('8. should round a small number to 2 decimal places', () => {
-        const value: number = 0.00056789;
-        const decimals: number = 2;
-        const expected: number = 0.00;
-        const result: number = roundToDecimals(value, decimals);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 9: Round a number to a negative number of decimal places (should throw an error)
-    it('9. should throw an error when rounding to a negative number of decimal places', () => {
+    // Test case 6: Round a number to 1 decimal place
+    it('6. should round a number to 1 decimal place', () => {
         const value: number = 5.6789;
-        const decimals: number = -2;
-        expect(() => roundToDecimals(value, decimals)).toThrow();
+        const decimals: number = 1;
+        const expected: number = 5.7;
+        const result: number = roundToDecimals(value, decimals);
+        expect(result).toBe(expected);
     });
 
-    // Test case 10: Round a number with a non-integer number of decimal places (should throw an error)
+    // Test case 7: Round a number to 5 decimal places
+    it('7. should round a number to 5 decimal places', () => {
+        const value: number = 5.678901234;
+        const decimals: number = 5;
+        const expected: number = 5.67890;
+        const result: number = roundToDecimals(value, decimals);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 8: Round a number to 10 decimal places
+    it('8. should round a number to 10 decimal places', () => {
+        const value: number = 5.67890123456789;
+        const decimals: number = 10;
+        const expected: number = 5.6789012346;
+        const result: number = roundToDecimals(value, decimals);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 9: Round NaN (should throw an error)
+    it('9. should throw an error for NaN input', () => {
+        const value: number = NaN;
+        const decimals: number = 2;
+        expect(() => roundToDecimals(value, decimals)).toThrow('Both value and decimals must be numbers');
+    });
+
+    // Test case 10: Round to a non-integer number of decimal places (should throw an error)
     it('10. should throw an error when rounding to a non-integer number of decimal places', () => {
         const value: number = 5.6789;
         const decimals: number = 2.5;
-        expect(() => roundToDecimals(value, decimals)).toThrow();
+        expect(() => roundToDecimals(value, decimals)).toThrow('Decimals must be an integer');
+    });
+
+    // Test case 11: Round to a negative number of decimal places (should throw an error)
+    it('11. should throw an error when rounding to a negative number of decimal places', () => {
+        const value: number = 5.6789;
+        const decimals: number = -2;
+        expect(() => roundToDecimals(value, decimals)).toThrow('Decimals must be a non-negative integer');
     });
 });

@@ -3,10 +3,14 @@
  * 
  * @param n - The number to find the cube root of.
  * @returns The cube root of the number.
+ * @throws Will throw an error if n is NaN.
  */
 export function calculateCubeRoot(n: number): number {
+    if (isNaN(n)) {
+        throw new Error('Input must be a number');
+    }
     return Math.cbrt(n);
 }
 
 // Example usage:
-// cubeRoot(27); // 3
+// calculateCubeRoot(27); // 3

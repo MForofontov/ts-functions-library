@@ -46,13 +46,11 @@ describe('lcm', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 6: LCM of two zeros
-    it('6. should return 0 when both numbers are zero', () => {
+    // Test case 6: LCM of two zeros (should throw an error)
+    it('6. should throw an error when both numbers are zero', () => {
         const a: number = 0;
         const b: number = 0;
-        const expected: number = 0;
-        const result: number = lcm(a, b);
-        expect(result).toBe(expected);
+        expect(() => lcm(a, b)).toThrow('LCM is not defined for both a and b being zero');
     });
 
     // Test case 7: LCM of a number and itself
@@ -91,12 +89,17 @@ describe('lcm', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 11: LCM of two floating-point numbers
-    it('11. should return the correct LCM for two floating-point numbers', () => {
-        const a: number = 4.5;
-        const b: number = 3.5;
-        const expected: number = 31.5; // LCM of 4.5 and 3.5 is 31.5
-        const result: number = lcm(a, b);
-        expect(result).toBeCloseTo(expected, 5);
+    // Test case 11: LCM with floating-point inputs
+    it('11. should throw an error for floating-point inputs', () => {
+        const a: number = 12.5;
+        const b: number = 15;
+        expect(() => lcm(a, b)).toThrow('Both a and b must be integers');
+    });
+
+    // Test case 12: LCM with NaN inputs
+    it('12. should throw an error for NaN inputs', () => {
+        const a: number = NaN;
+        const b: number = 15;
+        expect(() => lcm(a, b)).toThrow('Both a and b must be numbers');
     });
 });
