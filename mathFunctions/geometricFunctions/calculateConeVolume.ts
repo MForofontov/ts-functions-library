@@ -6,6 +6,15 @@
  * @returns The volume of the cone.
  */
 export function calculateConeVolume(radius: number, height: number): number {
+    if (isNaN(radius) || isNaN(height)) {
+        throw new Error('Radius and height must be numbers');
+    }
+    if (radius < 0) {
+        throw new Error('Radius must be a non-negative number');
+    }
+    if (height < 0) {
+        throw new Error('Height must be a non-negative number');
+    }
     return (1 / 3) * Math.PI * Math.pow(radius, 2) * height;
 }
 
