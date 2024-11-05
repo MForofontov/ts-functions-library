@@ -6,6 +6,15 @@
  * @returns The total surface area of the cone.
  */
 export function calculateConeSurfaceArea(radius: number, slantHeight: number): number {
+    if (isNaN(radius) || isNaN(slantHeight)) {
+        throw new Error('Radius and slant height must be numbers');
+    }
+    if (radius < 0) {
+        throw new Error('Radius must be a non-negative number');
+    }
+    if (slantHeight < 0) {
+        throw new Error('Slant height must be a non-negative number');
+    }
     const baseArea = Math.PI * Math.pow(radius, 2);
     const lateralArea = Math.PI * radius * slantHeight;
     return baseArea + lateralArea;
