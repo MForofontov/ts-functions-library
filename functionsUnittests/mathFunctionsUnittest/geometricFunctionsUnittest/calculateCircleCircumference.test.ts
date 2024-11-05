@@ -1,8 +1,5 @@
 import { calculateCircleCircumference } from '../../../mathFunctions/geometricFunctions/calculateCircleCircumference';
 
-/**
- * Unit tests for the calculateCircleCircumference function.
- */
 describe('calculateCircleCircumference', () => {
     // Test case 1: Circumference of a circle with a positive integer radius
     it('1. should return the correct circumference for a positive integer radius', () => {
