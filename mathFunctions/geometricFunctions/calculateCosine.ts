@@ -7,6 +7,9 @@ import { degreesToRadians } from './degreesToRadians';
  * @returns The cosine of the angle.
  */
 export function calculateCosine(degrees: number): number {
+    if (isNaN(degrees)) {
+        throw new Error('Degrees must be a number');
+    }
     return Math.cos(degreesToRadians(degrees));
 }
 
