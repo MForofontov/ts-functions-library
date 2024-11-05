@@ -5,6 +5,12 @@
  * @returns The area of the circle.
  */
 export function calculateCircleArea(radius: number): number {
+    if (isNaN(radius)) {
+        throw new Error('Radius must be a number');
+    }
+    if (radius < 0) {
+        throw new Error('Radius must be a non-negative number');
+    }
     return Math.PI * Math.pow(radius, 2);
 }
 

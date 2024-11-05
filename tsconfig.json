@@ -9,6 +9,5 @@
       "forceConsistentCasingInFileNames": true,
       "types": ["jest"]
     },
-    "include": ["arrayFunctions/*", "functionsUnittests/**/*"],
     "exclude": ["node_modules"]
 }
