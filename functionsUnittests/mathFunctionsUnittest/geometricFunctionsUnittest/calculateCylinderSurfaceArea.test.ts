@@ -1,8 +1,5 @@
 import { calculateCylinderSurfaceArea } from '../../../mathFunctions/geometricFunctions/calculateCylinderSurfaceArea';
 
-/**
- * Unit tests for the calculateCylinderSurfaceArea function.
- */
 describe('calculateCylinderSurfaceArea', () => {
     // Test case 1: Surface area of a cylinder with positive radius and height
     it('1. should return the correct surface area for positive radius and height', () => {
