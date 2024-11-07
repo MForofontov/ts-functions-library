@@ -1,5 +1,8 @@
-import { calculateHaversineDistance } from '../../../mathFunctions/geometricFunctions/calculateHaversineDistance';
+import { calculateHaversineDistance } from '..&../../mathFunctions/geometricFunctions/calculateHaversineDistance';
 
+/**
+ * Unit tests for the calculateHaversineDistance function.
+ */
 describe('calculateHaversineDistance', () => {
     // Test case 1: Distance between two points with positive coordinates
     it('1. should return the correct distance between two points with positive coordinates', () => {
@@ -65,8 +68,35 @@ describe('calculateHaversineDistance', () => {
         expect(() => calculateHaversineDistance(lat1, lon1, lat2, lon2)).toThrow('All inputs must be numbers');
     });
 
-    // Test case 7: Distance between two points with string coordinates (should throw an error)
-    it('7. should throw an error for string coordinates', () => {
+    // Test case 7: Distance between two points with NaN longitude of the first point (should throw an error)
+    it('7. should throw an error for NaN longitude of the first point', () => {
+        const lat1: number = 52.5200;
+        const lon1: number = NaN;
+        const lat2: number = 48.8566;
+        const lon2: number = 2.3522;
+        expect(() => calculateHaversineDistance(lat1, lon1, lat2, lon2)).toThrow('All inputs must be numbers');
+    });
+
+    // Test case 8: Distance between two points with NaN latitude of the second point (should throw an error)
+    it('8. should throw an error for NaN latitude of the second point', () => {
+        const lat1: number = 52.5200;
+        const lon1: number = 13.4050;
+        const lat2: number = NaN;
+        const lon2: number = 2.3522;
+        expect(() => calculateHaversineDistance(lat1, lon1, lat2, lon2)).toThrow('All inputs must be numbers');
+    });
+
+    // Test case 9: Distance between two points with NaN longitude of the second point (should throw an error)
+    it('9. should throw an error for NaN longitude of the second point', () => {
+        const lat1: number = 52.5200;
+        const lon1: number = 13.4050;
+        const lat2: number = 48.8566;
+        const lon2: number = NaN;
+        expect(() => calculateHaversineDistance(lat1, lon1, lat2, lon2)).toThrow('All inputs must be numbers');
+    });
+
+    // Test case 10: Distance between two points with string coordinates (should throw an error)
+    it('10. should throw an error for string coordinates', () => {
         const lat1: any = '52.5200';
         const lon1: number = 13.4050;
         const lat2: number = 48.8566;
@@ -74,8 +104,8 @@ describe('calculateHaversineDistance', () => {
         expect(() => calculateHaversineDistance(lat1, lon1, lat2, lon2)).toThrow('All inputs must be numbers');
     });
 
-    // Test case 8: Distance between two points with very large coordinates
-    it('8. should return the correct distance for very large coordinates', () => {
+    // Test case 11: Distance between two points with very large coordinates
+    it('11. should return the correct distance for very large coordinates', () => {
         const lat1: number = 89.9999;
         const lon1: number = 179.9999;
         const lat2: number = -89.9999;
