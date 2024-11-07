@@ -3,6 +3,7 @@
  * 
  * @param radius - The radius of the circle.
  * @returns The area of the circle.
+ * @throws Will throw an error if the radius is negative or NaN.
  */
 export function calculateCircleArea(radius: number): number {
     if (isNaN(radius)) {
@@ -15,4 +16,4 @@ export function calculateCircleArea(radius: number): number {
 }
 
 // Example usage:
-// circleArea(5); // ~78.54
+// calculateCircleArea(5); // ~78.54

@@ -1,8 +1,5 @@
 import { calculateHaversineDistance } from '../../../mathFunctions/geometricFunctions/calculateHaversineDistance';
 
-/**
- * Unit tests for the calculateHaversineDistance function.
- */
 describe('calculateHaversineDistance', () => {
     // Test case 1: Distance between two points with positive coordinates
     it('1. should return the correct distance between two points with positive coordinates', () => {

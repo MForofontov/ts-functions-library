@@ -1,8 +1,5 @@
 import { calculateHypotenuse } from '../../../mathFunctions/geometricFunctions/calculateHypotenuse';
 
-/**
- * Unit tests for the calculateHypotenuse function.
- */
 describe('calculateHypotenuse', () => {
     // Test case 1: Hypotenuse of a right triangle with positive integer side lengths
     it('1. should return the correct hypotenuse for positive integer side lengths', () => {

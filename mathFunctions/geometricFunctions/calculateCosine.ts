@@ -5,6 +5,7 @@ import { degreesToRadians } from './degreesToRadians';
  * 
  * @param degrees - The angle in degrees.
  * @returns The cosine of the angle.
+ * @throws Will throw an error if degrees is NaN.
  */
 export function calculateCosine(degrees: number): number {
     if (isNaN(degrees)) {
@@ -14,4 +15,4 @@ export function calculateCosine(degrees: number): number {
 }
 
 // Example usage:
-// cosine(60); // 0.5
+// calculateCosine(60); // 0.5

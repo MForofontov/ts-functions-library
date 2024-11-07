@@ -4,6 +4,7 @@
  * @param radius - The radius of the cone's base.
  * @param slantHeight - The slant height of the cone.
  * @returns The total surface area of the cone.
+ * @throws Will throw an error if the radius or slant height is negative or NaN.
  */
 export function calculateConeSurfaceArea(radius: number, slantHeight: number): number {
     if (isNaN(radius) || isNaN(slantHeight)) {
@@ -21,4 +22,4 @@ export function calculateConeSurfaceArea(radius: number, slantHeight: number): n
 }
 
 // Example usage:
-// coneSurfaceArea(5, 10); // ~78.54
+// calculateConeSurfaceArea(5, 10); // ~235.62

@@ -1,8 +1,5 @@
 import { calculateParallelogramArea } from '../../../mathFunctions/geometricFunctions/calculateParallelogramArea';
 
-/**
- * Unit tests for the calculateParallelogramArea function.
- */
 describe('calculateParallelogramArea', () => {
     // Test case 1: Area of a parallelogram with positive integer base and height
     it('1. should return the correct area for positive integer base and height', () => {
