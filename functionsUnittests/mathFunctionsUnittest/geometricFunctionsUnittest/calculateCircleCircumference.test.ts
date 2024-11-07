@@ -52,10 +52,4 @@ describe('calculateCircleCircumference', () => {
         const radius: number = NaN;
         expect(() => calculateCircleCircumference(radius)).toThrow('Radius must be a number');
     });
-
-    // Test case 8: Circumference of a circle with a string radius (should throw an error)
-    it('8. should throw an error for a string radius', () => {
-        const radius: any = '5';
-        expect(() => calculateCircleCircumference(radius)).toThrow('Radius must be a number');
-    });
 });

@@ -3,6 +3,7 @@
  * 
  * @param radius - The radius of the circle.
  * @returns The circumference of the circle.
+ * @throws Will throw an error if the radius is negative or NaN.
  */
 export function calculateCircleCircumference(radius: number): number {
     if (isNaN(radius)) {
@@ -15,4 +16,4 @@ export function calculateCircleCircumference(radius: number): number {
 }
 
 // Example usage:
-// circleCircumference(5); // ~31.42
+// calculateCircleCircumference(5); // ~31.42

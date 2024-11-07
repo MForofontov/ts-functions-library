@@ -4,6 +4,7 @@
  * @param radius - The radius of the cone's base.
  * @param height - The height of the cone.
  * @returns The volume of the cone.
+ * @throws Will throw an error if the radius or height is negative or NaN.
  */
 export function calculateConeVolume(radius: number, height: number): number {
     if (isNaN(radius) || isNaN(height)) {
@@ -19,4 +20,4 @@ export function calculateConeVolume(radius: number, height: number): number {
 }
 
 // Example usage:
-// coneVolume(5, 10); // ~83.33
+// calculateConeVolume(5, 10); // ~261.80

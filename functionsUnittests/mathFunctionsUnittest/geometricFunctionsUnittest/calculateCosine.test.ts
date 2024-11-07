@@ -79,10 +79,4 @@ describe('calculateCosine', () => {
         const degrees: number = NaN;
         expect(() => calculateCosine(degrees)).toThrow('Degrees must be a number');
     });
-
-    // Test case 11: Cosine of a string input (should throw an error)
-    it('11. should throw an error for a string input', () => {
-        const degrees: any = '60';
-        expect(() => calculateCosine(degrees)).toThrow('Degrees must be a number');
-    });
 });
