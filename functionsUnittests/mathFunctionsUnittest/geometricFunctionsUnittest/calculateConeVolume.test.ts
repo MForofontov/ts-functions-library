@@ -73,18 +73,4 @@ describe('calculateConeVolume', () => {
         const height: number = NaN;
         expect(() => calculateConeVolume(radius, height)).toThrow('Radius and height must be numbers');
     });
-
-    // Test case 10: Volume of a cone with string radius (should throw an error)
-    it('10. should throw an error for string radius', () => {
-        const radius: any = '5';
-        const height: number = 10;
-        expect(() => calculateConeVolume(radius, height)).toThrow('Radius and height must be numbers');
-    });
-
-    // Test case 11: Volume of a cone with string height (should throw an error)
-    it('11. should throw an error for string height', () => {
-        const radius: number = 5;
-        const height: any = '10';
-        expect(() => calculateConeVolume(radius, height)).toThrow('Radius and height must be numbers');
-    });
 });

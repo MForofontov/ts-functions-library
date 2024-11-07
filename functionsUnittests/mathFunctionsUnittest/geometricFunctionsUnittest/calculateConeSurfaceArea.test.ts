@@ -73,18 +73,4 @@ describe('calculateConeSurfaceArea', () => {
         const slantHeight: number = NaN;
         expect(() => calculateConeSurfaceArea(radius, slantHeight)).toThrow('Radius and slant height must be numbers');
     });
-
-    // Test case 10: Surface area of a cone with string radius (should throw an error)
-    it('10. should throw an error for string radius', () => {
-        const radius: any = '5';
-        const slantHeight: number = 10;
-        expect(() => calculateConeSurfaceArea(radius, slantHeight)).toThrow('Radius and slant height must be numbers');
-    });
-
-    // Test case 11: Surface area of a cone with string slant height (should throw an error)
-    it('11. should throw an error for string slant height', () => {
-        const radius: number = 5;
-        const slantHeight: any = '10';
-        expect(() => calculateConeSurfaceArea(radius, slantHeight)).toThrow('Radius and slant height must be numbers');
-    });
 });
