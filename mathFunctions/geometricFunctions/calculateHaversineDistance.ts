@@ -8,8 +8,12 @@ import { degreesToRadians } from './degreesToRadians';
  * @param lat2 - Latitude of the second point.
  * @param lon2 - Longitude of the second point.
  * @returns The distance between the two points in kilometers.
+ * @throws Will throw an error if any of the inputs are NaN.
  */
 export function calculateHaversineDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
+    if (isNaN(lat1) || isNaN(lon1) || isNaN(lat2) || isNaN(lon2)) {
+        throw new Error('All inputs must be numbers');
+    }
     const R = 6371; // Radius of the Earth in kilometers
     const dLat = degreesToRadians(lat2 - lat1);
     const dLon = degreesToRadians(lon2 - lon1);
@@ -19,4 +23,4 @@ export function calculateHaversineDistance(lat1: number, lon1: number, lat2: num
 }
 
 // Example usage:
-// haversineDistance(52.5200, 13.4050, 48.8566, 2.3522); // Distance between Berlin and Paris
+// calculateHaversineDistance(52.5200, 13.4050, 48.8566, 2.3522); // Distance between Berlin and Paris
