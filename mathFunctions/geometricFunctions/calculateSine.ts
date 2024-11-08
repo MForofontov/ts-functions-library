@@ -5,8 +5,12 @@ import { degreesToRadians } from './degreesToRadians';
  * 
  * @param degrees - The angle in degrees.
  * @returns The sine of the angle.
+ * @throws Will throw an error if degrees is NaN.
  */
-export function sine(degrees: number): number {
+export function calculateSine(degrees: number): number {
+    if (isNaN(degrees)) {
+        throw new Error('Degrees must be a number');
+    }
     return Math.sin(degreesToRadians(degrees));
 }
 
