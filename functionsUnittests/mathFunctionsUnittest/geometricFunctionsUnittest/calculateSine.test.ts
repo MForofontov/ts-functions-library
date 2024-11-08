@@ -1,4 +1,4 @@
-import { sine } from '../../../mathFunctions/geometricFunctions/calculateSine';
+import { calculateSine } from '../../../mathFunctions/geometricFunctions/calculateSine';
 import { degreesToRadians } from '../../../mathFunctions/geometricFunctions/degreesToRadians';
 
 describe('sine', () => {
@@ -6,7 +6,7 @@ describe('sine', () => {
     it('1. should return 0 for 0 degrees', () => {
         const degrees: number = 0;
         const expected: number = 0;
-        const result: number = sine(degrees);
+        const result: number = calculateSine(degrees);
         expect(result).toBeCloseTo(expected, 5);
     });
 
@@ -14,7 +14,7 @@ describe('sine', () => {
     it('2. should return 0.5 for 30 degrees', () => {
         const degrees: number = 30;
         const expected: number = 0.5;
-        const result: number = sine(degrees);
+        const result: number = calculateSine(degrees);
         expect(result).toBeCloseTo(expected, 5);
     });
 
@@ -22,7 +22,7 @@ describe('sine', () => {
     it('3. should return 1 for 90 degrees', () => {
         const degrees: number = 90;
         const expected: number = 1;
-        const result: number = sine(degrees);
+        const result: number = calculateSine(degrees);
         expect(result).toBeCloseTo(expected, 5);
     });
 
@@ -30,7 +30,7 @@ describe('sine', () => {
     it('4. should return 0 for 180 degrees', () => {
         const degrees: number = 180;
         const expected: number = 0;
-        const result: number = sine(degrees);
+        const result: number = calculateSine(degrees);
         expect(result).toBeCloseTo(expected, 5);
     });
 
@@ -38,7 +38,7 @@ describe('sine', () => {
     it('5. should return -1 for 270 degrees', () => {
         const degrees: number = 270;
         const expected: number = -1;
-        const result: number = sine(degrees);
+        const result: number = calculateSine(degrees);
         expect(result).toBeCloseTo(expected, 5);
     });
 
@@ -46,7 +46,7 @@ describe('sine', () => {
     it('6. should return 0 for 360 degrees', () => {
         const degrees: number = 360;
         const expected: number = 0;
-        const result: number = sine(degrees);
+        const result: number = calculateSine(degrees);
         expect(result).toBeCloseTo(expected, 5);
     });
 
@@ -54,7 +54,7 @@ describe('sine', () => {
     it('7. should return the correct sine for a negative angle', () => {
         const degrees: number = -30;
         const expected: number = -0.5;
-        const result: number = sine(degrees);
+        const result: number = calculateSine(degrees);
         expect(result).toBeCloseTo(expected, 5);
     });
 
@@ -62,7 +62,7 @@ describe('sine', () => {
     it('8. should return the correct sine for an angle greater than 360 degrees', () => {
         const degrees: number = 450;
         const expected: number = 1; // Sine of 450 degrees is the same as sine of 90 degrees
-        const result: number = sine(degrees);
+        const result: number = calculateSine(degrees);
         expect(result).toBeCloseTo(expected, 5);
     });
 
@@ -70,13 +70,13 @@ describe('sine', () => {
     it('9. should return the correct sine for a very large angle', () => {
         const degrees: number = 1e6;
         const expected: number = Math.sin(degreesToRadians(degrees));
-        const result: number = sine(degrees);
+        const result: number = calculateSine(degrees);
         expect(result).toBeCloseTo(expected, 5);
     });
 
     // Test case 9: Sine of NaN (should throw an error)
     it('10. should throw an error for NaN input', () => {
         const degrees: number = NaN;
-        expect(() => sine(degrees)).toThrow('Degrees must be a number');
+        expect(() => calculateSine(degrees)).toThrow('Degrees must be a number');
     });
 });
