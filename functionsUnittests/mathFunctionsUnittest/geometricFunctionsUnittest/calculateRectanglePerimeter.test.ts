@@ -1,8 +1,5 @@
 import { calculateRectanglePerimeter } from '../../../mathFunctions/geometricFunctions/calculateRectanglePerimeter';
 
-/**
- * Unit tests for the calculateRectanglePerimeter function.
- */
 describe('calculateRectanglePerimeter', () => {
     // Test case 1: Perimeter of a rectangle with positive integer dimensions
     it('1. should return the correct perimeter for positive integer dimensions', () => {

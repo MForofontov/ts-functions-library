@@ -1,8 +1,5 @@
 import { calculateRectangleArea } from '../../../mathFunctions/geometricFunctions/calculateRectangleArea';
 
-/**
- * Unit tests for the calculateRectangleArea function.
- */
 describe('calculateRectangleArea', () => {
     // Test case 1: Area of a rectangle with positive integer dimensions
     it('1. should return the correct area for positive integer dimensions', () => {
