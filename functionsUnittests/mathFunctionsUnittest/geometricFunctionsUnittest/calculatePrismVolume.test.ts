@@ -1,8 +1,5 @@
 import { calculatePrismVolume } from '../../../mathFunctions/geometricFunctions/calculatePrismVolume';
 
-/**
- * Unit tests for the calculatePrismVolume function.
- */
 describe('calculatePrismVolume', () => {
     // Test case 1: Volume of a rectangular prism with positive integer dimensions
     it('1. should return the correct volume for positive integer dimensions', () => {
