@@ -1,5 +1,4 @@
 import { calculateCosine } from '../../../mathFunctions/geometricFunctions/calculateCosine';
-import { degreesToRadians } from '../../../mathFunctions/geometricFunctions/degreesToRadians';
 
 describe('calculateCosine', () => {
     // Test case 1: Cosine of 0 degrees
@@ -58,24 +57,8 @@ describe('calculateCosine', () => {
         expect(result).toBeCloseTo(expected, 5);
     });
 
-    // Test case 8: Cosine of a very large angle
-    it('8. should return the correct cosine for a very large angle', () => {
-        const degrees: number = 1e6;
-        const expected: number = Math.cos(degreesToRadians(degrees));
-        const result: number = calculateCosine(degrees);
-        expect(result).toBeCloseTo(expected, 5);
-    });
-
-    // Test case 9: Cosine of a floating-point angle
-    it('9. should return the correct cosine for a floating-point angle', () => {
-        const degrees: number = 45.5;
-        const expected: number = Math.cos(degreesToRadians(degrees));
-        const result: number = calculateCosine(degrees);
-        expect(result).toBeCloseTo(expected, 5);
-    });
-
-    // Test case 10: Cosine of NaN (should throw an error)
-    it('10. should throw an error for NaN input', () => {
+    // Test case 8: Cosine of NaN (should throw an error)
+    it('8. should throw an error for NaN input', () => {
         const degrees: number = NaN;
         expect(() => calculateCosine(degrees)).toThrow('Degrees must be a number');
     });

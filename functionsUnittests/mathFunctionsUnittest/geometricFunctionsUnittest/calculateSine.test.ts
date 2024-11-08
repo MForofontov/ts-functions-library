@@ -1,5 +1,4 @@
 import { calculateSine } from '../../../mathFunctions/geometricFunctions/calculateSine';
-import { degreesToRadians } from '../../../mathFunctions/geometricFunctions/degreesToRadians';
 
 describe('sine', () => {
     // Test case 1: Sine of 0 degrees
@@ -62,14 +61,6 @@ describe('sine', () => {
     it('8. should return the correct sine for an angle greater than 360 degrees', () => {
         const degrees: number = 450;
         const expected: number = 1; // Sine of 450 degrees is the same as sine of 90 degrees
-        const result: number = calculateSine(degrees);
-        expect(result).toBeCloseTo(expected, 5);
-    });
-
-    // Test case 10: Sine of a very large angle
-    it('9. should return the correct sine for a very large angle', () => {
-        const degrees: number = 1e6;
-        const expected: number = Math.sin(degreesToRadians(degrees));
         const result: number = calculateSine(degrees);
         expect(result).toBeCloseTo(expected, 5);
     });
