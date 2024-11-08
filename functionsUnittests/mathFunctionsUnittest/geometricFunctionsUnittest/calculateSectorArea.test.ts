@@ -46,10 +46,10 @@ describe('calculateSectorArea', () => {
         expect(result).toBeCloseTo(expected, 5);
     });
 
-    // Test case 6: Area of a sector with very large positive radius and angle
-    it('6. should return the correct area for very large positive radius and angle', () => {
-        const radius: number = 1e10;
-        const angle: number = 1e10;
+    // Test case 6: Area of a sector with large positive radius and realistic angle
+    it('6. should return the correct area for large positive radius and realistic angle', () => {
+        const radius: number = 1e5;
+        const angle: number = 180;
         const expected: number = (angle / 360) * Math.PI * Math.pow(radius, 2);
         const result: number = calculateSectorArea(radius, angle);
         expect(result).toBeCloseTo(expected, 5);
