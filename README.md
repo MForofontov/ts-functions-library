@@ -14,14 +14,6 @@ A utility library of TypeScript functions for common tasks with unit tests, desi
 
 Each function is documented with its purpose, input parameters, and output. Examples are provided to demonstrate how to use the functions effectively.
 
-## Unit Tests
-
-This repository uses `pytest` for unit testing to ensure the reliability and correctness of the functions. The tests are organized by the type of function they cover. To run the tests, use the following command:
-
-```sh
-pytest
-```
-
 ## Contribution
 
 Contributions are welcome! Please fork the repository and create a pull request with your additions or improvements.
