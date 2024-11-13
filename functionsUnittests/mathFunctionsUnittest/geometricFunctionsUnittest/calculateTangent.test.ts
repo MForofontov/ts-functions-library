@@ -1,4 +1,5 @@
 import { calculateTangent } from '../../../mathFunctions/geometricFunctions/calculateTangent';
+import { degreesToRadians } from '../../../mathFunctions/geometricFunctions/degreesToRadians';
 
 describe('calculateTangent', () => {
     // Test case 1: Tangent of 0 degrees
@@ -17,12 +18,12 @@ describe('calculateTangent', () => {
         expect(result).toBeCloseTo(expected, 5);
     });
 
-    // Test case 3: Tangent of 90 degrees
+    // Test case 3: Tangent of 90 degrees (should return Infinity)
     it('3. should return Infinity for 90 degrees', () => {
         const degrees: number = 90;
         const expected: number = Infinity;
         const result: number = calculateTangent(degrees);
-        expect(result).toBeCloseTo(expected, 5);
+        expect(result).toBe(expected);
     });
 
     // Test case 4: Tangent of 180 degrees
@@ -33,12 +34,12 @@ describe('calculateTangent', () => {
         expect(result).toBeCloseTo(expected, 5);
     });
 
-    // Test case 5: Tangent of 270 degrees
+    // Test case 5: Tangent of 270 degrees (should return -Infinity)
     it('5. should return -Infinity for 270 degrees', () => {
         const degrees: number = 270;
         const expected: number = -Infinity;
         const result: number = calculateTangent(degrees);
-        expect(result).toBeCloseTo(expected, 5);
+        expect(result).toBe(expected);
     });
 
     // Test case 6: Tangent of 360 degrees
@@ -60,13 +61,21 @@ describe('calculateTangent', () => {
     // Test case 8: Tangent of an angle greater than 360 degrees
     it('8. should return the correct tangent for an angle greater than 360 degrees', () => {
         const degrees: number = 450;
-        const expected: number = 1; // Tangent of 450 degrees is the same as tangent of 90 degrees
+        const expected: number = Infinity; // Tangent of 450 degrees is the same as tangent of 90 degrees
+        const result: number = calculateTangent(degrees);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 9: Tangent of a very large angle
+    it('9. should return the correct tangent for a very large angle', () => {
+        const degrees: number = 1e6;
+        const expected: number = Math.tan(degreesToRadians(degrees));
         const result: number = calculateTangent(degrees);
         expect(result).toBeCloseTo(expected, 5);
     });
 
-    // Test case 9: Tangent of NaN (should throw an error)
-    it('9. should throw an error for NaN input', () => {
+    // Test case 10: Tangent of NaN (should throw an error)
+    it('10. should throw an error for NaN input', () => {
         const degrees: number = NaN;
         expect(() => calculateTangent(degrees)).toThrow('Degrees must be a number');
     });
