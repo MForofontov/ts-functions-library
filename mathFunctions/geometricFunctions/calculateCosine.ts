@@ -11,6 +11,13 @@ export function calculateCosine(degrees: number): number {
     if (isNaN(degrees)) {
         throw new Error('Degrees must be a number');
     }
+
+    // Normalize the angle to the range [0, 360)
+    degrees = degrees % 360;
+    if (degrees < 0) {
+        degrees += 360;
+    }
+
     return Math.cos(degreesToRadians(degrees));
 }
 

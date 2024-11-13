@@ -14,7 +14,7 @@ export function calculateHaversineDistance(lat1: number, lon1: number, lat2: num
     if (isNaN(lat1) || isNaN(lon1) || isNaN(lat2) || isNaN(lon2)) {
         throw new Error('All inputs must be numbers');
     }
-    const R = 6371; // Radius of the Earth in kilometers
+    const R = 6371.0088; // Radius of the Earth in kilometers
     const dLat = degreesToRadians(lat2 - lat1);
     const dLon = degreesToRadians(lon2 - lon1);
     const a = Math.sin(dLat / 2) ** 2 + Math.cos(degreesToRadians(lat1)) * Math.cos(degreesToRadians(lat2)) * (Math.sin(dLon / 2) ** 2);
