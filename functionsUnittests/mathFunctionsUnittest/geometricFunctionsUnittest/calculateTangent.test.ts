@@ -61,7 +61,7 @@ describe('calculateTangent', () => {
     // Test case 8: Tangent of an angle greater than 360 degrees
     it('8. should return the correct tangent for an angle greater than 360 degrees', () => {
         const degrees: number = 450;
-        const expected: number = 1; // Tangent of 450 degrees is the same as tangent of 90 degrees
+        const expected: number = Infinity; // Tangent of 450 degrees is the same as tangent of 90 degrees
         const result: number = calculateTangent(degrees);
         expect(result).toBe(expected);
     });
