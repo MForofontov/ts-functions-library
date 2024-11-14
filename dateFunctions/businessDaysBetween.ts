@@ -4,8 +4,17 @@
  * @param start - The start Date object.
  * @param end - The end Date object.
  * @returns The number of business days between the two dates.
+ * @throws Will throw an error if the start or end date is invalid.
  */
 export function businessDaysBetween(start: Date, end: Date): number {
+    if (isNaN(start.getTime()) || isNaN(end.getTime())) {
+        throw new Error('Invalid date');
+    }
+
+    if (start > end) {
+        throw new Error('Start date must be before end date');
+    }
+
     let count = 0;
     const currentDate = new Date(start);
 
