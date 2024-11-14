@@ -11,6 +11,10 @@ export function businessDaysBetween(start: Date, end: Date): number {
         throw new Error('Invalid date');
     }
 
+    if (start > end) {
+        throw new Error('Start date must be before end date');
+    }
+
     let count = 0;
     const currentDate = new Date(start);
 

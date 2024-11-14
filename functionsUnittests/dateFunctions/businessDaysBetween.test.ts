@@ -64,40 +64,38 @@ describe('businessDaysBetween', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 8: Business days between two dates with start date after end date
-    it('8. should return 0 if the start date is after the end date', () => {
-        const start: Date = new Date('2023-01-31');
-        const end: Date = new Date('2023-01-01');
-        const expected: number = 0;
-        const result: number = businessDaysBetween(start, end);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 9: Business days between two dates with invalid start date (should throw an error)
-    it('9. should throw an error for an invalid start date', () => {
+    // Test case 8: Business days between two dates with invalid start date (should throw an error)
+    it('8. should throw an error for an invalid start date', () => {
         const start: Date = new Date('invalid-date');
         const end: Date = new Date('2023-01-31');
         expect(() => businessDaysBetween(start, end)).toThrow('Invalid date');
     });
 
-    // Test case 10: Business days between two dates with invalid end date (should throw an error)
-    it('10. should throw an error for an invalid end date', () => {
+    // Test case 9: Business days between two dates with invalid end date (should throw an error)
+    it('9. should throw an error for an invalid end date', () => {
         const start: Date = new Date('2023-01-01');
         const end: Date = new Date('invalid-date');
         expect(() => businessDaysBetween(start, end)).toThrow('Invalid date');
     });
 
-    // Test case 11: Business days between two dates with NaN start date (should throw an error)
-    it('11. should throw an error for a NaN start date', () => {
+    // Test case 10: Business days between two dates with NaN start date (should throw an error)
+    it('10. should throw an error for a NaN start date', () => {
         const start: Date = new Date(NaN);
         const end: Date = new Date('2023-01-31');
         expect(() => businessDaysBetween(start, end)).toThrow('Invalid date');
     });
 
-    // Test case 12: Business days between two dates with NaN end date (should throw an error)
-    it('12. should throw an error for a NaN end date', () => {
+    // Test case 11: Business days between two dates with NaN end date (should throw an error)
+    it('11. should throw an error for a NaN end date', () => {
         const start: Date = new Date('2023-01-01');
         const end: Date = new Date(NaN);
         expect(() => businessDaysBetween(start, end)).toThrow('Invalid date');
+    });
+
+    // Test case 12: Business days between two dates with start date after end date
+    it('12. should return error if the start date is after the end date', () => {
+        const start: Date = new Date('2023-01-31');
+        const end: Date = new Date('2023-01-01');
+        expect(() => businessDaysBetween(start, end)).toThrow('Start date must be before end date');
     });
 });
