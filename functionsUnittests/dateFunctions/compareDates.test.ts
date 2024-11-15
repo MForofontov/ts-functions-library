@@ -46,36 +46,8 @@ describe('compareDates', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 6: Compare two dates with invalid first date (should throw an error)
-    it('6. should throw an error for an invalid first date', () => {
-        const date1: Date = new Date('invalid-date');
-        const date2: Date = new Date('2023-01-01');
-        expect(() => compareDates(date1, date2)).toThrow('Invalid date');
-    });
-
-    // Test case 7: Compare two dates with invalid second date (should throw an error)
-    it('7. should throw an error for an invalid second date', () => {
-        const date1: Date = new Date('2023-01-01');
-        const date2: Date = new Date('invalid-date');
-        expect(() => compareDates(date1, date2)).toThrow('Invalid date');
-    });
-
-    // Test case 8: Compare two dates with NaN first date (should throw an error)
-    it('8. should throw an error for a NaN first date', () => {
-        const date1: Date = new Date(NaN);
-        const date2: Date = new Date('2023-01-01');
-        expect(() => compareDates(date1, date2)).toThrow('Invalid date');
-    });
-
-    // Test case 9: Compare two dates with NaN second date (should throw an error)
-    it('9. should throw an error for a NaN second date', () => {
-        const date1: Date = new Date('2023-01-01');
-        const date2: Date = new Date(NaN);
-        expect(() => compareDates(date1, date2)).toThrow('Invalid date');
-    });
-
-    // Test case 10: Compare two dates with the first date being a leap day
-    it('10. should return -1 if the first date is a leap day and before the second date', () => {
+    // Test case 6: Compare two dates with the first date being a leap day
+    it('6. should return -1 if the first date is a leap day and before the second date', () => {
         const date1: Date = new Date('2020-02-29');
         const date2: Date = new Date('2020-03-01');
         const expected: number = -1;
@@ -83,12 +55,40 @@ describe('compareDates', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 11: Compare two dates with the second date being a leap day
-    it('11. should return 1 if the first date is before the second date which is a leap day', () => {
+    // Test case 7: Compare two dates with the second date being a leap day
+    it('7. should return 1 if the first date is before the second date which is a leap day', () => {
         const date1: Date = new Date('2020-02-28');
         const date2: Date = new Date('2020-02-29');
         const expected: number = -1;
         const result: number = compareDates(date1, date2);
         expect(result).toBe(expected);
+    });
+
+    // Test case 8: Compare two dates with invalid first date (should throw an error)
+    it('8. should throw an error for an invalid first date', () => {
+        const date1: Date = new Date('invalid-date');
+        const date2: Date = new Date('2023-01-01');
+        expect(() => compareDates(date1, date2)).toThrow('Invalid date');
+    });
+
+    // Test case 9: Compare two dates with invalid second date (should throw an error)
+    it('9. should throw an error for an invalid second date', () => {
+        const date1: Date = new Date('2023-01-01');
+        const date2: Date = new Date('invalid-date');
+        expect(() => compareDates(date1, date2)).toThrow('Invalid date');
+    });
+
+    // Test case 10: Compare two dates with NaN first date (should throw an error)
+    it('10. should throw an error for a NaN first date', () => {
+        const date1: Date = new Date(NaN);
+        const date2: Date = new Date('2023-01-01');
+        expect(() => compareDates(date1, date2)).toThrow('Invalid date');
+    });
+
+    // Test case 11: Compare two dates with NaN second date (should throw an error)
+    it('1. should throw an error for a NaN second date', () => {
+        const date1: Date = new Date('2023-01-01');
+        const date2: Date = new Date(NaN);
+        expect(() => compareDates(date1, date2)).toThrow('Invalid date');
     });
 });
