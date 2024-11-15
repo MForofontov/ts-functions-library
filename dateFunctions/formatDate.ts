@@ -11,10 +11,6 @@ export function formatDate(date: Date, format: string): string {
         throw new Error('Invalid date');
     }
 
-    if (typeof format !== 'string') {
-        throw new Error('Invalid format string');
-    }
-
     const supportedTokens = ['YYYY', 'MM', 'DD', 'HH', 'mm', 'ss'];
     const formatTokens = format.match(/YYYY|MM|DD|HH|mm|ss/g) || [];
 
@@ -24,8 +20,8 @@ export function formatDate(date: Date, format: string): string {
         }
     }
 
-    const map: { [key: string]: number | string } = {
-        'YYYY': date.getFullYear(),
+    const map: { [key: string]: string } = {
+        'YYYY': String(date.getFullYear()),
         'MM': String(date.getMonth() + 1).padStart(2, '0'),
         'DD': String(date.getDate()).padStart(2, '0'),
         'HH': String(date.getHours()).padStart(2, '0'),
