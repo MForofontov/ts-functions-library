@@ -21,15 +21,8 @@ describe('getCurrentDateTimeISO', () => {
         expect(isNaN(Date.parse(isoString))).toBe(false);
     });
 
-    // Test case 4: Verify the returned string is not an invalid date
-    it('4. should not return an invalid date', () => {
-        const isoString: string = getCurrentDateTimeISO();
-        const date = new Date(isoString);
-        expect(date.getTime()).not.toBeNaN();
-    });
-
-    // Test case 5: Verify the returned string is not a negative date
-    it('5. should not return a negative date', () => {
+    // Test case 4: Verify the returned string is not a negative date
+    it('4. should not return a negative date', () => {
         const isoString: string = getCurrentDateTimeISO();
         const date = new Date(isoString);
         expect(date.getTime()).toBeGreaterThan(0);

@@ -5,6 +5,10 @@
  * @returns An object containing year, month, day, hours, minutes, and seconds.
  */
 export function getDateParts(date: Date): { year: number, month: number, day: number, hours: number, minutes: number, seconds: number } {
+    if (isNaN(date.getTime())) {
+        throw new Error('Invalid date');
+    }
+
     return {
         year: date.getFullYear(),
         month: date.getMonth() + 1,
