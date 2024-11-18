@@ -3,8 +3,13 @@
  * 
  * @param date - The Date object to get the month's day count from.
  * @returns The number of days in the month.
+ * @throws Will throw an error if the date is invalid.
  */
 export function getDaysInMonth(date: Date): number {
+    if (isNaN(date.getTime())) {
+        throw new Error('Invalid date');
+    }
+
     const year = date.getFullYear();
     const month = date.getMonth();
     return new Date(year, month + 1, 0).getDate();
