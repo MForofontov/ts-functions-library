@@ -3,8 +3,12 @@
  * 
  * @param date - The Date object to get the year's end from.
  * @returns A new Date object representing the end of the year.
+ * @throws Will throw an error if the date is invalid.
  */
 export function getEndOfYear(date: Date): Date {
+    if (isNaN(date.getTime())) {
+        throw new Error('Invalid date');
+    }
     return new Date(date.getFullYear(), 11, 31);
 }
 
