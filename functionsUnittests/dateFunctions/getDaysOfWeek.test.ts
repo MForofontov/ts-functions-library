@@ -38,7 +38,7 @@ describe('getDaysOfWeek', () => {
         expect(result).not.toContain('Funday');
     });
 
-    // Error test case 1: Verify the function does not throw an error
+    // Test case 7: Verify the function does not throw an error
     it('7. should not throw an error', () => {
         expect(() => getDaysOfWeek()).not.toThrow();
     });
