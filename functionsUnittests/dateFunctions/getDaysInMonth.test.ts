@@ -49,13 +49,13 @@ describe('getDaysInMonth', () => {
         expect(result).toBe(expected);
     });
 
-    // Error test case 1: Get the number of days in a month for a NaN date (should throw an error)
+    // Test case 7: Get the number of days in a month for a NaN date (should throw an error)
     it('7. should throw an error for a NaN date', () => {
         const date: Date = new Date(NaN);
         expect(() => getDaysInMonth(date)).toThrow('Invalid date');
     });
 
-    // Error test case 2: Get the number of days in a month for an invalid date (should throw an error)
+    // Test case 8: Get the number of days in a month for an invalid date (should throw an error)
     it('8. should throw an error for an invalid date', () => {
         const date: Date = new Date('invalid-date');
         expect(() => getDaysInMonth(date)).toThrow('Invalid date');
