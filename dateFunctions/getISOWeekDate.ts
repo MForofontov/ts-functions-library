@@ -5,12 +5,17 @@ import { getWeekNumber } from './getWeekNumber';
  * 
  * @param date - The Date object to get the ISO week date for.
  * @returns The ISO week date as a string.
+ * @throws Will throw an error if the date is invalid.
  */
 export function getISOWeekDate(date: Date): string {
+    if (isNaN(date.getTime())) {
+        throw new Error('Invalid date');
+    }
+
     const year = date.getFullYear();
     const weekNumber = getWeekNumber(date);
-    const dayOfWeek = date.getDay();
-    return `${year}-W${String(weekNumber).padStart(2, '0')}-${String(dayOfWeek).padStart(1, '0')}`;
+    const dayOfWeek = date.getDay() || 7; // ISO week starts on Monday, so Sunday should be 7
+    return `${year}-W${String(weekNumber).padStart(2, '0')}-${dayOfWeek}`;
 }
 
 // Example usage:
