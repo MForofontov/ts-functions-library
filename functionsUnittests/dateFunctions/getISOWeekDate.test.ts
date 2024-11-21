@@ -65,13 +65,13 @@ describe('getISOWeekDate', () => {
         expect(result).toBe(expected);
     });
 
-    // Error test case 1: Get the ISO week date for a NaN date (should throw an error)
+    // Test case 9: Get the ISO week date for a NaN date (should throw an error)
     it('9. should throw an error for a NaN date', () => {
         const date: Date = new Date(NaN);
         expect(() => getISOWeekDate(date)).toThrow('Invalid date');
     });
 
-    // Error test case 2: Get the ISO week date for an invalid date (should throw an error)
+    // Test case 10: Get the ISO week date for an invalid date (should throw an error)
     it('10. should throw an error for an invalid date', () => {
         const date: Date = new Date('invalid-date');
         expect(() => getISOWeekDate(date)).toThrow('Invalid date');

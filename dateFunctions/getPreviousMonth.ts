@@ -3,8 +3,13 @@
  * 
  * @param date - The Date object to get the previous month's date from.
  * @returns A new Date object representing the same day in the previous month.
+ * @throws Will throw an error if the date is invalid.
  */
 export function getPreviousMonth(date: Date): Date {
+    if (isNaN(date.getTime())) {
+        throw new Error('Invalid date');
+    }
+
     const result = new Date(date);
     result.setMonth(result.getMonth() - 1);
     return result;
