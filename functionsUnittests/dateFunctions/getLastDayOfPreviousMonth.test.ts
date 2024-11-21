@@ -65,13 +65,13 @@ describe('getLastDayOfPreviousMonth', () => {
         expect(result).toEqual(expected);
     });
 
-    // Error test case 1: Get the last day of the previous month for a NaN date (should throw an error)
+    // Test case 9: Get the last day of the previous month for a NaN date (should throw an error)
     it('9. should throw an error for a NaN date', () => {
         const date: Date = new Date(NaN);
         expect(() => getLastDayOfPreviousMonth(date)).toThrow('Invalid date');
     });
 
-    // Error test case 2: Get the last day of the previous month for an invalid date (should throw an error)
+    // Test case 10: Get the last day of the previous month for an invalid date (should throw an error)
     it('10. should throw an error for an invalid date', () => {
         const date: Date = new Date('invalid-date');
         expect(() => getLastDayOfPreviousMonth(date)).toThrow('Invalid date');
