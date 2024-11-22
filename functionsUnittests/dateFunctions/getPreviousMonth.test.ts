@@ -1,8 +1,5 @@
 import { getPreviousMonth } from '../../dateFunctions/getPreviousMonth';
 
-/**
- * Unit tests for the getPreviousMonth function.
- */
 describe('getPreviousMonth', () => {
     // Test case 1: Get the same day of the previous month for a valid date
     it('1. should return the same day of the previous month for a valid date', () => {
