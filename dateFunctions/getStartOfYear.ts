@@ -5,6 +5,9 @@
  * @returns A new Date object representing the start of the year.
  */
 export function getStartOfYear(date: Date): Date {
+    if (isNaN(date.getTime())) {
+        throw new Error('Invalid date');
+    }
     return new Date(date.getFullYear(), 0, 1);
 }
 
