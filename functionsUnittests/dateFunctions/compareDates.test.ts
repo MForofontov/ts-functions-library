@@ -86,7 +86,7 @@ describe('compareDates', () => {
     });
 
     // Test case 11: Compare two dates with NaN second date (should throw an error)
-    it('1. should throw an error for a NaN second date', () => {
+    it('11. should throw an error for a NaN second date', () => {
         const date1: Date = new Date('2023-01-01');
         const date2: Date = new Date(NaN);
         expect(() => compareDates(date1, date2)).toThrow('Invalid date');

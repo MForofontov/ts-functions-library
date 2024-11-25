@@ -82,22 +82,31 @@ describe('formatDate', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 10: Format an invalid date (should throw an error)
-    it('10. should throw an error for an invalid date', () => {
+    // Test case 10: Format a date when the date string is missing time components
+    it('10. should format the date correctly when the date string is missing time components but the format string includes time components', () => {
+        const date: Date = new Date('2023-01-01');
+        const format: string = 'YYYY-MM-DD HH:mm:ss';
+        const expected: string = '2023-01-01 00:00:00'; // Assuming the time defaults to 00:00:00
+        const result: string = formatDate(date, format);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 11: Format an invalid date (should throw an error)
+    it('11. should throw an error for an invalid date', () => {
         const date: Date = new Date('invalid-date');
         const format: string = 'YYYY-MM-DD';
         expect(() => formatDate(date, format)).toThrow('Invalid date');
     });
 
-    // Test case 11: Format a NaN date (should throw an error)
-    it('11. should throw an error for a NaN date', () => {
+    // Test case 12: Format a NaN date (should throw an error)
+    it('12. should throw an error for a NaN date', () => {
         const date: Date = new Date(NaN);
         const format: string = 'YYYY-MM-DD';
         expect(() => formatDate(date, format)).toThrow('Invalid date');
     });
 
-    // Test case 12: Format a date with an unsupported format token (should throw an error)
-    it('12. should throw an error for an unsupported format token', () => {
+    // Test case 13: Format a date with an unsupported format token (should throw an error)
+    it('13. should throw an error for an unsupported format token', () => {
         const date: Date = new Date('2023-01-01');
         const format: string = 'YYYY-MM-DD-XYZ';
         expect(() => formatDate(date, format)).toThrow('Unsupported format token: XYZ');

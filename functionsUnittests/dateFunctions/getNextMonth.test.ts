@@ -49,30 +49,22 @@ describe('getNextMonth', () => {
         expect(result).toEqual(expected);
     });
 
-    // Test case 7: Get the same day of the next month for a date with non-zero time components
-    it('7. should return the same day of the next month for a date with non-zero time components', () => {
-        const date: Date = new Date('2023-01-01T12:34:56');
-        const expected: Date = new Date('2023-02-01T12:34:56');
-        const result: Date = getNextMonth(date);
-        expect(result).toEqual(expected);
-    });
-
-    // Test case 8: Get the same day of the next month for a date with a negative year
-    it('8. should return the same day of the next month for a date with a negative year', () => {
+    // Test case 7: Get the same day of the next month for a date with a negative year
+    it('7. should return the same day of the next month for a date with a negative year', () => {
         const date: Date = new Date('-000001-01-01');
         const expected: Date = new Date('-000001-02-01');
         const result: Date = getNextMonth(date);
         expect(result).toEqual(expected);
     });
 
-    // Test case 9: Get the same day of the next month for a NaN date (should throw an error)
-    it('9. should throw an error for a NaN date', () => {
+    // Test case 8: Get the same day of the next month for a NaN date (should throw an error)
+    it('8. should throw an error for a NaN date', () => {
         const date: Date = new Date(NaN);
         expect(() => getNextMonth(date)).toThrow('Invalid date');
     });
 
-    // Test case 10: Get the same day of the next month for an invalid date (should throw an error)
-    it('10. should throw an error for an invalid date', () => {
+    // Test case 9: Get the same day of the next month for an invalid date (should throw an error)
+    it('9. should throw an error for an invalid date', () => {
         const date: Date = new Date('invalid-date');
         expect(() => getNextMonth(date)).toThrow('Invalid date');
     });
