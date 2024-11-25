@@ -5,6 +5,10 @@
  * @returns The number of weekdays in the month.
  */
 export function getWeekdaysInMonth(date: Date): number {
+    if (isNaN(date.getTime())) {
+        throw new Error('Invalid date');
+    }
+
     const year = date.getFullYear();
     const month = date.getMonth();
     let weekdayCount = 0;
