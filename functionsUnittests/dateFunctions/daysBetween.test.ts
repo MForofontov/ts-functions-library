@@ -1,5 +1,8 @@
 import { daysBetween } from '../../dateFunctions/daysBetween';
 
+/**
+ * Unit tests for the daysBetween function.
+ */
 describe('daysBetween', () => {
     // Test case 1: Days between two dates where the first date is before the second date
     it('1. should return the correct number of days when the first date is before the second date', () => {
