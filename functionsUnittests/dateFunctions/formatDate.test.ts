@@ -1,5 +1,8 @@
 import { formatDate } from '../../dateFunctions/formatDate';
 
+/**
+ * Unit tests for the formatDate function.
+ */
 describe('formatDate', () => {
     // Test case 1: Format a valid date with 'YYYY-MM-DD' format
     it('1. should format the date correctly with "YYYY-MM-DD" format', () => {

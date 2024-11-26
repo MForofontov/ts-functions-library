@@ -1,5 +1,8 @@
 import { addMonths } from '../../dateFunctions/addMonths';
 
+/**
+ * Unit tests for the addMonths function.
+ */
 describe('addMonths', () => {
     // Test case 1: Add months to a valid date
     it('1. should add months to a valid date', () => {
@@ -64,22 +67,49 @@ describe('addMonths', () => {
         expect(result).toEqual(expected);
     });
 
-    // Error test case 1: Add months to a NaN date (should throw an error)
-    it('8. should throw an error for a NaN date', () => {
+    // Test case 8: Add zero months to a date
+    it('8. should return the same date when adding zero months', () => {
+        const date: Date = new Date('2023-01-01');
+        const months: number = 0;
+        const expected: Date = new Date('2023-01-01');
+        const result: Date = addMonths(date, months);
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 9: Add negative months to a date
+    it('9. should subtract months when adding negative months', () => {
+        const date: Date = new Date('2023-03-01');
+        const months: number = -2;
+        const expected: Date = new Date('2023-01-01');
+        const result: Date = addMonths(date, months);
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 10: Add a large number of months to a date
+    it('10. should add a large number of months to a date', () => {
+        const date: Date = new Date('2023-01-01');
+        const months: number = 12;
+        const expected: Date = new Date('2024-01-01');
+        const result: Date = addMonths(date, months);
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 11: Add months to a NaN date (should throw an error)
+    it('11. should throw an error for a NaN date', () => {
         const date: Date = new Date(NaN);
         const months: number = 2;
         expect(() => addMonths(date, months)).toThrow('Invalid date');
     });
 
-    // Error test case 2: Add months to an invalid date (should throw an error)
-    it('9. should throw an error for an invalid date', () => {
+    // Test case 12: Add months to an invalid date (should throw an error)
+    it('12. should throw an error for an invalid date', () => {
         const date: Date = new Date('invalid-date');
         const months: number = 2;
         expect(() => addMonths(date, months)).toThrow('Invalid date');
     });
 
-    // Error test case 3: Add months with a NaN months value (should throw an error)
-    it('10. should throw an error for a NaN months value', () => {
+    // Test case 13: Add months with a NaN months value (should throw an error)
+    it('13. should throw an error for a NaN months value', () => {
         const date: Date = new Date('2023-01-01');
         const months: number = NaN;
         expect(() => addMonths(date, months)).toThrow('Invalid months value');

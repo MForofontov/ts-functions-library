@@ -1,5 +1,8 @@
 import { calculateAge } from '../../dateFunctions/calculateAge';
 
+/**
+ * Unit tests for the calculateAge function.
+ */
 describe('calculateAge', () => {
     // Test case 1: Calculate age for a valid date of birth
     it('1. should return the correct age for a valid date of birth', () => {
@@ -57,20 +60,36 @@ describe('calculateAge', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 8: Calculate age for a NaN date of birth (should throw an error)
-    it('8. should throw an error for a NaN date of birth', () => {
+    // Test case 8: Calculate age for a date of birth that is today
+    it('8. should return 0 for a date of birth that is today', () => {
+        const dob: Date = new Date();
+        const expected: number = 0;
+        const result: number = calculateAge(dob);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 9: Calculate age for a date of birth on February 29 in a non-leap year
+    it('9. should return the correct age for a date of birth on February 29 in a non-leap year', () => {
+        const dob: Date = new Date('2000-02-29');
+        const expected: number = new Date().getFullYear() - 2000 - (new Date().getMonth() < 1 || (new Date().getMonth() === 1 && new Date().getDate() < 28) ? 1 : 0);
+        const result: number = calculateAge(dob);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 10: Calculate age for a NaN date of birth (should throw an error)
+    it('10. should throw an error for a NaN date of birth', () => {
         const dob: Date = new Date(NaN);
         expect(() => calculateAge(dob)).toThrow('Invalid date of birth');
     });
 
-    // Test case 9: Calculate age for an invalid date of birth (should throw an error)
-    it('9. should throw an error for an invalid date of birth', () => {
+    // Test case 11: Calculate age for an invalid date of birth (should throw an error)
+    it('11. should throw an error for an invalid date of birth', () => {
         const dob: Date = new Date('invalid-date');
         expect(() => calculateAge(dob)).toThrow('Invalid date of birth');
     });
 
-    // Test case 10: Calculate age for a date of birth in the future (should throw an error)
-    it('10. should throw an error for a date of birth in the future', () => {
+    // Test case 12: Calculate age for a date of birth in the future (should throw an error)
+    it('12. should throw an error for a date of birth in the future', () => {
         const dob: Date = new Date('3000-01-01');
         expect(() => calculateAge(dob)).toThrow('Date of birth is in the future');
     });

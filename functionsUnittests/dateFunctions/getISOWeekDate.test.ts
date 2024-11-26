@@ -1,5 +1,8 @@
 import { getISOWeekDate } from '../../dateFunctions/getISOWeekDate';
 
+/**
+ * Unit tests for the getISOWeekDate function.
+ */
 describe('getISOWeekDate', () => {
     // Test case 1: Get the ISO week date for a valid date
     it('1. should return the ISO week date for a valid date', () => {

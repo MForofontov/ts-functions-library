@@ -1,5 +1,8 @@
 import { getDaysInMonth } from '../../dateFunctions/getDaysInMonth';
 
+/**
+ * Unit tests for the getDaysInMonth function.
+ */
 describe('getDaysInMonth', () => {
     // Test case 1: Get the number of days in January (31 days)
     it('1. should return 31 for January', () => {

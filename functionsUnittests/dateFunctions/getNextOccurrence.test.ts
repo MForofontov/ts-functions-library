@@ -1,5 +1,8 @@
 import { getNextOccurrence } from '../../dateFunctions/getNextOccurrence';
 
+/**
+ * Unit tests for the getNextOccurrence function.
+ */
 describe('getNextOccurrence', () => {
     // Test case 1: Get the next occurrence of Monday from a valid date
     it('1. should return the next occurrence of Monday from a valid date', () => {

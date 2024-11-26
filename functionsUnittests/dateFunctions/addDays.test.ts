@@ -1,5 +1,8 @@
 import { addDays } from '../../dateFunctions/addDays';
 
+/**
+ * Unit tests for the addDays function.
+ */
 describe('addDays', () => {
     // Test case 1: Add days to a valid date
     it('1. should add days to a valid date', () => {
@@ -64,22 +67,49 @@ describe('addDays', () => {
         expect(result).toEqual(expected);
     });
 
-    // Error test case 1: Add days to a NaN date (should throw an error)
-    it('8. should throw an error for a NaN date', () => {
+    // Test case 8: Add zero days to a date
+    it('8. should return the same date when adding zero days', () => {
+        const date: Date = new Date('2023-01-01');
+        const days: number = 0;
+        const expected: Date = new Date('2023-01-01');
+        const result: Date = addDays(date, days);
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 9: Add negative days to a date
+    it('9. should subtract days when adding negative days', () => {
+        const date: Date = new Date('2023-01-10');
+        const days: number = -10;
+        const expected: Date = new Date('2022-12-31');
+        const result: Date = addDays(date, days);
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 10: Add a large number of days to a date
+    it('10. should add a large number of days to a date', () => {
+        const date: Date = new Date('2023-01-01');
+        const days: number = 365;
+        const expected: Date = new Date('2024-01-01');
+        const result: Date = addDays(date, days);
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 11: Add days to a NaN date (should throw an error)
+    it('11. should throw an error for a NaN date', () => {
         const date: Date = new Date(NaN);
         const days: number = 10;
         expect(() => addDays(date, days)).toThrow('Invalid date');
     });
 
-    // Error test case 2: Add days to an invalid date (should throw an error)
-    it('9. should throw an error for an invalid date', () => {
+    // Test case 12: Add days to an invalid date (should throw an error)
+    it('12. should throw an error for an invalid date', () => {
         const date: Date = new Date('invalid-date');
         const days: number = 10;
         expect(() => addDays(date, days)).toThrow('Invalid date');
     });
 
-    // Error test case 3: Add days with a NaN days value (should throw an error)
-    it('10. should throw an error for a NaN days value', () => {
+    // Test case 13: Add days with a NaN days value (should throw an error)
+    it('13. should throw an error for a NaN days value', () => {
         const date: Date = new Date('2023-01-01');
         const days: number = NaN;
         expect(() => addDays(date, days)).toThrow('Days must be a number');
