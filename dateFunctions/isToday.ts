@@ -3,7 +3,7 @@
  * 
  * @param date - The Date object to check.
  * @returns True if the date is today, false otherwise.
- * @throws Will throw an error if the date is not a valid Date object or is NaN.
+ * @throws Will throw an error if the date is invalid.
  */
 export function isToday(date: Date): boolean {
     if (isNaN(date.getTime())) {
