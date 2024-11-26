@@ -1,5 +1,7 @@
 import { addDays } from '../../dateFunctions/addDays';
-
+/**
+ * Unit tests for the addDays function.
+ */
 describe('addDays', () => {
     // Test case 1: Add days to a valid date
     it('1. should add days to a valid date', () => {
