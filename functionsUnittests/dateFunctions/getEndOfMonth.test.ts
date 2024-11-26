@@ -1,5 +1,8 @@
 import { getEndOfMonth } from '../../dateFunctions/getEndOfMonth';
 
+/**
+ * Unit tests for the getEndOfMonth function.
+ */
 describe('getEndOfMonth', () => {
     // Test case 1: Get the last date of the month for January
     it('1. should return the last date of January', () => {

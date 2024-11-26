@@ -1,5 +1,8 @@
 import { getStartOfYear } from '../../dateFunctions/getStartOfYear';
 
+/**
+ * Unit tests for the getStartOfYear function.
+ */
 describe('getStartOfYear', () => {
     // Test case 1: Get the start date of the year for a valid date
     it('1. should return the start date of the year for a valid date', () => {

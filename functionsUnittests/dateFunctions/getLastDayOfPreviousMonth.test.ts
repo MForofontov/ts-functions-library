@@ -1,5 +1,8 @@
 import { getLastDayOfPreviousMonth } from '../../dateFunctions/getLastDayOfPreviousMonth';
 
+/**
+ * Unit tests for the getLastDayOfPreviousMonth function.
+ */
 describe('getLastDayOfPreviousMonth', () => {
     // Test case 1: Get the last day of the previous month for a valid date
     it('1. should return the last day of the previous month for a valid date', () => {

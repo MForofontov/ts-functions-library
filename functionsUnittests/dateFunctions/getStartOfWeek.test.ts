@@ -1,5 +1,8 @@
 import { getStartOfWeek } from '../../dateFunctions/getStartOfWeek';
 
+/**
+ * Unit tests for the getStartOfWeek function.
+ */
 describe('getStartOfWeek', () => {
     // Test case 1: Get the start date of the week starting on Sunday
     it('1. should return the start date of the week starting on Sunday', () => {

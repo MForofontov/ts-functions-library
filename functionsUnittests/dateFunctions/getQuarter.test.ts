@@ -1,5 +1,8 @@
 import { getQuarter } from '../../dateFunctions/getQuarter';
 
+/**
+ * Unit tests for the getQuarter function.
+ */
 describe('getQuarter', () => {
     // Test case 1: Get the quarter for a date in Q1
     it('1. should return 1 for a date in Q1', () => {

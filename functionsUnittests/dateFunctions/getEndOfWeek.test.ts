@@ -1,5 +1,8 @@
 import { getEndOfWeek } from '../../dateFunctions/getEndOfWeek';
 
+/**
+ * Unit tests for the getEndOfWeek function.
+ */
 describe('getEndOfWeek', () => {
     // Test case 1: Get the end date of the week starting on Sunday
     it('1. should return the end date of the week starting on Sunday', () => {

@@ -1,5 +1,8 @@
 import { getWeekdaysInMonth } from '../../dateFunctions/getWeekdaysInMonth';
 
+/**
+ * Unit tests for the getWeekdaysInMonth function.
+*/
 describe('getWeekdaysInMonth', () => {
     // Test case 1: Get the number of weekdays in January 2023
     it('1. should return the number of weekdays in January 2023', () => {

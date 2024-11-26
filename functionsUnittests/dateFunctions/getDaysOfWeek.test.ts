@@ -1,5 +1,8 @@
 import { getDaysOfWeek } from '../../dateFunctions/getDaysOfWeek';
 
+/**
+ * Unit tests for the getDaysOfWeek function.
+ */
 describe('getDaysOfWeek', () => {
     // Test case 1: Verify the returned array contains the correct days of the week
     it('1. should return an array with the correct days of the week', () => {

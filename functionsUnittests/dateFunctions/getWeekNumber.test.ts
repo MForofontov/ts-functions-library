@@ -1,5 +1,8 @@
 import { getWeekNumber } from '../../dateFunctions/getWeekNumber';
 
+/**
+ * Unit tests for the getWeekNumber function.
+ */
 describe('getWeekNumber', () => {
     // Test case 1: Get the week number for a valid date
     it('1. should return the week number for a valid date', () => {

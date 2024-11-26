@@ -1,5 +1,8 @@
 import { getEndOfYear } from '../../dateFunctions/getEndOfYear';
 
+/**
+ * Unit tests for the getEndOfYear function.
+ */
 describe('getEndOfYear', () => {
     // Test case 1: Get the end date of the year for a valid date
     it('1. should return the end date of the year for a valid date', () => {

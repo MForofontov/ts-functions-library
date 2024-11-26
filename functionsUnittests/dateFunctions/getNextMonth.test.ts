@@ -1,5 +1,8 @@
 import { getNextMonth } from '../../dateFunctions/getNextMonth';
 
+/**
+ * Unit tests for the getNextMonth function.
+ */
 describe('getNextMonth', () => {
     // Test case 1: Get the same day of the next month for a valid date
     it('1. should return the same day of the next month for a valid date', () => {

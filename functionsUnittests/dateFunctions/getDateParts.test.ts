@@ -1,5 +1,8 @@
 import { getDateParts } from '../../dateFunctions/getDateParts';
 
+/**
+ * Unit tests for the getDateParts function.
+ */
 describe('getDateParts', () => {
     // Test case 1: Extract parts from a valid date
     it('1. should extract parts from a valid date', () => {
