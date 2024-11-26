@@ -3,9 +3,13 @@
  * 
  * @param date - The local Date object to convert.
  * @returns A new Date object representing the same moment in UTC.
+ * @throws Will throw an error if the date is invalid.
  */
 export function toUTCDate(date: Date): Date {
-    return new Date(date.toUTCString());
+    if (isNaN(date.getTime())) {
+        throw new Error('Invalid date');
+    }
+    return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds()));
 }
 
 // Example usage:

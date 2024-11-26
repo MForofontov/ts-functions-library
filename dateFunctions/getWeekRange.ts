@@ -7,8 +7,16 @@ import { getEndOfWeek } from './getEndOfWeek';
  * @param date - The Date object to get the week's start and end dates for.
  * @param startOfWeek - The start day of the week (0 for Sunday, 1 for Monday, etc.).
  * @returns An object with the start and end dates of the week.
+ * @throws Will throw an error if the date is invalid or if startOfWeek is not a valid number.
  */
 export function getWeekRange(date: Date, startOfWeek: number = 0): { start: Date, end: Date } {
+    if (isNaN(date.getTime())) {
+        throw new Error('Invalid date');
+    }
+    if (isNaN(startOfWeek) || startOfWeek < 0 || startOfWeek > 6) {
+        throw new Error('Invalid startOfWeek value. It must be a number between 0 (Sunday) and 6 (Saturday).');
+    }
+
     const start = getStartOfWeek(date, startOfWeek);
     const end = getEndOfWeek(date, startOfWeek);
     return { start, end };
