@@ -1,5 +1,8 @@
 import { getCurrentDateTimeISO } from '../../dateFunctions/getCurrentDateTimeISO';
 
+/**
+ * Unit tests for the getCurrentDateTimeISO function.
+ */
 describe('getCurrentDateTimeISO', () => {
     // Test case 1: Verify the returned string is in ISO 8601 format
     it('1. should return the current date and time in ISO 8601 format', () => {
@@ -26,5 +29,14 @@ describe('getCurrentDateTimeISO', () => {
         const isoString: string = getCurrentDateTimeISO();
         const date = new Date(isoString);
         expect(date.getTime()).toBeGreaterThan(0);
+    });
+
+    // Test case 5: Verify the returned string is close to the current date and time
+    it('5. should return the current date and time within a reasonable tolerance', () => {
+        const isoString: string = getCurrentDateTimeISO();
+        const date = new Date(isoString);
+        const now = new Date();
+        const tolerance = 1000; // 1 second tolerance
+        expect(Math.abs(now.getTime() - date.getTime())).toBeLessThan(tolerance);
     });
 });
