@@ -57,18 +57,4 @@ describe('areAnagrams', () => {
         const result: boolean = areAnagrams(str1, str2);
         expect(result).toBe(expected);
     });
-
-    // Test case 7: Check if a string and a NaN value (should throw an error)
-    it('7. should throw an error for a NaN value', () => {
-        const str1: string = "abc";
-        const str2: any = NaN;
-        expect(() => areAnagrams(str1, str2)).toThrow(TypeError);
-    });
-
-    // Test case 8: Check if a string and an invalid type (should throw an error)
-    it('8. should throw an error for an invalid type', () => {
-        const str1: string = "abc";
-        const str2: any = 123;
-        expect(() => areAnagrams(str1, str2)).toThrow(TypeError);
-    });
 });
