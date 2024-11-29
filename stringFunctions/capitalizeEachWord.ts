@@ -1,16 +1,11 @@
-import { capitalizeFirstLetter } from './capitalizeFirstLetter';
-
 /**
- * Capitalizes the first letter of each word in a string.
+ * Capitalizes the first letter of each word in a given string.
  * 
  * @param str - The string to capitalize.
- * @returns The capitalized string.
+ * @returns A new string with the first letter of each word capitalized.
  */
 export function capitalizeEachWord(str: string): string {
-    return str
-        .split(' ')
-        .map(word => capitalizeFirstLetter(word))
-        .join(' ');
+    return str.replace(/\b\w/g, char => char.toUpperCase());
 }
 
 // Example usage:
