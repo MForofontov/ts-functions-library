@@ -2,7 +2,7 @@ import { shuffleArray } from '../../arrayFunctions/shuffleArray';
 
 describe('shuffleArray', () => {
   // Helper function to check if two arrays are equal
-  const arraysEqual = (a: any[], b: any[]): boolean => {
+  const arraysEqual = <T>(a: T[], b: T[]): boolean => {
     if (a.length !== b.length) return false;
     for (let i = 0; i < a.length; i++) {
       if (a[i] !== b[i]) return false;
@@ -51,8 +51,8 @@ describe('shuffleArray', () => {
 
   // Test case 4: Shuffling an empty array
   test('4. should return an empty array when the input array is empty', () => {
-    const array: any[] = [];
-    const result: any[] = shuffleArray(array);
+    const array: never[] = [];
+    const result: never[] = shuffleArray(array);
     expect(result).toEqual([]);
   });
 
