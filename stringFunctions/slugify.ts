@@ -1,5 +1,5 @@
 /**
- * Converts a string to a slug format (lowercase, spaces replaced with hyphens).
+ * Converts a string into a URL-friendly slug.
  * 
  * @param str - The string to convert.
  * @returns The slugified string.
@@ -7,11 +7,12 @@
 export function slugify(str: string): string {
     return str
         .toLowerCase()
-        .replace(/[\s]+/g, '-') // Replace spaces with hyphens
-        .replace(/[^\w\-]+/g, '') // Remove all non-word chars
-        .replace(/--+/g, '-') // Replace multiple hyphens with a single one
-        .replace(/^-+|-+$/g, ''); // Trim hyphens from start and end
+        .trim()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/[\s_-]+/g, '-')
+        .replace(/^-+|-+$/g, '');
 }
 
 // Example usage:
-// slugify("Hello World! How are you?"); // "hello-world-how-are-you"
+// slugify("Hello World!"); // "hello-world"
+// slugify("  This is a test.  "); // "this-is-a-test"
