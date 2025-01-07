@@ -1,15 +1,14 @@
-import { reverseString } from './reverseString';
-
 /**
- * Checks if a string is a palindrome (reads the same forwards and backwards).
+ * Checks if a string is a palindrome.
  * 
  * @param str - The string to check.
  * @returns True if the string is a palindrome, false otherwise.
  */
 export function isPalindrome(str: string): boolean {
-    const cleanedStr = str.replace(/[\W_]/g, '').toLowerCase();
-    return cleanedStr === reverseString(cleanedStr);
+    const cleanedStr = str.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
+    return cleanedStr === cleanedStr.split('').reverse().join('');
 }
 
 // Example usage:
-//
+// isPalindrome("A man, a plan, a canal, Panama"); // true
+// isPalindrome("hello"); // false
