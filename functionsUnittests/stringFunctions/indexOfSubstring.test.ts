@@ -13,17 +13,26 @@ describe('indexOfSubstring', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 2: Find the index of a substring that is not present
-    it('2. should return -1 for a substring that is not present', () => {
+    // Test case 2: Find the index of a substring that does not exist
+    it('2. should return -1 if the substring does not exist', () => {
         const str: string = "hello world";
-        const substr: string = "planet";
+        const substr: string = "foo";
         const expected: number = -1;
         const result: number = indexOfSubstring(str, substr);
         expect(result).toBe(expected);
     });
 
-    // Test case 3: Find the index of a substring at the beginning
-    it('3. should find the index of a substring at the beginning', () => {
+    // Test case 3: Find the index of an empty substring
+    it('3. should return 0 if the substring is empty', () => {
+        const str: string = "hello world";
+        const substr: string = "";
+        const expected: number = 0;
+        const result: number = indexOfSubstring(str, substr);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 4: Find the index of a substring at the beginning of the string
+    it('4. should find the index of a substring at the beginning of the string', () => {
         const str: string = "hello world";
         const substr: string = "hello";
         const expected: number = 0;
@@ -31,8 +40,8 @@ describe('indexOfSubstring', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 4: Find the index of a substring at the end
-    it('4. should find the index of a substring at the end', () => {
+    // Test case 5: Find the index of a substring at the end of the string
+    it('5. should find the index of a substring at the end of the string', () => {
         const str: string = "hello world";
         const substr: string = "world";
         const expected: number = 6;
@@ -40,8 +49,8 @@ describe('indexOfSubstring', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 5: Find the index of a substring with special characters
-    it('5. should find the index of a substring with special characters', () => {
+    // Test case 6: Find the index of a substring with special characters
+    it('6. should find the index of a substring with special characters', () => {
         const str: string = "hello @world!";
         const substr: string = "@world";
         const expected: number = 6;
@@ -49,26 +58,44 @@ describe('indexOfSubstring', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 6: Find the index of a substring with numbers
-    it('6. should find the index of a substring with numbers', () => {
-        const str: string = "hello 12345";
+    // Test case 7: Find the index of a substring with numbers
+    it('7. should find the index of a substring with numbers', () => {
+        const str: string = "hello 123 world";
         const substr: string = "123";
         const expected: number = 6;
         const result: number = indexOfSubstring(str, substr);
         expect(result).toBe(expected);
     });
 
-    // Test case 7: Find the index of a substring with mixed case
-    it('7. should find the index of a substring with mixed case', () => {
-        const str: string = "Hello World";
-        const substr: string = "World";
-        const expected: number = 6;
+    // Test case 8: Find the index of a substring with mixed characters
+    it('8. should find the index of a substring with mixed characters', () => {
+        const str: string = "a1@ b2# c3$";
+        const substr: string = "b2#";
+        const expected: number = 4;
         const result: number = indexOfSubstring(str, substr);
         expect(result).toBe(expected);
     });
 
-    // Test case 8: Find the index of a substring with leading spaces
-    it('8. should find the index of a substring with leading spaces', () => {
+    // Test case 9: Find the index of a substring in an empty string
+    it('9. should return -1 if the string is empty', () => {
+        const str: string = "";
+        const substr: string = "hello";
+        const expected: number = -1;
+        const result: number = indexOfSubstring(str, substr);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 10: Find the index of an empty substring in an empty string
+    it('10. should return 0 if both the string and substring are empty', () => {
+        const str: string = "";
+        const substr: string = "";
+        const expected: number = 0;
+        const result: number = indexOfSubstring(str, substr);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 11: Find the index of a substring with leading spaces
+    it('11. should find the index of a substring with leading spaces', () => {
         const str: string = "   hello world";
         const substr: string = "hello";
         const expected: number = 3;
@@ -76,8 +103,8 @@ describe('indexOfSubstring', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 9: Find the index of a substring with trailing spaces
-    it('9. should find the index of a substring with trailing spaces', () => {
+    // Test case 12: Find the index of a substring with trailing spaces
+    it('12. should find the index of a substring with trailing spaces', () => {
         const str: string = "hello world   ";
         const substr: string = "world";
         const expected: number = 6;
@@ -85,8 +112,8 @@ describe('indexOfSubstring', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 10: Find the index of a substring with both leading and trailing spaces
-    it('10. should find the index of a substring with both leading and trailing spaces', () => {
+    // Test case 13: Find the index of a substring with both leading and trailing spaces
+    it('13. should find the index of a substring with both leading and trailing spaces', () => {
         const str: string = "   hello world   ";
         const substr: string = "hello";
         const expected: number = 3;
@@ -94,29 +121,20 @@ describe('indexOfSubstring', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 11: Find the index of a substring that is the entire string
-    it('11. should find the index of a substring that is the entire string', () => {
-        const str: string = "hello";
-        const substr: string = "hello";
-        const expected: number = 0;
+    // Test case 14: Find the index of a substring with mixed case
+    it('14. should find the index of a substring with mixed case', () => {
+        const str: string = "Hello World";
+        const substr: string = "World";
+        const expected: number = 6;
         const result: number = indexOfSubstring(str, substr);
         expect(result).toBe(expected);
     });
 
-    // Test case 12: Find the index of an empty substring
-    it('12. should return 0 for an empty substring', () => {
-        const str: string = "hello";
-        const substr: string = "";
-        const expected: number = 0;
-        const result: number = indexOfSubstring(str, substr);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 13: Find the index of a substring with multiple occurrences
-    it('13. should find the index of the first occurrence of a substring with multiple occurrences', () => {
-        const str: string = "hello world hello";
-        const substr: string = "hello";
-        const expected: number = 0;
+    // Test case 15: Find the index of a substring with punctuation
+    it('15. should find the index of a substring with punctuation', () => {
+        const str: string = "hello, world!";
+        const substr: string = "world";
+        const expected: number = 7;
         const result: number = indexOfSubstring(str, substr);
         expect(result).toBe(expected);
     });
