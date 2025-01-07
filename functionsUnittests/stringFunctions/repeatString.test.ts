@@ -1,4 +1,4 @@
-import { repeatString } from './repeatString';
+import { repeatString } from '../../stringFunctions/repeatString';
 
 /**
  * Unit tests for the repeatString function.

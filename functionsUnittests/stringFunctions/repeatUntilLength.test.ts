@@ -120,4 +120,17 @@ describe('repeatUntilLength', () => {
         const result: string = repeatUntilLength(str, length);
         expect(result).toBe(expected);
     });
+
+    // Test case 14: Throw an error if length is NaN
+    it('14. should throw an error if length is NaN', () => {
+        const str: string = "abc";
+        expect(() => repeatUntilLength(str, NaN)).toThrow("Length must be a number");
+    });
+
+    // Test case 15: Throw an error if length is negative
+    it('15. should throw an error if length is negative', () => {
+        const str: string = "abc";
+        const length: number = -1;
+        expect(() => repeatUntilLength(str, length)).toThrow("Length must be non-negative");
+    });
 });
