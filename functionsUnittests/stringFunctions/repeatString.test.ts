@@ -1,4 +1,4 @@
-import { repeatString } from '../../stringFunctions/repeatString';
+import { repeatString } from './repeatString';
 
 /**
  * Unit tests for the repeatString function.
@@ -119,5 +119,18 @@ describe('repeatString', () => {
         const expected: string = "hello\thello\thello\t";
         const result: string = repeatString(str, count);
         expect(result).toBe(expected);
+    });
+
+    // Test case 14: Throw an error if count is NaN
+    it('14. should throw an error if count is NaN', () => {
+        const str: string = "hello";
+        expect(() => repeatString(str, NaN)).toThrow("Count must be a number");
+    });
+
+    // Test case 15: Throw an error if count is negative
+    it('15. should throw an error if count is negative', () => {
+        const str: string = "hello";
+        const count: number = -1;
+        expect(() => repeatString(str, count)).toThrow("Count must be non-negative");
     });
 });
