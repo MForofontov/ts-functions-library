@@ -4,111 +4,138 @@ import { countSubstring } from '../../stringFunctions/countSubstring';
  * Unit tests for the countSubstring function.
  */
 describe('countSubstring', () => {
-    // Test case 1: Count occurrences of a substring in a simple sentence
-    it('1. should count occurrences of a substring in a simple sentence', () => {
-        const str: string = "hello world";
-        const substr: string = "o";
+    // Test case 1: Count occurrences of a substring in a simple string
+    it('1. should count occurrences of a substring in a simple string', () => {
+        const str: string = "hello world, hello universe";
+        const substring: string = "hello";
         const expected: number = 2;
-        const result: number = countSubstring(str, substr);
+        const result: number = countSubstring(str, substring);
         expect(result).toBe(expected);
     });
 
-    // Test case 2: Count occurrences of a substring that does not exist in the string
-    it('2. should return 0 for a substring that does not exist in the string', () => {
+    // Test case 2: Count occurrences of a substring that appears once
+    it('2. should count occurrences of a substring that appears once', () => {
         const str: string = "hello world";
-        const substr: string = "z";
+        const substring: string = "world";
+        const expected: number = 1;
+        const result: number = countSubstring(str, substring);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 3: Count occurrences of a substring that does not appear
+    it('3. should count occurrences of a substring that does not appear', () => {
+        const str: string = "hello world";
+        const substring: string = "planet";
         const expected: number = 0;
-        const result: number = countSubstring(str, substr);
+        const result: number = countSubstring(str, substring);
         expect(result).toBe(expected);
     });
 
-    // Test case 3: Count occurrences of a substring in a string with mixed case
-    it('3. should count occurrences of a substring in a string with mixed case', () => {
-        const str: string = "Hello World";
-        const substr: string = "l";
-        const expected: number = 3;
-        const result: number = countSubstring(str, substr);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 4: Count occurrences of a substring in a string with punctuation
-    it('4. should count occurrences of a substring in a string with punctuation', () => {
-        const str: string = "hello, world!";
-        const substr: string = "o";
+    // Test case 4: Count occurrences of a special character substring
+    it('4. should count occurrences of a special character substring', () => {
+        const str: string = "hello @world, hello @universe";
+        const substring: string = "@";
         const expected: number = 2;
-        const result: number = countSubstring(str, substr);
+        const result: number = countSubstring(str, substring);
         expect(result).toBe(expected);
     });
 
-    // Test case 5: Count occurrences of a substring in a string with numbers
-    it('5. should count occurrences of a substring in a string with numbers', () => {
-        const str: string = "hello world 123";
-        const substr: string = "1";
+    // Test case 5: Count occurrences of a number substring
+    it('5. should count occurrences of a number substring', () => {
+        const str: string = "hello 123, hello 456";
+        const substring: string = "123";
         const expected: number = 1;
-        const result: number = countSubstring(str, substr);
+        const result: number = countSubstring(str, substring);
         expect(result).toBe(expected);
     });
 
-    // Test case 6: Count occurrences of a substring in a string with special characters
-    it('6. should count occurrences of a substring in a string with special characters', () => {
-        const str: string = "hello world! @2023";
-        const substr: string = "@";
+    // Test case 6: Count occurrences of a mixed character substring
+    it('6. should count occurrences of a mixed character substring', () => {
+        const str: string = "a1@ b2# c3$";
+        const substring: string = "a1@";
         const expected: number = 1;
-        const result: number = countSubstring(str, substr);
+        const result: number = countSubstring(str, substring);
         expect(result).toBe(expected);
     });
 
-    // Test case 7: Count occurrences of a substring in a single character string
-    it('7. should count occurrences of a substring in a single character string', () => {
-        const str: string = "a";
-        const substr: string = "a";
-        const expected: number = 1;
-        const result: number = countSubstring(str, substr);
+    // Test case 7: Count occurrences of a substring in a string with leading spaces
+    it('7. should count occurrences of a substring in a string with leading spaces', () => {
+        const str: string = "  hello world, hello universe";
+        const substring: string = "hello";
+        const expected: number = 2;
+        const result: number = countSubstring(str, substring);
         expect(result).toBe(expected);
     });
 
-    // Test case 8: Count occurrences of a substring in an empty string
-    it('8. should return 0 for an empty string', () => {
+    // Test case 8: Count occurrences of a substring in a string with trailing spaces
+    it('8. should count occurrences of a substring in a string with trailing spaces', () => {
+        const str: string = "hello world, hello universe  ";
+        const substring: string = "hello";
+        const expected: number = 2;
+        const result: number = countSubstring(str, substring);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 9: Count occurrences of a substring in a string with both leading and trailing spaces
+    it('9. should count occurrences of a substring in a string with both leading and trailing spaces', () => {
+        const str: string = "  hello world, hello universe  ";
+        const substring: string = "hello";
+        const expected: number = 2;
+        const result: number = countSubstring(str, substring);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 10: Count occurrences of a substring in a string with newlines
+    it('10. should count occurrences of a substring in a string with newlines', () => {
+        const str: string = "hello\nworld, hello\nuniverse";
+        const substring: string = "hello";
+        const expected: number = 2;
+        const result: number = countSubstring(str, substring);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 11: Count occurrences of a substring in a string with tabs
+    it('11. should count occurrences of a substring in a string with tabs', () => {
+        const str: string = "hello\tworld, hello\tuniverse";
+        const substring: string = "hello";
+        const expected: number = 2;
+        const result: number = countSubstring(str, substring);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 12: Count occurrences of a substring in an empty string
+    it('12. should return 0 when counting occurrences of a substring in an empty string', () => {
         const str: string = "";
-        const substr: string = "a";
+        const substring: string = "hello";
         const expected: number = 0;
-        const result: number = countSubstring(str, substr);
+        const result: number = countSubstring(str, substring);
         expect(result).toBe(expected);
     });
 
-    // Test case 9: Count occurrences of a substring in a string with leading spaces
-    it('9. should count occurrences of a substring in a string with leading spaces', () => {
-        const str: string = "   hello";
-        const substr: string = "h";
-        const expected: number = 1;
-        const result: number = countSubstring(str, substr);
+    // Test case 13: Count occurrences of an empty substring
+    it('13. should return 0 when counting occurrences of an empty substring', () => {
+        const str: string = "hello world";
+        const substring: string = "";
+        const expected: number = 0;
+        const result: number = countSubstring(str, substring);
         expect(result).toBe(expected);
     });
 
-    // Test case 10: Count occurrences of a substring in a string with leading special characters
-    it('10. should count occurrences of a substring in a string with leading special characters', () => {
-        const str: string = "@hello";
-        const substr: string = "h";
-        const expected: number = 1;
-        const result: number = countSubstring(str, substr);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 11: Count occurrences of a multi-character substring
-    it('11. should count occurrences of a multi-character substring', () => {
-        const str: string = "hello hello hello";
-        const substr: string = "hello";
-        const expected: number = 3;
-        const result: number = countSubstring(str, substr);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 12: Count occurrences of a substring that overlaps
-    it('12. should count occurrences of a substring that overlaps', () => {
-        const str: string = "aaaa";
-        const substr: string = "aa";
+    // Test case 14: Count occurrences of a substring in a string with multiple spaces between words
+    it('14. should count occurrences of a substring in a string with multiple spaces between words', () => {
+        const str: string = "hello   world, hello   universe";
+        const substring: string = "hello";
         const expected: number = 2;
-        const result: number = countSubstring(str, substr);
+        const result: number = countSubstring(str, substring);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 15: Count occurrences of a substring in a string with mixed case
+    it('15. should count occurrences of a substring in a string with mixed case', () => {
+        const str: string = "Hello world, hello universe";
+        const substring: string = "hello";
+        const expected: number = 1;
+        const result: number = countSubstring(str, substring);
         expect(result).toBe(expected);
     });
 });

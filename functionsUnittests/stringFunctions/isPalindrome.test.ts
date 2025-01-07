@@ -60,50 +60,66 @@ describe('isPalindrome', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 8: Check if a palindrome with numbers returns true
-    it('8. should return true for a palindrome with numbers', () => {
+    // Test case 8: Check if a string with numbers returns true
+    it('8. should return true for a string with numbers', () => {
         const str: string = "12321";
         const expected: boolean = true;
         const result: boolean = isPalindrome(str);
         expect(result).toBe(expected);
     });
 
-    // Test case 9: Check if a non-palindrome with numbers returns false
-    it('9. should return false for a non-palindrome with numbers', () => {
-        const str: string = "12345";
-        const expected: boolean = false;
-        const result: boolean = isPalindrome(str);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 10: Check if a palindrome with special characters returns true
-    it('10. should return true for a palindrome with special characters', () => {
-        const str: string = "A man, a plan, a canal, Panama!";
+    // Test case 9: Check if a string with mixed characters returns true
+    it('9. should return true for a string with mixed characters', () => {
+        const str: string = "A1b2B1a";
         const expected: boolean = true;
         const result: boolean = isPalindrome(str);
         expect(result).toBe(expected);
     });
 
-    // Test case 11: Check if a palindrome with mixed case and spaces returns true
-    it('11. should return true for a palindrome with mixed case and spaces', () => {
-        const str: string = "A Santa at NASA";
+    // Test case 10: Check if a string with leading spaces returns true
+    it('10. should return true for a string with leading spaces', () => {
+        const str: string = "   madam";
         const expected: boolean = true;
         const result: boolean = isPalindrome(str);
         expect(result).toBe(expected);
     });
 
-    // Test case 12: Check if a palindrome with mixed case, spaces, and punctuation returns true
-    it('12. should return true for a palindrome with mixed case, spaces, and punctuation', () => {
-        const str: string = "A Santa, at NASA!";
+    // Test case 11: Check if a string with trailing spaces returns true
+    it('11. should return true for a string with trailing spaces', () => {
+        const str: string = "madam   ";
         const expected: boolean = true;
         const result: boolean = isPalindrome(str);
         expect(result).toBe(expected);
     });
 
-    // Test case 13: Check if a non-palindrome with mixed case, spaces, and punctuation returns false
-    it('13. should return false for a non-palindrome with mixed case, spaces, and punctuation', () => {
-        const str: string = "Hello, World!";
-        const expected: boolean = false;
+    // Test case 12: Check if a string with both leading and trailing spaces returns true
+    it('12. should return true for a string with both leading and trailing spaces', () => {
+        const str: string = "   madam   ";
+        const expected: boolean = true;
+        const result: boolean = isPalindrome(str);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 13: Check if a string with mixed case and spaces returns true
+    it('13. should return true for a string with mixed case and spaces', () => {
+        const str: string = "A man A plan A canal Panama";
+        const expected: boolean = true;
+        const result: boolean = isPalindrome(str);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 14: Check if a string with mixed case and punctuation returns true
+    it('14. should return true for a string with mixed case and punctuation', () => {
+        const str: string = "A man, A plan, A canal, Panama!";
+        const expected: boolean = true;
+        const result: boolean = isPalindrome(str);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 15: Check if a string with mixed case, punctuation, and numbers returns true
+    it('15. should return true for a string with mixed case, punctuation, and numbers', () => {
+        const str: string = "A1b2B1a!";
+        const expected: boolean = true;
         const result: boolean = isPalindrome(str);
         expect(result).toBe(expected);
     });

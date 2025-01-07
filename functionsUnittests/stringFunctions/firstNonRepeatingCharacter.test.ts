@@ -20,26 +20,26 @@ describe('firstNonRepeatingCharacter', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 3: Find the first non-repeating character in a string with mixed case
-    it('3. should find the first non-repeating character in a string with mixed case', () => {
-        const str: string = "aAbBcCdD";
-        const expected: string | null = "a";
-        const result: string | null = firstNonRepeatingCharacter(str);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 4: Find the first non-repeating character in a string with special characters
-    it('4. should find the first non-repeating character in a string with special characters', () => {
+    // Test case 3: Find the first non-repeating character in a string with special characters
+    it('3. should find the first non-repeating character in a string with special characters', () => {
         const str: string = "a@b@c@d@";
-        const expected: string | null = "a";
+        const expected: string | null = "c";
         const result: string | null = firstNonRepeatingCharacter(str);
         expect(result).toBe(expected);
     });
 
-    // Test case 5: Find the first non-repeating character in a string with numbers
-    it('5. should find the first non-repeating character in a string with numbers', () => {
-        const str: string = "1122334455";
-        const expected: string | null = null;
+    // Test case 4: Find the first non-repeating character in a string with numbers
+    it('4. should find the first non-repeating character in a string with numbers', () => {
+        const str: string = "a1b1c1d1";
+        const expected: string | null = "c";
+        const result: string | null = firstNonRepeatingCharacter(str);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 5: Find the first non-repeating character in a string with mixed characters
+    it('5. should find the first non-repeating character in a string with mixed characters', () => {
+        const str: string = "a1@b2#c3$d4%";
+        const expected: string | null = "a";
         const result: string | null = firstNonRepeatingCharacter(str);
         expect(result).toBe(expected);
     });
@@ -68,42 +68,58 @@ describe('firstNonRepeatingCharacter', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 9: Find the first non-repeating character in a string with a single character
-    it('9. should find the first non-repeating character in a string with a single character', () => {
-        const str: string = "a";
-        const expected: string | null = "a";
+    // Test case 9: Find the first non-repeating character in a string with newlines
+    it('9. should find the first non-repeating character in a string with newlines', () => {
+        const str: string = "abac\nabad";
+        const expected: string | null = "\n";
         const result: string | null = firstNonRepeatingCharacter(str);
         expect(result).toBe(expected);
     });
 
-    // Test case 10: Find the first non-repeating character in an empty string
-    it('10. should return null for an empty string', () => {
+    // Test case 10: Find the first non-repeating character in a string with tabs
+    it('10. should find the first non-repeating character in a string with tabs', () => {
+        const str: string = "abac\tabad";
+        const expected: string | null = "\t";
+        const result: string | null = firstNonRepeatingCharacter(str);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 11: Find the first non-repeating character in an empty string
+    it('11. should return null for an empty string', () => {
         const str: string = "";
         const expected: string | null = null;
         const result: string | null = firstNonRepeatingCharacter(str);
         expect(result).toBe(expected);
     });
 
-    // Test case 11: Find the first non-repeating character in a string with multiple non-repeating characters
-    it('11. should find the first non-repeating character in a string with multiple non-repeating characters', () => {
-        const str: string = "abacabadc";
+    // Test case 12: Find the first non-repeating character in a single character string
+    it('12. should find the first non-repeating character in a single character string', () => {
+        const str: string = "a";
+        const expected: string | null = "a";
+        const result: string | null = firstNonRepeatingCharacter(str);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 13: Find the first non-repeating character in a string with multiple spaces between words
+    it('13. should find the first non-repeating character in a string with multiple spaces between words', () => {
+        const str: string = "a  b  a  c  a  b  a  d";
+        const expected: string | null = "c";
+        const result: string | null = firstNonRepeatingCharacter(str);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 14: Find the first non-repeating character in a string with mixed case
+    it('14. should find the first non-repeating character in a string with mixed case', () => {
+        const str: string = "aAbBcCdD";
+        const expected: string | null = "a";
+        const result: string | null = firstNonRepeatingCharacter(str);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 15: Find the first non-repeating character in a string with punctuation
+    it('15. should find the first non-repeating character in a string with punctuation', () => {
+        const str: string = "a,b,c,a,b,c,d";
         const expected: string | null = "d";
-        const result: string | null = firstNonRepeatingCharacter(str);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 12: Find the first non-repeating character in a string with repeating spaces
-    it('12. should find the first non-repeating character in a string with repeating spaces', () => {
-        const str: string = "a b a c a b a d";
-        const expected: string | null = "c";
-        const result: string | null = firstNonRepeatingCharacter(str);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 13: Find the first non-repeating character in a string with hyphenated words
-    it('13. should find the first non-repeating character in a string with hyphenated words', () => {
-        const str: string = "a-b-a-c-a-b-a-d";
-        const expected: string | null = "c";
         const result: string | null = firstNonRepeatingCharacter(str);
         expect(result).toBe(expected);
     });

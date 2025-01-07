@@ -1,13 +1,14 @@
 /**
- * Counts the number of occurrences of a substring within a string.
+ * Counts the number of times a substring appears in a string.
  * 
- * @param str - The string to search in.
- * @param substr - The substring to count.
- * @returns The number of occurrences of the substring.
+ * @param str - The string to analyze.
+ * @param substring - The substring to count.
+ * @returns The count of occurrences.
  */
-export function countSubstring(str: string, substr: string): number {
-    return (str.match(new RegExp(substr, 'g')) || []).length;
+export function countSubstring(str: string, substring: string): number {
+    if (substring.length === 0) return 0;
+    return (str.match(new RegExp(substring, 'g')) || []).length;
 }
 
 // Example usage:
-// countSubstring("hello world", "o"); // 2
+// countSubstring("hello world, hello universe", "hello"); // 2

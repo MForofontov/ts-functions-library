@@ -1,13 +1,17 @@
 /**
- * Extracts the file extension from a filename.
+ * Gets the file extension from a given filename.
  * 
- * @param filename - The filename to analyze.
+ * @param filename - The filename to extract the extension from.
  * @returns The file extension, or an empty string if none exists.
  */
 export function getFileExtension(filename: string): string {
-    const match = filename.match(/\.([^.]+)$/);
-    return match ? match[1] : '';
+    const lastDotIndex = filename.lastIndexOf('.');
+    if (lastDotIndex === -1 || lastDotIndex === filename.length - 1) {
+        return '';
+    }
+    return filename.substring(lastDotIndex + 1);
 }
 
 // Example usage:
-// getFileExtension("document.pdf"); // "pdf"
+// getFileExtension("example.txt"); // "txt"
+// getFileExtension("example"); // ""

@@ -4,129 +4,140 @@ import { padString } from '../../stringFunctions/padString';
  * Unit tests for the padString function.
  */
 describe('padString', () => {
-    // Test case 1: Pad a string with asterisks to a target length of 10
-    it('1. should pad a string with asterisks to a target length of 10', () => {
-        const str: string = "test";
+    // Test case 1: Pad a string to a specified length with default pad character
+    it('1. should pad a string to a specified length with default pad character', () => {
+        const str: string = "hello";
         const targetLength: number = 10;
-        const padStr: string = "*";
-        const expected: string = "******test";
-        const result: string = padString(str, targetLength, padStr);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 2: Pad a string with spaces to a target length of 10
-    it('2. should pad a string with spaces to a target length of 10', () => {
-        const str: string = "test";
-        const targetLength: number = 10;
-        const expected: string = "      test";
+        const expected: string = "  hello   ";
         const result: string = padString(str, targetLength);
         expect(result).toBe(expected);
     });
 
-    // Test case 3: Pad a string with a longer pad string to a target length of 10
-    it('3. should pad a string with a longer pad string to a target length of 10', () => {
-        const str: string = "test";
+    // Test case 2: Pad a string to a specified length with a given pad character
+    it('2. should pad a string to a specified length with a given pad character', () => {
+        const str: string = "hello";
         const targetLength: number = 10;
-        const padStr: string = "abc";
-        const expected: string = "abcabctest";
-        const result: string = padString(str, targetLength, padStr);
+        const padChar: string = '*';
+        const expected: string = "**hello***";
+        const result: string = padString(str, targetLength, padChar);
         expect(result).toBe(expected);
     });
 
-    // Test case 4: Pad a string with a target length less than the string length
-    it('4. should return the original string if target length is less than the string length', () => {
-        const str: string = "test";
-        const targetLength: number = 2;
-        const expected: string = "test";
-        const result: string = padString(str, targetLength);
+    // Test case 3: Pad a string to a specified length with a given pad character when target length is equal to string length
+    it('3. should return the original string when target length is equal to string length', () => {
+        const str: string = "hello";
+        const targetLength: number = 5;
+        const padChar: string = '*';
+        const expected: string = "hello";
+        const result: string = padString(str, targetLength, padChar);
         expect(result).toBe(expected);
     });
 
-    // Test case 5: Pad a string with an empty pad string
-    it('5. should return the original string if pad string is empty', () => {
-        const str: string = "test";
-        const targetLength: number = 10;
-        const padStr: string = "";
-        const expected: string = "test";
-        const result: string = padString(str, targetLength, padStr);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 6: Pad a string with a target length equal to the string length
-    it('6. should return the original string if target length is equal to the string length', () => {
-        const str: string = "test";
-        const targetLength: number = 4;
-        const expected: string = "test";
-        const result: string = padString(str, targetLength);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 7: Pad an empty string to a target length of 5
-    it('7. should pad an empty string to a target length of 5', () => {
+    // Test case 4: Pad an empty string to a specified length with default pad character
+    it('4. should pad an empty string to a specified length with default pad character', () => {
         const str: string = "";
         const targetLength: number = 5;
-        const padStr: string = "*";
-        const expected: string = "*****";
-        const result: string = padString(str, targetLength, padStr);
-        expect(result).toBe(expected);
-    });
-
-    // Test case 8: Pad a string with spaces to a target length of 5
-    it('8. should pad a string with spaces to a target length of 5', () => {
-        const str: string = "a";
-        const targetLength: number = 5;
-        const expected: string = "    a";
+        const expected: string = "     ";
         const result: string = padString(str, targetLength);
         expect(result).toBe(expected);
     });
 
-    // Test case 9: Pad a string with special characters to a target length of 8
-    it('9. should pad a string with special characters to a target length of 8', () => {
-        const str: string = "test";
-        const targetLength: number = 8;
-        const padStr: string = "@#";
-        const expected: string = "@#@#test";
-        const result: string = padString(str, targetLength, padStr);
+    // Test case 5: Pad an empty string to a specified length with a given pad character
+    it('5. should pad an empty string to a specified length with a given pad character', () => {
+        const str: string = "";
+        const targetLength: number = 5;
+        const padChar: string = '*';
+        const expected: string = "*****";
+        const result: string = padString(str, targetLength, padChar);
         expect(result).toBe(expected);
     });
 
-    // Test case 10: Pad a string with numbers to a target length of 7
-    it('10. should pad a string with numbers to a target length of 7', () => {
-        const str: string = "test";
-        const targetLength: number = 7;
-        const padStr: string = "123";
-        const expected: string = "123test";
-        const result: string = padString(str, targetLength, padStr);
+    // Test case 6: Pad a string with leading spaces to a specified length with default pad character
+    it('6. should pad a string with leading spaces to a specified length with default pad character', () => {
+        const str: string = "  hello";
+        const targetLength: number = 10;
+        const expected: string = "  hello   ";
+        const result: string = padString(str, targetLength);
         expect(result).toBe(expected);
     });
 
-    // Test case 11: Pad a string with mixed characters to a target length of 12
-    it('11. should pad a string with mixed characters to a target length of 12', () => {
-        const str: string = "test";
+    // Test case 7: Pad a string with trailing spaces to a specified length with default pad character
+    it('7. should pad a string with trailing spaces to a specified length with default pad character', () => {
+        const str: string = "hello  ";
+        const targetLength: number = 10;
+        const expected: string = "  hello  ";
+        const result: string = padString(str, targetLength);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 8: Pad a string with both leading and trailing spaces to a specified length with default pad character
+    it('8. should pad a string with both leading and trailing spaces to a specified length with default pad character', () => {
+        const str: string = "  hello  ";
         const targetLength: number = 12;
-        const padStr: string = "abc123";
-        const expected: string = "abc123abctest";
-        const result: string = padString(str, targetLength, padStr);
+        const expected: string = "  hello   ";
+        const result: string = padString(str, targetLength);
         expect(result).toBe(expected);
     });
 
-    // Test case 12: Pad a string with a single character pad string to a target length of 6
-    it('12. should pad a string with a single character pad string to a target length of 6', () => {
-        const str: string = "test";
+    // Test case 9: Pad a string with special characters to a specified length with default pad character
+    it('9. should pad a string with special characters to a specified length with default pad character', () => {
+        const str: string = "@hello@";
+        const targetLength: number = 10;
+        const expected: string = " @hello@  ";
+        const result: string = padString(str, targetLength);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 10: Pad a string with numbers to a specified length with default pad character
+    it('10. should pad a string with numbers to a specified length with default pad character', () => {
+        const str: string = "12345";
+        const targetLength: number = 10;
+        const expected: string = "  12345   ";
+        const result: string = padString(str, targetLength);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 11: Pad a string with mixed characters to a specified length with default pad character
+    it('11. should pad a string with mixed characters to a specified length with default pad character', () => {
+        const str: string = "a1@b2#";
+        const targetLength: number = 10;
+        const expected: string = "  a1@b2#  ";
+        const result: string = padString(str, targetLength);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 12: Pad a string with mixed characters to a specified length with a given pad character
+    it('12. should pad a string with mixed characters to a specified length with a given pad character', () => {
+        const str: string = "a1@b2#";
+        const targetLength: number = 10;
+        const padChar: string = '*';
+        const expected: string = "**a1@b2#**";
+        const result: string = padString(str, targetLength, padChar);
+        expect(result).toBe(expected);
+    });
+
+    // Test case 13: Pad a string with mixed characters to a specified length with a given pad character when target length is equal to string length
+    it('13. should return the original string when target length is equal to string length', () => {
+        const str: string = "a1@b2#";
         const targetLength: number = 6;
-        const padStr: string = "x";
-        const expected: string = "xxtest";
-        const result: string = padString(str, targetLength, padStr);
+        const padChar: string = '*';
+        const expected: string = "a1@b2#";
+        const result: string = padString(str, targetLength, padChar);
         expect(result).toBe(expected);
     });
 
-    // Test case 13: Pad a string with a multi-character pad string to a target length of 9
-    it('13. should pad a string with a multi-character pad string to a target length of 9', () => {
-        const str: string = "test";
-        const targetLength: number = 9;
-        const padStr: string = "xyz";
-        const expected: string = "xyzxytest";
-        const result: string = padString(str, targetLength, padStr);
-        expect(result).toBe(expected);
+    // Error handling test case 1: Target length less than string length
+    it('14. should throw an error when target length is less than string length', () => {
+        const str: string = "hello";
+        const targetLength: number = 3;
+        expect(() => padString(str, targetLength)).toThrow('Target length must be greater than or equal to the string length');
+    });
+
+    // Error handling test case 2: Pad character is not a single character
+    it('15. should throw an error when pad character is not a single character', () => {
+        const str: string = "hello";
+        const targetLength: number = 10;
+        const padChar: string = '**';
+        expect(() => padString(str, targetLength, padChar)).toThrow('Pad character must be a single character');
     });
 });
