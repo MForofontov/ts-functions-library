@@ -5,7 +5,7 @@
  * @returns The string with HTML tags removed.
  */
 export function stripHtmlTags(str: string): string {
-    return str.replace(/<[^>]*>/g, '');
+    return str.replace(/<\/?[^>]+(>|$)/g, '');
 }
 
 // Example usage:
