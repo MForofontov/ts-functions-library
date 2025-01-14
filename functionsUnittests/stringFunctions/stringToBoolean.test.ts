@@ -80,7 +80,7 @@ describe('stringToBoolean', () => {
     it('10. should convert a string with leading/trailing spaces to boolean', () => {
         const str: string = " true ";
         const expected: boolean = true;
-        const result: boolean = stringToBoolean(str.trim());
+        const result: boolean = stringToBoolean(str);
         expect(result).toBe(expected);
     });
 
