@@ -5,8 +5,13 @@
  * @returns The joined sentence.
  */
 export function wordsToSentence(words: string[]): string {
-    return words.join(' ');
+    if (!Array.isArray(words) || words.length === 0) {
+        return '';
+    }
+    return words.filter(word => word.trim() !== '').join(' ');
 }
 
 // Example usage:
 // wordsToSentence(["Hello", "world!"]); // "Hello world!"
+// wordsToSentence([]); // ""
+// wordsToSentence(["Hello", "", "world!"]); // "Hello world!"

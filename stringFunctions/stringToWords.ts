@@ -5,7 +5,10 @@
  * @returns An array of words.
  */
 export function stringToWords(str: string): string[] {
-    return str.trim().split(/\s+/);
+    return str
+        .trim() // Trim leading and trailing spaces
+        .split(/\s+/) // Split by one or more whitespace characters
+        .filter(word => word.length > 0); // Filter out empty strings
 }
 
 // Example usage:

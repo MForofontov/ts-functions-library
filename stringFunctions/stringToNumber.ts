@@ -5,7 +5,7 @@
  * @returns The converted number or NaN if the conversion fails.
  */
 export function stringToNumber(str: string): number {
-    const num = Number(str);
+    const num = parseFloat(str);
     return isNaN(num) ? NaN : num;
 }
 

@@ -5,7 +5,8 @@
  * @returns The corresponding boolean value.
  */
 export function stringToBoolean(str: string): boolean {
-    return /^(true|1)$/i.test(str);
+    const normalizedStr = str.trim().toLowerCase();
+    return normalizedStr === 'true' || normalizedStr === '1';
 }
 
 // Example usage:
