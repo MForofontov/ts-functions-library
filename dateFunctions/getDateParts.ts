@@ -10,12 +10,12 @@ export function getDateParts(date: Date): { year: number, month: number, day: nu
     }
 
     return {
-        year: date.getFullYear(),
-        month: date.getMonth() + 1,
-        day: date.getDate(),
-        hours: date.getHours(),
-        minutes: date.getMinutes(),
-        seconds: date.getSeconds()
+        year: date.getUTCFullYear(),
+        month: date.getUTCMonth() + 1, // Months are zero-based
+        day: date.getUTCDate(),
+        hours: date.getUTCHours(),
+        minutes: date.getUTCMinutes(),
+        seconds: date.getUTCSeconds()
     };
 }
 
