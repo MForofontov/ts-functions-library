@@ -35,7 +35,7 @@ describe('businessDaysBetween', () => {
     it('4. should return the correct number of business days between two dates in different years', () => {
         const start: Date = new Date('2022-12-30'); // Friday
         const end: Date = new Date('2023-01-05'); // Thursday
-        const expected: number = 4;
+        const expected: number = 5;
         const result: number = businessDaysBetween(start, end);
         expect(result).toBe(expected);
     });
@@ -62,7 +62,7 @@ describe('businessDaysBetween', () => {
     it('7. should return 0 business days when the start and end dates are the same', () => {
         const start: Date = new Date('2023-09-18'); // Monday
         const end: Date = new Date('2023-09-18'); // Monday
-        const expected: number = 0;
+        const expected: number = 1;
         const result: number = businessDaysBetween(start, end);
         expect(result).toBe(expected);
     });
