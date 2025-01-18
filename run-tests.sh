@@ -24,18 +24,14 @@ fi
 # Verify the timezone change
 echo "[INFO] Timezone after change: $(date +%Z)"
 
-# Check if Node.js is installed
-if ! command -v node &> /dev/null; then
-  echo "[ERROR] Node.js is not installed. Please install Node.js to run the tests."
-  exit 1
-fi
-
-# Check if Jest is installed
-if ! command -v npx &> /dev/null; then
-  echo "[ERROR] npx is not installed. Please install npm to run the tests."
-  exit 1
-fi
-
 # Run Jest tests
 echo "[INFO] Running Jest tests"
 npx jest
+
+# Generate Allure report
+echo "[INFO] Generating Allure report"
+allure generate /home/ummi/Downloads/test/jest/allure-results --clean -o /home/ummi/Downloads/test/jest/allure-report
+
+# Open Allure report
+echo "[INFO] Opening Allure report"
+allure open /home/ummi/Downloads/test/jest/allure-report
