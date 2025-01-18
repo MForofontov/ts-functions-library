@@ -1,6 +1,6 @@
 {
     "scripts": {
-    "test": "TZ=UTC jest"
+    "test": "./run-tests.sh"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
