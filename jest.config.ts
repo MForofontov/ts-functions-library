@@ -69,5 +69,3 @@ module.exports = {
   coverageDirectory: '/home/ummi/Downloads/test/jest/coverage',
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
 };
-
-
