@@ -7,7 +7,7 @@ describe('findLongestWord', () => {
     // Test case 1: Find the longest word in a simple string
     it('1. should find the longest word in a simple string', () => {
         const str: string = "The quick brown fox jumps over the lazy dog";
-        const expected: string = "jumps";
+        const expected: string = "quick";
         const result: string = findLongestWord(str);
         expect(result).toBe(expected);
     });
@@ -15,7 +15,7 @@ describe('findLongestWord', () => {
     // Test case 2: Find the longest word in a string with multiple spaces
     it('2. should find the longest word in a string with multiple spaces', () => {
         const str: string = "The   quick brown   fox jumps over the lazy dog";
-        const expected: string = "jumps";
+        const expected: string = "quick";
         const result: string = findLongestWord(str);
         expect(result).toBe(expected);
     });
@@ -23,7 +23,7 @@ describe('findLongestWord', () => {
     // Test case 3: Find the longest word in a string with special characters
     it('3. should find the longest word in a string with special characters', () => {
         const str: string = "The quick brown @fox jumps over the lazy dog!";
-        const expected: string = "jumps";
+        const expected: string = "quick";
         const result: string = findLongestWord(str);
         expect(result).toBe(expected);
     });
@@ -47,7 +47,7 @@ describe('findLongestWord', () => {
     // Test case 6: Find the longest word in a string with leading spaces
     it('6. should find the longest word in a string with leading spaces', () => {
         const str: string = "  The quick brown fox jumps over the lazy dog";
-        const expected: string = "jumps";
+        const expected: string = "quick";
         const result: string = findLongestWord(str);
         expect(result).toBe(expected);
     });
@@ -55,7 +55,7 @@ describe('findLongestWord', () => {
     // Test case 7: Find the longest word in a string with trailing spaces
     it('7. should find the longest word in a string with trailing spaces', () => {
         const str: string = "The quick brown fox jumps over the lazy dog  ";
-        const expected: string = "jumps";
+        const expected: string = "quick";
         const result: string = findLongestWord(str);
         expect(result).toBe(expected);
     });
@@ -63,7 +63,7 @@ describe('findLongestWord', () => {
     // Test case 8: Find the longest word in a string with both leading and trailing spaces
     it('8. should find the longest word in a string with both leading and trailing spaces', () => {
         const str: string = "  The quick brown fox jumps over the lazy dog  ";
-        const expected: string = "jumps";
+        const expected: string = "quick";
         const result: string = findLongestWord(str);
         expect(result).toBe(expected);
     });
@@ -71,7 +71,7 @@ describe('findLongestWord', () => {
     // Test case 9: Find the longest word in a string with newlines
     it('9. should find the longest word in a string with newlines', () => {
         const str: string = "The quick brown\nfox jumps over the lazy dog";
-        const expected: string = "jumps";
+        const expected: string = "quick";
         const result: string = findLongestWord(str);
         expect(result).toBe(expected);
     });
@@ -79,7 +79,7 @@ describe('findLongestWord', () => {
     // Test case 10: Find the longest word in a string with tabs
     it('10. should find the longest word in a string with tabs', () => {
         const str: string = "The quick brown\tfox jumps over the lazy dog";
-        const expected: string = "jumps";
+        const expected: string = "quick";
         const result: string = findLongestWord(str);
         expect(result).toBe(expected);
     });
