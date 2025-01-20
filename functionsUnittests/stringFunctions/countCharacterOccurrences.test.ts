@@ -62,7 +62,7 @@ describe('countCharacterOccurrences', () => {
     it('7. should count occurrences of a character in a string with leading spaces', () => {
         const str: string = "  hello world";
         const char: string = " ";
-        const expected: number = 2;
+        const expected: number = 3;
         const result: number = countCharacterOccurrences(str, char);
         expect(result).toBe(expected);
     });
@@ -71,7 +71,7 @@ describe('countCharacterOccurrences', () => {
     it('8. should count occurrences of a character in a string with trailing spaces', () => {
         const str: string = "hello world  ";
         const char: string = " ";
-        const expected: number = 2;
+        const expected: number = 3;
         const result: number = countCharacterOccurrences(str, char);
         expect(result).toBe(expected);
     });
@@ -80,7 +80,7 @@ describe('countCharacterOccurrences', () => {
     it('9. should count occurrences of a character in a string with both leading and trailing spaces', () => {
         const str: string = "  hello world  ";
         const char: string = " ";
-        const expected: number = 4;
+        const expected: number = 5;
         const result: number = countCharacterOccurrences(str, char);
         expect(result).toBe(expected);
     });
