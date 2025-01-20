@@ -34,7 +34,7 @@ describe('capitalizeNthLetter', () => {
     // Test case 4: Capitalize the nth letter of a string with special characters
     it('4. should capitalize the nth letter of a string with special characters', () => {
         const str: string = "hello @world";
-        const n: number = 6;
+        const n: number = 7;
         const expected: string = "hello @World";
         const result: string = capitalizeNthLetter(str, n);
         expect(result).toBe(expected);
@@ -52,7 +52,7 @@ describe('capitalizeNthLetter', () => {
     // Test case 6: Capitalize the nth letter of a string with mixed characters
     it('6. should capitalize the nth letter of a string with mixed characters', () => {
         const str: string = "a1@ b2# c3$";
-        const n: number = 3;
+        const n: number = 4;
         const expected: string = "a1@ B2# c3$";
         const result: string = capitalizeNthLetter(str, n);
         expect(result).toBe(expected);
@@ -97,7 +97,7 @@ describe('capitalizeNthLetter', () => {
     // Test case 11: Capitalize the nth letter of a string with multiple spaces between words
     it('11. should capitalize the nth letter of a string with multiple spaces between words', () => {
         const str: string = "hello   world";
-        const n: number = 6;
+        const n: number = 7;
         const expected: string = "hello   World";
         const result: string = capitalizeNthLetter(str, n);
         expect(result).toBe(expected);

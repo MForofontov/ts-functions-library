@@ -39,7 +39,7 @@ describe('countConsonants', () => {
     // Test case 5: Count consonants in a string with mixed characters
     it('5. should count consonants in a string with mixed characters', () => {
         const str: string = "a1@ b2# c3$";
-        const expected: number = 3;
+        const expected: number = 2;
         const result: number = countConsonants(str);
         expect(result).toBe(expected);
     });
