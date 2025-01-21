@@ -12,16 +12,18 @@ export function formatDate(date: Date, format: string): string {
     }
 
     const supportedTokens = ['YYYY', 'MM', 'DD', 'HH', 'mm', 'ss'];
-    const formatTokens = format.match(/YYYY|MM|DD|HH|mm|ss/g) || [];
+    const formatTokens = format.match(/[A-Za-z]{1,4}/g) || [];
+    const invalidTokens = formatTokens.filter(token => !supportedTokens.includes(token));
 
-    for (const token of formatTokens) {
-        if (!supportedTokens.includes(token)) {
-            throw new Error(`Unsupported format token: ${token}`);
-        }
+    if (invalidTokens.length > 0) {
+        throw new Error(`Unsupported format tokens: ${invalidTokens.join(', ')}. Supported tokens are: ${supportedTokens.join(', ')}`);
     }
 
+    const year = date.getFullYear();
+    const formattedYear = year < 0 ? `-${String(Math.abs(year)).padStart(4, '0')}` : String(year).padStart(4, '0');
+
     const map: { [key: string]: string } = {
-        'YYYY': String(date.getFullYear()),
+        'YYYY': formattedYear,
         'MM': String(date.getMonth() + 1).padStart(2, '0'),
         'DD': String(date.getDate()).padStart(2, '0'),
         'HH': String(date.getHours()).padStart(2, '0'),
