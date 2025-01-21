@@ -15,7 +15,7 @@ describe('daysLeftInYear', () => {
     // Test case 2: Get the number of days left in the year for a date in February (non-leap year)
     it('2. should return the correct number of days left in the year for a date in February (non-leap year)', () => {
         const date: Date = new Date('2023-02-01');
-        const expected: number = 332; // 2023 is not a leap year
+        const expected: number = 333; // 2023 is not a leap year
         const result: number = daysLeftInYear(date);
         expect(result).toBe(expected);
     });
