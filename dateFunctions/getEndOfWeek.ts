@@ -19,7 +19,7 @@ export function getEndOfWeek(date: Date, startOfWeek: number = 0): Date {
     const dayOfWeek = date.getDay();
 
     // Calculate the difference to the end of the week
-    const diffToEndOfWeek = (6 - ((dayOfWeek - startOfWeek + 7) % 7));
+    const diffToEndOfWeek = (6 + startOfWeek - dayOfWeek) % 7;
 
     // Calculate the end of the week date
     const endOfWeekDate = new Date(date);

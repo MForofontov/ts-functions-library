@@ -5,8 +5,12 @@
  * @returns The domain name.
  */
 export function extractDomain(url: string): string {
-    const match = url.match(/^(?:https?:\/\/)?(?:www\.)?([^\/]+)/);
-    return match ? match[1] : '';
+    try {
+        const { hostname } = new URL(url);
+        return hostname.replace(/^www\./, '').toLowerCase();
+    } catch (error) {
+        return '';
+    }
 }
 
 // Example usage:

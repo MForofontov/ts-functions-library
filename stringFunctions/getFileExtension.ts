@@ -6,7 +6,7 @@
  */
 export function getFileExtension(filename: string): string {
     const lastDotIndex = filename.lastIndexOf('.');
-    if (lastDotIndex === -1 || lastDotIndex === filename.length - 1) {
+    if (lastDotIndex === -1 || lastDotIndex === 0 || lastDotIndex === filename.length - 1) {
         return '';
     }
     return filename.substring(lastDotIndex + 1);
