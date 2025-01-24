@@ -1,5 +1,3 @@
-import { getWeekNumber } from './getWeekNumber';
-
 /**
  * Gets the ISO week date (YYYY-Www-D) for a given Date object.
  * 
@@ -12,12 +10,19 @@ export function getISOWeekDate(date: Date): string {
         throw new Error('Invalid date');
     }
 
-    const year = date.getFullYear();
-    const weekNumber = getWeekNumber(date);
+    // ISO week date calculation
+    const tempDate = new Date(date.getTime());
+    tempDate.setHours(0, 0, 0, 0);
+    tempDate.setDate(tempDate.getDate() + 3 - (tempDate.getDay() + 6) % 7);
+    const week1 = new Date(tempDate.getFullYear(), 0, 4);
+    const weekNumber = Math.round(((tempDate.getTime() - week1.getTime()) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7) + 1;
+
+    const year = tempDate.getFullYear();
     const dayOfWeek = date.getDay() || 7; // ISO week starts on Monday, so Sunday should be 7
+
     return `${year}-W${String(weekNumber).padStart(2, '0')}-${dayOfWeek}`;
 }
 
 // Example usage:
 // const date = new Date('2024-09-19');
-// getISOWeekDate(date); // e.g., '2024-W38-4'
+// console.log(getISOWeekDate(date)); // e.g., '2024-W38-4'
