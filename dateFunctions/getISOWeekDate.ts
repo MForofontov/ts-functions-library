@@ -17,7 +17,13 @@ export function getISOWeekDate(date: Date): string {
     const week1 = new Date(tempDate.getFullYear(), 0, 4);
     const weekNumber = Math.round(((tempDate.getTime() - week1.getTime()) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7) + 1;
 
-    const year = tempDate.getFullYear();
+    let year: string;
+    const fullYear = tempDate.getFullYear();
+    if (fullYear < 0) {
+        year = `-${String(Math.abs(fullYear)).padStart(6, '0')}`;
+    } else {
+        year = String(fullYear).padStart(4, '0');
+    }
     const dayOfWeek = date.getDay() || 7; // ISO week starts on Monday, so Sunday should be 7
 
     return `${year}-W${String(weekNumber).padStart(2, '0')}-${dayOfWeek}`;

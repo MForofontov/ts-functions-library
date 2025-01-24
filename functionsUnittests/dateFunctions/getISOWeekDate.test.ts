@@ -39,7 +39,7 @@ describe('getISOWeekDate', () => {
     // Test case 5: Get the ISO week date for a date at the end of the year
     it('5. should return the ISO week date for a date at the end of the year', () => {
         const date: Date = new Date('2023-12-31');
-        const expected: string = '2024-W01-1';
+        const expected: string = '2023-W52-7';
         const result: string = getISOWeekDate(date);
         expect(result).toBe(expected);
     });
@@ -47,7 +47,7 @@ describe('getISOWeekDate', () => {
     // Test case 6: Get the ISO week date for a date with zero time components
     it('6. should return the ISO week date for a date with zero time components', () => {
         const date: Date = new Date('2023-01-01T00:00:00');
-        const expected: string = '2023-W52-7';
+        const expected: string = '2022-W52-7';
         const result: string = getISOWeekDate(date);
         expect(result).toBe(expected);
     });
