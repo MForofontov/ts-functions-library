@@ -20,7 +20,7 @@ export function formatDate(date: Date, format: string): string {
     }
 
     const year = date.getFullYear();
-    const formattedYear = year < 0 ? `-${String(Math.abs(year)).padStart(4, '0')}` : String(year).padStart(4, '0');
+    const formattedYear = year < 0 ? `-${String(Math.abs(year)).padStart(6, '0')}` : String(year).padStart(4, '0');
 
     const map: { [key: string]: string } = {
         'YYYY': formattedYear,
