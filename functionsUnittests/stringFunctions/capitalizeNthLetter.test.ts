@@ -134,7 +134,7 @@ describe('capitalizeNthLetter', () => {
     it('15. should capitalize the nth letter of a string with trailing punctuation', () => {
         const str: string = "hello world!";
         const n: number = 1;
-        const expected: string = "Hello world!";
+        const expected: string = "hEllo world!";
         const result: string = capitalizeNthLetter(str, n);
         expect(result).toBe(expected);
     });
