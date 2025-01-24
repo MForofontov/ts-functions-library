@@ -43,8 +43,8 @@ describe('capitalizeNthLetter', () => {
     // Test case 5: Capitalize the nth letter of a string with numbers
     it('5. should capitalize the nth letter of a string with numbers', () => {
         const str: string = "hello 123 world";
-        const n: number = 6;
-        const expected: string = "hello 123 world";
+        const n: number = 4;
+        const expected: string = "hellO 123 world";
         const result: string = capitalizeNthLetter(str, n);
         expect(result).toBe(expected);
     });
@@ -61,8 +61,8 @@ describe('capitalizeNthLetter', () => {
     // Test case 7: Capitalize the nth letter of a string with newlines
     it('7. should capitalize the nth letter of a string with newlines', () => {
         const str: string = "hello\nworld";
-        const n: number = 5;
-        const expected: string = "hello\nworld";
+        const n: number = 6;
+        const expected: string = "hello\nWorld";
         const result: string = capitalizeNthLetter(str, n);
         expect(result).toBe(expected);
     });
@@ -70,8 +70,8 @@ describe('capitalizeNthLetter', () => {
     // Test case 8: Capitalize the nth letter of a string with tabs
     it('8. should capitalize the nth letter of a string with tabs', () => {
         const str: string = "hello\tworld";
-        const n: number = 5;
-        const expected: string = "hello\tworld";
+        const n: number = 6;
+        const expected: string = "hello\tWorld";
         const result: string = capitalizeNthLetter(str, n);
         expect(result).toBe(expected);
     });
@@ -97,7 +97,7 @@ describe('capitalizeNthLetter', () => {
     // Test case 11: Capitalize the nth letter of a string with multiple spaces between words
     it('11. should capitalize the nth letter of a string with multiple spaces between words', () => {
         const str: string = "hello   world";
-        const n: number = 7;
+        const n: number = 8;
         const expected: string = "hello   World";
         const result: string = capitalizeNthLetter(str, n);
         expect(result).toBe(expected);
@@ -115,8 +115,8 @@ describe('capitalizeNthLetter', () => {
     // Test case 13: Capitalize the nth letter of a string with punctuation
     it('13. should capitalize the nth letter of a string with punctuation', () => {
         const str: string = "hello, world!";
-        const n: number = 5;
-        const expected: string = "hello, world!";
+        const n: number = 7;
+        const expected: string = "hello, World!";
         const result: string = capitalizeNthLetter(str, n);
         expect(result).toBe(expected);
     });
@@ -133,8 +133,8 @@ describe('capitalizeNthLetter', () => {
     // Test case 15: Capitalize the nth letter of a string with trailing punctuation
     it('15. should capitalize the nth letter of a string with trailing punctuation', () => {
         const str: string = "hello world!";
-        const n: number = 11;
-        const expected: string = "hello world!";
+        const n: number = 1;
+        const expected: string = "Hello world!";
         const result: string = capitalizeNthLetter(str, n);
         expect(result).toBe(expected);
     });
