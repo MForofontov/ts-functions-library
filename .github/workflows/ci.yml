@@ -46,4 +46,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: jest-html-report  # Name of the artifact
-        path: ../allure-report  # Path to the Jest HTML report
+        path: allure-report  # Path to the Jest HTML report

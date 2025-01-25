@@ -62,10 +62,10 @@ module.exports = {
   },
   reporters: [
     "default", // default jest reporter
-    ['jest-html-reporter', { outputPath: '../jest.html' }], // jest html reporter
-    ['jest-allure', { outputDir: "../allure-results" },],
+    ['jest-html-reporter', { outputPath: 'jest.html' }], // jest html reporter
+    ['jest-allure', { outputDir: "allure-results" },],
   ],
   collectCoverage: true,
-  coverageDirectory: '../coverage',
+  coverageDirectory: 'coverage',
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
 };
