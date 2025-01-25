@@ -153,4 +153,14 @@ describe('replaceSubstring', () => {
         const result: string = replaceSubstring(str, searchValue, replaceValue);
         expect(result).toBe(expected);
     });
+
+    // Test case 16: Replace the first occurrence of a substring in an empty string
+    it('16. should return empty string when the string to search substring is empty'), () => {
+        const str: string = "";
+        const searchValue: string = "foo";
+        const replaceValue: string = "bar";
+        const expected: string = "";
+        const result: string = replaceSubstring(str, searchValue, replaceValue);
+        expect(result).toBe(expected);
+    }
 });

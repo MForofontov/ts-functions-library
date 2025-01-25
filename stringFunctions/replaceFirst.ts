@@ -7,6 +7,9 @@
  * @returns The string with the first occurrence of the substring replaced.
  */
 export function replaceFirst(str: string, searchValue: string, replaceValue: string): string {
+    if (searchValue === "") {
+        return str;
+    }
     const index = str.indexOf(searchValue);
     if (index === -1) {
         return str;
