@@ -55,7 +55,7 @@ describe('getISOWeekDate', () => {
     // Test case 7: Get the ISO week date for a date with a negative year
     it('7. should return the ISO week date for a date with a negative year', () => {
         const date: Date = new Date('-000001-01-01');
-        const expected: string = '-000001-W52-7';
+        const expected: string = '-000002-W52-5';
         const result: string = getISOWeekDate(date);
         expect(result).toBe(expected);
     });

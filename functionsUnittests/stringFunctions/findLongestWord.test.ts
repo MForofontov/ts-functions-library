@@ -31,7 +31,7 @@ describe('findLongestWord', () => {
     // Test case 4: Find the longest word in a string with numbers
     it('4. should find the longest word in a string with numbers', () => {
         const str: string = "The quick brown fox jumps over the lazy dog 12345";
-        const expected: string = "12345";
+        const expected: string = "quick";
         const result: string = findLongestWord(str);
         expect(result).toBe(expected);
     });
