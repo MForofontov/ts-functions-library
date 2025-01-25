@@ -25,11 +25,11 @@ jobs:
     steps:
     # Step 1: Check out the repository
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     # Step 2: Set up Node.js
     - name: Set up Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}  # Use the Node.js version from the matrix
 
@@ -43,7 +43,7 @@ jobs:
 
     # Step 5: Upload Allure HTML report
     - name: Upload Jest HTML report
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: jest-html-report  # Name of the artifact
         path: ../allure-report  # Path to the Jest HTML report
