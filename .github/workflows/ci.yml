@@ -39,7 +39,7 @@ jobs:
 
     # Step 4: Run tests
     - name: Run tests
-      run: npm test:github  # Run npm test to execute the tests
+      run: npm run test:github  # Run npm test to execute the tests
 
     # Step 5: Upload Allure HTML report
     - name: Upload Jest HTML report
