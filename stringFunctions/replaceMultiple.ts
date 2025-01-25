@@ -6,11 +6,13 @@
  * @returns The string with all specified substrings replaced.
  */
 export function replaceMultiple(str: string, replacements: { [key: string]: string }): string {
-    let result = str;
-    for (const [searchValue, replaceValue] of Object.entries(replacements)) {
-        result = result.split(searchValue).join(replaceValue);
-    }
-    return result;
+    const escapedKeys = Object.keys(replacements).map((key) =>
+        key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') // Escape special regex characters
+    );
+    
+    const regex = new RegExp(escapedKeys.join("|"), "g");
+
+    return str.replace(regex, (match) => replacements[match]);
 }
 
 // Example usage:
