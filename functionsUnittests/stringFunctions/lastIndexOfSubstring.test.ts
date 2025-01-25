@@ -52,8 +52,8 @@ describe('lastIndexOfSubstring', () => {
     // Test case 6: Find the last index of a substring with special characters
     it('6. should find the last index of a substring with special characters', () => {
         const str: string = "hello @world! @world!";
-        const substr: string = "@world";
-        const expected: number = 13;
+        const substr: string = "@world!";
+        const expected: number = 14;
         const result: number = lastIndexOfSubstring(str, substr);
         expect(result).toBe(expected);
     });
@@ -62,7 +62,7 @@ describe('lastIndexOfSubstring', () => {
     it('7. should find the last index of a substring with numbers', () => {
         const str: string = "hello 123 world 123";
         const substr: string = "123";
-        const expected: number = 17;
+        const expected: number = 16;
         const result: number = lastIndexOfSubstring(str, substr);
         expect(result).toBe(expected);
     });
@@ -71,7 +71,7 @@ describe('lastIndexOfSubstring', () => {
     it('8. should find the last index of a substring with mixed characters', () => {
         const str: string = "a1@ b2# c3$ b2#";
         const substr: string = "b2#";
-        const expected: number = 13;
+        const expected: number = 12;
         const result: number = lastIndexOfSubstring(str, substr);
         expect(result).toBe(expected);
     });
@@ -134,7 +134,7 @@ describe('lastIndexOfSubstring', () => {
     it('15. should find the last index of a substring with punctuation', () => {
         const str: string = "hello, world! hello, world!";
         const substr: string = "world";
-        const expected: number = 20;
+        const expected: number = 21;
         const result: number = lastIndexOfSubstring(str, substr);
         expect(result).toBe(expected);
     });

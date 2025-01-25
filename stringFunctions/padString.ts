@@ -14,9 +14,13 @@ export function padString(str: string, targetLength: number, padChar: string = '
     if (padChar.length !== 1) {
         throw new Error('Pad character must be a single character');
     }
-    return str.padStart((targetLength + str.length) / 2, padChar).padEnd(targetLength, padChar);
-}
 
+    const totalPadding = targetLength - str.length;
+    const padStartLength = Math.floor(totalPadding / 2);
+    const padEndLength = totalPadding - padStartLength;
+
+    return padChar.repeat(padStartLength) + str + padChar.repeat(padEndLength);
+}
 // Example usage:
 // padString("hello", 10); // "  hello   "
 // padString("hello", 10, '*'); // "**hello***"

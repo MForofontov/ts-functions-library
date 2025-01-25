@@ -31,7 +31,7 @@ describe('getEndOfWeek', () => {
     // Test case 4: Get the end date of the week starting on Wednesday
     it('4. should return the end date of the week starting on Wednesday', () => {
         const date: Date = new Date('2023-09-19'); // Tuesday
-        const expected: Date = new Date('2023-09-26T23:59:59.999Z'); // Next Tuesday
+        const expected: Date = new Date('2023-09-19T23:59:59.999Z'); // Next Tuesday
         const result: Date = getEndOfWeek(date, 3);
         expect(result).toEqual(expected);
     });
@@ -39,7 +39,7 @@ describe('getEndOfWeek', () => {
     // Test case 5: Get the end date of the week starting on Thursday
     it('5. should return the end date of the week starting on Thursday', () => {
         const date: Date = new Date('2023-09-19'); // Tuesday
-        const expected: Date = new Date('2023-09-27T23:59:59.999Z'); // Next Wednesday
+        const expected: Date = new Date('2023-09-20T23:59:59.999Z'); // Next Wednesday
         const result: Date = getEndOfWeek(date, 4);
         expect(result).toEqual(expected);
     });
@@ -47,7 +47,7 @@ describe('getEndOfWeek', () => {
     // Test case 6: Get the end date of the week starting on Friday
     it('6. should return the end date of the week starting on Friday', () => {
         const date: Date = new Date('2023-09-19'); // Tuesday
-        const expected: Date = new Date('2023-09-28T23:59:59.999Z'); // Next Thursday
+        const expected: Date = new Date('2023-09-21T23:59:59.999Z'); // Next Thursday
         const result: Date = getEndOfWeek(date, 5);
         expect(result).toEqual(expected);
     });
@@ -55,7 +55,7 @@ describe('getEndOfWeek', () => {
     // Test case 7: Get the end date of the week starting on Saturday
     it('7. should return the end date of the week starting on Saturday', () => {
         const date: Date = new Date('2023-09-19'); // Tuesday
-        const expected: Date = new Date('2023-09-29T23:59:59.999Z'); // Next Friday
+        const expected: Date = new Date('2023-09-22T23:59:59.999Z'); // Next Friday
         const result: Date = getEndOfWeek(date, 6);
         expect(result).toEqual(expected);
     });

@@ -19,7 +19,7 @@ export function getEndOfWeek(date: Date, startOfWeek: number = 0): Date {
     const dayOfWeek = date.getDay();
 
     // Calculate the difference to the end of the week
-    const diffToEndOfWeek = (6 + startOfWeek - dayOfWeek) % 7;
+    const diffToEndOfWeek = (6 - ((dayOfWeek - startOfWeek + 7) % 7));
 
     // Calculate the end of the week date
     const endOfWeekDate = new Date(date);
@@ -30,5 +30,5 @@ export function getEndOfWeek(date: Date, startOfWeek: number = 0): Date {
 }
 
 // Example usage:
-// const date = new Date('2024-09-19');
-// getEndOfWeek(date); // Gets the Saturday of the week containing '2024-09-19'
+// const date = new Date('2023-09-19'); // Tuesday
+// console.log(getEndOfWeek(date, 4)); // Next Wednesday

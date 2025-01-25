@@ -23,7 +23,7 @@ describe('getNextOccurrence', () => {
     // Test case 3: Get the next occurrence of the same day
     it('3. should return the next occurrence of the same day', () => {
         const date: Date = new Date('2023-09-19'); // Tuesday
-        const expected: Date = new Date('2023-09-19'); // Same day
+        const expected: Date = new Date('2023-09-26'); // Next Tuesday
         const result: Date = getNextOccurrence(date, 2);
         expect(result).toEqual(expected);
     });
@@ -62,8 +62,8 @@ describe('getNextOccurrence', () => {
 
     // Test case 8: Get the next occurrence of a day with a negative year
     it('8. should return the next occurrence of a day with a negative year', () => {
-        const date: Date = new Date('-000001-01-01'); // Monday
-        const expected: Date = new Date('-000001-01-08'); // Next Monday
+        const date: Date = new Date('-000001-01-01'); // Saturday
+        const expected: Date = new Date('-000001-01-04'); // Next Monday
         const result: Date = getNextOccurrence(date, 1);
         expect(result).toEqual(expected);
     });
@@ -83,12 +83,12 @@ describe('getNextOccurrence', () => {
     // Test case 11: Get the next occurrence of a day for an invalid day value (should throw an error)
     it('11. should throw an error for an invalid day value', () => {
         const date: Date = new Date('2023-09-19');
-        expect(() => getNextOccurrence(date, 7)).toThrow('Invalid day value. It must be a number between 0 (Sunday) and 6 (Saturday).');
+        expect(() => getNextOccurrence(date, 7)).toThrow('Invalid dayOfWeek value. It must be a number between 0 (Sunday) and 6 (Saturday).');
     });
 
     // Test case 12: Get the next occurrence of a day for a NaN day value (should throw an error)
     it('12. should throw an error for a NaN day value', () => {
         const date: Date = new Date('2023-09-19');
-        expect(() => getNextOccurrence(date, NaN)).toThrow('Invalid day value. It must be a number between 0 (Sunday) and 6 (Saturday).');
+        expect(() => getNextOccurrence(date, NaN)).toThrow('Invalid dayOfWeek value. It must be a number between 0 (Sunday) and 6 (Saturday).');
     });
 });

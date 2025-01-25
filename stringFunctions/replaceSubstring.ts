@@ -7,6 +7,13 @@
  * @returns The string with all occurrences of the substring replaced.
  */
 export function replaceSubstring(str: string, searchValue: string, replaceValue: string): string {
+    if (searchValue === "") {
+        return str;
+    }
+    const index = str.indexOf(searchValue);
+    if (index === -1) {
+        return str;
+    }
     return str.split(searchValue).join(replaceValue);
 }
 

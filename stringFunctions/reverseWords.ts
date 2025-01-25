@@ -1,12 +1,14 @@
 /**
- * Reverses the order of words in a given string.
+ * Reverses the words in a string and removes trailing white spaces.
  * 
- * @param str - The string whose words need to be reversed.
- * @returns The string with the order of words reversed.
+ * @param str - The string to reverse the words in.
+ * @returns The string with the words reversed and trailing white spaces removed.
  */
 export function reverseWords(str: string): string {
     if (!str.trim()) return '';
-    return str.split(/\s+/).reverse().join(' ');
+
+    // Split the string into words, filter out empty strings, reverse the array, and join back into a string
+    return str.trim().split(/\s+/).reverse().join(' ');
 }
 
 // Example usage:

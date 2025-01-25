@@ -13,6 +13,9 @@ export function repeatUntilLength(str: string, length: number): string {
     if (length < 0) {
         throw new Error('Length must be non-negative');
     }
+    if (str.length === 0) {
+        return '';
+    }
     return (str.repeat(Math.ceil(length / str.length))).substring(0, length);
 }
 

@@ -112,6 +112,6 @@ describe('formatDate', () => {
     it('13. should throw an error for an unsupported format token', () => {
         const date: Date = new Date('2023-01-01');
         const format: string = 'YYYY-MM-DD-XYZ';
-        expect(() => formatDate(date, format)).toThrow('Unsupported format token: XYZ. Supported tokens are: YYYY, MM, DD, HH, mm, ss');
+        expect(() => formatDate(date, format)).toThrow('Unsupported format tokens: XYZ. Supported tokens are: YYYY, MM, DD, HH, mm, ss');
     });
 });

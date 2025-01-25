@@ -8,7 +8,7 @@ describe('getWeekRange', () => {
     it('1. should return the correct week range for a date with the week starting on Sunday', () => {
         const date: Date = new Date('2023-09-19'); // Tuesday
         const startOfWeek: number = 0; // Sunday
-        const expected = { start: new Date('2023-09-17'), end: new Date('2023-09-23') };
+        const expected = { start: new Date('2023-09-17'), end: new Date('2023-09-23T23:59:59.999Z') };
         const result = getWeekRange(date, startOfWeek);
         expect(result).toEqual(expected);
     });
@@ -17,7 +17,7 @@ describe('getWeekRange', () => {
     it('2. should return the correct week range for a date with the week starting on Monday', () => {
         const date: Date = new Date('2023-09-19'); // Tuesday
         const startOfWeek: number = 1; // Monday
-        const expected = { start: new Date('2023-09-18'), end: new Date('2023-09-24') };
+        const expected = { start: new Date('2023-09-18'), end: new Date('2023-09-24T23:59:59.999Z') };
         const result = getWeekRange(date, startOfWeek);
         expect(result).toEqual(expected);
     });
@@ -26,7 +26,7 @@ describe('getWeekRange', () => {
     it('3. should return the correct week range for a date with the week starting on Tuesday', () => {
         const date: Date = new Date('2023-09-19'); // Tuesday
         const startOfWeek: number = 2; // Tuesday
-        const expected = { start: new Date('2023-09-19'), end: new Date('2023-09-25') };
+        const expected = { start: new Date('2023-09-19'), end: new Date('2023-09-25T23:59:59.999Z') };
         const result = getWeekRange(date, startOfWeek);
         expect(result).toEqual(expected);
     });
@@ -35,7 +35,7 @@ describe('getWeekRange', () => {
     it('4. should return the correct week range for a date with the week starting on Wednesday', () => {
         const date: Date = new Date('2023-09-19'); // Tuesday
         const startOfWeek: number = 3; // Wednesday
-        const expected = { start: new Date('2023-09-13'), end: new Date('2023-09-19') };
+        const expected = { start: new Date('2023-09-13'), end: new Date('2023-09-19T23:59:59.999Z') };
         const result = getWeekRange(date, startOfWeek);
         expect(result).toEqual(expected);
     });
@@ -44,7 +44,7 @@ describe('getWeekRange', () => {
     it('5. should return the correct week range for a date with the week starting on Thursday', () => {
         const date: Date = new Date('2023-09-19'); // Tuesday
         const startOfWeek: number = 4; // Thursday
-        const expected = { start: new Date('2023-09-14'), end: new Date('2023-09-20') };
+        const expected = { start: new Date('2023-09-14'), end: new Date('2023-09-20T23:59:59.999Z') };
         const result = getWeekRange(date, startOfWeek);
         expect(result).toEqual(expected);
     });
@@ -53,7 +53,7 @@ describe('getWeekRange', () => {
     it('6. should return the correct week range for a date with the week starting on Friday', () => {
         const date: Date = new Date('2023-09-19'); // Tuesday
         const startOfWeek: number = 5; // Friday
-        const expected = { start: new Date('2023-09-15'), end: new Date('2023-09-21') };
+        const expected = { start: new Date('2023-09-15'), end: new Date('2023-09-21T23:59:59.999Z') };
         const result = getWeekRange(date, startOfWeek);
         expect(result).toEqual(expected);
     });
@@ -62,7 +62,7 @@ describe('getWeekRange', () => {
     it('7. should return the correct week range for a date with the week starting on Saturday', () => {
         const date: Date = new Date('2023-09-19'); // Tuesday
         const startOfWeek: number = 6; // Saturday
-        const expected = { start: new Date('2023-09-16'), end: new Date('2023-09-22') };
+        const expected = { start: new Date('2023-09-16'), end: new Date('2023-09-22T23:59:59.999Z') };
         const result = getWeekRange(date, startOfWeek);
         expect(result).toEqual(expected);
     });

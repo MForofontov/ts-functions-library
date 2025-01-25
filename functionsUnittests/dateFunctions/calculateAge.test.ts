@@ -39,7 +39,7 @@ describe('calculateAge', () => {
     // Test case 5: Calculate age for a date of birth at the end of the year
     it('5. should return the correct age for a date of birth at the end of the year', () => {
         const dob: Date = new Date('1990-12-31');
-        const expected: number = new Date().getFullYear() - 1990 - (new Date().getMonth() === 11 && new Date().getDate() < 31 ? 1 : 0);
+        const expected: number = new Date().getFullYear() - 1990 - (new Date().getMonth() < 11 || (new Date().getMonth() === 11 && new Date().getDate() < 31) ? 1 : 0);
         const result: number = calculateAge(dob);
         expect(result).toBe(expected);
     });

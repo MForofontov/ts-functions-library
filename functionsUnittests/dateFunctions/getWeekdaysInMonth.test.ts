@@ -79,7 +79,7 @@ describe('getWeekdaysInMonth', () => {
     // Test case 10: Get the number of weekdays in a month with a negative year
     it('10. should return the number of weekdays in January -000001', () => {
         const date: Date = new Date('-000001-01-01');
-        const expected: number = 22;
+        const expected: number = 21;
         const result: number = getWeekdaysInMonth(date);
         expect(result).toBe(expected);
     });

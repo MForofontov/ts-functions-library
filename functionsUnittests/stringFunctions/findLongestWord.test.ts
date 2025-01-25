@@ -31,7 +31,7 @@ describe('findLongestWord', () => {
     // Test case 4: Find the longest word in a string with numbers
     it('4. should find the longest word in a string with numbers', () => {
         const str: string = "The quick brown fox jumps over the lazy dog 12345";
-        const expected: string = "12345";
+        const expected: string = "quick";
         const result: string = findLongestWord(str);
         expect(result).toBe(expected);
     });
@@ -103,7 +103,7 @@ describe('findLongestWord', () => {
     // Test case 13: Find the longest word in a string with multiple spaces between words
     it('13. should find the longest word in a string with multiple spaces between words', () => {
         const str: string = "The   quick brown   fox jumps over the lazy dog";
-        const expected: string = "jumps";
+        const expected: string = "quick";
         const result: string = findLongestWord(str);
         expect(result).toBe(expected);
     });
@@ -111,7 +111,7 @@ describe('findLongestWord', () => {
     // Test case 14: Find the longest word in a string with mixed case
     it('14. should find the longest word in a string with mixed case', () => {
         const str: string = "The quick Brown fox jumps over the lazy dog";
-        const expected: string = "jumps";
+        const expected: string = "quick";
         const result: string = findLongestWord(str);
         expect(result).toBe(expected);
     });
@@ -119,7 +119,7 @@ describe('findLongestWord', () => {
     // Test case 15: Find the longest word in a string with punctuation
     it('15. should find the longest word in a string with punctuation', () => {
         const str: string = "The quick brown, fox jumps over the lazy dog!";
-        const expected: string = "jumps";
+        const expected: string = "quick";
         const result: string = findLongestWord(str);
         expect(result).toBe(expected);
     });
