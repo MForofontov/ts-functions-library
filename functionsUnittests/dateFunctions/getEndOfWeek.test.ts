@@ -55,7 +55,7 @@ describe('getEndOfWeek', () => {
     // Test case 7: Get the end date of the week starting on Saturday
     it('7. should return the end date of the week starting on Saturday', () => {
         const date: Date = new Date('2023-09-19'); // Tuesday
-        const expected: Date = new Date('2023-09-23T23:59:59.999Z'); // Next Friday
+        const expected: Date = new Date('2023-09-22T23:59:59.999Z'); // Next Friday
         const result: Date = getEndOfWeek(date, 6);
         expect(result).toEqual(expected);
     });
