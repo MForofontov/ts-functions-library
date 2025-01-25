@@ -62,10 +62,10 @@ module.exports = {
   },
   reporters: [
     "default", // default jest reporter
-    ['jest-html-reporter', { outputPath: '/home/ummi/Downloads/test/jest/jest.html' }], // jest html reporter
-    ['jest-allure', { outputDir: "/home/ummi/Downloads/test/jest/allure-results" },],
+    ['jest-html-reporter', { outputPath: 'jest.html' }], // jest html reporter
+    ['jest-allure', { outputDir: "allure-results" },],
   ],
   collectCoverage: true,
-  coverageDirectory: '/home/ummi/Downloads/test/jest/coverage',
+  coverageDirectory: 'coverage',
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
 };

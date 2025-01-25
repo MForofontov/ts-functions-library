@@ -39,11 +39,11 @@ jobs:
 
     # Step 4: Run tests
     - name: Run tests
-      run: npm test:github  # Run npm test to execute the tests
+      run: npm run test:github  # Run npm test to execute the tests
 
     # Step 5: Upload Allure HTML report
     - name: Upload Jest HTML report
       uses: actions/upload-artifact@v3
       with:
         name: jest-html-report  # Name of the artifact
-        path: ../allure-report  # Path to the Jest HTML report
+        path: allure-report  # Path to the Jest HTML report
