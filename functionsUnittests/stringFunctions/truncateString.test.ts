@@ -116,7 +116,7 @@ describe('truncateString', () => {
     it('13. should truncate a string with newline characters', () => {
         const str: string = "This is a long string\nwith newline characters.";
         const maxLength: number = 30;
-        const expected: string = "This is a long string\nwith...";
+        const expected: string = "This is a long string\nwith ...";
         const result: string = truncateString(str, maxLength);
         expect(result).toBe(expected);
     });
