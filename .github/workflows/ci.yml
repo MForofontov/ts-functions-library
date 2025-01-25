@@ -10,6 +10,15 @@ on:
     branches:
       - main  # Trigger on pull request to the main branch
   workflow_dispatch:  # Trigger on manual workflow dispatch
+    inputs:
+      node_version:
+        description: 'Node.js version to use'
+        required: true
+        default: '22.x'
+      upload_report:
+        description: 'Upload Allure HTML report'
+        required: true
+        default: 'true'
 
 # Define the jobs to run as part of the workflow
 jobs:
