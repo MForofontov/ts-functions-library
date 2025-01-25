@@ -9,7 +9,7 @@ export function stringToNumber(str: string): number {
     const trimmedStr = str.trim();
 
     // Use a regular expression to check if the trimmed string is a valid number
-    if (/^-?\d+(\.\d+)?$/.test(trimmedStr)) {
+    if (/^[+-]?\d+(\.\d+)?([eE][+-]?\d+)?$/.test(trimmedStr)) {
         // If the string is a valid number, convert it to a number using parseFloat
         return parseFloat(trimmedStr);
     }
