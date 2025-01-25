@@ -31,7 +31,7 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: "allure-jest/node",
   testEnvironmentOptions: {
-    resultsDir: "/home/ummi/Downloads/test/jest/allure-results",
+    resultsDir: "allure-results",
     links: {
       issue: {
         nameTemplate: "Issue #%s",
