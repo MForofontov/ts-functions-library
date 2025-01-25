@@ -53,7 +53,7 @@ describe('truncateString', () => {
     it('6. should truncate a string with special characters', () => {
         const str: string = "This is a long string with special characters @#$%^&*()!";
         const maxLength: number = 30;
-        const expected: string = "This is a long string with sp...";
+        const expected: string = "This is a long string with ...";
         const result: string = truncateString(str, maxLength);
         expect(result).toBe(expected);
     });
@@ -62,7 +62,7 @@ describe('truncateString', () => {
     it('7. should truncate a string with numbers', () => {
         const str: string = "This is a long string with numbers 1234567890.";
         const maxLength: number = 25;
-        const expected: string = "This is a long string w...";
+        const expected: string = "This is a long string ...";
         const result: string = truncateString(str, maxLength);
         expect(result).toBe(expected);
     });
@@ -71,7 +71,7 @@ describe('truncateString', () => {
     it('8. should truncate a string with mixed characters', () => {
         const str: string = "This is a long string with mixed characters a1@ B2# C3$.";
         const maxLength: number = 35;
-        const expected: string = "This is a long string with mixe...";
+        const expected: string = "This is a long string with mixed...";
         const result: string = truncateString(str, maxLength);
         expect(result).toBe(expected);
     });
@@ -80,7 +80,7 @@ describe('truncateString', () => {
     it('9. should truncate a string with leading spaces', () => {
         const str: string = "   This is a long string with leading spaces.";
         const maxLength: number = 30;
-        const expected: string = "   This is a long string wit...";
+        const expected: string = "   This is a long string wi...";
         const result: string = truncateString(str, maxLength);
         expect(result).toBe(expected);
     });
@@ -89,7 +89,7 @@ describe('truncateString', () => {
     it('10. should truncate a string with trailing spaces', () => {
         const str: string = "This is a long string with trailing spaces.   ";
         const maxLength: number = 30;
-        const expected: string = "This is a long string with tr...";
+        const expected: string = "This is a long string with ...";
         const result: string = truncateString(str, maxLength);
         expect(result).toBe(expected);
     });
@@ -98,7 +98,7 @@ describe('truncateString', () => {
     it('11. should truncate a string with both leading and trailing spaces', () => {
         const str: string = "   This is a long string with both leading and trailing spaces.   ";
         const maxLength: number = 40;
-        const expected: string = "   This is a long string with both leadin...";
+        const expected: string = "   This is a long string with both le...";
         const result: string = truncateString(str, maxLength);
         expect(result).toBe(expected);
     });
@@ -116,7 +116,7 @@ describe('truncateString', () => {
     it('13. should truncate a string with newline characters', () => {
         const str: string = "This is a long string\nwith newline characters.";
         const maxLength: number = 30;
-        const expected: string = "This is a long string\nwith n...";
+        const expected: string = "This is a long string\nwith...";
         const result: string = truncateString(str, maxLength);
         expect(result).toBe(expected);
     });
@@ -125,7 +125,7 @@ describe('truncateString', () => {
     it('14. should truncate a string with tab characters', () => {
         const str: string = "This is a long string\twith tab characters.";
         const maxLength: number = 30;
-        const expected: string = "This is a long string\twith t...";
+        const expected: string = "This is a long string\twith ...";
         const result: string = truncateString(str, maxLength);
         expect(result).toBe(expected);
     });
@@ -134,7 +134,7 @@ describe('truncateString', () => {
     it('15. should truncate a string with mixed whitespace characters', () => {
         const str: string = "This is a long string \t\n with mixed whitespace characters.";
         const maxLength: number = 35;
-        const expected: string = "This is a long string \t\n with mixe...";
+        const expected: string = "This is a long string \t\n with mi...";
         const result: string = truncateString(str, maxLength);
         expect(result).toBe(expected);
     });
