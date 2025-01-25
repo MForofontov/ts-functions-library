@@ -9,6 +9,7 @@ on:
   pull_request:
     branches:
       - main  # Trigger on pull request to the main branch
+  workflow_dispatch:  # Trigger on manual workflow dispatch
 
 # Define the jobs to run as part of the workflow
 jobs:
