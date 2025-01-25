@@ -1,6 +1,7 @@
 {
     "scripts": {
-    "test": "./run-tests.sh"
+    "test": "./run-tests.sh",
+    "test:github": "./run-tests-github.sh"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
