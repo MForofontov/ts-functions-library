@@ -9,6 +9,9 @@ export function getISOWeekDate(date: Date): string {
     if (isNaN(date.getTime())) {
         throw new Error('Invalid date');
     }
+    if (date.getFullYear() < 0) {
+        throw new Error('Negative years are not supported');
+    }
 
     // ISO week date calculation
     const tempDate = new Date(date.getTime());

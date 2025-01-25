@@ -83,12 +83,12 @@ describe('getNextOccurrence', () => {
     // Test case 11: Get the next occurrence of a day for an invalid day value (should throw an error)
     it('11. should throw an error for an invalid day value', () => {
         const date: Date = new Date('2023-09-19');
-        expect(() => getNextOccurrence(date, 7)).toThrow('Invalid day value. It must be a number between 0 (Sunday) and 6 (Saturday).');
+        expect(() => getNextOccurrence(date, 7)).toThrow('Invalid dayOfWeek value. It must be a number between 0 (Sunday) and 6 (Saturday).');
     });
 
     // Test case 12: Get the next occurrence of a day for a NaN day value (should throw an error)
     it('12. should throw an error for a NaN day value', () => {
         const date: Date = new Date('2023-09-19');
-        expect(() => getNextOccurrence(date, NaN)).toThrow('Invalid day value. It must be a number between 0 (Sunday) and 6 (Saturday).');
+        expect(() => getNextOccurrence(date, NaN)).toThrow('Invalid dayOfWeek value. It must be a number between 0 (Sunday) and 6 (Saturday).');
     });
 });
