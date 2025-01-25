@@ -98,7 +98,7 @@ describe('repeatUntilLength', () => {
     it('11. should repeat a string with mixed whitespace characters until it reaches a specified length', () => {
         const str: string = " \t\n hello \t\n ";
         const length: number = 25;
-        const expected: string = "\t\n hello \t\n \t\n hello \t\n ";
+        const expected: string = " \t\n hello \t\n  \t\n hello \t\n";
         const result: string = repeatUntilLength(str, length);
         expect(result).toBe(expected);
     });

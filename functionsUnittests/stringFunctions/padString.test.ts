@@ -74,7 +74,7 @@ describe('padString', () => {
     it('8. should pad a string with both leading and trailing spaces to a specified length with default pad character', () => {
         const str: string = "  hello  ";
         const targetLength: number = 12;
-        const expected: string = "   hello   ";
+        const expected: string = "   hello    ";
         const result: string = padString(str, targetLength);
         expect(result).toBe(expected);
     });

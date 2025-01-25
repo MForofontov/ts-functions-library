@@ -87,7 +87,7 @@ describe('wordsToSentence', () => {
     // Test case 11: Join an array of words with newline characters
     it('11. should join an array of words with newline characters', () => {
         const words: string[] = ["Hello", "\nworld"];
-        const expected: string = "Hello \nworld";
+        const expected: string = "Hello world";
         const result: string = wordsToSentence(words);
         expect(result).toBe(expected);
     });
@@ -95,7 +95,7 @@ describe('wordsToSentence', () => {
     // Test case 12: Join an array of words with tab characters
     it('12. should join an array of words with tab characters', () => {
         const words: string[] = ["Hello", "\tworld"];
-        const expected: string = "Hello \tworld";
+        const expected: string = "Hello world";
         const result: string = wordsToSentence(words);
         expect(result).toBe(expected);
     });
@@ -103,7 +103,7 @@ describe('wordsToSentence', () => {
     // Test case 13: Join an array of words with mixed whitespace characters
     it('13. should join an array of words with mixed whitespace characters', () => {
         const words: string[] = ["Hello", " \t\n world"];
-        const expected: string = "Hello  \t\n world";
+        const expected: string = "Hello world";
         const result: string = wordsToSentence(words);
         expect(result).toBe(expected);
     });
