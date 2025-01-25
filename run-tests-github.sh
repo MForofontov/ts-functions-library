@@ -28,7 +28,3 @@ npx jest
 # Generate Allure report
 echo "[INFO] Generating Allure report"
 allure generate ../allure-results --clean -o ../allure-report
-
-# Open Allure report
-echo "[INFO] Opening Allure report"
-allure open ../allure-report

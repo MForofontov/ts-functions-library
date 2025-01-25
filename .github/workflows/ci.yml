@@ -1,0 +1,49 @@
+# Name of the workflow
+name: CI
+
+# Define the events that trigger the workflow
+on:
+  push:
+    branches:
+      - main  # Trigger on push to the main branch
+  pull_request:
+    branches:
+      - main  # Trigger on pull request to the main branch
+
+# Define the jobs to run as part of the workflow
+jobs:
+  build:
+    # Specify the environment to run the job
+    runs-on: ubuntu-latest
+
+    # Define a matrix of Node.js versions to test against
+    strategy:
+      matrix:
+        node-version: [22.x]  # Test against Node.js version 22.x
+
+    # Define the steps to run in the job
+    steps:
+    # Step 1: Check out the repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Node.js
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}  # Use the Node.js version from the matrix
+
+    # Step 3: Install dependencies
+    - name: Install dependencies
+      run: npm install  # Run npm install to install dependencies
+
+    # Step 4: Run tests
+    - name: Run tests
+      run: npm test:github  # Run npm test to execute the tests
+
+    # Step 5: Upload Allure HTML report
+    - name: Upload Jest HTML report
+      uses: actions/upload-artifact@v3
+      with:
+        name: jest-html-report  # Name of the artifact
+        path: ../allure-report  # Path to the Jest HTML report
