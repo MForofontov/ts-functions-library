@@ -28,7 +28,7 @@ describe('pickKeys', () => {
     // Test case 4: Handle non-existent keys gracefully
     it('4. should handle non-existent keys gracefully', () => {
         const obj = { a: 1, b: 2 };
-        const result = pickKeys(obj, ['c']);
+        const result = pickKeys(obj, ['c'] as unknown as (keyof typeof obj)[]);
         const expected = {};
         expect(result).toEqual(expected);
     });
@@ -36,7 +36,7 @@ describe('pickKeys', () => {
     // Test case 5: Handle an empty object
     it('5. should handle an empty object', () => {
         const obj = {};
-        const result = pickKeys(obj, ['a']);
+        const result = pickKeys(obj, ['a'] as unknown as (keyof typeof obj)[]);
         const expected = {};
         expect(result).toEqual(expected);
     });
