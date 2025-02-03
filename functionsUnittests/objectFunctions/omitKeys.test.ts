@@ -56,4 +56,37 @@ describe('omitKeys', () => {
         const expected = { a: 1, c: true, e: undefined };
         expect(result).toEqual(expected);
     });
+
+    // Test case 8: Handle nested objects
+    it('8. should handle nested objects', () => {
+        const obj = { a: { x: 1 }, b: { y: 2 }, c: 3 };
+        const result = omitKeys(obj, ['a', 'b']);
+        const expected = { c: 3 };
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 9: Handle non-object input (number)
+    it('9. should throw a TypeError if input is a number', () => {
+        expect(() => omitKeys(42 as any, ['a'])).toThrow(TypeError);
+    });
+
+    // Test case 10: Handle non-object input (string)
+    it('10. should throw a TypeError if input is a string', () => {
+        expect(() => omitKeys('string' as any, ['a'])).toThrow(TypeError);
+    });
+
+    // Test case 11: Handle non-object input (boolean)
+    it('11. should throw a TypeError if input is a boolean', () => {
+        expect(() => omitKeys(true as any, ['a'])).toThrow(TypeError);
+    });
+
+    // Test case 12: Handle non-object input (null)
+    it('12. should throw a TypeError if input is null', () => {
+        expect(() => omitKeys(null as any, ['a'])).toThrow(TypeError);
+    });
+
+    // Test case 13: Handle non-object input (undefined)
+    it('13. should throw a TypeError if input is undefined', () => {
+        expect(() => omitKeys(undefined as any, ['a'])).toThrow(TypeError);
+    });
 });
