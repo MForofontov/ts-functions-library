@@ -36,7 +36,7 @@ describe('omitKeys', () => {
     // Test case 5: Handle non-existent keys gracefully
     it('5. should handle non-existent keys gracefully', () => {
         const obj = { a: 1, b: 2 };
-        const result = omitKeys(obj, ['c']);
+        const result = omitKeys(obj, ['c'] as unknown as (keyof typeof obj)[]);
         const expected = obj;
         expect(result).toEqual(expected);
     });
@@ -44,7 +44,7 @@ describe('omitKeys', () => {
     // Test case 6: Handle an empty object
     it('6. should handle an empty object', () => {
         const obj = {};
-        const result = omitKeys(obj, ['a']);
+        const result = omitKeys(obj, ['a'] as unknown as (keyof typeof obj)[]);
         const expected = {};
         expect(result).toEqual(expected);
     });
