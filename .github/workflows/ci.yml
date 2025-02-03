@@ -6,10 +6,10 @@ on:
   push:
     branches:
       - main  # Trigger on push to the main branch
-  pull_request:
+  pull_request_target:
     branches:
       - main  # Trigger on pull request to the main branch
-  workflow_dispatch:  # Trigger on manual workflow dispatch
+  workflow_dispatch:  # Allow manual triggering of the workflow
     inputs:
       node_version:
         description: 'Node.js version to use'
@@ -29,7 +29,7 @@ jobs:
     # Define a matrix of Node.js versions to test against
     strategy:
       matrix:
-        node-version: [22.x]  # Test against Node.js version 22.x
+        node-version: ${{ inputs.node_version }}  # Use the Node.js version from the inputs
 
     # Define the steps to run in the job
     steps:
@@ -47,13 +47,14 @@ jobs:
     - name: Install dependencies
       run: npm install  # Run npm install to install dependencies
 
-    # Step 4: Run tests
+    # Step 4: Run tests (conditionally)
     - name: Run tests
       run: npm run test:github  # Run npm test to execute the tests
 
-    # Step 5: Upload Allure HTML report
-    - name: Upload Jest HTML report
+    # Step 5: Upload Allure HTML report (conditionally)
+    - name: Upload Allure HTML report
+      if: ${{ inputs.upload_report == 'true' }}
       uses: actions/upload-artifact@v3
       with:
-        name: jest-html-report  # Name of the artifact
-        path: allure-report  # Path to the Jest HTML report
+        name: allure-html-report  # Name of the artifact
+        path: allure-report  # Path to the Allure HTML report
