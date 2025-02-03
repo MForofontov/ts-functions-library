@@ -36,7 +36,7 @@ describe('pickKeys', () => {
     // Test case 5: Handle an empty object
     it('5. should handle an empty object', () => {
         const obj = {};
-        const result = pickKeys(obj, ['a'] as unknown as (keyof typeof obj)[]);
+        const result = pickKeys(obj, ['a'] as (keyof typeof obj)[]);
         const expected = {};
         expect(result).toEqual(expected);
     });
@@ -47,5 +47,38 @@ describe('pickKeys', () => {
         const result = pickKeys(obj, ['b', 'd']);
         const expected = { b: 'string', d: null };
         expect(result).toEqual(expected);
+    });
+
+    // Test case 7: Handle nested objects
+    it('7. should handle nested objects', () => {
+        const obj = { a: { x: 1 }, b: { y: 2 }, c: 3 };
+        const result = pickKeys(obj, ['a', 'b']);
+        const expected = { a: { x: 1 }, b: { y: 2 } };
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 8: Handle non-object input (number)
+    it('8. should throw a TypeError if input is a number', () => {
+        expect(() => pickKeys(42 as any, ['a'])).toThrow(TypeError);
+    });
+
+    // Test case 9: Handle non-object input (string)
+    it('9. should throw a TypeError if input is a string', () => {
+        expect(() => pickKeys('string' as any, ['a'])).toThrow(TypeError);
+    });
+
+    // Test case 10: Handle non-object input (boolean)
+    it('10. should throw a TypeError if input is a boolean', () => {
+        expect(() => pickKeys(true as any, ['a'])).toThrow(TypeError);
+    });
+
+    // Test case 11: Handle non-object input (null)
+    it('11. should throw a TypeError if input is null', () => {
+        expect(() => pickKeys(null as any, ['a'])).toThrow(TypeError);
+    });
+
+    // Test case 12: Handle non-object input (undefined)
+    it('12. should throw a TypeError if input is undefined', () => {
+        expect(() => pickKeys(undefined as any, ['a'])).toThrow(TypeError);
     });
 });
