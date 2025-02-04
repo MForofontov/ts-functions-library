@@ -26,35 +26,24 @@ jobs:
     # Specify the environment to run the job
     runs-on: ubuntu-latest
 
-    # Define a matrix of Node.js versions to test against
-    strategy:
-      matrix:
-        node-version: ${{ inputs.node_version }}  # Use the Node.js version from the inputs
-
-    # Define the steps to run in the job
     steps:
-    # Step 1: Check out the repository
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    # Step 2: Set up Node.js
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}  # Use the Node.js version from the matrix
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ inputs.node_version }}  # Use the Node.js version from the inputs
 
-    # Step 3: Install dependencies
-    - name: Install dependencies
-      run: npm install  # Run npm install to install dependencies
+      - name: Install dependencies
+        run: npm install
 
-    # Step 4: Run tests (conditionally)
-    - name: Run tests
-      run: npm run test:github  # Run npm test to execute the tests
+      - name: Run tests
+        run: npm test
 
-    # Step 5: Upload Allure HTML report (conditionally)
-    - name: Upload Allure HTML report
-      if: ${{ inputs.upload_report == 'true' }}
-      uses: actions/upload-artifact@v3
-      with:
-        name: allure-html-report  # Name of the artifact
-        path: allure-report  # Path to the Allure HTML report
+      - name: Upload Allure report
+        if: ${{ github.event.inputs.upload_report == 'true' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: allure-report
+          path: allure-report
