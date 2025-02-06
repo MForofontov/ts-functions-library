@@ -1,12 +1,18 @@
 /**
  * Deeply merges two objects.
  * 
- * @param target - The target object.
- * @param source - The source object to merge into the target.
- * @returns A new object that is a deep merge of the target and source.
+ * @param {T} target - The target object.
+ * @param {U} source - The source object to merge into the target.
+ * @returns {T & U} - A new object that is a deep merge of the target and source.
+ * @throws {TypeError} - If either target or source is not an object or is null.
  */
 export function deepMerge<T extends object, U extends object>(target: T, source: U): T & U {
     const isObject = (obj: any): obj is object => obj && typeof obj === 'object';
+
+    if (!isObject(target) || !isObject(source)) {
+        throw new TypeError('Both target and source must be non-null objects');
+    }
+
     return [target, source].reduce((acc, obj) => {
         Object.keys(obj).forEach(key => {
             const targetValue = (acc as any)[key];
@@ -21,7 +27,7 @@ export function deepMerge<T extends object, U extends object>(target: T, source:
             }
         });
         return acc;
-    }, { ...target } as T & U);
+    }, { ...target } as T & U) as T & U;
 }
 
 // Example usage:
