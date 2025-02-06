@@ -1,10 +1,14 @@
 /**
  * Deep clones an object.
  * 
- * @param obj - The object to clone.
- * @returns A deep clone of the object.
+ * @param {T} obj - The object to clone.
+ * @returns {T} - A deep clone of the object.
+ * @throws {TypeError} - If the input is not an object or is null.
  */
 export function deepClone<T>(obj: T): T {
+    if (typeof obj !== 'object' || obj === null) {
+        throw new TypeError('Input must be a non-null object');
+    }
     return JSON.parse(JSON.stringify(obj));
 }
 
