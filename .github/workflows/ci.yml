@@ -43,7 +43,7 @@ jobs:
 
       - name: Upload Allure report
         if: ${{ github.event.inputs.upload_report == 'true' }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: allure-report
           path: allure-report
