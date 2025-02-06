@@ -12,7 +12,7 @@ describe('hasKey', () => {
     // Test case 2: Check if an object does not have a specific key
     it('2. should return false if the object does not have the key', () => {
         const obj = { a: 1, b: 2 };
-        const result = hasKey(obj, 'c');
+        const result = hasKey(obj, 'c' as keyof typeof obj);
         const expected = false;
         expect(result).toBe(expected);
     });
