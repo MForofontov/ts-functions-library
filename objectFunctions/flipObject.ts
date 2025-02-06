@@ -1,15 +1,19 @@
 /**
  * Flips the keys and values of an object.
  * 
- * @param obj - The object to flip.
- * @returns A new object with keys and values swapped.
+ * @param {T} obj - The object to flip.
+ * @returns {Record<string, string>} - A new object with keys and values swapped.
+ * @throws {TypeError} - If the input is not an object or is null.
  */
-export function flipObject<T extends Record<string, any>>(obj: T): Record<T[keyof T], keyof T> {
-    return Object.keys(obj).reduce((acc, key) => {
-        acc[obj[key]] = key;
+export function flipObject<T extends Record<string, any>>(obj: T): Record<string, string> {
+    if (typeof obj !== 'object' || obj === null) {
+        throw new TypeError('Input must be a non-null object');
+    }
+    return Object.keys(obj).reduce((acc: Record<string, string>, key: string) => {
+        acc[String(obj[key])] = key;
         return acc;
-    }, {} as Record<T[keyof T], keyof T>);
+    }, {});
 }
 
 // Example usage:
-// flipObject({ a: 1, b: 2 }); // { 1: "a", 2: "b" }
+// flipObject({ a: 1, b: 2 }); // { "1": "a", "2": "b" }
