@@ -37,53 +37,79 @@ describe('shallowEqual', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 5: Handle non-object input (number)
-    it('5. should throw a TypeError if the first input is a number', () => {
+    // Test case 5: Handle empty objects
+    it('5. should return true for two empty objects', () => {
+        const obj1 = {};
+        const obj2 = {};
+        const result = shallowEqual(obj1, obj2);
+        const expected = true;
+        expect(result).toBe(expected);
+    });
+
+    // Test case 6: Handle empty object and non-empty object
+    it('6. should return false for an empty object and a non-empty object', () => {
+        const obj1 = {};
+        const obj2 = { a: 1 };
+        const result = shallowEqual(obj1, obj2);
+        const expected = false;
+        expect(result).toBe(expected);
+    });
+
+    it('7. should return false for a non-empty object and an empty object', () => {
+        const obj1 = { a: 1 };
+        const obj2 = {};
+        const result = shallowEqual(obj1, obj2);
+        const expected = false;
+        expect(result).toBe(expected);
+    });
+
+    // Test case 8: Handle non-object input (number)
+    it('8. should throw a TypeError if the first input is a number', () => {
         expect(() => shallowEqual(42 as any, { a: 1 })).toThrow(TypeError);
     });
 
-    // Test case 6: Handle non-object input (string)
-    it('6. should throw a TypeError if the first input is a string', () => {
+    // Test case 9: Handle non-object input (string)
+    it('9. should throw a TypeError if the first input is a string', () => {
         expect(() => shallowEqual('string' as any, { a: 1 })).toThrow(TypeError);
     });
 
-    // Test case 7: Handle non-object input (boolean)
-    it('7. should throw a TypeError if the first input is a boolean', () => {
+    // Test case 10: Handle non-object input (boolean)
+    it('10. should throw a TypeError if the first input is a boolean', () => {
         expect(() => shallowEqual(true as any, { a: 1 })).toThrow(TypeError);
     });
 
-    // Test case 8: Handle non-object input (null)
-    it('8. should throw a TypeError if the first input is null', () => {
+    // Test case 11: Handle non-object input (null)
+    it('11. should throw a TypeError if the first input is null', () => {
         expect(() => shallowEqual(null as any, { a: 1 })).toThrow(TypeError);
     });
 
-    // Test case 9: Handle non-object input (undefined)
-    it('9. should throw a TypeError if the first input is undefined', () => {
+    // Test case 12: Handle non-object input (undefined)
+    it('12. should throw a TypeError if the first input is undefined', () => {
         expect(() => shallowEqual(undefined as any, { a: 1 })).toThrow(TypeError);
     });
 
-    // Test case 10: Handle non-object input for the second parameter (number)
-    it('10. should throw a TypeError if the second input is a number', () => {
+    // Test case 13: Handle non-object input for the second parameter (number)
+    it('13. should throw a TypeError if the second input is a number', () => {
         expect(() => shallowEqual({ a: 1 }, 42 as any)).toThrow(TypeError);
     });
 
-    // Test case 11: Handle non-object input for the second parameter (string)
-    it('11. should throw a TypeError if the second input is a string', () => {
+    // Test case 14: Handle non-object input for the second parameter (string)
+    it('14. should throw a TypeError if the second input is a string', () => {
         expect(() => shallowEqual({ a: 1 }, 'string' as any)).toThrow(TypeError);
     });
 
-    // Test case 12: Handle non-object input for the second parameter (boolean)
-    it('12. should throw a TypeError if the second input is a boolean', () => {
+    // Test case 15: Handle non-object input for the second parameter (boolean)
+    it('15. should throw a TypeError if the second input is a boolean', () => {
         expect(() => shallowEqual({ a: 1 }, true as any)).toThrow(TypeError);
     });
 
-    // Test case 13: Handle non-object input for the second parameter (null)
-    it('13. should throw a TypeError if the second input is null', () => {
+    // Test case 16: Handle non-object input for the second parameter (null)
+    it('16. should throw a TypeError if the second input is null', () => {
         expect(() => shallowEqual({ a: 1 }, null as any)).toThrow(TypeError);
     });
 
-    // Test case 14: Handle non-object input for the second parameter (undefined)
-    it('14. should throw a TypeError if the second input is undefined', () => {
+    // Test case 17: Handle non-object input for the second parameter (undefined)
+    it('17. should throw a TypeError if the second input is undefined', () => {
         expect(() => shallowEqual({ a: 1 }, undefined as any)).toThrow(TypeError);
     });
 });
