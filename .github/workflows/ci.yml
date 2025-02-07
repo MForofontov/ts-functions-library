@@ -2,9 +2,6 @@ name: CI
 
 # Define the events that trigger the workflow
 on:
-  push:
-    branches:
-      - main  # Trigger on push to the main branch
   pull_request_target:
     branches:
       - main  # Trigger on pull request to the main branch

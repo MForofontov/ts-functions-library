@@ -25,36 +25,36 @@ describe('flattenObject', () => {
         expect(result).toEqual(expected);
     });
 
-    // Test case 4: Handle non-object input (number)
-    it('4. should throw a TypeError if input is a number', () => {
-        expect(() => flattenObject(42 as any)).toThrow(TypeError);
-    });
-
-    // Test case 5: Handle non-object input (string)
-    it('5. should throw a TypeError if input is a string', () => {
-        expect(() => flattenObject('string' as any)).toThrow(TypeError);
-    });
-
-    // Test case 6: Handle non-object input (boolean)
-    it('6. should throw a TypeError if input is a boolean', () => {
-        expect(() => flattenObject(true as any)).toThrow(TypeError);
-    });
-
-    // Test case 7: Handle non-object input (null)
-    it('7. should throw a TypeError if input is null', () => {
-        expect(() => flattenObject(null as any)).toThrow(TypeError);
-    });
-
-    // Test case 8: Handle non-object input (undefined)
-    it('8. should throw a TypeError if input is undefined', () => {
-        expect(() => flattenObject(undefined as any)).toThrow(TypeError);
-    });
-
-    // Test case 9: Flatten an object with nested arrays
-    it('9. should flatten an object with nested arrays', () => {
+    // Test case 4: Flatten an object with nested arrays
+    it('4. should flatten an object with nested arrays', () => {
         const obj = { a: { b: [1, 2, { c: 3 }] } };
         const result = flattenObject(obj);
         const expected = { 'a.b.0': 1, 'a.b.1': 2, 'a.b.2.c': 3 };
         expect(result).toEqual(expected);
+    });
+
+    // Test case 5: Handle non-object input (number)
+    it('5. should throw a TypeError if input is a number', () => {
+        expect(() => flattenObject(42 as any)).toThrow(TypeError);
+    });
+
+    // Test case 6: Handle non-object input (string)
+    it('6. should throw a TypeError if input is a string', () => {
+        expect(() => flattenObject('string' as any)).toThrow(TypeError);
+    });
+
+    // Test case 7: Handle non-object input (boolean)
+    it('7. should throw a TypeError if input is a boolean', () => {
+        expect(() => flattenObject(true as any)).toThrow(TypeError);
+    });
+
+    // Test case 8: Handle non-object input (null)
+    it('8. should throw a TypeError if input is null', () => {
+        expect(() => flattenObject(null as any)).toThrow(TypeError);
+    });
+
+    // Test case 9: Handle non-object input (undefined)
+    it('9. should throw a TypeError if input is undefined', () => {
+        expect(() => flattenObject(undefined as any)).toThrow(TypeError);
     });
 });
