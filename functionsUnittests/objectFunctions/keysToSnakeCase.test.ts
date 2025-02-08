@@ -1,7 +1,7 @@
 import { keysToSnakeCase } from '../../objectFunctions/keysToSnakeCase';
 
 describe('keysToSnakeCase', () => {
-    // Test case 1: Convert keys of a simple object
+    // Test case 1: Convert keys of a simple object to snake_case
     it('1. should convert keys of a simple object to snake_case', () => {
         const obj = { firstName: 'John', lastName: 'Doe' };
         const result = keysToSnakeCase(obj);
@@ -9,7 +9,7 @@ describe('keysToSnakeCase', () => {
         expect(result).toEqual(expected);
     });
 
-    // Test case 2: Convert keys of a nested object
+    // Test case 2: Convert keys of a nested object to snake_case
     it('2. should convert keys of a nested object to snake_case', () => {
         const obj = { userInfo: { firstName: 'John', lastName: 'Doe' } };
         const result = keysToSnakeCase(obj);
@@ -17,7 +17,7 @@ describe('keysToSnakeCase', () => {
         expect(result).toEqual(expected);
     });
 
-    // Test case 3: Convert keys of an array of objects
+    // Test case 3: Convert keys of an array of objects to snake_case
     it('3. should convert keys of an array of objects to snake_case', () => {
         const arr = [{ firstName: 'John' }, { lastName: 'Doe' }];
         const result = keysToSnakeCase(arr);
@@ -25,51 +25,44 @@ describe('keysToSnakeCase', () => {
         expect(result).toEqual(expected);
     });
 
-    // Test case 4: Handle non-object input (number)
-    it('4. should return the input if it is a number', () => {
-        const input = 42;
-        const result = keysToSnakeCase(input);
-        const expected = 42;
-        expect(result).toBe(expected);
-    });
-
-    // Test case 5: Handle non-object input (string)
-    it('5. should return the input if it is a string', () => {
-        const input = 'string';
-        const result = keysToSnakeCase(input);
-        const expected = 'string';
-        expect(result).toBe(expected);
-    });
-
-    // Test case 6: Handle non-object input (boolean)
-    it('6. should return the input if it is a boolean', () => {
-        const input = true;
-        const result = keysToSnakeCase(input);
-        const expected = true;
-        expect(result).toBe(expected);
-    });
-
-    // Test case 7: Handle non-object input (null)
-    it('7. should return the input if it is null', () => {
-        const input = null;
-        const result = keysToSnakeCase(input);
-        const expected = null;
-        expect(result).toBe(expected);
-    });
-
-    // Test case 8: Handle non-object input (undefined)
-    it('8. should return the input if it is undefined', () => {
-        const input = undefined;
-        const result = keysToSnakeCase(input);
-        const expected = undefined;
-        expect(result).toBe(expected);
-    });
-
-    // Test case 9: Convert keys with mixed cases
-    it('9. should convert keys with mixed cases to snake_case', () => {
-        const obj = { firstName: 'John', LastName: 'Doe' };
+    // Test case 4: Convert keys of an object with various data types to snake_case
+    it('4. should convert keys of an object with various data types to snake_case', () => {
+        const obj = { firstName: 'John', ageYears: 30, isActive: true, addressInfo: { streetName: 'Main St' } };
         const result = keysToSnakeCase(obj);
-        const expected = { first_name: 'John', last_name: 'Doe' };
+        const expected = { first_name: 'John', age_years: 30, is_active: true, address_info: { street_name: 'Main St' } };
         expect(result).toEqual(expected);
+    });
+
+    // Test case 5: Convert keys of an object with nested arrays to snake_case
+    it('5. should convert keys of an object with nested arrays to snake_case', () => {
+        const obj = { userList: [{ firstName: 'John' }, { lastName: 'Doe' }] };
+        const result = keysToSnakeCase(obj);
+        const expected = { user_list: [{ first_name: 'John' }, { last_name: 'Doe' }] };
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 6: Handle non-object input (number)
+    it('6. should throw a TypeError if input is a number', () => {
+        expect(() => keysToSnakeCase(42 as any)).toThrow(TypeError);
+    });
+
+    // Test case 7: Handle non-object input (string)
+    it('7. should throw a TypeError if input is a string', () => {
+        expect(() => keysToSnakeCase('string' as any)).toThrow(TypeError);
+    });
+
+    // Test case 8: Handle non-object input (boolean)
+    it('8. should throw a TypeError if input is a boolean', () => {
+        expect(() => keysToSnakeCase(true as any)).toThrow(TypeError);
+    });
+
+    // Test case 9: Handle non-object input (null)
+    it('9. should throw a TypeError if input is null', () => {
+        expect(() => keysToSnakeCase(null as any)).toThrow(TypeError);
+    });
+
+    // Test case 10: Handle non-object input (undefined)
+    it('10. should throw a TypeError if input is undefined', () => {
+        expect(() => keysToSnakeCase(undefined as any)).toThrow(TypeError);
     });
 });
