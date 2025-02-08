@@ -33,28 +33,36 @@ describe('flattenObject', () => {
         expect(result).toEqual(expected);
     });
 
-    // Test case 5: Handle non-object input (number)
-    it('5. should throw a TypeError if input is a number', () => {
+    // Test case 5: Flatten an object with nested arrays
+    it('5. should flatten an object with nested arrays', () => {
+        const obj = { a: [1, [2, 3]], b: { c: [4, 5] } };
+        const result = flattenObject(obj);
+        const expected = { 'a[0]': 1, 'a[1][0]': 2, 'a[1][1]': 3, 'b.c[0]': 4, 'b.c[1]': 5 };
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 6: Handle non-object input (number)
+    it('6. should throw a TypeError if input is a number', () => {
         expect(() => flattenObject(42 as any)).toThrow(TypeError);
     });
 
-    // Test case 6: Handle non-object input (string)
-    it('6. should throw a TypeError if input is a string', () => {
+    // Test case 7: Handle non-object input (string)
+    it('7. should throw a TypeError if input is a string', () => {
         expect(() => flattenObject('string' as any)).toThrow(TypeError);
     });
 
-    // Test case 7: Handle non-object input (boolean)
-    it('7. should throw a TypeError if input is a boolean', () => {
+    // Test case 8: Handle non-object input (boolean)
+    it('8. should throw a TypeError if input is a boolean', () => {
         expect(() => flattenObject(true as any)).toThrow(TypeError);
     });
 
-    // Test case 8: Handle non-object input (null)
-    it('8. should throw a TypeError if input is null', () => {
+    // Test case 9: Handle non-object input (null)
+    it('9. should throw a TypeError if input is null', () => {
         expect(() => flattenObject(null as any)).toThrow(TypeError);
     });
 
-    // Test case 9: Handle non-object input (undefined)
-    it('9. should throw a TypeError if input is undefined', () => {
+    // Test case 10: Handle non-object input (undefined)
+    it('10. should throw a TypeError if input is undefined', () => {
         expect(() => flattenObject(undefined as any)).toThrow(TypeError);
     });
 });
