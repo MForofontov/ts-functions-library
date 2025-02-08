@@ -41,28 +41,44 @@ describe('omitKeys', () => {
         expect(result).toEqual(expected);
     });
 
-    // Test case 6: Handle non-object input (number)
-    it('6. should throw a TypeError if input is a number', () => {
+    // Test case 6: Handle empty object
+    it('6. should return an empty object if the input object is empty', () => {
+        const obj = {};
+        const result = omitKeys(obj, ['a', 'b'] as any);
+        const expected = {};
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 7: Handle empty keysToOmit array
+    it('7. should return the original object if keysToOmit is empty', () => {
+        const obj = { a: 1, b: 2, c: 3 };
+        const result = omitKeys(obj, []);
+        const expected = { a: 1, b: 2, c: 3 };
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 8: Handle non-object input (number)
+    it('8. should throw a TypeError if input is a number', () => {
         expect(() => omitKeys(42 as any, ['a'])).toThrow(TypeError);
     });
 
-    // Test case 7: Handle non-object input (string)
-    it('7. should throw a TypeError if input is a string', () => {
+    // Test case 9: Handle non-object input (string)
+    it('9. should throw a TypeError if input is a string', () => {
         expect(() => omitKeys('string' as any, ['a'])).toThrow(TypeError);
     });
 
-    // Test case 8: Handle non-object input (boolean)
-    it('8. should throw a TypeError if input is a boolean', () => {
+    // Test case 10: Handle non-object input (boolean)
+    it('10. should throw a TypeError if input is a boolean', () => {
         expect(() => omitKeys(true as any, ['a'])).toThrow(TypeError);
     });
 
-    // Test case 9: Handle non-object input (null)
-    it('9. should throw a TypeError if input is null', () => {
+    // Test case 11: Handle non-object input (null)
+    it('11. should throw a TypeError if input is null', () => {
         expect(() => omitKeys(null as any, ['a'])).toThrow(TypeError);
     });
 
-    // Test case 10: Handle non-object input (undefined)
-    it('10. should throw a TypeError if input is undefined', () => {
+    // Test case 12: Handle non-object input (undefined)
+    it('12. should throw a TypeError if input is undefined', () => {
         expect(() => omitKeys(undefined as any, ['a'])).toThrow(TypeError);
     });
 });

@@ -41,28 +41,36 @@ describe('objectToQueryString', () => {
         expect(result).toBe(expected);
     });
 
-    // Test case 6: Handle non-object input (number)
-    it('6. should throw a TypeError if input is a number', () => {
+    // Test case 6: Handle empty object
+    it('6. should return an empty string if the input object is empty', () => {
+        const obj = {};
+        const result = objectToQueryString(obj);
+        const expected = '';
+        expect(result).toBe(expected);
+    });
+
+    // Test case 7: Handle non-object input (number)
+    it('7. should throw a TypeError if input is a number', () => {
         expect(() => objectToQueryString(42 as any)).toThrow(TypeError);
     });
 
-    // Test case 7: Handle non-object input (string)
-    it('7. should throw a TypeError if input is a string', () => {
+    // Test case 8: Handle non-object input (string)
+    it('8. should throw a TypeError if input is a string', () => {
         expect(() => objectToQueryString('string' as any)).toThrow(TypeError);
     });
 
-    // Test case 8: Handle non-object input (boolean)
-    it('8. should throw a TypeError if input is a boolean', () => {
+    // Test case 9: Handle non-object input (boolean)
+    it('9. should throw a TypeError if input is a boolean', () => {
         expect(() => objectToQueryString(true as any)).toThrow(TypeError);
     });
 
-    // Test case 9: Handle non-object input (null)
-    it('9. should throw a TypeError if input is null', () => {
+    // Test case 10: Handle non-object input (null)
+    it('10. should throw a TypeError if input is null', () => {
         expect(() => objectToQueryString(null as any)).toThrow(TypeError);
     });
 
-    // Test case 10: Handle non-object input (undefined)
-    it('10. should throw a TypeError if input is undefined', () => {
+    // Test case 11: Handle non-object input (undefined)
+    it('11. should throw a TypeError if input is undefined', () => {
         expect(() => objectToQueryString(undefined as any)).toThrow(TypeError);
     });
 });
