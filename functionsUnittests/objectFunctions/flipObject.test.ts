@@ -33,28 +33,36 @@ describe('flipObject', () => {
         expect(result).toEqual(expected);
     });
 
-    // Test case 5: Handle non-object input (number)
-    it('5. should throw a TypeError if input is a number', () => {
+    // Test case 5: Flip an object with various data types
+    it('5. should flip an object with various data types', () => {
+        const obj = { a: 1, b: 'string', c: true, d: null, e: undefined, f: [1, 2, 3], g: { h: 4 } };
+        const result = flipObject(obj);
+        const expected = { '1': 'a', 'string': 'b', 'true': 'c', 'null': 'd', 'undefined': 'e', '1,2,3': 'f', '[object Object]': 'g' };
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 6: Handle non-object input (number)
+    it('6. should throw a TypeError if input is a number', () => {
         expect(() => flipObject(42 as any)).toThrow(TypeError);
     });
 
-    // Test case 6: Handle non-object input (string)
-    it('6. should throw a TypeError if input is a string', () => {
+    // Test case 7: Handle non-object input (string)
+    it('7. should throw a TypeError if input is a string', () => {
         expect(() => flipObject('string' as any)).toThrow(TypeError);
     });
 
-    // Test case 7: Handle non-object input (boolean)
-    it('7. should throw a TypeError if input is a boolean', () => {
+    // Test case 8: Handle non-object input (boolean)
+    it('8. should throw a TypeError if input is a boolean', () => {
         expect(() => flipObject(true as any)).toThrow(TypeError);
     });
 
-    // Test case 8: Handle non-object input (null)
-    it('8. should throw a TypeError if input is null', () => {
+    // Test case 9: Handle non-object input (null)
+    it('9. should throw a TypeError if input is null', () => {
         expect(() => flipObject(null as any)).toThrow(TypeError);
     });
 
-    // Test case 9: Handle non-object input (undefined)
-    it('9. should throw a TypeError if input is undefined', () => {
+    // Test case 10: Handle non-object input (undefined)
+    it('10. should throw a TypeError if input is undefined', () => {
         expect(() => flipObject(undefined as any)).toThrow(TypeError);
     });
 });
