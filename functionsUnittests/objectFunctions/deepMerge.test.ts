@@ -37,53 +37,64 @@ describe('deepMerge', () => {
         expect(result).toEqual(expected);
     });
 
-    // Test case 5: Handle non-object input for the target (number)
-    it('5. should throw a TypeError if the target is a number', () => {
+    // Test case 5: Deep merge with symbols
+    it('5. should deeply merge objects with symbols', () => {
+        const sym1 = Symbol('sym1');
+        const sym2 = Symbol('sym2');
+        const target = { [sym1]: 1 };
+        const source = { [sym2]: 2 };
+        const result = deepMerge(target, source);
+        const expected = { [sym1]: 1, [sym2]: 2 };
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 6: Handle non-object input for the target (number)
+    it('6. should throw a TypeError if the target is a number', () => {
         expect(() => deepMerge(42 as any, { a: 1 })).toThrow(TypeError);
     });
 
-    // Test case 6: Handle non-object input for the target (string)
-    it('6. should throw a TypeError if the target is a string', () => {
+    // Test case 7: Handle non-object input for the target (string)
+    it('7. should throw a TypeError if the target is a string', () => {
         expect(() => deepMerge('string' as any, { a: 1 })).toThrow(TypeError);
     });
 
-    // Test case 7: Handle non-object input for the target (boolean)
-    it('7. should throw a TypeError if the target is a boolean', () => {
+    // Test case 8: Handle non-object input for the target (boolean)
+    it('8. should throw a TypeError if the target is a boolean', () => {
         expect(() => deepMerge(true as any, { a: 1 })).toThrow(TypeError);
     });
 
-    // Test case 8: Handle non-object input for the target (null)
-    it('8. should throw a TypeError if the target is null', () => {
+    // Test case 9: Handle non-object input for the target (null)
+    it('9. should throw a TypeError if the target is null', () => {
         expect(() => deepMerge(null as any, { a: 1 })).toThrow(TypeError);
     });
 
-    // Test case 9: Handle non-object input for the target (undefined)
-    it('9. should throw a TypeError if the target is undefined', () => {
+    // Test case 10: Handle non-object input for the target (undefined)
+    it('10. should throw a TypeError if the target is undefined', () => {
         expect(() => deepMerge(undefined as any, { a: 1 })).toThrow(TypeError);
     });
 
-    // Test case 10: Handle non-object input for the source (number)
-    it('10. should throw a TypeError if the source is a number', () => {
+    // Test case 11: Handle non-object input for the source (number)
+    it('11. should throw a TypeError if the source is a number', () => {
         expect(() => deepMerge({ a: 1 }, 42 as any)).toThrow(TypeError);
     });
 
-    // Test case 11: Handle non-object input for the source (string)
-    it('11. should throw a TypeError if the source is a string', () => {
+    // Test case 12: Handle non-object input for the source (string)
+    it('12. should throw a TypeError if the source is a string', () => {
         expect(() => deepMerge({ a: 1 }, 'string' as any)).toThrow(TypeError);
     });
 
-    // Test case 12: Handle non-object input for the source (boolean)
-    it('12. should throw a TypeError if the source is a boolean', () => {
+    // Test case 13: Handle non-object input for the source (boolean)
+    it('13. should throw a TypeError if the source is a boolean', () => {
         expect(() => deepMerge({ a: 1 }, true as any)).toThrow(TypeError);
     });
 
-    // Test case 13: Handle non-object input for the source (null)
-    it('13. should throw a TypeError if the source is null', () => {
+    // Test case 14: Handle non-object input for the source (null)
+    it('14. should throw a TypeError if the source is null', () => {
         expect(() => deepMerge({ a: 1 }, null as any)).toThrow(TypeError);
     });
 
-    // Test case 14: Handle non-object input for the source (undefined)
-    it('14. should throw a TypeError if the source is undefined', () => {
+    // Test case 15: Handle non-object input for the source (undefined)
+    it('15. should throw a TypeError if the source is undefined', () => {
         expect(() => deepMerge({ a: 1 }, undefined as any)).toThrow(TypeError);
     });
 });
