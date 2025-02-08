@@ -28,53 +28,71 @@ describe('applyDefaults', () => {
         expect(result).toEqual(expected);
     });
 
-    // Test case 4: Handle non-object input for the first parameter (number)
-    it('4. should throw a TypeError if the first input is a number', () => {
+    // Test case 4: Handle empty defaults
+    it('4. should return the input object if defaults are empty', () => {
+        const obj = { a: 1, b: 2 };
+        const defaults = {};
+        const result = applyDefaults(obj, defaults);
+        const expected = { a: 1, b: 2 };
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 5: Handle both input objects being empty
+    it('5. should return an empty object if both inputs are empty', () => {
+        const obj = {};
+        const defaults = {};
+        const result = applyDefaults(obj, defaults);
+        const expected = {};
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 6: Handle non-object input for the first parameter (number)
+    it('6. should throw a TypeError if the first input is a number', () => {
         expect(() => applyDefaults(42 as any, { a: 1 })).toThrow(TypeError);
     });
 
-    // Test case 5: Handle non-object input for the first parameter (string)
-    it('5. should throw a TypeError if the first input is a string', () => {
+    // Test case 7: Handle non-object input for the first parameter (string)
+    it('7. should throw a TypeError if the first input is a string', () => {
         expect(() => applyDefaults('string' as any, { a: 1 })).toThrow(TypeError);
     });
 
-    // Test case 6: Handle non-object input for the first parameter (boolean)
-    it('6. should throw a TypeError if the first input is a boolean', () => {
+    // Test case 8: Handle non-object input for the first parameter (boolean)
+    it('8. should throw a TypeError if the first input is a boolean', () => {
         expect(() => applyDefaults(true as any, { a: 1 })).toThrow(TypeError);
     });
 
-    // Test case 7: Handle non-object input for the first parameter (null)
-    it('7. should throw a TypeError if the first input is null', () => {
+    // Test case 9: Handle non-object input for the first parameter (null)
+    it('9. should throw a TypeError if the first input is null', () => {
         expect(() => applyDefaults(null as any, { a: 1 })).toThrow(TypeError);
     });
 
-    // Test case 8: Handle non-object input for the first parameter (undefined)
-    it('8. should throw a TypeError if the first input is undefined', () => {
+    // Test case 10: Handle non-object input for the first parameter (undefined)
+    it('10. should throw a TypeError if the first input is undefined', () => {
         expect(() => applyDefaults(undefined as any, { a: 1 })).toThrow(TypeError);
     });
 
-    // Test case 9: Handle non-object input for the second parameter (number)
-    it('9. should throw a TypeError if the second input is a number', () => {
+    // Test case 11: Handle non-object input for the second parameter (number)
+    it('11. should throw a TypeError if the second input is a number', () => {
         expect(() => applyDefaults({ a: 1 }, 42 as any)).toThrow(TypeError);
     });
 
-    // Test case 10: Handle non-object input for the second parameter (string)
-    it('10. should throw a TypeError if the second input is a string', () => {
+    // Test case 12: Handle non-object input for the second parameter (string)
+    it('12. should throw a TypeError if the second input is a string', () => {
         expect(() => applyDefaults({ a: 1 }, 'string' as any)).toThrow(TypeError);
     });
 
-    // Test case 11: Handle non-object input for the second parameter (boolean)
-    it('11. should throw a TypeError if the second input is a boolean', () => {
+    // Test case 13: Handle non-object input for the second parameter (boolean)
+    it('13. should throw a TypeError if the second input is a boolean', () => {
         expect(() => applyDefaults({ a: 1 }, true as any)).toThrow(TypeError);
     });
 
-    // Test case 12: Handle non-object input for the second parameter (null)
-    it('12. should throw a TypeError if the second input is null', () => {
+    // Test case 14: Handle non-object input for the second parameter (null)
+    it('14. should throw a TypeError if the second input is null', () => {
         expect(() => applyDefaults({ a: 1 }, null as any)).toThrow(TypeError);
     });
 
-    // Test case 13: Handle non-object input for the second parameter (undefined)
-    it('13. should throw a TypeError if the second input is undefined', () => {
+    // Test case 15: Handle non-object input for the second parameter (undefined)
+    it('15. should throw a TypeError if the second input is undefined', () => {
         expect(() => applyDefaults({ a: 1 }, undefined as any)).toThrow(TypeError);
     });
 });

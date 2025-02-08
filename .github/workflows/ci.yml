@@ -35,7 +35,7 @@ jobs:
         run: npm install
 
       - name: Run tests
-        run: npm test:github"
+        run: npm test:github
 
       - name: Upload Allure report
         if: ${{ github.event.inputs.upload_report == 'true' }}
