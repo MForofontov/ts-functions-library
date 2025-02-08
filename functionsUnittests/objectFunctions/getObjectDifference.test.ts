@@ -21,8 +21,8 @@ describe('getObjectDifference', () => {
 
     // Test case 3: Get difference between two objects with different keys
     it('3. should return the difference for objects with different keys', () => {
-        const obj1 = { a: 1, b: 2 };
-        const obj2 = { a: 1, c: 3 };
+        const obj1 = { a: 1, b: 2 } as { [key: string]: number };
+        const obj2 = { a: 1, c: 3 } as { [key: string]: number };
         const result = getObjectDifference(obj1, obj2);
         const expected = { b: 2 };
         expect(result).toEqual(expected);
