@@ -1,17 +1,17 @@
 import { getObjectDifference } from '../../objectFunctions/getObjectDifference';
 
 describe('getObjectDifference', () => {
-    // Test case 1: Get difference between two objects with different values
-    it('1. should return the difference between two objects with different values', () => {
+    // Test case 1: Compute difference between two simple objects
+    it('1. should compute difference between two simple objects', () => {
         const obj1 = { a: 1, b: 2, c: 3 };
-        const obj2 = { a: 1, b: 3, c: 3 };
+        const obj2 = { a: 1, b: 4, d: 5 };
         const result = getObjectDifference(obj1, obj2);
-        const expected = { b: 2 };
+        const expected = { b: 4, c: undefined, d: 5 };
         expect(result).toEqual(expected);
     });
 
-    // Test case 2: Get difference between two identical objects
-    it('2. should return an empty object for two identical objects', () => {
+    // Test case 2: Compute difference when objects are identical
+    it('2. should return an empty object when objects are identical', () => {
         const obj1 = { a: 1, b: 2, c: 3 };
         const obj2 = { a: 1, b: 2, c: 3 };
         const result = getObjectDifference(obj1, obj2);
@@ -19,62 +19,80 @@ describe('getObjectDifference', () => {
         expect(result).toEqual(expected);
     });
 
-    // Test case 3: Get difference between two objects with different keys
-    it('3. should return the difference for objects with different keys', () => {
-        const obj1 = { a: 1, b: 2 } as { [key: string]: number };
-        const obj2 = { a: 1, c: 3 } as { [key: string]: number };
+    // Test case 3: Compute difference with nested objects
+    it('3. should compute difference with nested objects', () => {
+        const obj1 = { a: 1, b: { x: 2, y: 3 }, c: 3 };
+        const obj2 = { a: 1, b: { x: 2, y: 4 }, d: 5 };
         const result = getObjectDifference(obj1, obj2);
-        const expected = { b: 2 };
+        const expected = { b: { x: 2, y: 4 }, c: undefined, d: 5 };
         expect(result).toEqual(expected);
     });
 
-    // Test case 4: Handle non-object input (number)
-    it('4. should throw a TypeError if the first input is a number', () => {
+    // Test case 4: Compute difference with arrays
+    it('4. should compute difference with arrays', () => {
+        const obj1 = { a: [1, 2, 3], b: 2 };
+        const obj2 = { a: [1, 2, 4], b: 2 };
+        const result = getObjectDifference(obj1, obj2);
+        const expected = { a: [1, 2, 4] };
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 5: Compute difference with various data types
+    it('5. should compute difference with various data types', () => {
+        const obj1 = { a: 1, b: 'string', c: true, d: null, e: undefined, f: [1, 2, 3], g: { h: 4 } };
+        const obj2 = { a: 2, b: 'new string', c: false, d: 'not null', e: 'defined', f: [4, 5], g: { i: 5 } };
+        const result = getObjectDifference(obj1, obj2);
+        const expected = { a: 2, b: 'new string', c: false, d: 'not null', e: 'defined', f: [4, 5], g: { i: 5 } };
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 6: Handle non-object input (number)
+    it('6. should throw a TypeError if the first input is a number', () => {
         expect(() => getObjectDifference(42 as any, { a: 1 })).toThrow(TypeError);
     });
 
-    // Test case 5: Handle non-object input (string)
-    it('5. should throw a TypeError if the first input is a string', () => {
+    // Test case 7: Handle non-object input (string)
+    it('7. should throw a TypeError if the first input is a string', () => {
         expect(() => getObjectDifference('string' as any, { a: 1 })).toThrow(TypeError);
     });
 
-    // Test case 6: Handle non-object input (boolean)
-    it('6. should throw a TypeError if the first input is a boolean', () => {
+    // Test case 8: Handle non-object input (boolean)
+    it('8. should throw a TypeError if the first input is a boolean', () => {
         expect(() => getObjectDifference(true as any, { a: 1 })).toThrow(TypeError);
     });
 
-    // Test case 7: Handle non-object input (null)
-    it('7. should throw a TypeError if the first input is null', () => {
+    // Test case 9: Handle non-object input (null)
+    it('9. should throw a TypeError if the first input is null', () => {
         expect(() => getObjectDifference(null as any, { a: 1 })).toThrow(TypeError);
     });
 
-    // Test case 8: Handle non-object input (undefined)
-    it('8. should throw a TypeError if the first input is undefined', () => {
+    // Test case 10: Handle non-object input (undefined)
+    it('10. should throw a TypeError if the first input is undefined', () => {
         expect(() => getObjectDifference(undefined as any, { a: 1 })).toThrow(TypeError);
     });
 
-    // Test case 9: Handle non-object input for the second parameter (number)
-    it('9. should throw a TypeError if the second input is a number', () => {
+    // Test case 11: Handle non-object input for the second parameter (number)
+    it('11. should throw a TypeError if the second input is a number', () => {
         expect(() => getObjectDifference({ a: 1 }, 42 as any)).toThrow(TypeError);
     });
 
-    // Test case 10: Handle non-object input for the second parameter (string)
-    it('10. should throw a TypeError if the second input is a string', () => {
+    // Test case 12: Handle non-object input for the second parameter (string)
+    it('12. should throw a TypeError if the second input is a string', () => {
         expect(() => getObjectDifference({ a: 1 }, 'string' as any)).toThrow(TypeError);
     });
 
-    // Test case 11: Handle non-object input for the second parameter (boolean)
-    it('11. should throw a TypeError if the second input is a boolean', () => {
+    // Test case 13: Handle non-object input for the second parameter (boolean)
+    it('13. should throw a TypeError if the second input is a boolean', () => {
         expect(() => getObjectDifference({ a: 1 }, true as any)).toThrow(TypeError);
     });
 
-    // Test case 12: Handle non-object input for the second parameter (null)
-    it('12. should throw a TypeError if the second input is null', () => {
+    // Test case 14: Handle non-object input for the second parameter (null)
+    it('14. should throw a TypeError if the second input is null', () => {
         expect(() => getObjectDifference({ a: 1 }, null as any)).toThrow(TypeError);
     });
 
-    // Test case 13: Handle non-object input for the second parameter (undefined)
-    it('13. should throw a TypeError if the second input is undefined', () => {
+    // Test case 15: Handle non-object input for the second parameter (undefined)
+    it('15. should throw a TypeError if the second input is undefined', () => {
         expect(() => getObjectDifference({ a: 1 }, undefined as any)).toThrow(TypeError);
     });
 });
