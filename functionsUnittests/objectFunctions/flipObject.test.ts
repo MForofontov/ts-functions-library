@@ -3,58 +3,58 @@ import { flipObject } from '../../objectFunctions/flipObject';
 describe('flipObject', () => {
     // Test case 1: Flip a simple object
     it('1. should flip a simple object', () => {
-        const obj = { a: 1, b: 2 };
+        const obj = { a: 1, b: 2, c: 3 };
         const result = flipObject(obj);
-        const expected = { "1": 'a', "2": 'b' };
+        const expected = { '1': 'a', '2': 'b', '3': 'c' };
         expect(result).toEqual(expected);
     });
 
-    // Test case 2: Flip an object with string values
-    it('2. should flip an object with string values', () => {
-        const obj = { a: 'x', b: 'y' };
+    // Test case 2: Flip an object with arrays as values
+    it('2. should flip an object with arrays as values', () => {
+        const obj = { a: [1, 2], b: [3, 4] };
         const result = flipObject(obj);
-        const expected = { x: 'a', y: 'b' };
+        const expected = { '1,2': 'a', '3,4': 'b' };
         expect(result).toEqual(expected);
     });
 
-    // Test case 3: Flip an object with mixed types of values
-    it('3. should flip an object with mixed types of values', () => {
-        const obj = { a: 1, b: 'x', c: true };
+    // Test case 3: Flip an object with non-unique values
+    it('3. should handle non-unique values by keeping the last key', () => {
+        const obj = { a: 1, b: 1, c: 2 };
         const result = flipObject(obj);
-        const expected = { "1": 'a', x: 'b', "true": 'c' };
+        const expected = { '1': 'b', '2': 'c' };
         expect(result).toEqual(expected);
     });
 
-    // Test case 4: Handle an empty object
-    it('4. should handle an empty object', () => {
-        const obj = {};
-        const result = flipObject(obj);
-        const expected = {};
-        expect(result).toEqual(expected);
-    });
-
-    // Test case 5: Handle non-object input (number)
-    it('5. should throw a TypeError if input is a number', () => {
+    // Test case 4: Handle non-object input (number)
+    it('4. should throw a TypeError if input is a number', () => {
         expect(() => flipObject(42 as any)).toThrow(TypeError);
     });
 
-    // Test case 6: Handle non-object input (string)
-    it('6. should throw a TypeError if input is a string', () => {
+    // Test case 5: Handle non-object input (string)
+    it('5. should throw a TypeError if input is a string', () => {
         expect(() => flipObject('string' as any)).toThrow(TypeError);
     });
 
-    // Test case 7: Handle non-object input (boolean)
-    it('7. should throw a TypeError if input is a boolean', () => {
+    // Test case 6: Handle non-object input (boolean)
+    it('6. should throw a TypeError if input is a boolean', () => {
         expect(() => flipObject(true as any)).toThrow(TypeError);
     });
 
-    // Test case 8: Handle non-object input (null)
-    it('8. should throw a TypeError if input is null', () => {
+    // Test case 7: Handle non-object input (null)
+    it('7. should throw a TypeError if input is null', () => {
         expect(() => flipObject(null as any)).toThrow(TypeError);
     });
 
-    // Test case 9: Handle non-object input (undefined)
-    it('9. should throw a TypeError if input is undefined', () => {
+    // Test case 8: Handle non-object input (undefined)
+    it('8. should throw a TypeError if input is undefined', () => {
         expect(() => flipObject(undefined as any)).toThrow(TypeError);
+    });
+
+    // Test case 9: Flip an object with nested objects
+    it('9. should handle nested objects by converting them to strings', () => {
+        const obj = { a: { b: 1 }, c: { d: 2 } };
+        const result = flipObject(obj);
+        const expected = { '[object Object]': 'c' }; // Last key wins
+        expect(result).toEqual(expected);
     });
 });
