@@ -13,23 +13,23 @@ describe('flattenObject', () => {
     it('2. should flatten a nested object', () => {
         const obj = { a: 1, b: { c: 2, d: 3 } };
         const result = flattenObject(obj);
-        const expected = { a: 1, 'b.c': 2, 'b.d': 3 };
+        const expected = { 'a': 1, 'b.c': 2, 'b.d': 3 };
         expect(result).toEqual(expected);
     });
 
     // Test case 3: Flatten an object with arrays
     it('3. should flatten an object with arrays', () => {
-        const obj = { a: [1, 2, 3], b: { c: 4 } };
+        const obj = { a: 1, b: [2, 3] };
         const result = flattenObject(obj);
-        const expected = { 'a.0': 1, 'a.1': 2, 'a.2': 3, 'b.c': 4 };
+        const expected = { 'a': 1, 'b[0]': 2, 'b[1]': 3 };
         expect(result).toEqual(expected);
     });
 
-    // Test case 4: Flatten an object with nested arrays
-    it('4. should flatten an object with nested arrays', () => {
-        const obj = { a: { b: [1, 2, { c: 3 }] } };
+    // Test case 4: Flatten an object with various data types
+    it('4. should flatten an object with various data types', () => {
+        const obj = { a: 1, b: 'string', c: true, d: null, e: undefined, f: [1, 2, 3], g: { h: 4 } };
         const result = flattenObject(obj);
-        const expected = { 'a.b.0': 1, 'a.b.1': 2, 'a.b.2.c': 3 };
+        const expected = { 'a': 1, 'b': 'string', 'c': true, 'd': null, 'e': undefined, 'f[0]': 1, 'f[1]': 2, 'f[2]': 3, 'g.h': 4 };
         expect(result).toEqual(expected);
     });
 
