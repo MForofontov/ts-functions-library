@@ -1,18 +1,22 @@
 /**
- * Serializes an object into a query string.
+ * Converts an object to a query string.
  * 
- * @param {Record<string, any>} obj - The object to serialize.
- * @returns {string} - A query string representing the object.
- * @throws {TypeError} - If the input is not an object or is null.
+ * This function takes an object and converts it to a URL-encoded query string.
+ * 
+ * @param {Record<string, any>} obj - The object to convert.
+ * @returns {string} - A URL-encoded query string.
+ * @throws {TypeError} - If the input is not a non-null object.
+ * 
+ * @example
+ * const obj = { name: 'John Doe', age: 30 };
+ * const result = objectToQueryString(obj);
+ * // result: 'name=John%20Doe&age=30'
  */
 export function objectToQueryString(obj: Record<string, any>): string {
     if (typeof obj !== 'object' || obj === null) {
         throw new TypeError('Input must be a non-null object');
     }
-    return '?' + Object.keys(obj)
-        .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`)
+    return Object.entries(obj)
+        .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
         .join('&');
 }
-
-// Example usage:
-// objectToQueryString({ name: 'John', age: 30 }); // "?name=John&age=30"
