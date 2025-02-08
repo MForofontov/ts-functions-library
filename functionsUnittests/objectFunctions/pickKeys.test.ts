@@ -1,59 +1,59 @@
 import { pickKeys } from '../../objectFunctions/pickKeys';
 
 describe('pickKeys', () => {
-    // Test case 1: Pick a single key from the object
-    it('1. should pick a single key from the object', () => {
+    // Test case 1: Pick specified keys from a simple object
+    it('1. should pick specified keys from a simple object', () => {
         const obj = { a: 1, b: 2, c: 3 };
+        const result = pickKeys(obj, ['b', 'c']);
+        const expected = { b: 2, c: 3 };
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 2: Pick keys that do not exist in the object
+    it('2. should return an empty object if keys to pick do not exist', () => {
+        const obj = { a: 1, b: 2, c: 3 };
+        const result = pickKeys(obj, ['d', 'e'] as any);
+        const expected = {};
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 3: Pick keys from a nested object
+    it('3. should pick keys from a nested object', () => {
+        const obj = { a: 1, b: { x: 2, y: 3 }, c: 3 };
         const result = pickKeys(obj, ['b']);
-        const expected = { b: 2 };
+        const expected = { b: { x: 2, y: 3 } };
         expect(result).toEqual(expected);
     });
 
-    // Test case 2: Pick multiple keys from the object
-    it('2. should pick multiple keys from the object', () => {
-        const obj = { a: 1, b: 2, c: 3, d: 4 };
-        const result = pickKeys(obj, ['b', 'd']);
-        const expected = { b: 2, d: 4 };
+    // Test case 4: Pick keys from an object with various data types
+    it('4. should pick keys from an object with various data types', () => {
+        const obj = { a: 1, b: 'string', c: true, d: null, e: undefined, f: [1, 2, 3], g: { h: 4 } };
+        const result = pickKeys(obj, ['b', 'd', 'f']);
+        const expected = { b: 'string', d: null, f: [1, 2, 3] };
         expect(result).toEqual(expected);
     });
 
-    // Test case 3: Return an empty object if no keys are picked
-    it('3. should return an empty object if no keys are picked', () => {
+    // Test case 5: Pick all keys from an object
+    it('5. should return the original object if all keys are picked', () => {
+        const obj = { a: 1, b: 2, c: 3 };
+        const result = pickKeys(obj, ['a', 'b', 'c']);
+        const expected = { a: 1, b: 2, c: 3 };
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 6: Handle empty object
+    it('6. should return an empty object if the input object is empty', () => {
+        const obj = {};
+        const result = pickKeys(obj, ['a', 'b'] as any);
+        const expected = {};
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 7: Handle empty keysToPick array
+    it('7. should return an empty object if keysToPick is empty', () => {
         const obj = { a: 1, b: 2, c: 3 };
         const result = pickKeys(obj, []);
         const expected = {};
-        expect(result).toEqual(expected);
-    });
-
-    // Test case 4: Handle non-existent keys gracefully
-    it('4. should handle non-existent keys gracefully', () => {
-        const obj = { a: 1, b: 2 };
-        const result = pickKeys(obj, ['c'] as unknown as (keyof typeof obj)[]);
-        const expected = {};
-        expect(result).toEqual(expected);
-    });
-
-    // Test case 5: Handle an empty object
-    it('5. should handle an empty object', () => {
-        const obj = {};
-        const result = pickKeys(obj, ['a'] as (keyof typeof obj)[]);
-        const expected = {};
-        expect(result).toEqual(expected);
-    });
-
-    // Test case 6: Handle objects with different types of values
-    it('6. should handle objects with different types of values', () => {
-        const obj = { a: 1, b: 'string', c: true, d: null, e: undefined };
-        const result = pickKeys(obj, ['b', 'd']);
-        const expected = { b: 'string', d: null };
-        expect(result).toEqual(expected);
-    });
-
-    // Test case 7: Handle nested objects
-    it('7. should handle nested objects', () => {
-        const obj = { a: { x: 1 }, b: { y: 2 }, c: 3 };
-        const result = pickKeys(obj, ['a', 'b']);
-        const expected = { a: { x: 1 }, b: { y: 2 } };
         expect(result).toEqual(expected);
     });
 
