@@ -18,7 +18,7 @@ export function keysToCamelCase(obj: any): any {
     } else if (obj !== null && typeof obj === 'object') {
         return Object.fromEntries(
             Object.entries(obj).map(([key, value]) => [
-                key.replace(/([-_][a-z])/g, group => group.toUpperCase().replace('-', '').replace('_', '')),
+                typeof key === 'string' ? key.replace(/([-_][a-z])/g, group => group.toUpperCase().replace('-', '').replace('_', '')) : key,
                 keysToCamelCase(value)
             ])
         );

@@ -41,28 +41,36 @@ describe('keysToSnakeCase', () => {
         expect(result).toEqual(expected);
     });
 
-    // Test case 6: Handle non-object input (number)
-    it('6. should throw a TypeError if input is a number', () => {
+    // Test case 6: Handle keys that are numbers
+    it('6. should handle keys that are numbers', () => {
+        const obj = { 1: 'one', 2: 'two' };
+        const result = keysToSnakeCase(obj);
+        const expected = { 1: 'one', 2: 'two' };
+        expect(result).toEqual(expected);
+    });
+
+    // Test case 7: Handle non-object input (number)
+    it('7. should throw a TypeError if input is a number', () => {
         expect(() => keysToSnakeCase(42 as any)).toThrow(TypeError);
     });
 
-    // Test case 7: Handle non-object input (string)
-    it('7. should throw a TypeError if input is a string', () => {
+    // Test case 8: Handle non-object input (string)
+    it('8. should throw a TypeError if input is a string', () => {
         expect(() => keysToSnakeCase('string' as any)).toThrow(TypeError);
     });
 
-    // Test case 8: Handle non-object input (boolean)
-    it('8. should throw a TypeError if input is a boolean', () => {
+    // Test case 9: Handle non-object input (boolean)
+    it('9. should throw a TypeError if input is a boolean', () => {
         expect(() => keysToSnakeCase(true as any)).toThrow(TypeError);
     });
 
-    // Test case 9: Handle non-object input (null)
-    it('9. should throw a TypeError if input is null', () => {
+    // Test case 10: Handle non-object input (null)
+    it('10. should throw a TypeError if input is null', () => {
         expect(() => keysToSnakeCase(null as any)).toThrow(TypeError);
     });
 
-    // Test case 10: Handle non-object input (undefined)
-    it('10. should throw a TypeError if input is undefined', () => {
+    // Test case 11: Handle non-object input (undefined)
+    it('11. should throw a TypeError if input is undefined', () => {
         expect(() => keysToSnakeCase(undefined as any)).toThrow(TypeError);
     });
 });

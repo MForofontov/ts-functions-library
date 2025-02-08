@@ -18,7 +18,7 @@ export function keysToSnakeCase(obj: any): any {
     } else if (obj !== null && typeof obj === 'object') {
         return Object.fromEntries(
             Object.entries(obj).map(([key, value]) => [
-                key.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`),
+                typeof key === 'string' ? key.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`) : key,
                 keysToSnakeCase(value)
             ])
         );
