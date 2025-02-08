@@ -11,7 +11,7 @@ describe('hasKey', () => {
     // Test case 2: Check if a simple object does not have a key
     it('2. should return false if the object does not have the key', () => {
         const obj = { a: 1, b: 2, c: 3 };
-        const result = hasKey(obj, 'd' as keyof typeof obj);
+        const result = hasKey(obj, 'd');
         expect(result).toBe(false);
     });
 
@@ -25,21 +25,21 @@ describe('hasKey', () => {
     // Test case 4: Check if a nested object does not have a key
     it('4. should return false if a nested object does not have the key', () => {
         const obj = { a: 1, b: { c: 2, d: 3 } };
-        const result = hasKey(obj, 'c' as keyof typeof obj);
+        const result = hasKey(obj, 'c');
         expect(result).toBe(false);
     });
 
     // Test case 5: Check if an array has a key
     it('5. should return true if an array has the key', () => {
         const arr = [1, 2, 3];
-        const result = hasKey(arr, '0' as keyof typeof arr);
+        const result = hasKey(arr, '0');
         expect(result).toBe(true);
     });
 
     // Test case 6: Check if an array does not have a key
     it('6. should return false if an array does not have the key', () => {
         const arr = [1, 2, 3];
-        const result = hasKey(arr, '3' as keyof typeof arr);
+        const result = hasKey(arr, '3');
         expect(result).toBe(false);
     });
 
@@ -53,7 +53,7 @@ describe('hasKey', () => {
     // Test case 8: Check if an object with various data types does not have a key
     it('8. should return false if an object with various data types does not have the key', () => {
         const obj = { a: 1, b: 'string', c: true, d: null, e: undefined, f: [1, 2, 3], g: { h: 4 } };
-        const result = hasKey(obj, 'z' as keyof typeof obj);
+        const result = hasKey(obj, 'z');
         expect(result).toBe(false);
     });
 
