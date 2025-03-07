@@ -7,7 +7,7 @@
  * @throws {TypeError} - If the input is not an object or is null.
  */
 export function deepCloneWith<T>(obj: T, cloneFn: (value: any) => any): T {
-    if (obj === null || typeof obj !== 'object') {
+    if (typeof obj !== 'object' || obj === null) {
         throw new TypeError('Input must be a non-null object');
     }
 

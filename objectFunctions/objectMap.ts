@@ -5,7 +5,11 @@
  * @param {(value: T, key: string) => U} fn - The function to apply to each value.
  * @returns {Record<string, U>} - A new object with the mapped values.
  */
-function objectMap<T, U>(obj: Record<string, T>, fn: (value: T, key: string) => U): Record<string, U> {
+export function objectMap<T, U>(obj: Record<string, T>, fn: (value: T, key: string) => U): Record<string, U> {
+    if (typeof obj !== 'object' || obj === null) {
+        throw new TypeError('Input must be a non-null object');
+    }
+
     return Object.keys(obj).reduce((acc, key) => {
         acc[key] = fn(obj[key], key);
         return acc;
