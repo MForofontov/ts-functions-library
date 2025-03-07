@@ -6,7 +6,7 @@
  * @returns {T} - A deep clone of the object.
  * @throws {TypeError} - If the input is not an object or is null.
  */
-function deepCloneWith<T>(obj: T, cloneFn: (value: any) => any): T {
+export function deepCloneWith<T>(obj: T, cloneFn: (value: any) => any): T {
     if (obj === null || typeof obj !== 'object') {
         throw new TypeError('Input must be a non-null object');
     }
