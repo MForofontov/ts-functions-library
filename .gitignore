@@ -15,3 +15,6 @@ build/
 # Miscellaneous
 .DS_Store
 *.tgz
+
+# VS Code
+.vscode/
