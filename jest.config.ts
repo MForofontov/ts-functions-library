@@ -68,4 +68,5 @@ module.exports = {
   collectCoverage: true,
   coverageDirectory: 'coverage',
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
+  testPathIgnorePatterns: ['/node_modules/', '/allure-results/'], // Add this line to ignore the allure-results directory
 };

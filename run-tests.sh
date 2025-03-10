@@ -23,7 +23,7 @@ echo "[INFO] Timezone after change: $(date +%Z)"
 
 # Run Jest tests
 echo "[INFO] Running Jest tests"
-npx jest
+jest
 
 # Generate Allure report
 echo "[INFO] Generating Allure report"
