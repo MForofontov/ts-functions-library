@@ -1,7 +1,8 @@
 {
     "scripts": {
         "test": "./run-tests.sh",
-        "test:github": "./run-tests-github.sh"
+        "test:github": "./run-tests-github.sh",
+        "test:local": "jest --config jest.local.config.js"
     },
     "devDependencies": {
         "@types/jest": "^29.5.14",
