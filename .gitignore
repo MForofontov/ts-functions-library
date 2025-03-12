@@ -20,4 +20,4 @@ build/
 .vscode/
 
 # Local Testing
-.local-testing/
+local-testing/*
