@@ -9,6 +9,10 @@ export function groupBy<T>(
     array: T[],
     key: keyof T
 ): Record<string, T[]> {
+    if (!Array.isArray(array)) {
+        throw new TypeError('Input must be an array');
+    }
+
     return array.reduce((acc, item) => {
         const group = item[key] as unknown as string;
         if (!acc[group]) acc[group] = [];
