@@ -1,14 +1,4 @@
-// pickBy.ts
-export function pickBy<T extends Record<string, any>>(
-    obj: T,
-    predicate: (value: any, key: string) => boolean
-  ): Partial<T> {
-    return Object.fromEntries(
-      Object.entries(obj).filter(([key, value]) => predicate(value, key))
-    );
-  }
-  
-  // groupBy.ts
+    // groupBy.ts
   export function groupBy<T>(
     array: T[],
     key: keyof T
