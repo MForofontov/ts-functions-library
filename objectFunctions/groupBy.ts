@@ -14,7 +14,7 @@ export function groupBy<T>(
     }
 
     return array.reduce((acc, item) => {
-        const group = item[key] as unknown as string;
+        const group = String(item[key]);
         if (!acc[group]) acc[group] = [];
         acc[group].push(item);
         return acc;
