@@ -123,8 +123,28 @@ describe('groupBy', () => {
         expect(result).toEqual(expected);
     });
 
-    // Test case 9: Handle non-array input
+    // Test case 9: Handle non-array input (number)
     it('Test case 9: should throw a TypeError if input is not an array', () => {
         expect(() => groupBy(42 as any, 'category')).toThrow(TypeError);
+    });
+
+    // Test case 10: Handle non-array input (string)
+    it('Test case 10: should throw a TypeError if input is a string', () => {
+        expect(() => groupBy('string' as any, 'category')).toThrow(TypeError);
+    });
+
+    // Test case 11: Handle non-array input (boolean)
+    it('Test case 11: should throw a TypeError if input is a boolean', () => {
+        expect(() => groupBy(true as any, 'category')).toThrow(TypeError);
+    });
+
+    // Test case 12: Handle null input
+    it('Test case 12: should throw a TypeError if input is null', () => {
+        expect(() => groupBy(null as any, 'category')).toThrow(TypeError);
+    });
+
+    // Test case 13: Handle undefined input
+    it('Test case 13: should throw a TypeError if input is undefined', () => {
+        expect(() => groupBy(undefined as any, 'category')).toThrow(TypeError);
     });
 });
