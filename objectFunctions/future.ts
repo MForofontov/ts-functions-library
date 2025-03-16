@@ -1,11 +1,4 @@
- // compactObject.ts
-  export function compactObject<T extends Record<string, any>>(obj: T): Partial<T> {
-    return Object.fromEntries(
-      Object.entries(obj).filter(([_, value]) => value != null)
-    );
-  }
-  
-  // safeGet.ts
+// safeGet.ts
   export function safeGet<T, K extends keyof T>(
     obj: T,
     path: string,
