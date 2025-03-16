@@ -1,74 +1,108 @@
 import { safeGet } from '../../objectFunctions/safeGet';
 
-describe('getNestedValue', () => {
-    // Test case 1: Get a nested value from a simple object
-    it('1. should get a nested value from a simple object', () => {
-        const obj = { a: { b: { c: 3 } } };
-        const result = getNestedValue(obj, 'a.b.c');
-        const expected = 3;
-        expect(result).toBe(expected);
+describe('safeGet', () => {
+    // Test case 1: Retrieve a nested value
+    it('Test case 1: should retrieve a nested value', () => {
+        const obj = { a: { b: { c: 42 } } };
+        const result = safeGet(obj, 'a.b.c');
+        const expected = 42;
+        expect(result).toEqual(expected);
     });
 
-    // Test case 2: Get a nested value from a nested object
-    it('2. should get a nested value from a nested object', () => {
-        const obj = { a: { b: { c: { d: 4 } } } };
-        const result = getNestedValue(obj, 'a.b.c.d');
-        const expected = 4;
-        expect(result).toBe(expected);
+    // Test case 2: Return default value if path does not exist
+    it('Test case 2: should return default value if path does not exist', () => {
+        const obj = { a: { b: { c: 42 } } };
+        const result = safeGet(obj, 'a.b.d', 'default');
+        const expected = 'default';
+        expect(result).toEqual(expected);
     });
 
-    // Test case 3: Get a nested value from an array
-    it('3. should get a nested value from an array', () => {
-        const obj = { a: [{ b: 2 }, { c: 3 }] };
-        const result = getNestedValue(obj, 'a.1.c');
-        const expected = 3;
-        expect(result).toBe(expected);
+    // Test case 3: Handle empty path
+    it('Test case 3: should return the object itself if path is empty', () => {
+        const obj = { a: { b: { c: 42 } } };
+        const result = safeGet(obj, '');
+        const expected = obj;
+        expect(result).toEqual(expected);
     });
 
-    // Test case 4: Get a nested value from an object with various data types
-    it('4. should get a nested value from an object with various data types', () => {
-        const obj = { a: { b: { c: true, d: 'string', e: null, f: undefined, g: [1, 2, 3], h: { i: 4 } } } };
-        const result = getNestedValue(obj, 'a.b.h.i');
-        const expected = 4;
-        expect(result).toBe(expected);
+    // Test case 4: Handle array path
+    it('Test case 4: should retrieve a value from an array path', () => {
+        const obj = { a: [{ b: 42 }] };
+        const result = safeGet(obj, 'a.0.b');
+        const expected = 42;
+        expect(result).toEqual(expected);
     });
 
-    // Test case 5: Return undefined for a non-existent nested value
-    it('5. should return undefined for a non-existent nested value', () => {
-        const obj = { a: { b: { c: 3 } } };
-        const result = getNestedValue(obj, 'a.b.d');
-        expect(result).toBeUndefined();
+    // Test case 5: Handle path with special characters
+    it('Test case 5: should retrieve a value from a path with special characters', () => {
+        const obj = { 'a-b': { 'c.d': 42 } };
+        const result = safeGet(obj, 'a-b.c.d');
+        const expected = 42;
+        expect(result).toEqual(expected);
     });
 
-    // Test case 6: Return undefined for an empty path
-    it('6. should return undefined for an empty path', () => {
-        const obj = { a: { b: { c: 3 } } };
-        const result = getNestedValue(obj, '');
-        expect(result).toBeUndefined();
+    // Test case 6: Handle path with spaces
+    it('Test case 6: should retrieve a value from a path with spaces', () => {
+        const obj = { 'a b': { 'c d': 42 } };
+        const result = safeGet(obj, 'a b.c d');
+        const expected = 42;
+        expect(result).toEqual(expected);
     });
 
-    // Test case 7: Handle non-object input (number)
-    it('7. should throw a TypeError if input is a number', () => {
-        expect(() => getNestedValue(42 as any, 'a')).toThrow(TypeError);
+    // Test case 7: Handle path with empty segments
+    it('Test case 7: should return default value for path with empty segments', () => {
+        const obj = { a: { b: { c: 42 } } };
+        const result = safeGet(obj, 'a..b.c', 'default');
+        const expected = 'default';
+        expect(result).toEqual(expected);
     });
 
-    // Test case 8: Handle non-object input (string)
-    it('8. should throw a TypeError if input is a string', () => {
-        expect(() => getNestedValue('string' as any, 'a')).toThrow(TypeError);
+    // Test case 8: Handle path with leading and trailing dots
+    it('Test case 8: should retrieve a value from a path with leading and trailing dots', () => {
+        const obj = { a: { b: { c: 42 } } };
+        const result = safeGet(obj, '.a.b.c.', 'default');
+        const expected = 42;
+        expect(result).toEqual(expected);
     });
 
-    // Test case 9: Handle non-object input (boolean)
-    it('9. should throw a TypeError if input is a boolean', () => {
-        expect(() => getNestedValue(true as any, 'a')).toThrow(TypeError);
+    // Test case 9: Handle path with numeric keys
+    it('Test case 9: should retrieve a value from a path with numeric keys', () => {
+        const obj = { a: { 1: { b: 42 } } };
+        const result = safeGet(obj, 'a.1.b');
+        const expected = 42;
+        expect(result).toEqual(expected);
     });
 
-    // Test case 10: Handle non-object input (null)
-    it('10. should throw a TypeError if input is null', () => {
-        expect(() => getNestedValue(null as any, 'a')).toThrow(TypeError);
+    // Test case 10: Handle path with mixed types
+    it('Test case 10: should retrieve a value from a path with mixed types', () => {
+        const obj = { a: [{ b: { c: 42 } }] };
+        const result = safeGet(obj, 'a.0.b.c');
+        const expected = 42;
+        expect(result).toEqual(expected);
     });
 
-    // Test case 11: Handle non-object input (undefined)
-    it('11. should throw a TypeError if input is undefined', () => {
-        expect(() => getNestedValue(undefined as any, 'a')).toThrow(TypeError);
+    // Test case 11: Handle non-object input (number)
+    it('Test case 11: should throw a TypeError if input is a number', () => {
+        expect(() => safeGet(42 as any, 'a.b.c')).toThrow(TypeError);
+    });
+
+    // Test case 12: Handle non-object input (string)
+    it('Test case 12: should throw a TypeError if input is a string', () => {
+        expect(() => safeGet('string' as any, 'a.b.c')).toThrow(TypeError);
+    });
+
+    // Test case 13: Handle non-object input (boolean)
+    it('Test case 13: should throw a TypeError if input is a boolean', () => {
+        expect(() => safeGet(true as any, 'a.b.c')).toThrow(TypeError);
+    });
+
+    // Test case 14: Handle null input
+    it('Test case 14: should throw a TypeError if input is null', () => {
+        expect(() => safeGet(null as any, 'a.b.c')).toThrow(TypeError);
+    });
+
+    // Test case 15: Handle undefined input
+    it('Test case 15: should throw a TypeError if input is undefined', () => {
+        expect(() => safeGet(undefined as any, 'a.b.c')).toThrow(TypeError);
     });
 });

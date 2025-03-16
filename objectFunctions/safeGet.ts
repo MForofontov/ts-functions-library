@@ -1,14 +1,21 @@
 /**
- * Retrieves the value at a given path within an object.
+ * Safely retrieves the value at the specified path of an object.
  * 
- * @param {Record<string, any>} obj - The object to retrieve the value from.
- * @param {string} path - The path to the value, represented as a dot-separated string.
- * @returns {T | undefined} - The value at the given path, or undefined if the path does not exist.
- * @throws {TypeError} - If the input object is not an object or is null.
+ * @param {T} obj - The object to query.
+ * @param {string} path - The path of the property to get.
+ * @param {any} [defaultValue] - The value returned if the resolved value is undefined.
+ * @returns {any} - Returns the resolved value or the default value.
  */
-export function safeGet<T>(obj: Record<string, any>, path: string): T | undefined {
+export function safeGet<T>(
+    obj: T,
+    path: string,
+    defaultValue: any = undefined
+): any {
     if (typeof obj !== 'object' || obj === null) {
         throw new TypeError('Input must be a non-null object');
     }
-    return path.split('.').reduce((acc, key) => acc && (acc as Record<string, any>)[key], obj) as T | undefined;
+
+    return path
+        .split('.')
+        .reduce((acc, key) => (acc && (acc as any)[key] !== undefined ? (acc as any)[key] : defaultValue), obj);
 }
