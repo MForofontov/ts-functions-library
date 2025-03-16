@@ -25,60 +25,60 @@ describe('safeSet', () => {
         expect(obj).toEqual(expected);
     });
 
-    // Test case 4: Handle non-object input (number)
-    it('Test case 4: should throw a TypeError if input is a number', () => {
-        expect(() => safeSet(42 as any, 'a.b.c', 100)).toThrow(TypeError);
-    });
-
-    // Test case 5: Handle non-object input (string)
-    it('Test case 5: should throw a TypeError if input is a string', () => {
-        expect(() => safeSet('string' as any, 'a.b.c', 100)).toThrow(TypeError);
-    });
-
-    // Test case 6: Handle non-object input (boolean)
-    it('Test case 6: should throw a TypeError if input is a boolean', () => {
-        expect(() => safeSet(true as any, 'a.b.c', 100)).toThrow(TypeError);
-    });
-
-    // Test case 7: Handle null input
-    it('Test case 7: should throw a TypeError if input is null', () => {
-        expect(() => safeSet(null as any, 'a.b.c', 100)).toThrow(TypeError);
-    });
-
-    // Test case 8: Handle undefined input
-    it('Test case 8: should throw a TypeError if input is undefined', () => {
-        expect(() => safeSet(undefined as any, 'a.b.c', 100)).toThrow(TypeError);
-    });
-
-    // Test case 9: Handle path with special characters
-    it('Test case 9: should set a value for a path with special characters', () => {
+    // Test case 4: Handle path with special characters
+    it('Test case 4: should set a value for a path with special characters', () => {
         const obj = { 'a-b': { 'c.d': 42 } };
         safeSet(obj, 'a-b.c.d', 100);
         const expected = { 'a-b': { 'c.d': 100 } };
         expect(obj).toEqual(expected);
     });
 
-    // Test case 10: Handle path with spaces
-    it('Test case 10: should set a value for a path with spaces', () => {
+    // Test case 5: Handle path with spaces
+    it('Test case 5: should set a value for a path with spaces', () => {
         const obj = { 'a b': { 'c d': 42 } };
         safeSet(obj, 'a b.c d', 100);
         const expected = { 'a b': { 'c d': 100 } };
         expect(obj).toEqual(expected);
     });
 
-    // Test case 11: Handle path with numeric keys
-    it('Test case 11: should set a value for a path with numeric keys', () => {
+    // Test case 6: Handle path with numeric keys
+    it('Test case 6: should set a value for a path with numeric keys', () => {
         const obj = { a: { 1: { b: 42 } } };
         safeSet(obj, 'a.1.b', 100);
         const expected = { a: { 1: { b: 100 } } };
         expect(obj).toEqual(expected);
     });
 
-    // Test case 12: Handle path with mixed types
-    it('Test case 12: should set a value for a path with mixed types', () => {
+    // Test case 7: Handle path with mixed types
+    it('Test case 7: should set a value for a path with mixed types', () => {
         const obj = { a: [{ b: { c: 42 } }] };
         safeSet(obj, 'a.0.b.c', 100);
         const expected = { a: [{ b: { c: 100 } }] };
         expect(obj).toEqual(expected);
+    });
+
+    // Test case 8: Handle non-object input (number)
+    it('Test case 8: should throw a TypeError if input is a number', () => {
+        expect(() => safeSet(42 as any, 'a.b.c', 100)).toThrow(TypeError);
+    });
+
+    // Test case 9: Handle non-object input (string)
+    it('Test case 9: should throw a TypeError if input is a string', () => {
+        expect(() => safeSet('string' as any, 'a.b.c', 100)).toThrow(TypeError);
+    });
+
+    // Test case 10: Handle non-object input (boolean)
+    it('Test case 10: should throw a TypeError if input is a boolean', () => {
+        expect(() => safeSet(true as any, 'a.b.c', 100)).toThrow(TypeError);
+    });
+
+    // Test case 11: Handle null input
+    it('Test case 11: should throw a TypeError if input is null', () => {
+        expect(() => safeSet(null as any, 'a.b.c', 100)).toThrow(TypeError);
+    });
+
+    // Test case 12: Handle undefined input
+    it('Test case 12: should throw a TypeError if input is undefined', () => {
+        expect(() => safeSet(undefined as any, 'a.b.c', 100)).toThrow(TypeError);
     });
 });
