@@ -1,17 +1,4 @@
-    // groupBy.ts
-  export function groupBy<T>(
-    array: T[],
-    key: keyof T
-  ): Record<string, T[]> {
-    return array.reduce((acc, item) => {
-      const group = item[key] as unknown as string;
-      if (!acc[group]) acc[group] = [];
-      acc[group].push(item);
-      return acc;
-    }, {} as Record<string, T[]>);
-  }
-  
-  // compactObject.ts
+ // compactObject.ts
   export function compactObject<T extends Record<string, any>>(obj: T): Partial<T> {
     return Object.fromEntries(
       Object.entries(obj).filter(([_, value]) => value != null)
