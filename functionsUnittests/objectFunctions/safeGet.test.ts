@@ -1,4 +1,4 @@
-import { getNestedValue } from '../../objectFunctions/getNestedValue';
+import { safeGet } from '../../objectFunctions/safeGet';
 
 describe('getNestedValue', () => {
     // Test case 1: Get a nested value from a simple object

@@ -1,15 +1,5 @@
-// safeGet.ts
-  export function safeGet<T, K extends keyof T>(
-    obj: T,
-    path: string,
-    defaultValue: any = undefined
-  ): any {
-    return path
-      .split('.')
-      .reduce((acc, key) => (acc && key in acc ? acc[key] : defaultValue), obj);
-  }
-  
-  // safeSet.ts
+
+// safeSet.ts
   export function safeSet<T extends Record<string, any>>(
     obj: T,
     path: string,

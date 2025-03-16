@@ -6,7 +6,7 @@
  * @returns {T | undefined} - The value at the given path, or undefined if the path does not exist.
  * @throws {TypeError} - If the input object is not an object or is null.
  */
-export function getNestedValue<T>(obj: Record<string, any>, path: string): T | undefined {
+export function safeGet<T>(obj: Record<string, any>, path: string): T | undefined {
     if (typeof obj !== 'object' || obj === null) {
         throw new TypeError('Input must be a non-null object');
     }
