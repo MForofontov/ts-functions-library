@@ -1,4 +1,4 @@
-  // keyBy.ts
+// keyBy.ts
   export function keyBy<T extends Record<string, any>>(
     array: T[],
     key: keyof T
