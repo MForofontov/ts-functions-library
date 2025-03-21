@@ -1,17 +1,4 @@
-// keyBy.ts
-  export function keyBy<T extends Record<string, any>>(
-    array: T[],
-    key: keyof T
-  ): Record<string, T> {
-    return Object.fromEntries(array.map(item => [item[key], item]));
-  }
-  
-  // entriesToObject.ts
-  export function entriesToObject<T>(entries: [string, any][]): T {
-    return Object.fromEntries(entries) as T;
-  }
-  
-  // objectToEntries.ts
+// objectToEntries.ts
   export function objectToEntries<T extends Record<string, any>>(obj: T): [string, any][] {
     return Object.entries(obj);
   }
