@@ -1,10 +1,4 @@
-
-  // entriesToObject.ts
-  export function entriesToObject<T>(entries: [string, any][]): T {
-    return Object.fromEntries(entries) as T;
-  }
-  
-  // objectToEntries.ts
+// objectToEntries.ts
   export function objectToEntries<T extends Record<string, any>>(obj: T): [string, any][] {
     return Object.entries(obj);
   }
