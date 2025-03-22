@@ -1,9 +1,4 @@
-// objectToEntries.ts
-  export function objectToEntries<T extends Record<string, any>>(obj: T): [string, any][] {
-    return Object.entries(obj);
-  }
-  
-  // isDeepSubset.ts
+// isDeepSubset.ts
   export function isDeepSubset<T extends Record<string, any>>(subset: T, obj: T): boolean {
     return Object.keys(subset).every(key =>
       typeof subset[key] === 'object' && subset[key] !== null
