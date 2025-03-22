@@ -51,7 +51,7 @@ describe('isDeepSubset', () => {
 
     // Test case 7: Subset with undefined values
     it('Test case 7: should return false if subset with undefined values does not match the object', () => {
-        const subset = { a: undefined };
+        const subset = { a: undefined } as any;
         const obj = { a: 1, b: 2 };
         const result = isDeepSubset(subset, obj);
         expect(result).toBe(false);
@@ -91,7 +91,7 @@ describe('isDeepSubset', () => {
 
     // Test case 12: Subset with different data types
     it('Test case 12: should return false if subset has mismatched data types', () => {
-        const subset = { a: '1' };
+        const subset = { a: '1' } as any;
         const obj = { a: 1, b: 2 };
         const result = isDeepSubset(subset, obj);
         expect(result).toBe(false);
