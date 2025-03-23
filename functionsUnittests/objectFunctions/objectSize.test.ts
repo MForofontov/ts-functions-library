@@ -1,8 +1,6 @@
 import { objectSize } from '../../objectFunctions/objectSize';
 
 describe('objectSize', () => {
-    // Functional Tests
-
     // Test case 1: Calculate size of a simple object
     it('1. should return the correct size for a simple object', () => {
         const obj = { a: 1, b: 2, c: 3 };
