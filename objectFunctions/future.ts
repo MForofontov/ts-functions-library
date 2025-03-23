@@ -1,13 +1,4 @@
-// isDeepSubset.ts
-  export function isDeepSubset<T extends Record<string, any>>(subset: T, obj: T): boolean {
-    return Object.keys(subset).every(key =>
-      typeof subset[key] === 'object' && subset[key] !== null
-        ? isDeepSubset(subset[key], obj[key])
-        : subset[key] === obj[key]
-    );
-  }
-  
-  // objectSize.ts
+// objectSize.ts
   export function objectSize(obj: Record<string, any>): number {
     return Object.keys(obj).length;
   }
