@@ -1,9 +1,4 @@
 
-  // sortObjectKeys.ts
-  export function sortObjectKeys<T extends Record<string, any>>(obj: T): T {
-    return Object.fromEntries(Object.entries(obj).sort(([a], [b]) => a.localeCompare(b))) as T;
-  }
-  
   // differenceBy.ts
   export function differenceBy<T extends Record<string, any>>(
     obj1: T,
