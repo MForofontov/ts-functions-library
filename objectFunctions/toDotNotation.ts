@@ -6,9 +6,9 @@
  * @returns {Record<string, any>} - A flat object with keys in dot notation.
  *
  * @example
- * const obj = { a: [{ b: 1 }, { c: 2 }], d: { e: 3 } };
+ * const obj = { a: { b: { c: 1 }, d: 2 }, e: 3 };
  * const result = toDotNotation(obj);
- * // result: { 'a.0.b': 1, 'a.1.c': 2, 'd.e': 3 }
+ * // result: { 'a.b.c': 1, 'a.d': 2, 'e': 3 }
  */
 export function toDotNotation(obj: Record<string, any>, prefix = ''): Record<string, any> {
     if (typeof obj !== 'object' || obj === null) {
@@ -20,17 +20,7 @@ export function toDotNotation(obj: Record<string, any>, prefix = ''): Record<str
     for (const key in obj) {
         if (Object.prototype.hasOwnProperty.call(obj, key)) {
             const newKey = prefix ? `${prefix}.${key}` : key;
-
-            if (Array.isArray(obj[key])) {
-                obj[key].forEach((item, index) => {
-                    const arrayKey = `${newKey}.${index}`;
-                    if (typeof item === 'object' && item !== null) {
-                        Object.assign(result, toDotNotation(item, arrayKey));
-                    } else {
-                        result[arrayKey] = item;
-                    }
-                });
-            } else if (typeof obj[key] === 'object' && obj[key] !== null) {
+            if (typeof obj[key] === 'object' && obj[key] !== null && !Array.isArray(obj[key])) {
                 Object.assign(result, toDotNotation(obj[key], newKey));
             } else {
                 result[newKey] = obj[key];
