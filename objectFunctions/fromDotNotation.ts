@@ -10,6 +10,10 @@
  * // result: { a: [{ b: 1 }, { c: 2 }], d: { e: 3 }, 'f.g': 4 }
  */
 export function fromDotNotation(obj: Record<string, any>): Record<string, any> {
+    if (typeof obj !== 'object' || obj === null) {
+        throw new TypeError('Input must be a non-null object');
+    }
+
     const result: Record<string, any> = {};
 
     for (const key in obj) {
