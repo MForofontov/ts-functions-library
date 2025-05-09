@@ -1,27 +1,43 @@
 # ts-functions-library
 
-A utility library of TypeScript functions for common tasks with unit tests, designed to simplify and enhance TypeScript projects.
+A comprehensive TypeScript utility library providing a collection of well-tested, reusable functions for common programming tasks. This library includes utilities for manipulating objects, arrays, strings, dates, and performing mathematical operations.
 
-## Contents
+## Table of Contents
 
-- **Array Utilities**: Functions for array manipulation, such as sorting, filtering, and transforming.
-- **String Utilities**: Functions for string operations, including formatting, parsing, and validation.
-- **Object Utilities**: Functions to handle and manipulate objects, such as deep cloning and merging.
-- **Date and Time Utilities**: Functions for date and time operations, including formatting and calculations.
-- **Number Utilities**: Functions for numerical operations, such as rounding and mathematical calculations.
+- [Installation](#installation)
+- [Overview](#overview)
+- [Categories](#categories)
+  - [Object Functions](#object-functions)
+  - [Array Functions](#array-functions)
+  - [String Functions](#string-functions)
+  - [Date Functions](#date-functions)
+  - [Math Functions](#math-functions)
+- [Examples](#examples)
+  - [Object Manipulation](#object-manipulation)
+  - [Array Operations](#array-operations)
+  - [String Manipulation](#string-manipulation)
+  - [Date Handling](#date-handling)
+- [API Documentation](#api-documentation)
+  - [toDotNotation](#todonotation)
+  - [fromDotNotation](#fromdotnotation)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Usage
+## Installation
 
-Each function is documented with its purpose, input parameters, and output. Examples are provided to demonstrate how to use the functions effectively.
+```bash
+# Using npm
+npm install ts-functions-library
 
-## Contribution
+# Using yarn
+yarn add ts-functions-library
 
-Contributions are welcome! Please fork the repository and create a pull request with your additions or improvements.
+# Using pnpm
+pnpm add ts-functions-library
+```
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
----
-
-This README provides an overview of the types of functions available in the repository and how to utilize them. For detailed documentation on each function, refer to the individual files and comments within the code.
