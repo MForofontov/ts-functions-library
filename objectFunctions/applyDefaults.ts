@@ -1,12 +1,10 @@
 /**
- * Applies default values to an object. If a key exists in both the object and the defaults,
- * the value from the object takes precedence.
+ * Applies default values to an object while preserving existing properties.
  * 
- * @template T - The type of the input object.
- * @param {T} obj - The object to apply defaults to.
- * @param {Partial<T>} defaults - The default values to apply.
- * @returns {T} - A new object with defaults applied.
- * @throws {TypeError} - If the input object or defaults are not objects or are null.
+ * @param obj - The source object whose properties take precedence.
+ * @param defaults - The default values to apply where properties don't exist in source.
+ * @returns A new object combining properties from both inputs.
+ * @throws When either input is not a non-null object.
  *
  * @example
  * const obj = { a: 1, b: 2 };
