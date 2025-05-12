@@ -1,8 +1,13 @@
 /**
- * Removes properties with null or undefined values from an object.
+ * Creates a new object with all properties from the source except those with null or undefined values.
  * 
- * @param {T} obj - The object to compact.
- * @returns {Partial<T>} - A new object with properties that have non-null and non-undefined values.
+ * @param obj - The source object to process.
+ * @returns A new object containing only properties with non-null and non-undefined values.
+ * @throws When input is not a non-null object.
+ *
+ * @example
+ * const result = compactObject({ a: 1, b: null, c: undefined, d: 0, e: '' });
+ * // => { a: 1, d: 0, e: '' }
  */
 export function compactObject<T extends Record<string, any>>(obj: T): Partial<T> {
     if (typeof obj !== 'object' || obj === null) {
