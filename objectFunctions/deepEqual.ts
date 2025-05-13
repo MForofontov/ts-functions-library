@@ -1,9 +1,17 @@
 /**
- * Compares two values for deep equality.
+ * Performs a deep equality comparison between two values of any type.
  * 
  * @param a - The first value to compare.
  * @param b - The second value to compare.
  * @returns `true` if the values are deeply equal, `false` otherwise.
+ * 
+ * @example
+ * // Objects with nested structures
+ * deepEqual({a: {b: 1}}, {a: {b: 1}}); // => true
+ * deepEqual({a: {b: 1}}, {a: {b: 2}}); // => false
+ * 
+ * @note Handles primitive types, objects, arrays, NaN, Dates, and RegExp objects.
+ * Does not support Maps, Sets, or detecting circular references.
  */
 export function deepEqual(a: any, b: any): boolean {
     // Special case for NaN
