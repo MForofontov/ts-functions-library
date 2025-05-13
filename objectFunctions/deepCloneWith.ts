@@ -1,10 +1,18 @@
 /**
- * Deep clones an object using a custom clone function.
+ * Creates a deep clone of an object while customizing how individual values are cloned.
  * 
- * @param {T} obj - The object to clone.
- * @param {(value: any) => any} cloneFn - The custom clone function.
- * @returns {T} - A deep clone of the object.
- * @throws {TypeError} - If the input is not an object or is null.
+ * @param obj - The object to clone.
+ * @param cloneFn - A function that transforms each non-object value during cloning.
+ * @returns A deep copy with values transformed by the custom function.
+ * @throws When input is not a non-null object.
+ * 
+ * @example
+ * // Double all number values in the object
+ * const original = { name: 'John', age: 30, scores: [80, 90] };
+ * const doubled = deepCloneWith(original, value => 
+ *   typeof value === 'number' ? value * 2 : value
+ * );
+ * // => { name: 'John', age: 60, scores: [160, 180] }
  */
 export function deepCloneWith<T>(obj: T, cloneFn: (value: any) => any): T {
     if (typeof obj !== 'object' || obj === null) {
@@ -20,8 +28,3 @@ export function deepCloneWith<T>(obj: T, cloneFn: (value: any) => any): T {
     }
     return newObj;
 }
-
-// Example usage:
-// const original = { name: 'John', address: { city: 'NY' } };
-// const copy = deepCloneWith(original, value => value);
-// copy.address.city = 'LA'; // Doesn't affect the original object
