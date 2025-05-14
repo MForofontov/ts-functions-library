@@ -1,21 +1,21 @@
 /**
- * Returns an object containing the key-value pairs from the first object (`obj1`) 
- * that are not considered equal to the corresponding key-value pairs in the second object (`obj2`),
- * based on the provided comparator function.
+ * Creates an object containing key-value pairs from the first object that are different 
+ * from the second object, based on a custom comparison function.
  *
- * @template T - The type of the input objects.
- * @param {T} obj1 - The first object to compare.
- * @param {T} obj2 - The second object to compare.
- * @param {(a: any, b: any) => boolean} comparator - A function to compare values from both objects.
- * @returns {Partial<T>} - A new object containing the key-value pairs from `obj1` that differ from `obj2`.
- * @throws {TypeError} - If either `obj1` or `obj2` is not an object, or if `comparator` is not a function.
+ * @param obj1 - The source object to check for differences.
+ * @param obj2 - The object to compare against.
+ * @param comparator - Function that determines if two values are equal.
+ * @returns A new object containing only the different key-value pairs from obj1.
+ * @throws When either input is not a non-null object, or comparator is not a function.
  *
  * @example
+ * // Simple value comparison
  * const obj1 = { a: 1, b: 2, c: 3 };
  * const obj2 = { a: 1, b: 4, c: 3 };
- * const comparator = (a, b) => a === b;
- * const result = differenceBy(obj1, obj2, comparator);
- * // result: { b: 2 }
+ * differenceBy(obj1, obj2, (a, b) => a === b);
+ * // => { b: 2 }
+ *
+ * @note Keys that exist only in the first object are included in the result.
  */
 export function differenceBy<T extends Record<string, any>>(
     obj1: T,
