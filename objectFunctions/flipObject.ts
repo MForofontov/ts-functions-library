@@ -1,9 +1,18 @@
 /**
- * Flips the keys and values of an object.
+ * Creates a new object by swapping the keys and values of the input object.
+ * All values are converted to strings when used as keys in the result.
  * 
- * @param {T} obj - The object to flip.
- * @returns {Record<string, any>} - A new object with keys and values swapped.
- * @throws {TypeError} - If the input is not an object or is null.
+ * @param obj - The object whose keys and values will be swapped.
+ * @returns A new object with keys and values swapped.
+ * @throws When input is not a non-null object.
+ * 
+ * @example
+ * // Basic usage
+ * flipObject({ a: 1, b: 2 }); 
+ * // => { '1': 'a', '2': 'b' }
+ * 
+ * @note If the original object has duplicate values, the last key with that value will be used.
+ * @note Complex values (objects, arrays) are converted to strings using toString().
  */
 export function flipObject<T extends Record<string, any>>(obj: T): Record<string, string> {
     if (typeof obj !== 'object' || obj === null) {
@@ -14,6 +23,3 @@ export function flipObject<T extends Record<string, any>>(obj: T): Record<string
         return acc;
     }, {});
 }
-
-// Example usage:
-// flipObject({ a: 1, b: 2 }); // { "1": "a", "2": "b" }
