@@ -1,10 +1,20 @@
 /**
- * Generates a hash code for an object based on its deep equality.
- * This function is used to group objects with similar structures and values.
+ * Generates a numeric hash for an object based on its structure and values.
+ * Useful for comparing objects or using objects as keys in collections.
  * 
- * @param {any} obj - The object to generate a hash code for.
- * @returns {number} - A hash code representing the object's structure and values.
- * @throws {TypeError} - If the input is not an object or is null.
+ * @param obj - The object to generate a hash for.
+ * @returns A numeric hash code representing the object's content.
+ * @throws When input is not a non-null object.
+ * 
+ * @example
+ * // Objects with the same content produce the same hash
+ * const hash1 = getDeepEqualityHash({ a: 1, b: [2, 3] });
+ * const hash2 = getDeepEqualityHash({ a: 1, b: [2, 3] });
+ * hash1 === hash2; // => true
+ * 
+ * @note Uses JSON.stringify internally, so functions, undefined values, 
+ * and circular references are not supported.
+ * @note Collision is possible, though unlikely for typical objects.
  */
 export function getDeepEqualityHash(obj: any): number {
     if (typeof obj !== 'object' || obj === null) {
@@ -14,6 +24,3 @@ export function getDeepEqualityHash(obj: any): number {
         return ((hash << 5) - hash) + char.charCodeAt(0);
     }, 0);
 }
-
-// Example usage:
-// getDeepEqualityHash({ a: 1, b: 2 }); // Generates a hash code for the object
