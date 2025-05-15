@@ -1,20 +1,22 @@
 /**
- * Computes the difference between two objects.
+ * Returns an object containing properties that differ between two objects,
+ * using values from the second object when they differ.
  * 
- * This function returns an object containing the properties that are different between
- * the two input objects. If a property exists in both objects but has different values,
- * it will be included in the result.
- * 
- * @param {Record<string, any>} obj1 - The first object.
- * @param {Record<string, any>} obj2 - The second object.
- * @returns {Record<string, any>} - An object containing the differences.
- * @throws {TypeError} - If either input is not a non-null object.
+ * @param obj1 - The first object for comparison.
+ * @param obj2 - The second object for comparison.
+ * @returns An object containing keys where values differ, using obj2's values.
+ * @throws When either input is not a non-null object.
  * 
  * @example
+ * // Different values and unique properties
  * const obj1 = { a: 1, b: 2, c: 3 };
  * const obj2 = { a: 1, b: 4, d: 5 };
- * const result = getObjectDifference(obj1, obj2);
- * // result: { b: 4, c: undefined, d: 5 }
+ * getObjectDifference(obj1, obj2);
+ * // => { b: 4, c: undefined, d: 5 }
+ * 
+ * @note Uses shallow equality (===) for comparison. Objects and arrays
+ * are only equal if they are the same reference.
+ * @note Keys that exist only in obj1 will appear with undefined values in the result.
  */
 export function getObjectDifference(obj1: Record<string, any>, obj2: Record<string, any>): Record<string, any> {
     if (typeof obj1 !== 'object' || obj1 === null || typeof obj2 !== 'object' || obj2 === null) {
