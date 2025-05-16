@@ -1,9 +1,21 @@
 /**
- * Checks if the `subset` is a deep subset of the `obj`.
+ * Determines if an object is a deep subset of another object.
+ * A subset must have all its properties and nested structures match
+ * the corresponding properties in the target object.
  * 
- * @param {T} subset - The subset object to check.
- * @param {T} obj - The object to check against.
- * @returns {boolean} - Returns `true` if `subset` is a deep subset of `obj`, otherwise `false`.
+ * @param subset - The object to check if it's a subset.
+ * @param obj - The target object to check against.
+ * @returns True if all properties in subset exist with identical values in obj, false otherwise.
+ * @throws When either input is not a non-null object.
+ * 
+ * @example
+ * // Basic subset check
+ * isDeepSubset({ a: 1, b: 2 }, { a: 1, b: 2, c: 3 }); // => true
+ * isDeepSubset({ a: 1, b: 3 }, { a: 1, b: 2, c: 3 }); // => false
+ * 
+ * @note Uses strict equality (===) for comparing primitive values.
+ * @note Recursively checks nested objects for subset relationship.
+ * @note Does not handle array comparisons specially - arrays are treated as objects.
  */
 export function isDeepSubset<T extends Record<string, any>>(subset: T, obj: T): boolean {
     if (typeof subset !== 'object' || subset === null) {
