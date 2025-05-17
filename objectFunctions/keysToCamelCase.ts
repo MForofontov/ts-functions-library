@@ -1,16 +1,18 @@
 /**
- * Converts the keys of an object to camelCase.
+ * Recursively converts object keys from snake_case or kebab-case to camelCase.
+ * Handles nested objects and arrays, preserving the original values.
  * 
- * This function recursively converts the keys of an object or array to camelCase.
- * 
- * @param {any} obj - The object to convert.
- * @returns {any} - A new object with keys converted to camelCase.
- * @throws {TypeError} - If the input is not an object or is null.
+ * @param obj - The object or array whose keys should be converted.
+ * @returns A new object or array with all keys converted to camelCase.
+ * @throws When input is not an object, array, or is null.
  * 
  * @example
- * const obj = { 'first_name': 'John', 'last_name': 'Doe' };
- * const result = keysToCamelCase(obj);
- * // result: { firstName: 'John', lastName: 'Doe' }
+ * // Basic key conversion
+ * keysToCamelCase({ 'first_name': 'John', 'last_name': 'Doe' });
+ * // => { firstName: 'John', lastName: 'Doe' }
+ * 
+ * @note Converts both snake_case and kebab-case to camelCase.
+ * @note Creates a new object/array and does not modify the original.
  */
 export function keysToCamelCase(obj: any): any {
     if (Array.isArray(obj)) {
