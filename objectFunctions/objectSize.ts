@@ -10,10 +10,6 @@
  * objectSize({ a: 1, b: 2, c: 3 }); // => 3
  * objectSize({}); // => 0
  * 
- * @example
- * // With arrays
- * objectSize([1, 2, 3]); // => 3
- * 
  * @note Only counts own enumerable properties (using Object.keys).
  * @note Non-enumerable properties and those on the prototype chain are not included.
  */
