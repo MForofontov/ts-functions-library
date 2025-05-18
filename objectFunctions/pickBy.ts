@@ -1,9 +1,20 @@
 /**
- * Creates an object composed of the properties of the input object that match the predicate.
+ * Creates a new object with properties that satisfy the predicate function.
  * 
- * @param {Record<string, any>} obj - The source object.
- * @param {(value: any, key: string) => boolean} predicate - The function invoked per property.
- * @returns {Partial<Record<string, any>>} - The new object.
+ * @param obj - The source object to filter properties from.
+ * @param predicate - Function that determines which properties to include.
+ *                    Return true to keep a property, false to exclude it.
+ * @returns A new object with only the properties where predicate returned true.
+ * @throws When input is not a non-null object.
+ * 
+ * @example
+ * // Keep only numeric values
+ * const data = { a: 1, b: 'string', c: 3, d: false };
+ * pickBy(data, value => typeof value === 'number');
+ * // => { a: 1, c: 3 }
+ * 
+ * @note Creates a new object and doesn't modify the original.
+ * @note Similar to Array.prototype.filter() but for object properties.
  */
 export function pickBy<T extends Record<string, any>>(
     obj: T,
