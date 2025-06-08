@@ -1,14 +1,38 @@
 /**
- * Converts a nested object into a flat object with dot or square bracket notation keys.
- *
- * @param {Record<string, any>} obj - The input object to be converted.
- * @param {string} [prefix=''] - The prefix for nested keys (used internally for recursion).
- * @returns {Record<string, any>} - A flat object with keys in dot or square bracket notation.
- *
+ * Converts a nested object structure into a flat object with dot notation and 
+ * bracket notation for arrays and special characters.
+ * 
+ * @param obj - The nested object to flatten.
+ * @param prefix - The prefix for nested keys (used internally for recursion).
+ * @returns A flat object with keys in dot or square bracket notation.
+ * @throws When input is not a non-null object.
+ * 
  * @example
- * const obj = { a: [{ b: 1 }, { c: 2 }], d: { e: 3 }, 'f.g': 4 };
- * const result = toDotNotation(obj);
- * // result: { 'a[0].b': 1, 'a[1].c': 2, 'd.e': 3, 'f\\.g': 4 }
+ * // Complex nested structure with arrays and special characters
+ * const nested = { 
+ *   user: { name: 'John', address: { city: 'NY' } },
+ *   scores: [85, 90, 95],
+ *   items: [{ id: 1, name: 'Laptop' }, { id: 2, name: 'Phone' }],
+ *   'property.with.dots': true
+ * };
+ * 
+ * toDotNotation(nested);
+ * // => { 
+ * //   'user.name': 'John',
+ * //   'user.address.city': 'NY',
+ * //   'scores[0]': 85,
+ * //   'scores[1]': 90,
+ * //   'scores[2]': 95,
+ * //   'items[0].id': 1,
+ * //   'items[0].name': 'Laptop',
+ * //   'items[1].id': 2,
+ * //   'items[1].name': 'Phone',
+ * //   'property\\.with\\.dots': true
+ * // }
+ * 
+ * @note Array indices use square bracket notation: 'items[0].name'
+ * @note Dots in property names are escaped with backslashes: 'property\\.with\\.dots'
+ * @note Empty objects and arrays are preserved in the flattened structure
  */
 export function toDotNotation(obj: Record<string, any>, prefix = ''): Record<string, any> {
     if (typeof obj !== 'object' || obj === null) {

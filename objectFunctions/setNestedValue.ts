@@ -1,18 +1,31 @@
 /**
- * Sets a nested value within an object.
+ * Sets a value at a specified nested path within an object, creating intermediate objects as needed.
  * 
- * This function sets a value at a specified path within an object. If the path does not exist, it will be created.
- * 
- * @param {Record<string, any>} obj - The object to set the value in.
- * @param {string} path - The path to the value, represented as a dot-separated string.
- * @param {any} value - The value to set.
- * @returns {void}
- * @throws {TypeError} - If the input object is not a non-null object.
+ * @param obj - The object to modify.
+ * @param path - The dot-notation path where the value should be set (e.g., 'user.address.city').
+ * @param value - The value to set at the specified path.
+ * @throws When input is not a non-null object.
  * 
  * @example
- * const obj = { a: { b: { c: 3 } } };
- * setNestedValue(obj, 'a.b.c', 4);
- * // obj: { a: { b: { c: 4 } } }
+ * // Update existing nested value
+ * const user = { a: { b: { c: 3 } } };
+ * setNestedValue(user, 'a.b.c', 4);
+ * // user becomes: { a: { b: { c: 4 } } }
+ * 
+ * @example
+ * // Create missing intermediate objects
+ * const data = {};
+ * setNestedValue(data, 'user.profile.name', 'John');
+ * // data becomes: { user: { profile: { name: 'John' } } }
+ * 
+ * @example
+ * // Replace primitive with object
+ * const config = { theme: 'dark' };
+ * setNestedValue(config, 'theme.color', 'blue');
+ * // config becomes: { theme: { color: 'blue' } }
+ * 
+ * @note Modifies the original object directly without creating a copy.
+ * @note Only supports dot notation and doesn't handle array indices.
  */
 export function setNestedValue(obj: Record<string, any>, path: string, value: any): void {
     if (typeof obj !== 'object' || obj === null) {
