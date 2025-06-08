@@ -1,17 +1,24 @@
 /**
- * Picks specified keys from an object.
+ * Creates a new object containing only the specified keys from the source object.
  * 
- * This function creates a new object by picking the specified keys from the input object.
- * 
- * @param {T} obj - The object to pick keys from.
- * @param {Array<keyof T>} keysToPick - The keys to pick from the object.
- * @returns {Partial<T>} - A new object with the specified keys picked.
- * @throws {TypeError} - If the input is not a non-null object.
+ * @param obj - The source object to pick properties from.
+ * @param keysToPick - Array of keys to include in the result.
+ * @returns A new object with only the specified keys.
+ * @throws When input is not a non-null object.
  * 
  * @example
- * const obj = { a: 1, b: 2, c: 3 };
- * const result = pickKeys(obj, ['b', 'c']);
- * // result: { b: 2, c: 3 }
+ * // Pick specific properties
+ * const user = { id: 1, name: 'John', email: 'john@example.com', role: 'admin' };
+ * const publicUser = pickKeys(user, ['id', 'name']);
+ * // => { id: 1, name: 'John' }
+ * 
+ * @example
+ * // Non-existent keys are ignored
+ * pickKeys({ a: 1, b: 2 }, ['b', 'c']);
+ * // => { b: 2 }
+ * 
+ * @note Creates a new object and doesn't modify the original.
+ * @note If a key in keysToPick doesn't exist in the object, it's simply ignored.
  */
 export function pickKeys<T extends Record<string, any>>(obj: T, keysToPick: (keyof T)[]): Partial<T> {
     if (typeof obj !== 'object' || obj === null) {
