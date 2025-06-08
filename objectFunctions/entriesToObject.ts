@@ -1,9 +1,20 @@
 /**
- * Converts an array of key-value pairs into an object.
+ * Converts an array of key-value pairs (entries) into an object.
  * 
- * @param {[string, any][]} entries - The array of key-value pairs.
- * @returns {T} - The resulting object.
- * @throws {TypeError} - If the input is not an array of key-value pairs.
+ * @param entries - Array of [key, value] pairs where keys must be strings.
+ * @returns An object with properties created from the entries.
+ * @throws When input is not an array or contains invalid entries.
+ * 
+ * @example
+ * const entries = [['name', 'John'], ['age', 30], ['city', 'New York']];
+ * const obj = entriesToObject(entries);
+ * // => { name: 'John', age: 30, city: 'New York' }
+ * 
+ * @example
+ * // With different value types
+ * const mixed = [['id', 1], ['active', true], ['data', { count: 5 }]];
+ * const result = entriesToObject(mixed);
+ * // => { id: 1, active: true, data: { count: 5 } }
  */
 export function entriesToObject<T>(entries: [string, any][]): T {
     if (!Array.isArray(entries)) {

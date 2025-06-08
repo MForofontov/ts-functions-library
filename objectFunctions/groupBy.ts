@@ -1,9 +1,31 @@
 /**
- * Groups the elements of an array based on the specified key.
+ * Groups the elements of an array into separate arrays based on the values of a specified property.
  * 
- * @param {T[]} array - The array to group.
- * @param {keyof T} key - The key to group by.
- * @returns {Record<string, T[]>} - An object where the keys are the group names and the values are arrays of elements in each group.
+ * @param array - The array of objects to group.
+ * @param key - The property name to group by.
+ * @returns An object where keys are unique property values and values are arrays of matching elements.
+ * @throws When the input is not an array.
+ * 
+ * @example
+ * // Group people by age
+ * const people = [
+ *   { name: 'Alice', age: 25 },
+ *   { name: 'Bob', age: 30 },
+ *   { name: 'Carol', age: 25 }
+ * ];
+ * groupBy(people, 'age');
+ * // => { 
+ * //   '25': [{ name: 'Alice', age: 25 }, { name: 'Carol', age: 25 }],
+ * //   '30': [{ name: 'Bob', age: 30 }]
+ * // }
+ * 
+ * groupBy(items, 'category');
+ * // => {
+ * //   'true': [{ id: 1, category: true }],
+ * //   'false': [{ id: 2, category: false }]
+ * // }
+ * 
+ * @note Property values are converted to strings when used as keys in the result object.
  */
 export function groupBy<T>(
     array: T[],

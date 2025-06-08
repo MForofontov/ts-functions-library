@@ -1,9 +1,13 @@
 /**
- * Counts the number of properties in an object.
+ * Counts the number of own enumerable properties in an object.
  * 
- * @param {Record<string, any>} obj - The object to count properties of.
- * @returns {number} - The number of properties in the object.
- * @throws {TypeError} - If the input is not an object or is null.
+ * @param obj - The object to count properties of.
+ * @returns The total number of properties in the object.
+ * @throws When input is not a non-null object.
+ *
+ * @example
+ * const count = countProperties({ a: 1, b: 2, c: 3 });
+ * // => 3
  */
 export function countProperties(obj: Record<string, any>): number {
     if (typeof obj !== 'object' || obj === null) {

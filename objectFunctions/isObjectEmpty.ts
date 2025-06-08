@@ -1,16 +1,21 @@
 /**
- * Checks if an object is empty.
+ * Checks if an object has no own enumerable properties.
  * 
- * This function returns true if the object has no own enumerable properties.
- * 
- * @param {Record<string, any>} obj - The object to check.
- * @returns {boolean} - True if the object is empty, false otherwise.
- * @throws {TypeError} - If the input is not a non-null object.
+ * @param obj - The object to check for emptiness.
+ * @returns True if the object has no own enumerable properties, false otherwise.
+ * @throws When input is not a non-null object.
  * 
  * @example
- * const obj = {};
- * const result = isObjectEmpty(obj);
- * // result: true
+ * isObjectEmpty({}); // => true
+ * isObjectEmpty({ a: 1 }); // => false
+ * 
+ * @example
+ * // Works with different object types
+ * isObjectEmpty(new Object()); // => true
+ * isObjectEmpty([]); // => true (empty arrays are also empty objects)
+ * 
+ * @note This function only checks for own enumerable properties using Object.keys().
+ * @note Non-enumerable properties and inherited properties are not considered.
  */
 export function isObjectEmpty(obj: Record<string, any>): boolean {
     if (typeof obj !== 'object' || obj === null) {

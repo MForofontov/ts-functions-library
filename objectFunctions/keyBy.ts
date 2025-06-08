@@ -1,10 +1,26 @@
 /**
- * Creates an object composed of keys generated from the results of running each element of `array` through `key`.
+ * Creates an object from an array of objects, using the specified property value 
+ * of each object as the key and the entire object as the value.
  * 
- * @param {T[]} array - The array to iterate over.
- * @param {keyof T} key - The key to group by.
- * @returns {Record<string, T>} - An object composed of the key-value pairs.
- * @throws {TypeError} - If the input is not an array.
+ * @param array - The array of objects to convert into an object.
+ * @param key - The property name to use for generating keys.
+ * @returns An object where keys are property values from the objects and values are the complete objects.
+ * @throws When input is not an array.
+ * 
+ * @example
+ * // Create an object indexed by id
+ * const users = [
+ *   { id: 'a1', name: 'Alice', age: 30 },
+ *   { id: 'b2', name: 'Bob', age: 25 }
+ * ];
+ * keyBy(users, 'id');
+ * // => {
+ * //   'a1': { id: 'a1', name: 'Alice', age: 30 },
+ * //   'b2': { id: 'b2', name: 'Bob', age: 25 }
+ * // }
+ * 
+ * @note Property values are converted to strings when used as keys.
+ * @note If multiple objects have the same key value, later objects will overwrite earlier ones.
  */
 export function keyBy<T extends Record<string, any>>(
     array: T[],

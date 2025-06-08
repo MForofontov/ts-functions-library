@@ -1,13 +1,18 @@
 /**
- * Converts a flat object with dot or square bracket notation keys back into a nested object.
- *
- * @param {Record<string, any>} obj - The flat object with dot or square bracket notation keys.
- * @returns {Record<string, any>} - A nested object.
- *
+ * Reconstructs a nested object structure from a flat object with dot or square bracket notation keys.
+ * Handles arrays, nested objects, and escaped special characters.
+ * 
+ * @param obj - The flat object with dot or square bracket notation keys.
+ * @returns A nested object structure preserving the original hierarchy.
+ * @throws When input is not a non-null object.
+ * 
  * @example
- * const flatObj = { 'a[0].b': 1, 'a[1].c': 2, 'd.e': 3, 'f\\.g': 4 };
- * const result = fromDotNotation(flatObj);
- * // result: { a: [{ b: 1 }, { c: 2 }], d: { e: 3 }, 'f.g': 4 }
+ * // Basic dot notation
+ * fromDotNotation({ 'user.name': 'John', 'user.address.city': 'NY' });
+ * // => { user: { name: 'John', address: { city: 'NY' } } }
+ * 
+ * @note Array indices in square brackets create array elements at the specified positions.
+ * @note Dots can be escaped with backslashes to represent literal dots in property names.
  */
 export function fromDotNotation(obj: Record<string, any>): Record<string, any> {
     if (typeof obj !== 'object' || obj === null) {
