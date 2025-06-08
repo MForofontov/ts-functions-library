@@ -12,11 +12,6 @@
  * const publicUser = pickKeys(user, ['id', 'name']);
  * // => { id: 1, name: 'John' }
  * 
- * @example
- * // Non-existent keys are ignored
- * pickKeys({ a: 1, b: 2 }, ['b', 'c']);
- * // => { b: 2 }
- * 
  * @note Creates a new object and doesn't modify the original.
  * @note If a key in keysToPick doesn't exist in the object, it's simply ignored.
  */
