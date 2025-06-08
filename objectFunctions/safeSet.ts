@@ -1,10 +1,21 @@
 /**
- * Safely sets the value at the specified path of an object.
+ * Safely sets a value at a specified path in an object, creating intermediate objects if needed.
+ * Uses dot notation to navigate nested properties.
  * 
- * @param {T} obj - The object to modify.
- * @param {string} path - The path of the property to set.
- * @param {any} value - The value to set.
- * @throws {TypeError} - If the input object is not an object or is null.
+ * @param obj - The object to modify.
+ * @param path - The dot-notation path where the value should be set (e.g., 'user.address.city').
+ * @param value - The value to set at the specified path.
+ * @throws When input is not a non-null object.
+ * 
+ * @example
+ * // Set a value in a nested path, creating objects as needed
+ * const user = { name: 'John' };
+ * safeSet(user, 'address.city', 'New York');
+ * // user becomes: { name: 'John', address: { city: 'New York' } }
+ * 
+ * @note Modifies the original object and does not create a copy.
+ * @note Creates empty objects for any missing intermediate properties.
+ * @note Only supports dot notation and doesn't handle array indices.
  */
 export function safeSet<T extends Record<string, any>>(
     obj: T,
