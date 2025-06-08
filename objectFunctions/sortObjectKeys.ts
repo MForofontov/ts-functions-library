@@ -1,15 +1,23 @@
 /**
- * Sorts the keys of an object in ascending order and returns a new object with the sorted keys.
- *
- * @template T - The type of the input object.
- * @param {T} obj - The object whose keys are to be sorted.
- * @returns {T} - A new object with the keys sorted in ascending order.
- * @throws {TypeError} - If the input is not an object or is null/undefined.
+ * Creates a new object with the same properties as the input, but with keys sorted alphabetically.
+ * 
+ * @param obj - The object whose keys should be sorted.
+ * @returns A new object with identical properties but keys in alphabetical order.
+ * @throws When input is not a non-null object.
  * 
  * @example
- * const obj = { c: 3, a: 1, b: 2 };
- * const result = sortObjectKeys(obj);
- * // result: { a: 1, b: 2, c: 3 }
+ * // Basic usage
+ * sortObjectKeys({ c: 3, a: 1, b: 2 });
+ * // => { a: 1, b: 2, c: 3 }
+ * 
+ * @example
+ * // With mixed key types
+ * sortObjectKeys({ 10: 'ten', 2: 'two', a: 'alpha' });
+ * // => { '10': 'ten', '2': 'two', a: 'alpha' }
+ * 
+ * @note Creates a new object and doesn't modify the original.
+ * @note Uses string comparison (localeCompare) for sorting, which means numbers as keys
+ *       will be sorted as strings, not by numeric value.
  */
 export function sortObjectKeys<T extends Record<string, any>>(obj: T): T {
     if (typeof obj !== 'object' || obj === null) {
