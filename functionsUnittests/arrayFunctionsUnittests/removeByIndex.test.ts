@@ -25,7 +25,10 @@ describe('removeByIndex', () => {
       { id: 3, name: 'Charlie' },
     ];
     const indices: number[] = [1];
-    const result: { id: number; name: string }[] = removeByIndex(array, indices);
+    const result: { id: number; name: string }[] = removeByIndex(
+      array,
+      indices,
+    );
     expect(result).toEqual([
       { id: 1, name: 'Alice' },
       { id: 3, name: 'Charlie' },
@@ -74,10 +77,17 @@ describe('removeByIndex', () => {
 
   // Test case 9: Removing elements from an array with nested arrays
   test('9. should remove elements from an array with nested arrays', () => {
-    const array: (number[] | string[])[] = [[1, 2], ['three', 'four'], [5, 6]];
+    const array: (number[] | string[])[] = [
+      [1, 2],
+      ['three', 'four'],
+      [5, 6],
+    ];
     const indices: number[] = [1];
     const result: (number[] | string[])[] = removeByIndex(array, indices);
-    expect(result).toEqual([[1, 2], [5, 6]]);
+    expect(result).toEqual([
+      [1, 2],
+      [5, 6],
+    ]);
   });
 
   // Test case 10: Removing elements from an array with null values
@@ -146,9 +156,9 @@ describe('removeByIndex', () => {
 
   // Test case 17: Removing elements from an array with BigInt values
   test('17. should remove elements from an array with BigInt values', () => {
-    const array: (number | BigInt)[] = [1, BigInt(2), 3, BigInt(4)];
+    const array: (number | bigint)[] = [1, BigInt(2), 3, BigInt(4)];
     const indices: number[] = [1, 3];
-    const result: (number | BigInt)[] = removeByIndex(array, indices);
+    const result: (number | bigint)[] = removeByIndex(array, indices);
     expect(result).toEqual([1, 3]);
   });
 
@@ -170,9 +180,16 @@ describe('removeByIndex', () => {
 
   // Test case 20: Removing elements from an array with mixed data types
   test('20. should remove elements from an array with mixed data types', () => {
-    const array: (number | string | boolean | null | undefined)[] = [1, 'two', true, null, undefined];
+    const array: (number | string | boolean | null | undefined)[] = [
+      1,
+      'two',
+      true,
+      null,
+      undefined,
+    ];
     const indices: number[] = [1, 3];
-    const result: (number | string | boolean | null | undefined)[] = removeByIndex(array, indices);
+    const result: (number | string | boolean | null | undefined)[] =
+      removeByIndex(array, indices);
     expect(result).toEqual([1, true, undefined]);
   });
 
@@ -182,7 +199,10 @@ describe('removeByIndex', () => {
     const func1: () => void = () => {};
     const array: (number | symbol | (() => void))[] = [1, sym1, 3, func1];
     const indices: number[] = [1, 3];
-    const result: (number | symbol | (() => void))[] = removeByIndex(array, indices);
+    const result: (number | symbol | (() => void))[] = removeByIndex(
+      array,
+      indices,
+    );
     expect(result).toEqual([1, 3]);
   });
 
@@ -198,9 +218,9 @@ describe('removeByIndex', () => {
 
   // Test case 23: Removing elements from an array with BigInt and Infinity values
   test('23. should remove elements from an array with BigInt and Infinity values', () => {
-    const array: (number | BigInt)[] = [1, BigInt(2), 3, Infinity];
+    const array: (number | bigint)[] = [1, BigInt(2), 3, Infinity];
     const indices: number[] = [1, 3];
-    const result: (number | BigInt)[] = removeByIndex(array, indices);
+    const result: (number | bigint)[] = removeByIndex(array, indices);
     expect(result).toEqual([1, 3]);
   });
 

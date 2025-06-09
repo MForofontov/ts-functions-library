@@ -86,13 +86,21 @@ describe('shuffleArray', () => {
 
   // Test case 7: Shuffling an array of nested arrays
   test('7. should shuffle an array of nested arrays', () => {
-    const array: number[][] = [[1, 2], [3, 4], [5, 6]];
+    const array: number[][] = [
+      [1, 2],
+      [3, 4],
+      [5, 6],
+    ];
     let result: number[][] = array;
     for (let i = 0; i < 5; i++) {
       result = shuffleArray(result);
       if (!arraysEqual(result, array)) break;
     }
-    expect(result).not.toEqual([[1, 2], [3, 4], [5, 6]]);
+    expect(result).not.toEqual([
+      [1, 2],
+      [3, 4],
+      [5, 6],
+    ]);
     expect(result).toHaveLength(array.length);
     expect(result).toEqual(expect.arrayContaining(array));
   });
@@ -176,8 +184,8 @@ describe('shuffleArray', () => {
 
   // Test case 13: Shuffling an array of BigInt values
   test('13. should shuffle an array of BigInt values', () => {
-    const array: BigInt[] = [BigInt(1), BigInt(2), BigInt(3)];
-    let result: BigInt[] = array;
+    const array: bigint[] = [BigInt(1), BigInt(2), BigInt(3)];
+    let result: bigint[] = array;
     for (let i = 0; i < 5; i++) {
       result = shuffleArray(result);
       if (!arraysEqual(result, array)) break;
@@ -215,13 +223,31 @@ describe('shuffleArray', () => {
 
   // Test case 16: Shuffling an array of mixed data types
   test('16. should shuffle an array of mixed data types', () => {
-    const array: (number | string | boolean | null | undefined)[] = [0, 'apple', null, undefined, false, '', 'banana', 3];
+    const array: (number | string | boolean | null | undefined)[] = [
+      0,
+      'apple',
+      null,
+      undefined,
+      false,
+      '',
+      'banana',
+      3,
+    ];
     let result: (number | string | boolean | null | undefined)[] = array;
     for (let i = 0; i < 5; i++) {
       result = shuffleArray(result);
       if (!arraysEqual(result, array)) break;
     }
-    expect(result).not.toEqual([0, 'apple', null, undefined, false, '', 'banana', 3]);
+    expect(result).not.toEqual([
+      0,
+      'apple',
+      null,
+      undefined,
+      false,
+      '',
+      'banana',
+      3,
+    ]);
     expect(result).toHaveLength(array.length);
     expect(result).toEqual(expect.arrayContaining(array));
   });

@@ -1,11 +1,11 @@
 /**
  * Finds the highest element in an array of numbers.
- * 
+ *
  * @param arr - The array of numbers.
  * @returns The highest value in the array.
  */
 export function findMax(arr: number[]): number {
-    return Math.max(...arr);
+  return Math.max(...arr);
 }
 
 // Example usage:

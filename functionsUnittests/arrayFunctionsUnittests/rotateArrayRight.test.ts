@@ -46,8 +46,7 @@ describe('rotateArrayRight', () => {
     const array: number[] = [1, 2, 3, 4, 5];
     const positions: number = -2;
     const result: number[] = rotateArrayRight(array, positions);
-    console.log(result);
-    expect(result).toEqual([ 3, 4, 5, 1, 2 ]);
+    expect(result).toEqual([3, 4, 5, 1, 2]);
   });
 
   // Test case 7: Rotating an array by a number of positions greater than the array length
@@ -62,7 +61,10 @@ describe('rotateArrayRight', () => {
   test('8. should rotate an array of mixed types by 2 positions', () => {
     const array: (number | string | boolean)[] = [1, 'two', true, 4, 'five'];
     const positions: number = 2;
-    const result: (number | string | boolean)[] = rotateArrayRight(array, positions);
+    const result: (number | string | boolean)[] = rotateArrayRight(
+      array,
+      positions,
+    );
     expect(result).toEqual([4, 'five', 1, 'two', true]);
   });
 
@@ -74,7 +76,10 @@ describe('rotateArrayRight', () => {
       { id: 3, name: 'Charlie' },
     ];
     const positions: number = 1;
-    const result: { id: number; name: string }[] = rotateArrayRight(array, positions);
+    const result: { id: number; name: string }[] = rotateArrayRight(
+      array,
+      positions,
+    );
     expect(result).toEqual([
       { id: 3, name: 'Charlie' },
       { id: 1, name: 'Alice' },
@@ -84,10 +89,22 @@ describe('rotateArrayRight', () => {
 
   // Test case 10: Rotating an array of nested arrays by 3 positions
   test('10. should rotate an array of nested arrays by 3 positions', () => {
-    const array: number[][] = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10]];
+    const array: number[][] = [
+      [1, 2],
+      [3, 4],
+      [5, 6],
+      [7, 8],
+      [9, 10],
+    ];
     const positions: number = 3;
     const result: number[][] = rotateArrayRight(array, positions);
-    expect(result).toEqual([[5, 6], [7, 8], [9, 10], [1, 2], [3, 4]]);
+    expect(result).toEqual([
+      [5, 6],
+      [7, 8],
+      [9, 10],
+      [1, 2],
+      [3, 4],
+    ]);
   });
 
   // Test case 11: Rotating an array of boolean values by 2 positions
@@ -144,10 +161,22 @@ describe('rotateArrayRight', () => {
 
   // Test case 16: Rotating an array of BigInt values by 2 positions
   test('16. should rotate an array of BigInt values by 2 positions', () => {
-    const array: BigInt[] = [BigInt(1), BigInt(2), BigInt(3), BigInt(4), BigInt(5)];
+    const array: bigint[] = [
+      BigInt(1),
+      BigInt(2),
+      BigInt(3),
+      BigInt(4),
+      BigInt(5),
+    ];
     const positions: number = 2;
-    const result: BigInt[] = rotateArrayRight(array, positions);
-    expect(result).toEqual([BigInt(4), BigInt(5), BigInt(1), BigInt(2), BigInt(3)]);
+    const result: bigint[] = rotateArrayRight(array, positions);
+    expect(result).toEqual([
+      BigInt(4),
+      BigInt(5),
+      BigInt(1),
+      BigInt(2),
+      BigInt(3),
+    ]);
   });
 
   // Test case 17: Rotating an array of Infinity and -Infinity by 1 position
@@ -168,10 +197,29 @@ describe('rotateArrayRight', () => {
 
   // Test case 19: Rotating an array of mixed data types by 3 positions
   test('19. should rotate an array of mixed data types by 3 positions', () => {
-    const array: (number | string | boolean | null | undefined)[] = [0, 'apple', null, undefined, false, '', 'banana', 3];
+    const array: (number | string | boolean | null | undefined)[] = [
+      0,
+      'apple',
+      null,
+      undefined,
+      false,
+      '',
+      'banana',
+      3,
+    ];
     const positions: number = 3;
-    const result: (number | string | boolean | null | undefined)[] = rotateArrayRight(array, positions);
-    expect(result).toEqual(['', 'banana', 3, 0, 'apple', null, undefined, false]);
+    const result: (number | string | boolean | null | undefined)[] =
+      rotateArrayRight(array, positions);
+    expect(result).toEqual([
+      '',
+      'banana',
+      3,
+      0,
+      'apple',
+      null,
+      undefined,
+      false,
+    ]);
   });
 
   // Test case 20: Rotating an array of symbols and functions by 2 positions
@@ -180,7 +228,10 @@ describe('rotateArrayRight', () => {
     const func1: () => void = () => {};
     const array: (symbol | (() => void))[] = [sym1, func1, sym1, func1];
     const positions: number = 2;
-    const result: (symbol | (() => void))[] = rotateArrayRight(array, positions);
+    const result: (symbol | (() => void))[] = rotateArrayRight(
+      array,
+      positions,
+    );
     expect(result).toEqual([sym1, func1, sym1, func1]);
   });
 });

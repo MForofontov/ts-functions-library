@@ -3,12 +3,12 @@
 
 /**
  * Checks if a string contains only alphabetical characters.
- * 
+ *
  * @param str - The string to check.
  * @returns True if the string contains only letters, false otherwise.
  */
 export function isAlpha(str: string): boolean {
-    return /^[A-Za-z]+$/.test(str);
+  return /^[A-Za-z]+$/.test(str);
 }
 
 // Example usage:

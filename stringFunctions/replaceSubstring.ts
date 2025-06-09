@@ -1,20 +1,24 @@
 /**
  * Replaces all occurrences of a substring in a string with a new substring.
- * 
+ *
  * @param str - The string to search within.
  * @param searchValue - The substring to find.
  * @param replaceValue - The substring to replace with.
  * @returns The string with all occurrences of the substring replaced.
  */
-export function replaceSubstring(str: string, searchValue: string, replaceValue: string): string {
-    if (searchValue === "") {
-        return str;
-    }
-    const index = str.indexOf(searchValue);
-    if (index === -1) {
-        return str;
-    }
-    return str.split(searchValue).join(replaceValue);
+export function replaceSubstring(
+  str: string,
+  searchValue: string,
+  replaceValue: string,
+): string {
+  if (searchValue === '') {
+    return str;
+  }
+  const index = str.indexOf(searchValue);
+  if (index === -1) {
+    return str;
+  }
+  return str.split(searchValue).join(replaceValue);
 }
 
 // Example usage:

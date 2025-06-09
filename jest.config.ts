@@ -18,28 +18,27 @@ npm install --save-dev jest-sonar-reporter
 npm install --save-dev sonar-scanner
 */
 
-
-const os = require("os");
+const os = require('os');
 
 // Manually define the status values if the import is causing issues
 const Status = {
-  FAILED: "failed",
-  BROKEN: "broken",
+  FAILED: 'failed',
+  BROKEN: 'broken',
 };
 
 module.exports = {
   preset: 'ts-jest',
-  testEnvironment: "allure-jest/node",
+  testEnvironment: 'allure-jest/node',
   testEnvironmentOptions: {
-    resultsDir: "allure-results",
+    resultsDir: 'allure-results',
     links: {
       issue: {
-        nameTemplate: "Issue #%s",
-        urlTemplate: "https://issues.example.com/%s",
+        nameTemplate: 'Issue #%s',
+        urlTemplate: 'https://issues.example.com/%s',
       },
       tms: {
-        nameTemplate: "TMS #%s",
-        urlTemplate: "https://tms.example.com/%s",
+        nameTemplate: 'TMS #%s',
+        urlTemplate: 'https://tms.example.com/%s',
       },
       jira: {
         urlTemplate: (v: string) => `https://jira.example.com/browse/${v}`,
@@ -47,9 +46,9 @@ module.exports = {
     },
     categories: [
       {
-        name: "foo",
-        messageRegex: "bar",
-        traceRegex: "baz",
+        name: 'foo',
+        messageRegex: 'bar',
+        traceRegex: 'baz',
         matchedStatuses: [Status.FAILED, Status.BROKEN],
       },
     ],
@@ -61,9 +60,9 @@ module.exports = {
     },
   },
   reporters: [
-    "default", // default jest reporter
+    'default', // default jest reporter
     ['jest-html-reporter', { outputPath: 'jest.html' }], // jest html reporter
-    ['jest-allure', { outputDir: "allure-results" },],
+    ['jest-allure', { outputDir: 'allure-results' }],
   ],
   collectCoverage: true,
   coverageDirectory: 'coverage',

@@ -1,11 +1,11 @@
 /**
  * Converts a string to lowercase.
- * 
+ *
  * @param str - The string to convert.
  * @returns The lowercase string.
  */
 export function toLowerCase(str: string): string {
-    return str.toLowerCase();
+  return str.toLowerCase();
 }
 
 // Example usage:

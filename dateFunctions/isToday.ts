@@ -1,18 +1,20 @@
 /**
  * Checks if a given Date object is today's date.
- * 
+ *
  * @param date - The Date object to check.
  * @returns True if the date is today, false otherwise.
  * @throws Will throw an error if the date is invalid.
  */
 export function isToday(date: Date): boolean {
-    if (isNaN(date.getTime())) {
-        throw new Error('Invalid date');
-    }
-    const today = new Date();
-    return date.getFullYear() === today.getFullYear() &&
-           date.getMonth() === today.getMonth() &&
-           date.getDate() === today.getDate();
+  if (isNaN(date.getTime())) {
+    throw new Error('Invalid date');
+  }
+  const today = new Date();
+  return (
+    date.getFullYear() === today.getFullYear() &&
+    date.getMonth() === today.getMonth() &&
+    date.getDate() === today.getDate()
+  );
 }
 
 // Example usage:

@@ -139,7 +139,7 @@ describe('zipMultiple', () => {
   // Test case 12: Zipping arrays with BigInt values
   test('12. should zip arrays with BigInt values', () => {
     const names: string[] = ['Alice', 'Bob'];
-    const ages: BigInt[] = [BigInt(25), BigInt(30)];
+    const ages: bigint[] = [BigInt(25), BigInt(30)];
     const cities: string[] = ['New York', 'Los Angeles'];
     const result: any[][] = zipMultiple(names, ages, cities);
     expect(result).toEqual([

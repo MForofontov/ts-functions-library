@@ -12,7 +12,8 @@ describe('removeByCondition', () => {
   // Test case 2: Removing elements from an array of strings
   test('2. should remove elements from an array of strings', () => {
     const array: string[] = ['apple', 'banana', 'cherry', 'date'];
-    const condition: (value: string) => boolean = (value) => value.startsWith('b');
+    const condition: (value: string) => boolean = (value) =>
+      value.startsWith('b');
     const result: string[] = removeByCondition(array, condition);
     expect(result).toEqual(['apple', 'cherry', 'date']);
   });
@@ -24,8 +25,13 @@ describe('removeByCondition', () => {
       { id: 2, name: 'Bob' },
       { id: 3, name: 'Charlie' },
     ];
-    const condition: (value: { id: number; name: string }) => boolean = (value) => value.id === 2;
-    const result: { id: number; name: string }[] = removeByCondition(array, condition);
+    const condition: (value: { id: number; name: string }) => boolean = (
+      value,
+    ) => value.id === 2;
+    const result: { id: number; name: string }[] = removeByCondition(
+      array,
+      condition,
+    );
     expect(result).toEqual([
       { id: 1, name: 'Alice' },
       { id: 3, name: 'Charlie' },
@@ -59,15 +65,21 @@ describe('removeByCondition', () => {
   // Test case 7: Removing elements from an array with mixed types
   test('7. should remove elements from an array with mixed types', () => {
     const array: (number | string)[] = [1, 'two', 3, 'four'];
-    const condition: (value: number | string) => boolean = (value) => typeof value === 'string';
+    const condition: (value: number | string) => boolean = (value) =>
+      typeof value === 'string';
     const result: (number | string)[] = removeByCondition(array, condition);
     expect(result).toEqual([1, 3]);
   });
 
   // Test case 8: Removing elements from an array with nested arrays
   test('8. should remove elements from an array with nested arrays', () => {
-    const array: (number[] | string[])[] = [[1, 2], ['three', 'four'], [5, 6]];
-    const condition: (value: number[] | string[]) => boolean = (value) => Array.isArray(value) && value.length === 2;
+    const array: (number[] | string[])[] = [
+      [1, 2],
+      ['three', 'four'],
+      [5, 6],
+    ];
+    const condition: (value: number[] | string[]) => boolean = (value) =>
+      Array.isArray(value) && value.length === 2;
     const result: (number[] | string[])[] = removeByCondition(array, condition);
     expect(result).toEqual([]);
   });
@@ -75,7 +87,8 @@ describe('removeByCondition', () => {
   // Test case 9: Removing elements from an array with null values
   test('9. should remove elements from an array with null values', () => {
     const array: (number | null)[] = [1, null, 3, null];
-    const condition: (value: number | null) => boolean = (value) => value === null;
+    const condition: (value: number | null) => boolean = (value) =>
+      value === null;
     const result: (number | null)[] = removeByCondition(array, condition);
     expect(result).toEqual([1, 3]);
   });
@@ -83,7 +96,8 @@ describe('removeByCondition', () => {
   // Test case 10: Removing elements from an array with undefined values
   test('10. should remove elements from an array with undefined values', () => {
     const array: (number | undefined)[] = [1, undefined, 3, undefined];
-    const condition: (value: number | undefined) => boolean = (value) => value === undefined;
+    const condition: (value: number | undefined) => boolean = (value) =>
+      value === undefined;
     const result: (number | undefined)[] = removeByCondition(array, condition);
     expect(result).toEqual([1, 3]);
   });
@@ -91,7 +105,8 @@ describe('removeByCondition', () => {
   // Test case 11: Removing elements from an array with boolean values
   test('11. should remove elements from an array with boolean values', () => {
     const array: (number | boolean)[] = [1, true, 3, false];
-    const condition: (value: number | boolean) => boolean = (value) => typeof value === 'boolean';
+    const condition: (value: number | boolean) => boolean = (value) =>
+      typeof value === 'boolean';
     const result: (number | boolean)[] = removeByCondition(array, condition);
     expect(result).toEqual([1, 3]);
   });
@@ -101,7 +116,8 @@ describe('removeByCondition', () => {
     const sym1: symbol = Symbol('sym1');
     const sym2: symbol = Symbol('sym2');
     const array: (number | symbol)[] = [1, sym1, 3, sym2];
-    const condition: (value: number | symbol) => boolean = (value) => typeof value === 'symbol';
+    const condition: (value: number | symbol) => boolean = (value) =>
+      typeof value === 'symbol';
     const result: (number | symbol)[] = removeByCondition(array, condition);
     expect(result).toEqual([1, 3]);
   });
@@ -111,8 +127,12 @@ describe('removeByCondition', () => {
     const func1: () => void = () => {};
     const func2: () => void = () => {};
     const array: (number | (() => void))[] = [1, func1, 3, func2];
-    const condition: (value: number | (() => void)) => boolean = (value) => typeof value === 'function';
-    const result: (number | (() => void))[] = removeByCondition(array, condition);
+    const condition: (value: number | (() => void)) => boolean = (value) =>
+      typeof value === 'function';
+    const result: (number | (() => void))[] = removeByCondition(
+      array,
+      condition,
+    );
     expect(result).toEqual([1, 3]);
   });
 
@@ -121,7 +141,8 @@ describe('removeByCondition', () => {
     const date1: Date = new Date('2021-01-01');
     const date2: Date = new Date('2022-01-01');
     const array: (number | Date)[] = [1, date1, 3, date2];
-    const condition: (value: number | Date) => boolean = (value) => value instanceof Date;
+    const condition: (value: number | Date) => boolean = (value) =>
+      value instanceof Date;
     const result: (number | Date)[] = removeByCondition(array, condition);
     expect(result).toEqual([1, 3]);
   });
@@ -131,16 +152,18 @@ describe('removeByCondition', () => {
     const regex1: RegExp = /abc/;
     const regex2: RegExp = /def/;
     const array: (number | RegExp)[] = [1, regex1, 3, regex2];
-    const condition: (value: number | RegExp) => boolean = (value) => value instanceof RegExp;
+    const condition: (value: number | RegExp) => boolean = (value) =>
+      value instanceof RegExp;
     const result: (number | RegExp)[] = removeByCondition(array, condition);
     expect(result).toEqual([1, 3]);
   });
 
   // Test case 16: Removing elements from an array with BigInt values
   test('16. should remove elements from an array with BigInt values', () => {
-    const array: (number | BigInt)[] = [1, BigInt(2), 3, BigInt(4)];
-    const condition: (value: number | BigInt) => boolean = (value) => typeof value === 'bigint';
-    const result: (number | BigInt)[] = removeByCondition(array, condition);
+    const array: (number | bigint)[] = [1, BigInt(2), 3, BigInt(4)];
+    const condition: (value: number | bigint) => boolean = (value) =>
+      typeof value === 'bigint';
+    const result: (number | bigint)[] = removeByCondition(array, condition);
     expect(result).toEqual([1, 3]);
   });
 
@@ -162,9 +185,18 @@ describe('removeByCondition', () => {
 
   // Test case 19: Removing elements from an array with mixed data types
   test('19. should remove elements from an array with mixed data types', () => {
-    const array: (number | string | boolean | null | undefined)[] = [1, 'two', true, null, undefined];
-    const condition: (value: number | string | boolean | null | undefined) => boolean = (value) => typeof value === 'string';
-    const result: (number | string | boolean | null | undefined)[] = removeByCondition(array, condition);
+    const array: (number | string | boolean | null | undefined)[] = [
+      1,
+      'two',
+      true,
+      null,
+      undefined,
+    ];
+    const condition: (
+      value: number | string | boolean | null | undefined,
+    ) => boolean = (value) => typeof value === 'string';
+    const result: (number | string | boolean | null | undefined)[] =
+      removeByCondition(array, condition);
     expect(result).toEqual([1, true, null, undefined]);
   });
 
@@ -173,8 +205,13 @@ describe('removeByCondition', () => {
     const sym1: symbol = Symbol('sym1');
     const func1: () => void = () => {};
     const array: (number | symbol | (() => void))[] = [1, sym1, 3, func1];
-    const condition: (value: number | symbol | (() => void)) => boolean = (value) => typeof value === 'symbol' || typeof value === 'function';
-    const result: (number | symbol | (() => void))[] = removeByCondition(array, condition);
+    const condition: (value: number | symbol | (() => void)) => boolean = (
+      value,
+    ) => typeof value === 'symbol' || typeof value === 'function';
+    const result: (number | symbol | (() => void))[] = removeByCondition(
+      array,
+      condition,
+    );
     expect(result).toEqual([1, 3]);
   });
 });

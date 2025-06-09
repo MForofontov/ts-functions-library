@@ -59,10 +59,20 @@ describe('mergeUnique', () => {
 
   // Test case 8: Merging arrays with nested arrays
   test('8. should merge arrays with nested arrays', () => {
-    const array1: (number[] | string[])[] = [[1, 2], [3, 4]];
-    const array2: (number[] | string[])[] = [[3, 4], [5, 6]];
+    const array1: (number[] | string[])[] = [
+      [1, 2],
+      [3, 4],
+    ];
+    const array2: (number[] | string[])[] = [
+      [3, 4],
+      [5, 6],
+    ];
     const result: (number[] | string[])[] = mergeUnique(array1, array2);
-    expect(result).toEqual([[1, 2], [3, 4], [5, 6]]);
+    expect(result).toEqual([
+      [1, 2],
+      [3, 4],
+      [5, 6],
+    ]);
   });
 
   // Test case 9: Merging arrays with objects
@@ -134,7 +144,12 @@ describe('mergeUnique', () => {
     const array1: number[] = [Number.MAX_SAFE_INTEGER, Number.MAX_VALUE];
     const array2: number[] = [Number.MIN_SAFE_INTEGER, Number.MIN_VALUE];
     const result: number[] = mergeUnique(array1, array2);
-    expect(result).toEqual([Number.MAX_SAFE_INTEGER, Number.MAX_VALUE, Number.MIN_SAFE_INTEGER, Number.MIN_VALUE]);
+    expect(result).toEqual([
+      Number.MAX_SAFE_INTEGER,
+      Number.MAX_VALUE,
+      Number.MIN_SAFE_INTEGER,
+      Number.MIN_VALUE,
+    ]);
   });
 
   // Test case 18: Merging arrays with Infinity and -Infinity
@@ -155,10 +170,32 @@ describe('mergeUnique', () => {
 
   // Test case 20: Merging arrays with mixed data types
   test('20. should merge arrays with mixed data types', () => {
-    const array1: (number | string | boolean | null | undefined)[] = [1, 'two', true, null, undefined];
-    const array2: (number | string | boolean | null | undefined)[] = ['three', 4, false, null, undefined];
-    const result: (number | string | boolean | null | undefined)[] = mergeUnique(array1, array2);
-    expect(result).toEqual([1, 'two', true, null, undefined, 'three', 4, false]);
+    const array1: (number | string | boolean | null | undefined)[] = [
+      1,
+      'two',
+      true,
+      null,
+      undefined,
+    ];
+    const array2: (number | string | boolean | null | undefined)[] = [
+      'three',
+      4,
+      false,
+      null,
+      undefined,
+    ];
+    const result: (number | string | boolean | null | undefined)[] =
+      mergeUnique(array1, array2);
+    expect(result).toEqual([
+      1,
+      'two',
+      true,
+      null,
+      undefined,
+      'three',
+      4,
+      false,
+    ]);
   });
 
   // Test case 21: Merging arrays with symbols
@@ -203,9 +240,9 @@ describe('mergeUnique', () => {
 
   // Test case 25: Merging arrays with BigInt values
   test('25. should merge arrays with BigInt values', () => {
-    const array1: (number | BigInt)[] = [1, BigInt(2), 3];
-    const array2: (number | BigInt)[] = [BigInt(4), 5, BigInt(2)];
-    const result: (number | BigInt)[] = mergeUnique(array1, array2);
+    const array1: (number | bigint)[] = [1, BigInt(2), 3];
+    const array2: (number | bigint)[] = [BigInt(4), 5, BigInt(2)];
+    const result: (number | bigint)[] = mergeUnique(array1, array2);
     expect(result).toEqual([1, BigInt(2), 3, BigInt(4), 5]);
   });
 });
