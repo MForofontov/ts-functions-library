@@ -1,10 +1,34 @@
 /**
  * Finds common elements between two arrays based on a provided condition and deep equality.
+ * First identifies elements that exist in both arrays using JSON stringification for comparison,
+ * then filters those common elements using the provided condition function.
  *
- * @param arr1 - The first array.
- * @param arr2 - The second array.
- * @param condition - A function that takes an element and returns a boolean indicating whether it satisfies the condition.
+ * @param arr1 - The first array to compare.
+ * @param arr2 - The second array to compare.
+ * @param condition - A function that takes an element and returns a boolean indicating 
+ *                    whether it satisfies the condition.
  * @returns An array containing the common elements that satisfy the condition.
+ * 
+ * @example
+ * // Basic usage with objects
+ * const array1 = [{ a: 1 }, { a: 2 }, { a: 3 }];
+ * const array2 = [{ a: 2 }, { a: 3 }, { a: 4 }];
+ * const condition = (item: { a: number }) => item.a > 1;
+ * findCommonWithCondition(array1, array2, condition); // Returns [{ a: 2 }, { a: 3 }]
+ * 
+ * @example
+ * // With primitive values
+ * findCommonWithCondition([1, 2, 3], [2, 3, 4], x => x > 2); // Returns [3]
+ * 
+ * @example
+ * // Empty result when no common elements satisfy the condition
+ * findCommonWithCondition([1, 2], [3, 4], x => x > 5); // Returns []
+ * 
+ * @note This implementation uses JSON.stringify for deep equality comparison.
+ * This has limitations with circular references and non-serializable values
+ * like functions, undefined, or symbols.
+ * 
+ * @complexity O(n + m) where n and m are the lengths of arr1 and arr2 respectively
  */
 export function findCommonWithCondition<T>(
   arr1: T[],
@@ -19,9 +43,3 @@ export function findCommonWithCondition<T>(
     .filter((item) => arr2Set.has(JSON.stringify(item))) // Find common elements
     .filter(condition); // Apply condition to the common elements only
 }
-
-// Example usage:
-// const array1 = [{ a: 1 }, { a: 2 }, { a: 3 }];
-// const array2 = [{ a: 2 }, { a: 3 }, { a: 4 }];
-// const condition = (item: { a: number }) => item.a > 1;
-// findCommonWithCondition(array1, array2, condition); // [{ a: 2 }, { a: 3 }]
