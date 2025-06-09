@@ -1,9 +1,37 @@
 /**
  * Removes elements from an array based on a provided condition.
+ * Creates a new array containing only the elements that don't match the predicate function.
  *
- * @param arr - The array to filter.
- * @param predicate - The condition to filter by.
- * @returns A new array with the elements that do not match the condition removed.
+ * @param arr - The array to filter elements from.
+ * @param predicate - A function that tests each element. Returns true for elements to remove.
+ * @returns A new array containing only the elements that don't satisfy the predicate function.
+ * 
+ * @example
+ * // Remove even numbers
+ * removeByCondition([1, 2, 3, 4, 5, 6], num => num % 2 === 0); // Returns [1, 3, 5]
+ * 
+ * @example
+ * // Remove strings containing 'a'
+ * removeByCondition(['apple', 'banana', 'cherry'], str => str.includes('a')); 
+ * // Returns ['cherry']
+ * 
+ * @example
+ * // Remove objects with specific property
+ * const users = [
+ *   { name: 'Alice', active: true },
+ *   { name: 'Bob', active: false },
+ *   { name: 'Charlie', active: true }
+ * ];
+ * removeByCondition(users, user => user.active); // Returns [{ name: 'Bob', active: false }]
+ * 
+ * @example
+ * // Empty array handling
+ * removeByCondition([], () => true); // Returns []
+ * 
+ * @note This function does not modify the original array. It returns a new array
+ * with the filtered results using Array.filter() internally with the predicate negated.
+ * 
+ * @complexity O(n) where n is the length of the input array
  */
 export function removeByCondition<T>(
   arr: T[],
@@ -11,7 +39,3 @@ export function removeByCondition<T>(
 ): T[] {
   return arr.filter((value) => !predicate(value));
 }
-
-// Example usage:
-// const numbers = [1, 2, 3, 4, 5, 6];
-// removeByCondition(numbers, num => num % 2 === 0); // [1, 3, 5]
