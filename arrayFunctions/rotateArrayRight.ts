@@ -1,9 +1,32 @@
 /**
  * Rotates an array to the right by a given number of positions.
+ * Elements that would be shifted off the end are moved to the beginning.
  *
  * @param arr - The array to rotate.
  * @param positions - The number of positions to rotate the array.
- * @returns The rotated array.
+ * @returns A new array with elements rotated to the right by the specified number of positions.
+ *
+ * @example
+ * // Basic rotation
+ * rotateArrayRight([1, 2, 3, 4, 5], 2); // Returns [4, 5, 1, 2, 3]
+ *
+ * @example
+ * // Rotation with positions greater than array length
+ * rotateArrayRight(['a', 'b', 'c'], 4); // Returns ['c', 'a', 'b']
+ *
+ * @example
+ * // Negative positions (rotates left)
+ * rotateArrayRight([1, 2, 3, 4], -1); // Returns [2, 3, 4, 1]
+ *
+ * @example
+ * // Empty array
+ * rotateArrayRight([], 3); // Returns []
+ *
+ * @note This implementation handles negative positions, positions greater than
+ * the array length, and empty arrays. The function creates a new array without
+ * modifying the original.
+ *
+ * @complexity O(n) where n is the length of the input array
  */
 export function rotateArrayRight<T>(arr: T[], positions: number): T[] {
   const len = arr.length;

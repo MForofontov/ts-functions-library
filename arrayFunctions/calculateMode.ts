@@ -6,26 +6,26 @@
  * @param arr - The array of numbers to find the mode(s) of.
  * @returns An array containing the mode(s) of the dataset, sorted in ascending order.
  *          If all values appear with equal frequency, returns all unique values.
- * 
+ *
  * @example
  * // Single mode
  * calculateMode([1, 2, 2, 3, 4]); // Returns [2]
- * 
+ *
  * @example
  * // Multiple modes (bimodal)
  * calculateMode([1, 2, 2, 3, 3, 4]); // Returns [2, 3]
- * 
+ *
  * @example
  * // All values appear once (no clear mode)
  * calculateMode([1, 2, 3, 4, 5]); // Returns [1, 2, 3, 4, 5]
- * 
+ *
  * @example
  * // Empty array
  * calculateMode([]); // Returns []
- * 
+ *
  * @note The function returns multiple values when there are multiple modes.
  * The returned array is always sorted in ascending numerical order.
- * 
+ *
  * @complexity O(n) where n is the length of the input array
  */
 export function calculateMode(arr: number[]): number[] {
