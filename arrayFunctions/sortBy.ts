@@ -1,9 +1,42 @@
 /**
  * Sorts an array of objects based on a given property.
+ * Creates a new array with the same elements sorted by the specified property value.
+ * Handles various data types: strings, numbers, booleans, dates, and bigints.
  *
  * @param arr - The array of objects to sort.
  * @param key - The property to sort by.
- * @returns The sorted array.
+ * @returns A new sorted array. The original array is not modified.
+ * @throws Error if the property values are of unsupported or mixed types.
+ *
+ * @example
+ * // Sort by string property
+ * const users = [{ name: 'Charlie' }, { name: 'Alice' }, { name: 'Bob' }];
+ * sortBy(users, 'name'); // Returns [{ name: 'Alice' }, { name: 'Bob' }, { name: 'Charlie' }]
+ *
+ * @example
+ * // Sort by number property
+ * const items = [{ price: 100 }, { price: 50 }, { price: 75 }];
+ * sortBy(items, 'price'); // Returns [{ price: 50 }, { price: 75 }, { price: 100 }]
+ *
+ * @example
+ * // Sort by date property
+ * const events = [
+ *   { date: new Date('2023-01-10') },
+ *   { date: new Date('2023-01-01') },
+ *   { date: new Date('2023-01-05') }
+ * ];
+ * sortBy(events, 'date'); // Returns events sorted by date (oldest first)
+ *
+ * @example
+ * // Sort by boolean property
+ * const tasks = [{ completed: false }, { completed: true }, { completed: false }];
+ * sortBy(tasks, 'completed'); // Returns [{ completed: true }, { completed: false }, { completed: false }]
+ *
+ * @note This function creates a new array without modifying the original.
+ * String properties are sorted using localeCompare for proper language-sensitive ordering.
+ * Boolean sorting puts true values before false values.
+ *
+ * @complexity O(n log n) where n is the length of the input array (dominated by the sort algorithm)
  */
 export function sortBy<T>(arr: T[], key: keyof T): T[] {
   return arr.slice().sort((a, b) => {

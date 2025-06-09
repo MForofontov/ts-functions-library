@@ -1,13 +1,34 @@
 /**
- * Finds the smallest element in an array of numbers.
+ * Finds the smallest value in an array of numbers.
+ * Uses the native Math.min function with spread syntax to determine the minimum value.
  *
- * @param arr - The array of numbers.
- * @returns The minimum value in the array.
+ * @param arr - The array of numbers to search through.
+ * @returns The smallest value in the array. Returns Infinity for empty arrays.
+ * @throws TypeError if the spread operator is used on an array that's too large.
+ *
+ * @example
+ * // Basic usage
+ * findMin([10, 22, 3, 14]); // Returns 3
+ *
+ * @example
+ * // With negative numbers
+ * findMin([-5, -10, -3]); // Returns -10
+ *
+ * @example
+ * // Empty array
+ * findMin([]); // Returns Infinity
+ *
+ * @example
+ * // Single element
+ * findMin([42]); // Returns 42
+ *
+ * @note This implementation uses the spread operator with Math.min, which has
+ * a limitation on the size of the input array (usually around 100,000 elements
+ * depending on the JavaScript engine). For very large arrays, consider using
+ * a manual loop-based approach instead.
+ *
+ * @complexity O(n) where n is the length of the input array
  */
 export function findMin(arr: number[]): number {
   return Math.min(...arr);
 }
-
-// Example usage:
-// const values = [10, 22, 3, 14];
-// findMin(values); // 3

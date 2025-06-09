@@ -2,10 +2,35 @@ import { deepEqual } from '.././objectFunctions/deepEqual';
 
 /**
  * Merges two arrays and returns a new array with unique elements.
+ * Uses deep equality comparison to determine if elements are duplicates.
  *
- * @param arr1 - The first array.
- * @param arr2 - The second array.
- * @returns A new array containing unique elements from both arrays.
+ * @param arr1 - The first array to merge.
+ * @param arr2 - The second array to merge.
+ * @returns A new array containing unique elements from both input arrays, with duplicates removed.
+ *
+ * @example
+ * // Basic usage with primitive values
+ * mergeUnique([1, 2, 3], [3, 4, 5]); // Returns [1, 2, 3, 4, 5]
+ *
+ * @example
+ * // With objects using deep equality
+ * mergeUnique([{id: 1}, {id: 2}], [{id: 2}, {id: 3}]); // Returns [{id: 1}, {id: 2}, {id: 3}]
+ *
+ * @example
+ * // Empty arrays
+ * mergeUnique([], [1, 2]); // Returns [1, 2]
+ * mergeUnique([1, 2], []); // Returns [1, 2]
+ * mergeUnique([], []); // Returns []
+ *
+ * @example
+ * // Array with duplicates
+ * mergeUnique([1, 1, 2], [2, 3, 3]); // Returns [1, 2, 3]
+ *
+ * @note This implementation uses deep equality comparison via the deepEqual function,
+ * which makes it suitable for merging arrays with complex objects and nested structures.
+ * Elements from the first array are added first, followed by unique elements from the second array.
+ *
+ * @complexity O(n*m) where n and m are the lengths of the input arrays
  */
 export function mergeUnique<T>(arr1: T[], arr2: T[]): T[] {
   const result: T[] = [];
@@ -23,8 +48,3 @@ export function mergeUnique<T>(arr1: T[], arr2: T[]): T[] {
 
   return result;
 }
-
-// Example usage:
-// const array1 = [1, 2, 3, 4];
-// const array2 = [3, 4, 5, 6];
-// mergeUnique(array1, array2); // [1, 2, 3, 4, 5, 6]

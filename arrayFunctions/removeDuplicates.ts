@@ -1,10 +1,33 @@
 import { deepEqual } from '../objectFunctions/deepEqual';
 
 /**
- * Removes duplicates from an array using deep equality.
+ * Removes duplicates from an array using deep equality comparison.
+ * Preserves the original order of elements, keeping the first occurrence of each value.
  *
- * @param arr - The array to process.
- * @returns A new array with duplicates removed.
+ * @param arr - The array to remove duplicates from.
+ * @returns A new array containing only unique elements from the input array.
+ *
+ * @example
+ * // Basic usage with primitive values
+ * removeDuplicates([1, 2, 2, 3, 4, 4]); // Returns [1, 2, 3, 4]
+ *
+ * @example
+ * // With objects using deep equality
+ * removeDuplicates([{id: 1}, {id: 2}, {id: 1}]); // Returns [{id: 1}, {id: 2}]
+ *
+ * @example
+ * // With nested arrays
+ * removeDuplicates([[1, 2], [1, 2], ['three', 'four']]); // Returns [[1, 2], ['three', 'four']]
+ *
+ * @example
+ * // Empty array
+ * removeDuplicates([]); // Returns []
+ *
+ * @note This implementation uses deep equality comparison via the deepEqual function,
+ * which makes it suitable for removing duplicates from arrays with complex objects
+ * and nested structures. The original order is preserved for the first occurrence of each value.
+ *
+ * @complexity O(n²) where n is the length of the input array, due to the some() method with deep equality checks
  */
 export function removeDuplicates<T>(arr: T[]): T[] {
   const uniqueItems: T[] = [];
@@ -15,7 +38,3 @@ export function removeDuplicates<T>(arr: T[]): T[] {
   });
   return uniqueItems;
 }
-
-// Example usage:
-// removeDuplicates([1, 2, 2, 3, 4, 4]); // [1, 2, 3, 4]
-// removeDuplicates([[1, 2], [1, 2], ['three', 'four']]); // [[1, 2], ['three', 'four']]
