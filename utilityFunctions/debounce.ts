@@ -1,16 +1,19 @@
 /**
  * Limits the execution rate of a function to a specified delay (debounce).
- * 
+ *
  * @param func - The function to debounce.
  * @param delay - The debounce delay in milliseconds.
  * @returns A debounced version of the function.
  */
-export function debounce<T extends (...args: any[]) => any>(func: T, delay: number): (...args: Parameters<T>) => void {
-    let timeoutId: ReturnType<typeof setTimeout>;
-    return function (...args: Parameters<T>) {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => func.apply(this, args), delay);
-    };
+export function debounce<T extends (...args: any[]) => any>(
+  func: T,
+  delay: number,
+): (...args: Parameters<T>) => void {
+  let timeoutId: ReturnType<typeof setTimeout>;
+  return function (...args: Parameters<T>) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => func.apply(this, args), delay);
+  };
 }
 
 // Example usage:

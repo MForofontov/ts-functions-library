@@ -4,18 +4,18 @@
 
 /**
  * Calculates the range of an array of numbers.
- * 
+ *
  * @param arr - The array of numbers.
  * @returns The range of the numbers in the array.
  */
 export function calculateRange(arr: number[]): number {
-    if (arr.length === 0) {
-        return NaN;
-    }
+  if (arr.length === 0) {
+    return NaN;
+  }
 
-    const min: number = Math.min(...arr);
-    const max: number = Math.max(...arr);
-    return max - min;
+  const min: number = Math.min(...arr);
+  const max: number = Math.max(...arr);
+  return max - min;
 }
 
 // Example usage:

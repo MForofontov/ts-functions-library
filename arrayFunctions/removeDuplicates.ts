@@ -2,18 +2,18 @@ import { deepEqual } from '../objectFunctions/deepEqual';
 
 /**
  * Removes duplicates from an array using deep equality.
- * 
+ *
  * @param arr - The array to process.
  * @returns A new array with duplicates removed.
  */
 export function removeDuplicates<T>(arr: T[]): T[] {
-    const uniqueItems: T[] = [];
-    arr.forEach(item => {
-        if (!uniqueItems.some(existingItem => deepEqual(existingItem, item))) {
-            uniqueItems.push(item);
-        }
-    });
-    return uniqueItems;
+  const uniqueItems: T[] = [];
+  arr.forEach((item) => {
+    if (!uniqueItems.some((existingItem) => deepEqual(existingItem, item))) {
+      uniqueItems.push(item);
+    }
+  });
+  return uniqueItems;
 }
 
 // Example usage:

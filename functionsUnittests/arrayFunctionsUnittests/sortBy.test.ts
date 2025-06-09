@@ -66,12 +66,12 @@ describe('sortBy', () => {
 
   // Test case 5: Sorting an array of objects by a BigInt key
   test('5. should sort an array of objects by a BigInt key', () => {
-    const array: { id: number; value: BigInt }[] = [
+    const array: { id: number; value: bigint }[] = [
       { id: 3, value: BigInt(3) },
       { id: 1, value: BigInt(1) },
       { id: 2, value: BigInt(2) },
     ];
-    const result: { id: number; value: BigInt }[] = sortBy(array, 'value');
+    const result: { id: number; value: bigint }[] = sortBy(array, 'value');
     expect(result).toEqual([
       { id: 1, value: BigInt(1) },
       { id: 2, value: BigInt(2) },
@@ -100,6 +100,8 @@ describe('sortBy', () => {
       { id: 1, value: Symbol('sym1') },
       { id: 2, value: Symbol('sym2') },
     ];
-    expect(() => sortBy(array, 'value')).toThrowError('Unsupported types for sorting: symbol and symbol');
+    expect(() => sortBy(array, 'value')).toThrowError(
+      'Unsupported types for sorting: symbol and symbol',
+    );
   });
 });

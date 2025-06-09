@@ -1,22 +1,29 @@
 /**
  * Gets various parts of a Date object.
- * 
+ *
  * @param date - The Date object to extract parts from.
  * @returns An object containing year, month, day, hours, minutes, and seconds.
  */
-export function getDateParts(date: Date): { year: number, month: number, day: number, hours: number, minutes: number, seconds: number } {
-    if (isNaN(date.getTime())) {
-        throw new Error('Invalid date');
-    }
+export function getDateParts(date: Date): {
+  year: number;
+  month: number;
+  day: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+} {
+  if (isNaN(date.getTime())) {
+    throw new Error('Invalid date');
+  }
 
-    return {
-        year: date.getFullYear(),
-        month: date.getMonth() + 1,
-        day: date.getDate(),
-        hours: date.getHours(),
-        minutes: date.getMinutes(),
-        seconds: date.getSeconds()
-    };
+  return {
+    year: date.getFullYear(),
+    month: date.getMonth() + 1,
+    day: date.getDate(),
+    hours: date.getHours(),
+    minutes: date.getMinutes(),
+    seconds: date.getSeconds(),
+  };
 }
 
 // Example usage:

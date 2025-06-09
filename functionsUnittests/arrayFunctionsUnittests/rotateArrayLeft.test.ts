@@ -61,7 +61,10 @@ describe('rotateArrayLeft', () => {
   test('8. should rotate an array of mixed types by 2 positions', () => {
     const array: (number | string | boolean)[] = [1, 'two', true, 4, 'five'];
     const positions: number = 2;
-    const result: (number | string | boolean)[] = rotateArrayLeft(array, positions);
+    const result: (number | string | boolean)[] = rotateArrayLeft(
+      array,
+      positions,
+    );
     expect(result).toEqual([true, 4, 'five', 1, 'two']);
   });
 
@@ -73,7 +76,10 @@ describe('rotateArrayLeft', () => {
       { id: 3, name: 'Charlie' },
     ];
     const positions: number = 1;
-    const result: { id: number; name: string }[] = rotateArrayLeft(array, positions);
+    const result: { id: number; name: string }[] = rotateArrayLeft(
+      array,
+      positions,
+    );
     expect(result).toEqual([
       { id: 2, name: 'Bob' },
       { id: 3, name: 'Charlie' },
@@ -83,10 +89,22 @@ describe('rotateArrayLeft', () => {
 
   // Test case 10: Rotating an array of nested arrays by 3 positions
   test('10. should rotate an array of nested arrays by 3 positions', () => {
-    const array: number[][] = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10]];
+    const array: number[][] = [
+      [1, 2],
+      [3, 4],
+      [5, 6],
+      [7, 8],
+      [9, 10],
+    ];
     const positions: number = 3;
     const result: number[][] = rotateArrayLeft(array, positions);
-    expect(result).toEqual([[7, 8], [9, 10], [1, 2], [3, 4], [5, 6]]);
+    expect(result).toEqual([
+      [7, 8],
+      [9, 10],
+      [1, 2],
+      [3, 4],
+      [5, 6],
+    ]);
   });
 
   // Test case 11: Rotating an array of boolean values by 2 positions
@@ -143,10 +161,22 @@ describe('rotateArrayLeft', () => {
 
   // Test case 16: Rotating an array of BigInt values by 2 positions
   test('16. should rotate an array of BigInt values by 2 positions', () => {
-    const array: BigInt[] = [BigInt(1), BigInt(2), BigInt(3), BigInt(4), BigInt(5)];
+    const array: bigint[] = [
+      BigInt(1),
+      BigInt(2),
+      BigInt(3),
+      BigInt(4),
+      BigInt(5),
+    ];
     const positions: number = 2;
-    const result: BigInt[] = rotateArrayLeft(array, positions);
-    expect(result).toEqual([BigInt(3), BigInt(4), BigInt(5), BigInt(1), BigInt(2)]);
+    const result: bigint[] = rotateArrayLeft(array, positions);
+    expect(result).toEqual([
+      BigInt(3),
+      BigInt(4),
+      BigInt(5),
+      BigInt(1),
+      BigInt(2),
+    ]);
   });
 
   // Test case 17: Rotating an array of Infinity and -Infinity by 1 position
@@ -167,10 +197,29 @@ describe('rotateArrayLeft', () => {
 
   // Test case 19: Rotating an array of mixed data types by 3 positions
   test('19. should rotate an array of mixed data types by 3 positions', () => {
-    const array: (number | string | boolean | null | undefined)[] = [0, 'apple', null, undefined, false, '', 'banana', 3];
+    const array: (number | string | boolean | null | undefined)[] = [
+      0,
+      'apple',
+      null,
+      undefined,
+      false,
+      '',
+      'banana',
+      3,
+    ];
     const positions: number = 3;
-    const result: (number | string | boolean | null | undefined)[] = rotateArrayLeft(array, positions);
-    expect(result).toEqual([undefined, false, '', 'banana', 3, 0, 'apple', null]);
+    const result: (number | string | boolean | null | undefined)[] =
+      rotateArrayLeft(array, positions);
+    expect(result).toEqual([
+      undefined,
+      false,
+      '',
+      'banana',
+      3,
+      0,
+      'apple',
+      null,
+    ]);
   });
 
   // Test case 20: Rotating an array of symbols and functions by 2 positions

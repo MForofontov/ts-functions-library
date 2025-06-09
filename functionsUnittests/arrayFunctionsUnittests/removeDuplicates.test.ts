@@ -52,9 +52,16 @@ describe('removeDuplicates', () => {
 
   // Test case 7: Removing duplicates from an array with nested arrays
   test('7. should remove duplicates from an array with nested arrays', () => {
-    const array: (number[] | string[])[] = [[1, 2], [1, 2], ['three', 'four']];
+    const array: (number[] | string[])[] = [
+      [1, 2],
+      [1, 2],
+      ['three', 'four'],
+    ];
     const result: (number[] | string[])[] = removeDuplicates(array);
-    expect(result).toEqual([[1, 2], ['three', 'four']]);
+    expect(result).toEqual([
+      [1, 2],
+      ['three', 'four'],
+    ]);
   });
 
   // Test case 8: Removing duplicates from an array with null values
@@ -116,8 +123,8 @@ describe('removeDuplicates', () => {
 
   // Test case 15: Removing duplicates from an array with BigInt values
   test('15. should remove duplicates from an array with BigInt values', () => {
-    const array: (number | BigInt)[] = [1, BigInt(2), 1, BigInt(2), 3];
-    const result: (number | BigInt)[] = removeDuplicates(array);
+    const array: (number | bigint)[] = [1, BigInt(2), 1, BigInt(2), 3];
+    const result: (number | bigint)[] = removeDuplicates(array);
     expect(result).toEqual([1, BigInt(2), 3]);
   });
 
@@ -137,8 +144,17 @@ describe('removeDuplicates', () => {
 
   // Test case 18: Removing duplicates from an array with mixed data types
   test('18. should remove duplicates from an array with mixed data types', () => {
-    const array: (number | string | boolean | null | undefined)[] = [1, 'two', true, null, undefined, 'two', 1];
-    const result: (number | string | boolean | null | undefined)[] = removeDuplicates(array);
+    const array: (number | string | boolean | null | undefined)[] = [
+      1,
+      'two',
+      true,
+      null,
+      undefined,
+      'two',
+      1,
+    ];
+    const result: (number | string | boolean | null | undefined)[] =
+      removeDuplicates(array);
     expect(result).toEqual([1, 'two', true, null, undefined]);
   });
 
@@ -162,8 +178,8 @@ describe('removeDuplicates', () => {
 
   // Test case 21: Removing duplicates from an array with BigInt and Infinity values
   test('21. should remove duplicates from an array with BigInt and Infinity values', () => {
-    const array: (number | BigInt)[] = [1, BigInt(2), 1, Infinity, BigInt(2)];
-    const result: (number | BigInt)[] = removeDuplicates(array);
+    const array: (number | bigint)[] = [1, BigInt(2), 1, Infinity, BigInt(2)];
+    const result: (number | bigint)[] = removeDuplicates(array);
     expect(result).toEqual([1, BigInt(2), Infinity]);
   });
 
@@ -184,16 +200,40 @@ describe('removeDuplicates', () => {
   // Test case 24: Removing duplicates from an array with mixed data types and symbols
   test('24. should remove duplicates from an array with mixed data types and symbols', () => {
     const sym1: symbol = Symbol('sym1');
-    const array: (number | string | boolean | null | undefined | symbol)[] = [1, 'two', true, null, undefined, sym1, 'two', 1];
-    const result: (number | string | boolean | null | undefined | symbol)[] = removeDuplicates(array);
+    const array: (number | string | boolean | null | undefined | symbol)[] = [
+      1,
+      'two',
+      true,
+      null,
+      undefined,
+      sym1,
+      'two',
+      1,
+    ];
+    const result: (number | string | boolean | null | undefined | symbol)[] =
+      removeDuplicates(array);
     expect(result).toEqual([1, 'two', true, null, undefined, sym1]);
   });
 
   // Test case 25: Removing duplicates from an array with mixed data types and functions
   test('25. should remove duplicates from an array with mixed data types and functions', () => {
     const func1: () => void = () => {};
-    const array: (number | string | boolean | null | undefined | (() => void))[] = [1, 'two', true, null, undefined, func1, 'two', 1];
-    const result: (number | string | boolean | null | undefined | (() => void))[] = removeDuplicates(array);
+    const array: (
+      | number
+      | string
+      | boolean
+      | null
+      | undefined
+      | (() => void)
+    )[] = [1, 'two', true, null, undefined, func1, 'two', 1];
+    const result: (
+      | number
+      | string
+      | boolean
+      | null
+      | undefined
+      | (() => void)
+    )[] = removeDuplicates(array);
     expect(result).toEqual([1, 'two', true, null, undefined, func1]);
   });
 });
