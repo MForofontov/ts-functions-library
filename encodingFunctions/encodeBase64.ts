@@ -7,8 +7,12 @@ import { Buffer } from 'buffer';
  * @returns The base64 encoded string.
  */
 export function encodeBase64(str: string): string {
-  return Buffer.from(str).toString('base64');
+  return Buffer.from(str)
+    .toString('base64')
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=+$/, '');
 }
 
 // Example usage:
-// encodeBase64("hello world"); // "aGVsbG8gd29ybGQ="
+// encodeBase64("hello world"); // "aGVsbG8gd29ybGQ"
