@@ -12,8 +12,9 @@ export function throttle<T extends (...args: any[]) => void>(
   let lastFunc: NodeJS.Timeout | null;
   let lastRan: number | null = null;
   return function (...args: Parameters<T>) {
+    const context = this;
     if (!lastRan || Date.now() - lastRan >= limit) {
-      func(...args);
+      func.apply(context, args);
       lastRan = Date.now();
     } else {
       if (lastFunc) {
@@ -21,7 +22,7 @@ export function throttle<T extends (...args: any[]) => void>(
       }
       lastFunc = setTimeout(
         () => {
-          func(...args);
+          func.apply(context, args);
         },
         limit - (Date.now() - lastRan),
       );
