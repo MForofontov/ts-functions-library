@@ -5,8 +5,13 @@
  * @returns An object representing the query parameters.
  */
 export function parseQueryString(queryString: string): Record<string, string> {
+  if (!queryString || queryString === '?') {
+    return {};
+  }
+
   return queryString
     .replace(/^\?/, '')
+    .replace(/\+/g, ' ')
     .split('&')
     .reduce(
       (acc, queryParam) => {
