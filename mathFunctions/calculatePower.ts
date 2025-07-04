@@ -1,6 +1,3 @@
-// Example usage:
-// distance(0, 0, 3, 4); // 5
-
 /**
  * Calculates the power of a number (base^exponent).
  *
