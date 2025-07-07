@@ -26,20 +26,36 @@ export function unflattenObject(obj: Record<string, any>): Record<string, any> {
 
   const result: Record<string, any> = {};
 
-  for (const [key, value] of Object.entries(obj)) {
-    const keys = key.split('.');
-    let current = result;
+  for (const [flatKey, value] of Object.entries(obj)) {
+    const parts = flatKey.replace(/\[(\d+)\]/g, '.$1').split('.');
+    let current: any = result;
 
-    for (let i = 0; i < keys.length; i++) {
-      if (i === keys.length - 1) {
-        current[keys[i]] = value;
-      } else {
-        if (!current[keys[i]]) {
-          current[keys[i]] = {};
+    parts.forEach((part, idx) => {
+      const isLast = idx === parts.length - 1;
+      const nextIsIndex = /^\d+$/.test(parts[idx + 1]);
+      const isIndex = /^\d+$/.test(part);
+
+      if (isLast) {
+        if (isIndex) {
+          if (!Array.isArray(current)) current = [];
+          current[Number(part)] = value;
+        } else {
+          current[part] = value;
         }
-        current = current[keys[i]];
+      } else {
+        if (isIndex) {
+          if (!Array.isArray(current[Number(part)])) {
+            current[Number(part)] = nextIsIndex ? [] : {};
+          }
+          current = current[Number(part)];
+        } else {
+          if (!current[part] || typeof current[part] !== 'object') {
+            current[part] = nextIsIndex ? [] : {};
+          }
+          current = current[part];
+        }
       }
-    }
+    });
   }
 
   return result;

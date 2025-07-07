@@ -22,9 +22,22 @@ export function removeEmptyValues(
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }
-  return Object.fromEntries(
-    Object.entries(obj).filter(
-      ([_, value]) => value !== null && value !== undefined && value !== '',
-    ),
-  );
+
+  const clean = (value: any): any => {
+    if (Array.isArray(value)) {
+      return value
+        .map(clean)
+        .filter((v) => v !== null && v !== undefined && v !== '');
+    }
+    if (value && typeof value === 'object') {
+      return Object.fromEntries(
+        Object.entries(value)
+          .map(([k, v]) => [k, clean(v)])
+          .filter(([_, v]) => v !== null && v !== undefined && v !== ''),
+      );
+    }
+    return value;
+  };
+
+  return clean(obj);
 }

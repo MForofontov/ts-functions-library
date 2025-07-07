@@ -32,9 +32,13 @@ export function differenceBy<T extends Record<string, any>>(
     throw new TypeError('Comparator must be a function');
   }
 
-  return Object.fromEntries(
-    Object.entries(obj1).filter(
-      ([key, value]) => !comparator(value, obj2[key]),
-    ),
-  ) as Partial<T>; // Explicitly cast the result to Partial<T>
+  const keys = Reflect.ownKeys(obj1);
+  const result: Partial<T> = {};
+  for (const key of keys) {
+    const k = key as keyof T;
+    if (!comparator(obj1[k], obj2[k])) {
+      (result as any)[k] = obj1[k];
+    }
+  }
+  return result;
 }

@@ -33,16 +33,17 @@ export function fromDotNotation(obj: Record<string, any>): Record<string, any> {
 
       for (let i = 0; i < parts.length; i++) {
         const part = parts[i];
+        const cleanPart = part.replace(/\\\\/g, '\\');
         const isLast = i === parts.length - 1;
 
         if (isLast) {
-          current[part] = obj[key];
+          current[cleanPart] = obj[key];
         } else {
-          if (!current[part] || typeof current[part] !== 'object') {
+          if (!current[cleanPart] || typeof current[cleanPart] !== 'object') {
             // Create an array if the next part is a numeric index
-            current[part] = /^\d+$/.test(parts[i + 1]) ? [] : {};
+            current[cleanPart] = /^\d+$/.test(parts[i + 1]) ? [] : {};
           }
-          current = current[part];
+          current = current[cleanPart];
         }
       }
     }

@@ -25,13 +25,25 @@ export function safeSet<T extends Record<string, any>>(
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }
+  if (path === '') return;
+  if (Object.prototype.hasOwnProperty.call(obj, path)) {
+    (obj as any)[path] = value;
+    return;
+  }
 
-  const keys = path.split('.');
+  const keys = path.split('.').filter((k) => k);
   let current: any = obj;
-  while (keys.length > 1) {
-    const key = keys.shift()!;
-    if (!(key in current)) current[key] = {};
+  for (let i = 0; i < keys.length - 1; i++) {
+    const key = keys[i];
+    const rest = keys.slice(i).join('.');
+    if (Object.prototype.hasOwnProperty.call(current, rest)) {
+      current[rest] = value;
+      return;
+    }
+    if (!current[key] || typeof current[key] !== 'object') {
+      current[key] = {};
+    }
     current = current[key];
   }
-  current[keys[0]] = value;
+  current[keys[keys.length - 1]] = value;
 }

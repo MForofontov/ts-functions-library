@@ -15,20 +15,26 @@
  * @note Properly handles acronyms and multiple capital letters.
  */
 export function keysToSnakeCase(obj: any): any {
-  if (Array.isArray(obj)) {
-    return obj.map(keysToSnakeCase);
-  } else if (obj !== null && typeof obj === 'object') {
-    return Object.fromEntries(
-      Object.entries(obj).map(([key, value]) => [
-        typeof key === 'string'
-          ? key.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`)
-          : key,
-        keysToSnakeCase(value),
-      ]),
-    );
-  }
-  if (typeof obj !== 'object' || obj === null) {
+  if (obj === null || typeof obj !== 'object') {
     throw new TypeError('Input must be a non-null object');
   }
-  return obj;
+
+  const transform = (value: any): any => {
+    if (Array.isArray(value)) {
+      return value.map(transform);
+    }
+    if (value !== null && typeof value === 'object') {
+      return Object.fromEntries(
+        Object.entries(value).map(([k, v]) => [
+          typeof k === 'string'
+            ? k.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`)
+            : k,
+          transform(v),
+        ]),
+      );
+    }
+    return value;
+  };
+
+  return transform(obj);
 }

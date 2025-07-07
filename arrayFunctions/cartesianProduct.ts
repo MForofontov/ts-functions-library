@@ -35,14 +35,14 @@
  *
  * @complexity O(n^m) where n is the average array length and m is the number of arrays
  */
-export function cartesianProduct<T>(...arrays: T[][]): T[][] {
+export function cartesianProduct(...arrays: any[][]): any[][] {
   // Handle empty array case
   if (arrays.some((arr) => arr.length === 0)) {
     return [];
   }
 
-  return arrays.reduce<T[][]>(
+  return arrays.reduce<any[][]>(
     (acc, arr) => acc.flatMap((x) => arr.map((y) => [...x, y])),
-    [[]] as T[][],
+    [[]] as any[][],
   );
 }
