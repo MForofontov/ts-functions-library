@@ -53,8 +53,8 @@ export function toDotNotation(
       const newKey = prefix
         ? needsBrackets
           ? `${prefix}[${escapedKey}]`
-          : `${prefix}.${key}`
-        : key;
+          : `${prefix}.${escapedKey}`
+        : escapedKey;
 
       if (Array.isArray(obj[key])) {
         // Flatten arrays

@@ -29,6 +29,10 @@ export function keyBy<T extends Record<string, any>>(
   if (!Array.isArray(array)) {
     throw new TypeError('Input must be an array');
   }
-
-  return Object.fromEntries(array.map((item) => [String(item[key]), item]));
+  return array.reduce<Record<string, T>>((acc, item) => {
+    if (Object.prototype.hasOwnProperty.call(item, key)) {
+      acc[String(item[key])] = item;
+    }
+    return acc;
+  }, {});
 }

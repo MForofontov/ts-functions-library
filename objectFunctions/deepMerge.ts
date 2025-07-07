@@ -27,22 +27,21 @@ export function deepMerge<T extends object, U extends object>(
     throw new TypeError('Both target and source must be non-null objects');
   }
 
-  return [target, source].reduce(
-    (acc, obj) => {
-      Object.keys(obj).forEach((key) => {
-        const targetValue = (acc as any)[key];
-        const sourceValue = (obj as any)[key];
+  const merge = (t: any, s: any): any => {
+    Reflect.ownKeys(s).forEach((k) => {
+      const key = k as any;
+      const targetValue = t[key];
+      const sourceValue = s[key];
+      if (Array.isArray(targetValue) && Array.isArray(sourceValue)) {
+        t[key] = targetValue.concat(sourceValue);
+      } else if (isObject(targetValue) && isObject(sourceValue)) {
+        t[key] = merge({ ...targetValue }, sourceValue);
+      } else {
+        t[key] = sourceValue;
+      }
+    });
+    return t;
+  };
 
-        if (Array.isArray(targetValue) && Array.isArray(sourceValue)) {
-          (acc as any)[key] = targetValue.concat(...sourceValue);
-        } else if (isObject(targetValue) && isObject(sourceValue)) {
-          (acc as any)[key] = deepMerge(targetValue, sourceValue);
-        } else {
-          (acc as any)[key] = sourceValue;
-        }
-      });
-      return acc;
-    },
-    { ...target } as T & U,
-  ) as T & U;
+  return merge({ ...target }, source) as T & U;
 }

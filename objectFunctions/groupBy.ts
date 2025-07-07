@@ -32,13 +32,12 @@ export function groupBy<T>(array: T[], key: keyof T): Record<string, T[]> {
     throw new TypeError('Input must be an array');
   }
 
-  return array.reduce(
-    (acc, item) => {
-      const group = String(item[key]);
+  return array.reduce<Record<string, T[]>>((acc, item) => {
+    if (Object.prototype.hasOwnProperty.call(item, key)) {
+      const group = String((item as any)[key]);
       if (!acc[group]) acc[group] = [];
       acc[group].push(item);
-      return acc;
-    },
-    {} as Record<string, T[]>,
-  );
+    }
+    return acc;
+  }, {});
 }

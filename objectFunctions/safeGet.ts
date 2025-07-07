@@ -24,14 +24,27 @@ export function safeGet<T>(
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }
+  if (path === '') return obj;
+  if (Object.prototype.hasOwnProperty.call(obj as any, path)) {
+    return (obj as any)[path];
+  }
 
-  return path
-    .split('.')
-    .reduce(
-      (acc, key) =>
-        acc && (acc as any)[key] !== undefined
-          ? (acc as any)[key]
-          : defaultValue,
-      obj,
-    );
+  const parts = path.split('.');
+  if (parts.slice(1, -1).some((p) => p === '')) return defaultValue;
+  const keys = parts.filter((k) => k);
+  let current: any = obj;
+  for (let i = 0; i < keys.length; i++) {
+    if (current == null) return defaultValue;
+    const key = keys[i];
+    if (Object.prototype.hasOwnProperty.call(current, key)) {
+      current = current[key];
+    } else {
+      const rest = keys.slice(i).join('.');
+      if (Object.prototype.hasOwnProperty.call(current, rest)) {
+        return current[rest];
+      }
+      return defaultValue;
+    }
+  }
+  return current === undefined ? defaultValue : current;
 }

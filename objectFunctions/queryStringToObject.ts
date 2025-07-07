@@ -23,14 +23,17 @@ export function queryStringToObject(queryString: string): Record<string, any> {
   if (typeof queryString !== 'string') {
     throw new TypeError('Input must be a string');
   }
-  return queryString
+  const str = queryString.replace(/^\?/, '').trim();
+  if (str === '') return {};
+
+  return str
     .split('&')
+    .filter(Boolean)
     .map((param) => param.split('='))
-    .reduce(
-      (acc, [key, value]) => {
-        acc[decodeURIComponent(key)] = decodeURIComponent(value);
-        return acc;
-      },
-      {} as Record<string, any>,
-    );
+    .reduce((acc, [key, value]) => {
+      if (key) {
+        acc[decodeURIComponent(key)] = decodeURIComponent(value ?? '');
+      }
+      return acc;
+    }, {} as Record<string, any>);
 }

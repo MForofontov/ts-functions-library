@@ -19,15 +19,18 @@ export function deepCloneWith<T>(obj: T, cloneFn: (value: any) => any): T {
     throw new TypeError('Input must be a non-null object');
   }
 
-  const newObj: any = Array.isArray(obj) ? [] : {};
-  for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      const value = obj[key];
-      newObj[key] =
-        value && typeof value === 'object'
-          ? deepCloneWith(value, cloneFn)
-          : cloneFn(value);
+  const clone = (value: any): any => {
+    if (Array.isArray(value)) {
+      return value.map(clone);
     }
-  }
-  return newObj;
+    if (value && typeof value === 'object') {
+      return Reflect.ownKeys(value).reduce((acc: any, k) => {
+        acc[k as any] = clone((value as any)[k]);
+        return acc;
+      }, {} as any);
+    }
+    return cloneFn(value);
+  };
+
+  return clone(obj);
 }

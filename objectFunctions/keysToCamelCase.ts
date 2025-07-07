@@ -15,22 +15,26 @@
  * @note Creates a new object/array and does not modify the original.
  */
 export function keysToCamelCase(obj: any): any {
-  if (Array.isArray(obj)) {
-    return obj.map(keysToCamelCase);
-  } else if (obj !== null && typeof obj === 'object') {
-    return Object.fromEntries(
-      Object.entries(obj).map(([key, value]) => [
-        typeof key === 'string'
-          ? key.replace(/([-_][a-z])/g, (group) =>
-              group.toUpperCase().replace('-', '').replace('_', ''),
-            )
-          : key,
-        keysToCamelCase(value),
-      ]),
-    );
-  }
-  if (typeof obj !== 'object' || obj === null) {
+  if (obj === null || typeof obj !== 'object') {
     throw new TypeError('Input must be a non-null object');
   }
-  return obj;
+
+  const transform = (value: any): any => {
+    if (Array.isArray(value)) {
+      return value.map(transform);
+    }
+    if (value !== null && typeof value === 'object') {
+      return Object.fromEntries(
+        Object.entries(value).map(([k, v]) => [
+          typeof k === 'string'
+            ? k.replace(/([-_][a-z])/g, (g) => g.toUpperCase().replace('-', '').replace('_', ''))
+            : k,
+          transform(v),
+        ]),
+      );
+    }
+    return value;
+  };
+
+  return transform(obj);
 }
