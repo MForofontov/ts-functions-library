@@ -1,4 +1,4 @@
-import { deepEqual } from '.././objectFunctions/deepEqual';
+import { deepEqual } from '../objectFunctions/deepEqual';
 
 /**
  * Finds the difference between two arrays (elements in the first array that are not in the second).

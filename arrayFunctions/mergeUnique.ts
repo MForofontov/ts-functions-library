@@ -1,4 +1,4 @@
-import { deepEqual } from '.././objectFunctions/deepEqual';
+import { deepEqual } from '../objectFunctions/deepEqual';
 
 /**
  * Merges two arrays and returns a new array with unique elements.
