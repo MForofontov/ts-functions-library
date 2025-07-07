@@ -1,4 +1,4 @@
-import { deepEqual } from '.././objectFunctions/deepEqual';
+import { deepEqual } from '../objectFunctions/deepEqual';
 
 /**
  * Returns the intersection of two arrays (elements that are present in both arrays).
