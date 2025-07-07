@@ -1,4 +1,4 @@
-import { deepEqual } from '.././objectFunctions/deepEqual';
+import { deepEqual } from '../objectFunctions/deepEqual';
 
 /**
  * Finds unique elements in an array using deep equality comparison.
