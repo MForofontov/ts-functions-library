@@ -5,8 +5,12 @@
  * @returns The absolute value of the number.
  *
  * @example
+ * // Basic usage
  * absoluteValue(-5); // 5
  *
+ * @note Wraps `Math.abs` and validates that the input is a number.
+ *
+ * @complexity O(1)
  */
 export function absoluteValue(n: number): number {
   if (isNaN(n)) {

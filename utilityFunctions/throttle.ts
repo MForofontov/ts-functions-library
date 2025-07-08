@@ -6,9 +6,13 @@
  * @returns A throttled version of the function.
  *
  * @example
- * const throttledLog = throttle(() => console.log("Throttled!"), 1000);
+ * // Basic usage
+ * const throttledLog = throttle(() => console.log('Throttled!'), 1000);
  * throttledLog(); // Logs at most once every second
  *
+ * @note Uses timestamps to track last execution and setTimeout for trailing calls.
+ *
+ * @complexity O(1) per invocation
  */
 export function throttle<T extends (...args: any[]) => void>(
   func: T,

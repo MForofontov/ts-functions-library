@@ -2,11 +2,16 @@
  * Converts a hexadecimal color code to an RGB object.
  *
  * @param hex - The hex color string.
- * @returns An object with red, green, and blue values.
+ * @returns An object with red, green, and blue values or null for invalid input.
  *
  * @example
+ * // Basic usage
  * hexToRgb('#ff5733'); // { r: 255, g: 87, b: 51 }
  *
+ * @note Input strings can optionally start with '#'.
+ * Returns `null` for malformed values.
+ *
+ * @complexity O(1)
  */
 export function hexToRgb(
   hex: string,

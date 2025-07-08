@@ -3,11 +3,16 @@
  *
  * @param n - The number to calculate the factorial of.
  * @returns The factorial of the number.
- * @throws Will throw an error if n is not an integer, if n is NaN, or if n is negative.
+ * @throws Will throw an error if `n` is not an integer, if `n` is `NaN`, or if `n` is negative.
  *
  * @example
+ * // Basic usage
  * calculateFactorial(5); // 120
  *
+ * @note Uses a recursive implementation.
+ * Ensure the input is not excessively large to avoid call stack limitations.
+ *
+ * @complexity O(n)
  */
 export function calculateFactorial(n: number): number {
   if (isNaN(n)) {

@@ -5,8 +5,13 @@
  * @returns A promise that resolves after the delay.
  *
  * @example
- * delay(2000).then(() => console.log("Waited 2 seconds"));
+ * // Basic usage
+ * delay(2000).then(() => console.log('Waited 2 seconds'));
  *
+ * @note Implements a simple wrapper around setTimeout.
+ * Useful for pausing execution in async workflows.
+ *
+ * @complexity O(1)
  */
 export function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
