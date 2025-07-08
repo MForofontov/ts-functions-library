@@ -1,15 +1,20 @@
 /**
- * Formats a Date object into a human-readable string.
+ * Formats a `Date` object into a human-readable string.
  *
- * @param date - The Date object to format.
+ * @param date - The `Date` object to format.
  * @param format - The format string (e.g., 'YYYY-MM-DD', 'MM/DD/YYYY').
  * @returns The formatted date string.
  * @throws Will throw an error if the date is invalid or if the format string contains unsupported tokens.
  *
  * @example
+ * // Basic usage
  * const date = new Date();
  * formatDate(date, 'YYYY-MM-DD HH:mm:ss'); // e.g., '2024-09-19 15:45:30'
  *
+ * @note Supports tokens YYYY, MM, DD, HH, mm and ss.
+ * Throws an error for unknown tokens.
+ *
+ * @complexity O(n) where n is the length of the format string
  */
 export function formatDate(date: Date, format: string): string {
   if (isNaN(date.getTime())) {

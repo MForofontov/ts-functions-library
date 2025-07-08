@@ -5,8 +5,12 @@
  * @returns The hex color string.
  *
  * @example
- * rgbToHex({ r: 255, g: 87, b: 51 }); // "#ff5733"
+ * // Basic usage
+ * rgbToHex({ r: 255, g: 87, b: 51 }); // '#ff5733'
  *
+ * @note Values are clamped and converted to two-digit hexadecimal strings.
+ *
+ * @complexity O(1)
  */
 export function rgbToHex(rgb: { r: number; g: number; b: number }): string {
   const toHex = (num: number) => num.toString(16).padStart(2, '0');
