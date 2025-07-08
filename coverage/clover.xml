@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1752001523131" clover="3.2.0">
-  <project timestamp="1752001523131" name="All files">
-    <metrics statements="1356" coveredstatements="1348" conditionals="737" coveredconditionals="714" methods="304" coveredmethods="304" elements="2397" coveredelements="2366" complexity="0" loc="1356" ncloc="1356" packages="7" files="210" classes="210"/>
+<coverage generated="1752002599626" clover="3.2.0">
+  <project timestamp="1752002599627" name="All files">
+    <metrics statements="1380" coveredstatements="1372" conditionals="741" coveredconditionals="718" methods="312" coveredmethods="312" elements="2433" coveredelements="2402" complexity="0" loc="1380" ncloc="1380" packages="7" files="216" classes="216"/>
     <package name="arrayFunctions">
       <metrics statements="194" coveredstatements="193" conditionals="71" coveredconditionals="68" methods="73" coveredmethods="73"/>
       <file name="arrayDifference.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/arrayDifference.ts">
@@ -250,11 +250,11 @@
       <file name="shuffleArray.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/shuffleArray.ts">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="33" count="1" type="stmt"/>
-        <line num="34" count="23" type="stmt"/>
-        <line num="35" count="23" type="stmt"/>
-        <line num="36" count="62" type="stmt"/>
-        <line num="37" count="62" type="stmt"/>
-        <line num="39" count="23" type="stmt"/>
+        <line num="34" count="20" type="stmt"/>
+        <line num="35" count="20" type="stmt"/>
+        <line num="36" count="54" type="stmt"/>
+        <line num="37" count="54" type="stmt"/>
+        <line num="39" count="20" type="stmt"/>
       </file>
       <file name="sortBy.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/sortBy.ts">
         <metrics statements="15" coveredstatements="15" conditionals="23" coveredconditionals="22" methods="2" coveredmethods="2"/>
@@ -1984,7 +1984,36 @@
       </file>
     </package>
     <package name="utilityFunctions">
-      <metrics statements="17" coveredstatements="17" conditionals="10" coveredconditionals="9" methods="5" coveredmethods="5"/>
+      <metrics statements="41" coveredstatements="41" conditionals="14" coveredconditionals="13" methods="13" coveredmethods="13"/>
+      <file name="bytesToSize.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/utilityFunctions/bytesToSize.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="12" type="stmt"/>
+        <line num="22" count="12" type="cond" truecount="1" falsecount="0"/>
+        <line num="23" count="11" type="stmt"/>
+        <line num="24" count="11" type="stmt"/>
+      </file>
+      <file name="delay.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/utilityFunctions/delay.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="17" type="stmt"/>
+      </file>
+      <file name="hexToRgb.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/utilityFunctions/hexToRgb.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="19" count="18" type="stmt"/>
+        <line num="20" count="18" type="cond" truecount="1" falsecount="0"/>
+        <line num="22" count="14" type="stmt"/>
+        <line num="23" count="14" type="stmt"/>
+        <line num="24" count="14" type="stmt"/>
+        <line num="25" count="14" type="stmt"/>
+        <line num="27" count="14" type="stmt"/>
+      </file>
+      <file name="isNil.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/utilityFunctions/isNil.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="18" type="cond" truecount="2" falsecount="0"/>
+      </file>
       <file name="parseQueryString.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/utilityFunctions/parseQueryString.ts">
         <metrics statements="7" coveredstatements="7" conditionals="5" coveredconditionals="4" methods="2" coveredmethods="2"/>
         <line num="16" count="1" type="stmt"/>
@@ -1994,6 +2023,19 @@
         <line num="27" count="10" type="stmt"/>
         <line num="28" count="10" type="cond" truecount="1" falsecount="1"/>
         <line num="29" count="10" type="stmt"/>
+      </file>
+      <file name="rgbToHex.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/utilityFunctions/rgbToHex.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="54" type="stmt"/>
+        <line num="17" count="18" type="stmt"/>
+      </file>
+      <file name="safeJSONParse.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/utilityFunctions/safeJSONParse.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="18" type="stmt"/>
+        <line num="23" count="18" type="stmt"/>
+        <line num="25" count="5" type="stmt"/>
       </file>
       <file name="throttle.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/utilityFunctions/throttle.ts">
         <metrics statements="10" coveredstatements="10" conditionals="5" coveredconditionals="5" methods="3" coveredmethods="3"/>
