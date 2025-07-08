@@ -16,7 +16,7 @@
  *   'property.with.dots': true
  * };
  *
- * toDotNotation(nested);
+ * flattenObject(nested);
  * // => {
  * //   'user.name': 'John',
  * //   'user.address.city': 'NY',
@@ -34,7 +34,7 @@
  * @note Dots in property names are escaped with backslashes: 'property\\.with\\.dots'
  * @note Empty objects and arrays are preserved in the flattened structure
  */
-export function toDotNotation(
+export function flattenObject(
   obj: Record<string, any>,
   prefix = '',
 ): Record<string, any> {
@@ -61,14 +61,14 @@ export function toDotNotation(
         obj[key].forEach((item, index) => {
           const arrayKey = `${newKey}[${index}]`;
           if (typeof item === 'object' && item !== null) {
-            Object.assign(result, toDotNotation(item, arrayKey));
+            Object.assign(result, flattenObject(item, arrayKey));
           } else {
             result[arrayKey] = item;
           }
         });
       } else if (typeof obj[key] === 'object' && obj[key] !== null) {
         // Recursively flatten nested objects
-        Object.assign(result, toDotNotation(obj[key], newKey));
+        Object.assign(result, flattenObject(obj[key], newKey));
       } else {
         // Add primitive values directly
         result[newKey] = obj[key];
