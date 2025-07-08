@@ -5,6 +5,11 @@
  * @param startOfWeek - The start day of the week (0 for Sunday, 1 for Monday, etc.).
  * @returns A new Date object representing the end of the week.
  * @throws Will throw an error if the date is invalid or if the startOfWeek is not between 0 and 6.
+ *
+ * @example
+ * const date = new Date('2023-09-19'); // Tuesday
+ * console.log(getEndOfWeek(date, 4)); // Next Wednesday
+ *
  */
 export function getEndOfWeek(date: Date, startOfWeek: number = 0): Date {
   if (isNaN(date.getTime())) {
@@ -31,6 +36,3 @@ export function getEndOfWeek(date: Date, startOfWeek: number = 0): Date {
   return endOfWeekDate;
 }
 
-// Example usage:
-// const date = new Date('2023-09-19'); // Tuesday
-// console.log(getEndOfWeek(date, 4)); // Next Wednesday

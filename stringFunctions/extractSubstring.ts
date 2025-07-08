@@ -6,6 +6,10 @@
  * @param length - The length of the substring.
  * @returns The extracted substring.
  * @throws An error if the start index or length is invalid.
+ *
+ * @example
+ * extractSubstring("hello world", 6, 5); // "world"
+ *
  */
 export function extractSubstring(
   str: string,
@@ -26,5 +30,3 @@ export function extractSubstring(
   return str.slice(start, start + length);
 }
 
-// Example usage:
-// extractSubstring("hello world", 6, 5); // "world"

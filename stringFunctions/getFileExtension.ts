@@ -3,6 +3,11 @@
  *
  * @param filename - The filename to extract the extension from.
  * @returns The file extension, or an empty string if none exists.
+ *
+ * @example
+ * getFileExtension("example.txt"); // "txt"
+ * getFileExtension("example"); // ""
+ *
  */
 export function getFileExtension(filename: string): string {
   const lastDotIndex = filename.lastIndexOf('.');
@@ -16,6 +21,3 @@ export function getFileExtension(filename: string): string {
   return filename.substring(lastDotIndex + 1);
 }
 
-// Example usage:
-// getFileExtension("example.txt"); // "txt"
-// getFileExtension("example"); // ""

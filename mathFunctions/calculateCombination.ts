@@ -7,6 +7,10 @@ import { calculateFactorial } from './calculateFactorial';
  * @param k - The number of items to choose.
  * @returns The number of ways to choose k items from n items.
  * @throws Will throw an error if n or k is not an integer, if n or k is NaN, or if n or k is negative.
+ *
+ * @example
+ * calculateCombination(5, 2); // 10
+ *
  */
 export function calculateCombination(n: number, k: number): number {
   if (isNaN(n) || isNaN(k)) {
@@ -26,5 +30,3 @@ export function calculateCombination(n: number, k: number): number {
   );
 }
 
-// Example usage:
-// calculateCombination(5, 2); // 10

@@ -2,6 +2,10 @@
  * Gets an array of the days of the week.
  *
  * @returns An array of strings representing the days of the week.
+ *
+ * @example
+ * getDaysOfWeek(); // ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+ *
  */
 export function getDaysOfWeek(): string[] {
   return [
@@ -15,5 +19,3 @@ export function getDaysOfWeek(): string[] {
   ];
 }
 
-// Example usage:
-// getDaysOfWeek(); // ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']

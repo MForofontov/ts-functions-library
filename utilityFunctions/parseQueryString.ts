@@ -3,6 +3,10 @@
  *
  * @param queryString - The query string to parse.
  * @returns An object representing the query parameters.
+ *
+ * @example
+ * parseQueryString('?name=John&age=30'); // { name: "John", age: "30" }
+ *
  */
 export function parseQueryString(queryString: string): Record<string, string> {
   if (!queryString || queryString === '?') {
@@ -23,5 +27,3 @@ export function parseQueryString(queryString: string): Record<string, string> {
     );
 }
 
-// Example usage:
-// parseQueryString('?name=John&age=30'); // { name: "John", age: "30" }

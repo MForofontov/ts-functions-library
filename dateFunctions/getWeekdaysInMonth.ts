@@ -3,6 +3,11 @@
  *
  * @param date - The Date object representing the month to calculate weekdays for.
  * @returns The number of weekdays in the month.
+ *
+ * @example
+ * const date = new Date('2024-09-01');
+ * getWeekdaysInMonth(date); // Number of weekdays in September 2024
+ *
  */
 export function getWeekdaysInMonth(date: Date): number {
   if (isNaN(date.getTime())) {
@@ -25,6 +30,3 @@ export function getWeekdaysInMonth(date: Date): number {
   return weekdayCount;
 }
 
-// Example usage:
-// const date = new Date('2024-09-01');
-// getWeekdaysInMonth(date); // Number of weekdays in September 2024

@@ -4,6 +4,10 @@
  * @param n - The position in the triangular number sequence.
  * @returns The nth triangular number.
  * @throws Will throw an error if n is not an integer or if n is negative.
+ *
+ * @example
+ * calculateTriangularNumber(5); // 15
+ *
  */
 export function calculateTriangularNumber(n: number): number {
   if (isNaN(n)) {
@@ -18,5 +22,3 @@ export function calculateTriangularNumber(n: number): number {
   return (n * (n + 1)) / 2;
 }
 
-// Example usage:
-// calculateTriangularNumber(5); // 15

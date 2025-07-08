@@ -4,6 +4,10 @@
  * @param n - The number to calculate the factorial of.
  * @returns The factorial of the number.
  * @throws Will throw an error if n is not an integer, if n is NaN, or if n is negative.
+ *
+ * @example
+ * calculateFactorial(5); // 120
+ *
  */
 export function calculateFactorial(n: number): number {
   if (isNaN(n)) {
@@ -21,5 +25,3 @@ export function calculateFactorial(n: number): number {
   return n * calculateFactorial(n - 1);
 }
 
-// Example usage:
-// calculateFactorial(5); // 120

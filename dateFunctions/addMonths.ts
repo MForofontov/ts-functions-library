@@ -5,6 +5,11 @@
  * @param months - The number of months to add.
  * @returns A new Date object with the months added.
  * @throws Will throw an error if the date is invalid or if months is NaN.
+ *
+ * @example
+ * const today = new Date();
+ * addMonths(today, 3); // Adds 3 months to the current date
+ *
  */
 export function addMonths(date: Date, months: number): Date {
   if (isNaN(date.getTime())) {
@@ -19,6 +24,3 @@ export function addMonths(date: Date, months: number): Date {
   return result;
 }
 
-// Example usage:
-// const today = new Date();
-// addMonths(today, 3); // Adds 3 months to the current date

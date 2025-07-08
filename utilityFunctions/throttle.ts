@@ -4,6 +4,11 @@
  * @param func - The function to throttle.
  * @param limit - The time interval in milliseconds.
  * @returns A throttled version of the function.
+ *
+ * @example
+ * const throttledLog = throttle(() => console.log("Throttled!"), 1000);
+ * throttledLog(); // Logs at most once every second
+ *
  */
 export function throttle<T extends (...args: any[]) => void>(
   func: T,
@@ -29,6 +34,3 @@ export function throttle<T extends (...args: any[]) => void>(
   };
 }
 
-// Example usage:
-// const throttledLog = throttle(() => console.log("Throttled!"), 1000);
-// throttledLog(); // Logs at most once every second

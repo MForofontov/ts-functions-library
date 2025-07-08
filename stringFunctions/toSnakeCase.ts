@@ -3,6 +3,10 @@
  *
  * @param str - The string to convert.
  * @returns The snake-cased string.
+ *
+ * @example
+ * toSnakeCase("Hello World! How Are You?"); // "hello_world_how_are_you"
+ *
  */
 export function toSnakeCase(str: string): string {
   return str
@@ -14,5 +18,3 @@ export function toSnakeCase(str: string): string {
     .replace(/^_+|_+$/g, ''); // Trim underscores from start and end
 }
 
-// Example usage:
-// toSnakeCase("Hello World! How Are You?"); // "hello_world_how_are_you"

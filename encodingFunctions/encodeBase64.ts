@@ -5,6 +5,10 @@ import { Buffer } from 'buffer';
  *
  * @param str - The string to encode.
  * @returns The base64 encoded string.
+ *
+ * @example
+ * encodeBase64("hello world"); // "aGVsbG8gd29ybGQ"
+ *
  */
 export function encodeBase64(str: string): string {
   return Buffer.from(str)
@@ -14,5 +18,3 @@ export function encodeBase64(str: string): string {
     .replace(/=+$/, '');
 }
 
-// Example usage:
-// encodeBase64("hello world"); // "aGVsbG8gd29ybGQ"

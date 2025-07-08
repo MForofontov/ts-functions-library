@@ -3,6 +3,10 @@
  *
  * @param hex - The hex color string.
  * @returns An object with red, green, and blue values.
+ *
+ * @example
+ * hexToRgb('#ff5733'); // { r: 255, g: 87, b: 51 }
+ *
  */
 export function hexToRgb(
   hex: string,
@@ -18,5 +22,3 @@ export function hexToRgb(
   return { r, g, b };
 }
 
-// Example usage:
-// hexToRgb('#ff5733'); // { r: 255, g: 87, b: 51 }

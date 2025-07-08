@@ -4,6 +4,11 @@
  * @param dob - The date of birth.
  * @returns The age in years.
  * @throws Will throw an error if the date of birth is invalid.
+ *
+ * @example
+ * const dob = new Date('1990-09-19');
+ * calculateAge(dob); // e.g., 34
+ *
  */
 export function calculateAge(dob: Date): number {
   if (isNaN(dob.getTime())) {
@@ -27,6 +32,3 @@ export function calculateAge(dob: Date): number {
   return age;
 }
 
-// Example usage:
-// const dob = new Date('1990-09-19');
-// calculateAge(dob); // e.g., 34

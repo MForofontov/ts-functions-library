@@ -4,6 +4,11 @@
  * @param func - The function to debounce.
  * @param delay - The debounce delay in milliseconds.
  * @returns A debounced version of the function.
+ *
+ * @example
+ * const debouncedFunction = debounce(() => console.log('Debounced!'), 300);
+ * debouncedFunction(); // Only executed after 300ms if not called again in that time
+ *
  */
 export function debounce<T extends (...args: any[]) => any>(
   func: T,
@@ -16,6 +21,3 @@ export function debounce<T extends (...args: any[]) => any>(
   };
 }
 
-// Example usage:
-// const debouncedFunction = debounce(() => console.log('Debounced!'), 300);
-// debouncedFunction(); // Only executed after 300ms if not called again in that time

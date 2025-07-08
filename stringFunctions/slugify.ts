@@ -3,6 +3,11 @@
  *
  * @param str - The string to convert.
  * @returns The slugified string.
+ *
+ * @example
+ * slugify("Hello World!"); // "hello-world"
+ * slugify("  This is a test.  "); // "this-is-a-test"
+ *
  */
 export function slugify(str: string): string {
   return str
@@ -13,6 +18,3 @@ export function slugify(str: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
-// Example usage:
-// slugify("Hello World!"); // "hello-world"
-// slugify("  This is a test.  "); // "this-is-a-test"

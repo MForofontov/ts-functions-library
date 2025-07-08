@@ -3,6 +3,10 @@
  *
  * @param str - The string to convert.
  * @returns The kebab-cased string.
+ *
+ * @example
+ * toKebabCase("Hello World! How Are You?"); // "hello-world-how-are-you"
+ *
  */
 export function toKebabCase(str: string): string {
   return str
@@ -14,5 +18,3 @@ export function toKebabCase(str: string): string {
     .replace(/^-+|-+$/g, ''); // Trim hyphens from start and end
 }
 
-// Example usage:
-// toKebabCase("Hello World! How Are You?"); // "hello-world-how-are-you"

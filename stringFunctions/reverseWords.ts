@@ -3,6 +3,12 @@
  *
  * @param str - The string to reverse the words in.
  * @returns The string with the words reversed and trailing white spaces removed.
+ *
+ * @example
+ * reverseWords("hello world"); // "world hello"
+ * reverseWords("The quick brown fox"); // "fox brown quick The"
+ * reverseWords("   "); // ""
+ *
  */
 export function reverseWords(str: string): string {
   if (!str.trim()) return '';
@@ -11,7 +17,3 @@ export function reverseWords(str: string): string {
   return str.trim().split(/\s+/).reverse().join(' ');
 }
 
-// Example usage:
-// reverseWords("hello world"); // "world hello"
-// reverseWords("The quick brown fox"); // "fox brown quick The"
-// reverseWords("   "); // ""

@@ -4,6 +4,11 @@
  * @param date - The Date object to get the next month's date from.
  * @returns A new Date object representing the same day in the next month.
  * @throws Will throw an error if the date is invalid.
+ *
+ * @example
+ * const today = new Date();
+ * getNextMonth(today); // Date for the same day next month
+ *
  */
 export function getNextMonth(date: Date): Date {
   if (isNaN(date.getTime())) {
@@ -15,6 +20,3 @@ export function getNextMonth(date: Date): Date {
   return result;
 }
 
-// Example usage:
-// const today = new Date();
-// getNextMonth(today); // Date for the same day next month
