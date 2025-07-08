@@ -1,0 +1,2013 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1752001523131" clover="3.2.0">
+  <project timestamp="1752001523131" name="All files">
+    <metrics statements="1356" coveredstatements="1348" conditionals="737" coveredconditionals="714" methods="304" coveredmethods="304" elements="2397" coveredelements="2366" complexity="0" loc="1356" ncloc="1356" packages="7" files="210" classes="210"/>
+    <package name="arrayFunctions">
+      <metrics statements="194" coveredstatements="193" conditionals="71" coveredconditionals="68" methods="73" coveredmethods="73"/>
+      <file name="arrayDifference.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/arrayDifference.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="375329" type="stmt"/>
+      </file>
+      <file name="arrayIntersection.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/arrayIntersection.ts">
+        <metrics statements="7" coveredstatements="6" conditionals="3" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="35" count="17" type="cond" truecount="2" falsecount="1"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="40" count="17" type="stmt"/>
+        <line num="43" count="17" type="stmt"/>
+        <line num="44" count="62502566" type="stmt"/>
+      </file>
+      <file name="calculateAverage.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/calculateAverage.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="30" count="3" type="stmt"/>
+        <line num="32" count="76" type="stmt"/>
+        <line num="34" count="76" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="calculateMedian.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/calculateMedian.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="5" coveredconditionals="5" methods="3" coveredmethods="3"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="84" type="cond" truecount="2" falsecount="0"/>
+        <line num="32" count="21" type="cond" truecount="1" falsecount="0"/>
+        <line num="34" count="86" type="stmt"/>
+        <line num="35" count="20" type="stmt"/>
+        <line num="36" count="20" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="calculateMode.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/calculateMode.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="22" type="stmt"/>
+        <line num="33" count="22" type="stmt"/>
+        <line num="34" count="84" type="cond" truecount="2" falsecount="0"/>
+        <line num="37" count="22" type="stmt"/>
+        <line num="38" count="22" type="stmt"/>
+        <line num="39" count="53" type="stmt"/>
+        <line num="41" count="15" type="stmt"/>
+      </file>
+      <file name="calculateProduct.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/calculateProduct.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="61" type="stmt"/>
+      </file>
+      <file name="calculateRange.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/calculateRange.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="37" type="cond" truecount="1" falsecount="0"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="34" count="36" type="stmt"/>
+        <line num="35" count="36" type="stmt"/>
+        <line num="36" count="36" type="stmt"/>
+      </file>
+      <file name="calculateStandardDeviation.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/calculateStandardDeviation.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="35" count="37" type="cond" truecount="1" falsecount="0"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="39" count="36" type="stmt"/>
+        <line num="40" count="36" type="stmt"/>
+      </file>
+      <file name="calculateVariance.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/calculateVariance.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="34" count="57" type="cond" truecount="1" falsecount="0"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="38" count="56" type="stmt"/>
+        <line num="39" count="56" type="stmt"/>
+        <line num="40" count="179" type="stmt"/>
+        <line num="43" count="56" type="stmt"/>
+      </file>
+      <file name="cartesianProduct.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/cartesianProduct.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="5" coveredmethods="5"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="40" count="36" type="cond" truecount="1" falsecount="0"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="44" count="16" type="stmt"/>
+        <line num="45" count="5162" type="stmt"/>
+      </file>
+      <file name="chunkArray.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/chunkArray.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="19" type="cond" truecount="1" falsecount="0"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="36" count="17" type="stmt"/>
+        <line num="37" count="40" type="stmt"/>
+      </file>
+      <file name="findCommonWithCondition.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/findCommonWithCondition.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="39" count="10044" type="stmt"/>
+        <line num="42" count="18" type="stmt"/>
+        <line num="43" count="10042" type="stmt"/>
+      </file>
+      <file name="findDuplicates.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/findDuplicates.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="15" type="stmt"/>
+        <line num="35" count="15" type="stmt"/>
+        <line num="37" count="15" type="stmt"/>
+        <line num="38" count="504976" type="cond" truecount="2" falsecount="0"/>
+        <line num="39" count="499856" type="cond" truecount="1" falsecount="0"/>
+        <line num="40" count="116" type="stmt"/>
+        <line num="43" count="138" type="stmt"/>
+        <line num="47" count="15" type="stmt"/>
+      </file>
+      <file name="findIndexOfElement.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/findIndexOfElement.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="36" count="26" type="stmt"/>
+        <line num="37" count="10061" type="cond" truecount="1" falsecount="0"/>
+        <line num="38" count="24" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
+      </file>
+      <file name="findMax.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/findMax.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="13" type="stmt"/>
+      </file>
+      <file name="findMin.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/findMin.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="13" type="stmt"/>
+      </file>
+      <file name="findUniqueElements.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/findUniqueElements.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="20" type="stmt"/>
+        <line num="35" count="20" type="stmt"/>
+        <line num="36" count="505047" type="cond" truecount="1" falsecount="0"/>
+        <line num="37" count="161" type="stmt"/>
+        <line num="41" count="20" type="stmt"/>
+      </file>
+      <file name="flattenArray.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/flattenArray.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="2041" type="stmt"/>
+        <line num="31" count="4089" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="flattenArrayDepth.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/flattenArrayDepth.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="5" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <line num="32" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="33" count="2045" type="cond" truecount="2" falsecount="0"/>
+        <line num="36" count="3073" type="stmt"/>
+      </file>
+      <file name="generatePrimes.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/generatePrimes.ts">
+        <metrics statements="15" coveredstatements="15" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="13" type="cond" truecount="1" falsecount="0"/>
+        <line num="29" count="10" type="cond" truecount="1" falsecount="0"/>
+        <line num="30" count="4" type="stmt"/>
+        <line num="33" count="6" type="stmt"/>
+        <line num="34" count="6" type="stmt"/>
+        <line num="36" count="6" type="stmt"/>
+        <line num="37" count="19" type="cond" truecount="1" falsecount="0"/>
+        <line num="38" count="13" type="stmt"/>
+        <line num="39" count="149" type="stmt"/>
+        <line num="44" count="6" type="stmt"/>
+        <line num="45" count="6" type="stmt"/>
+        <line num="46" count="164" type="cond" truecount="1" falsecount="0"/>
+        <line num="47" count="52" type="stmt"/>
+        <line num="51" count="6" type="stmt"/>
+      </file>
+      <file name="groupBy.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/groupBy.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="11" type="stmt"/>
+        <line num="45" count="1027" type="stmt"/>
+        <line num="46" count="1027" type="cond" truecount="1" falsecount="0"/>
+        <line num="47" count="28" type="stmt"/>
+        <line num="49" count="1027" type="stmt"/>
+        <line num="50" count="1027" type="stmt"/>
+      </file>
+      <file name="joinStrings.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/joinStrings.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="20" type="stmt"/>
+        <line num="34" count="1049" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="mergeUnique.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/mergeUnique.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="1" coveredconditionals="1" methods="4" coveredmethods="4"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="36" count="25" type="stmt"/>
+        <line num="38" count="25" type="stmt"/>
+        <line num="39" count="50" type="stmt"/>
+        <line num="40" count="292" type="cond" truecount="1" falsecount="0"/>
+        <line num="41" count="113" type="stmt"/>
+        <line num="46" count="25" type="stmt"/>
+        <line num="47" count="25" type="stmt"/>
+        <line num="49" count="25" type="stmt"/>
+      </file>
+      <file name="removeByCondition.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/removeByCondition.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="40" count="74" type="stmt"/>
+      </file>
+      <file name="removeByIndex.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/removeByIndex.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="95" type="stmt"/>
+      </file>
+      <file name="removeDuplicates.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/removeDuplicates.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="25" type="stmt"/>
+        <line num="34" count="25" type="stmt"/>
+        <line num="35" count="171" type="cond" truecount="1" falsecount="0"/>
+        <line num="36" count="80" type="stmt"/>
+        <line num="39" count="25" type="stmt"/>
+      </file>
+      <file name="removeFalsyValues.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/removeFalsyValues.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="33" count="24" type="stmt"/>
+        <line num="37" count="153" type="stmt"/>
+      </file>
+      <file name="rotateArrayLeft.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/rotateArrayLeft.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="20" type="stmt"/>
+        <line num="33" count="20" type="cond" truecount="1" falsecount="0"/>
+        <line num="36" count="19" type="stmt"/>
+        <line num="38" count="19" type="stmt"/>
+      </file>
+      <file name="rotateArrayRight.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/rotateArrayRight.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="20" type="stmt"/>
+        <line num="33" count="20" type="cond" truecount="1" falsecount="0"/>
+        <line num="36" count="19" type="stmt"/>
+        <line num="38" count="19" type="stmt"/>
+      </file>
+      <file name="shuffleArray.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/shuffleArray.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="23" type="stmt"/>
+        <line num="35" count="23" type="stmt"/>
+        <line num="36" count="62" type="stmt"/>
+        <line num="37" count="62" type="stmt"/>
+        <line num="39" count="23" type="stmt"/>
+      </file>
+      <file name="sortBy.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/sortBy.ts">
+        <metrics statements="15" coveredstatements="15" conditionals="23" coveredconditionals="22" methods="2" coveredmethods="2"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="42" count="8" type="stmt"/>
+        <line num="43" count="20" type="stmt"/>
+        <line num="44" count="20" type="stmt"/>
+        <line num="46" count="20" type="cond" truecount="3" falsecount="0"/>
+        <line num="47" count="4" type="stmt"/>
+        <line num="50" count="16" type="cond" truecount="3" falsecount="0"/>
+        <line num="51" count="4" type="stmt"/>
+        <line num="54" count="12" type="cond" truecount="3" falsecount="0"/>
+        <line num="55" count="4" type="stmt"/>
+        <line num="58" count="8" type="cond" truecount="3" falsecount="0"/>
+        <line num="59" count="3" type="cond" truecount="4" falsecount="0"/>
+        <line num="62" count="5" type="cond" truecount="3" falsecount="0"/>
+        <line num="63" count="4" type="cond" truecount="3" falsecount="1"/>
+        <line num="66" count="1" type="stmt"/>
+      </file>
+      <file name="sumArrayElements.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/sumArrayElements.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="29" count="4" type="stmt"/>
+        <line num="30" count="285" type="stmt"/>
+      </file>
+      <file name="uniqueElementsWithCounts.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/uniqueElementsWithCounts.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="38" count="18" type="stmt"/>
+        <line num="39" count="18" type="stmt"/>
+        <line num="40" count="96" type="stmt"/>
+        <line num="41" count="71" type="cond" truecount="2" falsecount="0"/>
+        <line num="42" count="28" type="stmt"/>
+        <line num="44" count="43" type="stmt"/>
+        <line num="47" count="18" type="stmt"/>
+      </file>
+      <file name="zipMultiple.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/zipMultiple.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="60" type="stmt"/>
+        <line num="41" count="20" type="stmt"/>
+        <line num="42" count="20" type="stmt"/>
+        <line num="43" count="114" type="stmt"/>
+        <line num="45" count="20" type="stmt"/>
+      </file>
+    </package>
+    <package name="dateFunctions">
+      <metrics statements="226" coveredstatements="225" conditionals="94" coveredconditionals="92" methods="33" coveredmethods="33"/>
+      <file name="addDays.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/addDays.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="13" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="22" count="11" type="cond" truecount="1" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="26" count="10" type="stmt"/>
+        <line num="27" count="10" type="stmt"/>
+        <line num="28" count="10" type="stmt"/>
+      </file>
+      <file name="addMonths.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/addMonths.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="13" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="22" count="11" type="cond" truecount="1" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="26" count="10" type="stmt"/>
+        <line num="27" count="10" type="stmt"/>
+        <line num="28" count="10" type="stmt"/>
+      </file>
+      <file name="businessDaysBetween.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/businessDaysBetween.ts">
+        <metrics statements="13" coveredstatements="13" conditionals="7" coveredconditionals="7" methods="1" coveredmethods="1"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="13" type="cond" truecount="3" falsecount="0"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="20" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="24" count="8" type="stmt"/>
+        <line num="25" count="8" type="stmt"/>
+        <line num="27" count="8" type="stmt"/>
+        <line num="28" count="45" type="stmt"/>
+        <line num="29" count="45" type="cond" truecount="3" falsecount="0"/>
+        <line num="31" count="35" type="stmt"/>
+        <line num="33" count="45" type="stmt"/>
+        <line num="36" count="8" type="stmt"/>
+      </file>
+      <file name="calculateAge.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/calculateAge.ts">
+        <metrics statements="12" coveredstatements="12" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="12" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="18" count="10" type="stmt"/>
+        <line num="19" count="10" type="stmt"/>
+        <line num="20" count="10" type="stmt"/>
+        <line num="21" count="10" type="stmt"/>
+        <line num="24" count="10" type="cond" truecount="4" falsecount="0"/>
+        <line num="25" count="4" type="stmt"/>
+        <line num="28" count="10" type="cond" truecount="1" falsecount="0"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="32" count="9" type="stmt"/>
+      </file>
+      <file name="compareDates.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/compareDates.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="7" coveredconditionals="7" methods="1" coveredmethods="1"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="12" type="cond" truecount="3" falsecount="0"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="20" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="21" count="4" type="stmt"/>
+        <line num="22" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+      </file>
+      <file name="daysBetween.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/daysBetween.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="12" type="cond" truecount="3" falsecount="0"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="20" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="24" count="7" type="stmt"/>
+        <line num="25" count="7" type="stmt"/>
+        <line num="26" count="7" type="stmt"/>
+      </file>
+      <file name="daysLeftInYear.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/daysLeftInYear.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="18" count="7" type="stmt"/>
+        <line num="19" count="7" type="stmt"/>
+        <line num="20" count="7" type="stmt"/>
+      </file>
+      <file name="formatDate.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/formatDate.ts">
+        <metrics statements="13" coveredstatements="13" conditionals="6" coveredconditionals="6" methods="3" coveredmethods="3"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="13" type="cond" truecount="1" falsecount="0"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="24" count="11" type="stmt"/>
+        <line num="25" count="11" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="11" type="stmt"/>
+        <line num="27" count="40" type="stmt"/>
+        <line num="30" count="11" type="cond" truecount="1" falsecount="0"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="36" count="10" type="stmt"/>
+        <line num="38" count="10" type="cond" truecount="2" falsecount="0"/>
+        <line num="42" count="10" type="stmt"/>
+        <line num="51" count="36" type="stmt"/>
+      </file>
+      <file name="getCurrentDateTimeISO.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/getCurrentDateTimeISO.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="5" type="stmt"/>
+      </file>
+      <file name="getDateParts.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/getDateParts.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="20" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="24" count="5" type="stmt"/>
+      </file>
+      <file name="getDaysInMonth.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/getDaysInMonth.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="18" count="7" type="stmt"/>
+        <line num="19" count="7" type="stmt"/>
+        <line num="20" count="7" type="stmt"/>
+      </file>
+      <file name="getDaysOfWeek.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/getDaysOfWeek.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="7" type="stmt"/>
+      </file>
+      <file name="getEndOfMonth.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/getEndOfMonth.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="18" count="6" type="stmt"/>
+        <line num="19" count="6" type="stmt"/>
+      </file>
+      <file name="getEndOfWeek.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/getEndOfWeek.ts">
+        <metrics statements="11" coveredstatements="11" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="14" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="20" type="cond" truecount="1" falsecount="0"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="19" count="18" type="cond" truecount="4" falsecount="0"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="26" count="16" type="stmt"/>
+        <line num="29" count="16" type="stmt"/>
+        <line num="32" count="16" type="stmt"/>
+        <line num="33" count="16" type="stmt"/>
+        <line num="34" count="16" type="stmt"/>
+        <line num="36" count="16" type="stmt"/>
+      </file>
+      <file name="getEndOfYear.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/getEndOfYear.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="7" type="stmt"/>
+      </file>
+      <file name="getISOWeekDate.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/getISOWeekDate.ts">
+        <metrics statements="16" coveredstatements="15" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="22" count="6" type="stmt"/>
+        <line num="23" count="6" type="stmt"/>
+        <line num="24" count="6" type="stmt"/>
+        <line num="25" count="6" type="stmt"/>
+        <line num="27" count="6" type="stmt"/>
+        <line num="35" count="6" type="stmt"/>
+        <line num="36" count="6" type="cond" truecount="1" falsecount="1"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="39" count="6" type="stmt"/>
+        <line num="41" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="43" count="6" type="stmt"/>
+      </file>
+      <file name="getLastDayOfPreviousMonth.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/getLastDayOfPreviousMonth.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="18" count="7" type="stmt"/>
+        <line num="19" count="7" type="stmt"/>
+        <line num="20" count="7" type="stmt"/>
+      </file>
+      <file name="getNextMonth.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/getNextMonth.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="18" count="7" type="stmt"/>
+        <line num="19" count="7" type="stmt"/>
+        <line num="20" count="7" type="stmt"/>
+      </file>
+      <file name="getNextOccurrence.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/getNextOccurrence.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="7" coveredconditionals="7" methods="1" coveredmethods="1"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="12" type="cond" truecount="1" falsecount="0"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="19" count="10" type="cond" truecount="4" falsecount="0"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="25" count="8" type="stmt"/>
+        <line num="26" count="8" type="stmt"/>
+        <line num="27" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="28" count="8" type="stmt"/>
+        <line num="30" count="8" type="stmt"/>
+      </file>
+      <file name="getPreviousMonth.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/getPreviousMonth.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="18" count="7" type="stmt"/>
+        <line num="19" count="7" type="stmt"/>
+        <line num="22" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="26" count="7" type="stmt"/>
+      </file>
+      <file name="getQuarter.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/getQuarter.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="12" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="18" count="10" type="stmt"/>
+        <line num="19" count="10" type="stmt"/>
+      </file>
+      <file name="getStartOfWeek.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/getStartOfWeek.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="14" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="23" type="cond" truecount="1" falsecount="0"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="19" count="21" type="cond" truecount="4" falsecount="0"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="25" count="19" type="stmt"/>
+        <line num="26" count="19" type="stmt"/>
+        <line num="27" count="19" type="stmt"/>
+        <line num="28" count="19" type="stmt"/>
+        <line num="29" count="19" type="stmt"/>
+      </file>
+      <file name="getStartOfYear.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/getStartOfYear.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="7" type="stmt"/>
+      </file>
+      <file name="getWeekNumber.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/getWeekNumber.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="18" count="7" type="stmt"/>
+        <line num="19" count="7" type="stmt"/>
+        <line num="22" count="7" type="stmt"/>
+      </file>
+      <file name="getWeekRange.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/getWeekRange.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="21" count="12" type="cond" truecount="1" falsecount="0"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="24" count="10" type="cond" truecount="4" falsecount="0"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="30" count="8" type="stmt"/>
+        <line num="31" count="8" type="stmt"/>
+        <line num="32" count="8" type="stmt"/>
+      </file>
+      <file name="getWeekdaysInMonth.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/getWeekdaysInMonth.ts">
+        <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="12" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="17" count="10" type="stmt"/>
+        <line num="18" count="10" type="stmt"/>
+        <line num="19" count="10" type="stmt"/>
+        <line num="22" count="10" type="stmt"/>
+        <line num="23" count="303" type="stmt"/>
+        <line num="25" count="303" type="cond" truecount="3" falsecount="0"/>
+        <line num="26" count="212" type="stmt"/>
+        <line num="30" count="10" type="stmt"/>
+      </file>
+      <file name="isLeapYear.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/isLeapYear.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="6" type="cond" truecount="3" falsecount="0"/>
+      </file>
+      <file name="isToday.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/isToday.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="6" type="stmt"/>
+        <line num="18" count="6" type="stmt"/>
+      </file>
+      <file name="isWeekend.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/isWeekend.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="6" type="stmt"/>
+        <line num="18" count="6" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="oneWeekAgo.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/oneWeekAgo.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="6" type="stmt"/>
+        <line num="18" count="6" type="stmt"/>
+        <line num="19" count="6" type="stmt"/>
+      </file>
+      <file name="toUTCDate.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/dateFunctions/toUTCDate.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="7" type="stmt"/>
+      </file>
+    </package>
+    <package name="mathFunctions">
+      <metrics statements="180" coveredstatements="180" conditionals="104" coveredconditionals="104" methods="28" coveredmethods="28"/>
+      <file name="absoluteValue.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/absoluteValue.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="20" count="5" type="stmt"/>
+      </file>
+      <file name="calculateBinomialCoefficient.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/calculateBinomialCoefficient.ts">
+        <metrics statements="11" coveredstatements="11" conditionals="10" coveredconditionals="10" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="10" type="cond" truecount="3" falsecount="0"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="19" count="8" type="cond" truecount="3" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="7" type="cond" truecount="3" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="25" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="28" count="5" type="stmt"/>
+      </file>
+      <file name="calculateCombination.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/calculateCombination.ts">
+        <metrics statements="11" coveredstatements="11" conditionals="10" coveredconditionals="10" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="10" type="cond" truecount="3" falsecount="0"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="19" count="8" type="cond" truecount="3" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="7" type="cond" truecount="3" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="25" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="28" count="5" type="stmt"/>
+      </file>
+      <file name="calculateCubeRoot.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/calculateCubeRoot.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="12" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="16" count="11" type="stmt"/>
+      </file>
+      <file name="calculateExponential.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/calculateExponential.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="20" type="stmt"/>
+      </file>
+      <file name="calculateFactorial.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/calculateFactorial.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="18" count="322" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="21" count="321" type="cond" truecount="1" falsecount="0"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="24" count="320" type="cond" truecount="1" falsecount="0"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="27" count="319" type="cond" truecount="1" falsecount="0"/>
+        <line num="28" count="43" type="stmt"/>
+        <line num="30" count="276" type="stmt"/>
+      </file>
+      <file name="calculateLogBase10.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/calculateLogBase10.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="11" type="stmt"/>
+      </file>
+      <file name="calculateLogarithm.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/calculateLogarithm.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="9" type="cond" truecount="3" falsecount="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="20" count="7" type="cond" truecount="3" falsecount="0"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="23" count="5" type="stmt"/>
+      </file>
+      <file name="calculateNaturalLogarithm.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/calculateNaturalLogarithm.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="20" type="stmt"/>
+      </file>
+      <file name="calculatePercentage.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/calculatePercentage.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="21" type="stmt"/>
+      </file>
+      <file name="calculatePermutation.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/calculatePermutation.ts">
+        <metrics statements="11" coveredstatements="11" conditionals="10" coveredconditionals="10" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="10" type="cond" truecount="3" falsecount="0"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="19" count="8" type="cond" truecount="3" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="7" type="cond" truecount="3" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="25" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="28" count="5" type="stmt"/>
+      </file>
+      <file name="calculatePower.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/calculatePower.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="8" type="stmt"/>
+      </file>
+      <file name="calculateSquareRoot.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/calculateSquareRoot.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="16" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="6" type="stmt"/>
+      </file>
+      <file name="calculateTriangularNumber.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/calculateTriangularNumber.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="16" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+      </file>
+      <file name="ceilValue.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/ceilValue.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="16" count="8" type="stmt"/>
+        <line num="17" count="8" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="fibonacciIterative.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/fibonacciIterative.ts">
+        <metrics statements="14" coveredstatements="14" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="16" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
+        <line num="25" count="4" type="stmt"/>
+        <line num="26" count="23" type="stmt"/>
+        <line num="27" count="23" type="stmt"/>
+        <line num="28" count="23" type="stmt"/>
+        <line num="30" count="4" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="fibonacciRecursive.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/fibonacciRecursive.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="21926" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="16" count="21925" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="21924" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="21923" type="cond" truecount="1" falsecount="0"/>
+        <line num="23" count="10964" type="stmt"/>
+        <line num="25" count="10959" type="stmt"/>
+      </file>
+      <file name="floorValue.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/floorValue.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="7" type="stmt"/>
+      </file>
+      <file name="gcd.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/gcd.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="61" type="cond" truecount="3" falsecount="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="60" type="cond" truecount="3" falsecount="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="20" count="59" type="stmt"/>
+        <line num="21" count="59" type="stmt"/>
+        <line num="22" count="59" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="getRandomIntInRange.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/getRandomIntInRange.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="7" coveredconditionals="7" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="8" type="cond" truecount="3" falsecount="0"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="6" type="cond" truecount="3" falsecount="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="20" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
+        <line num="24" count="4" type="stmt"/>
+        <line num="25" count="4" type="stmt"/>
+      </file>
+      <file name="isEven.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/isEven.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="10" type="stmt"/>
+      </file>
+      <file name="isOdd.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/isOdd.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="11" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="10" type="cond" truecount="1" falsecount="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="20" count="9" type="stmt"/>
+      </file>
+      <file name="isPerfectSquare.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/isPerfectSquare.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="9" type="stmt"/>
+      </file>
+      <file name="isPrime.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/isPrime.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="17" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="16" type="cond" truecount="3" falsecount="0"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="20" count="12" type="stmt"/>
+        <line num="21" count="349" type="cond" truecount="1" falsecount="0"/>
+        <line num="22" count="6" type="stmt"/>
+        <line num="25" count="6" type="stmt"/>
+      </file>
+      <file name="lcm.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/lcm.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="9" coveredconditionals="9" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="12" type="cond" truecount="3" falsecount="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="11" type="cond" truecount="3" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="10" type="cond" truecount="3" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="25" count="9" type="stmt"/>
+      </file>
+      <file name="oddOrEven.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/oddOrEven.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="20" count="5" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="roundToDecimals.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/roundToDecimals.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="8" type="cond" truecount="3" falsecount="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="20" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="23" count="5" type="stmt"/>
+        <line num="24" count="5" type="stmt"/>
+      </file>
+      <file name="roundValue.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/roundValue.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="13" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="16" count="12" type="stmt"/>
+        <line num="17" count="12" type="cond" truecount="2" falsecount="0"/>
+      </file>
+    </package>
+    <package name="mathFunctions.geometricFunctions">
+      <metrics statements="171" coveredstatements="171" conditionals="119" coveredconditionals="119" methods="25" coveredmethods="25"/>
+      <file name="calculateCircleArea.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/calculateCircleArea.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="12" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="5" type="stmt"/>
+      </file>
+      <file name="calculateCircleCircumference.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/calculateCircleCircumference.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="12" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="5" type="stmt"/>
+      </file>
+      <file name="calculateConeSurfaceArea.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/calculateConeSurfaceArea.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="13" count="9" type="cond" truecount="3" falsecount="0"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+        <line num="23" count="5" type="stmt"/>
+        <line num="24" count="5" type="stmt"/>
+      </file>
+      <file name="calculateConeVolume.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/calculateConeVolume.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="9" type="cond" truecount="3" falsecount="0"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="16" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="5" type="stmt"/>
+      </file>
+      <file name="calculateCosine.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/calculateCosine.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="10" type="cond" truecount="1" falsecount="0"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="16" count="9" type="stmt"/>
+        <line num="17" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="21" count="9" type="stmt"/>
+      </file>
+      <file name="calculateCubeVolume.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/calculateCubeVolume.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="12" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="5" type="stmt"/>
+      </file>
+      <file name="calculateCylinderSurfaceArea.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/calculateCylinderSurfaceArea.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="13" count="9" type="cond" truecount="3" falsecount="0"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+      </file>
+      <file name="calculateCylinderVolume.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/calculateCylinderVolume.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="13" count="9" type="cond" truecount="3" falsecount="0"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+      </file>
+      <file name="calculateEllipseArea.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/calculateEllipseArea.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="13" count="9" type="cond" truecount="3" falsecount="0"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+      </file>
+      <file name="calculateHaversineDistance.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/calculateHaversineDistance.ts">
+        <metrics statements="14" coveredstatements="14" conditionals="15" coveredconditionals="15" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="20" count="12" type="cond" truecount="5" falsecount="0"/>
+        <line num="21" count="4" type="stmt"/>
+        <line num="23" count="8" type="cond" truecount="5" falsecount="0"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="26" count="7" type="cond" truecount="5" falsecount="0"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="30" count="6" type="stmt"/>
+        <line num="33" count="6" type="stmt"/>
+        <line num="34" count="6" type="stmt"/>
+        <line num="38" count="6" type="stmt"/>
+        <line num="42" count="6" type="stmt"/>
+        <line num="45" count="6" type="stmt"/>
+      </file>
+      <file name="calculateHypotenuse.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/calculateHypotenuse.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="9" type="cond" truecount="3" falsecount="0"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="7" type="cond" truecount="3" falsecount="0"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="5" type="stmt"/>
+      </file>
+      <file name="calculateParallelogramArea.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/calculateParallelogramArea.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="13" count="10" type="cond" truecount="3" falsecount="0"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="8" type="cond" truecount="3" falsecount="0"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="19" count="6" type="stmt"/>
+      </file>
+      <file name="calculatePrismVolume.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/calculatePrismVolume.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="15" count="13" type="cond" truecount="4" falsecount="0"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="18" count="10" type="cond" truecount="4" falsecount="0"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="21" count="7" type="stmt"/>
+      </file>
+      <file name="calculateRectangleArea.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/calculateRectangleArea.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="10" type="cond" truecount="3" falsecount="0"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="8" type="cond" truecount="3" falsecount="0"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="6" type="stmt"/>
+      </file>
+      <file name="calculateRectanglePerimeter.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/calculateRectanglePerimeter.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="13" count="10" type="cond" truecount="3" falsecount="0"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="8" type="cond" truecount="3" falsecount="0"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="19" count="6" type="stmt"/>
+      </file>
+      <file name="calculateSectorArea.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/calculateSectorArea.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="10" type="cond" truecount="3" falsecount="0"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="8" type="cond" truecount="3" falsecount="0"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="6" type="stmt"/>
+      </file>
+      <file name="calculateSine.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/calculateSine.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="8" type="stmt"/>
+      </file>
+      <file name="calculateSphereSurfaceArea.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/calculateSphereSurfaceArea.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="12" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="5" type="stmt"/>
+      </file>
+      <file name="calculateSphereVolume.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/calculateSphereVolume.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="12" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="5" type="stmt"/>
+      </file>
+      <file name="calculateTangent.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/calculateTangent.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="7" coveredconditionals="7" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="10" type="cond" truecount="1" falsecount="0"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="16" count="9" type="stmt"/>
+        <line num="17" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="22" count="9" type="cond" truecount="3" falsecount="0"/>
+        <line num="23" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="6" type="stmt"/>
+      </file>
+      <file name="calculateTrapezoidArea.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/calculateTrapezoidArea.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="15" count="13" type="cond" truecount="4" falsecount="0"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="18" count="10" type="cond" truecount="4" falsecount="0"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="21" count="7" type="stmt"/>
+      </file>
+      <file name="calculateTriangleArea.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/calculateTriangleArea.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="10" type="cond" truecount="3" falsecount="0"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="8" type="cond" truecount="3" falsecount="0"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="6" type="stmt"/>
+      </file>
+      <file name="coordinateDistance.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/coordinateDistance.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="17" count="10" type="cond" truecount="5" falsecount="0"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="20" count="6" type="stmt"/>
+        <line num="21" count="6" type="stmt"/>
+        <line num="22" count="6" type="stmt"/>
+      </file>
+      <file name="degreesToRadians.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/degreesToRadians.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="9" count="59" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="12" count="58" type="stmt"/>
+      </file>
+      <file name="radiansToDegrees.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/mathFunctions/geometricFunctions/radiansToDegrees.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="10" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="12" count="9" type="stmt"/>
+      </file>
+    </package>
+    <package name="objectFunctions">
+      <metrics statements="381" coveredstatements="375" conditionals="281" coveredconditionals="265" methods="81" coveredmethods="81"/>
+      <file name="applyDefaults.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/applyDefaults.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="19" count="15" type="cond" truecount="3" falsecount="0"/>
+        <line num="20" count="5" type="stmt"/>
+        <line num="22" count="10" type="cond" truecount="3" falsecount="0"/>
+        <line num="23" count="5" type="stmt"/>
+        <line num="26" count="5" type="stmt"/>
+      </file>
+      <file name="compactObject.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/compactObject.ts">
+        <metrics statements="12" coveredstatements="12" conditionals="11" coveredconditionals="10" methods="5" coveredmethods="5"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="14" type="cond" truecount="3" falsecount="0"/>
+        <line num="14" count="5" type="stmt"/>
+        <line num="17" count="9" type="stmt"/>
+        <line num="18" count="35" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="3" type="cond" truecount="3" falsecount="1"/>
+        <line num="21" count="34" type="cond" truecount="3" falsecount="0"/>
+        <line num="22" count="10" type="stmt"/>
+        <line num="24" count="26" type="stmt"/>
+        <line num="25" count="26" type="stmt"/>
+        <line num="28" count="24" type="stmt"/>
+        <line num="31" count="9" type="stmt"/>
+      </file>
+      <file name="countProperties.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/countProperties.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="8" type="cond" truecount="3" falsecount="0"/>
+        <line num="14" count="5" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+      </file>
+      <file name="deepClone.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/deepClone.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="8" type="cond" truecount="3" falsecount="0"/>
+        <line num="18" count="5" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+      </file>
+      <file name="deepCloneWith.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/deepCloneWith.ts">
+        <metrics statements="12" coveredstatements="12" conditionals="7" coveredconditionals="7" methods="3" coveredmethods="3"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="13" type="cond" truecount="3" falsecount="0"/>
+        <line num="19" count="5" type="stmt"/>
+        <line num="22" count="8" type="stmt"/>
+        <line num="23" count="40" type="cond" truecount="1" falsecount="0"/>
+        <line num="24" count="7" type="stmt"/>
+        <line num="26" count="33" type="cond" truecount="3" falsecount="0"/>
+        <line num="27" count="9" type="stmt"/>
+        <line num="28" count="17" type="stmt"/>
+        <line num="29" count="17" type="stmt"/>
+        <line num="32" count="24" type="stmt"/>
+        <line num="35" count="8" type="stmt"/>
+      </file>
+      <file name="deepEqual.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/deepEqual.ts">
+        <metrics statements="21" coveredstatements="20" conditionals="31" coveredconditionals="27" methods="1" coveredmethods="1"/>
+        <line num="16" count="9" type="stmt"/>
+        <line num="18" count="64398489" type="cond" truecount="5" falsecount="0"/>
+        <line num="19" count="9" type="stmt"/>
+        <line num="23" count="64398480" type="cond" truecount="1" falsecount="0"/>
+        <line num="26" count="64363148" type="cond" truecount="1" falsecount="0"/>
+        <line num="32" count="64363068" type="stmt"/>
+        <line num="36" count="80" type="cond" truecount="3" falsecount="0"/>
+        <line num="37" count="8" type="stmt"/>
+        <line num="41" count="72" type="cond" truecount="3" falsecount="0"/>
+        <line num="42" count="8" type="cond" truecount="1" falsecount="1"/>
+        <line num="46" count="64" type="cond" truecount="1" falsecount="0"/>
+        <line num="50" count="3" type="stmt"/>
+        <line num="54" count="61" type="cond" truecount="1" falsecount="2"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="59" count="61" type="stmt"/>
+        <line num="60" count="61" type="stmt"/>
+        <line num="63" count="61" type="cond" truecount="1" falsecount="0"/>
+        <line num="66" count="60" type="stmt"/>
+        <line num="68" count="92" type="cond" truecount="3" falsecount="0"/>
+        <line num="69" count="36" type="stmt"/>
+        <line num="75" count="24" type="stmt"/>
+      </file>
+      <file name="deepFreeze.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/deepFreeze.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="13" type="cond" truecount="3" falsecount="0"/>
+        <line num="21" count="5" type="stmt"/>
+        <line num="23" count="8" type="stmt"/>
+        <line num="24" count="8" type="stmt"/>
+        <line num="25" count="21" type="stmt"/>
+        <line num="26" count="21" type="cond" truecount="3" falsecount="0"/>
+        <line num="27" count="4" type="stmt"/>
+        <line num="30" count="8" type="stmt"/>
+      </file>
+      <file name="deepMerge.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/deepMerge.ts">
+        <metrics statements="16" coveredstatements="16" conditionals="13" coveredconditionals="13" methods="4" coveredmethods="4"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="24" count="42" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="15" type="cond" truecount="3" falsecount="0"/>
+        <line num="27" count="10" type="stmt"/>
+        <line num="30" count="5" type="stmt"/>
+        <line num="31" count="7" type="stmt"/>
+        <line num="32" count="17" type="stmt"/>
+        <line num="33" count="17" type="stmt"/>
+        <line num="34" count="17" type="stmt"/>
+        <line num="35" count="17" type="cond" truecount="4" falsecount="0"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="37" count="15" type="cond" truecount="4" falsecount="0"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="40" count="13" type="stmt"/>
+        <line num="43" count="7" type="stmt"/>
+        <line num="46" count="5" type="stmt"/>
+      </file>
+      <file name="differenceBy.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/differenceBy.ts">
+        <metrics statements="14" coveredstatements="14" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="25" count="26" type="cond" truecount="3" falsecount="0"/>
+        <line num="26" count="5" type="stmt"/>
+        <line num="28" count="21" type="cond" truecount="3" falsecount="0"/>
+        <line num="29" count="5" type="stmt"/>
+        <line num="31" count="16" type="cond" truecount="1" falsecount="0"/>
+        <line num="32" count="5" type="stmt"/>
+        <line num="35" count="11" type="stmt"/>
+        <line num="36" count="11" type="stmt"/>
+        <line num="37" count="11" type="stmt"/>
+        <line num="38" count="27" type="stmt"/>
+        <line num="39" count="27" type="cond" truecount="1" falsecount="0"/>
+        <line num="40" count="12" type="stmt"/>
+        <line num="43" count="11" type="stmt"/>
+      </file>
+      <file name="entriesToObject.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/entriesToObject.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="24" count="6" type="stmt"/>
+        <line num="25" count="14" type="cond" truecount="1" falsecount="0"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="34" count="4" type="stmt"/>
+      </file>
+      <file name="flattenObject.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/flattenObject.ts">
+        <metrics statements="20" coveredstatements="20" conditionals="21" coveredconditionals="21" methods="2" coveredmethods="2"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="41" count="39" type="cond" truecount="3" falsecount="0"/>
+        <line num="42" count="5" type="stmt"/>
+        <line num="45" count="34" type="stmt"/>
+        <line num="47" count="34" type="stmt"/>
+        <line num="48" count="44" type="cond" truecount="1" falsecount="0"/>
+        <line num="50" count="44" type="stmt"/>
+        <line num="51" count="44" type="cond" truecount="2" falsecount="0"/>
+        <line num="52" count="44" type="stmt"/>
+        <line num="53" count="44" type="cond" truecount="2" falsecount="0"/>
+        <line num="59" count="44" type="cond" truecount="2" falsecount="0"/>
+        <line num="61" count="6" type="stmt"/>
+        <line num="62" count="12" type="stmt"/>
+        <line num="63" count="12" type="cond" truecount="4" falsecount="0"/>
+        <line num="64" count="5" type="stmt"/>
+        <line num="66" count="7" type="stmt"/>
+        <line num="69" count="38" type="cond" truecount="4" falsecount="0"/>
+        <line num="71" count="16" type="stmt"/>
+        <line num="74" count="22" type="stmt"/>
+        <line num="79" count="34" type="stmt"/>
+      </file>
+      <file name="flipObject.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/flipObject.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="20" count="10" type="cond" truecount="3" falsecount="0"/>
+        <line num="21" count="5" type="stmt"/>
+        <line num="23" count="5" type="stmt"/>
+        <line num="24" count="17" type="stmt"/>
+        <line num="25" count="17" type="stmt"/>
+      </file>
+      <file name="fromDotNotation.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/fromDotNotation.ts">
+        <metrics statements="19" coveredstatements="19" conditionals="11" coveredconditionals="11" methods="2" coveredmethods="2"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="17" type="cond" truecount="3" falsecount="0"/>
+        <line num="19" count="5" type="stmt"/>
+        <line num="22" count="12" type="stmt"/>
+        <line num="24" count="12" type="stmt"/>
+        <line num="25" count="29" type="cond" truecount="1" falsecount="0"/>
+        <line num="26" count="29" type="stmt"/>
+        <line num="30" count="64" type="stmt"/>
+        <line num="32" count="29" type="stmt"/>
+        <line num="34" count="29" type="stmt"/>
+        <line num="35" count="64" type="stmt"/>
+        <line num="36" count="64" type="stmt"/>
+        <line num="37" count="64" type="stmt"/>
+        <line num="39" count="64" type="cond" truecount="2" falsecount="0"/>
+        <line num="40" count="29" type="stmt"/>
+        <line num="42" count="35" type="cond" truecount="3" falsecount="0"/>
+        <line num="44" count="26" type="cond" truecount="2" falsecount="0"/>
+        <line num="46" count="35" type="stmt"/>
+        <line num="52" count="12" type="stmt"/>
+      </file>
+      <file name="getDeepEqualityHash.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/getDeepEqualityHash.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="12" type="cond" truecount="3" falsecount="0"/>
+        <line num="21" count="4" type="stmt"/>
+        <line num="23" count="8" type="stmt"/>
+        <line num="26" count="157" type="stmt"/>
+      </file>
+      <file name="getObjectDifference.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/getObjectDifference.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="25" count="15" type="cond" truecount="1" falsecount="0"/>
+        <line num="31" count="10" type="stmt"/>
+        <line num="34" count="5" type="stmt"/>
+        <line num="36" count="5" type="stmt"/>
+        <line num="37" count="5" type="stmt"/>
+        <line num="38" count="20" type="cond" truecount="1" falsecount="0"/>
+        <line num="39" count="14" type="stmt"/>
+        <line num="43" count="5" type="stmt"/>
+      </file>
+      <file name="groupBy.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/groupBy.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="13" type="cond" truecount="1" falsecount="0"/>
+        <line num="32" count="5" type="stmt"/>
+        <line num="35" count="8" type="stmt"/>
+        <line num="36" count="21" type="cond" truecount="1" falsecount="0"/>
+        <line num="37" count="18" type="stmt"/>
+        <line num="38" count="18" type="cond" truecount="1" falsecount="0"/>
+        <line num="39" count="18" type="stmt"/>
+        <line num="41" count="21" type="stmt"/>
+      </file>
+      <file name="hasKey.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/hasKey.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="13" type="cond" truecount="3" falsecount="0"/>
+        <line num="19" count="5" type="stmt"/>
+        <line num="21" count="8" type="stmt"/>
+      </file>
+      <file name="invertObject.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/invertObject.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="10" type="cond" truecount="3" falsecount="0"/>
+        <line num="24" count="5" type="stmt"/>
+        <line num="26" count="5" type="stmt"/>
+        <line num="27" count="5" type="stmt"/>
+        <line num="28" count="14" type="stmt"/>
+        <line num="29" count="14" type="stmt"/>
+        <line num="31" count="5" type="stmt"/>
+      </file>
+      <file name="isDeepSubset.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/isDeepSubset.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="10" coveredconditionals="10" methods="2" coveredmethods="2"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="24" count="36" type="cond" truecount="3" falsecount="0"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="27" count="34" type="cond" truecount="3" falsecount="0"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="31" count="33" type="stmt"/>
+        <line num="32" count="37" type="cond" truecount="4" falsecount="0"/>
+      </file>
+      <file name="isObjectEmpty.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/isObjectEmpty.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="10" type="cond" truecount="3" falsecount="0"/>
+        <line num="22" count="5" type="stmt"/>
+        <line num="24" count="5" type="stmt"/>
+      </file>
+      <file name="keyBy.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/keyBy.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="29" count="10" type="cond" truecount="1" falsecount="0"/>
+        <line num="30" count="5" type="stmt"/>
+        <line num="32" count="5" type="stmt"/>
+        <line num="33" count="12" type="cond" truecount="1" falsecount="0"/>
+        <line num="34" count="9" type="stmt"/>
+        <line num="36" count="12" type="stmt"/>
+      </file>
+      <file name="keysToCamelCase.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/keysToCamelCase.ts">
+        <metrics statements="12" coveredstatements="12" conditionals="9" coveredconditionals="8" methods="4" coveredmethods="4"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="11" type="cond" truecount="3" falsecount="0"/>
+        <line num="19" count="5" type="stmt"/>
+        <line num="22" count="6" type="stmt"/>
+        <line num="23" count="27" type="cond" truecount="1" falsecount="0"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="26" count="25" type="cond" truecount="3" falsecount="0"/>
+        <line num="27" count="11" type="stmt"/>
+        <line num="28" count="17" type="stmt"/>
+        <line num="30" count="15" type="stmt"/>
+        <line num="36" count="14" type="stmt"/>
+        <line num="39" count="6" type="stmt"/>
+      </file>
+      <file name="keysToSnakeCase.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/keysToSnakeCase.ts">
+        <metrics statements="12" coveredstatements="12" conditionals="9" coveredconditionals="8" methods="4" coveredmethods="4"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="11" type="cond" truecount="3" falsecount="0"/>
+        <line num="19" count="5" type="stmt"/>
+        <line num="22" count="6" type="stmt"/>
+        <line num="23" count="27" type="cond" truecount="1" falsecount="0"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="26" count="25" type="cond" truecount="3" falsecount="0"/>
+        <line num="27" count="11" type="stmt"/>
+        <line num="28" count="17" type="stmt"/>
+        <line num="30" count="15" type="stmt"/>
+        <line num="36" count="14" type="stmt"/>
+        <line num="39" count="6" type="stmt"/>
+      </file>
+      <file name="objectMap.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/objectMap.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="23" count="13" type="cond" truecount="3" falsecount="0"/>
+        <line num="24" count="5" type="stmt"/>
+        <line num="27" count="8" type="stmt"/>
+        <line num="29" count="17" type="stmt"/>
+        <line num="30" count="17" type="stmt"/>
+      </file>
+      <file name="objectSize.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/objectSize.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="11" type="cond" truecount="3" falsecount="0"/>
+        <line num="18" count="5" type="stmt"/>
+        <line num="20" count="6" type="stmt"/>
+      </file>
+      <file name="objectToQueryString.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/objectToQueryString.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="11" type="cond" truecount="3" falsecount="0"/>
+        <line num="24" count="5" type="stmt"/>
+        <line num="26" count="6" type="stmt"/>
+        <line num="29" count="14" type="stmt"/>
+      </file>
+      <file name="omitBy.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/omitBy.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="24" count="12" type="cond" truecount="3" falsecount="0"/>
+        <line num="25" count="5" type="stmt"/>
+        <line num="28" count="7" type="stmt"/>
+        <line num="29" count="22" type="stmt"/>
+      </file>
+      <file name="omitKeys.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/omitKeys.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="22" count="12" type="cond" truecount="3" falsecount="0"/>
+        <line num="23" count="5" type="stmt"/>
+        <line num="25" count="7" type="stmt"/>
+        <line num="26" count="22" type="stmt"/>
+      </file>
+      <file name="pickBy.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/pickBy.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="23" count="12" type="cond" truecount="3" falsecount="0"/>
+        <line num="24" count="5" type="stmt"/>
+        <line num="27" count="7" type="stmt"/>
+        <line num="28" count="22" type="stmt"/>
+      </file>
+      <file name="pickKeys.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/pickKeys.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="22" count="12" type="cond" truecount="3" falsecount="0"/>
+        <line num="23" count="5" type="stmt"/>
+        <line num="25" count="7" type="stmt"/>
+        <line num="26" count="22" type="stmt"/>
+      </file>
+      <file name="queryStringToObject.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/queryStringToObject.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="5" coveredconditionals="4" methods="3" coveredmethods="3"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="24" count="5" type="stmt"/>
+        <line num="26" count="4" type="stmt"/>
+        <line num="27" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="29" count="3" type="stmt"/>
+        <line num="32" count="10" type="stmt"/>
+        <line num="34" count="10" type="cond" truecount="1" falsecount="0"/>
+        <line num="35" count="10" type="cond" truecount="1" falsecount="1"/>
+        <line num="37" count="10" type="stmt"/>
+      </file>
+      <file name="removeEmptyValues.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/removeEmptyValues.ts">
+        <metrics statements="13" coveredstatements="13" conditionals="13" coveredconditionals="13" methods="5" coveredmethods="5"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="22" count="10" type="cond" truecount="3" falsecount="0"/>
+        <line num="23" count="5" type="stmt"/>
+        <line num="26" count="5" type="stmt"/>
+        <line num="27" count="36" type="cond" truecount="1" falsecount="0"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="30" count="8" type="cond" truecount="3" falsecount="0"/>
+        <line num="32" count="34" type="cond" truecount="3" falsecount="0"/>
+        <line num="33" count="7" type="stmt"/>
+        <line num="35" count="23" type="stmt"/>
+        <line num="36" count="23" type="cond" truecount="3" falsecount="0"/>
+        <line num="39" count="27" type="stmt"/>
+        <line num="42" count="5" type="stmt"/>
+      </file>
+      <file name="safeGet.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/safeGet.ts">
+        <metrics statements="20" coveredstatements="19" conditionals="13" coveredconditionals="10" methods="3" coveredmethods="3"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="24" count="15" type="cond" truecount="3" falsecount="0"/>
+        <line num="25" count="5" type="stmt"/>
+        <line num="27" count="10" type="cond" truecount="1" falsecount="0"/>
+        <line num="28" count="9" type="cond" truecount="0" falsecount="1"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="32" count="9" type="stmt"/>
+        <line num="33" count="11" type="cond" truecount="1" falsecount="0"/>
+        <line num="34" count="26" type="stmt"/>
+        <line num="35" count="8" type="stmt"/>
+        <line num="36" count="8" type="stmt"/>
+        <line num="37" count="23" type="cond" truecount="0" falsecount="1"/>
+        <line num="38" count="23" type="stmt"/>
+        <line num="39" count="23" type="cond" truecount="2" falsecount="0"/>
+        <line num="40" count="21" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
+        <line num="43" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="49" count="6" type="cond" truecount="1" falsecount="1"/>
+      </file>
+      <file name="safeSet.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/safeSet.ts">
+        <metrics statements="19" coveredstatements="17" conditionals="9" coveredconditionals="8" methods="2" coveredmethods="2"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="25" count="12" type="cond" truecount="3" falsecount="0"/>
+        <line num="26" count="5" type="stmt"/>
+        <line num="28" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="29" count="6" type="cond" truecount="0" falsecount="1"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="34" count="19" type="stmt"/>
+        <line num="35" count="6" type="stmt"/>
+        <line num="36" count="6" type="stmt"/>
+        <line num="37" count="13" type="stmt"/>
+        <line num="38" count="13" type="stmt"/>
+        <line num="39" count="13" type="cond" truecount="1" falsecount="0"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="43" count="12" type="cond" truecount="3" falsecount="0"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="46" count="12" type="stmt"/>
+        <line num="48" count="5" type="stmt"/>
+      </file>
+      <file name="setNestedValue.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/setNestedValue.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="35" count="10" type="cond" truecount="3" falsecount="0"/>
+        <line num="36" count="5" type="stmt"/>
+        <line num="38" count="5" type="stmt"/>
+        <line num="39" count="5" type="stmt"/>
+        <line num="40" count="5" type="stmt"/>
+        <line num="41" count="12" type="cond" truecount="3" falsecount="0"/>
+        <line num="42" count="2" type="stmt"/>
+        <line num="44" count="12" type="stmt"/>
+        <line num="46" count="5" type="stmt"/>
+      </file>
+      <file name="shallowEqual.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/shallowEqual.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="6" coveredconditionals="5" methods="2" coveredmethods="2"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="31" count="16" type="cond" truecount="1" falsecount="0"/>
+        <line num="37" count="10" type="stmt"/>
+        <line num="40" count="6" type="stmt"/>
+        <line num="41" count="6" type="stmt"/>
+        <line num="43" count="6" type="cond" truecount="0" falsecount="1"/>
+        <line num="45" count="14" type="stmt"/>
+      </file>
+      <file name="sortObjectKeys.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/sortObjectKeys.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="12" type="cond" truecount="3" falsecount="0"/>
+        <line num="24" count="5" type="stmt"/>
+        <line num="26" count="7" type="stmt"/>
+        <line num="27" count="21" type="stmt"/>
+      </file>
+      <file name="unflattenObject.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/unflattenObject.ts">
+        <metrics statements="24" coveredstatements="22" conditionals="18" coveredconditionals="15" methods="2" coveredmethods="2"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="10" type="cond" truecount="3" falsecount="0"/>
+        <line num="24" count="5" type="stmt"/>
+        <line num="27" count="5" type="stmt"/>
+        <line num="29" count="5" type="stmt"/>
+        <line num="30" count="14" type="stmt"/>
+        <line num="31" count="14" type="stmt"/>
+        <line num="33" count="14" type="stmt"/>
+        <line num="34" count="41" type="stmt"/>
+        <line num="35" count="41" type="stmt"/>
+        <line num="36" count="41" type="stmt"/>
+        <line num="38" count="41" type="cond" truecount="2" falsecount="0"/>
+        <line num="39" count="14" type="cond" truecount="1" falsecount="1"/>
+        <line num="40" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="43" count="14" type="stmt"/>
+        <line num="46" count="27" type="cond" truecount="2" falsecount="0"/>
+        <line num="47" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="48" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="52" count="25" type="cond" truecount="3" falsecount="0"/>
+        <line num="53" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="55" count="25" type="stmt"/>
+        <line num="61" count="5" type="stmt"/>
+      </file>
+      <file name="uniqueValues.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/objectFunctions/uniqueValues.ts">
+        <metrics statements="11" coveredstatements="11" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="16" type="cond" truecount="3" falsecount="0"/>
+        <line num="26" count="5" type="stmt"/>
+        <line num="29" count="11" type="stmt"/>
+        <line num="30" count="11" type="stmt"/>
+        <line num="31" count="11" type="stmt"/>
+        <line num="32" count="38" type="cond" truecount="4" falsecount="0"/>
+        <line num="35" count="38" type="cond" truecount="1" falsecount="0"/>
+        <line num="36" count="25" type="stmt"/>
+        <line num="37" count="25" type="stmt"/>
+        <line num="40" count="11" type="stmt"/>
+      </file>
+    </package>
+    <package name="stringFunctions">
+      <metrics statements="187" coveredstatements="187" conditionals="58" coveredconditionals="57" methods="59" coveredmethods="59"/>
+      <file name="areAnagrams.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/areAnagrams.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="15" type="stmt"/>
+        <line num="14" count="30" type="stmt"/>
+        <line num="15" count="15" type="stmt"/>
+      </file>
+      <file name="capitalizeEachWord.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/capitalizeEachWord.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="30" type="stmt"/>
+      </file>
+      <file name="capitalizeFirstLetter.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/capitalizeFirstLetter.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="15" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="14" type="stmt"/>
+      </file>
+      <file name="capitalizeNthLetter.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/capitalizeNthLetter.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="17" type="cond" truecount="3" falsecount="0"/>
+        <line num="14" count="14" type="stmt"/>
+      </file>
+      <file name="countCharacterOccurrences.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/countCharacterOccurrences.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="15" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="countConsonants.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/countConsonants.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="15" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="countSubstring.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/countSubstring.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="15" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="14" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="countVowels.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/countVowels.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="15" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="countWords.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/countWords.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="15" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="14" type="stmt"/>
+      </file>
+      <file name="endsWith.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/endsWith.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="15" type="stmt"/>
+      </file>
+      <file name="extractDomain.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/extractDomain.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="15" type="stmt"/>
+        <line num="26" count="15" type="stmt"/>
+        <line num="27" count="12" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
+      </file>
+      <file name="extractSubstring.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/extractSubstring.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="19" count="17" type="cond" truecount="3" falsecount="0"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="22" count="15" type="cond" truecount="1" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="27" count="14" type="cond" truecount="1" falsecount="0"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="30" count="13" type="stmt"/>
+      </file>
+      <file name="findLongestWord.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/findLongestWord.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="15" type="stmt"/>
+        <line num="19" count="15" type="stmt"/>
+        <line num="20" count="121" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="firstNonRepeatingCharacter.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/firstNonRepeatingCharacter.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="16" type="stmt"/>
+        <line num="16" count="16" type="stmt"/>
+        <line num="18" count="140" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="16" type="stmt"/>
+        <line num="24" count="63" type="cond" truecount="1" falsecount="0"/>
+        <line num="28" count="2" type="stmt"/>
+      </file>
+      <file name="generateRandomAlphanumeric.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/generateRandomAlphanumeric.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="6" type="cond" truecount="3" falsecount="0"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="19" count="4" type="stmt"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="21" count="1011" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
+      </file>
+      <file name="generateRandomString.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/generateRandomString.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="5" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="17" count="10" type="cond" truecount="3" falsecount="0"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="20" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="23" count="7" type="stmt"/>
+        <line num="24" count="7" type="stmt"/>
+        <line num="25" count="1041" type="stmt"/>
+        <line num="27" count="7" type="stmt"/>
+      </file>
+      <file name="getFileExtension.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/getFileExtension.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="10" type="stmt"/>
+        <line num="14" count="10" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="4" type="stmt"/>
+        <line num="21" count="6" type="stmt"/>
+      </file>
+      <file name="hasLowercase.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/hasLowercase.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="13" type="stmt"/>
+      </file>
+      <file name="hasUppercase.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/hasUppercase.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="13" type="stmt"/>
+      </file>
+      <file name="indexOfSubstring.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/indexOfSubstring.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="15" type="stmt"/>
+      </file>
+      <file name="isAlpha.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/isAlpha.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="15" type="stmt"/>
+      </file>
+      <file name="isAlphanumeric.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/isAlphanumeric.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="15" type="stmt"/>
+      </file>
+      <file name="isNumeric.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/isNumeric.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="15" type="stmt"/>
+      </file>
+      <file name="isPalindrome.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/isPalindrome.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="15" type="stmt"/>
+        <line num="14" count="15" type="stmt"/>
+      </file>
+      <file name="isValidEmail.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/isValidEmail.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="15" type="stmt"/>
+        <line num="14" count="15" type="stmt"/>
+      </file>
+      <file name="isWhitespace.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/isWhitespace.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="15" type="stmt"/>
+      </file>
+      <file name="lastIndexOfSubstring.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/lastIndexOfSubstring.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="15" type="stmt"/>
+      </file>
+      <file name="padString.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/padString.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="20" count="15" type="cond" truecount="1" falsecount="0"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="25" count="14" type="cond" truecount="1" falsecount="0"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="29" count="13" type="stmt"/>
+        <line num="30" count="13" type="stmt"/>
+        <line num="31" count="13" type="stmt"/>
+        <line num="33" count="13" type="stmt"/>
+      </file>
+      <file name="removeWhitespace.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/removeWhitespace.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="15" type="stmt"/>
+      </file>
+      <file name="repeatString.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/repeatString.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="15" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="14" type="cond" truecount="1" falsecount="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="20" count="13" type="stmt"/>
+      </file>
+      <file name="repeatUntilLength.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/repeatUntilLength.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="15" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="14" type="cond" truecount="1" falsecount="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="20" count="13" type="cond" truecount="1" falsecount="0"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="23" count="12" type="stmt"/>
+      </file>
+      <file name="replaceFirst.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/replaceFirst.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="19" count="16" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="15" type="stmt"/>
+        <line num="23" count="15" type="cond" truecount="1" falsecount="0"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="26" count="13" type="stmt"/>
+      </file>
+      <file name="replaceMultiple.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/replaceMultiple.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="17" count="15" type="stmt"/>
+        <line num="18" count="30" type="stmt"/>
+        <line num="21" count="15" type="stmt"/>
+        <line num="23" count="30" type="stmt"/>
+      </file>
+      <file name="replaceSubstring.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/replaceSubstring.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="19" count="16" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="15" type="stmt"/>
+        <line num="23" count="15" type="cond" truecount="1" falsecount="0"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="26" count="13" type="stmt"/>
+      </file>
+      <file name="reverseString.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/reverseString.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="15" type="stmt"/>
+      </file>
+      <file name="reverseWords.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/reverseWords.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="15" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="14" type="stmt"/>
+      </file>
+      <file name="slugify.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/slugify.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="15" type="stmt"/>
+      </file>
+      <file name="splitString.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/splitString.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="15" type="stmt"/>
+      </file>
+      <file name="startsWith.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/startsWith.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="15" type="stmt"/>
+      </file>
+      <file name="stringToBoolean.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/stringToBoolean.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="15" type="stmt"/>
+        <line num="14" count="15" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="stringToNumber.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/stringToNumber.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="15" type="stmt"/>
+        <line num="17" count="15" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="7" type="stmt"/>
+        <line num="23" count="8" type="stmt"/>
+      </file>
+      <file name="stringToWords.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/stringToWords.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="15" type="stmt"/>
+        <line num="15" count="31" type="stmt"/>
+      </file>
+      <file name="stripHtmlTags.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/stripHtmlTags.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="15" type="stmt"/>
+      </file>
+      <file name="toKebabCase.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/toKebabCase.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="15" type="stmt"/>
+      </file>
+      <file name="toLowerCase.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/toLowerCase.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="13" type="stmt"/>
+      </file>
+      <file name="toSnakeCase.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/toSnakeCase.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="15" type="stmt"/>
+      </file>
+      <file name="toUpperCase.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/toUpperCase.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="13" type="stmt"/>
+      </file>
+      <file name="trimWhitespace.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/trimWhitespace.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="13" type="stmt"/>
+      </file>
+      <file name="truncateString.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/truncateString.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="15" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="13" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="11" type="cond" truecount="1" falsecount="0"/>
+        <line num="16" count="10" type="stmt"/>
+      </file>
+      <file name="uniqueCharacters.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/uniqueCharacters.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="15" type="stmt"/>
+      </file>
+      <file name="wordsToSentence.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/stringFunctions/wordsToSentence.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="15" type="cond" truecount="3" falsecount="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="14" type="stmt"/>
+        <line num="18" count="31" type="stmt"/>
+        <line num="19" count="31" type="stmt"/>
+      </file>
+    </package>
+    <package name="utilityFunctions">
+      <metrics statements="17" coveredstatements="17" conditionals="10" coveredconditionals="9" methods="5" coveredmethods="5"/>
+      <file name="parseQueryString.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/utilityFunctions/parseQueryString.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="5" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="7" type="cond" truecount="3" falsecount="0"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="21" count="5" type="stmt"/>
+        <line num="27" count="10" type="stmt"/>
+        <line num="28" count="10" type="cond" truecount="1" falsecount="1"/>
+        <line num="29" count="10" type="stmt"/>
+      </file>
+      <file name="throttle.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/utilityFunctions/throttle.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="5" coveredconditionals="5" methods="3" coveredmethods="3"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
+        <line num="24" count="9" type="cond" truecount="4" falsecount="0"/>
+        <line num="25" count="5" type="stmt"/>
+        <line num="26" count="5" type="stmt"/>
+        <line num="28" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="31" count="4" type="stmt"/>
+        <line num="33" count="3" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
