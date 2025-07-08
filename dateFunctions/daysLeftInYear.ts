@@ -4,6 +4,11 @@
  * @param date - The Date object to calculate the remaining days from.
  * @returns The number of days left in the current year.
  * @throws Will throw an error if the date is invalid.
+ *
+ * @example
+ * const today = new Date();
+ * daysLeftInYear(today); // Number of days left in the year from today
+ *
  */
 export function daysLeftInYear(date: Date): number {
   if (isNaN(date.getTime())) {
@@ -15,6 +20,3 @@ export function daysLeftInYear(date: Date): number {
   return Math.ceil(diffInMs / (1000 * 60 * 60 * 24));
 }
 
-// Example usage:
-// const today = new Date();
-// daysLeftInYear(today); // Number of days left in the year from today

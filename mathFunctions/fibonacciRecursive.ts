@@ -4,6 +4,10 @@
  * @param n - The position in the Fibonacci sequence.
  * @returns The nth Fibonacci number.
  * @throws Will throw an error if n is not an integer, if n is NaN, or if n is negative.
+ *
+ * @example
+ * fibonacciRecursive(6); // 8
+ *
  */
 export function fibonacciRecursive(n: number): number {
   if (isNaN(n)) {
@@ -21,5 +25,3 @@ export function fibonacciRecursive(n: number): number {
   return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
 }
 
-// Example usage:
-// fibonacciRecursive(6); // 8

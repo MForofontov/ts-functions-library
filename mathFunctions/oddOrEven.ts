@@ -4,6 +4,11 @@
  * @param n - The number to check.
  * @returns "odd" if the number is odd, "even" if the number is even.
  * @throws Will throw an error if n is not an integer or if n is NaN.
+ *
+ * @example
+ * console.log(oddOrEven(3)); // "odd"
+ * console.log(oddOrEven(4)); // "even"
+ *
  */
 export function oddOrEven(n: number): string {
   if (isNaN(n)) {
@@ -15,6 +20,3 @@ export function oddOrEven(n: number): string {
   return n % 2 === 0 ? 'even' : 'odd';
 }
 
-// Example usage:
-// console.log(oddOrEven(3)); // "odd"
-// console.log(oddOrEven(4)); // "even"

@@ -7,6 +7,10 @@ import { calculateFactorial } from './calculateFactorial';
  * @param k - The number of items to choose.
  * @returns The binomial coefficient.
  * @throws Will throw an error if n or k is not an integer, if n or k is NaN, or if n or k is negative.
+ *
+ * @example
+ * calculateBinomialCoefficient(5, 2); // 10
+ *
  */
 export function calculateBinomialCoefficient(n: number, k: number): number {
   if (isNaN(n) || isNaN(k)) {
@@ -26,5 +30,3 @@ export function calculateBinomialCoefficient(n: number, k: number): number {
   );
 }
 
-// Example usage:
-// calculateBinomialCoefficient(5, 2); // 10

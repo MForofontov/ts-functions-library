@@ -4,6 +4,10 @@
  * @param n - The position in the Fibonacci sequence.
  * @returns The nth Fibonacci number.
  * @throws Will throw an error if n is not an integer or if n is NaN.
+ *
+ * @example
+ * fibonacciIterative(6); // 8
+ *
  */
 export function fibonacciIterative(n: number): number {
   if (isNaN(n)) {
@@ -26,5 +30,3 @@ export function fibonacciIterative(n: number): number {
   return n === 0 ? 0 : b;
 }
 
-// Example usage:
-// fibonacciIterative(6); // 8

@@ -5,6 +5,11 @@
  * @param days - The number of days to add.
  * @returns A new Date object with the days added.
  * @throws Will throw an error if the date is invalid or if days is NaN.
+ *
+ * @example
+ * const today = new Date();
+ * addDays(today, 10); // Adds 10 days to the current date
+ *
  */
 export function addDays(date: Date, days: number): Date {
   if (isNaN(date.getTime())) {
@@ -19,6 +24,3 @@ export function addDays(date: Date, days: number): Date {
   return result;
 }
 
-// Example usage:
-// const today = new Date();
-// addDays(today, 10); // Adds 10 days to the current date

@@ -4,6 +4,11 @@
  * @param date - The Date object to get the ISO week date for.
  * @returns The ISO week date as a string.
  * @throws Will throw an error if the date is invalid.
+ *
+ * @example
+ * const date = new Date('2024-09-19');
+ * console.log(getISOWeekDate(date)); // e.g., '2024-W38-4'
+ *
  */
 export function getISOWeekDate(date: Date): string {
   if (isNaN(date.getTime())) {
@@ -38,6 +43,3 @@ export function getISOWeekDate(date: Date): string {
   return `${year}-W${String(weekNumber).padStart(2, '0')}-${dayOfWeek}`;
 }
 
-// Example usage:
-// const date = new Date('2024-09-19');
-// console.log(getISOWeekDate(date)); // e.g., '2024-W38-4'

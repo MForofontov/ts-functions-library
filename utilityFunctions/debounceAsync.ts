@@ -4,6 +4,11 @@
  * @param func - The async function to debounce.
  * @param wait - The debounce delay in milliseconds.
  * @returns A debounced version of the function.
+ *
+ * @example
+ * const fetchDebounced = debounceAsync(fetchData, 300);
+ * fetchDebounced(); // Only calls after 300ms of inactivity
+ *
  */
 export function debounceAsync<T extends (...args: any[]) => Promise<any>>(
   func: T,
@@ -19,6 +24,3 @@ export function debounceAsync<T extends (...args: any[]) => Promise<any>>(
     });
 }
 
-// Example usage:
-// const fetchDebounced = debounceAsync(fetchData, 300);
-// fetchDebounced(); // Only calls after 300ms of inactivity

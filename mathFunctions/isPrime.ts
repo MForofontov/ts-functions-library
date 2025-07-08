@@ -4,6 +4,11 @@
  * @param n - The number to check.
  * @returns True if the number is prime, false otherwise.
  * @throws Will throw an error if n is NaN.
+ *
+ * @example
+ * isPrime(7); // true
+ * isPrime(10); // false
+ *
  */
 export function isPrime(n: number): boolean {
   if (isNaN(n)) {
@@ -20,6 +25,3 @@ export function isPrime(n: number): boolean {
   return true;
 }
 
-// Example usage:
-// isPrime(7); // true
-// isPrime(10); // false

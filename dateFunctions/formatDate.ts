@@ -5,6 +5,11 @@
  * @param format - The format string (e.g., 'YYYY-MM-DD', 'MM/DD/YYYY').
  * @returns The formatted date string.
  * @throws Will throw an error if the date is invalid or if the format string contains unsupported tokens.
+ *
+ * @example
+ * const date = new Date();
+ * formatDate(date, 'YYYY-MM-DD HH:mm:ss'); // e.g., '2024-09-19 15:45:30'
+ *
  */
 export function formatDate(date: Date, format: string): string {
   if (isNaN(date.getTime())) {
@@ -41,6 +46,3 @@ export function formatDate(date: Date, format: string): string {
   return format.replace(/YYYY|MM|DD|HH|mm|ss/g, (matched) => map[matched]);
 }
 
-// Example usage:
-// const date = new Date();
-// formatDate(date, 'YYYY-MM-DD HH:mm:ss'); // e.g., '2024-09-19 15:45:30'

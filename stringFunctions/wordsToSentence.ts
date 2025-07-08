@@ -3,6 +3,12 @@
  *
  * @param words - The array of words to join.
  * @returns The joined sentence.
+ *
+ * @example
+ * wordsToSentence(["Hello", "world!"]); // "Hello world!"
+ * wordsToSentence([]); // ""
+ * wordsToSentence(["Hello", "", "world!"]); // "Hello world!"
+ *
  */
 export function wordsToSentence(words: string[]): string {
   if (!Array.isArray(words) || words.length === 0) {
@@ -14,7 +20,3 @@ export function wordsToSentence(words: string[]): string {
     .join(' ');
 }
 
-// Example usage:
-// wordsToSentence(["Hello", "world!"]); // "Hello world!"
-// wordsToSentence([]); // ""
-// wordsToSentence(["Hello", "", "world!"]); // "Hello world!"

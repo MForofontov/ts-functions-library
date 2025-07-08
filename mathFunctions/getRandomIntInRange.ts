@@ -5,6 +5,10 @@
  * @param max - The maximum value (inclusive).
  * @returns A random integer between min and max.
  * @throws Will throw an error if min is greater than max, if min or max is NaN, or if min or max is not an integer.
+ *
+ * @example
+ * getRandomIntInRange(1, 10); // Random integer between 1 and 10
+ *
  */
 export function getRandomIntInRange(min: number, max: number): number {
   if (isNaN(min) || isNaN(max)) {
@@ -21,5 +25,3 @@ export function getRandomIntInRange(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Example usage:
-// getRandomIntInRange(1, 10); // Random integer between 1 and 10

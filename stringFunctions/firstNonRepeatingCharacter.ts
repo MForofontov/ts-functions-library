@@ -3,6 +3,10 @@
  *
  * @param str - The string to analyze.
  * @returns The first non-repeating character, or null if none exist.
+ *
+ * @example
+ * firstNonRepeatingCharacter("abacabad"); // 'c'
+ *
  */
 export function firstNonRepeatingCharacter(str: string): string | null {
   // Create an object to store the count of each character
@@ -24,5 +28,3 @@ export function firstNonRepeatingCharacter(str: string): string | null {
   return null;
 }
 
-// Example usage:
-// firstNonRepeatingCharacter("abacabad"); // 'c'

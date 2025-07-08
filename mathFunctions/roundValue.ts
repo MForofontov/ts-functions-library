@@ -4,6 +4,10 @@
  * @param n - The number to round.
  * @returns The number rounded to the nearest integer.
  * @throws Will throw an error if n is NaN.
+ *
+ * @example
+ * roundValue(4.5); // 5
+ *
  */
 export function roundValue(n: number): number {
   if (isNaN(n)) {
@@ -13,5 +17,3 @@ export function roundValue(n: number): number {
   return result === -0 ? 0 : result;
 }
 
-// Example usage:
-// roundValue(4.5); // 5

@@ -4,6 +4,10 @@
  * @param str1 - The first string.
  * @param str2 - The second string.
  * @returns True if the strings are anagrams, false otherwise.
+ *
+ * @example
+ * areAnagrams("listen", "silent"); // true
+ *
  */
 export function areAnagrams(str1: string, str2: string): boolean {
   const normalize = (str: string) =>
@@ -11,5 +15,3 @@ export function areAnagrams(str1: string, str2: string): boolean {
   return normalize(str1) === normalize(str2);
 }
 
-// Example usage:
-// areAnagrams("listen", "silent"); // true

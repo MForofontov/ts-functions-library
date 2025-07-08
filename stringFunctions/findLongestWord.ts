@@ -3,6 +3,10 @@
  *
  * @param str - The string to analyze.
  * @returns The longest word in the string.
+ *
+ * @example
+ * console.log(findLongestWord("The quick brown fox jumps over the lazy dog.")); // "jumps"
+ *
  */
 export function findLongestWord(str: string): string {
   // Remove punctuation and special characters
@@ -17,5 +21,3 @@ export function findLongestWord(str: string): string {
   }, '');
 }
 
-// Example usage:
-// console.log(findLongestWord("The quick brown fox jumps over the lazy dog.")); // "jumps"

@@ -5,6 +5,10 @@
  * @param length - The desired length of the output string.
  * @returns The repeated string truncated to the desired length.
  * @throws Will throw an error if the length is not a number or is negative.
+ *
+ * @example
+ * repeatUntilLength("abc", 10); // "abcabcabca"
+ *
  */
 export function repeatUntilLength(str: string, length: number): string {
   if (isNaN(length)) {
@@ -19,5 +23,3 @@ export function repeatUntilLength(str: string, length: number): string {
   return str.repeat(Math.ceil(length / str.length)).substring(0, length);
 }
 
-// Example usage:
-// repeatUntilLength("abc", 10); // "abcabcabca"

@@ -4,6 +4,10 @@
  * @param length - The length of the generated string.
  * @returns A random alphanumeric string of the specified length.
  * @throws An error if the length is invalid.
+ *
+ * @example
+ * generateRandomAlphanumeric(10); // e.g., "aB3dE5fG7H"
+ *
  */
 export function generateRandomAlphanumeric(length: number): string {
   if (isNaN(length) || length < 0) {
@@ -19,5 +23,3 @@ export function generateRandomAlphanumeric(length: number): string {
   return result;
 }
 
-// Example usage:
-// generateRandomAlphanumeric(10); // e.g., "aB3dE5fG7H"

@@ -7,6 +7,10 @@ import { gcd } from './gcd';
  * @param b - The second number.
  * @returns The least common multiple of a and b.
  * @throws Will throw an error if both a and b are zero, if a or b is NaN, or if a or b is not an integer.
+ *
+ * @example
+ * lcm(12, 15); // 60
+ *
  */
 export function lcm(a: number, b: number): number {
   if (isNaN(a) || isNaN(b)) {
@@ -21,5 +25,3 @@ export function lcm(a: number, b: number): number {
   return Math.abs((a * b) / gcd(a, b));
 }
 
-// Example usage:
-// lcm(12, 15); // 60
