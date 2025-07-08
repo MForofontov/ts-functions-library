@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1752002599626" clover="3.2.0">
-  <project timestamp="1752002599627" name="All files">
+<coverage generated="1752002889685" clover="3.2.0">
+  <project timestamp="1752002889685" name="All files">
     <metrics statements="1380" coveredstatements="1372" conditionals="741" coveredconditionals="718" methods="312" coveredmethods="312" elements="2433" coveredelements="2402" complexity="0" loc="1380" ncloc="1380" packages="7" files="216" classes="216"/>
     <package name="arrayFunctions">
       <metrics statements="194" coveredstatements="193" conditionals="71" coveredconditionals="68" methods="73" coveredmethods="73"/>
@@ -250,11 +250,11 @@
       <file name="shuffleArray.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/shuffleArray.ts">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="33" count="1" type="stmt"/>
-        <line num="34" count="20" type="stmt"/>
-        <line num="35" count="20" type="stmt"/>
-        <line num="36" count="54" type="stmt"/>
-        <line num="37" count="54" type="stmt"/>
-        <line num="39" count="20" type="stmt"/>
+        <line num="34" count="19" type="stmt"/>
+        <line num="35" count="19" type="stmt"/>
+        <line num="36" count="53" type="stmt"/>
+        <line num="37" count="53" type="stmt"/>
+        <line num="39" count="19" type="stmt"/>
       </file>
       <file name="sortBy.ts" path="/home/runner/work/ts-functions-library/ts-functions-library/arrayFunctions/sortBy.ts">
         <metrics statements="15" coveredstatements="15" conditionals="23" coveredconditionals="22" methods="2" coveredmethods="2"/>
