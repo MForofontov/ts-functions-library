@@ -1,1 +1,0 @@
-export { toDotNotation } from './flattenObject';
