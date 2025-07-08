@@ -4,6 +4,11 @@
  * @param date - The Date object to start from.
  * @returns A new Date object representing the same day of the previous month.
  * @throws Will throw an error if the date is invalid.
+ *
+ * @example
+ * const date = new Date('2023-12-31');
+ * console.log(getPreviousMonth(date)); // 2023-11-30
+ *
  */
 export function getPreviousMonth(date: Date): Date {
   if (isNaN(date.getTime())) {
@@ -21,6 +26,3 @@ export function getPreviousMonth(date: Date): Date {
   return resultDate;
 }
 
-// Example usage:
-// const date = new Date('2023-12-31');
-// console.log(getPreviousMonth(date)); // 2023-11-30

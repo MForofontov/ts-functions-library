@@ -4,6 +4,10 @@
  * @param str - The string to truncate.
  * @param maxLength - The maximum length of the resulting string.
  * @returns The truncated string with an ellipsis if necessary.
+ *
+ * @example
+ * truncateString("This is a long string that needs to be truncated.", 20); // "This is a long st..."
+ *
  */
 export function truncateString(str: string, maxLength: number): string {
   if (maxLength <= 0) return '';
@@ -12,5 +16,3 @@ export function truncateString(str: string, maxLength: number): string {
   return str.slice(0, maxLength - 3) + '...';
 }
 
-// Example usage:
-// truncateString("This is a long string that needs to be truncated.", 20); // "This is a long st..."

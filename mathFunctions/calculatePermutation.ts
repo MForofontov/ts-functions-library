@@ -7,6 +7,10 @@ import { calculateFactorial } from './calculateFactorial';
  * @param k - The number of items to arrange.
  * @returns The number of ways to arrange k items from n items.
  * @throws Will throw an error if n or k is not an integer, if n or k is NaN, or if n or k is negative.
+ *
+ * @example
+ * calculatePermutation(5, 2); // 20
+ *
  */
 export function calculatePermutation(n: number, k: number): number {
   if (isNaN(n) || isNaN(k)) {
@@ -24,5 +28,3 @@ export function calculatePermutation(n: number, k: number): number {
   return calculateFactorial(n) / calculateFactorial(n - k);
 }
 
-// Example usage:
-// calculatePermutation(5, 2); // 20

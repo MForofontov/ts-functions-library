@@ -6,6 +6,11 @@
  * @param padChar - The character to pad the string with.
  * @returns The padded string.
  * @throws An error if the target length is less than the string length or if padChar is not a single character.
+ *
+ * @example
+ * padString("hello", 10); // "  hello   "
+ * padString("hello", 10, '*'); // "**hello***"
+ *
  */
 export function padString(
   str: string,
@@ -27,6 +32,3 @@ export function padString(
 
   return padChar.repeat(padStartLength) + str + padChar.repeat(padEndLength);
 }
-// Example usage:
-// padString("hello", 10); // "  hello   "
-// padString("hello", 10, '*'); // "**hello***"

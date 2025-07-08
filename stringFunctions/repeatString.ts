@@ -5,6 +5,10 @@
  * @param count - The number of times to repeat the string.
  * @returns The repeated string.
  * @throws Will throw an error if the count is not a number or is negative.
+ *
+ * @example
+ * repeatString("hello", 3); // "hellohellohello"
+ *
  */
 export function repeatString(str: string, count: number): string {
   if (isNaN(count)) {
@@ -16,5 +20,3 @@ export function repeatString(str: string, count: number): string {
   return str.repeat(count);
 }
 
-// Example usage:
-// repeatString("hello", 3); // "hellohellohello"

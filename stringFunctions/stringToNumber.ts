@@ -3,6 +3,11 @@
  *
  * @param str - The string to convert to a number.
  * @returns The converted number, or NaN if the string contains invalid characters.
+ *
+ * @example
+ * stringToNumber("123"); // 123
+ * stringToNumber("abc"); // NaN
+ *
  */
 export function stringToNumber(str: string): number {
   // Trim the input string to remove leading and trailing whitespace
@@ -18,6 +23,3 @@ export function stringToNumber(str: string): number {
   return NaN;
 }
 
-// Example usage:
-// stringToNumber("123"); // 123
-// stringToNumber("abc"); // NaN

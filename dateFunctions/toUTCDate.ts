@@ -4,6 +4,11 @@
  * @param date - The local Date object to convert.
  * @returns A new Date object representing the same moment in UTC.
  * @throws Will throw an error if the date is invalid.
+ *
+ * @example
+ * const localDate = new Date('2024-09-19T15:45:30');
+ * toUTCDate(localDate); // e.g., '2024-09-19T15:45:30.000Z'
+ *
  */
 export function toUTCDate(date: Date): Date {
   if (isNaN(date.getTime())) {
@@ -22,6 +27,3 @@ export function toUTCDate(date: Date): Date {
   );
 }
 
-// Example usage:
-// const localDate = new Date('2024-09-19T15:45:30');
-// toUTCDate(localDate); // e.g., '2024-09-19T15:45:30.000Z'

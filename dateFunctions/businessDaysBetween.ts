@@ -5,6 +5,12 @@
  * @param end - The end Date object.
  * @returns The number of business days between the two dates.
  * @throws Will throw an error if the start or end date is invalid.
+ *
+ * @example
+ * const start = new Date('2024-09-01');
+ * const end = new Date('2024-09-30');
+ * businessDaysBetween(start, end); // Number of business days in September 2024
+ *
  */
 export function businessDaysBetween(start: Date, end: Date): number {
   if (isNaN(start.getTime()) || isNaN(end.getTime())) {
@@ -30,7 +36,3 @@ export function businessDaysBetween(start: Date, end: Date): number {
   return count;
 }
 
-// Example usage:
-// const start = new Date('2024-09-01');
-// const end = new Date('2024-09-30');
-// businessDaysBetween(start, end); // Number of business days in September 2024

@@ -8,6 +8,11 @@ import { getEndOfWeek } from './getEndOfWeek';
  * @param startOfWeek - The start day of the week (0 for Sunday, 1 for Monday, etc.).
  * @returns An object with the start and end dates of the week.
  * @throws Will throw an error if the date is invalid or if startOfWeek is not a valid number.
+ *
+ * @example
+ * const date = new Date('2024-09-19');
+ * getWeekRange(date); // { start: '2024-09-15', end: '2024-09-21' }
+ *
  */
 export function getWeekRange(
   date: Date,
@@ -27,6 +32,3 @@ export function getWeekRange(
   return { start, end };
 }
 
-// Example usage:
-// const date = new Date('2024-09-19');
-// getWeekRange(date); // { start: '2024-09-15', end: '2024-09-21' }

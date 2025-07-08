@@ -5,6 +5,10 @@
  * @param charset - The character set to use for generating the string.
  * @returns A random string of the specified length from the specified character set.
  * @throws An error if the length is invalid or the charset is empty.
+ *
+ * @example
+ * generateRandomString(10, 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'); // e.g., "aB3dE5fG7H"
+ *
  */
 export function generateRandomString(
   length: number,
@@ -23,5 +27,3 @@ export function generateRandomString(
   return result;
 }
 
-// Example usage:
-// generateRandomString(10, 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'); // e.g., "aB3dE5fG7H"

@@ -4,6 +4,11 @@
  * @param str - The string to search within.
  * @param replacements - An object where keys are substrings to find and values are substrings to replace with.
  * @returns The string with all specified substrings replaced.
+ *
+ * @example
+ * replaceMultiple("hello world", { "hello": "hi", "world": "everyone" }); // "hi everyone"
+ * replaceMultiple("foo bar baz", { "foo": "qux", "bar": "quux" }); // "qux quux baz"
+ *
  */
 export function replaceMultiple(
   str: string,
@@ -18,6 +23,3 @@ export function replaceMultiple(
   return str.replace(regex, (match) => replacements[match]);
 }
 
-// Example usage:
-// replaceMultiple("hello world", { "hello": "hi", "world": "everyone" }); // "hi everyone"
-// replaceMultiple("foo bar baz", { "foo": "qux", "bar": "quux" }); // "qux quux baz"

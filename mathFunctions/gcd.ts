@@ -5,6 +5,10 @@
  * @param b - The second number.
  * @returns The greatest common divisor of a and b.
  * @throws Will throw an error if a or b is NaN or if a or b is not an integer.
+ *
+ * @example
+ * gcd(12, 15); // 3
+ *
  */
 export function gcd(a: number, b: number): number {
   if (isNaN(a) || isNaN(b)) {
@@ -18,5 +22,3 @@ export function gcd(a: number, b: number): number {
   return b === 0 ? a : gcd(b, a % b);
 }
 
-// Example usage:
-// gcd(12, 15); // 3

@@ -5,6 +5,10 @@
  * @param decimals - The number of decimal places.
  * @returns The rounded number.
  * @throws Will throw an error if value or decimals is NaN, if decimals is not an integer, or if decimals is negative.
+ *
+ * @example
+ * roundToDecimals(5.6789, 2); // 5.68
+ *
  */
 export function roundToDecimals(value: number, decimals: number): number {
   if (isNaN(value) || isNaN(decimals)) {
@@ -20,5 +24,3 @@ export function roundToDecimals(value: number, decimals: number): number {
   return Math.round(value * factor) / factor;
 }
 
-// Example usage:
-// roundToDecimals(5.6789, 2); // 5.68

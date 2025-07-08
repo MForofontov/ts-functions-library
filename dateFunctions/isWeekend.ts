@@ -4,6 +4,11 @@
  * @param date - The Date object to check.
  * @returns True if the date is a Saturday or Sunday, false otherwise.
  * @throws Will throw an error if the date is invalid.
+ *
+ * @example
+ * const date = new Date('2024-09-21'); // Saturday
+ * isWeekend(date); // true
+ *
  */
 export function isWeekend(date: Date): boolean {
   if (isNaN(date.getTime())) {
@@ -13,6 +18,3 @@ export function isWeekend(date: Date): boolean {
   return day === 0 || day === 6;
 }
 
-// Example usage:
-// const date = new Date('2024-09-21'); // Saturday
-// isWeekend(date); // true

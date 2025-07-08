@@ -5,6 +5,10 @@
  * @param base - The base of the logarithm (default is e for natural logarithm).
  * @returns The logarithm of the number with the specified base.
  * @throws Will throw an error if n or base is NaN, if n is negative, if base is less than or equal to 0, or if base is 1.
+ *
+ * @example
+ * calculateLogarithm(100, 10); // 2
+ *
  */
 export function calculateLogarithm(n: number, base: number = Math.E): number {
   if (isNaN(n) || isNaN(base)) {
@@ -19,5 +23,3 @@ export function calculateLogarithm(n: number, base: number = Math.E): number {
   return Math.log(n) / Math.log(base);
 }
 
-// Example usage:
-// calculateLogarithm(100, 10); // 2
