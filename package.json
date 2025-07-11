@@ -21,7 +21,8 @@
         "test:local": "jest --config jest.local.config.ts",
         "lint": "eslint . --ext .ts",
         "lint:fix": "eslint . --ext .ts --fix",
-        "format": "prettier --write \"**/*.{ts,js,json,md}\""
+        "format": "prettier --write \"**/*.{ts,js,json,md}\"",
+        "build": "tsc"
     },
     "devDependencies": {
         "@types/jest": "^29.5.14",
