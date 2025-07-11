@@ -25,4 +25,3 @@ export function safeJSONParse<T>(jsonString: string, defaultValue: T): T {
     return defaultValue;
   }
 }
-

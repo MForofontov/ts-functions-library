@@ -12,4 +12,3 @@
 export function isPerfectSquare(n: number): boolean {
   return Number.isInteger(Math.sqrt(n));
 }
-

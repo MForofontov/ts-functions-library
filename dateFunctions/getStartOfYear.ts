@@ -15,4 +15,3 @@ export function getStartOfYear(date: Date): Date {
   }
   return new Date(date.getFullYear(), 0, 1);
 }
-

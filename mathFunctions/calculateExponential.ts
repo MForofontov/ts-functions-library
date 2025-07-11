@@ -15,4 +15,3 @@
 export function calculateExponential(n: number): number {
   return Math.exp(n);
 }
-

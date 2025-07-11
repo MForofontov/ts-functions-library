@@ -29,4 +29,3 @@ export function getNextOccurrence(date: Date, dayOfWeek: number): Date {
 
   return resultDate;
 }
-

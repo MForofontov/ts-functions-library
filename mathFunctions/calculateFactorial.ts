@@ -29,4 +29,3 @@ export function calculateFactorial(n: number): number {
   }
   return n * calculateFactorial(n - 1);
 }
-

@@ -22,4 +22,3 @@ export function repeatUntilLength(str: string, length: number): string {
   }
   return str.repeat(Math.ceil(length / str.length)).substring(0, length);
 }
-

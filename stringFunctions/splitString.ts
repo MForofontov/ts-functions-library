@@ -12,4 +12,3 @@
 export function splitString(str: string, delimiter: string): string[] {
   return str.split(delimiter);
 }
-

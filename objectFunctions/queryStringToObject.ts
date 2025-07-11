@@ -30,10 +30,13 @@ export function queryStringToObject(queryString: string): Record<string, any> {
     .split('&')
     .filter(Boolean)
     .map((param) => param.split('='))
-    .reduce((acc, [key, value]) => {
-      if (key) {
-        acc[decodeURIComponent(key)] = decodeURIComponent(value ?? '');
-      }
-      return acc;
-    }, {} as Record<string, any>);
+    .reduce(
+      (acc, [key, value]) => {
+        if (key) {
+          acc[decodeURIComponent(key)] = decodeURIComponent(value ?? '');
+        }
+        return acc;
+      },
+      {} as Record<string, any>,
+    );
 }

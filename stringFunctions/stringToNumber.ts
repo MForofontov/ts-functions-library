@@ -22,4 +22,3 @@ export function stringToNumber(str: string): number {
   // If the string is not a valid number, return NaN
   return NaN;
 }
-

@@ -35,4 +35,3 @@ export function getEndOfWeek(date: Date, startOfWeek: number = 0): Date {
 
   return endOfWeekDate;
 }
-

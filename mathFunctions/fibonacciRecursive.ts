@@ -24,4 +24,3 @@ export function fibonacciRecursive(n: number): number {
   }
   return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
 }
-

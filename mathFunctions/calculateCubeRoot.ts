@@ -15,4 +15,3 @@ export function calculateCubeRoot(n: number): number {
   }
   return Math.cbrt(n);
 }
-

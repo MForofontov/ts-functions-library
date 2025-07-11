@@ -16,4 +16,3 @@ export function reverseWords(str: string): string {
   // Split the string into words, filter out empty strings, reverse the array, and join back into a string
   return str.trim().split(/\s+/).reverse().join(' ');
 }
-

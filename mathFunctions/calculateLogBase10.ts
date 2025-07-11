@@ -11,4 +11,3 @@
 export function calculatLogBase10(n: number): number {
   return Math.log10(n);
 }
-

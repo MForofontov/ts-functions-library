@@ -11,4 +11,3 @@
 export function floorValue(n: number): number {
   return Math.floor(n);
 }
-

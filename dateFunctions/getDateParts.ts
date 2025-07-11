@@ -30,4 +30,3 @@ export function getDateParts(date: Date): {
     seconds: date.getSeconds(),
   };
 }
-

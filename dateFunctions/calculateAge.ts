@@ -31,4 +31,3 @@ export function calculateAge(dob: Date): number {
 
   return age;
 }
-

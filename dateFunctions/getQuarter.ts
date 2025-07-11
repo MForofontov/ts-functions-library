@@ -18,4 +18,3 @@ export function getQuarter(date: Date): number {
   const month = date.getMonth() + 1;
   return Math.ceil(month / 3);
 }
-

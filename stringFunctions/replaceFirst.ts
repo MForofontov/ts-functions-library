@@ -25,4 +25,3 @@ export function replaceFirst(
   }
   return str.replace(searchValue, replaceValue);
 }
-

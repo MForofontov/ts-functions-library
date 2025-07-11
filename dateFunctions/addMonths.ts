@@ -27,4 +27,3 @@ export function addMonths(date: Date, months: number): Date {
   result.setMonth(result.getMonth() + months);
   return result;
 }
-

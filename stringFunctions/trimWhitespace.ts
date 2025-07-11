@@ -11,4 +11,3 @@
 export function trimWhitespace(str: string): string {
   return str.trim();
 }
-

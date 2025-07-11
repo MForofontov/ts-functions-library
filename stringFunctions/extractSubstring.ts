@@ -29,4 +29,3 @@ export function extractSubstring(
   }
   return str.slice(start, start + length);
 }
-

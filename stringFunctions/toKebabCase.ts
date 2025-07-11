@@ -17,4 +17,3 @@ export function toKebabCase(str: string): string {
     .replace(/--+/g, '-') // Replace multiple hyphens with a single one
     .replace(/^-+|-+$/g, ''); // Trim hyphens from start and end
 }
-

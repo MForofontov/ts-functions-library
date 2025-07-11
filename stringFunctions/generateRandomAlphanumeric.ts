@@ -22,4 +22,3 @@ export function generateRandomAlphanumeric(length: number): string {
   }
   return result;
 }
-

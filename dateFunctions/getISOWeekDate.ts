@@ -42,4 +42,3 @@ export function getISOWeekDate(date: Date): string {
 
   return `${year}-W${String(weekNumber).padStart(2, '0')}-${dayOfWeek}`;
 }
-

@@ -21,4 +21,3 @@ export function getWeekNumber(date: Date): number {
   );
   return Math.ceil((days + start.getDay() + 1) / 7);
 }
-

@@ -19,4 +19,3 @@ export function getLastDayOfPreviousMonth(date: Date): Date {
   const month = date.getMonth();
   return new Date(year, month, 0);
 }
-

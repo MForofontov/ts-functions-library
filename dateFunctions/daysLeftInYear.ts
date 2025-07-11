@@ -19,4 +19,3 @@ export function daysLeftInYear(date: Date): number {
   const diffInMs = endOfYear.getTime() - date.getTime();
   return Math.ceil(diffInMs / (1000 * 60 * 60 * 24));
 }
-

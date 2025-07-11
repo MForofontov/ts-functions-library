@@ -17,4 +17,3 @@ export function encodeBase64(str: string): string {
     .replace(/\//g, '_')
     .replace(/=+$/, '');
 }
-

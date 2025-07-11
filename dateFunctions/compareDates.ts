@@ -25,4 +25,3 @@ export function compareDates(date1: Date, date2: Date): number {
     return 0;
   }
 }
-

@@ -26,4 +26,3 @@ export function debounce<T extends (...args: any[]) => any>(
     timeoutId = setTimeout(() => func.apply(this, args), delay);
   };
 }
-

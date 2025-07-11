@@ -10,4 +10,3 @@
 export function getCurrentDateTimeISO(): string {
   return new Date().toISOString();
 }
-

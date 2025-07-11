@@ -26,4 +26,3 @@ export function generateRandomString(
   }
   return result;
 }
-

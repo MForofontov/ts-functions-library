@@ -16,4 +16,3 @@ export function ceilValue(n: number): number {
   const result = Math.ceil(n);
   return result === -0 ? 0 : result;
 }
-

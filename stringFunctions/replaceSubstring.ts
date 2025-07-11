@@ -25,4 +25,3 @@ export function replaceSubstring(
   }
   return str.split(searchValue).join(replaceValue);
 }
-

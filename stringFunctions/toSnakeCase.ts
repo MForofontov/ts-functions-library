@@ -17,4 +17,3 @@ export function toSnakeCase(str: string): string {
     .replace(/__+/g, '_') // Replace multiple underscores with a single one
     .replace(/^_+|_+$/g, ''); // Trim underscores from start and end
 }
-

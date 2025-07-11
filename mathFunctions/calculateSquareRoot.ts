@@ -18,4 +18,3 @@ export function calculateSquareRoot(n: number): number {
   }
   return Math.sqrt(n);
 }
-

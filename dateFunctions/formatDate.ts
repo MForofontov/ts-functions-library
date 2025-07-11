@@ -50,4 +50,3 @@ export function formatDate(date: Date, format: string): string {
 
   return format.replace(/YYYY|MM|DD|HH|mm|ss/g, (matched) => map[matched]);
 }
-

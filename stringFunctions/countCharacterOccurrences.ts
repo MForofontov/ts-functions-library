@@ -12,4 +12,3 @@
 export function countCharacterOccurrences(str: string, char: string): number {
   return (str.match(new RegExp(char, 'g')) || []).length;
 }
-

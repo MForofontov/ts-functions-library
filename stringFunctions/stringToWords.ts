@@ -14,4 +14,3 @@ export function stringToWords(str: string): string[] {
     .split(/\s+/) // Split by one or more whitespace characters
     .filter((word) => word.length > 0); // Filter out empty strings
 }
-

@@ -21,4 +21,3 @@ export function isToday(date: Date): boolean {
     date.getDate() === today.getDate()
   );
 }
-

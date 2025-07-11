@@ -22,4 +22,3 @@ export function replaceMultiple(
 
   return str.replace(regex, (match) => replacements[match]);
 }
-

@@ -20,4 +20,3 @@ export function findLongestWord(str: string): string {
     return current.length > longest.length ? current : longest;
   }, '');
 }
-

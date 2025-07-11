@@ -11,4 +11,3 @@
 export function countVowels(str: string): number {
   return (str.match(/[aeiou]/gi) || []).length;
 }
-

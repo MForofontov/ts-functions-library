@@ -24,4 +24,3 @@ export function isPrime(n: number): boolean {
   }
   return true;
 }
-

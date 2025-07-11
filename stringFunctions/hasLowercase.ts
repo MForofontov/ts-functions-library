@@ -12,4 +12,3 @@
 export function hasLowercase(str: string): boolean {
   return /[a-z]/.test(str);
 }
-

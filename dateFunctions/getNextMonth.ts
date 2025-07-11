@@ -19,4 +19,3 @@ export function getNextMonth(date: Date): Date {
   result.setMonth(result.getMonth() + 1);
   return result;
 }
-
