@@ -16,4 +16,3 @@ export function getEndOfYear(date: Date): Date {
   }
   return new Date(date.getFullYear(), 11, 31);
 }
-

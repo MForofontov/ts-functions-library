@@ -18,4 +18,3 @@ export function oneWeekAgo(date: Date): Date {
   result.setDate(result.getDate() - 7);
   return result;
 }
-

@@ -14,4 +14,3 @@ export function areAnagrams(str1: string, str2: string): boolean {
     str.replace(/\s+/g, '').toLowerCase().split('').sort().join('');
   return normalize(str1) === normalize(str2);
 }
-

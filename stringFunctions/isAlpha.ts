@@ -1,4 +1,3 @@
-
 /**
  * Checks if a string contains only alphabetical characters.
  *
@@ -17,4 +16,3 @@
 export function isAlpha(str: string): boolean {
   return /^[A-Za-z]+$/.test(str);
 }
-

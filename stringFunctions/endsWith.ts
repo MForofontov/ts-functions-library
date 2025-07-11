@@ -12,4 +12,3 @@
 export function endsWith(str: string, end: string): boolean {
   return str.endsWith(end);
 }
-

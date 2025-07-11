@@ -19,4 +19,3 @@ export function repeatString(str: string, count: number): string {
   }
   return str.repeat(count);
 }
-

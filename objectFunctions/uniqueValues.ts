@@ -29,9 +29,10 @@ export function uniqueValues<T extends Record<string, any>>(obj: T): any[] {
   const result: any[] = [];
   const seen = new Set<string>();
   for (const value of Object.values(obj)) {
-    const key = typeof value === 'object' && value !== null
-      ? JSON.stringify(value)
-      : String(value);
+    const key =
+      typeof value === 'object' && value !== null
+        ? JSON.stringify(value)
+        : String(value);
     if (!seen.has(key)) {
       seen.add(key);
       result.push(value);

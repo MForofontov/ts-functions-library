@@ -19,4 +19,3 @@ export function getDaysInMonth(date: Date): number {
   const month = date.getMonth();
   return new Date(year, month + 1, 0).getDate();
 }
-

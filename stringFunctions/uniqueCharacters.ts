@@ -11,4 +11,3 @@
 export function uniqueCharacters(str: string): string[] {
   return Array.from(new Set(str));
 }
-

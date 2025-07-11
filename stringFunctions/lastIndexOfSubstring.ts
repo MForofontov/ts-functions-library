@@ -13,4 +13,3 @@
 export function lastIndexOfSubstring(str: string, substr: string): number {
   return str.lastIndexOf(substr);
 }
-

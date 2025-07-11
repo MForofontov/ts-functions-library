@@ -19,4 +19,3 @@ export function absoluteValue(n: number): number {
 
   return Math.abs(n);
 }
-

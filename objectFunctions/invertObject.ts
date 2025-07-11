@@ -19,7 +19,9 @@
  *
  * @complexity O(n) where n is the number of keys in the input object.
  */
-export function invertObject(obj: Record<string | number | symbol, any>): Record<string, any> {
+export function invertObject(
+  obj: Record<string | number | symbol, any>,
+): Record<string, any> {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }

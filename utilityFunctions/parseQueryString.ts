@@ -31,4 +31,3 @@ export function parseQueryString(queryString: string): Record<string, string> {
       {} as Record<string, string>,
     );
 }
-

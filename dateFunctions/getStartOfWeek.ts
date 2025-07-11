@@ -28,4 +28,3 @@ export function getStartOfWeek(date: Date, startOfWeek: number = 0): Date {
   startOfWeekDate.setHours(0, 0, 0, 0);
   return startOfWeekDate;
 }
-

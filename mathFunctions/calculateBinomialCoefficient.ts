@@ -29,4 +29,3 @@ export function calculateBinomialCoefficient(n: number, k: number): number {
     calculateFactorial(n) / (calculateFactorial(k) * calculateFactorial(n - k))
   );
 }
-

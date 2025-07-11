@@ -16,4 +16,3 @@
 export function calculatePercentage(total: number, part: number): number {
   return (part / total) * 100;
 }
-

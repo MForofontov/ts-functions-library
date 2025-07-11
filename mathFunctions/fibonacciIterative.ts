@@ -29,4 +29,3 @@ export function fibonacciIterative(n: number): number {
   }
   return n === 0 ? 0 : b;
 }
-

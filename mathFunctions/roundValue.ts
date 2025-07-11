@@ -16,4 +16,3 @@ export function roundValue(n: number): number {
   const result = Math.round(n);
   return result === -0 ? 0 : result;
 }
-

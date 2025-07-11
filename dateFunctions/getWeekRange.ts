@@ -31,4 +31,3 @@ export function getWeekRange(
   const end = getEndOfWeek(date, startOfWeek);
   return { start, end };
 }
-

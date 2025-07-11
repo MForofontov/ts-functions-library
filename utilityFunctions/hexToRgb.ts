@@ -26,4 +26,3 @@ export function hexToRgb(
 
   return { r, g, b };
 }
-

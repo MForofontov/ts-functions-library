@@ -12,4 +12,3 @@
 export function hasUppercase(str: string): boolean {
   return /[A-Z]/.test(str);
 }
-

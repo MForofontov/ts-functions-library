@@ -19,4 +19,3 @@ export function wordsToSentence(words: string[]): string {
     .filter((word) => word !== '') // Filter out empty words
     .join(' ');
 }
-

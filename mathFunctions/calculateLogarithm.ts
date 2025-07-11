@@ -22,4 +22,3 @@ export function calculateLogarithm(n: number, base: number = Math.E): number {
   }
   return Math.log(n) / Math.log(base);
 }
-

@@ -11,4 +11,3 @@
 export function calculateNaturalLogarithm(n: number): number {
   return Math.log(n);
 }
-

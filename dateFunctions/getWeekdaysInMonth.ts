@@ -29,4 +29,3 @@ export function getWeekdaysInMonth(date: Date): number {
 
   return weekdayCount;
 }
-

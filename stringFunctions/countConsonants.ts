@@ -11,4 +11,3 @@
 export function countConsonants(str: string): number {
   return (str.match(/[bcdfghjklmnpqrstvwxyz]/gi) || []).length;
 }
-

@@ -25,4 +25,3 @@ export function getPreviousMonth(date: Date): Date {
 
   return resultDate;
 }
-

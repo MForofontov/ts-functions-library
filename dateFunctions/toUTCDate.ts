@@ -26,4 +26,3 @@ export function toUTCDate(date: Date): Date {
     ),
   );
 }
-

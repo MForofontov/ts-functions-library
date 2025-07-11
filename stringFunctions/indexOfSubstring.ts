@@ -12,4 +12,3 @@
 export function indexOfSubstring(str: string, substr: string): number {
   return str.indexOf(substr);
 }
-

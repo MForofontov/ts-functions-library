@@ -27,4 +27,3 @@ export function calculatePermutation(n: number, k: number): number {
   }
   return calculateFactorial(n) / calculateFactorial(n - k);
 }
-

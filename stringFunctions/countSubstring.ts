@@ -13,4 +13,3 @@ export function countSubstring(str: string, substring: string): number {
   if (substring.length === 0) return 0;
   return (str.match(new RegExp(substring, 'g')) || []).length;
 }
-

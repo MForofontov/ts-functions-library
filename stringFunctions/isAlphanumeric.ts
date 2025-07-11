@@ -12,4 +12,3 @@
 export function isAlphanumeric(str: string): boolean {
   return /^[A-Za-z0-9]+$/.test(str);
 }
-

@@ -13,4 +13,3 @@ export function capitalizeNthLetter(str: string, n: number): string {
   if (n < 0 || n >= str.length) return str;
   return str.slice(0, n) + str.charAt(n).toUpperCase() + str.slice(n + 1);
 }
-

@@ -16,4 +16,3 @@ export function rgbToHex(rgb: { r: number; g: number; b: number }): string {
   const toHex = (num: number) => num.toString(16).padStart(2, '0');
   return `#${toHex(rgb.r)}${toHex(rgb.g)}${toHex(rgb.b)}`;
 }
-

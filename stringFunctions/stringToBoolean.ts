@@ -13,4 +13,3 @@ export function stringToBoolean(str: string): boolean {
   const normalizedStr = str.trim().toLowerCase();
   return normalizedStr === 'true' || normalizedStr === '1';
 }
-

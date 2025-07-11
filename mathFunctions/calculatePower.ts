@@ -12,4 +12,3 @@
 export function calculatePower(base: number, exponent: number): number {
   return Math.pow(base, exponent);
 }
-

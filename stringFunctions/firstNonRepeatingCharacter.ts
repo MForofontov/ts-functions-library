@@ -27,4 +27,3 @@ export function firstNonRepeatingCharacter(str: string): string | null {
   // If no non-repeating character is found, return null
   return null;
 }
-

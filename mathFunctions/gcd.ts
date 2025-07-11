@@ -21,4 +21,3 @@ export function gcd(a: number, b: number): number {
   b = Math.abs(b);
   return b === 0 ? a : gcd(b, a % b);
 }
-
