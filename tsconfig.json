@@ -7,6 +7,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "types": ["node", "jest"],
-    "lib": ["es2023", "dom"]
+    "lib": ["es2023", "dom"],
+    "outDir": "dist"
   }
 }
