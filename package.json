@@ -1,4 +1,20 @@
 {
+    "name": "ts-functions-library",
+    "version": "1.0.0",
+    "description": "A collection of reusable TypeScript utility functions.",
+    "main": "index.js",
+    "types": "index.d.ts",
+    "license": "GPL-3.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/yourname/ts-functions-library.git"
+    },
+    "keywords": [
+        "typescript",
+        "utilities",
+        "functions"
+    ],
+    "author": "",
     "scripts": {
         "test": "./run-tests.sh",
         "test:github": "./run-tests-github.sh",
