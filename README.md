@@ -25,11 +25,10 @@ pnpm add ts-functions-library
 ```
 
 ## Usage
-Import only the functions you need. Each function lives in its own file and can be imported directly from the corresponding folder:
+Import the functions you need directly from the package root:
 
 ```ts
-import { chunkArray } from 'ts-functions-library/arrayFunctions/chunkArray';
-import { deepMerge } from 'ts-functions-library/objectFunctions/deepMerge';
+import { chunkArray, deepMerge } from 'ts-functions-library';
 ```
 
 ## Directory Structure
