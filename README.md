@@ -6,6 +6,7 @@ A comprehensive collection of reusable TypeScript functions organised by categor
 - [Installation](#installation)
 - [Usage](#usage)
 - [Directory Structure](#directory-structure)
+- [Building](#building)
 - [Testing](#testing)
 - [Contributing](#contributing)
 - [License](#license)
@@ -35,12 +36,21 @@ import { chunkArray, deepMerge } from 'ts-functions-library';
 The main folders group functions by purpose:
 
 - **arrayFunctions** – helpers for arrays such as `chunkArray`, `flattenArray`, and `mergeUnique`.
-- **objectFunctions** – utilities for manipulating objects including `deepMerge`, `safeGet`, and `groupBy`.
+- **objectFunctions** – utilities for manipulating objects including `deepMerge`, `safeGet`, and `groupByObject`.
 - **stringFunctions** – text related helpers like `slugify`, `trimWhitespace`, and `isValidEmail`.
 - **dateFunctions** – date utilities such as `formatDate`, `addMonths`, and `getWeekNumber`.
 - **encodingFunctions** – simple Base64 encoding/decoding helpers.
 - **mathFunctions** – mathematical helpers, including geometric calculations.
 - **utilityFunctions** – assorted utilities like `debounce`, `throttle`, and `hexToRgb`.
+
+## Building
+Compile the TypeScript source with:
+
+```bash
+npm run build
+```
+
+This outputs compiled JavaScript files to the `dist/` directory. Ensure you have installed dependencies first with `npm install`.
 
 ## Testing
 Jest is used for all unit tests. Run the full test suite with:
@@ -49,7 +59,7 @@ Jest is used for all unit tests. Run the full test suite with:
 npm test
 ```
 
-The command executes the script `run-tests.sh` which generates an Allure report after running the tests.
+The command runs `run-tests.sh`, which executes Jest and generates an Allure report. Results are stored in `allure-results` and the final report in `allure-report`.
 
 ## Contributing
 Contributions are welcome! Feel free to open issues or submit pull requests.
