@@ -1,4 +1,5 @@
 #!/bin/sh
+# Run Jest unit tests and generate an Allure report
 
 # Function to print messages with timestamps
 log_with_time() {
@@ -12,8 +13,7 @@ log_with_time "[INFO] Current local time: $(date)"
 
 # Print the current time in UTC
 log_with_time "[INFO] Current time in UTC: $(date -u)"
-
-# Check the current timezone
+# Determine current timezone for logging purposes
 current_timezone=$(date +%Z)
 log_with_time "[INFO] Current timezone: $current_timezone"
 
@@ -24,6 +24,7 @@ if [ "$current_timezone" != "UTC" ]; then
 fi
 
 # Verify the timezone change
+# Log the timezone after any change
 log_with_time "[INFO] Timezone after change: $(date +%Z)"
 
 # Check if Allure is installed
@@ -45,14 +46,15 @@ if ! jest; then
 fi
 
 # Generate Allure report
+# Results are written to allure-results and HTML report to allure-report
 log_with_time "[INFO] Generating Allure report"
-if ! allure generate ../allure-results --clean -o ../allure-report; then
+if ! allure generate allure-results --clean -o allure-report; then
   log_with_time "[ERROR] Failed to generate Allure report, but continuing with the script"
 fi
 
 # Open Allure report
 log_with_time "[INFO] Opening Allure report"
-if ! allure open ../allure-report; then
+if ! allure open allure-report; then
   log_with_time "[ERROR] Failed to open Allure report, but continuing with the script"
 fi
 
