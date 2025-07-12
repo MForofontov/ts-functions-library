@@ -35,14 +35,19 @@
  *
  * @complexity O(n^m) where n is the average array length and m is the number of arrays
  */
-export function cartesianProduct(...arrays: any[][]): any[][] {
+type CartesianTuple<T extends any[][]> = { [K in keyof T]: T[K][number] };
+
+export function cartesianProduct<T extends any[][]>(
+  ...arrays: T
+): CartesianTuple<T>[] {
   // Handle empty array case
   if (arrays.some((arr) => arr.length === 0)) {
     return [];
   }
 
-  return arrays.reduce<any[][]>(
-    (acc, arr) => acc.flatMap((x) => arr.map((y) => [...x, y])),
-    [[]] as any[][],
+  return arrays.reduce<CartesianTuple<T>[]>(
+    (acc, arr) =>
+      acc.flatMap((x) => arr.map((y) => [...x, y] as CartesianTuple<T>)),
+    [[]] as unknown as CartesianTuple<T>[],
   );
 }

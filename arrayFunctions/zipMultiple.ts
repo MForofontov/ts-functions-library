@@ -36,11 +36,13 @@
  *
  * @complexity O(n*m) where n is the length of the shortest array and m is the number of arrays
  */
-export function zipMultiple(...arrays: any[][]): any[][] {
+type ZippedTuple<T extends any[][]> = { [K in keyof T]: T[K][number] };
+
+export function zipMultiple<T extends any[][]>(...arrays: T): ZippedTuple<T>[] {
   const minLength = Math.min(...arrays.map((arr) => arr.length));
-  const result: any[][] = [];
+  const result: ZippedTuple<T>[] = [];
   for (let i = 0; i < minLength; i++) {
-    result.push(arrays.map((arr) => arr[i]));
+    result.push(arrays.map((arr) => arr[i]) as ZippedTuple<T>);
   }
   return result;
 }
