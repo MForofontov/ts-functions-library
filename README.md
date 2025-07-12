@@ -49,7 +49,7 @@ Jest is used for all unit tests. Run the full test suite with:
 npm test
 ```
 
-The command executes the script `run-tests.sh` which generates an Allure report after running the tests.
+The command runs `run-tests.sh`, which executes Jest and generates an Allure report. Results are stored in `allure-results` and the final report in `allure-report`.
 
 ## Contributing
 Contributions are welcome! Feel free to open issues or submit pull requests.
