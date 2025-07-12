@@ -6,6 +6,7 @@ A comprehensive collection of reusable TypeScript functions organised by categor
 - [Installation](#installation)
 - [Usage](#usage)
 - [Directory Structure](#directory-structure)
+- [Building](#building)
 - [Testing](#testing)
 - [Contributing](#contributing)
 - [License](#license)
@@ -41,6 +42,15 @@ The main folders group functions by purpose:
 - **encodingFunctions** – simple Base64 encoding/decoding helpers.
 - **mathFunctions** – mathematical helpers, including geometric calculations.
 - **utilityFunctions** – assorted utilities like `debounce`, `throttle`, and `hexToRgb`.
+
+## Building
+Compile the TypeScript source with:
+
+```bash
+npm run build
+```
+
+This outputs compiled JavaScript files to the `dist/` directory. Ensure you have installed dependencies first with `npm install`.
 
 ## Testing
 Jest is used for all unit tests. Run the full test suite with:
