@@ -21,3 +21,7 @@ build/
 
 # Local Testing
 local-testing/*
+coverage/
+allure-report/
+allure-results/
+jest.html

@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "A collection of reusable TypeScript utility functions.",
     "main": "index.js",
-    "types": "index.d.ts",
+    "types": "dist/index.d.ts",
     "license": "GPL-3.0",
     "repository": {
         "type": "git",
