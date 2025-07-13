@@ -8,7 +8,9 @@
     "forceConsistentCasingInFileNames": true,
     "types": ["node", "jest"],
     "lib": ["es2023", "dom"],
-    "outDir": "dist"
+    "outDir": "dist",
+    "declaration": true,
+    "emitDeclarationOnly": false
   },
   "include": [
     "index.ts",
@@ -24,10 +26,5 @@
     "functionsUnittests",
     "dist",
     "node_modules"
-  ],
-    "outDir": "dist",
-    "declaration": true,
-    "emitDeclarationOnly": false
-  },
-  "exclude": ["functionsUnittests"]
+  ]
 }
