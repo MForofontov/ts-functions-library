@@ -7,6 +7,10 @@ log_with_time() {
 
 log_with_time "[INFO] Starting test execution script"
 
+# Ensure local node binaries are available
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+export PATH="$SCRIPT_DIR/node_modules/.bin:$PATH"
+
 # Print the current local time
 log_with_time "[INFO] Current local time: $(date)"
 
