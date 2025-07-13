@@ -18,7 +18,7 @@ npm install --save-dev jest-sonar-reporter
 npm install --save-dev sonar-scanner
 */
 
-const os = require('os');
+import * as os from 'os';
 
 // Manually define the status values if the import is causing issues
 const Status = {
@@ -26,7 +26,7 @@ const Status = {
   BROKEN: 'broken',
 };
 
-module.exports = {
+const config = {
   preset: 'ts-jest',
   testEnvironment: 'allure-jest/node',
   testEnvironmentOptions: {
@@ -69,3 +69,5 @@ module.exports = {
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
   testPathIgnorePatterns: ['/node_modules/', '/allure-results/'], // Add this line to ignore the allure-results directory
 };
+
+export default config;
