@@ -24,5 +24,10 @@
     "functionsUnittests",
     "dist",
     "node_modules"
-  ]
+  ],
+    "outDir": "dist",
+    "declaration": true,
+    "emitDeclarationOnly": false
+  },
+  "exclude": ["functionsUnittests"]
 }
