@@ -20,10 +20,10 @@
     "mathFunctions",
     "objectFunctions",
     "stringFunctions",
-    "utilityFunctions"
+    "utilityFunctions",
+    "functionsUnittests",
   ],
   "exclude": [
-    "functionsUnittests",
     "dist",
     "node_modules"
   ]
