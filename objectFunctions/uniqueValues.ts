@@ -21,12 +21,14 @@
  *       reference equality for objects and arrays.
  * @note The order of values in the result follows their first occurrence in Object.values().
  */
-export function uniqueValues<T extends Record<string, any>>(obj: T): any[] {
+export function uniqueValues<T extends Record<string, unknown>>(
+  obj: T,
+): unknown[] {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }
 
-  const result: any[] = [];
+  const result: unknown[] = [];
   const seen = new Set<string>();
   for (const value of Object.values(obj)) {
     const key =

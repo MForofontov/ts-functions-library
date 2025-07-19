@@ -16,12 +16,12 @@
  *
  * @complexity O(1) per invocation
  */
-export function debounceAsync<T extends (...args: any[]) => Promise<any>>(
-  func: T,
+export function debounceAsync<Args extends unknown[], R>(
+  func: (...args: Args) => Promise<R>,
   wait: number,
-): (...args: Parameters<T>) => Promise<ReturnType<T>> {
+): (...args: Args) => Promise<R> {
   let timeoutId: ReturnType<typeof setTimeout>;
-  return (...args: Parameters<T>) =>
+  return (...args: Args) =>
     new Promise((resolve) => {
       if (timeoutId) {
         clearTimeout(timeoutId);

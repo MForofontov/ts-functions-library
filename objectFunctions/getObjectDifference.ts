@@ -19,9 +19,9 @@
  * @note Keys that exist only in obj1 will appear with undefined values in the result.
  */
 export function getObjectDifference(
-  obj1: Record<string, any>,
-  obj2: Record<string, any>,
-): Record<string, any> {
+  obj1: Record<string, unknown>,
+  obj2: Record<string, unknown>,
+): Record<string, unknown> {
   if (
     typeof obj1 !== 'object' ||
     obj1 === null ||
@@ -31,7 +31,7 @@ export function getObjectDifference(
     throw new TypeError('Both inputs must be non-null objects');
   }
 
-  const diff: Record<string, any> = {};
+  const diff: Record<string, unknown> = {};
 
   const allKeys = new Set([...Object.keys(obj1), ...Object.keys(obj2)]);
   allKeys.forEach((key) => {

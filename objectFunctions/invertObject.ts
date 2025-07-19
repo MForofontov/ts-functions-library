@@ -20,15 +20,15 @@
  * @complexity O(n) where n is the number of keys in the input object.
  */
 export function invertObject(
-  obj: Record<string | number | symbol, any>,
-): Record<string, any> {
+  obj: Record<string | number | symbol, unknown>,
+): Record<string, string | number | symbol> {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }
-  const result: Record<string, any> = {};
+  const result: Record<string, string | number | symbol> = {};
   for (const key of Reflect.ownKeys(obj)) {
-    const value = (obj as any)[key];
-    result[String(value)] = key as any;
+    const value = (obj as Record<string | number | symbol, unknown>)[key];
+    result[String(value)] = key;
   }
   return result;
 }

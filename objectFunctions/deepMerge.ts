@@ -21,15 +21,19 @@ export function deepMerge<T extends object, U extends object>(
   target: T,
   source: U,
 ): T & U {
-  const isObject = (obj: any): obj is object => obj && typeof obj === 'object';
+  const isObject = (obj: unknown): obj is Record<string, unknown> =>
+    !!obj && typeof obj === 'object';
 
   if (!isObject(target) || !isObject(source)) {
     throw new TypeError('Both target and source must be non-null objects');
   }
 
-  const merge = (t: any, s: any): any => {
+  const merge = (
+    t: Record<string, unknown>,
+    s: Record<string, unknown>,
+  ): Record<string, unknown> => {
     Reflect.ownKeys(s).forEach((k) => {
-      const key = k as any;
+      const key = k as string;
       const targetValue = t[key];
       const sourceValue = s[key];
       if (Array.isArray(targetValue) && Array.isArray(sourceValue)) {

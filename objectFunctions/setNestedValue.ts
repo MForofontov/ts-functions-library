@@ -28,20 +28,20 @@
  * @note Only supports dot notation and doesn't handle array indices.
  */
 export function setNestedValue(
-  obj: Record<string, any>,
+  obj: Record<string, unknown>,
   path: string,
-  value: any,
+  value: unknown,
 ): void {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }
   const keys = path.split('.');
-  let current = obj;
+  let current: Record<string, unknown> = obj;
   for (let i = 0; i < keys.length - 1; i++) {
     if (typeof current[keys[i]] !== 'object' || current[keys[i]] === null) {
       current[keys[i]] = {};
     }
-    current = current[keys[i]];
+    current = current[keys[i]] as Record<string, unknown>;
   }
   current[keys[keys.length - 1]] = value;
 }

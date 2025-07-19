@@ -12,7 +12,7 @@
  * const result = applyDefaults(obj, defaults);
  * // result: { a: 1, b: 2, c: 4 }
  */
-export function applyDefaults<T extends Record<string, any>>(
+export function applyDefaults<T extends Record<string, unknown>>(
   obj: T,
   defaults: Partial<T>,
 ): T {

@@ -14,13 +14,13 @@
  *
  * @complexity O(1) per invocation
  */
-export function throttle<T extends (...args: any[]) => void>(
-  func: T,
+export function throttle<Args extends unknown[]>(
+  func: (...args: Args) => void,
   limit: number,
-): (...args: Parameters<T>) => void {
+): (...args: Args) => void {
   let lastFunc: NodeJS.Timeout | null;
   let lastRan: number | null = null;
-  return function (this: any, ...args: Parameters<T>) {
+  return function (this: unknown, ...args: Args) {
     if (!lastRan || Date.now() - lastRan >= limit) {
       func.apply(this, args);
       lastRan = Date.now();
