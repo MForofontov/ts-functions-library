@@ -25,8 +25,8 @@
  * @note Only compares own enumerable properties, not inherited ones.
  */
 export function shallowEqual(
-  obj1: Record<string, any>,
-  obj2: Record<string, any>,
+  obj1: Record<string, unknown>,
+  obj2: Record<string, unknown>,
 ): boolean {
   if (
     typeof obj1 !== 'object' ||

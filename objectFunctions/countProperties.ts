@@ -9,7 +9,7 @@
  * const count = countProperties({ a: 1, b: 2, c: 3 });
  * // => 3
  */
-export function countProperties(obj: Record<string, any>): number {
+export function countProperties(obj: Record<string, unknown>): number {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }

@@ -15,7 +15,7 @@
  * @note Creates a new object and doesn't modify the original.
  * @note If a key in keysToPick doesn't exist in the object, it's simply ignored.
  */
-export function pickKeys<T extends Record<string, any>>(
+export function pickKeys<T extends Record<string, unknown>>(
   obj: T,
   keysToPick: (keyof T)[],
 ): Partial<T> {

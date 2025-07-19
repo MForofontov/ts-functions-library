@@ -22,6 +22,8 @@
     "stringFunctions",
     "utilityFunctions",
     "functionsUnittests",
+    "jest.config.ts",
+    "jest.local.config.ts"
   ],
   "exclude": [
     "dist",

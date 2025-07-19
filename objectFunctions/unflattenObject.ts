@@ -19,16 +19,18 @@
  * @note If properties conflict during reconstruction, the last one processed will override previous values.
  * @note Doesn't handle escaped dots in property names.
  */
-export function unflattenObject(obj: Record<string, any>): Record<string, any> {
+export function unflattenObject(
+  obj: Record<string, unknown>,
+): Record<string, unknown> {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }
 
-  const result: Record<string, any> = {};
+  const result: Record<string, unknown> = {};
 
   for (const [flatKey, value] of Object.entries(obj)) {
     const parts = flatKey.replace(/\[(\d+)\]/g, '.$1').split('.');
-    let current: any = result;
+    let current: Record<string, unknown> | unknown[] = result;
 
     parts.forEach((part, idx) => {
       const isLast = idx === parts.length - 1;
@@ -38,21 +40,26 @@ export function unflattenObject(obj: Record<string, any>): Record<string, any> {
       if (isLast) {
         if (isIndex) {
           if (!Array.isArray(current)) current = [];
-          current[Number(part)] = value;
+          (current as unknown[])[Number(part)] = value;
         } else {
-          current[part] = value;
+          (current as Record<string, unknown>)[part] = value;
         }
       } else {
         if (isIndex) {
-          if (!Array.isArray(current[Number(part)])) {
-            current[Number(part)] = nextIsIndex ? [] : {};
+          if (!Array.isArray((current as any)[Number(part)])) {
+            (current as any)[Number(part)] = nextIsIndex ? [] : {};
           }
-          current = current[Number(part)];
+          current = (current as any)[Number(part)];
         } else {
-          if (!current[part] || typeof current[part] !== 'object') {
-            current[part] = nextIsIndex ? [] : {};
+          if (
+            !(current as Record<string, unknown>)[part] ||
+            typeof (current as Record<string, unknown>)[part] !== 'object'
+          ) {
+            (current as Record<string, unknown>)[part] = nextIsIndex ? [] : {};
           }
-          current = current[part];
+          current = (current as any)[part] as
+            | Record<string, unknown>
+            | unknown[];
         }
       }
     });

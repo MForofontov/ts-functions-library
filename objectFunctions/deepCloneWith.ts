@@ -14,23 +14,29 @@
  * );
  * // => { name: 'John', age: 60, scores: [160, 180] }
  */
-export function deepCloneWith<T>(obj: T, cloneFn: (value: any) => any): T {
+export function deepCloneWith<T>(
+  obj: T,
+  cloneFn: (value: unknown) => unknown,
+): T {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }
 
-  const clone = (value: any): any => {
+  const clone = (value: unknown): unknown => {
     if (Array.isArray(value)) {
       return value.map(clone);
     }
     if (value && typeof value === 'object') {
-      return Reflect.ownKeys(value).reduce((acc: any, k) => {
-        acc[k as any] = clone((value as any)[k]);
-        return acc;
-      }, {} as any);
+      return Reflect.ownKeys(value).reduce<Record<PropertyKey, unknown>>(
+        (acc, k) => {
+          acc[k] = clone((value as Record<PropertyKey, unknown>)[k]);
+          return acc;
+        },
+        {},
+      );
     }
     return cloneFn(value);
   };
 
-  return clone(obj);
+  return clone(obj) as T;
 }

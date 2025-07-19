@@ -9,14 +9,14 @@
  * const result = compactObject({ a: 1, b: null, c: undefined, d: 0, e: '' });
  * // => { a: 1, d: 0, e: '' }
  */
-export function compactObject<T extends Record<string, any>>(
+export function compactObject<T extends Record<string, unknown>>(
   obj: T,
 ): Partial<T> {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }
 
-  const compact = (value: any): any => {
+  const compact = (value: unknown): unknown => {
     if (Array.isArray(value)) {
       return value.map((v) =>
         typeof v === 'object' && v !== null ? compact(v) : v,
@@ -32,5 +32,5 @@ export function compactObject<T extends Record<string, any>>(
     return value;
   };
 
-  return compact(obj);
+  return compact(obj) as Partial<T>;
 }

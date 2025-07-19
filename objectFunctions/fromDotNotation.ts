@@ -14,12 +14,14 @@
  * @note Array indices in square brackets create array elements at the specified positions.
  * @note Dots can be escaped with backslashes to represent literal dots in property names.
  */
-export function fromDotNotation(obj: Record<string, any>): Record<string, any> {
+export function fromDotNotation(
+  obj: Record<string, unknown>,
+): Record<string, unknown> {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }
 
-  const result: Record<string, any> = {};
+  const result: Record<string, unknown> = {};
 
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
@@ -43,7 +45,7 @@ export function fromDotNotation(obj: Record<string, any>): Record<string, any> {
             // Create an array if the next part is a numeric index
             current[cleanPart] = /^\d+$/.test(parts[i + 1]) ? [] : {};
           }
-          current = current[cleanPart];
+          current = current[cleanPart] as Record<string, unknown>;
         }
       }
     }

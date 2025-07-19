@@ -35,14 +35,14 @@
  * @note Empty objects and arrays are preserved in the flattened structure
  */
 export function flattenObject(
-  obj: Record<string, any>,
+  obj: Record<string, unknown>,
   prefix = '',
-): Record<string, any> {
+): Record<string, unknown> {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }
 
-  const result: Record<string, any> = {};
+  const result: Record<string, unknown> = {};
 
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
@@ -61,14 +61,20 @@ export function flattenObject(
         obj[key].forEach((item, index) => {
           const arrayKey = `${newKey}[${index}]`;
           if (typeof item === 'object' && item !== null) {
-            Object.assign(result, flattenObject(item, arrayKey));
+            Object.assign(
+              result,
+              flattenObject(item as Record<string, unknown>, arrayKey),
+            );
           } else {
             result[arrayKey] = item;
           }
         });
       } else if (typeof obj[key] === 'object' && obj[key] !== null) {
         // Recursively flatten nested objects
-        Object.assign(result, flattenObject(obj[key], newKey));
+        Object.assign(
+          result,
+          flattenObject(obj[key] as Record<string, unknown>, newKey),
+        );
       } else {
         // Add primitive values directly
         result[newKey] = obj[key];

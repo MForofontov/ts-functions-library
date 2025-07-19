@@ -14,6 +14,6 @@
  *
  * @complexity O(1)
  */
-export function isNil(value: any): boolean {
+export function isNil(value: unknown): boolean {
   return value === null || value === undefined;
 }
