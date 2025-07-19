@@ -19,7 +19,7 @@
  * @note Uses string comparison (localeCompare) for sorting, which means numbers as keys
  *       will be sorted as strings, not by numeric value.
  */
-export function sortObjectKeys<T extends Record<string, any>>(obj: T): T {
+export function sortObjectKeys<T extends Record<string, unknown>>(obj: T): T {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }

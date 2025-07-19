@@ -29,7 +29,7 @@
  *
  * @complexity O(n) where n is the length of the input array
  */
-export function joinStrings(arr: any[], separator: string): string {
+export function joinStrings(arr: Array<unknown>, separator: string): string {
   return arr
     .map((item) => (typeof item === 'function' ? item() : String(item)))
     .join(separator);

@@ -19,14 +19,14 @@
  * @note Does not handle nested objects or arrays in a special way - they'll be converted using toString().
  * @note Does not include the leading '?' character used in URLs.
  */
-export function objectToQueryString(obj: Record<string, any>): string {
+export function objectToQueryString(obj: Record<string, unknown>): string {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }
   return Object.entries(obj)
     .map(
       ([key, value]) =>
-        `${encodeURIComponent(key)}=${encodeURIComponent(value)}`,
+        `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`,
     )
     .join('&');
 }

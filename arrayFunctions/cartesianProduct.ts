@@ -35,9 +35,9 @@
  *
  * @complexity O(n^m) where n is the average array length and m is the number of arrays
  */
-type CartesianTuple<T extends any[][]> = { [K in keyof T]: T[K][number] };
+type CartesianTuple<T extends unknown[][]> = { [K in keyof T]: T[K][number] };
 
-export function cartesianProduct<T extends any[][]>(
+export function cartesianProduct<T extends unknown[][]>(
   ...arrays: T
 ): CartesianTuple<T>[] {
   // Handle empty array case

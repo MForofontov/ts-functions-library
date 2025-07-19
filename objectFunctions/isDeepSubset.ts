@@ -17,7 +17,7 @@
  * @note Recursively checks nested objects for subset relationship.
  * @note Does not handle array comparisons specially - arrays are treated as objects.
  */
-export function isDeepSubset<T extends Record<string, any>>(
+export function isDeepSubset<T extends Record<string, unknown>>(
   subset: T,
   obj: T,
 ): boolean {
@@ -30,7 +30,10 @@ export function isDeepSubset<T extends Record<string, any>>(
 
   return Object.keys(subset).every((key) =>
     typeof subset[key] === 'object' && subset[key] !== null
-      ? isDeepSubset(subset[key], obj[key])
+      ? isDeepSubset(
+          subset[key] as Record<string, unknown>,
+          obj[key] as Record<string, unknown>,
+        )
       : subset[key] === obj[key],
   );
 }

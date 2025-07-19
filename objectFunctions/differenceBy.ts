@@ -17,10 +17,10 @@
  *
  * @note Keys that exist only in the first object are included in the result.
  */
-export function differenceBy<T extends Record<string, any>>(
+export function differenceBy<T extends Record<string, unknown>>(
   obj1: T,
   obj2: T,
-  comparator: (a: any, b: any) => boolean,
+  comparator: (a: unknown, b: unknown) => boolean,
 ): Partial<T> {
   if (typeof obj1 !== 'object' || obj1 === null) {
     throw new TypeError('First argument must be a non-null object');
@@ -37,7 +37,7 @@ export function differenceBy<T extends Record<string, any>>(
   for (const key of keys) {
     const k = key as keyof T;
     if (!comparator(obj1[k], obj2[k])) {
-      (result as any)[k] = obj1[k];
+      (result as Partial<T>)[k] = obj1[k];
     }
   }
   return result;

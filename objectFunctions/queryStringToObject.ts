@@ -19,7 +19,9 @@
  * @note All values are returned as strings, even if they represent numbers or other types.
  * @note Automatically decodes URL-encoded components (spaces, special characters, etc).
  */
-export function queryStringToObject(queryString: string): Record<string, any> {
+export function queryStringToObject(
+  queryString: string,
+): Record<string, string> {
   if (typeof queryString !== 'string') {
     throw new TypeError('Input must be a string');
   }
@@ -37,6 +39,6 @@ export function queryStringToObject(queryString: string): Record<string, any> {
         }
         return acc;
       },
-      {} as Record<string, any>,
+      {} as Record<string, string>,
     );
 }

@@ -17,13 +17,13 @@
  * @note Only performs shallow filtering - doesn't remove empty values in nested objects.
  */
 export function removeEmptyValues(
-  obj: Record<string, any>,
-): Partial<Record<string, any>> {
+  obj: Record<string, unknown>,
+): Partial<Record<string, unknown>> {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }
 
-  const clean = (value: any): any => {
+  const clean = (value: unknown): unknown => {
     if (Array.isArray(value)) {
       return value
         .map(clean)
@@ -39,5 +39,5 @@ export function removeEmptyValues(
     return value;
   };
 
-  return clean(obj);
+  return clean(obj) as Partial<Record<string, unknown>>;
 }
