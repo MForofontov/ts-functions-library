@@ -28,7 +28,7 @@
  * @complexity O(n) where n is the length of the input array
  */
 export function removeFalsyValues<T>(
-  arr: any[],
+  arr: unknown[],
 ): Exclude<T, false | 0 | '' | null | undefined | typeof NaN>[] {
   return arr.filter(
     (
@@ -40,7 +40,7 @@ export function removeFalsyValues<T>(
         value !== '' &&
         value !== null &&
         value !== undefined &&
-        !Number.isNaN(value as any)
+        !(typeof value === 'number' && Number.isNaN(value))
       );
     },
   );
