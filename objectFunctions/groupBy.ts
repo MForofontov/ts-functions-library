@@ -34,7 +34,7 @@ export function groupBy<T>(array: T[], key: keyof T): Record<string, T[]> {
 
   return array.reduce<Record<string, T[]>>((acc, item) => {
     if (Object.prototype.hasOwnProperty.call(item, key)) {
-      const group = String((item as any)[key]);
+      const group = String(item[key]);
       if (!acc[group]) acc[group] = [];
       acc[group].push(item);
     }
