@@ -8,6 +8,6 @@
  * logBase10(100); // 2
  *
  */
-export function calculatLogBase10(n: number): number {
+export function calculateLogBase10(n: number): number {
   return Math.log10(n);
 }
