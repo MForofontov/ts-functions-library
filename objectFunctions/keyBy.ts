@@ -22,7 +22,7 @@
  * @note Property values are converted to strings when used as keys.
  * @note If multiple objects have the same key value, later objects will overwrite earlier ones.
  */
-export function keyBy<T extends Record<string, any>>(
+export function keyBy<T extends Record<string, unknown>>(
   array: T[],
   key: keyof T,
 ): Record<string, T> {

@@ -14,13 +14,13 @@
  * @note If the original object has duplicate values, the last key with that value will be used.
  * @note Complex values (objects, arrays) are converted to strings using toString().
  */
-export function flipObject<T extends Record<string, any>>(
+export function flipObject<T extends Record<string, unknown>>(
   obj: T,
 ): Record<string, string> {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }
-  return Object.keys(obj).reduce((acc: Record<string, any>, key: string) => {
+  return Object.keys(obj).reduce((acc: Record<string, string>, key: string) => {
     acc[String(obj[key])] = key;
     return acc;
   }, {});

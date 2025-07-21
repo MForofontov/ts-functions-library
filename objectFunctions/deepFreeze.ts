@@ -22,7 +22,7 @@ export function deepFreeze<T>(obj: T): T {
   }
   Object.freeze(obj);
   Object.keys(obj).forEach((key) => {
-    const value = (obj as any)[key];
+    const value = (obj as Record<string, unknown>)[key];
     if (typeof value === 'object' && value !== null) {
       deepFreeze(value);
     }
