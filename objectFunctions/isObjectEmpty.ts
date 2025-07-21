@@ -17,7 +17,7 @@
  * @note This function only checks for own enumerable properties using Object.keys().
  * @note Non-enumerable properties and inherited properties are not considered.
  */
-export function isObjectEmpty(obj: Record<string, any>): boolean {
+export function isObjectEmpty(obj: Record<string, unknown>): boolean {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }

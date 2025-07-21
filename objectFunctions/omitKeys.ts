@@ -15,7 +15,7 @@
  * @note Creates a new object and doesn't modify the original.
  * @note If a key in keysToOmit doesn't exist in the object, it's simply ignored.
  */
-export function omitKeys<T extends Record<string, any>>(
+export function omitKeys<T extends Record<string, unknown>>(
   obj: T,
   keysToOmit: (keyof T)[],
 ): Partial<T> {

@@ -44,7 +44,7 @@ describe('objectSize', () => {
   // Test case 5: Handle arrays as objects
   it('5. should return the correct size for an array', () => {
     const arr = [1, 2, 3];
-    const result = objectSize(arr);
+    const result = objectSize(arr as unknown as Record<string, unknown>);
     const expected = 3;
     expect(result).toBe(expected);
   });

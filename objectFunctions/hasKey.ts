@@ -14,7 +14,7 @@
  * @note Unlike the 'in' operator, this only checks own properties,
  * not those inherited from the prototype chain.
  */
-export function hasKey(obj: Record<string, any>, key: string): boolean {
+export function hasKey(obj: Record<string, unknown>, key: string): boolean {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }
