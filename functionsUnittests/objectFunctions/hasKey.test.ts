@@ -32,14 +32,20 @@ describe('hasKey', () => {
   // Test case 5: Check if an array has a key
   it('5. should return true if an array has the key', () => {
     const arr = [1, 2, 3];
-    const result = hasKey(arr, '0');
+    const result = hasKey(
+      arr as unknown as Record<string, unknown>,
+      '0',
+    );
     expect(result).toBe(true);
   });
 
   // Test case 6: Check if an array does not have a key
   it('6. should return false if an array does not have the key', () => {
     const arr = [1, 2, 3];
-    const result = hasKey(arr, '3');
+    const result = hasKey(
+      arr as unknown as Record<string, unknown>,
+      '3',
+    );
     expect(result).toBe(false);
   });
 

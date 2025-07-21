@@ -17,9 +17,9 @@
  * @note Creates a new object and doesn't modify the original.
  * @note Similar to Array.prototype.filter() but for object properties.
  */
-export function omitBy<T extends Record<string, any>>(
+export function omitBy<T extends Record<string, unknown>>(
   obj: T,
-  predicate: (value: any, key: string) => boolean,
+  predicate: (value: unknown, key: string) => boolean,
 ): Partial<T> {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
