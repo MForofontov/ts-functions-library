@@ -13,7 +13,7 @@
  * @note Only counts own enumerable properties (using Object.keys).
  * @note Non-enumerable properties and those on the prototype chain are not included.
  */
-export function objectSize(obj: Record<string, any>): number {
+export function objectSize(obj: Record<string, unknown>): number {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }

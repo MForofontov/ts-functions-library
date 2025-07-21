@@ -16,32 +16,40 @@
  * @note Returns the default value if any segment of the path doesn't exist.
  * @note Only supports dot notation and doesn't handle array indices.
  */
-export function safeGet<T>(
+export function safeGet<T extends Record<string, unknown>, D>(
   obj: T,
   path: string,
-  defaultValue: any = undefined,
-): any {
+  defaultValue: D = undefined as unknown as D,
+): D | unknown {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }
   if (path === '') return obj;
-  if (Object.prototype.hasOwnProperty.call(obj as any, path)) {
-    return (obj as any)[path];
+  if (Object.prototype.hasOwnProperty.call(obj, path)) {
+    return obj[path];
   }
 
   const parts = path.split('.');
   if (parts.slice(1, -1).some((p) => p === '')) return defaultValue;
   const keys = parts.filter((k) => k);
-  let current: any = obj;
+  let current: unknown = obj;
   for (let i = 0; i < keys.length; i++) {
     if (current == null) return defaultValue;
     const key = keys[i];
-    if (Object.prototype.hasOwnProperty.call(current, key)) {
-      current = current[key];
+    if (
+      typeof current === 'object' &&
+      current !== null &&
+      Object.prototype.hasOwnProperty.call(current, key)
+    ) {
+      current = (current as Record<string, unknown>)[key];
     } else {
       const rest = keys.slice(i).join('.');
-      if (Object.prototype.hasOwnProperty.call(current, rest)) {
-        return current[rest];
+      if (
+        typeof current === 'object' &&
+        current !== null &&
+        Object.prototype.hasOwnProperty.call(current, rest)
+      ) {
+        return (current as Record<string, unknown>)[rest];
       }
       return defaultValue;
     }

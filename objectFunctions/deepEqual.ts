@@ -13,7 +13,7 @@
  * @note Handles primitive types, objects, arrays, NaN, Dates, and RegExp objects.
  * Does not support Maps, Sets, or detecting circular references.
  */
-export function deepEqual(a: any, b: any): boolean {
+export function deepEqual(a: unknown, b: unknown): boolean {
   // Special case for NaN
   if (typeof a === 'number' && typeof b === 'number' && isNaN(a) && isNaN(b)) {
     return true;
@@ -56,8 +56,10 @@ export function deepEqual(a: any, b: any): boolean {
   }
 
   // Get the keys of both objects.
-  const keysA = Object.keys(a);
-  const keysB = Object.keys(b);
+  const objA = a as Record<string, unknown>;
+  const objB = b as Record<string, unknown>;
+  const keysA = Object.keys(objA);
+  const keysB = Object.keys(objB);
 
   // If the objects have different numbers of keys, they are not deeply equal.
   if (keysA.length !== keysB.length) return false;
@@ -65,7 +67,7 @@ export function deepEqual(a: any, b: any): boolean {
   // Recursively compare each key and value in both objects.
   for (const key of keysA) {
     // If the key is not present in both objects or the values are not deeply equal, return false.
-    if (!keysB.includes(key) || !deepEqual(a[key], b[key])) {
+    if (!keysB.includes(key) || !deepEqual(objA[key], objB[key])) {
       return false;
     }
   }

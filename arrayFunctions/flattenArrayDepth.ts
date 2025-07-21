@@ -29,14 +29,18 @@
  *
  * @complexity O(n) where n is the total number of elements in all nested arrays
  */
-export function flattenArrayDepth<T>(arr: any[], depth: number = 1): T[] {
+export type Nested<T> = T | Array<Nested<T>>;
+
+export function flattenArrayDepth<T>(arr: Array<Nested<T>>, depth: number = 1): T[] {
   return depth > 0
-    ? arr.reduce(
+    ? arr.reduce<T[]>(
         (acc, val) =>
           acc.concat(
-            Array.isArray(val) ? flattenArrayDepth(val, depth - 1) : val,
+            Array.isArray(val)
+              ? flattenArrayDepth(val as Array<Nested<T>>, depth - 1)
+              : (val as T),
           ),
-        [],
+        [] as T[],
       )
-    : arr.slice();
+    : (arr as T[]).slice();
 }

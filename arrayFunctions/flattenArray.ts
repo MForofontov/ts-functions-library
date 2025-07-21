@@ -26,9 +26,16 @@
  *
  * @complexity O(n) where n is the total number of elements in all nested arrays
  */
-export function flattenArray<T>(arr: any[]): T[] {
-  return arr.reduce(
-    (acc, val) => acc.concat(Array.isArray(val) ? flattenArray(val) : val),
-    [],
+export type Nested<T> = T | Array<Nested<T>>;
+
+export function flattenArray<T>(arr: Array<Nested<T>>): T[] {
+  return arr.reduce<T[]>(
+    (acc, val) =>
+      acc.concat(
+        Array.isArray(val)
+          ? flattenArray(val as Array<Nested<T>>)
+          : (val as T),
+      ),
+    [] as T[],
   );
 }

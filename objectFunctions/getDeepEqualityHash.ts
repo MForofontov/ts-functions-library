@@ -16,7 +16,7 @@
  * and circular references are not supported.
  * @note Collision is possible, though unlikely for typical objects.
  */
-export function getDeepEqualityHash(obj: any): number {
+export function getDeepEqualityHash(obj: unknown): number {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }

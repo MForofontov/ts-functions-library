@@ -14,14 +14,16 @@
  * @note Creates a new object/array and does not modify the original.
  * @note Properly handles acronyms and multiple capital letters.
  */
-export function keysToSnakeCase(obj: any): any {
+export function keysToSnakeCase(
+  obj: Record<string, unknown> | unknown[],
+): Record<string, unknown> | unknown[] {
   if (obj === null || typeof obj !== 'object') {
     throw new TypeError('Input must be a non-null object');
   }
 
-  const transform = (value: any): any => {
+  const transform = <T>(value: T): T => {
     if (Array.isArray(value)) {
-      return value.map(transform);
+      return value.map((v) => transform(v)) as unknown as T;
     }
     if (value !== null && typeof value === 'object') {
       return Object.fromEntries(
@@ -31,7 +33,7 @@ export function keysToSnakeCase(obj: any): any {
             : k,
           transform(v),
         ]),
-      );
+      ) as unknown as T;
     }
     return value;
   };

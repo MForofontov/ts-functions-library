@@ -25,7 +25,9 @@ describe('isObjectEmpty', () => {
   // Test case 4: Check if an array is empty
   it('4. should return false for an array', () => {
     const arr = [1, 2, 3];
-    const result = isObjectEmpty(arr);
+    const result = isObjectEmpty(
+      arr as unknown as Record<string, unknown>,
+    );
     expect(result).toBe(false);
   });
 
