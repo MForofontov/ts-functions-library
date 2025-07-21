@@ -16,7 +16,7 @@
  * const result = entriesToObject(mixed);
  * // => { id: 1, active: true, data: { count: 5 } }
  */
-export function entriesToObject<T>(entries: [string, any][]): T {
+export function entriesToObject<T>(entries: [string, unknown][]): T {
   if (!Array.isArray(entries)) {
     throw new TypeError('Input must be an array of key-value pairs');
   }

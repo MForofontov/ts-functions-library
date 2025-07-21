@@ -39,28 +39,28 @@ export function unflattenObject(
 
       if (isLast) {
         if (isIndex) {
-          if (!Array.isArray(current)) current = [];
+          if (!Array.isArray(current)) {
+            current = [];
+          }
           (current as unknown[])[Number(part)] = value;
         } else {
           (current as Record<string, unknown>)[part] = value;
         }
-      } else {
-        if (isIndex) {
-          if (!Array.isArray((current as any)[Number(part)])) {
-            (current as any)[Number(part)] = nextIsIndex ? [] : {};
-          }
-          current = (current as any)[Number(part)];
-        } else {
-          if (
-            !(current as Record<string, unknown>)[part] ||
-            typeof (current as Record<string, unknown>)[part] !== 'object'
-          ) {
-            (current as Record<string, unknown>)[part] = nextIsIndex ? [] : {};
-          }
-          current = (current as any)[part] as
-            | Record<string, unknown>
-            | unknown[];
+      } else if (isIndex) {
+        if (!Array.isArray(current)) {
+          current = [];
         }
+        const arr = current as unknown[];
+        if (!arr[Number(part)] || typeof arr[Number(part)] !== 'object') {
+          arr[Number(part)] = nextIsIndex ? [] : {};
+        }
+        current = arr[Number(part)] as Record<string, unknown> | unknown[];
+      } else {
+        const objRef = current as Record<string, unknown>;
+        if (!objRef[part] || typeof objRef[part] !== 'object') {
+          objRef[part] = nextIsIndex ? [] : {};
+        }
+        current = objRef[part] as Record<string, unknown> | unknown[];
       }
     });
   }

@@ -17,33 +17,33 @@
  * @note Creates empty objects for any missing intermediate properties.
  * @note Only supports dot notation and doesn't handle array indices.
  */
-export function safeSet<T extends Record<string, any>>(
+export function safeSet<T extends Record<string, unknown>, V>(
   obj: T,
   path: string,
-  value: any,
+  value: V,
 ): void {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }
   if (path === '') return;
   if (Object.prototype.hasOwnProperty.call(obj, path)) {
-    (obj as any)[path] = value;
+    (obj as Record<string, unknown>)[path] = value as unknown;
     return;
   }
 
   const keys = path.split('.').filter((k) => k);
-  let current: any = obj;
+  let current: Record<string, unknown> = obj;
   for (let i = 0; i < keys.length - 1; i++) {
     const key = keys[i];
     const rest = keys.slice(i).join('.');
     if (Object.prototype.hasOwnProperty.call(current, rest)) {
-      current[rest] = value;
+      (current as Record<string, unknown>)[rest] = value as unknown;
       return;
     }
     if (!current[key] || typeof current[key] !== 'object') {
       current[key] = {};
     }
-    current = current[key];
+    current = current[key] as Record<string, unknown>;
   }
-  current[keys[keys.length - 1]] = value;
+  (current as Record<string, unknown>)[keys[keys.length - 1]] = value as unknown;
 }
