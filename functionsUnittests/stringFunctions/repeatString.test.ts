@@ -133,7 +133,6 @@ describe('repeatString', () => {
   // Error handling test case 2: Repeat a string with a non-numeric count
   it('15. should throw an error when repeating a string with a non-numeric count', () => {
     const str: string = 'hello';
-    const count: any = 'a';
-    expect(() => repeatString(str, count)).toThrow('Count must be a number');
+    expect(() => repeatString(str, 'a' as unknown as number)).toThrow('Count must be a number');
   });
 });

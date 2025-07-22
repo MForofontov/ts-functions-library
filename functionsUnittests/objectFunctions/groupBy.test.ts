@@ -89,7 +89,7 @@ describe('groupBy', () => {
 
   // Test case 6: Handle empty array
   it('Test case 6: should return an empty object for an empty array', () => {
-    const array: any[] = [];
+    const array: Array<Record<string, unknown>> = [];
     const result = groupBy(array, 'category');
     const expected = {};
     expect(result).toEqual(expected);
@@ -125,26 +125,36 @@ describe('groupBy', () => {
 
   // Test case 9: Handle non-array input (number)
   it('Test case 9: should throw a TypeError if input is not an array', () => {
-    expect(() => groupBy(42 as any, 'category')).toThrow(TypeError);
+    expect(() =>
+      groupBy(42 as unknown as Array<Record<string, unknown>>, 'category')
+    ).toThrow(TypeError);
   });
 
   // Test case 10: Handle non-array input (string)
   it('Test case 10: should throw a TypeError if input is a string', () => {
-    expect(() => groupBy('string' as any, 'category')).toThrow(TypeError);
+    expect(() =>
+      groupBy('string' as unknown as Array<Record<string, unknown>>, 'category')
+    ).toThrow(TypeError);
   });
 
   // Test case 11: Handle non-array input (boolean)
   it('Test case 11: should throw a TypeError if input is a boolean', () => {
-    expect(() => groupBy(true as any, 'category')).toThrow(TypeError);
+    expect(() =>
+      groupBy(true as unknown as Array<Record<string, unknown>>, 'category')
+    ).toThrow(TypeError);
   });
 
   // Test case 12: Handle null input
   it('Test case 12: should throw a TypeError if input is null', () => {
-    expect(() => groupBy(null as any, 'category')).toThrow(TypeError);
+    expect(() =>
+      groupBy(null as unknown as Array<Record<string, unknown>>, 'category')
+    ).toThrow(TypeError);
   });
 
   // Test case 13: Handle undefined input
   it('Test case 13: should throw a TypeError if input is undefined', () => {
-    expect(() => groupBy(undefined as any, 'category')).toThrow(TypeError);
+    expect(() =>
+      groupBy(undefined as unknown as Array<Record<string, unknown>>, 'category')
+    ).toThrow(TypeError);
   });
 });

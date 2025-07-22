@@ -133,8 +133,7 @@ describe('repeatUntilLength', () => {
   // Error handling test case 2: Repeat a string with a non-numeric length
   it('15. should throw an error when repeating a string with a non-numeric length', () => {
     const str: string = 'hello';
-    const length: any = 'a';
-    expect(() => repeatUntilLength(str, length)).toThrow(
+    expect(() => repeatUntilLength(str, 'a' as unknown as number)).toThrow(
       'Length must be a number',
     );
   });

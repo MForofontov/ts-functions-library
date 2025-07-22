@@ -1,7 +1,7 @@
 import { deepCloneWith } from '../../objectFunctions/deepCloneWith';
 
 describe('deepCloneWith', () => {
-  const cloneFn = (value: any) => value;
+  const cloneFn = (value: unknown) => value;
 
   // Test case 1: Deep clone a simple object
   it('1. should deep clone a simple object', () => {
@@ -80,26 +80,36 @@ describe('deepCloneWith', () => {
 
   // Test case 9: Handle non-object input (number)
   it('9. should throw a TypeError if input is a number', () => {
-    expect(() => deepCloneWith(42 as any, cloneFn)).toThrow(TypeError);
+    expect(() =>
+      deepCloneWith(42 as unknown as Record<string, unknown>, cloneFn)
+    ).toThrow(TypeError);
   });
 
   // Test case 10: Handle non-object input (string)
   it('10. should throw a TypeError if input is a string', () => {
-    expect(() => deepCloneWith('string' as any, cloneFn)).toThrow(TypeError);
+    expect(() =>
+      deepCloneWith('string' as unknown as Record<string, unknown>, cloneFn)
+    ).toThrow(TypeError);
   });
 
   // Test case 11: Handle non-object input (boolean)
   it('11. should throw a TypeError if input is a boolean', () => {
-    expect(() => deepCloneWith(true as any, cloneFn)).toThrow(TypeError);
+    expect(() =>
+      deepCloneWith(true as unknown as Record<string, unknown>, cloneFn)
+    ).toThrow(TypeError);
   });
 
   // Test case 12: Handle non-object input (null)
   it('12. should throw a TypeError if input is null', () => {
-    expect(() => deepCloneWith(null as any, cloneFn)).toThrow(TypeError);
+    expect(() =>
+      deepCloneWith(null as unknown as Record<string, unknown>, cloneFn)
+    ).toThrow(TypeError);
   });
 
   // Test case 13: Handle non-object input (undefined)
   it('13. should throw a TypeError if input is undefined', () => {
-    expect(() => deepCloneWith(undefined as any, cloneFn)).toThrow(TypeError);
+    expect(() =>
+      deepCloneWith(undefined as unknown as Record<string, unknown>, cloneFn)
+    ).toThrow(TypeError);
   });
 });

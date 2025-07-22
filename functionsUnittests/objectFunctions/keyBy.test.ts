@@ -50,7 +50,7 @@ describe('keyBy', () => {
 
   // Test case 4: Handle empty array
   it('Test case 4: should return an empty object for an empty array', () => {
-    const array: any[] = [];
+    const array: Array<Record<string, unknown>> = [];
     const result = keyBy(array, 'id');
     const expected = {};
     expect(result).toEqual(expected);
@@ -70,26 +70,36 @@ describe('keyBy', () => {
 
   // Test case 6: Handle non-array input (number)
   it('Test case 6: should throw a TypeError if input is a number', () => {
-    expect(() => keyBy(42 as any, 'id')).toThrow(TypeError);
+    expect(() =>
+      keyBy(42 as unknown as Record<string, unknown>[], 'id')
+    ).toThrow(TypeError);
   });
 
   // Test case 7: Handle non-array input (string)
   it('Test case 7: should throw a TypeError if input is a string', () => {
-    expect(() => keyBy('string' as any, 'id')).toThrow(TypeError);
+    expect(() =>
+      keyBy('string' as unknown as Record<string, unknown>[], 'id')
+    ).toThrow(TypeError);
   });
 
   // Test case 8: Handle non-array input (boolean)
   it('Test case 8: should throw a TypeError if input is a boolean', () => {
-    expect(() => keyBy(true as any, 'id')).toThrow(TypeError);
+    expect(() =>
+      keyBy(true as unknown as Record<string, unknown>[], 'id')
+    ).toThrow(TypeError);
   });
 
   // Test case 9: Handle null input
   it('Test case 9: should throw a TypeError if input is null', () => {
-    expect(() => keyBy(null as any, 'id')).toThrow(TypeError);
+    expect(() =>
+      keyBy(null as unknown as Record<string, unknown>[], 'id')
+    ).toThrow(TypeError);
   });
 
   // Test case 10: Handle undefined input
   it('Test case 10: should throw a TypeError if input is undefined', () => {
-    expect(() => keyBy(undefined as any, 'id')).toThrow(TypeError);
+    expect(() =>
+      keyBy(undefined as unknown as Record<string, unknown>[], 'id')
+    ).toThrow(TypeError);
   });
 });
