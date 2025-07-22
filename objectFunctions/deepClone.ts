@@ -1,5 +1,6 @@
 /**
- * Creates a deep clone of an object or array using JSON serialization.
+ * Creates a deep clone of an object or array using `structuredClone` when
+ * available.
  *
  * @param obj - The object to clone.
  * @returns A deep copy of the input object.
@@ -10,12 +11,17 @@
  * const copy = deepClone(original);
  * copy.address.city = 'LA'; // Doesn't affect the original
  *
- * @note Has limitations: doesn't preserve functions, undefined values,
- * Date objects, RegExp, Maps, Sets, or circular references.
- */
+ * @note Falls back to JSON serialization if `structuredClone` is not
+ * available. The fallback has limitations: it doesn't preserve functions,
+ * undefined values, Date objects, RegExp, Maps, Sets, or circular
+ * references.
+*/
 export function deepClone<T>(obj: T): T {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
+  }
+  if (typeof globalThis.structuredClone === 'function') {
+    return globalThis.structuredClone(obj);
   }
   return JSON.parse(JSON.stringify(obj));
 }
