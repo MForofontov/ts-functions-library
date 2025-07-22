@@ -1,4 +1,4 @@
-import { deepEqual } from '../objectFunctions/deepEqual';
+import { getDeepEqualityHash } from '../objectFunctions/getDeepEqualityHash';
 
 /**
  * Gets unique elements in an array and their counts using deep equality comparison.
@@ -26,23 +26,30 @@ import { deepEqual } from '../objectFunctions/deepEqual';
  * uniqueElementsWithCounts([1, '1', true, 1]);
  * // Returns [{ element: 1, count: 2 }, { element: '1', count: 1 }, { element: true, count: 1 }]
  *
- * @note This implementation uses deep equality comparison via the deepEqual function,
- * which makes it suitable for counting occurrences of complex objects and nested structures.
+ * @note Objects are hashed using getDeepEqualityHash, making the function
+ * suitable for counting occurrences of complex objects and nested structures.
  * The order of elements in the result follows their first occurrence in the input array.
  *
- * @complexity O(n²) where n is the length of the input array, due to the find() method with deep equality checks
- */
+ * @complexity O(n) on average where n is the length of the input array, using
+ * hashing and Map lookups to count elements while preserving insertion order
+*/
 export function uniqueElementsWithCounts<T>(
   arr: T[],
 ): { element: T; count: number }[] {
-  const counts: { element: T; count: number }[] = [];
+  const map = new Map<unknown, { element: T; count: number }>();
   arr.forEach((item) => {
-    const existing = counts.find((entry) => deepEqual(entry.element, item));
+    const key =
+      typeof item === 'object' && item !== null
+        ? item instanceof RegExp
+          ? getDeepEqualityHash({ source: item.source, flags: item.flags })
+          : getDeepEqualityHash(item as object)
+        : item;
+    const existing = map.get(key);
     if (existing) {
       existing.count++;
     } else {
-      counts.push({ element: item, count: 1 });
+      map.set(key, { element: item, count: 1 });
     }
   });
-  return counts;
+  return Array.from(map.values());
 }
