@@ -36,7 +36,7 @@ import { chunkArray, deepMerge } from 'ts-functions-library';
 The main folders group functions by purpose:
 
 - **arrayFunctions** – helpers for arrays such as `chunkArray`, `flattenArray`, and `mergeUnique`.
-- **objectFunctions** – utilities for manipulating objects including `deepMerge`, `safeGet`, and `groupByObject`.
+- **objectFunctions** – utilities for manipulating objects including `deepMerge`, `safeGet`, and `groupByObject`. The `deepClone` helper now uses Node's `structuredClone` when available and falls back to JSON serialization in older environments.
 - **stringFunctions** – text related helpers like `slugify`, `trimWhitespace`, and `isValidEmail`.
 - **dateFunctions** – date utilities such as `formatDate`, `addMonths`, and `getWeekNumber`.
 - **encodingFunctions** – simple Base64 encoding/decoding helpers.
