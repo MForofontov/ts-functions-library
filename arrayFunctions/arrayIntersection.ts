@@ -24,9 +24,9 @@ import { deepEqual } from '../objectFunctions/deepEqual';
  * arrayIntersection([], [1, 2]); // Returns []
  * arrayIntersection([1, 2], []); // Returns []
  *
- * @note This implementation converts arr2 to a Set but still uses deep equality,
- * which has O(n*m) complexity. For large arrays with primitive values,
- * a standard Set-based approach would be more efficient.
+ * @note This implementation performs a nested iteration with deep equality,
+ * which has O(n*m) complexity. For arrays containing only primitive values,
+ * a Set-based approach would be more efficient.
  *
  * @complexity O(n*m) where n is the length of arr1 and m is the length of arr2
  */
@@ -36,11 +36,8 @@ export function arrayIntersection<T>(arr1: T[], arr2: T[]): T[] {
     throw new Error('Both arguments must be arrays.');
   }
 
-  // Create a Set to store deep-equal items from arr2
-  const set2 = new Set<T>(arr2);
-
   // Filter arr1 to find common elements based on deep equality
   return arr1.filter((item1) =>
-    Array.from(set2).some((item2) => deepEqual(item1, item2)),
+    arr2.some((item2) => deepEqual(item1, item2)),
   );
 }
