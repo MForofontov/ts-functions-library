@@ -1,7 +1,7 @@
 /**
  * Finds common elements between two arrays based on a provided condition and deep equality.
- * First identifies elements that exist in both arrays using JSON stringification for comparison,
- * then filters those common elements using the provided condition function.
+ * Identifies elements present in both arrays using JSON stringification for comparison,
+ * then filters the common elements using the provided condition function.
  *
  * @param arr1 - The first array to compare.
  * @param arr2 - The second array to compare.
@@ -25,21 +25,21 @@
  * findCommonWithCondition([1, 2], [3, 4], x => x > 5); // Returns []
  *
  * @note This implementation uses JSON.stringify for deep equality comparison.
- * This has limitations with circular references and non-serializable values
+ * It avoids converting the second array to a Set, resulting in O(n*m) complexity.
+ * JSON.stringify has limitations with circular references and non-serializable values
  * like functions, undefined, or symbols.
  *
- * @complexity O(n + m) where n and m are the lengths of arr1 and arr2 respectively
+ * @complexity O(n*m) where n and m are the lengths of arr1 and arr2 respectively
  */
 export function findCommonWithCondition<T>(
   arr1: T[],
   arr2: T[],
   condition: (item: T) => boolean,
 ): T[] {
-  // Convert arr2 into a Set for faster lookup (with deep equality)
-  const arr2Set = new Set(arr2.map((item) => JSON.stringify(item)));
-
-  // First, find common elements, then apply the condition to those common elements
+  // First, find common elements using deep equality, then apply the condition
   return arr1
-    .filter((item) => arr2Set.has(JSON.stringify(item))) // Find common elements
-    .filter(condition); // Apply condition to the common elements only
+    .filter((item1) =>
+      arr2.some((item2) => JSON.stringify(item1) === JSON.stringify(item2)),
+    )
+    .filter(condition);
 }
