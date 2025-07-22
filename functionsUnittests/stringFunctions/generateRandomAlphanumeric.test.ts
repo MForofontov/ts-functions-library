@@ -38,8 +38,9 @@ describe('generateRandomAlphanumeric', () => {
 
   // Test case 5: Generate a random alphanumeric string with non-numeric length
   it('5. should throw an error when length is non-numeric', () => {
-    const length: any = 'a';
-    expect(() => generateRandomAlphanumeric(length)).toThrow(
+    expect(() =>
+      generateRandomAlphanumeric('a' as unknown as number)
+    ).toThrow(
       'Length must be a non-negative number',
     );
   });

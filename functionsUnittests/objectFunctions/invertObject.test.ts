@@ -43,26 +43,36 @@ describe('invertObject', () => {
 
   // Test case 6: Handle non-object input (number)
   it('6. should throw a TypeError if input is a number', () => {
-    expect(() => invertObject(42 as any)).toThrow(TypeError);
+    expect(() => invertObject(42 as unknown as Record<string, unknown>)).toThrow(
+      TypeError,
+    );
   });
 
   // Test case 7: Handle non-object input (string)
   it('7. should throw a TypeError if input is a string', () => {
-    expect(() => invertObject('string' as any)).toThrow(TypeError);
+    expect(() =>
+      invertObject('string' as unknown as Record<string, unknown>)
+    ).toThrow(TypeError);
   });
 
   // Test case 8: Handle non-object input (boolean)
   it('8. should throw a TypeError if input is a boolean', () => {
-    expect(() => invertObject(true as any)).toThrow(TypeError);
+    expect(() => invertObject(true as unknown as Record<string, unknown>)).toThrow(
+      TypeError,
+    );
   });
 
   // Test case 9: Handle non-object input (null)
   it('9. should throw a TypeError if input is null', () => {
-    expect(() => invertObject(null as any)).toThrow(TypeError);
+    expect(() => invertObject(null as unknown as Record<string, unknown>)).toThrow(
+      TypeError,
+    );
   });
 
   // Test case 10: Handle non-object input (undefined)
   it('10. should throw a TypeError if input is undefined', () => {
-    expect(() => invertObject(undefined as any)).toThrow(TypeError);
+    expect(() =>
+      invertObject(undefined as unknown as Record<string, unknown>)
+    ).toThrow(TypeError);
   });
 });

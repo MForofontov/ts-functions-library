@@ -77,26 +77,30 @@ describe('deepEqual', () => {
 
   // Test case 9: Handle non-object input (number)
   it('9. should return false if one input is a number', () => {
-    expect(deepEqual(42 as any, { a: 1 })).toBe(false);
+    expect(deepEqual(42 as unknown as Record<string, unknown>, { a: 1 })).toBe(false);
   });
 
   // Test case 10: Handle non-object input (string)
   it('10. should return false if one input is a string', () => {
-    expect(deepEqual('string' as any, { a: 1 })).toBe(false);
+    expect(
+      deepEqual('string' as unknown as Record<string, unknown>, { a: 1 })
+    ).toBe(false);
   });
 
   // Test case 11: Handle non-object input (boolean)
   it('11. should return false if one input is a boolean', () => {
-    expect(deepEqual(true as any, { a: 1 })).toBe(false);
+    expect(deepEqual(true as unknown as Record<string, unknown>, { a: 1 })).toBe(false);
   });
 
   // Test case 12: Handle non-object input (null)
   it('12. should return false if one input is null', () => {
-    expect(deepEqual(null as any, { a: 1 })).toBe(false);
+    expect(deepEqual(null as unknown as Record<string, unknown>, { a: 1 })).toBe(false);
   });
 
   // Test case 13: Handle non-object input (undefined)
   it('13. should return false if one input is undefined', () => {
-    expect(deepEqual(undefined as any, { a: 1 })).toBe(false);
+    expect(
+      deepEqual(undefined as unknown as Record<string, unknown>, { a: 1 })
+    ).toBe(false);
   });
 });

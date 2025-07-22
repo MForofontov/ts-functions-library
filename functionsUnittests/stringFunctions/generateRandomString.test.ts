@@ -46,10 +46,12 @@ describe('generateRandomString', () => {
 
   // Test case 5: Generate a random string with non-numeric length
   it('5. should throw an error when length is non-numeric', () => {
-    const length: any = 'a';
     const charset: string =
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    expect(() => generateRandomString(length, charset)).toThrow(
+    expect(() =>
+      // Cast to match the function signature intentionally with invalid input
+      generateRandomString('a' as unknown as number, charset)
+    ).toThrow(
       'Length must be a non-negative number',
     );
   });

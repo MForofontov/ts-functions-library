@@ -81,26 +81,26 @@ describe('hasKey', () => {
 
   // Test case 9: Handle non-object input (number)
   it('9. should throw a TypeError if input is a number', () => {
-    expect(() => hasKey(42 as any, 'a')).toThrow(TypeError);
+    expect(() => hasKey(42 as unknown as Record<string, unknown>, 'a')).toThrow(TypeError);
   });
 
   // Test case 10: Handle non-object input (string)
   it('10. should throw a TypeError if input is a string', () => {
-    expect(() => hasKey('string' as any, 'a')).toThrow(TypeError);
+    expect(() => hasKey('string' as unknown as Record<string, unknown>, 'a')).toThrow(TypeError);
   });
 
   // Test case 11: Handle non-object input (boolean)
   it('11. should throw a TypeError if input is a boolean', () => {
-    expect(() => hasKey(true as any, 'a')).toThrow(TypeError);
+    expect(() => hasKey(true as unknown as Record<string, unknown>, 'a')).toThrow(TypeError);
   });
 
   // Test case 12: Handle non-object input (null)
   it('12. should throw a TypeError if input is null', () => {
-    expect(() => hasKey(null as any, 'a')).toThrow(TypeError);
+    expect(() => hasKey(null as unknown as Record<string, unknown>, 'a')).toThrow(TypeError);
   });
 
   // Test case 13: Handle non-object input (undefined)
   it('13. should throw a TypeError if input is undefined', () => {
-    expect(() => hasKey(undefined as any, 'a')).toThrow(TypeError);
+    expect(() => hasKey(undefined as unknown as Record<string, unknown>, 'a')).toThrow(TypeError);
   });
 });

@@ -60,7 +60,9 @@ describe('pickBy', () => {
 
   // Test case 8: Handle non-object input (number)
   it('Test case 8: should throw a TypeError if input is a number', () => {
-    expect(() => pickBy(42 as any, (value) => Boolean(value))).toThrow(
+    expect(() =>
+      pickBy(42 as unknown as Record<string, unknown>, (value) => Boolean(value))
+    ).toThrow(
       TypeError,
     );
   });
@@ -68,20 +70,24 @@ describe('pickBy', () => {
   // Test case 9: Handle non-object input (string)
   it('Test case 9: should throw a TypeError if input is a string', () => {
     expect(() =>
-      pickBy('string' as any, (value) => Boolean(value)),
+      pickBy('string' as unknown as Record<string, unknown>, (value) => Boolean(value)),
     ).toThrow(TypeError);
   });
 
   // Test case 10: Handle non-object input (boolean)
   it('Test case 10: should throw a TypeError if input is a boolean', () => {
-    expect(() => pickBy(true as any, (value) => Boolean(value))).toThrow(
+    expect(() =>
+      pickBy(true as unknown as Record<string, unknown>, (value) => Boolean(value))
+    ).toThrow(
       TypeError,
     );
   });
 
   // Test case 11: Handle null input
   it('Test case 11: should throw a TypeError if input is null', () => {
-    expect(() => pickBy(null as any, (value) => Boolean(value))).toThrow(
+    expect(() =>
+      pickBy(null as unknown as Record<string, unknown>, (value) => Boolean(value))
+    ).toThrow(
       TypeError,
     );
   });
@@ -89,7 +95,7 @@ describe('pickBy', () => {
   // Test case 12: Handle undefined input
   it('Test case 12: should throw a TypeError if input is undefined', () => {
     expect(() =>
-      pickBy(undefined as any, (value) => Boolean(value)),
+      pickBy(undefined as unknown as Record<string, unknown>, (value) => Boolean(value)),
     ).toThrow(TypeError);
   });
 });

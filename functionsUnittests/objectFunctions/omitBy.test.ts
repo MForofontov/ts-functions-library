@@ -60,7 +60,9 @@ describe('omitBy', () => {
 
   // Test case 8: Handle non-object input (number)
   it('Test case 8: should throw a TypeError if input is a number', () => {
-    expect(() => omitBy(42 as any, (value) => Boolean(value))).toThrow(
+    expect(() =>
+      omitBy(42 as unknown as Record<string, unknown>, (value) => Boolean(value))
+    ).toThrow(
       TypeError,
     );
   });
@@ -68,20 +70,24 @@ describe('omitBy', () => {
   // Test case 9: Handle non-object input (string)
   it('Test case 9: should throw a TypeError if input is a string', () => {
     expect(() =>
-      omitBy('string' as any, (value) => Boolean(value)),
+      omitBy('string' as unknown as Record<string, unknown>, (value) => Boolean(value)),
     ).toThrow(TypeError);
   });
 
   // Test case 10: Handle non-object input (boolean)
   it('Test case 10: should throw a TypeError if input is a boolean', () => {
-    expect(() => omitBy(true as any, (value) => Boolean(value))).toThrow(
+    expect(() =>
+      omitBy(true as unknown as Record<string, unknown>, (value) => Boolean(value))
+    ).toThrow(
       TypeError,
     );
   });
 
   // Test case 11: Handle null input
   it('Test case 11: should throw a TypeError if input is null', () => {
-    expect(() => omitBy(null as any, (value) => Boolean(value))).toThrow(
+    expect(() =>
+      omitBy(null as unknown as Record<string, unknown>, (value) => Boolean(value))
+    ).toThrow(
       TypeError,
     );
   });
@@ -89,7 +95,7 @@ describe('omitBy', () => {
   // Test case 12: Handle undefined input
   it('Test case 12: should throw a TypeError if input is undefined', () => {
     expect(() =>
-      omitBy(undefined as any, (value) => Boolean(value)),
+      omitBy(undefined as unknown as Record<string, unknown>, (value) => Boolean(value)),
     ).toThrow(TypeError);
   });
 });
