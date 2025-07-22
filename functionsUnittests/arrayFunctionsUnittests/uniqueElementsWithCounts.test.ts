@@ -242,4 +242,26 @@ describe('uniqueElementsWithCounts', () => {
       { element: regex1, count: 2 },
     ]);
   });
+
+  // Test case 19: Mix of primitive and object elements
+  test('19. should handle mixed primitive and object elements preserving order', () => {
+    const first = { id: 1 };
+    const array = [1, first, 1, { id: 1 }, 2];
+    const result = uniqueElementsWithCounts(array);
+    expect(result).toEqual([
+      { element: 1, count: 2 },
+      { element: first, count: 2 },
+      { element: 2, count: 1 },
+    ]);
+    expect(result[1].element).toBe(first);
+  });
+
+  // Test case 20: same object instance counted correctly
+  test('20. should keep first object reference for equal objects', () => {
+    const obj = { a: 1 };
+    const array = [obj, { a: 1 }, obj];
+    const result = uniqueElementsWithCounts(array);
+    expect(result).toEqual([{ element: obj, count: 3 }]);
+    expect(result[0].element).toBe(obj);
+  });
 });
