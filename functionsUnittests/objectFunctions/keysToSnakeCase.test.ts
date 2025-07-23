@@ -61,36 +61,36 @@ describe('keysToSnakeCase', () => {
     expect(result).toEqual(expected);
   });
 
-  // Test case 7: Handle non-object input (number)
-  it('7. should throw a TypeError if input is a number', () => {
-    expect(() => keysToSnakeCase(42 as any)).toThrow(TypeError);
-  });
-
-  // Test case 8: Handle non-object input (string)
-  it('8. should throw a TypeError if input is a string', () => {
-    expect(() => keysToSnakeCase('string' as any)).toThrow(TypeError);
-  });
-
-  // Test case 9: Handle non-object input (boolean)
-  it('9. should throw a TypeError if input is a boolean', () => {
-    expect(() => keysToSnakeCase(true as any)).toThrow(TypeError);
-  });
-
-  // Test case 10: Handle non-object input (null)
-  it('10. should throw a TypeError if input is null', () => {
-    expect(() => keysToSnakeCase(null as any)).toThrow(TypeError);
-  });
-
-  // Test case 11: Handle non-object input (undefined)
-  it('11. should throw a TypeError if input is undefined', () => {
-    expect(() => keysToSnakeCase(undefined as any)).toThrow(TypeError);
-  });
-
-  // Test case 12: Handle consecutive capital letters as one word
-  it('12. should handle keys with consecutive capital letters as a single word', () => {
+  // Test case 7: Handle consecutive capital letters as one word
+  it('7. should handle keys with consecutive capital letters as a single word', () => {
     const obj = { parseHTTPResponse: true, simpleXML: false };
     const result = keysToSnakeCase(obj);
     const expected = { parse_http_response: true, simple_xml: false };
     expect(result).toEqual(expected);
+  });
+
+  // Test case 8: Handle non-object input (number)
+  it('8. should throw a TypeError if input is a number', () => {
+    expect(() => keysToSnakeCase(42 as any)).toThrow(TypeError);
+  });
+
+  // Test case 9: Handle non-object input (string)
+  it('9. should throw a TypeError if input is a string', () => {
+    expect(() => keysToSnakeCase('string' as any)).toThrow(TypeError);
+  });
+
+  // Test case 10: Handle non-object input (boolean)
+  it('10. should throw a TypeError if input is a boolean', () => {
+    expect(() => keysToSnakeCase(true as any)).toThrow(TypeError);
+  });
+
+  // Test case 11: Handle non-object input (null)
+  it('11. should throw a TypeError if input is null', () => {
+    expect(() => keysToSnakeCase(null as any)).toThrow(TypeError);
+  });
+
+  // Test case 12: Handle non-object input (undefined)
+  it('12. should throw a TypeError if input is undefined', () => {
+    expect(() => keysToSnakeCase(undefined as any)).toThrow(TypeError);
   });
 });
