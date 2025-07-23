@@ -51,8 +51,8 @@ describe('removeFalsyValues', () => {
 
   // Test case 4: Removing falsy values from an empty array
   test('4. should return an empty array when the input array is empty', () => {
-    const array: any[] = [];
-    const result: any[] = removeFalsyValues(array);
+    const array: [] = [];
+    const result = removeFalsyValues(array);
     expect(result).toEqual([]);
   });
 

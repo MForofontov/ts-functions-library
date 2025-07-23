@@ -47,8 +47,8 @@ describe('uniqueElementsWithCounts', () => {
 
   // Test case 4: Unique elements with counts in an empty array
   test('4. should return an empty array when the input array is empty', () => {
-    const array: any[] = [];
-    const result: any[] = uniqueElementsWithCounts(array);
+    const array: [] = [];
+    const result = uniqueElementsWithCounts(array);
     expect(result).toEqual([]);
   });
 
