@@ -29,7 +29,7 @@
  *
  * @complexity O(n) where n is the total number of elements in all nested arrays
  */
-export type Nested<T> = T | Array<Nested<T>>;
+type Nested<T> = T | Array<Nested<T>>;
 
 export function flattenArrayDepth<T>(arr: Array<Nested<T>>, depth: number = 1): T[] {
   return depth > 0
