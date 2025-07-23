@@ -27,9 +27,9 @@ describe('rotateArrayRight', () => {
 
   // Test case 4: Rotating an empty array
   test('4. should return an empty array when the input array is empty', () => {
-    const array: any[] = [];
+    const array: [] = [];
     const positions: number = 3;
-    const result: any[] = rotateArrayRight(array, positions);
+    const result = rotateArrayRight(array, positions);
     expect(result).toEqual([]);
   });
 

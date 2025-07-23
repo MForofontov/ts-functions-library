@@ -149,7 +149,7 @@ describe('findIndexOfElement', () => {
 
   // Test case 20: Array containing deeply nested arrays
   it('20. should handle arrays containing deeply nested arrays', () => {
-    const arr: any[] = [
+    const arr = [
       [1, [2, [3, [4]]]],
       [5, [6, [7, [8]]]],
     ];
