@@ -85,4 +85,12 @@ describe('keysToSnakeCase', () => {
   it('11. should throw a TypeError if input is undefined', () => {
     expect(() => keysToSnakeCase(undefined as any)).toThrow(TypeError);
   });
+
+  // Test case 12: Handle consecutive capital letters as one word
+  it('12. should handle keys with consecutive capital letters as a single word', () => {
+    const obj = { parseHTTPResponse: true, simpleXML: false };
+    const result = keysToSnakeCase(obj);
+    const expected = { parse_http_response: true, simple_xml: false };
+    expect(result).toEqual(expected);
+  });
 });
