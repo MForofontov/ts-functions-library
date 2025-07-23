@@ -12,7 +12,7 @@
  * // => { first_name: 'John', last_name: 'Doe' }
  *
  * @note Creates a new object/array and does not modify the original.
- * @note Properly handles acronyms and multiple capital letters.
+ * @note Treats consecutive capital letters as a single word when converting.
  */
 export function keysToSnakeCase(
   obj: Record<string, unknown> | unknown[],
@@ -29,7 +29,10 @@ export function keysToSnakeCase(
       return Object.fromEntries(
         Object.entries(value).map(([k, v]) => [
           typeof k === 'string'
-            ? k.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`)
+            ? k
+                .replace(/([A-Z]+)([A-Z][a-z])/g, '$1_$2')
+                .replace(/([a-z0-9])([A-Z])/g, '$1_$2')
+                .toLowerCase()
             : k,
           transform(v),
         ]),
