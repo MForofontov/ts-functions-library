@@ -81,8 +81,8 @@ describe('sortBy', () => {
 
   // Test case 6: Sorting an empty array
   test('6. should return an empty array when the input array is empty', () => {
-    const array: any[] = [];
-    const result: any[] = sortBy(array, 'id');
+    const array: [] = [];
+    const result = sortBy(array, 'id');
     expect(result).toEqual([]);
   });
 
