@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "functionsUnittests",
+    "jest.config.ts",
+    "jest.local.config.ts"
+  ]
+}

@@ -139,10 +139,8 @@ describe('extractSubstring', () => {
     const str: string = 'hello world';
     const length: number = 5;
     expect(() =>
-      extractSubstring(str, 'a' as unknown as number, length)
-    ).toThrow(
-      'Start index and length must be numbers',
-    );
+      extractSubstring(str, 'a' as unknown as number, length),
+    ).toThrow('Start index and length must be numbers');
   });
 
   // Test case 15: Extract a substring with non-numeric length
@@ -150,10 +148,8 @@ describe('extractSubstring', () => {
     const str: string = 'hello world';
     const start: number = 0;
     expect(() =>
-      extractSubstring(str, start, 'a' as unknown as number)
-    ).toThrow(
-      'Start index and length must be numbers',
-    );
+      extractSubstring(str, start, 'a' as unknown as number),
+    ).toThrow('Start index and length must be numbers');
   });
 
   // Test case 16: Extract a substring with start index greater than string length

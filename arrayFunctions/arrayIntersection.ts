@@ -37,7 +37,5 @@ export function arrayIntersection<T>(arr1: T[], arr2: T[]): T[] {
   }
 
   // Filter arr1 to find common elements based on deep equality
-  return arr1.filter((item1) =>
-    arr2.some((item2) => deepEqual(item1, item2)),
-  );
+  return arr1.filter((item1) => arr2.some((item2) => deepEqual(item1, item2)));
 }

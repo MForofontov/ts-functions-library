@@ -12,7 +12,9 @@ describe('omitKeys', () => {
   // Test case 2: Omit keys that do not exist in the object
   it('2. should return the original object if keys to omit do not exist', () => {
     const obj = { a: 1, b: 2, c: 3 };
-    const result = omitKeys(obj, ['d', 'e'] as unknown as Array<keyof typeof obj>);
+    const result = omitKeys(obj, ['d', 'e'] as unknown as Array<
+      keyof typeof obj
+    >);
     const expected = { a: 1, b: 2, c: 3 };
     expect(result).toEqual(expected);
   });
@@ -52,7 +54,9 @@ describe('omitKeys', () => {
   // Test case 6: Handle empty object
   it('6. should return an empty object if the input object is empty', () => {
     const obj = {};
-    const result = omitKeys(obj, ['a', 'b'] as unknown as Array<keyof typeof obj>);
+    const result = omitKeys(obj, ['a', 'b'] as unknown as Array<
+      keyof typeof obj
+    >);
     const expected = {};
     expect(result).toEqual(expected);
   });
@@ -68,35 +72,35 @@ describe('omitKeys', () => {
   // Test case 8: Handle non-object input (number)
   it('8. should throw a TypeError if input is a number', () => {
     expect(() =>
-      omitKeys(42 as unknown as Record<string, unknown>, ['a'])
+      omitKeys(42 as unknown as Record<string, unknown>, ['a']),
     ).toThrow(TypeError);
   });
 
   // Test case 9: Handle non-object input (string)
   it('9. should throw a TypeError if input is a string', () => {
     expect(() =>
-      omitKeys('string' as unknown as Record<string, unknown>, ['a'])
+      omitKeys('string' as unknown as Record<string, unknown>, ['a']),
     ).toThrow(TypeError);
   });
 
   // Test case 10: Handle non-object input (boolean)
   it('10. should throw a TypeError if input is a boolean', () => {
     expect(() =>
-      omitKeys(true as unknown as Record<string, unknown>, ['a'])
+      omitKeys(true as unknown as Record<string, unknown>, ['a']),
     ).toThrow(TypeError);
   });
 
   // Test case 11: Handle non-object input (null)
   it('11. should throw a TypeError if input is null', () => {
     expect(() =>
-      omitKeys(null as unknown as Record<string, unknown>, ['a'])
+      omitKeys(null as unknown as Record<string, unknown>, ['a']),
     ).toThrow(TypeError);
   });
 
   // Test case 12: Handle non-object input (undefined)
   it('12. should throw a TypeError if input is undefined', () => {
     expect(() =>
-      omitKeys(undefined as unknown as Record<string, unknown>, ['a'])
+      omitKeys(undefined as unknown as Record<string, unknown>, ['a']),
     ).toThrow(TypeError);
   });
 });

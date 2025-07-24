@@ -45,5 +45,6 @@ export function safeSet<T extends Record<string, unknown>, V>(
     }
     current = current[key] as Record<string, unknown>;
   }
-  (current as Record<string, unknown>)[keys[keys.length - 1]] = value as unknown;
+  (current as Record<string, unknown>)[keys[keys.length - 1]] =
+    value as unknown;
 }
