@@ -1,5 +1,10 @@
 module.exports = {
   preset: 'ts-jest',
+  globals: {
+    'ts-jest': {
+      tsconfig: 'tsconfig.test.json',
+    },
+  },
   testEnvironment: 'node', // Change to standard node environment
   reporters: [
     'default', // default jest reporter
