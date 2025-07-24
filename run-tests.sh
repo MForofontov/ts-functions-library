@@ -8,6 +8,17 @@ log_with_time() {
 
 log_with_time "[INFO] Running tests"
 
+# Default behavior does not open the Allure report. Use --open-report flag or
+# set OPEN_REPORT=true to automatically open it after generation.
+OPEN_REPORT_FLAG=false
+for arg in "$@"; do
+  case "$arg" in
+    --open-report)
+      OPEN_REPORT_FLAG=true
+      ;;
+  esac
+done
+
 # Ensure local node binaries are available
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 export PATH="$SCRIPT_DIR/node_modules/.bin:$PATH"
@@ -56,10 +67,14 @@ if ! allure generate allure-results --clean -o allure-report; then
   log_with_time "[ERROR] Failed to generate Allure report, but continuing with the script"
 fi
 
-# Open Allure report
-log_with_time "[INFO] Opening Allure report"
-if ! allure open allure-report; then
-  log_with_time "[ERROR] Failed to open Allure report, but continuing with the script"
+# Open Allure report if requested
+if [ "$OPEN_REPORT_FLAG" = "true" ] || [ "${OPEN_REPORT:-false}" = "true" ]; then
+  log_with_time "[INFO] Opening Allure report"
+  if ! allure open allure-report; then
+    log_with_time "[ERROR] Failed to open Allure report, but continuing with the script"
+  fi
+else
+  log_with_time "[INFO] Allure report not opened (use --open-report or set OPEN_REPORT=true)"
 fi
 
 log_with_time "[INFO] Test execution completed"

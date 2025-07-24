@@ -24,14 +24,12 @@ yarn add ts-functions-library
 # pnpm
 pnpm add ts-functions-library
 ```
-
 ## Usage
 Import the functions you need directly from the package root:
 
 ```ts
 import { chunkArray, deepMerge } from 'ts-functions-library';
 ```
-
 ## Directory Structure
 The main folders group functions by purpose:
 
@@ -49,7 +47,6 @@ Compile the TypeScript source with:
 ```bash
 npm run build
 ```
-
 This outputs compiled JavaScript files to the `dist/` directory. Ensure you have installed dependencies first with `npm install`.
 
 ## Testing
@@ -58,9 +55,15 @@ Jest is used for all unit tests. Run the full test suite with:
 ```bash
 npm test
 ```
-
 The command runs `run-tests.sh`, which executes Jest and generates an Allure report. Results are stored in `allure-results` and the final report in `allure-report`.
+By default the report is not opened automatically. Use the `--open-report` flag
+or set `OPEN_REPORT=true` to view the report after generation:
 
+```bash
+npm test -- --open-report
+# or
+OPEN_REPORT=true npm test
+```
 ## Contributing
 Contributions are welcome! Feel free to open issues or submit pull requests.
 
