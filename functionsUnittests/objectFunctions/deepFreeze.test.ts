@@ -55,26 +55,36 @@ describe('deepFreeze', () => {
 
   // Test case 5: Handle non-object input (number)
   it('5. should throw a TypeError if input is a number', () => {
-    expect(() => deepFreeze(42 as unknown as Record<string, unknown>)).toThrow(TypeError);
+    expect(() => deepFreeze(42 as unknown as Record<string, unknown>)).toThrow(
+      TypeError,
+    );
   });
 
   // Test case 6: Handle non-object input (string)
   it('6. should throw a TypeError if input is a string', () => {
-    expect(() => deepFreeze('string' as unknown as Record<string, unknown>)).toThrow(TypeError);
+    expect(() =>
+      deepFreeze('string' as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 
   // Test case 7: Handle non-object input (boolean)
   it('7. should throw a TypeError if input is a boolean', () => {
-    expect(() => deepFreeze(true as unknown as Record<string, unknown>)).toThrow(TypeError);
+    expect(() =>
+      deepFreeze(true as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 
   // Test case 8: Handle non-object input (null)
   it('8. should throw a TypeError if input is null', () => {
-    expect(() => deepFreeze(null as unknown as Record<string, unknown>)).toThrow(TypeError);
+    expect(() =>
+      deepFreeze(null as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 
   // Test case 9: Handle non-object input (undefined)
   it('9. should throw a TypeError if input is undefined', () => {
-    expect(() => deepFreeze(undefined as unknown as Record<string, unknown>)).toThrow(TypeError);
+    expect(() =>
+      deepFreeze(undefined as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 });

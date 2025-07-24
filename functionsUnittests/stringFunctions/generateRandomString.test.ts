@@ -50,10 +50,8 @@ describe('generateRandomString', () => {
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     expect(() =>
       // Cast to match the function signature intentionally with invalid input
-      generateRandomString('a' as unknown as number, charset)
-    ).toThrow(
-      'Length must be a non-negative number',
-    );
+      generateRandomString('a' as unknown as number, charset),
+    ).toThrow('Length must be a non-negative number');
   });
 
   // Test case 6: Generate a random string with negative length

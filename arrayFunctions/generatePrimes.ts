@@ -30,7 +30,7 @@ export function generatePrimes(limit: number): number[] {
     throw new RangeError('Limit must be an integer');
   }
 
-  const sieve: boolean[] = new Array(limit + 1).fill(true);
+  const sieve: boolean[] = new Array<boolean>(limit + 1).fill(true);
   sieve[0] = sieve[1] = false;
 
   for (let i = 2; i * i <= limit; i++) {

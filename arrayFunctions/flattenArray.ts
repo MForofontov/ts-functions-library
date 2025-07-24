@@ -32,9 +32,7 @@ export function flattenArray<T>(arr: Array<Nested<T>>): T[] {
   return arr.reduce<T[]>(
     (acc, val) =>
       acc.concat(
-        Array.isArray(val)
-          ? flattenArray(val as Array<Nested<T>>)
-          : (val as T),
+        Array.isArray(val) ? flattenArray(val as Array<Nested<T>>) : (val as T),
       ),
     [] as T[],
   );

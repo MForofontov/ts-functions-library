@@ -81,7 +81,11 @@ describe('zipMultiple', () => {
     const names: string[] = ['Alice', 'Bob'];
     const ages: boolean[] = [true, false];
     const cities: string[] = ['New York', 'Los Angeles'];
-    const result: [string, boolean, string][] = zipMultiple(names, ages, cities);
+    const result: [string, boolean, string][] = zipMultiple(
+      names,
+      ages,
+      cities,
+    );
     expect(result).toEqual([
       ['Alice', true, 'New York'],
       ['Bob', false, 'Los Angeles'],
@@ -207,7 +211,7 @@ describe('zipMultiple', () => {
     const result: [
       symbol | (() => void),
       symbol | (() => void),
-      symbol | (() => void)
+      symbol | (() => void),
     ][] = zipMultiple(names, ages, cities);
     expect(result).toEqual([
       [sym1, sym1, sym1],
@@ -222,11 +226,11 @@ describe('zipMultiple', () => {
     const names: (Date | RegExp)[] = [date1, regex1];
     const ages: (Date | RegExp)[] = [date1, regex1];
     const cities: (Date | RegExp)[] = [date1, regex1];
-    const result: [
-      Date | RegExp,
-      Date | RegExp,
-      Date | RegExp
-    ][] = zipMultiple(names, ages, cities);
+    const result: [Date | RegExp, Date | RegExp, Date | RegExp][] = zipMultiple(
+      names,
+      ages,
+      cities,
+    );
     expect(result).toEqual([
       [date1, date1, date1],
       [regex1, regex1, regex1],
@@ -257,7 +261,7 @@ describe('zipMultiple', () => {
     const result: [
       string | undefined,
       number | undefined,
-      string | undefined
+      string | undefined,
     ][] = zipMultiple(names, ages, cities);
     expect(result).toEqual([
       ['Alice', 25, 'New York'],
@@ -273,7 +277,7 @@ describe('zipMultiple', () => {
     const result: [
       string | null | undefined,
       number | null | undefined,
-      string | null | undefined
+      string | null | undefined,
     ][] = zipMultiple(names, ages, cities);
     expect(result).toEqual([
       ['Alice', 25, 'New York'],

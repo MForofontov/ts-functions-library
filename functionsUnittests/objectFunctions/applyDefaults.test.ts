@@ -23,7 +23,10 @@ describe('applyDefaults', () => {
   it('3. should apply defaults to an empty object', () => {
     const obj = {};
     const defaults = { a: 1, b: 2 };
-    const result = applyDefaults(obj as unknown as Record<string, unknown>, defaults);
+    const result = applyDefaults(
+      obj as unknown as Record<string, unknown>,
+      defaults,
+    );
     const expected = { a: 1, b: 2 };
     expect(result).toEqual(expected);
   });
@@ -48,51 +51,71 @@ describe('applyDefaults', () => {
 
   // Test case 6: Handle non-object input for the first parameter (number)
   it('6. should throw a TypeError if the first input is a number', () => {
-    expect(() => applyDefaults(42 as unknown as Record<string, unknown>, { a: 1 })).toThrow(TypeError);
+    expect(() =>
+      applyDefaults(42 as unknown as Record<string, unknown>, { a: 1 }),
+    ).toThrow(TypeError);
   });
 
   // Test case 7: Handle non-object input for the first parameter (string)
   it('7. should throw a TypeError if the first input is a string', () => {
-    expect(() => applyDefaults('string' as unknown as Record<string, unknown>, { a: 1 })).toThrow(TypeError);
+    expect(() =>
+      applyDefaults('string' as unknown as Record<string, unknown>, { a: 1 }),
+    ).toThrow(TypeError);
   });
 
   // Test case 8: Handle non-object input for the first parameter (boolean)
   it('8. should throw a TypeError if the first input is a boolean', () => {
-    expect(() => applyDefaults(true as unknown as Record<string, unknown>, { a: 1 })).toThrow(TypeError);
+    expect(() =>
+      applyDefaults(true as unknown as Record<string, unknown>, { a: 1 }),
+    ).toThrow(TypeError);
   });
 
   // Test case 9: Handle non-object input for the first parameter (null)
   it('9. should throw a TypeError if the first input is null', () => {
-    expect(() => applyDefaults(null as unknown as Record<string, unknown>, { a: 1 })).toThrow(TypeError);
+    expect(() =>
+      applyDefaults(null as unknown as Record<string, unknown>, { a: 1 }),
+    ).toThrow(TypeError);
   });
 
   // Test case 10: Handle non-object input for the first parameter (undefined)
   it('10. should throw a TypeError if the first input is undefined', () => {
-    expect(() => applyDefaults(undefined as unknown as Record<string, unknown>, { a: 1 })).toThrow(TypeError);
+    expect(() =>
+      applyDefaults(undefined as unknown as Record<string, unknown>, { a: 1 }),
+    ).toThrow(TypeError);
   });
 
   // Test case 11: Handle non-object input for the second parameter (number)
   it('11. should throw a TypeError if the second input is a number', () => {
-    expect(() => applyDefaults({ a: 1 }, 42 as unknown as Record<string, unknown>)).toThrow(TypeError);
+    expect(() =>
+      applyDefaults({ a: 1 }, 42 as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 
   // Test case 12: Handle non-object input for the second parameter (string)
   it('12. should throw a TypeError if the second input is a string', () => {
-    expect(() => applyDefaults({ a: 1 }, 'string' as unknown as Record<string, unknown>)).toThrow(TypeError);
+    expect(() =>
+      applyDefaults({ a: 1 }, 'string' as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 
   // Test case 13: Handle non-object input for the second parameter (boolean)
   it('13. should throw a TypeError if the second input is a boolean', () => {
-    expect(() => applyDefaults({ a: 1 }, true as unknown as Record<string, unknown>)).toThrow(TypeError);
+    expect(() =>
+      applyDefaults({ a: 1 }, true as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 
   // Test case 14: Handle non-object input for the second parameter (null)
   it('14. should throw a TypeError if the second input is null', () => {
-    expect(() => applyDefaults({ a: 1 }, null as unknown as Record<string, unknown>)).toThrow(TypeError);
+    expect(() =>
+      applyDefaults({ a: 1 }, null as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 
   // Test case 15: Handle non-object input for the second parameter (undefined)
   it('15. should throw a TypeError if the second input is undefined', () => {
-    expect(() => applyDefaults({ a: 1 }, undefined as unknown as Record<string, unknown>)).toThrow(TypeError);
+    expect(() =>
+      applyDefaults({ a: 1 }, undefined as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 });

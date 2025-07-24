@@ -32,7 +32,7 @@ import { getDeepEqualityHash } from '../objectFunctions/getDeepEqualityHash';
  *
  * @complexity O(n) on average where n is the length of the input array, using
  * hashing and Map lookups to count elements while preserving insertion order
-*/
+ */
 export function uniqueElementsWithCounts<T>(
   arr: T[],
 ): { element: T; count: number }[] {

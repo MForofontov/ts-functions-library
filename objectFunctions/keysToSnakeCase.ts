@@ -21,25 +21,24 @@ export function keysToSnakeCase(
     throw new TypeError('Input must be a non-null object');
   }
 
-  const transform = <T>(value: T): T => {
+  const transform = (value: unknown): unknown => {
     if (Array.isArray(value)) {
-      return value.map((v) => transform(v)) as unknown as T;
+      return value.map((v) => transform(v));
     }
     if (value !== null && typeof value === 'object') {
-      return Object.fromEntries(
-        Object.entries(value).map(([k, v]) => [
-          typeof k === 'string'
-            ? k
-                .replace(/([A-Z]+)([A-Z][a-z])/g, '$1_$2')
-                .replace(/([a-z0-9])([A-Z])/g, '$1_$2')
-                .toLowerCase()
-            : k,
-          transform(v),
-        ]),
-      ) as unknown as T;
+      const entries = Object.entries(value).map(([k, v]) => [
+        typeof k === 'string'
+          ? k
+              .replace(/([A-Z]+)([A-Z][a-z])/g, '$1_$2')
+              .replace(/([a-z0-9])([A-Z])/g, '$1_$2')
+              .toLowerCase()
+          : k,
+        transform(v),
+      ]);
+      return Object.fromEntries(entries) as Record<string, unknown>;
     }
     return value;
   };
 
-  return transform(obj);
+  return transform(obj) as typeof obj;
 }

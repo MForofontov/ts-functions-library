@@ -71,35 +71,35 @@ describe('keyBy', () => {
   // Test case 6: Handle non-array input (number)
   it('Test case 6: should throw a TypeError if input is a number', () => {
     expect(() =>
-      keyBy(42 as unknown as Record<string, unknown>[], 'id')
+      keyBy(42 as unknown as Record<string, unknown>[], 'id'),
     ).toThrow(TypeError);
   });
 
   // Test case 7: Handle non-array input (string)
   it('Test case 7: should throw a TypeError if input is a string', () => {
     expect(() =>
-      keyBy('string' as unknown as Record<string, unknown>[], 'id')
+      keyBy('string' as unknown as Record<string, unknown>[], 'id'),
     ).toThrow(TypeError);
   });
 
   // Test case 8: Handle non-array input (boolean)
   it('Test case 8: should throw a TypeError if input is a boolean', () => {
     expect(() =>
-      keyBy(true as unknown as Record<string, unknown>[], 'id')
+      keyBy(true as unknown as Record<string, unknown>[], 'id'),
     ).toThrow(TypeError);
   });
 
   // Test case 9: Handle null input
   it('Test case 9: should throw a TypeError if input is null', () => {
     expect(() =>
-      keyBy(null as unknown as Record<string, unknown>[], 'id')
+      keyBy(null as unknown as Record<string, unknown>[], 'id'),
     ).toThrow(TypeError);
   });
 
   // Test case 10: Handle undefined input
   it('Test case 10: should throw a TypeError if input is undefined', () => {
     expect(() =>
-      keyBy(undefined as unknown as Record<string, unknown>[], 'id')
+      keyBy(undefined as unknown as Record<string, unknown>[], 'id'),
     ).toThrow(TypeError);
   });
 });
