@@ -31,6 +31,12 @@
  */
 export function joinStrings(arr: Array<unknown>, separator: string): string {
   return arr
-    .map((item) => (typeof item === 'function' ? item() : String(item)))
+    .map((item) => {
+      if (typeof item === 'function') {
+        const result = (item as (...args: unknown[]) => unknown)();
+        return String(result);
+      }
+      return String(item);
+    })
     .join(separator);
 }

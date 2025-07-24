@@ -31,7 +31,10 @@
  */
 type Nested<T> = T | Array<Nested<T>>;
 
-export function flattenArrayDepth<T>(arr: Array<Nested<T>>, depth: number = 1): T[] {
+export function flattenArrayDepth<T>(
+  arr: Array<Nested<T>>,
+  depth: number = 1,
+): T[] {
   return depth > 0
     ? arr.reduce<T[]>(
         (acc, val) =>

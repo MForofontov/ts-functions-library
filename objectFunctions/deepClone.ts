@@ -15,13 +15,13 @@
  * available. The fallback has limitations: it doesn't preserve functions,
  * undefined values, Date objects, RegExp, Maps, Sets, or circular
  * references.
-*/
+ */
 export function deepClone<T>(obj: T): T {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');
   }
   if (typeof globalThis.structuredClone === 'function') {
-    return globalThis.structuredClone(obj);
+    return globalThis.structuredClone(obj) as T;
   }
-  return JSON.parse(JSON.stringify(obj));
+  return JSON.parse(JSON.stringify(obj)) as T;
 }

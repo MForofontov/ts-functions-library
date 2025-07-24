@@ -123,10 +123,8 @@ describe('differenceBy', () => {
         42 as unknown as Record<string, unknown>,
         {},
         (a, b) => a === b,
-      )
-    ).toThrow(
-      TypeError,
-    );
+      ),
+    ).toThrow(TypeError);
   });
 
   // Test case 13: Throw error if obj1 is not an object (string)
@@ -136,10 +134,8 @@ describe('differenceBy', () => {
         'string' as unknown as Record<string, unknown>,
         {},
         (a, b) => a === b,
-      )
-    ).toThrow(
-      TypeError,
-    );
+      ),
+    ).toThrow(TypeError);
   });
 
   // Test case 14: Throw error if obj1 is not an object (boolean)
@@ -149,10 +145,8 @@ describe('differenceBy', () => {
         true as unknown as Record<string, unknown>,
         {},
         (a, b) => a === b,
-      )
-    ).toThrow(
-      TypeError,
-    );
+      ),
+    ).toThrow(TypeError);
   });
 
   // Test case 15: Throw error if obj1 is null
@@ -162,10 +156,8 @@ describe('differenceBy', () => {
         null as unknown as Record<string, unknown>,
         {},
         (a, b) => a === b,
-      )
-    ).toThrow(
-      TypeError,
-    );
+      ),
+    ).toThrow(TypeError);
   });
 
   // Test case 16: Throw error if obj1 is undefined
@@ -175,10 +167,8 @@ describe('differenceBy', () => {
         undefined as unknown as Record<string, unknown>,
         {},
         (a, b) => a === b,
-      )
-    ).toThrow(
-      TypeError,
-    );
+      ),
+    ).toThrow(TypeError);
   });
 
   // Test case 17: Throw error if obj2 is not an object (number)
@@ -188,10 +178,8 @@ describe('differenceBy', () => {
         {},
         42 as unknown as Record<string, unknown>,
         (a, b) => a === b,
-      )
-    ).toThrow(
-      TypeError,
-    );
+      ),
+    ).toThrow(TypeError);
   });
 
   // Test case 18: Throw error if obj2 is not an object (string)
@@ -201,10 +189,8 @@ describe('differenceBy', () => {
         {},
         'string' as unknown as Record<string, unknown>,
         (a, b) => a === b,
-      )
-    ).toThrow(
-      TypeError,
-    );
+      ),
+    ).toThrow(TypeError);
   });
 
   // Test case 19: Throw error if obj2 is not an object (boolean)
@@ -214,10 +200,8 @@ describe('differenceBy', () => {
         {},
         true as unknown as Record<string, unknown>,
         (a, b) => a === b,
-      )
-    ).toThrow(
-      TypeError,
-    );
+      ),
+    ).toThrow(TypeError);
   });
 
   // Test case 20: Throw error if obj2 is null
@@ -227,10 +211,8 @@ describe('differenceBy', () => {
         {},
         null as unknown as Record<string, unknown>,
         (a, b) => a === b,
-      )
-    ).toThrow(
-      TypeError,
-    );
+      ),
+    ).toThrow(TypeError);
   });
 
   // Test case 21: Throw error if obj2 is undefined
@@ -240,16 +222,18 @@ describe('differenceBy', () => {
         {},
         undefined as unknown as Record<string, unknown>,
         (a, b) => a === b,
-      )
-    ).toThrow(
-      TypeError,
-    );
+      ),
+    ).toThrow(TypeError);
   });
 
   // Test case 22: Throw error if comparator is not a function (number)
   it('22. should throw a TypeError if comparator is a number', () => {
     expect(() =>
-      differenceBy({}, {}, 42 as unknown as (a: unknown, b: unknown) => boolean)
+      differenceBy(
+        {},
+        {},
+        42 as unknown as (a: unknown, b: unknown) => boolean,
+      ),
     ).toThrow(TypeError);
   });
 
@@ -260,21 +244,29 @@ describe('differenceBy', () => {
         {},
         {},
         'string' as unknown as (a: unknown, b: unknown) => boolean,
-      )
+      ),
     ).toThrow(TypeError);
   });
 
   // Test case 24: Throw error if comparator is not a function (boolean)
   it('24. should throw a TypeError if comparator is a boolean', () => {
     expect(() =>
-      differenceBy({}, {}, true as unknown as (a: unknown, b: unknown) => boolean)
+      differenceBy(
+        {},
+        {},
+        true as unknown as (a: unknown, b: unknown) => boolean,
+      ),
     ).toThrow(TypeError);
   });
 
   // Test case 25: Throw error if comparator is null
   it('25. should throw a TypeError if comparator is null', () => {
     expect(() =>
-      differenceBy({}, {}, null as unknown as (a: unknown, b: unknown) => boolean)
+      differenceBy(
+        {},
+        {},
+        null as unknown as (a: unknown, b: unknown) => boolean,
+      ),
     ).toThrow(TypeError);
   });
 
@@ -285,7 +277,7 @@ describe('differenceBy', () => {
         {},
         {},
         undefined as unknown as (a: unknown, b: unknown) => boolean,
-      )
+      ),
     ).toThrow(TypeError);
   });
 });

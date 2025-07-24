@@ -23,11 +23,10 @@ export function compactObject<T extends Record<string, unknown>>(
       );
     }
     if (value && typeof value === 'object') {
-      return Object.fromEntries(
-        Object.entries(value)
-          .map(([k, v]) => [k, compact(v)])
-          .filter(([_, v]) => v != null),
-      );
+      const entries = Object.entries(value)
+        .map(([k, v]) => [k, compact(v)])
+        .filter(([_, v]) => v != null);
+      return Object.fromEntries(entries) as Record<string, unknown>;
     }
     return value;
   };
