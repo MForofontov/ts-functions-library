@@ -100,7 +100,7 @@ describe('sortBy', () => {
       { id: 1, value: Symbol('sym1') },
       { id: 2, value: Symbol('sym2') },
     ];
-    expect(() => sortBy(array, 'value')).toThrowError(
+    expect(() => sortBy(array, 'value')).toThrow(
       'Unsupported types for sorting: symbol and symbol',
     );
   });
