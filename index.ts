@@ -108,7 +108,6 @@ export * from './objectFunctions/flipObject';
 export * from './objectFunctions/fromDotNotation';
 export * from './objectFunctions/getDeepEqualityHash';
 export * from './objectFunctions/getObjectDifference';
-export { groupBy as groupByObject } from './objectFunctions/groupBy';
 export * from './objectFunctions/hasKey';
 export * from './objectFunctions/invertObject';
 export * from './objectFunctions/isDeepSubset';
