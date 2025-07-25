@@ -1,10 +1,7 @@
-name: full-ci
+name: test-and-report
 
 # Define the events that trigger the workflow
 on:
-  pull_request_target:
-    branches:
-      - ci-testing  # Trigger on pull request to the main branch
   workflow_dispatch:  # Allow manual triggering of the workflow
     inputs:
       node_version:
