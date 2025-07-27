@@ -34,7 +34,7 @@
         "@typescript-eslint/parser": "^8.38.0",
         "allure-commandline": "^2.34.1",
         "allure-jest": "^3.3.2",
-        "eslint": "^9.31.0",
+        "eslint": "^9.32.0",
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-prettier": "^5.5.3",
         "jest": "^30.0.5",

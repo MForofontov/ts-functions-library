@@ -4,7 +4,7 @@ const prettier = require('eslint-plugin-prettier');
 
 module.exports = [
   {
-    files: ['**/*.ts'],
+    files: ['**/*.ts', '!functionsUnittests/**/*.ts', '!jest*.ts'],
     languageOptions: {
       parser: tsParser,
       ecmaVersion: 2024,
@@ -78,6 +78,45 @@ module.exports = [
     },
   },
   {
-    ignores: ['node_modules/**', 'dist/**', 'coverage/**'],
+    files: ['functionsUnittests/**/*.ts', 'jest*.ts'],
+    languageOptions: {
+      parser: tsParser,
+      ecmaVersion: 2024,
+      sourceType: 'module',
+      parserOptions: {
+        project: './tsconfig.test.json',
+        tsconfigRootDir: __dirname,
+      },
+    },
+    plugins: {
+      '@typescript-eslint': tseslint,
+      'prettier': prettier,
+    },
+    rules: {
+      'prettier/prettier': ['error', {
+        singleQuote: true,
+        tabWidth: 2
+      }],
+      'no-console': 'warn',
+      '@typescript-eslint/explicit-function-return-type': 'off',
+      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-unused-vars': ['warn', { 'argsIgnorePattern': '^_' }],
+      '@typescript-eslint/no-floating-promises': 'warn',
+      '@typescript-eslint/no-unsafe-argument': 'warn',
+      '@typescript-eslint/require-await': 'error',
+      '@typescript-eslint/no-unsafe-assignment': 'warn',
+      '@typescript-eslint/no-unsafe-member-access': 'warn',
+      '@typescript-eslint/no-unsafe-call': 'warn',
+      '@typescript-eslint/no-unsafe-return': 'warn',
+      '@typescript-eslint/no-shadow': 'warn',
+      'no-duplicate-imports': 'warn',
+      '@typescript-eslint/no-useless-constructor': 'warn',
+      '@typescript-eslint/consistent-type-definitions': ['warn', 'interface'],
+      '@typescript-eslint/no-var-requires': 'error',
+      '@typescript-eslint/consistent-type-imports': 'warn',
+    },
+  },
+  {
+    ignores: ['node_modules/**', 'dist/**', 'coverage/**', 'allure-report/**', 'eslint.config.js'],
   },
 ];
