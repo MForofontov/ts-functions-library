@@ -16,7 +16,7 @@
     ],
     "author": "",
     "engines": {
-        "node": ">=18"
+        "node": ">=20"
     },
     "scripts": {
         "test": "./run-tests.sh",
