@@ -12,7 +12,7 @@ A comprehensive collection of reusable TypeScript functions organised by categor
 - [License](#license)
 
 ## Installation
-This library requires **Node.js 18 or later**. Install the package using your favourite package manager:
+This library requires **Node.js 20 or later**. Install the package using your favourite package manager:
 
 ```bash
 # npm
