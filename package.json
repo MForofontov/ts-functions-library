@@ -25,7 +25,8 @@
         "lint": "eslint . --ext .ts",
         "lint:fix": "eslint . --ext .ts --fix",
         "format": "prettier --write \"**/*.{ts,js,json,md}\"",
-        "build": "tsc"
+        "build": "tsc",
+        "prepare": "npm run build"
     },
     "devDependencies": {
         "@types/jest": "^30.0.0",
