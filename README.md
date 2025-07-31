@@ -37,7 +37,7 @@ The main folders group functions by purpose:
 - **objectFunctions** – utilities for manipulating objects including `deepMerge`, `safeGet`, and `groupByObject`. The `deepClone` helper now uses Node's `structuredClone` when available and falls back to JSON serialization in older environments.
 - **stringFunctions** – text related helpers like `slugify`, `trimWhitespace`, and `isValidEmail`.
 - **dateFunctions** – date utilities such as `formatDate`, `addMonths`, and `getWeekNumber`.
-- **encodingFunctions** – simple Base64 encoding/decoding helpers.
+- **encodingFunctions** – simple Base64 encoding/decoding helpers. `encodeBase64` and `decodeBase64` rely on Node's `Buffer`, so browsers may need alternatives like `btoa`/`atob`.
 - **mathFunctions** – mathematical helpers, including geometric calculations.
 - **utilityFunctions** – assorted utilities like `debounce`, `throttle`, and `hexToRgb`.
 
