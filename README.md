@@ -8,6 +8,7 @@ A comprehensive collection of reusable TypeScript functions organised by categor
 - [Directory Structure](#directory-structure)
 - [Building](#building)
 - [Testing](#testing)
+- [Formatting](#formatting)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -50,7 +51,11 @@ npm run build
 This outputs compiled JavaScript files to the `dist/` directory. Ensure you have installed dependencies first with `npm install`.
 
 ## Testing
-Jest is used for all unit tests. Run the full test suite with:
+Jest is used for all unit tests. Install dependencies first with `npm install`.
+Tests generate an Allure report, so the Allure CLI must be available in your
+`PATH`. Install it with `npm install -D allure-commandline` or rely on
+`npx allure`.
+Run the full test suite with:
 
 ```bash
 npm test
@@ -64,6 +69,15 @@ npm test -- --open-report
 # or
 OPEN_REPORT=true npm test
 ```
+
+## Formatting
+This project uses **Prettier** to maintain consistent code style. Run:
+
+```bash
+npm run format
+```
+to automatically format source files according to `.prettierrc.json`.
+
 ## Contributing
 Contributions are welcome! Feel free to open issues or submit pull requests.
 
