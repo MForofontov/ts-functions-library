@@ -8,6 +8,7 @@ A comprehensive collection of reusable TypeScript functions organised by categor
 - [Directory Structure](#directory-structure)
 - [Building](#building)
 - [Testing](#testing)
+- [Formatting](#formatting)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -68,6 +69,15 @@ npm test -- --open-report
 # or
 OPEN_REPORT=true npm test
 ```
+
+## Formatting
+This project uses **Prettier** to maintain consistent code style. Run:
+
+```bash
+npm run format
+```
+to automatically format source files according to `.prettierrc.json`.
+
 ## Contributing
 Contributions are welcome! Feel free to open issues or submit pull requests.
 
