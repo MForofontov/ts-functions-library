@@ -50,7 +50,11 @@ npm run build
 This outputs compiled JavaScript files to the `dist/` directory. Ensure you have installed dependencies first with `npm install`.
 
 ## Testing
-Jest is used for all unit tests. Run the full test suite with:
+Jest is used for all unit tests. Install dependencies first with `npm install`.
+Tests generate an Allure report, so the Allure CLI must be available in your
+`PATH`. Install it with `npm install -D allure-commandline` or rely on
+`npx allure`.
+Run the full test suite with:
 
 ```bash
 npm test
