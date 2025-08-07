@@ -13,7 +13,12 @@ import { Buffer } from 'buffer';
  * encodeBase64("hello world"); // "aGVsbG8gd29ybGQ"
  */
 export function encodeBase64(str: string): string {
-  return Buffer.from(str)
+  const hasNonLatin1 = [...str].some((ch) => ch.charCodeAt(0) > 0xff);
+  const buffer = hasNonLatin1
+    ? Buffer.from(str, 'utf8')
+    : Buffer.from([...str].map((c) => c.charCodeAt(0)));
+
+  return buffer
     .toString('base64')
     .replace(/\+/g, '-')
     .replace(/\//g, '_')
