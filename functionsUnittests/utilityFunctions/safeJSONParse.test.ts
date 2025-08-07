@@ -36,4 +36,25 @@ describe('safeJSONParse', () => {
   it('7. should return false for invalid JSON', () => {
     expect(safeJSONParse('invalid', false)).toBe(false);
   });
+
+  // Test case 8: Parse boolean JSON
+  it('8. should parse boolean JSON', () => {
+    expect(safeJSONParse('true', false)).toBe(true);
+  });
+
+  // Test case 9: Parse JSON with surrounding whitespace
+  it('9. should parse JSON with surrounding whitespace', () => {
+    expect(safeJSONParse('  {"a":1}  ', {})).toEqual({ a: 1 });
+  });
+
+  // Test case 10: Parse JSON literal null
+  it('10. should parse JSON literal null', () => {
+    expect(safeJSONParse('null', 'default')).toBeNull();
+  });
+
+  // Test case 11: Parse nested JSON object
+  it('11. should parse a nested JSON object', () => {
+    const json = '{"user":{"name":"John"}}';
+    expect(safeJSONParse(json, {})).toEqual({ user: { name: 'John' } });
+  });
 });

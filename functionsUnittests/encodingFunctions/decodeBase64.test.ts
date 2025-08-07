@@ -31,4 +31,20 @@ describe('decodeBase64', () => {
   it('6. should throw an error for invalid base64', () => {
     expect(() => decodeBase64('@@')).toThrow('Invalid base64 string');
   });
+
+  // Test case 7: Reject base64 strings with whitespace
+  it('7. should throw an error for base64 with whitespace', () => {
+    expect(() => decodeBase64('aGVsbG8g d29ybGQ=')).toThrow('Invalid base64 string');
+  });
+
+  // Test case 8: Reject base64 strings with newlines
+  it('8. should throw an error for base64 with newlines', () => {
+    const encodedWithNewline = 'aGVsbG8gd29y\nbGQ=';
+    expect(() => decodeBase64(encodedWithNewline)).toThrow('Invalid base64 string');
+  });
+
+  // Test case 9: Reject base64 strings with invalid length
+  it('9. should throw an error for base64 with invalid length', () => {
+    expect(() => decodeBase64('Y')).toThrow('Invalid base64 string');
+  });
 });
