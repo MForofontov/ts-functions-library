@@ -22,9 +22,13 @@ export function parseQueryString(queryString: string): Record<string, string> {
     .replace(/^\?/, '')
     .replace(/\+/g, ' ')
     .split('&')
+    .filter(Boolean)
     .reduce(
       (acc, queryParam) => {
         const [key, value] = queryParam.split('=');
+        if (!key) {
+          return acc;
+        }
         acc[decodeURIComponent(key)] = decodeURIComponent(value || '');
         return acc;
       },
