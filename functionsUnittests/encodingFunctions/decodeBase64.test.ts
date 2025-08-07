@@ -26,4 +26,9 @@ describe('decodeBase64', () => {
   it('5. should decode a string without padding', () => {
     expect(decodeBase64('aGVsbG8gd29ybGQ')).toBe('hello world');
   });
+
+  // Test case 6: Handle invalid base64 string
+  it('6. should throw an error for invalid base64', () => {
+    expect(() => decodeBase64('@@')).toThrow('Invalid base64 string');
+  });
 });
