@@ -13,6 +13,7 @@
  * @complexity O(1)
  */
 export function rgbToHex(rgb: { r: number; g: number; b: number }): string {
-  const toHex = (num: number) => num.toString(16).padStart(2, '0');
+  const clamp = (num: number) => Math.min(255, Math.max(0, Math.round(num)));
+  const toHex = (num: number) => clamp(num).toString(16).padStart(2, '0');
   return `#${toHex(rgb.r)}${toHex(rgb.g)}${toHex(rgb.b)}`;
 }
