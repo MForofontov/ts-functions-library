@@ -54,4 +54,20 @@ describe('parseQueryString', () => {
     const expected = { a: '2' };
     expect(result).toEqual(expected);
   });
+
+  // Test case 8: Handle keys with empty values
+  it("8. should parse keys with empty values", () => {
+    const queryString = '?flag=';
+    const result = parseQueryString(queryString);
+    const expected = { flag: '' };
+    expect(result).toEqual(expected);
+  });
+
+  // Test case 9: Ignore empty segments
+  it('9. should ignore empty segments', () => {
+    const queryString = 'name=John&&age=30';
+    const result = parseQueryString(queryString);
+    const expected = { name: 'John', age: '30' };
+    expect(result).toEqual(expected);
+  });
 });
