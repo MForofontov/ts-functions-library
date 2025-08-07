@@ -25,4 +25,14 @@ describe('isNil', () => {
   it('5. should return false for an object', () => {
     expect(isNil({})).toBe(false);
   });
+
+  // Test case 6: NaN value
+  it('6. should return false for NaN', () => {
+    expect(isNil(NaN)).toBe(false);
+  });
+
+  // Test case 7: boolean false
+  it('7. should return false for false', () => {
+    expect(isNil(false)).toBe(false);
+  });
 });
