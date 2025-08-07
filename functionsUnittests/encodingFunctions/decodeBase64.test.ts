@@ -1,0 +1,29 @@
+import { decodeBase64 } from '../../encodingFunctions/decodeBase64';
+
+describe('decodeBase64', () => {
+  // Test case 1: Decode a basic base64 string
+  it('1. should decode a basic base64 string', () => {
+    expect(decodeBase64('aGVsbG8gd29ybGQ=')).toBe('hello world');
+  });
+
+  // Test case 2: Decode an empty string
+  it('2. should decode an empty string', () => {
+    expect(decodeBase64('')).toBe('');
+  });
+
+  // Test case 3: Decode URL-safe base64 string
+  it('3. should decode a URL-safe base64 string', () => {
+    expect(decodeBase64('YWE_')).toBe('aa?');
+  });
+
+  // Test case 4: Decode unicode characters
+  it('4. should decode unicode characters', () => {
+    const encoded = '44GT44KT44Gr44Gh44Gv';
+    expect(decodeBase64(encoded)).toBe('こんにちは');
+  });
+
+  // Test case 5: Decode string without padding
+  it('5. should decode a string without padding', () => {
+    expect(decodeBase64('aGVsbG8gd29ybGQ')).toBe('hello world');
+  });
+});
