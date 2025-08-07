@@ -26,4 +26,14 @@ describe('safeJSONParse', () => {
   it('5. should return default for empty string', () => {
     expect(safeJSONParse('', { hello: 'world' })).toEqual({ hello: 'world' });
   });
+
+  // Test case 6: Return null for invalid JSON
+  it('6. should return null for invalid JSON', () => {
+    expect(safeJSONParse('invalid', null)).toBeNull();
+  });
+
+  // Test case 7: Return false for invalid JSON
+  it('7. should return false for invalid JSON', () => {
+    expect(safeJSONParse('invalid', false)).toBe(false);
+  });
 });
