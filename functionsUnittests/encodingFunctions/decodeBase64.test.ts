@@ -31,4 +31,9 @@ describe('decodeBase64', () => {
   it('6. should throw an error for invalid base64', () => {
     expect(() => decodeBase64('@@')).toThrow('Invalid base64 string');
   });
+
+  // Test case 7: Reject base64 strings with whitespace
+  it('7. should throw an error for base64 with whitespace', () => {
+    expect(() => decodeBase64('aGVsbG8g d29ybGQ=')).toThrow('Invalid base64 string');
+  });
 });
