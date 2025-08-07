@@ -70,4 +70,20 @@ describe('parseQueryString', () => {
     const expected = { name: 'John', age: '30' };
     expect(result).toEqual(expected);
   });
+
+  // Test case 10: Decode plus sign when percent-encoded
+  it('10. should decode a percent-encoded plus sign', () => {
+    const queryString = '?a=%2B';
+    const result = parseQueryString(queryString);
+    const expected = { a: '+' };
+    expect(result).toEqual(expected);
+  });
+
+  // Test case 11: Ignore parameters without keys
+  it('11. should ignore parameters without keys', () => {
+    const queryString = '?=value&name=John';
+    const result = parseQueryString(queryString);
+    const expected = { name: 'John' };
+    expect(result).toEqual(expected);
+  });
 });
