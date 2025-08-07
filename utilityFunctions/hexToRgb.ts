@@ -17,7 +17,7 @@ export function hexToRgb(
   hex: string,
 ): { r: number; g: number; b: number } | null {
   const hexValue = hex.replace(/^#/, '');
-  if (hexValue.length !== 6) return null;
+  if (!/^[\da-fA-F]{6}$/.test(hexValue)) return null;
 
   const bigint = parseInt(hexValue, 16);
   const r = (bigint >> 16) & 255;

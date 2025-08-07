@@ -25,4 +25,9 @@ describe('hexToRgb', () => {
   it('5. should return null for invalid hex', () => {
     expect(hexToRgb('#123')).toBeNull();
   });
+
+  // Test case 6: Return null for invalid hex characters
+  it('6. should return null for invalid hex characters', () => {
+    expect(hexToRgb('#zzzzzz')).toBeNull();
+  });
 });
