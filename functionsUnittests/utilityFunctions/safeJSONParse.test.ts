@@ -36,4 +36,14 @@ describe('safeJSONParse', () => {
   it('7. should return false for invalid JSON', () => {
     expect(safeJSONParse('invalid', false)).toBe(false);
   });
+
+  // Test case 8: Parse boolean JSON
+  it('8. should parse boolean JSON', () => {
+    expect(safeJSONParse('true', false)).toBe(true);
+  });
+
+  // Test case 9: Parse JSON with surrounding whitespace
+  it('9. should parse JSON with surrounding whitespace', () => {
+    expect(safeJSONParse('  {"a":1}  ', {})).toEqual({ a: 1 });
+  });
 });
