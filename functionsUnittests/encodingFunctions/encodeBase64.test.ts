@@ -25,4 +25,14 @@ describe('encodeBase64', () => {
   it('5. should replace "/" with "_" and remove padding', () => {
     expect(encodeBase64('aa?')).toBe('YWE_');
   });
+
+  // Test case 6: Replace "+" with "-" and remove padding
+  it('6. should replace "+" with "-" and remove padding', () => {
+    expect(encodeBase64(String.fromCharCode(0xF8))).toBe('-A');
+  });
+
+  // Test case 7: Remove all trailing "=" characters
+  it('7. should remove all trailing "=" characters', () => {
+    expect(encodeBase64('a')).toBe('YQ');
+  });
 });
