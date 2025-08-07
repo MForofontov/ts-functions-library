@@ -21,13 +21,23 @@ describe('hexToRgb', () => {
     expect(hexToRgb('#00ff0f')).toEqual({ r: 0, g: 255, b: 15 });
   });
 
-  // Test case 5: Return null for invalid hex
-  it('5. should return null for invalid hex', () => {
+  // Test case 5: Convert uppercase hex value
+  it('5. should convert uppercase hex value', () => {
+    expect(hexToRgb('#ABCDEF')).toEqual({ r: 171, g: 205, b: 239 });
+  });
+
+  // Test case 6: Return null for invalid hex
+  it('6. should return null for invalid hex', () => {
     expect(hexToRgb('#123')).toBeNull();
   });
 
-  // Test case 6: Return null for invalid hex characters
-  it('6. should return null for invalid hex characters', () => {
+  // Test case 7: Return null for invalid hex characters
+  it('7. should return null for invalid hex characters', () => {
     expect(hexToRgb('#zzzzzz')).toBeNull();
+  });
+
+  // Test case 8: Return null for hex string longer than 6 digits
+  it('8. should return null for hex string longer than 6 digits', () => {
+    expect(hexToRgb('#1234567')).toBeNull();
   });
 });
