@@ -1,4 +1,4 @@
-import { calculateAverage } from './calculateAverage';
+import { calculateAverage } from '../centralTendency/calculateAverage';
 
 /**
  * Calculates the variance of an array of numbers.

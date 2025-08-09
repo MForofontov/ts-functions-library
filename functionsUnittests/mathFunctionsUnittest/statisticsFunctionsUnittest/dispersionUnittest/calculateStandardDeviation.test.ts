@@ -1,4 +1,4 @@
-import { calculateStandardDeviation } from '../../../mathFunctions/statisticsFunctions/calculateStandardDeviation';
+import { calculateStandardDeviation } from '../../../../mathFunctions/statisticsFunctions/dispersion/calculateStandardDeviation';
 
 describe('calculateStandardDeviation', () => {
   // Test case 1: Standard deviation of an array of positive numbers

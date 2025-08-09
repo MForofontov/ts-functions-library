@@ -1,8 +1,8 @@
-import { calculateAverage } from '../../../mathFunctions/statisticsFunctions/calculateAverage';
-import { sumArrayElements } from '../../../arrayFunctions/sumArrayElements';
+import { calculateAverage } from '../../../../mathFunctions/statisticsFunctions/centralTendency/calculateAverage';
+import { sumArrayElements } from '../../../../arrayFunctions/sumArrayElements';
 
 // Mock the sumArrayElements function
-jest.mock('../../../arrayFunctions/sumArrayElements');
+jest.mock('../../../../arrayFunctions/sumArrayElements');
 
 describe('calculateAverage', () => {
   // Test case 1: Average of all numbers in the array

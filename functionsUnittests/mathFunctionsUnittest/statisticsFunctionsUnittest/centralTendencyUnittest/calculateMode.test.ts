@@ -1,4 +1,4 @@
-import { calculateMode } from '../../../mathFunctions/statisticsFunctions/calculateMode';
+import { calculateMode } from '../../../../mathFunctions/statisticsFunctions/centralTendency/calculateMode';
 
 describe('calculateMode', () => {
   // Test case 1: Normal array of positive numbers
