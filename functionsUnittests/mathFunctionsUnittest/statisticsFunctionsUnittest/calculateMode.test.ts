@@ -1,4 +1,4 @@
-import { calculateMode } from '../../arrayFunctions/calculateMode';
+import { calculateMode } from '../../../mathFunctions/statisticsFunctions/calculateMode';
 
 describe('calculateMode', () => {
   // Test case 1: Normal array of positive numbers

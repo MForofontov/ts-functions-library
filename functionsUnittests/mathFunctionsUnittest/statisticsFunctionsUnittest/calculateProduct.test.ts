@@ -1,4 +1,4 @@
-import { calculateProduct } from '../../arrayFunctions/calculateProduct';
+import { calculateProduct } from '../../../mathFunctions/statisticsFunctions/calculateProduct';
 
 describe('calculateProduct', () => {
   // Test case 1: Product of all numbers in the array
