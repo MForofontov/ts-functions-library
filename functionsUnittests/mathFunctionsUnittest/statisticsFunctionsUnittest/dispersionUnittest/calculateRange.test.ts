@@ -1,4 +1,4 @@
-import { calculateRange } from '../../../mathFunctions/statisticsFunctions/calculateRange';
+import { calculateRange } from '../../../../mathFunctions/statisticsFunctions/dispersion/calculateRange';
 
 describe('calculateRange', () => {
   // Test case 1: Range of an array of positive numbers
