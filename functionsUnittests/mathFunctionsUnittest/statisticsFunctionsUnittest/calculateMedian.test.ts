@@ -1,4 +1,4 @@
-import { calculateMedian } from '../../arrayFunctions/calculateMedian';
+import { calculateMedian } from '../../../mathFunctions/statisticsFunctions/calculateMedian';
 
 describe('calculateMedian', () => {
   // Test case 1: Normal array of positive numbers
