@@ -1,4 +1,4 @@
-import { calculateVariance } from '../../arrayFunctions/calculateVariance';
+import { calculateVariance } from '../../../mathFunctions/statisticsFunctions/calculateVariance';
 
 describe('calculateVariance', () => {
   // Test case 1: Normal array of positive numbers

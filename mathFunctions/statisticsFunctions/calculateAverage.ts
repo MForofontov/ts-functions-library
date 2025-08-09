@@ -1,4 +1,4 @@
-import { sumArrayElements } from './sumArrayElements';
+import { sumArrayElements } from '../../arrayFunctions/sumArrayElements';
 
 /**
  * Calculates the arithmetic mean (average) of all numbers in an array.
