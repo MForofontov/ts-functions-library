@@ -1,14 +1,15 @@
 import { shuffleArray } from '../../arrayFunctions/shuffleArray';
 
+// Helper function to check if two arrays are equal
+const arraysEqual = <T>(a: T[], b: T[]): boolean => {
+  if (a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
+};
+
 describe('shuffleArray', () => {
-  // Helper function to check if two arrays are equal
-  const arraysEqual = <T>(a: T[], b: T[]): boolean => {
-    if (a.length !== b.length) return false;
-    for (let i = 0; i < a.length; i++) {
-      if (a[i] !== b[i]) return false;
-    }
-    return true;
-  };
 
   // Test case 1: Shuffling an array of numbers
   test('1. should shuffle an array of numbers', () => {
