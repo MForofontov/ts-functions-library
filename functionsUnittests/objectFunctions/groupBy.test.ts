@@ -2,7 +2,7 @@ import { groupBy } from '../../objectFunctions/groupBy';
 
 describe('groupBy', () => {
   // Test case 1: Group by a string key
-  it('Test case 1: should group by a string key', () => {
+  it('1. should group by a string key', () => {
     const array = [
       { category: 'fruit', name: 'apple' },
       { category: 'fruit', name: 'banana' },
@@ -20,7 +20,7 @@ describe('groupBy', () => {
   });
 
   // Test case 2: Group by a number key
-  it('Test case 2: should group by a number key', () => {
+  it('2. should group by a number key', () => {
     const array = [
       { id: 1, name: 'apple' },
       { id: 2, name: 'banana' },
@@ -38,7 +38,7 @@ describe('groupBy', () => {
   });
 
   // Test case 3: Group by a boolean key
-  it('Test case 3: should group by a boolean key', () => {
+  it('3. should group by a boolean key', () => {
     const array = [
       { isFruit: true, name: 'apple' },
       { isFruit: true, name: 'banana' },
@@ -56,7 +56,7 @@ describe('groupBy', () => {
   });
 
   // Test case 4: Group by a key with undefined values
-  it('Test case 4: should group by a key with undefined values', () => {
+  it('4. should group by a key with undefined values', () => {
     const array = [
       { category: 'fruit', name: 'apple' },
       { category: undefined, name: 'banana' },
@@ -72,7 +72,7 @@ describe('groupBy', () => {
   });
 
   // Test case 5: Group by a key with null values
-  it('Test case 5: should group by a key with null values', () => {
+  it('5. should group by a key with null values', () => {
     const array = [
       { category: 'fruit', name: 'apple' },
       { category: null, name: 'banana' },
@@ -88,7 +88,7 @@ describe('groupBy', () => {
   });
 
   // Test case 6: Handle empty array
-  it('Test case 6: should return an empty object for an empty array', () => {
+  it('6. should return an empty object for an empty array', () => {
     const array: Array<Record<string, unknown>> = [];
     const result = groupBy(array, 'category');
     const expected = {};
@@ -96,7 +96,7 @@ describe('groupBy', () => {
   });
 
   // Test case 7: Handle array with no matching key
-  it('Test case 7: should return an empty object if key does not exist', () => {
+  it('7. should return an empty object if key does not exist', () => {
     const array = [
       { category: 'fruit', name: 'apple' },
       { category: 'fruit', name: 'banana' },
@@ -108,7 +108,7 @@ describe('groupBy', () => {
   });
 
   // Test case 8: Handle array with mixed types
-  it('Test case 8: should group by a key with mixed types', () => {
+  it('8. should group by a key with mixed types', () => {
     const array = [
       { category: 'fruit', name: 'apple' },
       { category: 1, name: 'banana' },
@@ -124,14 +124,14 @@ describe('groupBy', () => {
   });
 
   // Test case 9: Handle non-array input (number)
-  it('Test case 9: should throw a TypeError if input is not an array', () => {
+  it('9. should throw a TypeError if input is not an array', () => {
     expect(() =>
       groupBy(42 as unknown as Array<Record<string, unknown>>, 'category'),
     ).toThrow(TypeError);
   });
 
   // Test case 10: Handle non-array input (string)
-  it('Test case 10: should throw a TypeError if input is a string', () => {
+  it('10. should throw a TypeError if input is a string', () => {
     expect(() =>
       groupBy(
         'string' as unknown as Array<Record<string, unknown>>,
@@ -141,21 +141,21 @@ describe('groupBy', () => {
   });
 
   // Test case 11: Handle non-array input (boolean)
-  it('Test case 11: should throw a TypeError if input is a boolean', () => {
+  it('11. should throw a TypeError if input is a boolean', () => {
     expect(() =>
       groupBy(true as unknown as Array<Record<string, unknown>>, 'category'),
     ).toThrow(TypeError);
   });
 
   // Test case 12: Handle null input
-  it('Test case 12: should throw a TypeError if input is null', () => {
+  it('12. should throw a TypeError if input is null', () => {
     expect(() =>
       groupBy(null as unknown as Array<Record<string, unknown>>, 'category'),
     ).toThrow(TypeError);
   });
 
   // Test case 13: Handle undefined input
-  it('Test case 13: should throw a TypeError if input is undefined', () => {
+  it('13. should throw a TypeError if input is undefined', () => {
     expect(() =>
       groupBy(
         undefined as unknown as Array<Record<string, unknown>>,
