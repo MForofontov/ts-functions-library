@@ -2,7 +2,7 @@ import { keyBy } from '../../objectFunctions/keyBy';
 
 describe('keyBy', () => {
   // Test case 1: Group by a string key
-  it('Test case 1: should group by a string key', () => {
+  it('1. should group by a string key', () => {
     const array = [
       { id: 'a', name: 'apple' },
       { id: 'b', name: 'banana' },
@@ -18,7 +18,7 @@ describe('keyBy', () => {
   });
 
   // Test case 2: Group by a number key
-  it('Test case 2: should group by a number key', () => {
+  it('2. should group by a number key', () => {
     const array = [
       { id: 1, name: 'apple' },
       { id: 2, name: 'banana' },
@@ -34,7 +34,7 @@ describe('keyBy', () => {
   });
 
   // Test case 3: Group by a boolean key
-  it('Test case 3: should group by a boolean key', () => {
+  it('3. should group by a boolean key', () => {
     const array = [
       { isFruit: true, name: 'apple' },
       { isFruit: true, name: 'banana' },
@@ -49,7 +49,7 @@ describe('keyBy', () => {
   });
 
   // Test case 4: Handle empty array
-  it('Test case 4: should return an empty object for an empty array', () => {
+  it('4. should return an empty object for an empty array', () => {
     const array: Array<Record<string, unknown>> = [];
     const result = keyBy(array, 'id');
     const expected = {};
@@ -57,7 +57,7 @@ describe('keyBy', () => {
   });
 
   // Test case 5: Handle array with no matching key
-  it('Test case 5: should return an empty object if key does not exist', () => {
+  it('5. should return an empty object if key does not exist', () => {
     const array = [
       { id: 'a', name: 'apple' },
       { id: 'b', name: 'banana' },
@@ -69,35 +69,35 @@ describe('keyBy', () => {
   });
 
   // Test case 6: Handle non-array input (number)
-  it('Test case 6: should throw a TypeError if input is a number', () => {
+  it('6. should throw a TypeError if input is a number', () => {
     expect(() =>
       keyBy(42 as unknown as Record<string, unknown>[], 'id'),
     ).toThrow(TypeError);
   });
 
   // Test case 7: Handle non-array input (string)
-  it('Test case 7: should throw a TypeError if input is a string', () => {
+  it('7. should throw a TypeError if input is a string', () => {
     expect(() =>
       keyBy('string' as unknown as Record<string, unknown>[], 'id'),
     ).toThrow(TypeError);
   });
 
   // Test case 8: Handle non-array input (boolean)
-  it('Test case 8: should throw a TypeError if input is a boolean', () => {
+  it('8. should throw a TypeError if input is a boolean', () => {
     expect(() =>
       keyBy(true as unknown as Record<string, unknown>[], 'id'),
     ).toThrow(TypeError);
   });
 
   // Test case 9: Handle null input
-  it('Test case 9: should throw a TypeError if input is null', () => {
+  it('9. should throw a TypeError if input is null', () => {
     expect(() =>
       keyBy(null as unknown as Record<string, unknown>[], 'id'),
     ).toThrow(TypeError);
   });
 
   // Test case 10: Handle undefined input
-  it('Test case 10: should throw a TypeError if input is undefined', () => {
+  it('10. should throw a TypeError if input is undefined', () => {
     expect(() =>
       keyBy(undefined as unknown as Record<string, unknown>[], 'id'),
     ).toThrow(TypeError);
