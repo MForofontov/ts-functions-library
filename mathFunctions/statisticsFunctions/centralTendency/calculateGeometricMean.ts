@@ -26,4 +26,3 @@ export function calculateGeometricMean(arr: number[]): number {
   const product: number = calculateProduct(arr);
   return Math.pow(product, 1 / arr.length);
 }
-

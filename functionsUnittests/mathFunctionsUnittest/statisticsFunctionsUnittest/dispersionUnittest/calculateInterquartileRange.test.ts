@@ -16,4 +16,3 @@ describe('calculateInterquartileRange', () => {
     expect(calculateInterquartileRange([])).toBeNaN();
   });
 });
-

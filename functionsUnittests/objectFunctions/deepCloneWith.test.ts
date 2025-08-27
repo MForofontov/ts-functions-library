@@ -3,7 +3,6 @@ import { deepCloneWith } from '../../objectFunctions/deepCloneWith';
 const cloneFn = (value: unknown) => value;
 
 describe('deepCloneWith', () => {
-
   // Test case 1: Deep clone a simple object
   it('1. should deep clone a simple object', () => {
     const obj = { a: 1, b: 2 };

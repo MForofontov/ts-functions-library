@@ -10,7 +10,6 @@ const arraysEqual = <T>(a: T[], b: T[]): boolean => {
 };
 
 describe('shuffleArray', () => {
-
   // Test case 1: Shuffling an array of numbers
   test('1. should shuffle an array of numbers', () => {
     const array: number[] = [1, 2, 3, 4, 5];

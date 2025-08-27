@@ -17,4 +17,3 @@ describe('calculateGeometricMean', () => {
     expect(calculateGeometricMean([])).toBeNaN();
   });
 });
-
