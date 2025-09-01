@@ -21,18 +21,28 @@ describe('encodeBase64', () => {
     expect(encodeBase64('こんにちは')).toBe('44GT44KT44Gr44Gh44Gv');
   });
 
-  // Test case 5: Replace "/" with "_" and remove padding
-  it('5. should replace "/" with "_" and remove padding', () => {
+  // Test case 5: Encode string with emoji characters
+  it('5. should encode string with emoji characters', () => {
+    expect(encodeBase64('😀')).toBe('8J-YgA');
+  });
+
+  // Test case 6: Encode a string with punctuation
+  it('6. should encode a string with punctuation', () => {
+    expect(encodeBase64('Hello, World!')).toBe('SGVsbG8sIFdvcmxkIQ');
+  });
+
+  // Test case 7: Replace "/" with "_" and remove padding
+  it('7. should replace "/" with "_" and remove padding', () => {
     expect(encodeBase64('aa?')).toBe('YWE_');
   });
 
-  // Test case 6: Replace "+" with "-" and remove padding
-  it('6. should replace "+" with "-" and remove padding', () => {
-    expect(encodeBase64(String.fromCharCode(0xf8))).toBe('-A');
+  // Test case 8: Replace "+" with "-" and remove padding
+  it('8. should replace "+" with "-" and remove padding', () => {
+    expect(encodeBase64(String.fromCharCode(0xF8))).toBe('-A');
   });
 
-  // Test case 7: Remove all trailing "=" characters
-  it('7. should remove all trailing "=" characters', () => {
+  // Test case 9: Remove all trailing "=" characters
+  it('9. should remove all trailing "=" characters', () => {
     expect(encodeBase64('a')).toBe('YQ');
   });
 });
