@@ -89,7 +89,7 @@ Contributions are welcome! Feel free to open issues or submit pull requests.
 
 ## Authors
 
-- [Mykyta Forofontov] (MForofontov)
+- [Mykyta Forofontov](https://github.com/MForofontov)
 
 ## License
 
