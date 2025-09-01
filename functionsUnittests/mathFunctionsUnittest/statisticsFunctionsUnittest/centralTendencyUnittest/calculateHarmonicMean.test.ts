@@ -16,4 +16,3 @@ describe('calculateHarmonicMean', () => {
     expect(calculateHarmonicMean([])).toBeNaN();
   });
 });
-

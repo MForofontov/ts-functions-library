@@ -25,4 +25,3 @@ export function calculateHarmonicMean(arr: number[]): number {
   const reciprocalSum: number = arr.reduce((sum, num) => sum + 1 / num, 0);
   return arr.length / reciprocalSum;
 }
-

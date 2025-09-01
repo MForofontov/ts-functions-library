@@ -56,7 +56,7 @@ describe('parseQueryString', () => {
   });
 
   // Test case 8: Handle keys with empty values
-  it("8. should parse keys with empty values", () => {
+  it('8. should parse keys with empty values', () => {
     const queryString = '?flag=';
     const result = parseQueryString(queryString);
     const expected = { flag: '' };

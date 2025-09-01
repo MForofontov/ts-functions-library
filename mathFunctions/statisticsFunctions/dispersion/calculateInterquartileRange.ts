@@ -27,9 +27,9 @@ export function calculateInterquartileRange(arr: number[]): number {
   const sorted = [...arr].sort((a, b) => a - b);
   const mid = Math.floor(sorted.length / 2);
   const lower = sorted.slice(0, mid);
-  const upper = sorted.length % 2 === 0 ? sorted.slice(mid) : sorted.slice(mid + 1);
+  const upper =
+    sorted.length % 2 === 0 ? sorted.slice(mid) : sorted.slice(mid + 1);
   const q1 = calculateMedian(lower);
   const q3 = calculateMedian(upper);
   return q3 - q1;
 }
-
