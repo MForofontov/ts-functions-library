@@ -87,6 +87,10 @@ Contributions are welcome! Feel free to open issues or submit pull requests.
 4. Push to your branch (`git push origin feature/my-feature`)
 5. Open a Pull Request
 
+## Authors
+
+- MForofontov
+
 ## License
 
 This project is licensed under the GNU General Public License v3.0. See the [LICENSE](LICENSE) file for details.
