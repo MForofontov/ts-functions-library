@@ -1,42 +1,167 @@
 name: test-and-report
 
-# Define the events that trigger the workflow
 on:
-  workflow_dispatch:  # Allow manual triggering of the workflow
+  workflow_dispatch:
     inputs:
-      node_version:
-        description: 'Node.js version to use'
-        required: true
-        default: '22.x'
+      node_versions:
+        description: 'JSON list of Node.js versions'
+        required: false
+        default: '["22.x"]'
+        type: string
+      test_script:
+        description: 'npm script to run tests'
+        required: false
+        default: 'test:github'
+        type: string
       upload_report:
-        description: 'Upload Allure HTML report'
-        required: true
-        default: 'true'
+        description: 'Upload Allure HTML report artifact'
+        required: false
+        default: true
+        type: boolean
+      deploy_pages:
+        description: 'Deploy Allure report to GitHub Pages (first matrix only)'
+        required: false
+        default: false
+        type: boolean
 
-# Define the jobs to run as part of the workflow
+permissions:
+  contents: read
+  pages: write          # needed only if deploy_pages=true
+  id-token: write       # needed only if deploy_pages=true
+
 jobs:
-  build:
-    # Specify the environment to run the job
+  test:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ${{ fromJSON(inputs.node_versions) }}
+
+    env:
+      ALLURE_RESULTS_DIR: allure-results
+      ALLURE_REPORT_DIR: allure-report
+      TEST_SCRIPT: ${{ inputs.test_script }}
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node ${{ matrix.node }}
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ inputs.node_version }}  # Use the Node.js version from the inputs
+          node-version: ${{ matrix.node }}
+          # auto cache: pnpm > yarn > npm
+          cache: ${{ hashFiles('pnpm-lock.yaml') != '' && 'pnpm' || (hashFiles('yarn.lock') != '' && 'yarn' || 'npm') }}
 
-      - name: Install dependencies
-        run: npm install
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup pnpm
+        if: ${{ hashFiles('pnpm-lock.yaml') != '' }}
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install dependencies (pnpm)
+        if: ${{ hashFiles('pnpm-lock.yaml') != '' }}
+        run: pnpm install --frozen-lockfile
+
+      - name: Install dependencies (yarn)
+        if: ${{ hashFiles('pnpm-lock.yaml') == '' && hashFiles('yarn.lock') != '' }}
+        run: yarn install --frozen-lockfile
+
+      - name: Install dependencies (npm)
+        if: ${{ hashFiles('pnpm-lock.yaml') == '' && hashFiles('yarn.lock') == '' }}
+        run: npm ci
+
+      # Allure CLI needs Java; Temurin 17 is the safe default
+      - name: Setup Java for Allure
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      # Use the npm wrapper for Allure CLI (downloads the binary)
+      - name: Install Allure CLI
+        run: |
+          if [ -f pnpm-lock.yaml ]; then pnpm add -D allure-commandline@latest; \
+          elif [ -f yarn.lock ]; then yarn add -D allure-commandline@latest; \
+          else npm i -D allure-commandline@latest; fi
+          npx allure --version
 
       - name: Run tests
-        run: npm run test:github
+        shell: bash
+        run: |
+          mkdir -p "$ALLURE_RESULTS_DIR" "$ALLURE_REPORT_DIR"
+          if [ -f pnpm-lock.yaml ]; then PM="pnpm"; elif [ -f yarn.lock ]; then PM="yarn"; else PM="npm"; fi
+          # run your chosen test script
+          $PM run "$TEST_SCRIPT"
 
-      - name: Upload Allure report
-        if: ${{ github.event.inputs.upload_report == 'true' }}
+      - name: Generate Allure report
+        if: always()
+        shell: bash
+        run: |
+          # Generate even if tests fail so you can inspect failures
+          npx allure generate "$ALLURE_RESULTS_DIR" --clean -o "$ALLURE_REPORT_DIR" || true
+
+      - name: Upload Allure results (raw)
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: allure-report
-          path: allure-report
+          name: allure-results-${{ matrix.node }}
+          path: ${{ env.ALLURE_RESULTS_DIR }}
+          retention-days: 30
+
+      - name: Upload Allure report (HTML)
+        if: ${{ always() && inputs.upload_report }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report-${{ matrix.node }}
+          path: ${{ env.ALLURE_REPORT_DIR }}
+          retention-days: 30
+
+      - name: Summary
+        if: always()
+        shell: bash
+        run: |
+          echo "## Test & Allure Summary (Node ${{ matrix.node }})" >> $GITHUB_STEP_SUMMARY
+          if [ -f "${{ env.ALLURE_REPORT_DIR }}/widgets/summary.json" ]; then
+            sudo apt-get update -y >/dev/null 2>&1 || true
+            sudo apt-get install -y jq >/dev/null 2>&1 || true
+            P=$(jq '.statistic.passed' ${{ env.ALLURE_REPORT_DIR }}/widgets/summary.json 2>/dev/null || echo 0)
+            F=$(jq '.statistic.failed' ${{ env.ALLURE_REPORT_DIR }}/widgets/summary.json 2>/dev/null || echo 0)
+            B=$(jq '.statistic.broken' ${{ env.ALLURE_REPORT_DIR }}/widgets/summary.json 2>/dev/null || echo 0)
+            S=$(jq '.statistic.skipped' ${{ env.ALLURE_REPORT_DIR }}/widgets/summary.json 2>/dev/null || echo 0)
+            T=$(jq '.statistic.total'  ${{ env.ALLURE_REPORT_DIR }}/widgets/summary.json 2>/dev/null || echo 0)
+            echo "- Total: **$T**  |  Passed: **$P**  |  Failed: **$F**  |  Broken: **$B**  |  Skipped: **$S**" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- Allure summary not found (no results?)" >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "- Artifacts: \`allure-results-${{ matrix.node }}\`${{ inputs.upload_report && ', `allure-report-' }}${{ inputs.upload_report && matrix.node || '' }}" >> $GITHUB_STEP_SUMMARY
+
+  deploy-report:
+    if: ${{ inputs.deploy_pages }}
+    needs: [test]
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # publish the report from the first matrix entry
+      - name: Download Allure report from first matrix entry
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-report-${{ fromJSON(inputs.node_versions)[0] }}
+          path: ./site
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
