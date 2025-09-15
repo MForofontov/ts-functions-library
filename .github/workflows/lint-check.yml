@@ -205,7 +205,7 @@ jobs:
           echo "Artifacts: lint-reports-node-${{ matrix.node }}" >> $GITHUB_STEP_SUMMARY
 
           FAIL=0
-          [ "${{ steps.eslint.outputs.exit_code }}" != "0" ] && FAIL=1
+          if [ "${{ steps.eslint.outputs.exit_code }}" != "0" ]; then FAIL=1; fi
           if [ "${{ inputs.run_prettier }}" = "true" ] && [ "${{ steps.prettier.outputs.exit_code }}" != "0" ]; then FAIL=1; fi
           if [ "${{ inputs.run_typecheck }}" = "true" ] && [ "${{ steps.typecheck.outputs.exit_code }}" != "0" ]; then FAIL=1; fi
 
