@@ -3,26 +3,212 @@ name: lint-check
 on:
   workflow_dispatch:
     inputs:
-      node_version:
-        description: 'Node.js version to use'
-        required: true
-        default: '22.x'
+      node_versions:
+        description: 'JSON list of Node.js versions'
+        required: false
+        default: '["22.x"]'
+        type: string
+      lint_changed_only:
+        description: "Only lint changed files on the branch/PR"
+        required: false
+        default: false
+        type: boolean
+      run_prettier:
+        description: "Also run Prettier (format check)"
+        required: false
+        default: false
+        type: boolean
+      run_typecheck:
+        description: "Also run TS typecheck (npm run typecheck)"
+        required: false
+        default: false
+        type: boolean
+      fail_on_any_issue:
+        description: "Fail the job if any issues found"
+        required: false
+        default: true
+        type: boolean
+
+permissions:
+  contents: read
 
 jobs:
   lint:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ${{ fromJSON(inputs.node_versions) }}
+
+    env:
+      FORCE_COLOR: "1"
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ inputs.node_version }}
+          node-version: ${{ matrix.node }}
+          cache: ${{ hashFiles('pnpm-lock.yaml') != '' && 'pnpm' || (hashFiles('yarn.lock') != '' && 'yarn' || 'npm') }}
 
-      - name: Install dependencies
-        run: npm install
+      # --- Pick package manager (pnpm > yarn > npm) ---
+      - name: Enable Corepack (Yarn/PNPM)
+        run: corepack enable
 
-      - name: Run ESLint
-        run: npm run lint
+      - name: Setup pnpm (if pnpm-lock.yaml present)
+        if: ${{ hashFiles('pnpm-lock.yaml') != '' }}
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install dependencies (pnpm)
+        if: ${{ hashFiles('pnpm-lock.yaml') != '' }}
+        run: pnpm install --frozen-lockfile
+
+      - name: Install dependencies (yarn)
+        if: ${{ hashFiles('pnpm-lock.yaml') == '' && hashFiles('yarn.lock') != '' }}
+        run: yarn install --frozen-lockfile
+
+      - name: Install dependencies (npm)
+        if: ${{ hashFiles('pnpm-lock.yaml') == '' && hashFiles('yarn.lock') == '' }}
+        run: npm ci
+
+      # Ensure ESLint is available
+      - name: Ensure ESLint
+        shell: bash
+        run: |
+          if [ -f pnpm-lock.yaml ]; then
+            pnpm ls eslint >/dev/null 2>&1 || pnpm add -D eslint
+          elif [ -f yarn.lock ]; then
+            yarn list --pattern eslint >/dev/null 2>&1 || yarn add -D eslint
+          else
+            npm ls eslint >/dev/null 2>&1 || npm i -D eslint
+          fi
+
+      # --- Collect changed files if requested ---
+      - name: Get changed files
+        if: ${{ inputs.lint_changed_only }}
+        id: changes
+        uses: tj-actions/changed-files@v45
+        with:
+          files: |
+            **/*.js
+            **/*.jsx
+            **/*.ts
+            **/*.tsx
+
+      # --- ESLint (console output) ---
+      - name: ESLint
+        id: eslint
+        shell: bash
+        run: |
+          set +e
+          if [ -f pnpm-lock.yaml ]; then RUN="pnpm"; elif [ -f yarn.lock ]; then RUN="yarn"; else RUN="npm run"; fi
+
+          # Build file list
+          if [ "${{ inputs.lint_changed_only }}" = "true" ]; then
+            FILES="${{ steps.changes.outputs.all_changed_files }}"
+            if [ -z "$FILES" ]; then
+              echo "No changed JS/TS files to lint."; echo "exit_code=0" >> $GITHUB_OUTPUT; exit 0
+            fi
+          else
+            FILES=""
+          fi
+
+          # Prefer repo script if present
+          if [ -f package.json ] && jq -e '.scripts.lint' package.json >/dev/null 2>&1; then
+            if [ -n "$FILES" ]; then
+              $RUN lint -- $FILES | tee eslint.txt
+            else
+              $RUN lint | tee eslint.txt
+            fi
+            CODE=${PIPESTATUS[0]}
+          else
+            CMD="npx eslint ."
+            [ -n "$FILES" ] && CMD="npx eslint $FILES"
+            echo "+ $CMD"
+            $CMD | tee eslint.txt
+            CODE=${PIPESTATUS[0]}
+          fi
+
+          echo "exit_code=$CODE" >> $GITHUB_OUTPUT
+          set -e
+        continue-on-error: true
+
+      # --- Prettier (optional) ---
+      - name: Prettier (check)
+        if: ${{ inputs.run_prettier }}
+        id: prettier
+        shell: bash
+        run: |
+          set +e
+          if [ -f pnpm-lock.yaml ]; then PM="pnpm"; elif [ -f yarn.lock ]; then PM="yarn"; else PM="npm"; fi
+          if jq -e '.scripts | has("prettier") or has("format")' package.json >/dev/null 2>&1; then
+            if jq -e '.scripts.format' package.json >/dev/null 2>&1; then
+              CMD="$PM run format -- -c ."
+            else
+              CMD="$PM run prettier -- -c ."
+            fi
+          else
+            if [ "$PM" = "pnpm" ]; then pnpm add -D prettier >/dev/null 2>&1; elif [ "$PM" = "yarn" ]; then yarn add -D prettier >/dev/null 2>&1; else npm i -D prettier >/dev/null 2>&1; fi
+            CMD="npx prettier -c ."
+          fi
+          echo "+ $CMD"
+          bash -lc "$CMD" | tee prettier.txt
+          echo "exit_code=${PIPESTATUS[0]}" >> $GITHUB_OUTPUT
+          set -e
+        continue-on-error: true
+
+      # --- Type checking (optional) ---
+      - name: Typecheck (npm run typecheck)
+        if: ${{ inputs.run_typecheck }}
+        id: typecheck
+        shell: bash
+        run: |
+          set +e
+          if jq -e '.scripts.typecheck' package.json >/dev/null 2>&1; then
+            if [ -f pnpm-lock.yaml ]; then pnpm run typecheck | tee typecheck.txt; CODE=${PIPESTATUS[0]}; \
+            elif [ -f yarn.lock ]; then yarn typecheck | tee typecheck.txt; CODE=${PIPESTATUS[0]}; \
+            else npm run typecheck | tee typecheck.txt; CODE=${PIPESTATUS[0]}; fi
+          else
+            echo "No typecheck script defined. Skipping."; echo "exit_code=0" >> $GITHUB_OUTPUT; exit 0
+          fi
+          echo "exit_code=$CODE" >> $GITHUB_OUTPUT
+          set -e
+        continue-on-error: true
+
+      # --- Upload logs ---
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-reports-node-${{ matrix.node }}
+          path: |
+            eslint.txt
+            prettier.txt
+            typecheck.txt
+          if-no-files-found: ignore
+          retention-days: 14
+
+      # --- Summarize & final status ---
+      - name: Summary & status
+        if: always()
+        shell: bash
+        run: |
+          echo "## JS/TS Lint Summary (Node ${{ matrix.node }})" >> $GITHUB_STEP_SUMMARY
+          echo "- ESLint exit:            ${{ steps.eslint.outputs.exit_code }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Prettier exit:          ${{ steps.prettier.outputs.exit_code || 'skipped' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Typecheck exit:         ${{ steps.typecheck.outputs.exit_code || 'skipped' }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Artifacts: lint-reports-node-${{ matrix.node }}" >> $GITHUB_STEP_SUMMARY
+
+          FAIL=0
+          [ "${{ steps.eslint.outputs.exit_code }}" != "0" ] && FAIL=1
+          if [ "${{ inputs.run_prettier }}" = "true" ] && [ "${{ steps.prettier.outputs.exit_code }}" != "0" ]; then FAIL=1; fi
+          if [ "${{ inputs.run_typecheck }}" = "true" ] && [ "${{ steps.typecheck.outputs.exit_code }}" != "0" ]; then FAIL=1; fi
+
+          if [ "${{ inputs.fail_on_any_issue }}" = "true" ] && [ "$FAIL" -ne 0 ]; then
+            exit 1
+          fi
