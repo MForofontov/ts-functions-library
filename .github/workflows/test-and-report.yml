@@ -137,7 +137,7 @@ jobs:
           else
             echo "- Allure summary not found (no results?)" >> $GITHUB_STEP_SUMMARY
           fi
-          echo "- Artifacts: \`allure-results-${{ matrix.node }}\`${{ inputs.upload_report && ', `allure-report-' }}${{ inputs.upload_report && matrix.node || '' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Artifacts: \`allure-results-${{ matrix.node }}\`${{ inputs.upload_report && ', \`allure-report-' }}${{ inputs.upload_report && matrix.node || '' }}${{ inputs.upload_report && '\`' || '' }}" >> $GITHUB_STEP_SUMMARY
 
   deploy-report:
     if: ${{ inputs.deploy_pages }}
