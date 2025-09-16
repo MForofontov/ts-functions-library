@@ -1,5 +1,5 @@
-import { calculateAverage } from '../../../../mathFunctions/statisticsFunctions/centralTendency/calculateAverage';
 import { sumArrayElements } from '../../../../arrayFunctions/sumArrayElements';
+import { calculateAverage } from '../../../../mathFunctions/statisticsFunctions/centralTendency/calculateAverage';
 
 // Mock the sumArrayElements function
 jest.mock('../../../../arrayFunctions/sumArrayElements');

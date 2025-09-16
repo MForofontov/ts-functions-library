@@ -1,6 +1,7 @@
 const tseslint = require('@typescript-eslint/eslint-plugin');
 const tsParser = require('@typescript-eslint/parser');
 const prettier = require('eslint-plugin-prettier');
+const importPlugin = require('eslint-plugin-import');
 
 module.exports = [
   {
@@ -17,6 +18,7 @@ module.exports = [
     plugins: {
       '@typescript-eslint': tseslint,
       'prettier': prettier,
+      'import': importPlugin,
     },
     rules: {
       // Let Prettier handle all formatting
@@ -75,6 +77,12 @@ module.exports = [
 
       // Warn if type-only imports are not consistently using 'import type'
       '@typescript-eslint/consistent-type-imports': 'warn',
+
+      // Enforce import order
+      'import/order': ['warn', {
+        groups: [['builtin', 'external'], 'internal', ['parent', 'sibling', 'index']],
+        alphabetize: { order: 'asc', caseInsensitive: true }
+      }],
     },
   },
   {
@@ -91,6 +99,7 @@ module.exports = [
     plugins: {
       '@typescript-eslint': tseslint,
       'prettier': prettier,
+      'import': importPlugin,
     },
     rules: {
       'prettier/prettier': ['error', {
@@ -114,6 +123,12 @@ module.exports = [
       '@typescript-eslint/consistent-type-definitions': ['warn', 'interface'],
       '@typescript-eslint/no-var-requires': 'error',
       '@typescript-eslint/consistent-type-imports': 'warn',
+
+      // Enforce import order
+      'import/order': ['warn', {
+        groups: [['builtin', 'external'], 'internal', ['parent', 'sibling', 'index']],
+        alphabetize: { order: 'asc', caseInsensitive: true }
+      }],
     },
   },
   {
