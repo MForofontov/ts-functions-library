@@ -13,11 +13,11 @@ on:
         required: false
         default: 'test:github'
         type: string
-      upload_report:
-        description: 'Upload Allure HTML report artifact'
+      allure_version:
+        description: 'Allure CLI version'
         required: false
-        default: true
-        type: boolean
+        default: '2.34.0'
+        type: string
       deploy_pages:
         description: 'Deploy Allure report to GitHub Pages (first matrix only)'
         required: false
@@ -81,28 +81,41 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      # Use the npm wrapper for Allure CLI (downloads the binary)
-      - name: Install Allure CLI
+      # Install specific Allure CLI version from GitHub releases
+      - name: Install Allure CLI ${{ inputs.allure_version }}
         run: |
-          if [ -f pnpm-lock.yaml ]; then pnpm add -D allure-commandline@latest; \
-          elif [ -f yarn.lock ]; then yarn add -D allure-commandline@latest; \
-          else npm i -D allure-commandline@latest; fi
-          npx allure --version
+          set -eux
+          curl -L -o allure.tgz "https://github.com/allure-framework/allure2/releases/download/${{ inputs.allure_version }}/allure-${{ inputs.allure_version }}.tgz"
+          sudo tar -C /opt -xzf allure.tgz
+          sudo mv "/opt/allure-${{ inputs.allure_version }}" /opt/allure
+          sudo ln -sf /opt/allure/bin/allure /usr/local/bin/allure
+          allure --version
 
-      - name: Run tests
+      - name: Run tests (prefers your test script)
         shell: bash
+        continue-on-error: true
         run: |
+          set -eux
           mkdir -p "$ALLURE_RESULTS_DIR" "$ALLURE_REPORT_DIR"
+          
+          # Determine package manager
           if [ -f pnpm-lock.yaml ]; then PM="pnpm"; elif [ -f yarn.lock ]; then PM="yarn"; else PM="npm"; fi
-          # run your chosen test script
-          $PM run "$TEST_SCRIPT"
+          
+          # If repo provides run-tests.sh, use it for consistency with your local runs
+          if [ -x ./run-tests.sh ]; then
+            ./run-tests.sh
+          else
+            # Fallback: direct npm script invocation
+            $PM run "$TEST_SCRIPT"
+          fi
 
       - name: Generate Allure report
         if: always()
         shell: bash
         run: |
+          set -eux
           # Generate even if tests fail so you can inspect failures
-          npx allure generate "$ALLURE_RESULTS_DIR" --clean -o "$ALLURE_REPORT_DIR" || true
+          allure generate "$ALLURE_RESULTS_DIR" --clean -o "$ALLURE_REPORT_DIR" || true
 
       - name: Upload Allure results (raw)
         if: always()
@@ -113,18 +126,22 @@ jobs:
           retention-days: 30
 
       - name: Upload Allure report (HTML)
-        if: ${{ always() && inputs.upload_report }}
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: allure-report-${{ matrix.node }}
           path: ${{ env.ALLURE_REPORT_DIR }}
           retention-days: 30
 
-      - name: Summary
+      - name: Job Summary
         if: always()
         shell: bash
         run: |
           echo "## Test & Allure Summary (Node ${{ matrix.node }})" >> $GITHUB_STEP_SUMMARY
+          echo "- Node.js: \`${{ matrix.node }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Test script: \`${{ inputs.test_script }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Allure version: \`${{ inputs.allure_version }}\`" >> $GITHUB_STEP_SUMMARY
+          
           if [ -f "${{ env.ALLURE_REPORT_DIR }}/widgets/summary.json" ]; then
             sudo apt-get update -y >/dev/null 2>&1 || true
             sudo apt-get install -y jq >/dev/null 2>&1 || true
@@ -137,9 +154,9 @@ jobs:
           else
             echo "- Allure summary not found (no results?)" >> $GITHUB_STEP_SUMMARY
           fi
-          echo "- Artifacts: \`allure-results-${{ matrix.node }}\`${{ inputs.upload_report && ', \`allure-report-' }}${{ inputs.upload_report && matrix.node || '' }}${{ inputs.upload_report && '\`' || '' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Artifacts: \`allure-results-${{ matrix.node }}\`, \`allure-report-${{ matrix.node }}\`" >> $GITHUB_STEP_SUMMARY
 
-  deploy-report:
+  deploy-allure:
     if: ${{ inputs.deploy_pages }}
     needs: [test]
     runs-on: ubuntu-latest
