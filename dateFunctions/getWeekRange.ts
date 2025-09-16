@@ -1,5 +1,5 @@
-import { getStartOfWeek } from './getStartOfWeek';
 import { getEndOfWeek } from './getEndOfWeek';
+import { getStartOfWeek } from './getStartOfWeek';
 
 /**
  * Gets the first and last day of the week for a given Date object.

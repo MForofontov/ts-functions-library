@@ -38,7 +38,7 @@ describe('encodeBase64', () => {
 
   // Test case 8: Replace "+" with "-" and remove padding
   it('8. should replace "+" with "-" and remove padding', () => {
-    expect(encodeBase64(String.fromCharCode(0xF8))).toBe('-A');
+    expect(encodeBase64(String.fromCharCode(0xf8))).toBe('-A');
   });
 
   // Test case 9: Remove all trailing "=" characters
