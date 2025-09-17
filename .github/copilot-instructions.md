@@ -48,7 +48,6 @@ ts-functions-library/
 │   └── ...
 ├── stringFunctions/                # String processing utilities
 │   ├── slugify.ts
-│   ├── isValidEmail.ts
 │   ├── capitalizeFirstLetter.ts
 │   └── ...
 ├── utilityFunctions/               # General-purpose utilities
@@ -56,12 +55,32 @@ ts-functions-library/
 │   ├── throttle.ts
 │   ├── hexToRgb.ts
 │   └── ...
+├── validationFunctions/            # Specialized validation utilities
+│   ├── isValidIPv4.ts             # NOT covered by popular libraries
+│   ├── isValidIPv6.ts             # NOT covered by popular libraries
+│   ├── isValidMACAddress.ts       # NOT covered by popular libraries
+│   ├── isValidUUID.ts             # NOT covered by popular libraries
+│   ├── isValidISODate.ts          # Custom ISO date validation
+│   ├── isValidJSON.ts             # JSON string validation
+│   ├── isValidTime.ts             # Time format validation
+│   ├── isValidPattern.ts          # Custom regex pattern matching
+│   └── isInRange.ts               # Numeric range validation
 ├── functionsUnittests/             # Comprehensive test suites
 │   └── [module]Unittests/          # Tests mirroring src structure
 └── index.ts                       # Main export file
 ```
 
 ## Development Guidelines
+
+### Core Principles
+
+- **Single Responsibility**: Each function should have one clear purpose
+- **Type Safety**: Complete type annotations for all functions and parameters
+- **Pure Functions**: Prefer pure functions when possible (no side effects)
+- **Comprehensive Testing**: Every function must have unit tests with >95% coverage
+- **Documentation**: JSDoc comments with examples and complexity notes
+- **Error Handling**: Explicit validation with descriptive error messages
+- **No Library Duplication**: Avoid implementing functions that exist in well-established libraries
 
 ### Function Development Standards
 
