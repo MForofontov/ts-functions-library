@@ -60,10 +60,12 @@ describe('asyncRetry', () => {
 
     // Act & Assert
     invalidInputs.forEach((input) => {
-      expect(() => asyncRetry(input as any)).toThrow(TypeError);
-      expect(() => asyncRetry(input as any)).toThrow(
-        'fn must be a function, got',
-      );
+      expect(() =>
+        asyncRetry(input as unknown as () => Promise<unknown>),
+      ).toThrow(TypeError);
+      expect(() =>
+        asyncRetry(input as unknown as () => Promise<unknown>),
+      ).toThrow('fn must be a function, got');
     });
   });
 
@@ -85,12 +87,19 @@ describe('asyncRetry', () => {
       'delay must be a non-negative number',
     );
 
-    expect(() => asyncRetry(mockFn, { backoff: 'invalid' as any })).toThrow(
-      "backoff must be 'fixed', 'linear', or 'exponential'",
-    );
+    expect(() =>
+      asyncRetry(mockFn, {
+        backoff: 'invalid' as 'fixed' | 'linear' | 'exponential',
+      }),
+    ).toThrow("backoff must be 'fixed', 'linear', or 'exponential'");
 
     expect(() =>
-      asyncRetry(mockFn, { onRetry: 'not a function' as any }),
+      asyncRetry(mockFn, {
+        onRetry: 'not a function' as unknown as (
+          attempt: number,
+          error: Error,
+        ) => void,
+      }),
     ).toThrow('onRetry must be a function');
   });
 
@@ -102,7 +111,7 @@ describe('asyncRetry', () => {
     global.setTimeout = jest.fn((callback: () => void, delay: number) => {
       delays.push(delay);
       return originalSetTimeout(callback, 0); // Execute immediately for testing
-    }) as any;
+    }) as unknown as typeof global.setTimeout;
 
     const mockFn = jest
       .fn()
@@ -117,7 +126,7 @@ describe('asyncRetry', () => {
         delay: 100,
         backoff: 'exponential',
       });
-    } catch (error) {
+    } catch {
       // Expected to fail
     }
 
@@ -139,7 +148,7 @@ describe('asyncRetry', () => {
         delay: 100,
         backoff: 'linear',
       });
-    } catch (error) {
+    } catch {
       // Expected to fail
     }
 

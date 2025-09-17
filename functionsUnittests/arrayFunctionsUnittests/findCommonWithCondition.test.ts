@@ -53,7 +53,7 @@ describe('findCommonWithCondition', () => {
   it('8. should handle arrays containing different data types', () => {
     const arr1: (number | string | boolean)[] = [1, 'two', 3.0, true];
     const arr2: (number | string | boolean)[] = ['two', 3.0, false];
-    const condition = (x: any) => typeof x === 'number';
+    const condition = (x: unknown) => typeof x === 'number';
     expect(findCommonWithCondition(arr1, arr2, condition)).toEqual([3.0]);
   });
 
@@ -80,14 +80,14 @@ describe('findCommonWithCondition', () => {
   it('11. should handle arrays containing null and undefined', () => {
     const arr1: (number | null | undefined)[] = [null, 1, 2];
     const arr2: (number | null | undefined)[] = [null, 2, 3];
-    const condition = (x: any) => x !== null;
+    const condition = (x: unknown) => x !== null;
     expect(findCommonWithCondition(arr1, arr2, condition)).toEqual([2]);
   });
 
   it('12. should handle arrays containing NaN', () => {
     const arr1: number[] = [NaN, 1, 2];
     const arr2: number[] = [NaN, 2, 3];
-    const condition = (x: any) => !isNaN(x);
+    const condition = (x: unknown) => typeof x === 'number' && !isNaN(x);
     expect(findCommonWithCondition(arr1, arr2, condition)).toEqual([2]);
   });
 
@@ -96,16 +96,18 @@ describe('findCommonWithCondition', () => {
     const obj2 = { b: 2 };
     const arr1: object[] = [obj1, obj2];
     const arr2: object[] = [obj2, { c: 3 }];
-    const condition = (x: any) => 'b' in x;
+    const condition = (x: unknown) =>
+      typeof x === 'object' && x !== null && 'b' in x;
     expect(findCommonWithCondition(arr1, arr2, condition)).toEqual([obj2]);
   });
 
   it('14. should handle arrays containing functions', () => {
     const func1 = (x: number) => x + 1;
     const func2 = (x: number) => x * 2;
-    const arr1: Function[] = [func1, func2];
-    const arr2: Function[] = [func2, (x: number) => x - 1];
-    const condition = (x: Function) => x(2) === 4;
+    const arr1: Array<(x: number) => number> = [func1, func2];
+    const arr2: Array<(x: number) => number> = [func2, (x: number) => x - 1];
+    const condition = (x: unknown) =>
+      typeof x === 'function' && (x as (n: number) => number)(2) === 4;
     expect(findCommonWithCondition(arr1, arr2, condition)).toEqual([func2]);
   });
 

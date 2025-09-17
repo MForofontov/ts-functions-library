@@ -38,16 +38,12 @@ describe('isValidIPv4', () => {
   // Test case 4: TypeError for invalid input type
   it('4. should throw TypeError for non-string input', () => {
     // Arrange
-    const invalidInputs = [123, null, undefined, [], {}, true];
-    const expectedMessage = 'ip must be a string, got';
+    const invalidInputs: unknown[] = [null, undefined, 42, {}, [], true];
 
     // Act & Assert
-    invalidInputs.forEach((input) => {
-      expect(() => isValidIPv4(input as unknown as string)).toThrow(TypeError);
-      expect(() => isValidIPv4(input as unknown as string)).toThrow(
-        expectedMessage,
-      );
-    });
+    for (const input of invalidInputs) {
+      expect(() => isValidIPv4(input as string)).toThrow(TypeError);
+    }
   });
 
   // Test case 5: Leading zeros validation

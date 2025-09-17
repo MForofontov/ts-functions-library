@@ -41,16 +41,14 @@ describe('isValidUUID', () => {
   // Test case 4: TypeError for invalid input types
   it('4. should throw TypeError for invalid input types', () => {
     // Arrange
-    const invalidInputs = [123, null, undefined, [], {}, true];
+    const invalidInputs: unknown[] = [null, undefined, 42, {}, [], true];
     const expectedMessage = 'uuid must be a string, got';
 
     // Act & Assert
-    invalidInputs.forEach((input) => {
-      expect(() => isValidUUID(input as unknown as string)).toThrow(TypeError);
-      expect(() => isValidUUID(input as unknown as string)).toThrow(
-        expectedMessage,
-      );
-    });
+    for (const input of invalidInputs) {
+      expect(() => isValidUUID(input as string)).toThrow(TypeError);
+      expect(() => isValidUUID(input as string)).toThrow(expectedMessage);
+    }
 
     // Test invalid version types
     expect(() =>

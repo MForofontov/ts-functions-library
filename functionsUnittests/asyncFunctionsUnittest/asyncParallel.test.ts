@@ -89,10 +89,12 @@ describe('asyncParallel', () => {
 
     // Act & Assert
     invalidInputs.forEach((input) => {
-      expect(() => asyncParallel(input as any)).toThrow(TypeError);
-      expect(() => asyncParallel(input as any)).toThrow(
-        'tasks must be an array, got',
-      );
+      expect(() =>
+        asyncParallel(input as unknown as (() => Promise<unknown>)[]),
+      ).toThrow(TypeError);
+      expect(() =>
+        asyncParallel(input as unknown as (() => Promise<unknown>)[]),
+      ).toThrow('tasks must be an array, got');
     });
   });
 
@@ -104,12 +106,12 @@ describe('asyncParallel', () => {
 
     // Act & Assert
     invalidConcurrency.forEach((concurrency) => {
-      expect(() => asyncParallel(validTasks, concurrency as any)).toThrow(
-        TypeError,
-      );
-      expect(() => asyncParallel(validTasks, concurrency as any)).toThrow(
-        'concurrency must be a number, got',
-      );
+      expect(() =>
+        asyncParallel(validTasks, concurrency as unknown as number),
+      ).toThrow(TypeError);
+      expect(() =>
+        asyncParallel(validTasks, concurrency as unknown as number),
+      ).toThrow('concurrency must be a number, got');
     });
   });
 
@@ -136,11 +138,13 @@ describe('asyncParallel', () => {
     const invalidTasks = [123, null, undefined, {}, true, 'string'];
 
     // Act & Assert
-    invalidTasks.forEach((task, index) => {
-      expect(() => asyncParallel([task as any])).toThrow(Error);
-      expect(() => asyncParallel([task as any])).toThrow(
-        'Task at index 0 must be a function, got',
-      );
+    invalidTasks.forEach((task, _index) => {
+      expect(() =>
+        asyncParallel([task as unknown as () => Promise<unknown>]),
+      ).toThrow(Error);
+      expect(() =>
+        asyncParallel([task as unknown as () => Promise<unknown>]),
+      ).toThrow('Task at index 0 must be a function, got');
     });
   });
 

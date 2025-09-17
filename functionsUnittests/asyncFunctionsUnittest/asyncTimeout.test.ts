@@ -61,10 +61,12 @@ describe('asyncTimeout', () => {
 
     // Act & Assert
     invalidPromises.forEach((promise) => {
-      expect(() => asyncTimeout(promise as any, 100)).toThrow(TypeError);
-      expect(() => asyncTimeout(promise as any, 100)).toThrow(
-        'promise must be a Promise, got',
-      );
+      expect(() =>
+        asyncTimeout(promise as unknown as Promise<unknown>, 100),
+      ).toThrow(TypeError);
+      expect(() =>
+        asyncTimeout(promise as unknown as Promise<unknown>, 100),
+      ).toThrow('promise must be a Promise, got');
     });
   });
 
@@ -76,12 +78,12 @@ describe('asyncTimeout', () => {
 
     // Act & Assert
     invalidTimeouts.forEach((timeout) => {
-      expect(() => asyncTimeout(validPromise, timeout as any)).toThrow(
-        TypeError,
-      );
-      expect(() => asyncTimeout(validPromise, timeout as any)).toThrow(
-        'timeoutMs must be a number, got',
-      );
+      expect(() =>
+        asyncTimeout(validPromise, timeout as unknown as number),
+      ).toThrow(TypeError);
+      expect(() =>
+        asyncTimeout(validPromise, timeout as unknown as number),
+      ).toThrow('timeoutMs must be a number, got');
     });
   });
 
@@ -105,12 +107,12 @@ describe('asyncTimeout', () => {
 
     // Act & Assert
     invalidMessages.forEach((message) => {
-      expect(() => asyncTimeout(validPromise, 100, message as any)).toThrow(
-        Error,
-      );
-      expect(() => asyncTimeout(validPromise, 100, message as any)).toThrow(
-        'timeoutMessage must be a string, got',
-      );
+      expect(() =>
+        asyncTimeout(validPromise, 100, message as unknown as string),
+      ).toThrow(Error);
+      expect(() =>
+        asyncTimeout(validPromise, 100, message as unknown as string),
+      ).toThrow('timeoutMessage must be a string, got');
     });
   });
 

@@ -80,8 +80,10 @@ describe('asyncMap', () => {
 
     // Act & Assert
     invalidInputs.forEach((input) => {
-      expect(() => asyncMap(input as any, mockFn)).toThrow(TypeError);
-      expect(() => asyncMap(input as any, mockFn)).toThrow(
+      expect(() => asyncMap(input as unknown as unknown[], mockFn)).toThrow(
+        TypeError,
+      );
+      expect(() => asyncMap(input as unknown as unknown[], mockFn)).toThrow(
         'array must be an array, got',
       );
     });
@@ -95,10 +97,18 @@ describe('asyncMap', () => {
 
     // Act & Assert
     invalidFunctions.forEach((fn) => {
-      expect(() => asyncMap(validArray, fn as any)).toThrow(TypeError);
-      expect(() => asyncMap(validArray, fn as any)).toThrow(
-        'asyncFn must be a function, got',
-      );
+      expect(() =>
+        asyncMap(
+          validArray,
+          fn as unknown as (item: number, index: number) => Promise<unknown>,
+        ),
+      ).toThrow(TypeError);
+      expect(() =>
+        asyncMap(
+          validArray,
+          fn as unknown as (item: number, index: number) => Promise<unknown>,
+        ),
+      ).toThrow('asyncFn must be a function, got');
     });
   });
 
@@ -111,12 +121,12 @@ describe('asyncMap', () => {
 
     // Act & Assert
     invalidConcurrency.forEach((concurrency) => {
-      expect(() => asyncMap(validArray, validFn, concurrency as any)).toThrow(
-        TypeError,
-      );
-      expect(() => asyncMap(validArray, validFn, concurrency as any)).toThrow(
-        'concurrency must be a number, got',
-      );
+      expect(() =>
+        asyncMap(validArray, validFn, concurrency as unknown as number),
+      ).toThrow(TypeError);
+      expect(() =>
+        asyncMap(validArray, validFn, concurrency as unknown as number),
+      ).toThrow('concurrency must be a number, got');
     });
 
     expect(() => asyncMap(validArray, validFn, 0)).toThrow(Error);

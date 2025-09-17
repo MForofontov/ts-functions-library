@@ -74,10 +74,12 @@ describe('asyncSeries', () => {
 
     // Act & Assert
     invalidInputs.forEach((input) => {
-      expect(() => asyncSeries(input as any)).toThrow(TypeError);
-      expect(() => asyncSeries(input as any)).toThrow(
-        'tasks must be an array, got',
-      );
+      expect(() =>
+        asyncSeries(input as unknown as (() => Promise<unknown>)[]),
+      ).toThrow(TypeError);
+      expect(() =>
+        asyncSeries(input as unknown as (() => Promise<unknown>)[]),
+      ).toThrow('tasks must be an array, got');
     });
   });
 
@@ -88,10 +90,12 @@ describe('asyncSeries', () => {
 
     // Act & Assert
     invalidTasks.forEach((task) => {
-      expect(() => asyncSeries([task as any])).toThrow(Error);
-      expect(() => asyncSeries([task as any])).toThrow(
-        'Task at index 0 must be a function, got',
-      );
+      expect(() =>
+        asyncSeries([task as unknown as () => Promise<unknown>]),
+      ).toThrow(Error);
+      expect(() =>
+        asyncSeries([task as unknown as () => Promise<unknown>]),
+      ).toThrow('Task at index 0 must be a function, got');
     });
   });
 

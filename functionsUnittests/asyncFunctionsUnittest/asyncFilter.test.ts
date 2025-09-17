@@ -74,10 +74,12 @@ describe('asyncFilter', () => {
 
     // Act & Assert
     invalidInputs.forEach((input) => {
-      expect(() => asyncFilter(input as any, mockPredicate)).toThrow(TypeError);
-      expect(() => asyncFilter(input as any, mockPredicate)).toThrow(
-        'array must be an array, got',
-      );
+      expect(() =>
+        asyncFilter(input as unknown as unknown[], mockPredicate),
+      ).toThrow(TypeError);
+      expect(() =>
+        asyncFilter(input as unknown as unknown[], mockPredicate),
+      ).toThrow('array must be an array, got');
     });
   });
 
@@ -89,12 +91,24 @@ describe('asyncFilter', () => {
 
     // Act & Assert
     invalidPredicates.forEach((predicate) => {
-      expect(() => asyncFilter(validArray, predicate as any)).toThrow(
-        TypeError,
-      );
-      expect(() => asyncFilter(validArray, predicate as any)).toThrow(
-        'asyncPredicate must be a function, got',
-      );
+      expect(() =>
+        asyncFilter(
+          validArray,
+          predicate as unknown as (
+            item: number,
+            index: number,
+          ) => Promise<boolean>,
+        ),
+      ).toThrow(TypeError);
+      expect(() =>
+        asyncFilter(
+          validArray,
+          predicate as unknown as (
+            item: number,
+            index: number,
+          ) => Promise<boolean>,
+        ),
+      ).toThrow('asyncPredicate must be a function, got');
     });
   });
 
