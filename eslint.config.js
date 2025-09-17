@@ -2,7 +2,6 @@ const tseslint = require('@typescript-eslint/eslint-plugin');
 const tsParser = require('@typescript-eslint/parser');
 const prettier = require('eslint-plugin-prettier');
 const importPlugin = require('eslint-plugin-import');
-const eslintConfigPrettier = require('eslint-config-prettier');
 
 module.exports = [
   {
@@ -157,8 +156,6 @@ module.exports = [
         },
       ],
     },
-  // disable conflicting rules so Prettier has full control of formatting
-  ...eslintConfigPrettier,
   },
   {
     ignores: [
