@@ -40,11 +40,15 @@ describe('isValidPattern', () => {
     const invalidInputs = [123, null, undefined, [], {}, true];
 
     invalidInputs.forEach((input) => {
-      expect(() => isValidPattern(input as any, '[A-Z]+')).toThrow(TypeError);
-      expect(() => isValidPattern('test', input as any)).toThrow(TypeError);
-      expect(() => isValidPattern('test', '[A-Z]+', input as any)).toThrow(
+      expect(() =>
+        isValidPattern(input as unknown as string, '[A-Z]+'),
+      ).toThrow(TypeError);
+      expect(() => isValidPattern('test', input as unknown as string)).toThrow(
         TypeError,
       );
+      expect(() =>
+        isValidPattern('test', '[A-Z]+', input as unknown as string),
+      ).toThrow(TypeError);
     });
   });
 

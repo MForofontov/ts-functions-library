@@ -43,7 +43,7 @@ describe('debounce', () => {
   it('4. should preserve the context', () => {
     const obj = {
       count: 0,
-      inc(this: any, amount: number) {
+      inc(this: { count: number }, amount: number) {
         this.count += amount;
       },
     };
