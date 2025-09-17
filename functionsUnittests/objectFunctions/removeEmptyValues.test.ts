@@ -52,26 +52,36 @@ describe('removeEmptyValues', () => {
 
   // Test case 6: Handle non-object input (number)
   it('6. should throw a TypeError if input is a number', () => {
-    expect(() => removeEmptyValues(42 as any)).toThrow(TypeError);
+    expect(() =>
+      removeEmptyValues(42 as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 
   // Test case 7: Handle non-object input (string)
   it('7. should throw a TypeError if input is a string', () => {
-    expect(() => removeEmptyValues('string' as any)).toThrow(TypeError);
+    expect(() =>
+      removeEmptyValues('string' as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 
   // Test case 8: Handle non-object input (boolean)
   it('8. should throw a TypeError if input is a boolean', () => {
-    expect(() => removeEmptyValues(true as any)).toThrow(TypeError);
+    expect(() =>
+      removeEmptyValues(true as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 
   // Test case 9: Handle non-object input (null)
   it('9. should throw a TypeError if input is null', () => {
-    expect(() => removeEmptyValues(null as any)).toThrow(TypeError);
+    expect(() =>
+      removeEmptyValues(null as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 
   // Test case 10: Handle non-object input (undefined)
   it('10. should throw a TypeError if input is undefined', () => {
-    expect(() => removeEmptyValues(undefined as any)).toThrow(TypeError);
+    expect(() =>
+      removeEmptyValues(undefined as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 });

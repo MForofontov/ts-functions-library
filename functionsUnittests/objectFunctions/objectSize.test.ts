@@ -25,7 +25,7 @@ describe('objectSize', () => {
         a: { value: 1, enumerable: true },
         b: { value: 2, enumerable: false },
       },
-    );
+    ) as Record<string, unknown>;
     const result = objectSize(obj);
     const expected = 1;
     expect(result).toBe(expected);
@@ -34,8 +34,8 @@ describe('objectSize', () => {
   // Test case 4: Handle objects with inherited properties
   it('4. should only count own enumerable properties', () => {
     const parent = { a: 1 };
-    const obj = Object.create(parent);
-    obj.b = 2;
+    const obj = Object.create(parent) as Record<string, unknown>;
+    (obj as Record<string, unknown>).b = 2;
     const result = objectSize(obj);
     const expected = 1;
     expect(result).toBe(expected);
@@ -59,26 +59,36 @@ describe('objectSize', () => {
 
   // Test case 7: Throw error for non-object input (number)
   it('7. should throw a TypeError if input is a number', () => {
-    expect(() => objectSize(42 as any)).toThrow(TypeError);
+    expect(() => objectSize(42 as unknown as Record<string, unknown>)).toThrow(
+      TypeError,
+    );
   });
 
   // Test case 8: Throw error for non-object input (string)
   it('8. should throw a TypeError if input is a string', () => {
-    expect(() => objectSize('string' as any)).toThrow(TypeError);
+    expect(() =>
+      objectSize('string' as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 
   // Test case 9: Throw error for non-object input (boolean)
   it('9. should throw a TypeError if input is a boolean', () => {
-    expect(() => objectSize(true as any)).toThrow(TypeError);
+    expect(() =>
+      objectSize(true as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 
   // Test case 10: Throw error for null input
   it('10. should throw a TypeError if input is null', () => {
-    expect(() => objectSize(null as any)).toThrow(TypeError);
+    expect(() =>
+      objectSize(null as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 
   // Test case 11: Throw error for undefined input
   it('11. should throw a TypeError if input is undefined', () => {
-    expect(() => objectSize(undefined as any)).toThrow(TypeError);
+    expect(() =>
+      objectSize(undefined as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 });

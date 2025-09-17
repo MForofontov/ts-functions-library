@@ -2,6 +2,7 @@ const tseslint = require('@typescript-eslint/eslint-plugin');
 const tsParser = require('@typescript-eslint/parser');
 const prettier = require('eslint-plugin-prettier');
 const importPlugin = require('eslint-plugin-import');
+const eslintConfigPrettier = require('eslint-config-prettier');
 
 module.exports = [
   {
@@ -17,16 +18,19 @@ module.exports = [
     },
     plugins: {
       '@typescript-eslint': tseslint,
-      'prettier': prettier,
-      'import': importPlugin,
+      prettier: prettier,
+      import: importPlugin,
     },
     rules: {
       // Let Prettier handle all formatting
-      'prettier/prettier': ['error', {
-        singleQuote: true,
-        tabWidth: 2
-      }],
-      
+      'prettier/prettier': [
+        'error',
+        {
+          singleQuote: true,
+          tabWidth: 2,
+        },
+      ],
+
       // Warn on use of console.log, console.error, etc.
       'no-console': 'warn',
 
@@ -37,7 +41,10 @@ module.exports = [
       '@typescript-eslint/no-explicit-any': 'warn',
 
       // Warn on unused variables, but ignore arguments that start with '_'
-      '@typescript-eslint/no-unused-vars': ['warn', { 'argsIgnorePattern': '^_' }],
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { argsIgnorePattern: '^_' },
+      ],
 
       // Warn if a Promise is created but not handled (avoids unhandled async bugs)
       '@typescript-eslint/no-floating-promises': 'warn',
@@ -79,10 +86,17 @@ module.exports = [
       '@typescript-eslint/consistent-type-imports': 'warn',
 
       // Enforce import order
-      'import/order': ['warn', {
-        groups: [['builtin', 'external'], 'internal', ['parent', 'sibling', 'index']],
-        alphabetize: { order: 'asc', caseInsensitive: true }
-      }],
+      'import/order': [
+        'warn',
+        {
+          groups: [
+            ['builtin', 'external'],
+            'internal',
+            ['parent', 'sibling', 'index'],
+          ],
+          alphabetize: { order: 'asc', caseInsensitive: true },
+        },
+      ],
     },
   },
   {
@@ -98,18 +112,24 @@ module.exports = [
     },
     plugins: {
       '@typescript-eslint': tseslint,
-      'prettier': prettier,
-      'import': importPlugin,
+      prettier: prettier,
+      import: importPlugin,
     },
     rules: {
-      'prettier/prettier': ['error', {
-        singleQuote: true,
-        tabWidth: 2
-      }],
+      'prettier/prettier': [
+        'error',
+        {
+          singleQuote: true,
+          tabWidth: 2,
+        },
+      ],
       'no-console': 'warn',
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/no-unused-vars': ['warn', { 'argsIgnorePattern': '^_' }],
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { argsIgnorePattern: '^_' },
+      ],
       '@typescript-eslint/no-floating-promises': 'warn',
       '@typescript-eslint/no-unsafe-argument': 'warn',
       '@typescript-eslint/require-await': 'error',
@@ -125,13 +145,28 @@ module.exports = [
       '@typescript-eslint/consistent-type-imports': 'warn',
 
       // Enforce import order
-      'import/order': ['warn', {
-        groups: [['builtin', 'external'], 'internal', ['parent', 'sibling', 'index']],
-        alphabetize: { order: 'asc', caseInsensitive: true }
-      }],
+      'import/order': [
+        'warn',
+        {
+          groups: [
+            ['builtin', 'external'],
+            'internal',
+            ['parent', 'sibling', 'index'],
+          ],
+          alphabetize: { order: 'asc', caseInsensitive: true },
+        },
+      ],
     },
   },
+  // Integrate Prettier config to disable ESLint rules that conflict with Prettier
+  ...(Array.isArray(eslintConfigPrettier) ? eslintConfigPrettier : [eslintConfigPrettier]),
   {
-    ignores: ['node_modules/**', 'dist/**', 'coverage/**', 'allure-report/**', 'eslint.config.js'],
+    ignores: [
+      'node_modules/**',
+      'dist/**',
+      'coverage/**',
+      'allure-report/**',
+      'eslint.config.js',
+    ],
   },
 ];

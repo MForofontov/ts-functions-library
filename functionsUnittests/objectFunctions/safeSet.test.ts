@@ -59,26 +59,36 @@ describe('safeSet', () => {
 
   // Test case 8: Handle non-object input (number)
   it('8. should throw a TypeError if input is a number', () => {
-    expect(() => safeSet(42 as any, 'a.b.c', 100)).toThrow(TypeError);
+    expect(() =>
+      safeSet(42 as unknown as Record<string, unknown>, 'a.b.c', 100),
+    ).toThrow(TypeError);
   });
 
   // Test case 9: Handle non-object input (string)
   it('9. should throw a TypeError if input is a string', () => {
-    expect(() => safeSet('string' as any, 'a.b.c', 100)).toThrow(TypeError);
+    expect(() =>
+      safeSet('string' as unknown as Record<string, unknown>, 'a.b.c', 100),
+    ).toThrow(TypeError);
   });
 
   // Test case 10: Handle non-object input (boolean)
   it('10. should throw a TypeError if input is a boolean', () => {
-    expect(() => safeSet(true as any, 'a.b.c', 100)).toThrow(TypeError);
+    expect(() =>
+      safeSet(true as unknown as Record<string, unknown>, 'a.b.c', 100),
+    ).toThrow(TypeError);
   });
 
   // Test case 11: Handle null input
   it('11. should throw a TypeError if input is null', () => {
-    expect(() => safeSet(null as any, 'a.b.c', 100)).toThrow(TypeError);
+    expect(() =>
+      safeSet(null as unknown as Record<string, unknown>, 'a.b.c', 100),
+    ).toThrow(TypeError);
   });
 
   // Test case 12: Handle undefined input
   it('12. should throw a TypeError if input is undefined', () => {
-    expect(() => safeSet(undefined as any, 'a.b.c', 100)).toThrow(TypeError);
+    expect(() =>
+      safeSet(undefined as unknown as Record<string, unknown>, 'a.b.c', 100),
+    ).toThrow(TypeError);
   });
 });

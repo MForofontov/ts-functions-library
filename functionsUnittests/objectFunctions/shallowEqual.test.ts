@@ -51,51 +51,71 @@ describe('shallowEqual', () => {
 
   // Test case 7: Handle non-object input (number)
   it('7. should throw a TypeError if the first input is a number', () => {
-    expect(() => shallowEqual(42 as any, { a: 1 })).toThrow(TypeError);
+    expect(() =>
+      shallowEqual(42 as unknown as Record<string, unknown>, { a: 1 }),
+    ).toThrow(TypeError);
   });
 
   // Test case 8: Handle non-object input (string)
   it('8. should throw a TypeError if the first input is a string', () => {
-    expect(() => shallowEqual('string' as any, { a: 1 })).toThrow(TypeError);
+    expect(() =>
+      shallowEqual('string' as unknown as Record<string, unknown>, { a: 1 }),
+    ).toThrow(TypeError);
   });
 
   // Test case 9: Handle non-object input (boolean)
   it('9. should throw a TypeError if the first input is a boolean', () => {
-    expect(() => shallowEqual(true as any, { a: 1 })).toThrow(TypeError);
+    expect(() =>
+      shallowEqual(true as unknown as Record<string, unknown>, { a: 1 }),
+    ).toThrow(TypeError);
   });
 
   // Test case 10: Handle non-object input (null)
   it('10. should throw a TypeError if the first input is null', () => {
-    expect(() => shallowEqual(null as any, { a: 1 })).toThrow(TypeError);
+    expect(() =>
+      shallowEqual(null as unknown as Record<string, unknown>, { a: 1 }),
+    ).toThrow(TypeError);
   });
 
   // Test case 11: Handle non-object input (undefined)
   it('11. should throw a TypeError if the first input is undefined', () => {
-    expect(() => shallowEqual(undefined as any, { a: 1 })).toThrow(TypeError);
+    expect(() =>
+      shallowEqual(undefined as unknown as Record<string, unknown>, { a: 1 }),
+    ).toThrow(TypeError);
   });
 
   // Test case 12: Handle non-object input for the second parameter (number)
   it('12. should throw a TypeError if the second input is a number', () => {
-    expect(() => shallowEqual({ a: 1 }, 42 as any)).toThrow(TypeError);
+    expect(() =>
+      shallowEqual({ a: 1 }, 42 as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 
   // Test case 13: Handle non-object input for the second parameter (string)
   it('13. should throw a TypeError if the second input is a string', () => {
-    expect(() => shallowEqual({ a: 1 }, 'string' as any)).toThrow(TypeError);
+    expect(() =>
+      shallowEqual({ a: 1 }, 'string' as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 
   // Test case 14: Handle non-object input for the second parameter (boolean)
   it('14. should throw a TypeError if the second input is a boolean', () => {
-    expect(() => shallowEqual({ a: 1 }, true as any)).toThrow(TypeError);
+    expect(() =>
+      shallowEqual({ a: 1 }, true as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 
   // Test case 15: Handle non-object input for the second parameter (null)
   it('15. should throw a TypeError if the second input is null', () => {
-    expect(() => shallowEqual({ a: 1 }, null as any)).toThrow(TypeError);
+    expect(() =>
+      shallowEqual({ a: 1 }, null as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 
   // Test case 16: Handle non-object input for the second parameter (undefined)
   it('16. should throw a TypeError if the second input is undefined', () => {
-    expect(() => shallowEqual({ a: 1 }, undefined as any)).toThrow(TypeError);
+    expect(() =>
+      shallowEqual({ a: 1 }, undefined as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 });

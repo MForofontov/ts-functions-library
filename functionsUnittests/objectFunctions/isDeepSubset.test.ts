@@ -51,7 +51,7 @@ describe('isDeepSubset', () => {
 
   // Test case 7: Subset with undefined values
   it('7. should return false if subset with undefined values does not match the object', () => {
-    const subset = { a: undefined } as any;
+    const subset = { a: undefined } as unknown as Record<string, unknown>;
     const obj = { a: 1, b: 2 };
     const result = isDeepSubset(subset, obj);
     expect(result).toBe(false);
@@ -91,7 +91,7 @@ describe('isDeepSubset', () => {
 
   // Test case 12: Subset with different data types
   it('12. should return false if subset has mismatched data types', () => {
-    const subset = { a: '1' } as any;
+    const subset = { a: '1' } as unknown as Record<string, unknown>;
     const obj = { a: 1, b: 2 };
     const result = isDeepSubset(subset, obj);
     expect(result).toBe(false);
@@ -140,16 +140,25 @@ describe('isDeepSubset', () => {
   // Error-handling test cases
   // Test case 18: Handle non-object subset
   it('18. should throw a TypeError if subset is not an object', () => {
-    expect(() => isDeepSubset(null as any, { a: 1 })).toThrow(TypeError);
+    expect(() =>
+      isDeepSubset(null as unknown as Record<string, unknown>, { a: 1 }),
+    ).toThrow(TypeError);
   });
 
   // Test case 19: Handle non-object obj
   it('19. should throw a TypeError if obj is not an object', () => {
-    expect(() => isDeepSubset({ a: 1 }, null as any)).toThrow(TypeError);
+    expect(() =>
+      isDeepSubset({ a: 1 }, null as unknown as Record<string, unknown>),
+    ).toThrow(TypeError);
   });
 
   // Test case 20: Handle both subset and obj as non-objects
   it('20. should throw a TypeError if both subset and obj are not objects', () => {
-    expect(() => isDeepSubset(null as any, null as any)).toThrow(TypeError);
+    expect(() =>
+      isDeepSubset(
+        null as unknown as Record<string, unknown>,
+        null as unknown as Record<string, unknown>,
+      ),
+    ).toThrow(TypeError);
   });
 });

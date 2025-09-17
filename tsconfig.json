@@ -15,15 +15,14 @@
   "include": [
     "index.ts",
     "arrayFunctions",
+    "asyncFunctions",
     "dateFunctions",
     "encodingFunctions",
     "mathFunctions",
     "objectFunctions",
     "stringFunctions",
-    "utilityFunctions"
+    "utilityFunctions",
+    "validationFunctions"
   ],
-  "exclude": [
-    "dist",
-    "node_modules"
-  ]
+  "exclude": ["dist", "node_modules"]
 }
