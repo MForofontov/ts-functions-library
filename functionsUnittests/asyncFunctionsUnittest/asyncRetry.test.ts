@@ -144,7 +144,7 @@ describe('asyncRetry', () => {
     }
 
     // Assert linear backoff delays: 100, 200
-    expect(delays.slice(2, 4)).toEqual([100, 200]);
+    expect(delays.slice(0, 2)).toEqual([100, 200]);
 
     // Restore setTimeout
     global.setTimeout = originalSetTimeout;

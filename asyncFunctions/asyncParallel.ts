@@ -37,7 +37,7 @@
  *
  * @complexity Time: O(n/c) where n is number of tasks and c is concurrency, Space: O(n)
  */
-export async function asyncParallel<T>(
+export function asyncParallel<T>(
   tasks: Array<() => Promise<T>>,
   concurrency: number = 5,
 ): Promise<T[]> {
@@ -45,9 +45,13 @@ export async function asyncParallel<T>(
     throw new TypeError(`tasks must be an array, got ${typeof tasks}`);
   }
 
-  if (typeof concurrency !== 'number' || isNaN(concurrency)) {
+  // Always validate concurrency if explicitly provided
+  if (
+    arguments.length > 1 &&
+    (typeof arguments[1] !== 'number' || isNaN(arguments[1]))
+  ) {
     throw new TypeError(
-      `concurrency must be a number, got ${typeof concurrency}`,
+      `concurrency must be a number, got ${typeof arguments[1]}`,
     );
   }
 
@@ -64,24 +68,27 @@ export async function asyncParallel<T>(
     }
   });
 
-  if (tasks.length === 0) {
-    return [];
-  }
+  // After validation, return the async implementation
+  return (async () => {
+    if (tasks.length === 0) {
+      return [];
+    }
 
-  // Simple batch processing approach
-  const results: T[] = new Array<T>(tasks.length);
-  
-  // Process tasks in batches
-  for (let i = 0; i < tasks.length; i += concurrency) {
-    const batch = tasks.slice(i, i + concurrency);
-    const batchPromises = batch.map(async (task, batchIndex) => {
-      const actualIndex = i + batchIndex;
-      const result = await task();
-      results[actualIndex] = result;
-    });
-    
-    await Promise.all(batchPromises);
-  }
+    // Simple batch processing approach
+    const results: T[] = new Array<T>(tasks.length);
 
-  return results;
+    // Process tasks in batches
+    for (let i = 0; i < tasks.length; i += concurrency) {
+      const batch = tasks.slice(i, i + concurrency);
+      const batchPromises = batch.map(async (task, batchIndex) => {
+        const actualIndex = i + batchIndex;
+        const result = await task();
+        results[actualIndex] = result;
+      });
+
+      await Promise.all(batchPromises);
+    }
+
+    return results;
+  })();
 }

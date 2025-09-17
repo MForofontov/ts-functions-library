@@ -49,7 +49,7 @@
  *
  * @complexity Time: O(n), Space: O(n)
  */
-export async function asyncFilter<T>(
+export function asyncFilter<T>(
   array: T[],
   asyncPredicate: (item: T, index: number) => Promise<boolean>,
 ): Promise<T[]> {
@@ -63,15 +63,18 @@ export async function asyncFilter<T>(
     );
   }
 
-  if (array.length === 0) {
-    return [];
-  }
+  // After validation, return the async implementation
+  return (async () => {
+    if (array.length === 0) {
+      return [];
+    }
 
-  // Execute all predicates in parallel
-  const predicateResults = await Promise.all(
-    array.map((item, index) => asyncPredicate(item, index)),
-  );
+    // Execute all predicates in parallel
+    const predicateResults = await Promise.all(
+      array.map((item, index) => asyncPredicate(item, index)),
+    );
 
-  // Filter based on predicate results
-  return array.filter((_, index) => predicateResults[index]);
+    // Filter based on predicate results
+    return array.filter((_, index) => predicateResults[index]);
+  })();
 }

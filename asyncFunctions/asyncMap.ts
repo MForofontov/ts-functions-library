@@ -1,9 +1,6 @@
 /**
- * Maps over an array asynchronously, applying an async function to each elemen    const promise = asyncFn(items[i], i).then((result) => {
-      results[i] = result;
-    });
-
-    void executing.push(promise);
+ * Maps over an array asynchronously, applying an async function to each element.
+ *
  * @param array - The array to map over.
  * @param asyncFn - The async function to apply to each element.
  * @param concurrency - Maximum number of concurrent operations (default: 5).
@@ -48,7 +45,7 @@
  *
  * @complexity Time: O(n/c) where n is array length and c is concurrency, Space: O(n)
  */
-export async function asyncMap<T, R>(
+export function asyncMap<T, R>(
   array: T[],
   asyncFn: (item: T, index: number) => Promise<R>,
   concurrency: number = 5,
@@ -61,9 +58,13 @@ export async function asyncMap<T, R>(
     throw new TypeError(`asyncFn must be a function, got ${typeof asyncFn}`);
   }
 
-  if (typeof concurrency !== 'number' || isNaN(concurrency)) {
+  // Always validate concurrency if explicitly provided
+  if (
+    arguments.length > 2 &&
+    (typeof arguments[2] !== 'number' || isNaN(arguments[2]))
+  ) {
     throw new TypeError(
-      `concurrency must be a number, got ${typeof concurrency}`,
+      `concurrency must be a number, got ${typeof arguments[2]}`,
     );
   }
 
@@ -71,29 +72,32 @@ export async function asyncMap<T, R>(
     throw new Error(`concurrency must be at least 1, got ${concurrency}`);
   }
 
-  if (array.length === 0) {
-    return [];
-  }
+  // After validation, return the async implementation
+  return (async () => {
+    if (array.length === 0) {
+      return [];
+    }
 
-  // For small arrays or high concurrency, just use Promise.all
-  if (array.length <= concurrency) {
-    return Promise.all(array.map((item, index) => asyncFn(item, index)));
-  }
+    // For small arrays or high concurrency, just use Promise.all
+    if (array.length <= concurrency) {
+      return Promise.all(array.map((item, index) => asyncFn(item, index)));
+    }
 
-  // Simple batch processing approach
-  const results: R[] = new Array<R>(array.length);
-  
-  // Process items in batches
-  for (let i = 0; i < array.length; i += concurrency) {
-    const batch = array.slice(i, i + concurrency);
-    const batchPromises = batch.map(async (item, batchIndex) => {
-      const actualIndex = i + batchIndex;
-      const result = await asyncFn(item, actualIndex);
-      results[actualIndex] = result;
-    });
-    
-    await Promise.all(batchPromises);
-  }
+    // Simple batch processing approach
+    const results: R[] = new Array<R>(array.length);
 
-  return results;
+    // Process items in batches
+    for (let i = 0; i < array.length; i += concurrency) {
+      const batch = array.slice(i, i + concurrency);
+      const batchPromises = batch.map(async (item, batchIndex) => {
+        const actualIndex = i + batchIndex;
+        const result = await asyncFn(item, actualIndex);
+        results[actualIndex] = result;
+      });
+
+      await Promise.all(batchPromises);
+    }
+
+    return results;
+  })();
 }

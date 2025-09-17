@@ -39,7 +39,7 @@
  *
  * @complexity Time: O(1), Space: O(1)
  */
-export async function asyncTimeout<T>(
+export function asyncTimeout<T>(
   promise: Promise<T>,
   timeoutMs: number,
   timeoutMessage: string = 'Operation timed out',
@@ -56,9 +56,10 @@ export async function asyncTimeout<T>(
     throw new Error(`timeoutMs must be non-negative, got ${timeoutMs}`);
   }
 
-  if (typeof timeoutMessage !== 'string') {
+  // Always validate timeoutMessage if explicitly provided
+  if (arguments.length > 2 && typeof arguments[2] !== 'string') {
     throw new Error(
-      `timeoutMessage must be a string, got ${typeof timeoutMessage}`,
+      `timeoutMessage must be a string, got ${typeof arguments[2]}`,
     );
   }
 

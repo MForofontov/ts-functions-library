@@ -43,7 +43,7 @@
  *
  * @complexity Time: O(n) where n is maxAttempts, Space: O(1)
  */
-export async function asyncRetry<T>(
+export function asyncRetry<T>(
   fn: () => Promise<T>,
   options: {
     maxAttempts?: number;
@@ -78,41 +78,44 @@ export async function asyncRetry<T>(
     throw new TypeError(`onRetry must be a function, got ${typeof onRetry}`);
   }
 
-  let lastError: Error;
+  // After validation, return the async implementation
+  return (async () => {
+    let lastError: Error;
 
-  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
-    try {
-      return await fn();
-    } catch (error) {
-      lastError = error instanceof Error ? error : new Error(String(error));
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      try {
+        return await fn();
+      } catch (error) {
+        lastError = error instanceof Error ? error : new Error(String(error));
 
-      if (attempt === maxAttempts) {
-        throw lastError;
+        if (attempt === maxAttempts) {
+          throw lastError;
+        }
+
+        if (onRetry) {
+          onRetry(attempt, lastError);
+        }
+
+        // Calculate delay based on backoff strategy
+        let currentDelay: number;
+        switch (backoff) {
+          case 'linear':
+            currentDelay = delay * attempt;
+            break;
+          case 'exponential':
+            currentDelay = delay * Math.pow(2, attempt - 1);
+            break;
+          case 'fixed':
+          default:
+            currentDelay = delay;
+            break;
+        }
+
+        await new Promise((resolve) => setTimeout(resolve, currentDelay));
       }
-
-      if (onRetry) {
-        onRetry(attempt, lastError);
-      }
-
-      // Calculate delay based on backoff strategy
-      let currentDelay: number;
-      switch (backoff) {
-        case 'linear':
-          currentDelay = delay * attempt;
-          break;
-        case 'exponential':
-          currentDelay = delay * Math.pow(2, attempt - 1);
-          break;
-        case 'fixed':
-        default:
-          currentDelay = delay;
-          break;
-      }
-
-      await new Promise((resolve) => setTimeout(resolve, currentDelay));
     }
-  }
 
-  // This should never be reached, but TypeScript requires it
-  throw lastError!;
+    // This should never be reached, but TypeScript requires it
+    throw lastError!;
+  })();
 }

@@ -35,9 +35,7 @@
  *
  * @complexity Time: O(n) where n is number of tasks, Space: O(n)
  */
-export async function asyncSeries<T>(
-  tasks: Array<() => Promise<T>>,
-): Promise<T[]> {
+export function asyncSeries<T>(tasks: Array<() => Promise<T>>): Promise<T[]> {
   if (!Array.isArray(tasks)) {
     throw new TypeError(`tasks must be an array, got ${typeof tasks}`);
   }
@@ -51,16 +49,19 @@ export async function asyncSeries<T>(
     }
   });
 
-  if (tasks.length === 0) {
-    return [];
-  }
+  // After validation, return the async implementation
+  return (async () => {
+    if (tasks.length === 0) {
+      return [];
+    }
 
-  const results: T[] = [];
+    const results: T[] = [];
 
-  for (const task of tasks) {
-    const result = await task();
-    results.push(result);
-  }
+    for (const task of tasks) {
+      const result = await task();
+      results.push(result);
+    }
 
-  return results;
+    return results;
+  })();
 }
