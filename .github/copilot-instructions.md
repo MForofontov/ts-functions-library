@@ -25,6 +25,13 @@ ts-functions-library/
 │   ├── chunkArray.ts
 │   ├── findDuplicates.ts
 │   └── ...
+├── asyncFunctions/                 # Asynchronous operation utilities
+│   ├── asyncRetry.ts               # Retry functions with backoff strategies
+│   ├── asyncTimeout.ts             # Add timeouts to promises
+│   ├── asyncSeries.ts              # Execute functions sequentially
+│   ├── asyncFilter.ts              # Async array filtering
+│   ├── asyncMap.ts                 # Async array mapping
+│   └── asyncParallel.ts            # Controlled parallel execution
 ├── dateFunctions/                  # Date and time utilities
 │   ├── addDays.ts
 │   ├── formatDate.ts
