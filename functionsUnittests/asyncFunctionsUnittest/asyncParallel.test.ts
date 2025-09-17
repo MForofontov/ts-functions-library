@@ -38,7 +38,7 @@ describe('asyncParallel', () => {
     // Arrange
     let activeCount = 0;
     let maxActiveCount = 0;
-    
+
     const createTask = (delay: number, result: string) => async () => {
       activeCount++;
       maxActiveCount = Math.max(maxActiveCount, activeCount);
@@ -59,7 +59,13 @@ describe('asyncParallel', () => {
     const results = await asyncParallel(tasks, 2);
 
     // Assert
-    expect(results).toEqual(['result1', 'result2', 'result3', 'result4', 'result5']);
+    expect(results).toEqual([
+      'result1',
+      'result2',
+      'result3',
+      'result4',
+      'result5',
+    ]);
     expect(maxActiveCount).toBeLessThanOrEqual(2);
   });
 
@@ -85,7 +91,7 @@ describe('asyncParallel', () => {
     invalidInputs.forEach((input) => {
       expect(() => asyncParallel(input as any)).toThrow(TypeError);
       expect(() => asyncParallel(input as any)).toThrow(
-        'tasks must be an array, got'
+        'tasks must be an array, got',
       );
     });
   });
@@ -98,9 +104,11 @@ describe('asyncParallel', () => {
 
     // Act & Assert
     invalidConcurrency.forEach((concurrency) => {
-      expect(() => asyncParallel(validTasks, concurrency as any)).toThrow(TypeError);
       expect(() => asyncParallel(validTasks, concurrency as any)).toThrow(
-        'concurrency must be a number, got'
+        TypeError,
+      );
+      expect(() => asyncParallel(validTasks, concurrency as any)).toThrow(
+        'concurrency must be a number, got',
       );
     });
   });
@@ -113,12 +121,12 @@ describe('asyncParallel', () => {
     // Act & Assert
     expect(() => asyncParallel(validTasks, 0)).toThrow(Error);
     expect(() => asyncParallel(validTasks, 0)).toThrow(
-      'concurrency must be at least 1, got 0'
+      'concurrency must be at least 1, got 0',
     );
 
     expect(() => asyncParallel(validTasks, -1)).toThrow(Error);
     expect(() => asyncParallel(validTasks, -1)).toThrow(
-      'concurrency must be at least 1, got -1'
+      'concurrency must be at least 1, got -1',
     );
   });
 
@@ -131,7 +139,7 @@ describe('asyncParallel', () => {
     invalidTasks.forEach((task, index) => {
       expect(() => asyncParallel([task as any])).toThrow(Error);
       expect(() => asyncParallel([task as any])).toThrow(
-        'Task at index 0 must be a function, got'
+        'Task at index 0 must be a function, got',
       );
     });
   });

@@ -56,15 +56,12 @@ export async function asyncRetry<T>(
     throw new TypeError(`fn must be a function, got ${typeof fn}`);
   }
 
-  const {
-    maxAttempts = 3,
-    delay = 1000,
-    backoff = 'fixed',
-    onRetry,
-  } = options;
+  const { maxAttempts = 3, delay = 1000, backoff = 'fixed', onRetry } = options;
 
   if (typeof maxAttempts !== 'number' || maxAttempts < 1) {
-    throw new Error(`maxAttempts must be a positive number, got ${maxAttempts}`);
+    throw new Error(
+      `maxAttempts must be a positive number, got ${maxAttempts}`,
+    );
   }
 
   if (typeof delay !== 'number' || delay < 0) {
@@ -72,7 +69,9 @@ export async function asyncRetry<T>(
   }
 
   if (!['fixed', 'linear', 'exponential'].includes(backoff)) {
-    throw new Error(`backoff must be 'fixed', 'linear', or 'exponential', got ${backoff}`);
+    throw new Error(
+      `backoff must be 'fixed', 'linear', or 'exponential', got ${backoff}`,
+    );
   }
 
   if (onRetry !== undefined && typeof onRetry !== 'function') {

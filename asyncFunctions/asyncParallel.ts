@@ -46,7 +46,9 @@ export async function asyncParallel<T>(
   }
 
   if (typeof concurrency !== 'number' || isNaN(concurrency)) {
-    throw new TypeError(`concurrency must be a number, got ${typeof concurrency}`);
+    throw new TypeError(
+      `concurrency must be a number, got ${typeof concurrency}`,
+    );
   }
 
   if (concurrency < 1) {
@@ -66,41 +68,20 @@ export async function asyncParallel<T>(
     return [];
   }
 
-  const results: T[] = new Array(tasks.length);
-  const executing: Promise<void>[] = [];
-  let index = 0;
-
-  const executeTask = async (taskIndex: number): Promise<void> => {
-    try {
-      results[taskIndex] = await tasks[taskIndex]();
-    } catch (error) {
-      throw error;
-    }
-  };
-
-  while (index < tasks.length) {
-    // Start task execution
-    const taskPromise = executeTask(index);
-    executing.push(taskPromise);
+  // Simple batch processing approach
+  const results: T[] = new Array<T>(tasks.length);
+  
+  // Process tasks in batches
+  for (let i = 0; i < tasks.length; i += concurrency) {
+    const batch = tasks.slice(i, i + concurrency);
+    const batchPromises = batch.map(async (task, batchIndex) => {
+      const actualIndex = i + batchIndex;
+      const result = await task();
+      results[actualIndex] = result;
+    });
     
-    index++;
-
-    // If we've reached concurrency limit, wait for one to complete
-    if (executing.length >= concurrency) {
-      await Promise.race(executing);
-      // Remove completed promises
-      const completedIndexes: number[] = [];
-      for (let i = 0; i < executing.length; i++) {
-        if (await Promise.race([executing[i], Promise.resolve('__completed__')]) === '__completed__') {
-          completedIndexes.push(i);
-        }
-      }
-      completedIndexes.reverse().forEach(i => executing.splice(i, 1));
-    }
+    await Promise.all(batchPromises);
   }
-
-  // Wait for all remaining tasks to complete
-  await Promise.all(executing);
 
   return results;
 }

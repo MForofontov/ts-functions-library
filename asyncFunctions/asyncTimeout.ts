@@ -45,15 +45,11 @@ export async function asyncTimeout<T>(
   timeoutMessage: string = 'Operation timed out',
 ): Promise<T> {
   if (!promise || typeof promise.then !== 'function') {
-    throw new TypeError(
-      `promise must be a Promise, got ${typeof promise}`,
-    );
+    throw new TypeError(`promise must be a Promise, got ${typeof promise}`);
   }
 
   if (typeof timeoutMs !== 'number' || isNaN(timeoutMs)) {
-    throw new TypeError(
-      `timeoutMs must be a number, got ${typeof timeoutMs}`,
-    );
+    throw new TypeError(`timeoutMs must be a number, got ${typeof timeoutMs}`);
   }
 
   if (timeoutMs < 0) {

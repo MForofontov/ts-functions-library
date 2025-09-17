@@ -58,7 +58,7 @@ describe('delay', () => {
   // Test case 5: Should not resolve before time
   it('5. should not resolve before the specified time', () => {
     const spy = jest.fn();
-    delay(50).then(spy);
+    void delay(50).then(spy);
     jest.advanceTimersByTime(30);
     expect(spy).not.toHaveBeenCalled();
   });

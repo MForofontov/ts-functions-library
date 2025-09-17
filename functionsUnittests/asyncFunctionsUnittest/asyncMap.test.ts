@@ -38,9 +38,11 @@ describe('asyncMap', () => {
   it('3. should pass item and index to async function', async () => {
     // Arrange
     const items = ['a', 'b', 'c'];
-    const mockFn = jest.fn().mockImplementation(async (item: string, index: number) => {
-      return `${item}-${index}`;
-    });
+    const mockFn = jest
+      .fn()
+      .mockImplementation((item: string, index: number) => {
+        return Promise.resolve(`${item}-${index}`);
+      });
 
     // Act
     const result = await asyncMap(items, mockFn);
@@ -57,15 +59,17 @@ describe('asyncMap', () => {
   it('4. should propagate errors from async function', async () => {
     // Arrange
     const numbers = [1, 2, 3];
-    const errorFn = async (num: number) => {
+    const errorFn = (num: number) => {
       if (num === 2) {
         throw new Error('Error on second item');
       }
-      return num * 2;
+      return Promise.resolve(num * 2);
     };
 
     // Act & Assert
-    await expect(asyncMap(numbers, errorFn)).rejects.toThrow('Error on second item');
+    await expect(asyncMap(numbers, errorFn)).rejects.toThrow(
+      'Error on second item',
+    );
   });
 
   // Test case 5: TypeError for invalid input types
@@ -78,7 +82,7 @@ describe('asyncMap', () => {
     invalidInputs.forEach((input) => {
       expect(() => asyncMap(input as any, mockFn)).toThrow(TypeError);
       expect(() => asyncMap(input as any, mockFn)).toThrow(
-        'array must be an array, got'
+        'array must be an array, got',
       );
     });
   });
@@ -93,7 +97,7 @@ describe('asyncMap', () => {
     invalidFunctions.forEach((fn) => {
       expect(() => asyncMap(validArray, fn as any)).toThrow(TypeError);
       expect(() => asyncMap(validArray, fn as any)).toThrow(
-        'asyncFn must be a function, got'
+        'asyncFn must be a function, got',
       );
     });
   });
@@ -107,15 +111,17 @@ describe('asyncMap', () => {
 
     // Act & Assert
     invalidConcurrency.forEach((concurrency) => {
-      expect(() => asyncMap(validArray, validFn, concurrency as any)).toThrow(TypeError);
       expect(() => asyncMap(validArray, validFn, concurrency as any)).toThrow(
-        'concurrency must be a number, got'
+        TypeError,
+      );
+      expect(() => asyncMap(validArray, validFn, concurrency as any)).toThrow(
+        'concurrency must be a number, got',
       );
     });
 
     expect(() => asyncMap(validArray, validFn, 0)).toThrow(Error);
     expect(() => asyncMap(validArray, validFn, 0)).toThrow(
-      'concurrency must be at least 1, got 0'
+      'concurrency must be at least 1, got 0',
     );
   });
 
@@ -125,7 +131,7 @@ describe('asyncMap', () => {
     const items = [1, 2, 3, 4, 5, 6];
     let activeCount = 0;
     let maxActiveCount = 0;
-    
+
     const slowFn = async (num: number) => {
       activeCount++;
       maxActiveCount = Math.max(maxActiveCount, activeCount);
@@ -146,7 +152,9 @@ describe('asyncMap', () => {
   it('9. should use Promise.all for small arrays', async () => {
     // Arrange
     const items = [1, 2];
-    const mockFn = jest.fn().mockImplementation(async (num: number) => num * 2);
+    const mockFn = jest
+      .fn()
+      .mockImplementation((num: number) => Promise.resolve(num * 2));
 
     // Act
     const result = await asyncMap(items, mockFn, 5);

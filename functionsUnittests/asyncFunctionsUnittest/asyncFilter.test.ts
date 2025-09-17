@@ -89,7 +89,9 @@ describe('asyncFilter', () => {
 
     // Act & Assert
     invalidPredicates.forEach((predicate) => {
-      expect(() => asyncFilter(validArray, predicate as any)).toThrow(TypeError);
+      expect(() => asyncFilter(validArray, predicate as any)).toThrow(
+        TypeError,
+      );
       expect(() => asyncFilter(validArray, predicate as any)).toThrow(
         'asyncPredicate must be a function, got',
       );
@@ -131,11 +133,11 @@ describe('asyncFilter', () => {
     // Assert
     expect(result).toEqual([2, 4]);
     expect(totalTime).toBeLessThan(100); // Should be closer to 50ms than 200ms
-    
+
     // All predicates should start at roughly the same time
-    const timeDifferences = executionTimes.slice(1).map((time, i) => 
-      Math.abs(time - executionTimes[i])
-    );
-    timeDifferences.forEach(diff => expect(diff).toBeLessThan(20));
+    const timeDifferences = executionTimes
+      .slice(1)
+      .map((time, i) => Math.abs(time - executionTimes[i]));
+    timeDifferences.forEach((diff) => expect(diff).toBeLessThan(20));
   });
 });

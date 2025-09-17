@@ -26,7 +26,9 @@ describe('asyncTimeout', () => {
     });
 
     // Act & Assert
-    await expect(asyncTimeout(promise, 50)).rejects.toThrow('Operation timed out');
+    await expect(asyncTimeout(promise, 50)).rejects.toThrow(
+      'Operation timed out',
+    );
   });
 
   // Test case 3: Custom timeout message
@@ -38,9 +40,9 @@ describe('asyncTimeout', () => {
     const customMessage = 'Custom timeout error';
 
     // Act & Assert
-    await expect(
-      asyncTimeout(promise, 50, customMessage)
-    ).rejects.toThrow(customMessage);
+    await expect(asyncTimeout(promise, 50, customMessage)).rejects.toThrow(
+      customMessage,
+    );
   });
 
   // Test case 4: Promise rejects before timeout
@@ -61,7 +63,7 @@ describe('asyncTimeout', () => {
     invalidPromises.forEach((promise) => {
       expect(() => asyncTimeout(promise as any, 100)).toThrow(TypeError);
       expect(() => asyncTimeout(promise as any, 100)).toThrow(
-        'promise must be a Promise, got'
+        'promise must be a Promise, got',
       );
     });
   });
@@ -74,9 +76,11 @@ describe('asyncTimeout', () => {
 
     // Act & Assert
     invalidTimeouts.forEach((timeout) => {
-      expect(() => asyncTimeout(validPromise, timeout as any)).toThrow(TypeError);
       expect(() => asyncTimeout(validPromise, timeout as any)).toThrow(
-        'timeoutMs must be a number, got'
+        TypeError,
+      );
+      expect(() => asyncTimeout(validPromise, timeout as any)).toThrow(
+        'timeoutMs must be a number, got',
       );
     });
   });
@@ -89,7 +93,7 @@ describe('asyncTimeout', () => {
     // Act & Assert
     expect(() => asyncTimeout(validPromise, -100)).toThrow(Error);
     expect(() => asyncTimeout(validPromise, -100)).toThrow(
-      'timeoutMs must be non-negative, got -100'
+      'timeoutMs must be non-negative, got -100',
     );
   });
 
@@ -101,9 +105,11 @@ describe('asyncTimeout', () => {
 
     // Act & Assert
     invalidMessages.forEach((message) => {
-      expect(() => asyncTimeout(validPromise, 100, message as any)).toThrow(Error);
       expect(() => asyncTimeout(validPromise, 100, message as any)).toThrow(
-        'timeoutMessage must be a string, got'
+        Error,
+      );
+      expect(() => asyncTimeout(validPromise, 100, message as any)).toThrow(
+        'timeoutMessage must be a string, got',
       );
     });
   });
@@ -116,7 +122,9 @@ describe('asyncTimeout', () => {
     });
 
     // Act & Assert
-    await expect(asyncTimeout(promise, 0)).rejects.toThrow('Operation timed out');
+    await expect(asyncTimeout(promise, 0)).rejects.toThrow(
+      'Operation timed out',
+    );
   });
 
   // Test case 10: Performance test
@@ -133,7 +141,7 @@ describe('asyncTimeout', () => {
       await asyncTimeout(promise, timeoutMs);
     } catch (error) {
       const elapsed = Date.now() - start;
-      
+
       // Assert
       expect(elapsed).toBeGreaterThan(timeoutMs - 10); // Allow 10ms margin
       expect(elapsed).toBeLessThan(timeoutMs + 50); // Allow 50ms margin

@@ -9,19 +9,17 @@ describe('asyncSeries', () => {
     // Arrange
     const executionOrder: number[] = [];
     const tasks = [
-      async () => {
-        await new Promise((resolve) => setTimeout(resolve, 10));
+      () => {
         executionOrder.push(1);
-        return 'result1';
+        return Promise.resolve('result1');
       },
-      async () => {
-        await new Promise((resolve) => setTimeout(resolve, 5));
+      () => {
         executionOrder.push(2);
-        return 'result2';
+        return Promise.resolve('result2');
       },
-      async () => {
+      () => {
         executionOrder.push(3);
-        return 'result3';
+        return Promise.resolve('result3');
       },
     ];
 
@@ -50,17 +48,17 @@ describe('asyncSeries', () => {
     // Arrange
     const executionOrder: number[] = [];
     const tasks = [
-      async () => {
+      () => {
         executionOrder.push(1);
-        return 'result1';
+        return Promise.resolve('result1');
       },
-      async () => {
+      () => {
         executionOrder.push(2);
-        throw new Error('Task 2 failed');
+        return Promise.reject(new Error('Task 2 failed'));
       },
-      async () => {
+      () => {
         executionOrder.push(3);
-        return 'result3';
+        return Promise.resolve('result3');
       },
     ];
 
@@ -100,12 +98,12 @@ describe('asyncSeries', () => {
   // Test case 6: Mixed data types in results
   it('6. should handle mixed data types in results', async () => {
     // Arrange
-    const tasks = [
-      async () => 42,
-      async () => 'string result',
-      async () => ({ key: 'value' }),
-      async () => [1, 2, 3],
-      async () => true,
+    const tasks: Array<() => Promise<unknown>> = [
+      () => Promise.resolve(42),
+      () => Promise.resolve('string result'),
+      () => Promise.resolve({ key: 'value' }),
+      () => Promise.resolve([1, 2, 3]),
+      () => Promise.resolve(true),
     ];
 
     // Act
@@ -139,7 +137,7 @@ describe('asyncSeries', () => {
     // Assert
     expect(results).toHaveLength(3);
     expect(totalTime).toBeGreaterThan(140); // Should take at least 150ms (3 * 50ms)
-    
+
     // Each task should start after the previous one completes
     for (let i = 1; i < startTimes.length; i++) {
       expect(startTimes[i] - startTimes[i - 1]).toBeGreaterThan(40);
@@ -149,7 +147,7 @@ describe('asyncSeries', () => {
   // Test case 8: Single task
   it('8. should handle single task correctly', async () => {
     // Arrange
-    const task = async () => 'single result';
+    const task = () => Promise.resolve('single result');
 
     // Act
     const results = await asyncSeries([task]);

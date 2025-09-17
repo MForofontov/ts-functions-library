@@ -1,6 +1,9 @@
 /**
- * Maps over an array asynchronously, applying an async function to each element.
- *
+ * Maps over an array asynchronously, applying an async function to each elemen    const promise = asyncFn(items[i], i).then((result) => {
+      results[i] = result;
+    });
+
+    void executing.push(promise);
  * @param array - The array to map over.
  * @param asyncFn - The async function to apply to each element.
  * @param concurrency - Maximum number of concurrent operations (default: 5).
@@ -59,7 +62,9 @@ export async function asyncMap<T, R>(
   }
 
   if (typeof concurrency !== 'number' || isNaN(concurrency)) {
-    throw new TypeError(`concurrency must be a number, got ${typeof concurrency}`);
+    throw new TypeError(
+      `concurrency must be a number, got ${typeof concurrency}`,
+    );
   }
 
   if (concurrency < 1) {
@@ -72,37 +77,23 @@ export async function asyncMap<T, R>(
 
   // For small arrays or high concurrency, just use Promise.all
   if (array.length <= concurrency) {
-    return Promise.all(array.map(asyncFn));
+    return Promise.all(array.map((item, index) => asyncFn(item, index)));
   }
 
-  const results: R[] = [];
-  const executing: Promise<void>[] = [];
-
-  for (let i = 0; i < array.length; i++) {
-    const promise = asyncFn(array[i], i).then((result) => {
-      results[i] = result;
+  // Simple batch processing approach
+  const results: R[] = new Array<R>(array.length);
+  
+  // Process items in batches
+  for (let i = 0; i < array.length; i += concurrency) {
+    const batch = array.slice(i, i + concurrency);
+    const batchPromises = batch.map(async (item, batchIndex) => {
+      const actualIndex = i + batchIndex;
+      const result = await asyncFn(item, actualIndex);
+      results[actualIndex] = result;
     });
-
-    executing.push(promise);
-
-    // If we've reached the concurrency limit, wait for one to complete
-    if (executing.length >= concurrency) {
-      await Promise.race(executing);
-      // Remove completed promises
-      for (let j = executing.length - 1; j >= 0; j--) {
-        const isResolved = await Promise.race([
-          executing[j],
-          Promise.resolve('__resolved__'),
-        ]);
-        if (isResolved === '__resolved__') {
-          executing.splice(j, 1);
-        }
-      }
-    }
+    
+    await Promise.all(batchPromises);
   }
-
-  // Wait for all remaining operations to complete
-  await Promise.all(executing);
 
   return results;
 }

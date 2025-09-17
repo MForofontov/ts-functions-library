@@ -48,7 +48,7 @@ describe('asyncRetry', () => {
 
     // Act & Assert
     await expect(
-      asyncRetry(mockFn, { maxAttempts: 3, delay: 10 })
+      asyncRetry(mockFn, { maxAttempts: 3, delay: 10 }),
     ).rejects.toThrow('Final attempt failed');
     expect(mockFn).toHaveBeenCalledTimes(3);
   });
@@ -61,7 +61,9 @@ describe('asyncRetry', () => {
     // Act & Assert
     invalidInputs.forEach((input) => {
       expect(() => asyncRetry(input as any)).toThrow(TypeError);
-      expect(() => asyncRetry(input as any)).toThrow('fn must be a function, got');
+      expect(() => asyncRetry(input as any)).toThrow(
+        'fn must be a function, got',
+      );
     });
   });
 
@@ -71,24 +73,24 @@ describe('asyncRetry', () => {
     const mockFn = jest.fn().mockResolvedValue('success');
 
     // Act & Assert
-    expect(() => 
-      asyncRetry(mockFn, { maxAttempts: 0 })
-    ).toThrow('maxAttempts must be a positive number');
+    expect(() => asyncRetry(mockFn, { maxAttempts: 0 })).toThrow(
+      'maxAttempts must be a positive number',
+    );
 
-    expect(() => 
-      asyncRetry(mockFn, { maxAttempts: -1 })
-    ).toThrow('maxAttempts must be a positive number');
+    expect(() => asyncRetry(mockFn, { maxAttempts: -1 })).toThrow(
+      'maxAttempts must be a positive number',
+    );
 
-    expect(() => 
-      asyncRetry(mockFn, { delay: -100 })
-    ).toThrow('delay must be a non-negative number');
+    expect(() => asyncRetry(mockFn, { delay: -100 })).toThrow(
+      'delay must be a non-negative number',
+    );
 
-    expect(() => 
-      asyncRetry(mockFn, { backoff: 'invalid' as any })
-    ).toThrow("backoff must be 'fixed', 'linear', or 'exponential'");
+    expect(() => asyncRetry(mockFn, { backoff: 'invalid' as any })).toThrow(
+      "backoff must be 'fixed', 'linear', or 'exponential'",
+    );
 
-    expect(() => 
-      asyncRetry(mockFn, { onRetry: 'not a function' as any })
+    expect(() =>
+      asyncRetry(mockFn, { onRetry: 'not a function' as any }),
     ).toThrow('onRetry must be a function');
   });
 
@@ -110,10 +112,10 @@ describe('asyncRetry', () => {
 
     try {
       // Test exponential backoff
-      await asyncRetry(mockFn, { 
-        maxAttempts: 3, 
-        delay: 100, 
-        backoff: 'exponential' 
+      await asyncRetry(mockFn, {
+        maxAttempts: 3,
+        delay: 100,
+        backoff: 'exponential',
       });
     } catch (error) {
       // Expected to fail
@@ -132,10 +134,10 @@ describe('asyncRetry', () => {
 
     try {
       // Test linear backoff
-      await asyncRetry(mockFn, { 
-        maxAttempts: 3, 
-        delay: 100, 
-        backoff: 'linear' 
+      await asyncRetry(mockFn, {
+        maxAttempts: 3,
+        delay: 100,
+        backoff: 'linear',
       });
     } catch (error) {
       // Expected to fail
@@ -159,10 +161,10 @@ describe('asyncRetry', () => {
       .mockResolvedValue('success');
 
     // Act
-    await asyncRetry(mockFn, { 
-      maxAttempts: 3, 
-      delay: 10, 
-      onRetry: onRetryMock 
+    await asyncRetry(mockFn, {
+      maxAttempts: 3,
+      delay: 10,
+      onRetry: onRetryMock,
     });
 
     // Assert
