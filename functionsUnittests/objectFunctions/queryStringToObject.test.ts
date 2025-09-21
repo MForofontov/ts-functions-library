@@ -78,4 +78,16 @@ describe('queryStringToObject', () => {
       TypeError,
     );
   });
+
+  it('10. should preserve additional equals signs in parameter values', () => {
+    const queryString = 'token=a=b=c&empty=&flag';
+    const result = queryStringToObject(queryString);
+    expect(result).toEqual({ token: 'a=b=c', empty: '', flag: '' });
+  });
+
+  it('11. should decode encoded equals signs inside parameter values', () => {
+    const queryString = 'note=foo%3Dbar%3Dbaz&data=hello%3Dworld';
+    const result = queryStringToObject(queryString);
+    expect(result).toEqual({ note: 'foo=bar=baz', data: 'hello=world' });
+  });
 });
