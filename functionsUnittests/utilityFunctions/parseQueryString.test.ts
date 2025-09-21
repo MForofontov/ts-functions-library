@@ -86,4 +86,12 @@ describe('parseQueryString', () => {
     const expected = { name: 'John' };
     expect(result).toEqual(expected);
   });
+
+  // Test case 12: Preserve equals signs within parameter values
+  it('12. should preserve equals signs within parameter values', () => {
+    const queryString = '?token=abc=def=ghi&signature=XYZ%3D%3D';
+    const result = parseQueryString(queryString);
+    const expected = { token: 'abc=def=ghi', signature: 'XYZ==' };
+    expect(result).toEqual(expected);
+  });
 });

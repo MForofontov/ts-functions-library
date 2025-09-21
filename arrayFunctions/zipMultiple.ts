@@ -41,6 +41,10 @@ type ZippedTuple<T extends unknown[][]> = { [K in keyof T]: T[K][number] };
 export function zipMultiple<T extends unknown[][]>(
   ...arrays: T
 ): ZippedTuple<T>[] {
+  if (arrays.length === 0) {
+    return [];
+  }
+
   const minLength = Math.min(...arrays.map((arr) => arr.length));
   const result: ZippedTuple<T>[] = [];
   for (let i = 0; i < minLength; i++) {
