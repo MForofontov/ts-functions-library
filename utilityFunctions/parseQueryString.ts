@@ -25,11 +25,16 @@ export function parseQueryString(queryString: string): Record<string, string> {
     .filter(Boolean)
     .reduce(
       (acc, queryParam) => {
-        const [key, value] = queryParam.split('=');
+        const [key, ...rest] = queryParam.split('=');
+
         if (!key) {
           return acc;
         }
-        acc[decodeURIComponent(key)] = decodeURIComponent(value || '');
+
+        const value = rest.join('=');
+
+        acc[decodeURIComponent(key)] = decodeURIComponent(value);
+
         return acc;
       },
       {} as Record<string, string>,
