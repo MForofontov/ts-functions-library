@@ -291,4 +291,9 @@ describe('zipMultiple', () => {
       [undefined, undefined, undefined],
     ]);
   });
+
+  test('21. should return an empty array when called without input arrays', () => {
+    const result = zipMultiple();
+    expect(result).toEqual([]);
+  });
 });
