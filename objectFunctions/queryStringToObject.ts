@@ -31,10 +31,11 @@ export function queryStringToObject(
   return str
     .split('&')
     .filter(Boolean)
-    .map((param) => param.split('='))
     .reduce(
-      (acc, [key, value]) => {
+      (acc, param) => {
+        const [key, ...rest] = param.split('=');
         if (key) {
+          const value = rest.length > 0 ? rest.join('=') : undefined;
           acc[decodeURIComponent(key)] = decodeURIComponent(value ?? '');
         }
         return acc;
