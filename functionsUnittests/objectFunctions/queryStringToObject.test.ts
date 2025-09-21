@@ -44,50 +44,50 @@ describe('queryStringToObject', () => {
     expect(result).toEqual(expected);
   });
 
+  it('5. should preserve additional equals signs in parameter values', () => {
+    const queryString = 'token=a=b=c&empty=&flag';
+    const result = queryStringToObject(queryString);
+    expect(result).toEqual({ token: 'a=b=c', empty: '', flag: '' });
+  });
+
+  it('6. should decode encoded equals signs inside parameter values', () => {
+    const queryString = 'note=foo%3Dbar%3Dbaz&data=hello%3Dworld';
+    const result = queryStringToObject(queryString);
+    expect(result).toEqual({ note: 'foo=bar=baz', data: 'hello=world' });
+  });
+
   // Test case 5: Handle non-string input (number)
-  it('5. should throw a TypeError if input is a number', () => {
+  it('7. should throw a TypeError if input is a number', () => {
     expect(() => queryStringToObject(42 as unknown as string)).toThrow(
       TypeError,
     );
   });
 
   // Test case 6: Handle non-string input (object)
-  it('6. should throw a TypeError if input is an object', () => {
+  it('8. should throw a TypeError if input is an object', () => {
     expect(() => queryStringToObject({} as unknown as string)).toThrow(
       TypeError,
     );
   });
 
   // Test case 7: Handle non-string input (boolean)
-  it('7. should throw a TypeError if input is a boolean', () => {
+  it('9. should throw a TypeError if input is a boolean', () => {
     expect(() => queryStringToObject(true as unknown as string)).toThrow(
       TypeError,
     );
   });
 
   // Test case 8: Handle non-string input (null)
-  it('8. should throw a TypeError if input is null', () => {
+  it('10. should throw a TypeError if input is null', () => {
     expect(() => queryStringToObject(null as unknown as string)).toThrow(
       TypeError,
     );
   });
 
   // Test case 9: Handle non-string input (undefined)
-  it('9. should throw a TypeError if input is undefined', () => {
+  it('11. should throw a TypeError if input is undefined', () => {
     expect(() => queryStringToObject(undefined as unknown as string)).toThrow(
       TypeError,
     );
-  });
-
-  it('10. should preserve additional equals signs in parameter values', () => {
-    const queryString = 'token=a=b=c&empty=&flag';
-    const result = queryStringToObject(queryString);
-    expect(result).toEqual({ token: 'a=b=c', empty: '', flag: '' });
-  });
-
-  it('11. should decode encoded equals signs inside parameter values', () => {
-    const queryString = 'note=foo%3Dbar%3Dbaz&data=hello%3Dworld';
-    const result = queryStringToObject(queryString);
-    expect(result).toEqual({ note: 'foo=bar=baz', data: 'hello=world' });
   });
 });
