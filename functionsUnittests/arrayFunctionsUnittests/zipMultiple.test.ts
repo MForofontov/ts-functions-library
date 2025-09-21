@@ -44,8 +44,14 @@ describe('zipMultiple', () => {
     expect(result).toEqual([]);
   });
 
-  // Test case 5: Zipping arrays with mixed types
-  test('5. should zip arrays with mixed types', () => {
+  // Test case 5: Zipping with no input arrays
+  test('5. should return an empty array when called with no input arrays', () => {
+    const result = zipMultiple();
+    expect(result).toEqual([]);
+  });
+
+  // Test case 6: Zipping arrays with mixed types
+  test('6. should zip arrays with mixed types', () => {
     const names: string[] = ['Alice', 'Bob'];
     const ages: (number | string)[] = [25, 'thirty'];
     const cities: (string | boolean)[] = ['New York', true];
@@ -60,8 +66,8 @@ describe('zipMultiple', () => {
     ]);
   });
 
-  // Test case 6: Zipping arrays with nested arrays
-  test('6. should zip arrays with nested arrays', () => {
+  // Test case 7: Zipping arrays with nested arrays
+  test('7. should zip arrays with nested arrays', () => {
     const names: string[][] = [['Alice'], ['Bob']];
     const ages: number[][] = [[25], [30]];
     const cities: string[][] = [['New York'], ['Los Angeles']];
@@ -76,8 +82,8 @@ describe('zipMultiple', () => {
     ]);
   });
 
-  // Test case 7: Zipping arrays with boolean values
-  test('7. should zip arrays with boolean values', () => {
+  // Test case 8: Zipping arrays with boolean values
+  test('8. should zip arrays with boolean values', () => {
     const names: string[] = ['Alice', 'Bob'];
     const ages: boolean[] = [true, false];
     const cities: string[] = ['New York', 'Los Angeles'];
@@ -92,8 +98,8 @@ describe('zipMultiple', () => {
     ]);
   });
 
-  // Test case 8: Zipping arrays with symbols
-  test('8. should zip arrays with symbols', () => {
+  // Test case 9: Zipping arrays with symbols
+  test('9. should zip arrays with symbols', () => {
     const sym1: symbol = Symbol('sym1');
     const sym2: symbol = Symbol('sym2');
     const names: string[] = ['Alice', 'Bob'];
@@ -106,8 +112,8 @@ describe('zipMultiple', () => {
     ]);
   });
 
-  // Test case 9: Zipping arrays with functions
-  test('9. should zip arrays with functions', () => {
+  // Test case 10: Zipping arrays with functions
+  test('10. should zip arrays with functions', () => {
     const func1: () => void = () => {};
     const func2: () => void = () => {};
     const names: string[] = ['Alice', 'Bob'];
@@ -124,8 +130,8 @@ describe('zipMultiple', () => {
     ]);
   });
 
-  // Test case 10: Zipping arrays with dates
-  test('10. should zip arrays with dates', () => {
+  // Test case 11: Zipping arrays with dates
+  test('11. should zip arrays with dates', () => {
     const date1: Date = new Date('2021-01-01');
     const date2: Date = new Date('2022-01-01');
     const names: string[] = ['Alice', 'Bob'];
@@ -138,8 +144,8 @@ describe('zipMultiple', () => {
     ]);
   });
 
-  // Test case 11: Zipping arrays with regular expressions
-  test('11. should zip arrays with regular expressions', () => {
+  // Test case 12: Zipping arrays with regular expressions
+  test('12. should zip arrays with regular expressions', () => {
     const regex1: RegExp = /abc/;
     const regex2: RegExp = /def/;
     const names: string[] = ['Alice', 'Bob'];
@@ -152,8 +158,8 @@ describe('zipMultiple', () => {
     ]);
   });
 
-  // Test case 12: Zipping arrays with BigInt values
-  test('12. should zip arrays with BigInt values', () => {
+  // Test case 13: Zipping arrays with BigInt values
+  test('13. should zip arrays with BigInt values', () => {
     const names: string[] = ['Alice', 'Bob'];
     const ages: bigint[] = [BigInt(25), BigInt(30)];
     const cities: string[] = ['New York', 'Los Angeles'];
@@ -164,8 +170,8 @@ describe('zipMultiple', () => {
     ]);
   });
 
-  // Test case 13: Zipping arrays with Infinity and -Infinity
-  test('13. should zip arrays with Infinity and -Infinity', () => {
+  // Test case 14: Zipping arrays with Infinity and -Infinity
+  test('14. should zip arrays with Infinity and -Infinity', () => {
     const names: string[] = ['Alice', 'Bob'];
     const ages: number[] = [Infinity, -Infinity];
     const cities: string[] = ['New York', 'Los Angeles'];
@@ -176,8 +182,8 @@ describe('zipMultiple', () => {
     ]);
   });
 
-  // Test case 14: Zipping arrays with NaN values
-  test('14. should zip arrays with NaN values', () => {
+  // Test case 15: Zipping arrays with NaN values
+  test('15. should zip arrays with NaN values', () => {
     const names: string[] = ['Alice', 'Bob'];
     const ages: number[] = [NaN, 30];
     const cities: string[] = ['New York', 'Los Angeles'];
@@ -188,8 +194,8 @@ describe('zipMultiple', () => {
     ]);
   });
 
-  // Test case 15: Zipping arrays with mixed data types
-  test('15. should zip arrays with mixed data types', () => {
+  // Test case 16: Zipping arrays with mixed data types
+  test('16. should zip arrays with mixed data types', () => {
     const names: (string | number)[] = ['Alice', 42];
     const ages: (number | string)[] = [25, 'thirty'];
     const cities: (string | boolean)[] = ['New York', true];
@@ -201,8 +207,8 @@ describe('zipMultiple', () => {
     ]);
   });
 
-  // Test case 16: Zipping arrays with symbols and functions
-  test('16. should zip arrays with symbols and functions', () => {
+  // Test case 17: Zipping arrays with symbols and functions
+  test('17. should zip arrays with symbols and functions', () => {
     const sym1: symbol = Symbol('sym1');
     const func1: () => void = () => {};
     const names: (symbol | (() => void))[] = [sym1, func1];
@@ -219,8 +225,8 @@ describe('zipMultiple', () => {
     ]);
   });
 
-  // Test case 17: Zipping arrays with dates and regular expressions
-  test('17. should zip arrays with dates and regular expressions', () => {
+  // Test case 18: Zipping arrays with dates and regular expressions
+  test('18. should zip arrays with dates and regular expressions', () => {
     const date1: Date = new Date('2021-01-01');
     const regex1: RegExp = /abc/;
     const names: (Date | RegExp)[] = [date1, regex1];
@@ -237,8 +243,8 @@ describe('zipMultiple', () => {
     ]);
   });
 
-  // Test case 18: Zipping arrays with null values
-  test('18. should zip arrays with null values', () => {
+  // Test case 19: Zipping arrays with null values
+  test('19. should zip arrays with null values', () => {
     const names: (string | null)[] = ['Alice', null];
     const ages: (number | null)[] = [25, null];
     const cities: (string | null)[] = ['New York', null];
@@ -253,8 +259,8 @@ describe('zipMultiple', () => {
     ]);
   });
 
-  // Test case 19: Zipping arrays with undefined values
-  test('19. should zip arrays with undefined values', () => {
+  // Test case 20: Zipping arrays with undefined values
+  test('20. should zip arrays with undefined values', () => {
     const names: (string | undefined)[] = ['Alice', undefined];
     const ages: (number | undefined)[] = [25, undefined];
     const cities: (string | undefined)[] = ['New York', undefined];
@@ -269,8 +275,8 @@ describe('zipMultiple', () => {
     ]);
   });
 
-  // Test case 20: Zipping arrays with mixed null and undefined values
-  test('20. should zip arrays with mixed null and undefined values', () => {
+  // Test case 21: Zipping arrays with mixed null and undefined values
+  test('21. should zip arrays with mixed null and undefined values', () => {
     const names: (string | null | undefined)[] = ['Alice', null, undefined];
     const ages: (number | null | undefined)[] = [25, null, undefined];
     const cities: (string | null | undefined)[] = ['New York', null, undefined];
