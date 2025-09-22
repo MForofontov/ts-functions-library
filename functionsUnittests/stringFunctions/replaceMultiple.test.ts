@@ -168,4 +168,16 @@ describe('replaceMultiple', () => {
     const result: string = replaceMultiple(str, replacements);
     expect(result).toBe(expected);
   });
+
+  // Test case 16: Return the original string when replacements object is empty
+  it('16. should return the original string when replacements object is empty', () => {
+    const str: string = 'abc';
+
+    expect(replaceMultiple(str, {})).toBe(str);
+
+    const replacementsWithoutPrototype = Object.create(null) as {
+      [key: string]: string;
+    };
+    expect(replaceMultiple(str, replacementsWithoutPrototype)).toBe(str);
+  });
 });
