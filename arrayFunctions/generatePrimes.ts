@@ -25,10 +25,10 @@
  * @complexity O(n log log n) where n is the input limit
  */
 export function generatePrimes(limit: number): number[] {
-  if (limit < 2) return [];
   if (!Number.isInteger(limit)) {
     throw new RangeError('Limit must be an integer');
   }
+  if (limit < 2) return [];
 
   const sieve: boolean[] = new Array<boolean>(limit + 1).fill(true);
   sieve[0] = sieve[1] = false;
