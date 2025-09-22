@@ -75,4 +75,11 @@ describe('generatePrimes', () => {
     const limit: number = NaN;
     expect(() => generatePrimes(limit)).toThrow();
   });
+
+  // Test case 13: Non-integer limit less than 2
+  it('13. should throw an error when the limit is a non-integer less than 2', () => {
+    const limit: number = 1.5;
+    expect(() => generatePrimes(limit)).toThrow(RangeError);
+    expect(() => generatePrimes(limit)).toThrow('Limit must be an integer');
+  });
 });
