@@ -68,6 +68,10 @@ export function isValidIPv6(ip: string): boolean {
     if (groups.length !== 8) {
       return false;
     }
+
+    if (groups.some((group) => group === '')) {
+      return false;
+    }
   } else {
     // With compression
     const leftGroups = parts[0] === '' ? [] : parts[0].split(':');
@@ -75,6 +79,10 @@ export function isValidIPv6(ip: string): boolean {
 
     // Total groups should not exceed 8
     if (leftGroups.length + rightGroups.length >= 8) {
+      return false;
+    }
+
+    if (leftGroups.some((group) => group === '') || rightGroups.some((group) => group === '')) {
       return false;
     }
 
