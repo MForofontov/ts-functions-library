@@ -31,6 +31,8 @@ export function throttle<Args extends unknown[]>(
       lastFunc = setTimeout(
         () => {
           func.apply(this, args);
+          lastRan = Date.now();
+          lastFunc = null;
         },
         limit - (Date.now() - lastRan),
       );

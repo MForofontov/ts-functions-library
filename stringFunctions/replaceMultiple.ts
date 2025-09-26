@@ -14,7 +14,13 @@ export function replaceMultiple(
   str: string,
   replacements: { [key: string]: string },
 ): string {
-  const escapedKeys = Object.keys(replacements).map(
+  const replacementKeys = Object.keys(replacements);
+
+  if (replacementKeys.length === 0) {
+    return str;
+  }
+
+  const escapedKeys = replacementKeys.map(
     (key) => key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), // Escape special regex characters
   );
 
