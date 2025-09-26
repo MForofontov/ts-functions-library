@@ -23,6 +23,8 @@ describe('isValidIPv6', () => {
     ); // Too many groups
     expect(isValidIPv6('gggg::1')).toBe(false); // Invalid hex characters
     expect(isValidIPv6('2001:db8::12345')).toBe(false); // Group too long
+    expect(isValidIPv6('2001:db8::1:')).toBe(false); // Trailing colon creates empty group
+    expect(isValidIPv6(':2001:db8::1')).toBe(false); // Leading colon creates empty group
     expect(isValidIPv6('')).toBe(false); // Empty string
   });
 
