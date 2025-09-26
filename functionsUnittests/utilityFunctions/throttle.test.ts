@@ -69,4 +69,23 @@ describe('throttle', () => {
       done();
     }, 60);
   });
+
+  it('5. should throttle immediately after a trailing execution', (done) => {
+    const mockFn = jest.fn();
+    const throttled = throttle(mockFn, 30);
+
+    throttled();
+    throttled();
+
+    setTimeout(() => {
+      expect(mockFn).toHaveBeenCalledTimes(2);
+      throttled();
+      expect(mockFn).toHaveBeenCalledTimes(2);
+    }, 40);
+
+    setTimeout(() => {
+      expect(mockFn).toHaveBeenCalledTimes(3);
+      done();
+    }, 80);
+  });
 });
