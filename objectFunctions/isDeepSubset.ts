@@ -28,12 +28,22 @@ export function isDeepSubset<T extends Record<string, unknown>>(
     throw new TypeError('Object must be a non-null object');
   }
 
-  return Object.keys(subset).every((key) =>
-    typeof subset[key] === 'object' && subset[key] !== null
-      ? isDeepSubset(
-          subset[key] as Record<string, unknown>,
-          obj[key] as Record<string, unknown>,
-        )
-      : subset[key] === obj[key],
-  );
+  return Object.keys(subset).every((key) => {
+    const subsetValue = subset[key];
+
+    if (typeof subsetValue === 'object' && subsetValue !== null) {
+      const objValue = obj[key];
+
+      if (typeof objValue !== 'object' || objValue === null) {
+        return false;
+      }
+
+      return isDeepSubset(
+        subsetValue as Record<string, unknown>,
+        objValue as Record<string, unknown>,
+      );
+    }
+
+    return subsetValue === obj[key];
+  });
 }
