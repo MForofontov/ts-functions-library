@@ -40,6 +40,14 @@ describe('countCharacterOccurrences', () => {
     expect(result).toBe(expected);
   });
 
+  it('4a. should treat regular expression characters literally', () => {
+    const str: string = 'a.b';
+    const char: string = '.';
+    const expected: number = 1;
+    const result: number = countCharacterOccurrences(str, char);
+    expect(result).toBe(expected);
+  });
+
   // Test case 5: Count occurrences of a number
   it('5. should count occurrences of a number', () => {
     const str: string = 'hello 123 world 123';
@@ -107,6 +115,14 @@ describe('countCharacterOccurrences', () => {
   it('12. should return 0 when counting occurrences of a character in an empty string', () => {
     const str: string = '';
     const char: string = 'a';
+    const expected: number = 0;
+    const result: number = countCharacterOccurrences(str, char);
+    expect(result).toBe(expected);
+  });
+
+  it('12a. should return 0 when the character to count is empty', () => {
+    const str: string = 'hello world';
+    const char: string = '';
     const expected: number = 0;
     const result: number = countCharacterOccurrences(str, char);
     expect(result).toBe(expected);
