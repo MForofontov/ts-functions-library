@@ -138,4 +138,13 @@ describe('countSubstring', () => {
     const result: number = countSubstring(str, substring);
     expect(result).toBe(expected);
   });
+
+  // Test case 16: Count occurrences of a substring containing regex metacharacters
+  it('16. should treat regex metacharacters in the substring literally', () => {
+    const str: string = 'values: a.*b, c+d, a.*b';
+    const substring: string = 'a.*b';
+    const expected: number = 2;
+    const result: number = countSubstring(str, substring);
+    expect(result).toBe(expected);
+  });
 });
