@@ -19,6 +19,7 @@
     "dateFunctions",
     "encodingFunctions",
     "mathFunctions",
+    "networkFunctions",
     "objectFunctions",
     "stringFunctions",
     "utilityFunctions",
