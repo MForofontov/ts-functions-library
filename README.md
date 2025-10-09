@@ -84,9 +84,11 @@ const slug = slugify('Hello World!'); // 'hello-world'
 ## 📋 Function Categories
 
 ### 🔢 Array Functions (26 functions)
+
 Comprehensive array manipulation utilities for modern JavaScript development.
 
 **Key Functions:**
+
 - `chunkArray` - Split arrays into smaller chunks
 - `flattenArray` - Flatten nested arrays of any depth
 - `findDuplicates` - Find duplicate elements with optional custom equality
@@ -95,9 +97,11 @@ Comprehensive array manipulation utilities for modern JavaScript development.
 - `shuffleArray` - Fisher-Yates shuffle implementation
 
 ### ⚡ Async Functions (6 functions)
+
 Powerful utilities for asynchronous operations and concurrency control.
 
 **Key Functions:**
+
 - `asyncRetry` - Retry functions with exponential backoff
 - `asyncTimeout` - Add timeouts to promises
 - `asyncMap` - Async array mapping with concurrency control
@@ -106,9 +110,11 @@ Powerful utilities for asynchronous operations and concurrency control.
 - `asyncParallel` - Controlled parallel execution
 
 ### 📅 Date Functions (26 functions)
+
 Comprehensive date and time manipulation without external dependencies.
 
 **Key Functions:**
+
 - `formatDate` - Flexible date formatting
 - `businessDaysBetween` - Calculate business days
 - `addMonths` - Accurate month arithmetic
@@ -117,16 +123,20 @@ Comprehensive date and time manipulation without external dependencies.
 - `getQuarter` - Quarter calculation
 
 ### 🔐 Encoding Functions (2 functions)
+
 Secure encoding/decoding utilities for data transformation.
 
 **Key Functions:**
+
 - `encodeBase64` - Safe Base64 encoding (Node.js Buffer-based)
 - `decodeBase64` - Safe Base64 decoding with error handling
 
 ### 🧮 Math Functions (48 functions)
+
 Extensive mathematical operations organized by mathematical domains.
 
 #### Subdomains:
+
 - **Arithmetic** (9 functions): Basic operations, rounding, percentages
 - **Algebra** (8 functions): Powers, roots, logarithms, exponentials
 - **Geometry** (20 functions): Area, volume, distance, trigonometry
@@ -136,9 +146,11 @@ Extensive mathematical operations organized by mathematical domains.
 - **Sequences** (3 functions): Fibonacci, triangular numbers
 
 ### 🎯 Object Functions (35 functions)
+
 Advanced object manipulation utilities for complex data structures.
 
 **Key Functions:**
+
 - `deepMerge` - Deep object merging with conflict resolution
 - `safeGet` - Safe property access with default values
 - `flattenObject` - Flatten nested objects with dot notation
@@ -147,9 +159,11 @@ Advanced object manipulation utilities for complex data structures.
 - `pickKeys` & `omitKeys` - Select/exclude object properties
 
 ### 🔤 String Functions (46 functions)
+
 Comprehensive text processing utilities for modern applications.
 
 **Key Functions:**
+
 - `slugify` - URL-friendly string conversion
 - `capitalizeEachWord` - Smart text capitalization
 - `isPalindrome` - Palindrome detection
@@ -158,9 +172,11 @@ Comprehensive text processing utilities for modern applications.
 - `generateRandomString` - Cryptographically secure random strings
 
 ### ✅ Validation Functions (9 functions)
+
 Specialized validation utilities not covered by popular libraries.
 
 **Key Functions:**
+
 - `isValidIPv4` & `isValidIPv6` - IP address validation
 - `isValidMACAddress` - MAC address validation
 - `isValidUUID` - UUID format validation
@@ -169,9 +185,11 @@ Specialized validation utilities not covered by popular libraries.
 - `isValidTime` - Time format validation
 
 ### 🛠️ Utility Functions (10 functions)
+
 General-purpose utilities for common programming tasks.
 
 **Key Functions:**
+
 - `debounce` & `throttle` - Function execution control
 - `hexToRgb` & `rgbToHex` - Color format conversion
 - `bytesToSize` - Human-readable byte size formatting
@@ -183,7 +201,11 @@ General-purpose utilities for common programming tasks.
 ### Array Operations
 
 ```typescript
-import { chunkArray, findDuplicates, cartesianProduct } from 'ts-functions-library';
+import {
+  chunkArray,
+  findDuplicates,
+  cartesianProduct,
+} from 'ts-functions-library';
 
 // Split array into chunks
 const data = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -206,15 +228,16 @@ const combinations = cartesianProduct(colors, sizes);
 import { asyncRetry, asyncTimeout, asyncMap } from 'ts-functions-library';
 
 // Retry with exponential backoff
-const result = await asyncRetry(
-  () => fetch('/api/data'),
-  { retries: 3, delay: 1000, backoff: 'exponential' }
-);
+const result = await asyncRetry(() => fetch('/api/data'), {
+  retries: 3,
+  delay: 1000,
+  backoff: 'exponential',
+});
 
 // Add timeout to promise
 const dataWithTimeout = await asyncTimeout(
   fetch('/api/slow-endpoint'),
-  5000 // 5 second timeout
+  5000, // 5 second timeout
 );
 
 // Async map with concurrency control
@@ -232,7 +255,7 @@ import { deepMerge, safeGet, flattenObject } from 'ts-functions-library';
 // Deep merge with conflict resolution
 const config = deepMerge(
   { api: { timeout: 5000 }, features: { auth: true } },
-  { api: { retries: 3 }, features: { logging: true } }
+  { api: { retries: 3 }, features: { logging: true } },
 );
 // Result: { api: { timeout: 5000, retries: 3 }, features: { auth: true, logging: true } }
 
@@ -249,10 +272,10 @@ const flattened = flattenObject(nested); // { 'a.b.c': 1, 'd': 2 }
 ### Mathematical Operations
 
 ```typescript
-import { 
-  calculateStandardDeviation, 
-  calculateHaversineDistance, 
-  isPrime 
+import {
+  calculateStandardDeviation,
+  calculateHaversineDistance,
+  isPrime,
 } from 'ts-functions-library';
 
 // Statistical calculations
@@ -261,8 +284,8 @@ const stdDev = calculateStandardDeviation(data); // ~2.138
 
 // Geographic distance calculation
 const distance = calculateHaversineDistance(
-  { lat: 40.7128, lng: -74.0060 }, // New York
-  { lat: 34.0522, lng: -118.2437 }  // Los Angeles
+  { lat: 40.7128, lng: -74.006 }, // New York
+  { lat: 34.0522, lng: -118.2437 }, // Los Angeles
 ); // ~3944.42 km
 
 // Number theory
@@ -287,7 +310,11 @@ const isPalin = isPalindrome('A man a plan a canal Panama'); // true
 ### Validation
 
 ```typescript
-import { isValidIPv4, isValidUUID, isValidMACAddress } from 'ts-functions-library';
+import {
+  isValidIPv4,
+  isValidUUID,
+  isValidMACAddress,
+} from 'ts-functions-library';
 
 // Network validation
 const isValidIP = isValidIPv4('192.168.1.1'); // true
@@ -392,13 +419,13 @@ ts-functions-library/
 
 ### Build Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run build` | Compile TypeScript to JavaScript |
-| `npm run prepare` | Pre-publish build step |
-| `npm run lint` | Run ESLint checks |
-| `npm run lint:fix` | Fix ESLint issues automatically |
-| `npm run format` | Format code with Prettier |
+| Command            | Description                      |
+| ------------------ | -------------------------------- |
+| `npm run build`    | Compile TypeScript to JavaScript |
+| `npm run prepare`  | Pre-publish build step           |
+| `npm run lint`     | Run ESLint checks                |
+| `npm run lint:fix` | Fix ESLint issues automatically  |
+| `npm run format`   | Format code with Prettier        |
 
 ### Code Quality Tools
 
@@ -455,10 +482,10 @@ describe('functionName', () => {
   it('1. should handle typical input correctly', () => {
     // Arrange
     const input = validInput;
-    
+
     // Act
     const result = functionName(input);
-    
+
     // Assert
     expect(result).toBe(expectedOutput);
   });
@@ -467,7 +494,7 @@ describe('functionName', () => {
     expect(() => functionName(invalidInput)).toThrow(TypeError);
     expect(() => functionName(invalidInput)).toThrow('expected error message');
   });
-  
+
   // ... additional test cases
 });
 ```
@@ -481,6 +508,7 @@ describe('functionName', () => {
 ### Continuous Integration
 
 Tests run automatically on:
+
 - Pull requests
 - Main branch commits
 - Release tags
@@ -509,7 +537,7 @@ See the [LICENSE](LICENSE) file for complete details.
 
 ## 👨‍💻 Authors
 
-- **[Mykyta Forofontov](https://github.com/MForofontov)** - *Initial work and primary maintainer*
+- **[Mykyta Forofontov](https://github.com/MForofontov)** - _Initial work and primary maintainer_
 
 ## 🙏 Acknowledgments
 

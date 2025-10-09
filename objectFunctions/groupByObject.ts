@@ -13,13 +13,13 @@
  *   { name: 'Bob', age: 30 },
  *   { name: 'Carol', age: 25 }
  * ];
- * groupBy(people, 'age');
+ * groupByObject(people, 'age');
  * // => {
  * //   '25': [{ name: 'Alice', age: 25 }, { name: 'Carol', age: 25 }],
  * //   '30': [{ name: 'Bob', age: 30 }]
  * // }
  *
- * groupBy(items, 'category');
+ * groupByObject(items, 'category');
  * // => {
  * //   'true': [{ id: 1, category: true }],
  * //   'false': [{ id: 2, category: false }]
@@ -27,7 +27,10 @@
  *
  * @note Property values are converted to strings when used as keys in the result object.
  */
-export function groupBy<T>(array: T[], key: keyof T): Record<string, T[]> {
+export function groupByObject<T>(
+  array: T[],
+  key: keyof T,
+): Record<string, T[]> {
   if (!Array.isArray(array)) {
     throw new TypeError('Input must be an array');
   }

@@ -82,7 +82,10 @@ export function isValidIPv6(ip: string): boolean {
       return false;
     }
 
-    if (leftGroups.some((group) => group === '') || rightGroups.some((group) => group === '')) {
+    if (
+      leftGroups.some((group) => group === '') ||
+      rightGroups.some((group) => group === '')
+    ) {
       return false;
     }
 

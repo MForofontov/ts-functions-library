@@ -159,7 +159,9 @@ module.exports = [
     },
   },
   // Integrate Prettier config to disable ESLint rules that conflict with Prettier
-  ...(Array.isArray(eslintConfigPrettier) ? eslintConfigPrettier : [eslintConfigPrettier]),
+  ...(Array.isArray(eslintConfigPrettier)
+    ? eslintConfigPrettier
+    : [eslintConfigPrettier]),
   {
     ignores: [
       'node_modules/**',

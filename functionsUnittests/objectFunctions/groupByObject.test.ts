@@ -1,6 +1,6 @@
-import { groupBy } from '../../objectFunctions/groupBy';
+import { groupByObject } from '../../objectFunctions/groupByObject';
 
-describe('groupBy', () => {
+describe('groupByObject', () => {
   // Test case 1: Group by a string key
   it('1. should group by a string key', () => {
     const array = [
@@ -8,7 +8,7 @@ describe('groupBy', () => {
       { category: 'fruit', name: 'banana' },
       { category: 'vegetable', name: 'carrot' },
     ];
-    const result = groupBy(array, 'category');
+    const result = groupByObject(array, 'category');
     const expected = {
       fruit: [
         { category: 'fruit', name: 'apple' },
@@ -26,7 +26,7 @@ describe('groupBy', () => {
       { id: 2, name: 'banana' },
       { id: 1, name: 'carrot' },
     ];
-    const result = groupBy(array, 'id');
+    const result = groupByObject(array, 'id');
     const expected = {
       '1': [
         { id: 1, name: 'apple' },
@@ -44,7 +44,7 @@ describe('groupBy', () => {
       { isFruit: true, name: 'banana' },
       { isFruit: false, name: 'carrot' },
     ];
-    const result = groupBy(array, 'isFruit');
+    const result = groupByObject(array, 'isFruit');
     const expected = {
       true: [
         { isFruit: true, name: 'apple' },
@@ -62,7 +62,7 @@ describe('groupBy', () => {
       { category: undefined, name: 'banana' },
       { category: 'vegetable', name: 'carrot' },
     ];
-    const result = groupBy(array, 'category');
+    const result = groupByObject(array, 'category');
     const expected = {
       fruit: [{ category: 'fruit', name: 'apple' }],
       undefined: [{ category: undefined, name: 'banana' }],
@@ -78,7 +78,7 @@ describe('groupBy', () => {
       { category: null, name: 'banana' },
       { category: 'vegetable', name: 'carrot' },
     ];
-    const result = groupBy(array, 'category');
+    const result = groupByObject(array, 'category');
     const expected = {
       fruit: [{ category: 'fruit', name: 'apple' }],
       null: [{ category: null, name: 'banana' }],
@@ -90,7 +90,7 @@ describe('groupBy', () => {
   // Test case 6: Handle empty array
   it('6. should return an empty object for an empty array', () => {
     const array: Array<Record<string, unknown>> = [];
-    const result = groupBy(array, 'category');
+    const result = groupByObject(array, 'category');
     const expected = {};
     expect(result).toEqual(expected);
   });
@@ -102,7 +102,10 @@ describe('groupBy', () => {
       { category: 'fruit', name: 'banana' },
       { category: 'vegetable', name: 'carrot' },
     ];
-    const result = groupBy(array, 'nonExistentKey' as keyof (typeof array)[0]);
+    const result = groupByObject(
+      array,
+      'nonExistentKey' as keyof (typeof array)[0],
+    );
     const expected = {};
     expect(result).toEqual(expected);
   });
@@ -114,7 +117,7 @@ describe('groupBy', () => {
       { category: 1, name: 'banana' },
       { category: 'vegetable', name: 'carrot' },
     ];
-    const result = groupBy(array, 'category');
+    const result = groupByObject(array, 'category');
     const expected = {
       fruit: [{ category: 'fruit', name: 'apple' }],
       '1': [{ category: 1, name: 'banana' }],
@@ -126,14 +129,17 @@ describe('groupBy', () => {
   // Test case 9: Handle non-array input (number)
   it('9. should throw a TypeError if input is not an array', () => {
     expect(() =>
-      groupBy(42 as unknown as Array<Record<string, unknown>>, 'category'),
+      groupByObject(
+        42 as unknown as Array<Record<string, unknown>>,
+        'category',
+      ),
     ).toThrow(TypeError);
   });
 
   // Test case 10: Handle non-array input (string)
   it('10. should throw a TypeError if input is a string', () => {
     expect(() =>
-      groupBy(
+      groupByObject(
         'string' as unknown as Array<Record<string, unknown>>,
         'category',
       ),
@@ -143,21 +149,27 @@ describe('groupBy', () => {
   // Test case 11: Handle non-array input (boolean)
   it('11. should throw a TypeError if input is a boolean', () => {
     expect(() =>
-      groupBy(true as unknown as Array<Record<string, unknown>>, 'category'),
+      groupByObject(
+        true as unknown as Array<Record<string, unknown>>,
+        'category',
+      ),
     ).toThrow(TypeError);
   });
 
   // Test case 12: Handle null input
   it('12. should throw a TypeError if input is null', () => {
     expect(() =>
-      groupBy(null as unknown as Array<Record<string, unknown>>, 'category'),
+      groupByObject(
+        null as unknown as Array<Record<string, unknown>>,
+        'category',
+      ),
     ).toThrow(TypeError);
   });
 
   // Test case 13: Handle undefined input
   it('13. should throw a TypeError if input is undefined', () => {
     expect(() =>
-      groupBy(
+      groupByObject(
         undefined as unknown as Array<Record<string, unknown>>,
         'category',
       ),
