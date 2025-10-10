@@ -30,8 +30,27 @@ describe('isInRange', () => {
     expect(isInRange(9.9, 1, 10, false)).toBe(true);
   });
 
-  // Test case 4: TypeError for invalid input types
-  it('4. should throw TypeError for invalid input types', () => {
+  // Test case 4: Performance with various ranges
+  it('4. should validate ranges efficiently', () => {
+    const tests = [
+      { value: 5, min: 1, max: 10, inclusive: true },
+      { value: 1, min: 1, max: 10, inclusive: false },
+      { value: 3.14, min: 3, max: 4, inclusive: true },
+      { value: 0, min: 1, max: 10, inclusive: true },
+    ];
+
+    const startTime = performance.now();
+    const results = tests.map((test) =>
+      isInRange(test.value, test.min, test.max, test.inclusive),
+    );
+    const endTime = performance.now();
+
+    expect(results).toEqual([true, false, true, false]);
+    expect(endTime - startTime).toBeLessThan(10);
+  });
+
+  // Test case 5: TypeError for invalid input types
+  it('5. should throw TypeError for invalid input types', () => {
     const invalidInputs = ['string', null, undefined, [], {}, true];
 
     invalidInputs.forEach((input) => {
@@ -51,37 +70,18 @@ describe('isInRange', () => {
     );
   });
 
-  // Test case 5: Error for NaN values
-  it('5. should throw Error for NaN values', () => {
+  // Test case 6: Error for NaN values
+  it('6. should throw Error for NaN values', () => {
     expect(() => isInRange(NaN, 1, 10)).toThrow(Error);
     expect(() => isInRange(5, NaN, 10)).toThrow(Error);
     expect(() => isInRange(5, 1, NaN)).toThrow(Error);
   });
 
-  // Test case 6: Error for min > max
-  it('6. should throw Error when min is greater than max', () => {
+  // Test case 7: Error for min > max
+  it('7. should throw Error when min is greater than max', () => {
     expect(() => isInRange(5, 10, 1)).toThrow(Error);
     expect(() => isInRange(5, 10, 1)).toThrow(
       'min (10) must be less than or equal to max (1)',
     );
-  });
-
-  // Test case 7: Performance with various ranges
-  it('7. should validate ranges efficiently', () => {
-    const tests = [
-      { value: 5, min: 1, max: 10, inclusive: true },
-      { value: 1, min: 1, max: 10, inclusive: false },
-      { value: 3.14, min: 3, max: 4, inclusive: true },
-      { value: 0, min: 1, max: 10, inclusive: true },
-    ];
-
-    const startTime = performance.now();
-    const results = tests.map((test) =>
-      isInRange(test.value, test.min, test.max, test.inclusive),
-    );
-    const endTime = performance.now();
-
-    expect(results).toEqual([true, false, true, false]);
-    expect(endTime - startTime).toBeLessThan(10);
   });
 });

@@ -20,8 +20,8 @@ describe('throttle', () => {
     }, 40);
   });
 
-  // Test case 2: Ensure the function is only called once within the limit
-  it('2. should throttle rapid successive calls', (done) => {
+  // Test case 1: Ensure the function is only called once within the limit
+  it('1. should throttle rapid successive calls', (done) => {
     const mockFn = jest.fn();
     const throttled = throttle(mockFn, 30);
 
@@ -39,8 +39,8 @@ describe('throttle', () => {
     }, 50);
   });
 
-  // Test case 3: Verify arguments from the last call are used
-  it('3. should use the latest arguments for the delayed call', (done) => {
+  // Test case 2: Verify arguments from the last call are used
+  it('2. should use the latest arguments for the delayed call', (done) => {
     const received: number[] = [];
     const throttled = throttle((val: number) => received.push(val), 20);
 
@@ -53,8 +53,8 @@ describe('throttle', () => {
     }, 40);
   });
 
-  // Test case 4: Allow calls after the wait period has passed
-  it('4. should execute again after the limit when called later', (done) => {
+  // Test case 3: Allow calls after the wait period has passed
+  it('3. should execute again after the limit when called later', (done) => {
     const mockFn = jest.fn();
     const throttled = throttle(mockFn, 20);
 
@@ -70,7 +70,7 @@ describe('throttle', () => {
     }, 60);
   });
 
-  it('5. should throttle immediately after a trailing execution', (done) => {
+  it('3. should throttle immediately after a trailing execution', (done) => {
     const mockFn = jest.fn();
     const throttled = throttle(mockFn, 30);
 

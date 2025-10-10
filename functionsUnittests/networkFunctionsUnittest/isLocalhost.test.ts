@@ -61,56 +61,56 @@ describe('isLocalhost', () => {
     expect(isLocalhost('https://example.com/path')).toBe(false);
   });
 
-  // Test case 12: Error case - non-string input
-  it('12. should throw TypeError for non-string input', () => {
-    const input = 12345 as unknown as string;
-    expect(() => isLocalhost(input)).toThrow(TypeError);
-    expect(() => isLocalhost(input)).toThrow('urlOrHostname must be a string');
-  });
-
-  // Test case 13: Empty string
-  it('13. should return false for empty string', () => {
+  // Test case 12: Empty string
+  it('12. should return false for empty string', () => {
     expect(isLocalhost('')).toBe(false);
   });
 
-  // Test case 14: Localhost with different casing
-  it('14. should return true for "LOCALHOST" (case-insensitive)', () => {
+  // Test case 13: Localhost with different casing
+  it('13. should return true for "LOCALHOST" (case-insensitive)', () => {
     expect(isLocalhost('LOCALHOST')).toBe(true);
     expect(isLocalhost('LocalHost')).toBe(true);
   });
 
-  // Test case 15: 127.0.0.2 (loopback range)
-  it('15. should return true for 127.0.0.2', () => {
+  // Test case 14: 127.0.0.2 (loopback range)
+  it('14. should return true for 127.0.0.2', () => {
     expect(isLocalhost('127.0.0.2')).toBe(true);
   });
 
-  // Test case 16: 128.0.0.1 (not loopback)
-  it('16. should return false for 128.0.0.1', () => {
+  // Test case 15: 128.0.0.1 (not loopback)
+  it('15. should return false for 128.0.0.1', () => {
     expect(isLocalhost('128.0.0.1')).toBe(false);
   });
 
-  // Test case 17: localhost subdomain
-  it('17. should return false for localhost subdomains', () => {
+  // Test case 16: localhost subdomain
+  it('16. should return false for localhost subdomains', () => {
     expect(isLocalhost('api.localhost')).toBe(false);
   });
 
-  // Test case 18: URL with port only
-  it('18. should handle URLs with ports correctly', () => {
+  // Test case 17: URL with port only
+  it('17. should handle URLs with ports correctly', () => {
     expect(isLocalhost('http://localhost:8080')).toBe(true);
     expect(isLocalhost('http://example.com:8080')).toBe(false);
   });
 
-  // Test case 19: IPv6 loopback in URL
-  it('19. should detect IPv6 loopback in various formats', () => {
+  // Test case 18: IPv6 loopback in URL
+  it('18. should detect IPv6 loopback in various formats', () => {
     expect(isLocalhost('http://[::1]/')).toBe(true);
     expect(isLocalhost('::1')).toBe(true);
   });
 
-  // Test case 20: Invalid URL format
-  it('20. should handle invalid URL format gracefully', () => {
+  // Test case 19: Invalid URL format
+  it('19. should handle invalid URL format gracefully', () => {
     // For invalid URLs that aren't proper URLs, should check as hostname
     expect(isLocalhost('not-a-url-localhost')).toBe(false);
     // With port in hostname format, it's not parsed as URL, so not detected
     expect(isLocalhost('127.0.0.1:8080')).toBe(false);
+  });
+
+  // Test case 20: Error case - non-string input
+  it('20. should throw TypeError for non-string input', () => {
+    const input = 12345 as unknown as string;
+    expect(() => isLocalhost(input)).toThrow(TypeError);
+    expect(() => isLocalhost(input)).toThrow('urlOrHostname must be a string');
   });
 });

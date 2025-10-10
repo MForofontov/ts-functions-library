@@ -38,8 +38,29 @@ describe('isValidUUID', () => {
     expect(isValidUUID('550e8400-e29b-41d4-a716-446655440000', 1)).toBe(false);
   });
 
-  // Test case 4: TypeError for invalid input types
-  it('4. should throw TypeError for invalid input types', () => {
+  // Test case 4: Performance with various UUIDs
+  it('4. should validate UUIDs efficiently', () => {
+    // Arrange
+    const uuids = [
+      '123e4567-e89b-12d3-a456-426614174000',
+      '6ba7b810-9dad-11d1-80b4-00c04fd430c8',
+      'invalid-uuid',
+      '550e8400-e29b-41d4-a716-446655440000',
+      '123e4567-e89b-12d3-a456-42661417400',
+    ];
+
+    // Act
+    const startTime = performance.now();
+    const results = uuids.map((uuid) => isValidUUID(uuid));
+    const endTime = performance.now();
+
+    // Assert
+    expect(results).toEqual([true, true, false, true, false]);
+    expect(endTime - startTime).toBeLessThan(10); // Should complete quickly
+  });
+
+  // Test case 5: TypeError for invalid input types
+  it('5. should throw TypeError for invalid input types', () => {
     // Arrange
     const invalidInputs: unknown[] = [null, undefined, 42, {}, [], true];
     const expectedMessage = 'uuid must be a string, got';
@@ -65,8 +86,8 @@ describe('isValidUUID', () => {
     ).toThrow('version must be a number, got');
   });
 
-  // Test case 5: Error for unsupported version
-  it('5. should throw Error for unsupported UUID version', () => {
+  // Test case 6: Error for unsupported version
+  it('6. should throw Error for unsupported UUID version', () => {
     // Arrange
     const validUUID = '123e4567-e89b-12d3-a456-426614174000';
     const unsupportedVersions = [0, 2, 6, 7, -1, 10];
@@ -78,26 +99,5 @@ describe('isValidUUID', () => {
         'version must be 1, 3, 4, or 5',
       );
     });
-  });
-
-  // Test case 6: Performance with various UUIDs
-  it('6. should validate UUIDs efficiently', () => {
-    // Arrange
-    const uuids = [
-      '123e4567-e89b-12d3-a456-426614174000',
-      '6ba7b810-9dad-11d1-80b4-00c04fd430c8',
-      'invalid-uuid',
-      '550e8400-e29b-41d4-a716-446655440000',
-      '123e4567-e89b-12d3-a456-42661417400',
-    ];
-
-    // Act
-    const startTime = performance.now();
-    const results = uuids.map((uuid) => isValidUUID(uuid));
-    const endTime = performance.now();
-
-    // Assert
-    expect(results).toEqual([true, true, false, true, false]);
-    expect(endTime - startTime).toBeLessThan(10); // Should complete quickly
   });
 });

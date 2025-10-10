@@ -77,28 +77,28 @@ describe('compareDates', () => {
   });
 
   // Error test case 1: Compare two dates with invalid first date (should throw an error)
-  it('9. should throw an error for an invalid first date', () => {
+  it('8. should throw an error for an invalid first date', () => {
     const date1: Date = new Date('invalid-date');
     const date2: Date = new Date('2023-01-01');
     expect(() => compareDates(date1, date2)).toThrow('Invalid date');
   });
 
   // Error test case 2: Compare two dates with invalid second date (should throw an error)
-  it('10. should throw an error for an invalid second date', () => {
+  it('8. should throw an error for an invalid second date', () => {
     const date1: Date = new Date('2023-01-01');
     const date2: Date = new Date('invalid-date');
     expect(() => compareDates(date1, date2)).toThrow('Invalid date');
   });
 
   // Error test case 3: Compare two dates with NaN first date (should throw an error)
-  it('11. should throw an error for a NaN first date', () => {
+  it('8. should throw an error for a NaN first date', () => {
     const date1: Date = new Date(NaN);
     const date2: Date = new Date('2023-01-01');
     expect(() => compareDates(date1, date2)).toThrow('Invalid date');
   });
 
   // Error test case 4: Compare two dates with NaN second date (should throw an error)
-  it('12. should throw an error for a NaN second date', () => {
+  it('8. should throw an error for a NaN second date', () => {
     const date1: Date = new Date('2023-01-01');
     const date2: Date = new Date(NaN);
     expect(() => compareDates(date1, date2)).toThrow('Invalid date');

@@ -145,7 +145,7 @@ describe('sumArrayElements', () => {
   // Test case 12: Performance test with large array
   it('12. should handle large arrays efficiently', () => {
     // Arrange
-    const input = new Array(10000).fill(1);
+    const input: number[] = new Array(10000).fill(1);
     const expected = 10000;
 
     // Act

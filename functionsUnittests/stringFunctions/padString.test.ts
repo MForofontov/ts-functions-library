@@ -127,7 +127,7 @@ describe('padString', () => {
   });
 
   // Error handling test case 1: Target length less than string length
-  it('14. should throw an error when target length is less than string length', () => {
+  it('13. should throw an error when target length is less than string length', () => {
     const str: string = 'hello';
     const targetLength: number = 3;
     expect(() => padString(str, targetLength)).toThrow(
@@ -136,7 +136,7 @@ describe('padString', () => {
   });
 
   // Error handling test case 2: Pad character is not a single character
-  it('15. should throw an error when pad character is not a single character', () => {
+  it('13. should throw an error when pad character is not a single character', () => {
     const str: string = 'hello';
     const targetLength: number = 10;
     const padChar: string = '**';

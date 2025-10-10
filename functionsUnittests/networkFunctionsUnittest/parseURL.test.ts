@@ -78,28 +78,8 @@ describe('parseURL', () => {
     expect(result.hash).toBe('hash');
   });
 
-  // Test case 6: Error case - invalid URL
-  it('6. should throw Error for invalid URL', () => {
-    // Arrange
-    const url = 'not a valid url';
-
-    // Act & Assert
-    expect(() => parseURL(url)).toThrow(Error);
-    expect(() => parseURL(url)).toThrow('Invalid URL');
-  });
-
-  // Test case 7: Error case - non-string input
-  it('7. should throw TypeError for non-string input', () => {
-    // Arrange
-    const input = 12345 as unknown as string;
-
-    // Act & Assert
-    expect(() => parseURL(input)).toThrow(TypeError);
-    expect(() => parseURL(input)).toThrow('url must be a string');
-  });
-
-  // Test case 8: URL without path
-  it('8. should parse URL without path', () => {
+  // Test case 6: URL without path
+  it('6. should parse URL without path', () => {
     // Arrange
     const url = 'https://example.com';
 
@@ -112,8 +92,8 @@ describe('parseURL', () => {
     expect(result.hash).toBe('');
   });
 
-  // Test case 9: File protocol URL
-  it('9. should parse file protocol URL', () => {
+  // Test case 7: File protocol URL
+  it('7. should parse file protocol URL', () => {
     // Arrange
     const url = 'file:///home/user/document.txt';
 
@@ -125,8 +105,8 @@ describe('parseURL', () => {
     expect(result.pathname).toBe('/home/user/document.txt');
   });
 
-  // Test case 10: FTP URL with credentials
-  it('10. should parse FTP URL', () => {
+  // Test case 8: FTP URL with credentials
+  it('8. should parse FTP URL', () => {
     // Arrange
     const url = 'ftp://user:pass@ftp.example.com/files';
 
@@ -139,8 +119,8 @@ describe('parseURL', () => {
     expect(result.pathname).toBe('/files');
   });
 
-  // Test case 11: URL with IPv4 address
-  it('11. should parse URL with IPv4 address', () => {
+  // Test case 9: URL with IPv4 address
+  it('9. should parse URL with IPv4 address', () => {
     // Arrange
     const url = 'http://192.168.1.1:8080/admin';
 
@@ -152,8 +132,8 @@ describe('parseURL', () => {
     expect(result.port).toBe('8080');
   });
 
-  // Test case 12: URL with IPv6 address
-  it('12. should parse URL with IPv6 address', () => {
+  // Test case 10: URL with IPv6 address
+  it('10. should parse URL with IPv6 address', () => {
     // Arrange
     const url = 'http://[2001:db8::1]/path';
 
@@ -165,8 +145,8 @@ describe('parseURL', () => {
     expect(result.pathname).toBe('/path');
   });
 
-  // Test case 13: URL with encoded characters
-  it('13. should parse URL with encoded characters', () => {
+  // Test case 11: URL with encoded characters
+  it('11. should parse URL with encoded characters', () => {
     // Arrange
     const url = 'https://example.com/path%20with%20spaces?key=value%20encoded';
 
@@ -178,8 +158,8 @@ describe('parseURL', () => {
     expect(result.search).toContain('value%20encoded');
   });
 
-  // Test case 14: URL with subdomain
-  it('14. should parse URL with subdomain', () => {
+  // Test case 12: URL with subdomain
+  it('12. should parse URL with subdomain', () => {
     // Arrange
     const url = 'https://api.staging.example.com/v1/users';
 
@@ -191,8 +171,8 @@ describe('parseURL', () => {
     expect(result.pathname).toBe('/v1/users');
   });
 
-  // Test case 15: URL with multiple query parameters
-  it('15. should parse URL with multiple query parameters', () => {
+  // Test case 13: URL with multiple query parameters
+  it('13. should parse URL with multiple query parameters', () => {
     // Arrange
     const url = 'https://example.com?a=1&b=2&c=3&d=4';
 
@@ -203,8 +183,8 @@ describe('parseURL', () => {
     expect(result.search).toBe('a=1&b=2&c=3&d=4');
   });
 
-  // Test case 16: URL with empty query parameter
-  it('16. should parse URL with empty query parameter', () => {
+  // Test case 14: URL with empty query parameter
+  it('14. should parse URL with empty query parameter', () => {
     // Arrange
     const url = 'https://example.com?key=';
 
@@ -215,8 +195,8 @@ describe('parseURL', () => {
     expect(result.search).toBe('key=');
   });
 
-  // Test case 17: URL with default HTTPS port
-  it('17. should handle default HTTPS port correctly', () => {
+  // Test case 15: URL with default HTTPS port
+  it('15. should handle default HTTPS port correctly', () => {
     // Arrange
     const url = 'https://example.com:443/path';
 
@@ -228,8 +208,8 @@ describe('parseURL', () => {
     expect(result.host).toBe('example.com');
   });
 
-  // Test case 18: URL with default HTTP port
-  it('18. should handle default HTTP port correctly', () => {
+  // Test case 16: URL with default HTTP port
+  it('16. should handle default HTTP port correctly', () => {
     // Arrange
     const url = 'http://example.com:80/path';
 
@@ -241,8 +221,8 @@ describe('parseURL', () => {
     expect(result.host).toBe('example.com');
   });
 
-  // Test case 19: URL with deep path
-  it('19. should parse URL with deep path structure', () => {
+  // Test case 17: URL with deep path
+  it('17. should parse URL with deep path structure', () => {
     // Arrange
     const url = 'https://example.com/api/v1/users/123/profile/settings';
 
@@ -253,8 +233,8 @@ describe('parseURL', () => {
     expect(result.pathname).toBe('/api/v1/users/123/profile/settings');
   });
 
-  // Test case 20: Localhost URL
-  it('20. should parse localhost URL', () => {
+  // Test case 18: Localhost URL
+  it('18. should parse localhost URL', () => {
     // Arrange
     const url = 'http://localhost:3000/dashboard';
 
@@ -265,5 +245,25 @@ describe('parseURL', () => {
     expect(result.hostname).toBe('localhost');
     expect(result.port).toBe('3000');
     expect(result.origin).toBe('http://localhost:3000');
+  });
+
+  // Test case 19: Error case - invalid URL
+  it('19. should throw Error for invalid URL', () => {
+    // Arrange
+    const url = 'not a valid url';
+
+    // Act & Assert
+    expect(() => parseURL(url)).toThrow(Error);
+    expect(() => parseURL(url)).toThrow('Invalid URL');
+  });
+
+  // Test case 20: Error case - non-string input
+  it('20. should throw TypeError for non-string input', () => {
+    // Arrange
+    const input = 12345 as unknown as string;
+
+    // Act & Assert
+    expect(() => parseURL(input)).toThrow(TypeError);
+    expect(() => parseURL(input)).toThrow('url must be a string');
   });
 });

@@ -69,87 +69,8 @@ describe('asyncParallel', () => {
     expect(maxActiveCount).toBeLessThanOrEqual(2);
   });
 
-  // Test case 4: Error handling
-  it('4. should propagate errors from tasks', async () => {
-    // Arrange
-    const tasks = [
-      jest.fn().mockResolvedValue('result1'),
-      jest.fn().mockRejectedValue(new Error('Task failed')),
-      jest.fn().mockResolvedValue('result3'),
-    ];
-
-    // Act & Assert
-    await expect(asyncParallel(tasks)).rejects.toThrow('Task failed');
-  });
-
-  // Test case 5: TypeError for invalid input types
-  it('5. should throw TypeError for invalid input types', () => {
-    // Arrange
-    const invalidInputs = [123, null, undefined, {}, true, 'string'];
-
-    // Act & Assert
-    invalidInputs.forEach((input) => {
-      expect(() =>
-        asyncParallel(input as unknown as (() => Promise<unknown>)[]),
-      ).toThrow(TypeError);
-      expect(() =>
-        asyncParallel(input as unknown as (() => Promise<unknown>)[]),
-      ).toThrow('tasks must be an array, got');
-    });
-  });
-
-  // Test case 6: TypeError for invalid concurrency
-  it('6. should throw TypeError for invalid concurrency', () => {
-    // Arrange
-    const validTasks = [jest.fn().mockResolvedValue('test')];
-    const invalidConcurrency = [null, undefined, {}, true, 'string', [], NaN];
-
-    // Act & Assert
-    invalidConcurrency.forEach((concurrency) => {
-      expect(() =>
-        asyncParallel(validTasks, concurrency as unknown as number),
-      ).toThrow(TypeError);
-      expect(() =>
-        asyncParallel(validTasks, concurrency as unknown as number),
-      ).toThrow('concurrency must be a number, got');
-    });
-  });
-
-  // Test case 7: Error for invalid concurrency value
-  it('7. should throw Error for concurrency less than 1', () => {
-    // Arrange
-    const validTasks = [jest.fn().mockResolvedValue('test')];
-
-    // Act & Assert
-    expect(() => asyncParallel(validTasks, 0)).toThrow(Error);
-    expect(() => asyncParallel(validTasks, 0)).toThrow(
-      'concurrency must be at least 1, got 0',
-    );
-
-    expect(() => asyncParallel(validTasks, -1)).toThrow(Error);
-    expect(() => asyncParallel(validTasks, -1)).toThrow(
-      'concurrency must be at least 1, got -1',
-    );
-  });
-
-  // Test case 8: Error for non-function tasks
-  it('8. should throw Error for non-function tasks', () => {
-    // Arrange
-    const invalidTasks = [123, null, undefined, {}, true, 'string'];
-
-    // Act & Assert
-    invalidTasks.forEach((task, _index) => {
-      expect(() =>
-        asyncParallel([task as unknown as () => Promise<unknown>]),
-      ).toThrow(Error);
-      expect(() =>
-        asyncParallel([task as unknown as () => Promise<unknown>]),
-      ).toThrow('Task at index 0 must be a function, got');
-    });
-  });
-
-  // Test case 9: Results maintain order
-  it('9. should maintain order of results regardless of completion time', async () => {
+  // Test case 4: Results maintain order
+  it('4. should maintain order of results regardless of completion time', async () => {
     // Arrange
     const tasks = [
       async () => {
@@ -173,8 +94,8 @@ describe('asyncParallel', () => {
     expect(results).toEqual(['slow', 'fast', 'medium']);
   });
 
-  // Test case 10: Performance test
-  it('10. should execute tasks in parallel for better performance', async () => {
+  // Test case 5: Performance test
+  it('5. should execute tasks in parallel for better performance', async () => {
     // Arrange
     const tasks = Array.from({ length: 4 }, (_, i) => async () => {
       await new Promise((resolve) => setTimeout(resolve, 50));
@@ -189,5 +110,84 @@ describe('asyncParallel', () => {
     // Assert
     expect(results).toHaveLength(4);
     expect(totalTime).toBeLessThan(100); // Should be closer to 50ms than 200ms
+  });
+
+  // Test case 6: Error handling
+  it('6. should propagate errors from tasks', async () => {
+    // Arrange
+    const tasks = [
+      jest.fn().mockResolvedValue('result1'),
+      jest.fn().mockRejectedValue(new Error('Task failed')),
+      jest.fn().mockResolvedValue('result3'),
+    ];
+
+    // Act & Assert
+    await expect(asyncParallel(tasks)).rejects.toThrow('Task failed');
+  });
+
+  // Test case 7: TypeError for invalid input types
+  it('7. should throw TypeError for invalid input types', () => {
+    // Arrange
+    const invalidInputs = [123, null, undefined, {}, true, 'string'];
+
+    // Act & Assert
+    invalidInputs.forEach((input) => {
+      expect(() =>
+        asyncParallel(input as unknown as (() => Promise<unknown>)[]),
+      ).toThrow(TypeError);
+      expect(() =>
+        asyncParallel(input as unknown as (() => Promise<unknown>)[]),
+      ).toThrow('tasks must be an array, got');
+    });
+  });
+
+  // Test case 8: TypeError for invalid concurrency
+  it('8. should throw TypeError for invalid concurrency', () => {
+    // Arrange
+    const validTasks = [jest.fn().mockResolvedValue('test')];
+    const invalidConcurrency = [null, undefined, {}, true, 'string', [], NaN];
+
+    // Act & Assert
+    invalidConcurrency.forEach((concurrency) => {
+      expect(() =>
+        asyncParallel(validTasks, concurrency as unknown as number),
+      ).toThrow(TypeError);
+      expect(() =>
+        asyncParallel(validTasks, concurrency as unknown as number),
+      ).toThrow('concurrency must be a number, got');
+    });
+  });
+
+  // Test case 9: Error for invalid concurrency value
+  it('9. should throw Error for concurrency less than 1', () => {
+    // Arrange
+    const validTasks = [jest.fn().mockResolvedValue('test')];
+
+    // Act & Assert
+    expect(() => asyncParallel(validTasks, 0)).toThrow(Error);
+    expect(() => asyncParallel(validTasks, 0)).toThrow(
+      'concurrency must be at least 1, got 0',
+    );
+
+    expect(() => asyncParallel(validTasks, -1)).toThrow(Error);
+    expect(() => asyncParallel(validTasks, -1)).toThrow(
+      'concurrency must be at least 1, got -1',
+    );
+  });
+
+  // Test case 10: Error for non-function tasks
+  it('10. should throw Error for non-function tasks', () => {
+    // Arrange
+    const invalidTasks = [123, null, undefined, {}, true, 'string'];
+
+    // Act & Assert
+    invalidTasks.forEach((task, _index) => {
+      expect(() =>
+        asyncParallel([task as unknown as () => Promise<unknown>]),
+      ).toThrow(Error);
+      expect(() =>
+        asyncParallel([task as unknown as () => Promise<unknown>]),
+      ).toThrow('Task at index 0 must be a function, got');
+    });
   });
 });

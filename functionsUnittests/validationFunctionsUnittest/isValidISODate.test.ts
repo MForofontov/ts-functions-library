@@ -32,31 +32,16 @@ describe('isValidISODate', () => {
     expect(isValidISODate('2023-12-25', true)).toBe(true);
   });
 
-  // Test case 4: TypeError for invalid input types
-  it('4. should throw TypeError for invalid input types', () => {
-    const invalidInputs = [123, null, undefined, [], {}, true];
-
-    invalidInputs.forEach((input) => {
-      expect(() => isValidISODate(input as unknown as string)).toThrow(
-        TypeError,
-      );
-    });
-
-    expect(() =>
-      isValidISODate('2023-12-25', 'invalid' as unknown as boolean),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 5: Edge cases and boundary values
-  it('5. should handle edge cases correctly', () => {
+  // Test case 4: Edge cases and boundary values
+  it('4. should handle edge cases correctly', () => {
     expect(isValidISODate('1900-01-01')).toBe(true);
     expect(isValidISODate('2100-12-31')).toBe(true);
     expect(isValidISODate('2023-01-01T00:00:00Z')).toBe(true);
     expect(isValidISODate('2023-12-31T23:59:59Z')).toBe(true);
   });
 
-  // Test case 6: Performance with various date strings
-  it('6. should validate dates efficiently', () => {
+  // Test case 5: Performance with various date strings
+  it('5. should validate dates efficiently', () => {
     const dateStrings = [
       '2023-12-25',
       '2023-12-25T10:30:00Z',
@@ -71,5 +56,20 @@ describe('isValidISODate', () => {
 
     expect(results).toEqual([true, true, false, false, true]);
     expect(endTime - startTime).toBeLessThan(10);
+  });
+
+  // Test case 6: TypeError for invalid input types
+  it('6. should throw TypeError for invalid input types', () => {
+    const invalidInputs = [123, null, undefined, [], {}, true];
+
+    invalidInputs.forEach((input) => {
+      expect(() => isValidISODate(input as unknown as string)).toThrow(
+        TypeError,
+      );
+    });
+
+    expect(() =>
+      isValidISODate('2023-12-25', 'invalid' as unknown as boolean),
+    ).toThrow(TypeError);
   });
 });

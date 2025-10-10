@@ -40,17 +40,8 @@ describe('isValidTime', () => {
     expect(isValidTime('12:60 PM', true, false)).toBe(false);
   });
 
-  // Test case 5: TypeError for invalid input types
-  it('5. should throw TypeError for invalid input types', () => {
-    const invalidInputs = [123, null, undefined, [], {}, true];
-
-    invalidInputs.forEach((input) => {
-      expect(() => isValidTime(input as unknown as string)).toThrow(TypeError);
-    });
-  });
-
-  // Test case 6: Performance with various time strings
-  it('6. should validate time strings efficiently', () => {
+  // Test case 5: Performance with various time strings
+  it('5. should validate time strings efficiently', () => {
     const timeStrings = ['14:30', '25:00', '2:30 PM', '12:30:45 AM', 'invalid'];
 
     const startTime = performance.now();
@@ -64,5 +55,14 @@ describe('isValidTime', () => {
 
     expect(results).toEqual([true, false, true, true, false]);
     expect(endTime - startTime).toBeLessThan(10);
+  });
+
+  // Test case 6: TypeError for invalid input types
+  it('6. should throw TypeError for invalid input types', () => {
+    const invalidInputs = [123, null, undefined, [], {}, true];
+
+    invalidInputs.forEach((input) => {
+      expect(() => isValidTime(input as unknown as string)).toThrow(TypeError);
+    });
   });
 });

@@ -103,36 +103,36 @@ describe('fromDotNotation', () => {
     expect(result).toEqual(expected);
   });
 
-  // Test case 14: Throw error for non-object input (number)
-  it('14. should throw a TypeError if input is a number', () => {
+  // Test case 13: Throw error for non-object input (number)
+  it('13. should throw a TypeError if input is a number', () => {
     expect(() =>
       fromDotNotation(42 as unknown as Record<string, unknown>),
     ).toThrow(TypeError);
   });
 
-  // Test case 15: Throw error for non-object input (string)
-  it('15. should throw a TypeError if input is a string', () => {
+  // Test case 14: Throw error for non-object input (string)
+  it('14. should throw a TypeError if input is a string', () => {
     expect(() =>
       fromDotNotation('string' as unknown as Record<string, unknown>),
     ).toThrow(TypeError);
   });
 
-  // Test case 16: Throw error for non-object input (boolean)
-  it('16. should throw a TypeError if input is a boolean', () => {
+  // Test case 15: Throw error for non-object input (boolean)
+  it('15. should throw a TypeError if input is a boolean', () => {
     expect(() =>
       fromDotNotation(true as unknown as Record<string, unknown>),
     ).toThrow(TypeError);
   });
 
-  // Test case 17: Throw error for null input
-  it('17. should throw a TypeError if input is null', () => {
+  // Test case 16: Throw error for null input
+  it('16. should throw a TypeError if input is null', () => {
     expect(() =>
       fromDotNotation(null as unknown as Record<string, unknown>),
     ).toThrow(TypeError);
   });
 
-  // Test case 18: Throw error for undefined input
-  it('18. should throw a TypeError if input is undefined', () => {
+  // Test case 17: Throw error for undefined input
+  it('17. should throw a TypeError if input is undefined', () => {
     expect(() =>
       fromDotNotation(undefined as unknown as Record<string, unknown>),
     ).toThrow(TypeError);

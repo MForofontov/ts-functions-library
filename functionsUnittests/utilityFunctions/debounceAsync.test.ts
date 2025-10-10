@@ -39,21 +39,21 @@ describe('debounceAsync', () => {
     await expect(promise).resolves.toBe(3);
   });
 
-  // Test case 4: Propagate rejection
-  it('4. should propagate rejection from the underlying function', async () => {
-    const fn = jest.fn(() => Promise.reject(new Error('Test error')));
-    const debounced = debounceAsync(fn, 50);
-    const promise = debounced();
-    jest.advanceTimersByTime(50);
-    await expect(promise).rejects.toThrow('Test error');
-  });
-
-  // Test case 5: Work with zero wait time
-  it('5. should work with zero wait time', async () => {
+  // Test case 4: Work with zero wait time
+  it('4. should work with zero wait time', async () => {
     const fn = jest.fn(() => Promise.resolve('done'));
     const debounced = debounceAsync(fn, 0);
     const promise = debounced();
     jest.runAllTimers();
     await expect(promise).resolves.toBe('done');
+  });
+
+  // Test case 5: Propagate rejection
+  it('5. should propagate rejection from the underlying function', async () => {
+    const fn = jest.fn(() => Promise.reject(new Error('Test error')));
+    const debounced = debounceAsync(fn, 50);
+    const promise = debounced();
+    jest.advanceTimersByTime(50);
+    await expect(promise).rejects.toThrow('Test error');
   });
 });

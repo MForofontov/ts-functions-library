@@ -66,8 +66,51 @@ describe('asyncFilter', () => {
     expect(result).toEqual([]);
   });
 
-  // Test case 5: TypeError for invalid input types
-  it('5. should throw TypeError for invalid input types', () => {
+  // Test case 5: Predicate receives correct arguments
+  it('5. should pass item and index to predicate function', async () => {
+    // Arrange
+    const items = ['a', 'b', 'c'];
+    const predicateMock = jest.fn().mockResolvedValue(true);
+
+    // Act
+    await asyncFilter(items, predicateMock);
+
+    // Assert
+    expect(predicateMock).toHaveBeenCalledTimes(3);
+    expect(predicateMock).toHaveBeenNthCalledWith(1, 'a', 0);
+    expect(predicateMock).toHaveBeenNthCalledWith(2, 'b', 1);
+    expect(predicateMock).toHaveBeenNthCalledWith(3, 'c', 2);
+  });
+
+  // Test case 6: Predicates execute in parallel
+  it('6. should execute predicates in parallel for better performance', async () => {
+    // Arrange
+    const items = [1, 2, 3, 4];
+    const executionTimes: number[] = [];
+    const slowPredicate = async (item: number) => {
+      executionTimes.push(Date.now());
+      await new Promise((resolve) => setTimeout(resolve, 50));
+      return item % 2 === 0;
+    };
+
+    // Act
+    const start = Date.now();
+    const result = await asyncFilter(items, slowPredicate);
+    const totalTime = Date.now() - start;
+
+    // Assert
+    expect(result).toEqual([2, 4]);
+    expect(totalTime).toBeLessThan(100); // Should be closer to 50ms than 200ms
+
+    // All predicates should start at roughly the same time
+    const timeDifferences = executionTimes
+      .slice(1)
+      .map((time, i) => Math.abs(time - executionTimes[i]));
+    timeDifferences.forEach((diff) => expect(diff).toBeLessThan(20));
+  });
+
+  // Test case 7: TypeError for invalid input types
+  it('7. should throw TypeError for invalid input types', () => {
     // Arrange
     const invalidInputs = [123, null, undefined, {}, true, 'string'];
     const mockPredicate = jest.fn().mockResolvedValue(true);
@@ -83,8 +126,8 @@ describe('asyncFilter', () => {
     });
   });
 
-  // Test case 6: TypeError for invalid predicate
-  it('6. should throw TypeError for invalid predicate function', () => {
+  // Test case 8: TypeError for invalid predicate
+  it('8. should throw TypeError for invalid predicate function', () => {
     // Arrange
     const validArray = [1, 2, 3];
     const invalidPredicates = [123, null, undefined, {}, true, 'string'];
@@ -110,48 +153,5 @@ describe('asyncFilter', () => {
         ),
       ).toThrow('asyncPredicate must be a function, got');
     });
-  });
-
-  // Test case 7: Predicate receives correct arguments
-  it('7. should pass item and index to predicate function', async () => {
-    // Arrange
-    const items = ['a', 'b', 'c'];
-    const predicateMock = jest.fn().mockResolvedValue(true);
-
-    // Act
-    await asyncFilter(items, predicateMock);
-
-    // Assert
-    expect(predicateMock).toHaveBeenCalledTimes(3);
-    expect(predicateMock).toHaveBeenNthCalledWith(1, 'a', 0);
-    expect(predicateMock).toHaveBeenNthCalledWith(2, 'b', 1);
-    expect(predicateMock).toHaveBeenNthCalledWith(3, 'c', 2);
-  });
-
-  // Test case 8: Predicates execute in parallel
-  it('8. should execute predicates in parallel for better performance', async () => {
-    // Arrange
-    const items = [1, 2, 3, 4];
-    const executionTimes: number[] = [];
-    const slowPredicate = async (item: number) => {
-      executionTimes.push(Date.now());
-      await new Promise((resolve) => setTimeout(resolve, 50));
-      return item % 2 === 0;
-    };
-
-    // Act
-    const start = Date.now();
-    const result = await asyncFilter(items, slowPredicate);
-    const totalTime = Date.now() - start;
-
-    // Assert
-    expect(result).toEqual([2, 4]);
-    expect(totalTime).toBeLessThan(100); // Should be closer to 50ms than 200ms
-
-    // All predicates should start at roughly the same time
-    const timeDifferences = executionTimes
-      .slice(1)
-      .map((time, i) => Math.abs(time - executionTimes[i]));
-    timeDifferences.forEach((diff) => expect(diff).toBeLessThan(20));
   });
 });

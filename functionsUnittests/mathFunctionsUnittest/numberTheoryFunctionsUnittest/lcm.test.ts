@@ -46,17 +46,8 @@ describe('lcm', () => {
     expect(result).toBe(expected);
   });
 
-  // Test case 6: LCM of two zeros (should throw an error)
-  it('6. should throw an error when both numbers are zero', () => {
-    const a: number = 0;
-    const b: number = 0;
-    expect(() => lcm(a, b)).toThrow(
-      'LCM is not defined for both a and b being zero',
-    );
-  });
-
-  // Test case 7: LCM of a number and itself
-  it('7. should return the number when both numbers are the same', () => {
+  // Test case 6: LCM of a number and itself
+  it('6. should return the number when both numbers are the same', () => {
     const a: number = 15;
     const b: number = 15;
     const expected: number = 15;
@@ -64,8 +55,8 @@ describe('lcm', () => {
     expect(result).toBe(expected);
   });
 
-  // Test case 8: LCM of a number and 1
-  it('8. should return the number when one number is 1', () => {
+  // Test case 7: LCM of a number and 1
+  it('7. should return the number when one number is 1', () => {
     const a: number = 15;
     const b: number = 1;
     const expected: number = 15;
@@ -73,8 +64,8 @@ describe('lcm', () => {
     expect(result).toBe(expected);
   });
 
-  // Test case 9: LCM of two prime numbers
-  it('9. should return the product of the two numbers when both are prime', () => {
+  // Test case 8: LCM of two prime numbers
+  it('8. should return the product of the two numbers when both are prime', () => {
     const a: number = 7;
     const b: number = 11;
     const expected: number = 77;
@@ -82,13 +73,22 @@ describe('lcm', () => {
     expect(result).toBe(expected);
   });
 
-  // Test case 10: LCM of a prime number and a composite number
-  it('10. should return the correct LCM for a prime number and a composite number', () => {
+  // Test case 9: LCM of a prime number and a composite number
+  it('9. should return the correct LCM for a prime number and a composite number', () => {
     const a: number = 7;
     const b: number = 14;
     const expected: number = 14;
     const result: number = lcm(a, b);
     expect(result).toBe(expected);
+  });
+
+  // Test case 10: LCM of two zeros (should throw an error)
+  it('10. should throw an error when both numbers are zero', () => {
+    const a: number = 0;
+    const b: number = 0;
+    expect(() => lcm(a, b)).toThrow(
+      'LCM is not defined for both a and b being zero',
+    );
   });
 
   // Test case 11: LCM with floating-point inputs

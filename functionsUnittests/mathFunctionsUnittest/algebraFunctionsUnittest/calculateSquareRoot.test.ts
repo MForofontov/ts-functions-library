@@ -20,44 +20,44 @@ describe('calculateSquareRoot', () => {
     expect(result).toBe(expected);
   });
 
-  // Test case 3: Square root of a negative number
-  it('3. should throw an error for the square root of a negative number', () => {
-    const input: number = -9;
-    expect(() => calculateSquareRoot(input)).toThrow(
-      'Input must be a non-negative number',
-    );
-  });
-
-  // Test case 4: Square root of a non-integer number
-  it('4. should return the correct square root for a non-integer number', () => {
+  // Test case 3: Square root of a non-integer number
+  it('3. should return the correct square root for a non-integer number', () => {
     const input: number = 2.25;
     const expected: number = 1.5;
     const result: number = calculateSquareRoot(input);
     expect(result).toBeCloseTo(expected, 5);
   });
 
-  // Test case 5: Square root of a very large number
-  it('5. should return the correct square root for a very large number', () => {
+  // Test case 4: Square root of a very large number
+  it('4. should return the correct square root for a very large number', () => {
     const input: number = 1e12;
     const expected: number = 1e6;
     const result: number = calculateSquareRoot(input);
     expect(result).toBe(expected);
   });
 
-  // Test case 6: Square root of a very small positive number
-  it('6. should return the correct square root for a very small positive number', () => {
+  // Test case 5: Square root of a very small positive number
+  it('5. should return the correct square root for a very small positive number', () => {
     const input: number = 1e-12;
     const expected: number = 1e-6;
     const result: number = calculateSquareRoot(input);
     expect(result).toBeCloseTo(expected, 5);
   });
 
-  // Test case 7: Square root of a floating-point number
-  it('7. should return the correct square root for a floating-point number', () => {
+  // Test case 6: Square root of a floating-point number
+  it('6. should return the correct square root for a floating-point number', () => {
     const input: number = 4.5;
     const expected: number = Math.sqrt(4.5);
     const result: number = calculateSquareRoot(input);
     expect(result).toBeCloseTo(expected, 5);
+  });
+
+  // Test case 7: Square root of a negative number
+  it('7. should throw an error for the square root of a negative number', () => {
+    const input: number = -9;
+    expect(() => calculateSquareRoot(input)).toThrow(
+      'Input must be a non-negative number',
+    );
   });
 
   // Test case 8: Square root of NaN (should throw an error)

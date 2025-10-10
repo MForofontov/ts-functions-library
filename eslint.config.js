@@ -168,6 +168,8 @@ module.exports = [
       'dist/**',
       'coverage/**',
       'allure-report/**',
+      'allure-results/**',
+      'scripts/**',
       'eslint.config.js',
     ],
   },

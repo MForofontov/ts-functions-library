@@ -63,7 +63,7 @@ describe('removeFalsyValues', () => {
     expect(result).toEqual([1, 'apple', true]);
   });
 
-  // Test case 7: Removing falsy values from an array with objects
+  // Test case 6: Removing falsy values from an array with objects
   test('6. should remove falsy values from an array with objects', () => {
     const array: ({ id: number; name: string } | null | undefined | boolean)[] =
       [
@@ -80,28 +80,28 @@ describe('removeFalsyValues', () => {
     ]);
   });
 
-  // Test case 8: Removing falsy values from an array with null values
+  // Test case 7: Removing falsy values from an array with null values
   test('7. should remove falsy values from an array with null values', () => {
     const array: (number | null)[] = [1, null, 2, null, 3];
     const result: number[] = removeFalsyValues(array);
     expect(result).toEqual([1, 2, 3]);
   });
 
-  // Test case 9: Removing falsy values from an array with undefined values
+  // Test case 8: Removing falsy values from an array with undefined values
   test('8. should remove falsy values from an array with undefined values', () => {
     const array: (number | undefined)[] = [1, undefined, 2, undefined, 3];
     const result: number[] = removeFalsyValues(array);
     expect(result).toEqual([1, 2, 3]);
   });
 
-  // Test case 10: Removing falsy values from an array with boolean values
+  // Test case 9: Removing falsy values from an array with boolean values
   test('9. should remove falsy values from an array with boolean values', () => {
     const array: (number | boolean)[] = [1, false, 2, true, 3];
     const result: (number | boolean)[] = removeFalsyValues(array);
     expect(result).toEqual([1, 2, true, 3]);
   });
 
-  // Test case 11: Removing falsy values from an array with symbols
+  // Test case 10: Removing falsy values from an array with symbols
   test('10. should remove falsy values from an array with symbols', () => {
     const sym1: symbol = Symbol('sym1');
     const sym2: symbol = Symbol('sym2');
@@ -118,7 +118,7 @@ describe('removeFalsyValues', () => {
     expect(result).toEqual([1, sym1, sym2, 3]);
   });
 
-  // Test case 12: Removing falsy values from an array with functions
+  // Test case 11: Removing falsy values from an array with functions
   test('11. should remove falsy values from an array with functions', () => {
     const func1: () => void = () => {};
     const func2: () => void = () => {};
@@ -135,7 +135,7 @@ describe('removeFalsyValues', () => {
     expect(result).toEqual([1, func1, func2, 3]);
   });
 
-  // Test case 13: Removing falsy values from an array with dates
+  // Test case 12: Removing falsy values from an array with dates
   test('12. should remove falsy values from an array with dates', () => {
     const date1: Date = new Date('2021-01-01');
     const date2: Date = new Date('2022-01-01');
@@ -152,7 +152,7 @@ describe('removeFalsyValues', () => {
     expect(result).toEqual([1, date1, date2, 3]);
   });
 
-  // Test case 14: Removing falsy values from an array with regular expressions
+  // Test case 13: Removing falsy values from an array with regular expressions
   test('13. should remove falsy values from an array with regular expressions', () => {
     const regex1: RegExp = /abc/;
     const regex2: RegExp = /def/;
@@ -169,7 +169,7 @@ describe('removeFalsyValues', () => {
     expect(result).toEqual([1, regex1, regex2, 3]);
   });
 
-  // Test case 15: Removing falsy values from an array with BigInt values
+  // Test case 14: Removing falsy values from an array with BigInt values
   test('14. should remove falsy values from an array with BigInt values', () => {
     const array: (number | bigint | null | undefined | boolean)[] = [
       1,
@@ -184,7 +184,7 @@ describe('removeFalsyValues', () => {
     expect(result).toEqual([1, BigInt(2), BigInt(3), 3]);
   });
 
-  // Test case 16: Removing falsy values from an array with Infinity and -Infinity
+  // Test case 15: Removing falsy values from an array with Infinity and -Infinity
   test('15. should remove falsy values from an array with Infinity and -Infinity', () => {
     const array: (number | null | undefined | boolean)[] = [
       1,
@@ -199,7 +199,7 @@ describe('removeFalsyValues', () => {
     expect(result).toEqual([1, Infinity, -Infinity, 3]);
   });
 
-  // Test case 17: Removing falsy values from an array with NaN values
+  // Test case 16: Removing falsy values from an array with NaN values
   test('16. should remove falsy values from an array with NaN values', () => {
     const array: (number | null | undefined | boolean)[] = [
       1,
@@ -214,7 +214,7 @@ describe('removeFalsyValues', () => {
     expect(result).toEqual([1, 3]);
   });
 
-  // Test case 18: Removing falsy values from an array with mixed data types
+  // Test case 17: Removing falsy values from an array with mixed data types
   test('17. should remove falsy values from an array with mixed data types', () => {
     const array: (number | string | boolean | null | undefined)[] = [
       0,
@@ -230,7 +230,7 @@ describe('removeFalsyValues', () => {
     expect(result).toEqual(['apple', 'banana', 3]);
   });
 
-  // Test case 19: Removing falsy values from an array with symbols and functions
+  // Test case 18: Removing falsy values from an array with symbols and functions
   test('18. should remove falsy values from an array with symbols and functions', () => {
     const sym1: symbol = Symbol('sym1');
     const func1: () => void = () => {};
@@ -246,7 +246,7 @@ describe('removeFalsyValues', () => {
     expect(result).toEqual([1, sym1, func1, 3]);
   });
 
-  // Test case 20: Removing falsy values from an array with dates and regular expressions
+  // Test case 19: Removing falsy values from an array with dates and regular expressions
   test('19. should remove falsy values from an array with dates and regular expressions', () => {
     const date1: Date = new Date('2021-01-01');
     const regex1: RegExp = /abc/;
@@ -263,7 +263,7 @@ describe('removeFalsyValues', () => {
     expect(result).toEqual([1, date1, regex1, 3]);
   });
 
-  // Test case 21: Removing falsy values from an array with BigInt and Infinity values
+  // Test case 20: Removing falsy values from an array with BigInt and Infinity values
   test('20. should remove falsy values from an array with BigInt and Infinity values', () => {
     const array: (number | bigint | null | undefined | boolean)[] = [
       1,
@@ -278,7 +278,7 @@ describe('removeFalsyValues', () => {
     expect(result).toEqual([1, BigInt(2), Infinity, 3]);
   });
 
-  // Test case 22: Removing falsy values from an array with NaN and undefined values
+  // Test case 21: Removing falsy values from an array with NaN and undefined values
   test('21. should remove falsy values from an array with NaN and undefined values', () => {
     const array: (number | null | undefined | boolean)[] = [
       1,
@@ -293,14 +293,14 @@ describe('removeFalsyValues', () => {
     expect(result).toEqual([1, 3]);
   });
 
-  // Test case 23: Removing falsy values from an array with null and boolean values
+  // Test case 22: Removing falsy values from an array with null and boolean values
   test('22. should remove falsy values from an array with null and boolean values', () => {
     const array: (number | null | boolean)[] = [1, null, 1, true, null];
     const result: (number | boolean)[] = removeFalsyValues(array);
     expect(result).toEqual([1, 1, true]);
   });
 
-  // Test case 24: Removing falsy values from an array with mixed data types and symbols
+  // Test case 23: Removing falsy values from an array with mixed data types and symbols
   test('23. should remove falsy values from an array with mixed data types and symbols', () => {
     const sym1: symbol = Symbol('sym1');
     const array: (number | string | boolean | null | undefined | symbol)[] = [
@@ -317,7 +317,7 @@ describe('removeFalsyValues', () => {
     expect(result).toEqual([1, 'two', true, sym1, 'two', 1]);
   });
 
-  // Test case 25: Removing falsy values from an array with mixed data types and functions
+  // Test case 24: Removing falsy values from an array with mixed data types and functions
   test('24. should remove falsy values from an array with mixed data types and functions', () => {
     const func1: () => void = () => {};
     const array: (

@@ -35,37 +35,8 @@ describe('isValidPattern', () => {
     expect(isValidPattern('Hello\nWorld', 'hello.*world', 'is')).toBe(true);
   });
 
-  // Test case 4: TypeError for invalid input types
-  it('4. should throw TypeError for invalid input types', () => {
-    const invalidInputs = [123, null, undefined, [], {}, true];
-
-    invalidInputs.forEach((input) => {
-      expect(() =>
-        isValidPattern(input as unknown as string, '[A-Z]+'),
-      ).toThrow(TypeError);
-      expect(() => isValidPattern('test', input as unknown as string)).toThrow(
-        TypeError,
-      );
-      expect(() =>
-        isValidPattern('test', '[A-Z]+', input as unknown as string),
-      ).toThrow(TypeError);
-    });
-  });
-
-  // Test case 5: Error for invalid regex patterns
-  it('5. should throw Error for invalid regex patterns', () => {
-    const invalidPatterns = ['[', ')', '*', '+{', '(?'];
-
-    invalidPatterns.forEach((pattern) => {
-      expect(() => isValidPattern('test', pattern)).toThrow(Error);
-      expect(() => isValidPattern('test', pattern)).toThrow(
-        'Invalid regular expression pattern',
-      );
-    });
-  });
-
-  // Test case 6: Performance with various patterns
-  it('6. should validate patterns efficiently', () => {
+  // Test case 4: Performance with various patterns
+  it('4. should validate patterns efficiently', () => {
     const tests = [
       { input: 'ABC123', pattern: '[A-Z]{3}[0-9]{3}' },
       { input: 'test@example.com', pattern: '^[^@]+@[^@]+\\.[^@]+$' },
@@ -81,5 +52,34 @@ describe('isValidPattern', () => {
 
     expect(results).toEqual([true, true, false, true]);
     expect(endTime - startTime).toBeLessThan(10);
+  });
+
+  // Test case 5: TypeError for invalid input types
+  it('5. should throw TypeError for invalid input types', () => {
+    const invalidInputs = [123, null, undefined, [], {}, true];
+
+    invalidInputs.forEach((input) => {
+      expect(() =>
+        isValidPattern(input as unknown as string, '[A-Z]+'),
+      ).toThrow(TypeError);
+      expect(() => isValidPattern('test', input as unknown as string)).toThrow(
+        TypeError,
+      );
+      expect(() =>
+        isValidPattern('test', '[A-Z]+', input as unknown as string),
+      ).toThrow(TypeError);
+    });
+  });
+
+  // Test case 6: Error for invalid regex patterns
+  it('6. should throw Error for invalid regex patterns', () => {
+    const invalidPatterns = ['[', ')', '*', '+{', '(?'];
+
+    invalidPatterns.forEach((pattern) => {
+      expect(() => isValidPattern('test', pattern)).toThrow(Error);
+      expect(() => isValidPattern('test', pattern)).toThrow(
+        'Invalid regular expression pattern',
+      );
+    });
   });
 });
