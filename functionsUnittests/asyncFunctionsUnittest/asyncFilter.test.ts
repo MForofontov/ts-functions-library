@@ -154,5 +154,4 @@ describe('asyncFilter', () => {
       ).toThrow('asyncPredicate must be a function, got');
     });
   });
-
 });

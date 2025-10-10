@@ -84,5 +84,4 @@ describe('isInRange', () => {
       'min (10) must be less than or equal to max (1)',
     );
   });
-
 });

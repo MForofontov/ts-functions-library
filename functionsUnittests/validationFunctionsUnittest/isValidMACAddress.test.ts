@@ -90,5 +90,4 @@ describe('isValidMACAddress', () => {
     );
     expect(() => isValidMACAddress('00:1B:44:11:3A:B7', '::')).toThrow(Error);
   });
-
 });

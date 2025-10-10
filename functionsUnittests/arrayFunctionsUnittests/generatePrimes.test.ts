@@ -267,5 +267,4 @@ describe('generatePrimes', () => {
     expect(() => generatePrimes(limit)).toThrow(RangeError);
     expect(() => generatePrimes(limit)).toThrow('Limit must be an integer');
   });
-
 });

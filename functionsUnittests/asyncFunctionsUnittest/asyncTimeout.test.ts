@@ -150,5 +150,4 @@ describe('asyncTimeout', () => {
       'Operation timed out',
     );
   });
-
 });

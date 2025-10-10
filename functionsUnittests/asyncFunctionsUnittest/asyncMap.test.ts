@@ -189,5 +189,4 @@ describe('asyncMap', () => {
       'concurrency must be at least 1, got 0',
     );
   });
-
 });

@@ -266,5 +266,4 @@ describe('parseURL', () => {
     expect(() => parseURL(input)).toThrow(TypeError);
     expect(() => parseURL(input)).toThrow('url must be a string');
   });
-
 });

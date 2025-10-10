@@ -144,5 +144,4 @@ describe('normalizeURL', () => {
       TypeError,
     );
   });
-
 });

@@ -159,5 +159,4 @@ describe('asyncSeries', () => {
       ).toThrow('Task at index 0 must be a function, got');
     });
   });
-
 });

@@ -56,5 +56,4 @@ describe('debounceAsync', () => {
     jest.advanceTimersByTime(50);
     await expect(promise).rejects.toThrow('Test error');
   });
-
 });

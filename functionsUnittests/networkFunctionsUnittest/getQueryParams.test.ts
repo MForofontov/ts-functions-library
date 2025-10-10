@@ -135,5 +135,4 @@ describe('getQueryParams', () => {
   it('20. should throw for invalid URL format', () => {
     expect(() => getQueryParams('?name=John')).toThrow();
   });
-
 });

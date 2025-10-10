@@ -149,5 +149,4 @@ describe('chunkArray', () => {
   it('19. should handle negative chunk size', () => {
     expect(() => chunkArray([1, 2, 3], -1)).toThrow();
   });
-
 });

@@ -151,5 +151,4 @@ describe('addQueryParams', () => {
   it('20. should throw Error for invalid URL', () => {
     expect(() => addQueryParams('not a url', { a: 1 })).toThrow('Invalid URL');
   });
-
 });

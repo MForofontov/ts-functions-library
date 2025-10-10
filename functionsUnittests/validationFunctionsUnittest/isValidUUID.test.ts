@@ -100,5 +100,4 @@ describe('isValidUUID', () => {
       );
     });
   });
-
 });

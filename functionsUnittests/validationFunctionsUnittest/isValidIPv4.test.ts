@@ -79,5 +79,4 @@ describe('isValidIPv4', () => {
       expect(() => isValidIPv4(input as string)).toThrow(TypeError);
     }
   });
-
 });

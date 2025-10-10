@@ -107,5 +107,4 @@ describe('isValidURL', () => {
     const schemes = 'http' as unknown as string[];
     expect(() => isValidURL('https://example.com', schemes)).toThrow(TypeError);
   });
-
 });

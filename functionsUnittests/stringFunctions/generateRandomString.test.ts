@@ -101,5 +101,4 @@ describe('generateRandomString', () => {
       'Charset must contain at least one character',
     );
   });
-
 });

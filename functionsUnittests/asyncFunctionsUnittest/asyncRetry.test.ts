@@ -197,5 +197,4 @@ describe('asyncRetry', () => {
       }),
     ).toThrow('onRetry must be a function');
   });
-
 });

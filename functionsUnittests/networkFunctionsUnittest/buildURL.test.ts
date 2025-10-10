@@ -208,5 +208,4 @@ describe('buildURL', () => {
     >[0];
     expect(() => buildURL(config)).toThrow(TypeError);
   });
-
 });

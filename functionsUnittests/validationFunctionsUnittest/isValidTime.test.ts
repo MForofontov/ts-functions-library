@@ -65,5 +65,4 @@ describe('isValidTime', () => {
       expect(() => isValidTime(input as unknown as string)).toThrow(TypeError);
     });
   });
-
 });

@@ -113,5 +113,4 @@ describe('isLocalhost', () => {
     expect(() => isLocalhost(input)).toThrow(TypeError);
     expect(() => isLocalhost(input)).toThrow('urlOrHostname must be a string');
   });
-
 });

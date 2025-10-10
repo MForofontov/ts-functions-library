@@ -72,5 +72,4 @@ describe('isValidISODate', () => {
       isValidISODate('2023-12-25', 'invalid' as unknown as boolean),
     ).toThrow(TypeError);
   });
-
 });
