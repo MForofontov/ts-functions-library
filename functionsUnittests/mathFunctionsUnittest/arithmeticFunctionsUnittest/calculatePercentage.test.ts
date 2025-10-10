@@ -177,7 +177,7 @@ describe('calculatePercentage', () => {
     expect(result).toBeNaN();
   });
 
-  // Test case 9: Calculate percentage for floating-point total and part
+  // Test case 21: Calculate percentage for floating-point total and part
   it('21. should return the correct percentage for floating-point total and part', () => {
     const total: number = 200.5;
     const part: number = 50.5;

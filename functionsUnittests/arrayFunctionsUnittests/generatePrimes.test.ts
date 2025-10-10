@@ -51,31 +51,8 @@ describe('generatePrimes', () => {
     expect(generatePrimes(-5)).toEqual([]);
   });
 
-  // Test case 5: Error case - non-integer limit
-  it('5. should throw RangeError for non-integer limit', () => {
-    // Arrange
-    const limit = 10.5;
-    const expectedMessage = 'Limit must be an integer';
-
-    // Act & Assert
-    expect(() => generatePrimes(limit)).toThrow(RangeError);
-    expect(() => generatePrimes(limit)).toThrow(expectedMessage);
-  });
-
-  // Test case 6: Error case - float limit
-  it('6. should throw RangeError for floating point limit', () => {
-    // Arrange
-    const limits = [3.14, 7.5, 100.1];
-
-    // Act & Assert
-    limits.forEach((limit) => {
-      expect(() => generatePrimes(limit)).toThrow(RangeError);
-      expect(() => generatePrimes(limit)).toThrow('Limit must be an integer');
-    });
-  });
-
-  // Test case 7: Boundary condition - limit is 3
-  it('7. should return [2, 3] when limit is 3', () => {
+  // Test case 5: Boundary condition - limit is 3
+  it('5. should return [2, 3] when limit is 3', () => {
     // Arrange
     const limit = 3;
     const expected = [2, 3];
@@ -87,8 +64,8 @@ describe('generatePrimes', () => {
     expect(result).toEqual(expected);
   });
 
-  // Test case 8: Normal usage - limit is 30
-  it('8. should generate all prime numbers up to 30', () => {
+  // Test case 6: Normal usage - limit is 30
+  it('6. should generate all prime numbers up to 30', () => {
     // Arrange
     const limit = 30;
     const expected = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29];
@@ -100,8 +77,8 @@ describe('generatePrimes', () => {
     expect(result).toEqual(expected);
   });
 
-  // Test case 9: Normal usage - limit is 50
-  it('9. should generate all prime numbers up to 50', () => {
+  // Test case 7: Normal usage - limit is 50
+  it('7. should generate all prime numbers up to 50', () => {
     // Arrange
     const limit = 50;
     const expected = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
@@ -113,8 +90,8 @@ describe('generatePrimes', () => {
     expect(result).toEqual(expected);
   });
 
-  // Test case 10: Verify all returned numbers are actually prime
-  it('10. should return only prime numbers (verification)', () => {
+  // Test case 8: Verify all returned numbers are actually prime
+  it('8. should return only prime numbers (verification)', () => {
     // Arrange
     const limit = 100;
 
@@ -137,8 +114,8 @@ describe('generatePrimes', () => {
     });
   });
 
-  // Test case 11: Verify correct count of primes
-  it('11. should return correct number of primes for known values', () => {
+  // Test case 9: Verify correct count of primes
+  it('9. should return correct number of primes for known values', () => {
     // Arrange & Act & Assert
     // There are 25 primes up to 100
     expect(generatePrimes(100).length).toBe(25);
@@ -150,8 +127,8 @@ describe('generatePrimes', () => {
     expect(generatePrimes(20).length).toBe(8);
   });
 
-  // Test case 12: Performance test with larger limit
-  it('12. should handle larger limits efficiently', () => {
+  // Test case 10: Performance test with larger limit
+  it('10. should handle larger limits efficiently', () => {
     // Arrange
     const limit = 1000;
 
@@ -167,8 +144,8 @@ describe('generatePrimes', () => {
     expect(endTime - startTime).toBeLessThan(100); // Should complete within 100ms
   });
 
-  // Test case 13: Verify returned array is sorted
-  it('13. should return primes in ascending order', () => {
+  // Test case 11: Verify returned array is sorted
+  it('11. should return primes in ascending order', () => {
     // Arrange
     const limit = 50;
 
@@ -181,8 +158,8 @@ describe('generatePrimes', () => {
     }
   });
 
-  // Test case 14: Edge case - negative integer
-  it('14. should return empty array for negative integer', () => {
+  // Test case 12: Edge case - negative integer
+  it('12. should return empty array for negative integer', () => {
     // Arrange
     const limit = -10;
 
@@ -193,8 +170,8 @@ describe('generatePrimes', () => {
     expect(result).toEqual([]);
   });
 
-  // Test case 15: Verify no duplicates in result
-  it('15. should not contain duplicate primes', () => {
+  // Test case 13: Verify no duplicates in result
+  it('13. should not contain duplicate primes', () => {
     // Arrange
     const limit = 100;
 
@@ -206,8 +183,8 @@ describe('generatePrimes', () => {
     expect(result.length).toBe(uniqueResult.length);
   });
 
-  // Test case 16: Edge case - large prime numbers near limit
-  it('16. should include prime numbers close to the limit', () => {
+  // Test case 14: Edge case - large prime numbers near limit
+  it('14. should include prime numbers close to the limit', () => {
     // Arrange
     const limit = 100;
 
@@ -219,8 +196,8 @@ describe('generatePrimes', () => {
     expect(result[result.length - 1]).toBe(97);
   });
 
-  // Test case 17: Verify first few primes are correct
-  it('17. should correctly identify the first 10 prime numbers', () => {
+  // Test case 15: Verify first few primes are correct
+  it('15. should correctly identify the first 10 prime numbers', () => {
     // Arrange
     const limit = 30;
     const expected = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29];
@@ -232,18 +209,8 @@ describe('generatePrimes', () => {
     expect(result).toEqual(expected);
   });
 
-  // Test case 18: Error case - NaN should throw error
-  it('18. should throw RangeError for NaN', () => {
-    // Arrange
-    const limit = NaN;
-
-    // Act & Assert
-    expect(() => generatePrimes(limit)).toThrow(RangeError);
-    expect(() => generatePrimes(limit)).toThrow('Limit must be an integer');
-  });
-
-  // Test case 19: Verify limit is inclusive
-  it('19. should include the limit if it is prime', () => {
+  // Test case 16: Verify limit is inclusive
+  it('16. should include the limit if it is prime', () => {
     // Arrange
     const limit = 13; // 13 is prime
 
@@ -255,8 +222,8 @@ describe('generatePrimes', () => {
     expect(result[result.length - 1]).toBe(13);
   });
 
-  // Test case 20: Verify limit is not included if not prime
-  it('20. should not include the limit if it is not prime', () => {
+  // Test case 17: Verify limit is not included if not prime
+  it('17. should not include the limit if it is not prime', () => {
     // Arrange
     const limit = 15; // 15 is not prime (3 * 5)
 
@@ -267,4 +234,38 @@ describe('generatePrimes', () => {
     expect(result).not.toContain(15);
     expect(result[result.length - 1]).toBe(13); // Last prime before 15
   });
+
+  // Test case 18: Error case - non-integer limit
+  it('18. should throw RangeError for non-integer limit', () => {
+    // Arrange
+    const limit = 10.5;
+    const expectedMessage = 'Limit must be an integer';
+
+    // Act & Assert
+    expect(() => generatePrimes(limit)).toThrow(RangeError);
+    expect(() => generatePrimes(limit)).toThrow(expectedMessage);
+  });
+
+  // Test case 19: Error case - float limit
+  it('19. should throw RangeError for floating point limit', () => {
+    // Arrange
+    const limits = [3.14, 7.5, 100.1];
+
+    // Act & Assert
+    limits.forEach((limit) => {
+      expect(() => generatePrimes(limit)).toThrow(RangeError);
+      expect(() => generatePrimes(limit)).toThrow('Limit must be an integer');
+    });
+  });
+
+  // Test case 20: Error case - NaN should throw error
+  it('20. should throw RangeError for NaN', () => {
+    // Arrange
+    const limit = NaN;
+
+    // Act & Assert
+    expect(() => generatePrimes(limit)).toThrow(RangeError);
+    expect(() => generatePrimes(limit)).toThrow('Limit must be an integer');
+  });
+
 });

@@ -80,13 +80,13 @@ describe('getDateParts', () => {
   });
 
   // Error test case 1: Extract parts from a date with NaN (should throw an error)
-  it('6. should throw an error for a NaN date', () => {
+  it('5. should throw an error for a NaN date', () => {
     const date: Date = new Date(NaN);
     expect(() => getDateParts(date)).toThrow('Invalid date');
   });
 
   // Error test case 2: Extract parts from an invalid date (should throw an error)
-  it('7. should throw an error for an invalid date', () => {
+  it('5. should throw an error for an invalid date', () => {
     const date: Date = new Date('invalid-date');
     expect(() => getDateParts(date)).toThrow('Invalid date');
   });

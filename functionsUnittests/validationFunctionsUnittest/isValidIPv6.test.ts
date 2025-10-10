@@ -37,23 +37,8 @@ describe('isValidIPv6', () => {
     expect(isValidIPv6('fe80::1%invalid::zone')).toBe(false); // Invalid zone
   });
 
-  // Test case 4: TypeError for invalid input type
-  it('4. should throw TypeError for non-string input', () => {
-    // Arrange
-    const invalidInputs = [123, null, undefined, [], {}, true];
-    const expectedMessage = 'ip must be a string, got';
-
-    // Act & Assert
-    invalidInputs.forEach((input) => {
-      expect(() => isValidIPv6(input as unknown as string)).toThrow(TypeError);
-      expect(() => isValidIPv6(input as unknown as string)).toThrow(
-        expectedMessage,
-      );
-    });
-  });
-
-  // Test case 5: Compression edge cases
-  it('5. should handle compression edge cases correctly', () => {
+  // Test case 4: Compression edge cases
+  it('4. should handle compression edge cases correctly', () => {
     // Arrange & Act & Assert
     expect(isValidIPv6('2001:db8::')).toBe(true); // Compression at end
     expect(isValidIPv6('::2001:db8')).toBe(true); // Compression at start
@@ -65,8 +50,8 @@ describe('isValidIPv6', () => {
     expect(isValidIPv6('2001::db8::1')).toBe(false); // Multiple compressions
   });
 
-  // Test case 6: Performance with various IPv6 addresses
-  it('6. should validate IPv6 addresses efficiently', () => {
+  // Test case 5: Performance with various IPv6 addresses
+  it('5. should validate IPv6 addresses efficiently', () => {
     // Arrange
     const ipv6Addresses = [
       '2001:0db8:85a3:0000:0000:8a2e:0370:7334',
@@ -85,4 +70,20 @@ describe('isValidIPv6', () => {
     expect(results).toEqual([true, true, true, true, false]);
     expect(endTime - startTime).toBeLessThan(10); // Should complete quickly
   });
+
+  // Test case 6: TypeError for invalid input type
+  it('6. should throw TypeError for non-string input', () => {
+    // Arrange
+    const invalidInputs = [123, null, undefined, [], {}, true];
+    const expectedMessage = 'ip must be a string, got';
+
+    // Act & Assert
+    invalidInputs.forEach((input) => {
+      expect(() => isValidIPv6(input as unknown as string)).toThrow(TypeError);
+      expect(() => isValidIPv6(input as unknown as string)).toThrow(
+        expectedMessage,
+      );
+    });
+  });
+
 });

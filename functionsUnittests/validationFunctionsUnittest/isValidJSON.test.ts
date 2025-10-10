@@ -26,20 +26,8 @@ describe('isValidJSON', () => {
     expect(isValidJSON('}')).toBe(false);
   });
 
-  // Test case 3: TypeError for invalid input types
-  it('3. should throw TypeError for invalid input types', () => {
-    const invalidInputs = [123, null, undefined, [], {}, true];
-
-    invalidInputs.forEach((input) => {
-      expect(() => isValidJSON(input as unknown as string)).toThrow(TypeError);
-      expect(() => isValidJSON(input as unknown as string)).toThrow(
-        'jsonString must be a string, got',
-      );
-    });
-  });
-
-  // Test case 4: Performance with various JSON strings
-  it('4. should validate JSON strings efficiently', () => {
+  // Test case 3: Performance with various JSON strings
+  it('3. should validate JSON strings efficiently', () => {
     const jsonStrings = [
       '{"valid": true}',
       '["array", "of", "strings"]',
@@ -55,4 +43,17 @@ describe('isValidJSON', () => {
     expect(results).toEqual([true, true, false, true, true]);
     expect(endTime - startTime).toBeLessThan(10);
   });
+
+  // Test case 4: TypeError for invalid input types
+  it('4. should throw TypeError for invalid input types', () => {
+    const invalidInputs = [123, null, undefined, [], {}, true];
+
+    invalidInputs.forEach((input) => {
+      expect(() => isValidJSON(input as unknown as string)).toThrow(TypeError);
+      expect(() => isValidJSON(input as unknown as string)).toThrow(
+        'jsonString must be a string, got',
+      );
+    });
+  });
+
 });

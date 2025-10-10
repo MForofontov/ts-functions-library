@@ -98,16 +98,8 @@ describe('buildURL', () => {
     expect(result).toBe('https://');
   });
 
-  // Test case 10: Error case - non-object config
-  it('10. should throw TypeError for non-object config', () => {
-    const config = 'https://example.com' as unknown as Parameters<
-      typeof buildURL
-    >[0];
-    expect(() => buildURL(config)).toThrow(TypeError);
-  });
-
-  // Test case 11: Query with special characters
-  it('11. should encode special characters in query values', () => {
+  // Test case 10: Query with special characters
+  it('10. should encode special characters in query values', () => {
     const result = buildURL({
       protocol: 'https',
       hostname: 'example.com',
@@ -116,8 +108,8 @@ describe('buildURL', () => {
     expect(result).toBe('https://example.com?message=Hello+World%21');
   });
 
-  // Test case 12: Pathname without leading slash
-  it('12. should add leading slash to pathname if missing', () => {
+  // Test case 11: Pathname without leading slash
+  it('11. should add leading slash to pathname if missing', () => {
     const result = buildURL({
       protocol: 'https',
       hostname: 'example.com',
@@ -126,8 +118,8 @@ describe('buildURL', () => {
     expect(result).toBe('https://example.com/api/users');
   });
 
-  // Test case 13: Empty query object
-  it('13. should handle empty query object', () => {
+  // Test case 12: Empty query object
+  it('12. should handle empty query object', () => {
     const result = buildURL({
       protocol: 'https',
       hostname: 'example.com',
@@ -136,8 +128,8 @@ describe('buildURL', () => {
     expect(result).toBe('https://example.com');
   });
 
-  // Test case 14: Hash without leading hash symbol
-  it('14. should add hash symbol if missing', () => {
+  // Test case 13: Hash without leading hash symbol
+  it('13. should add hash symbol if missing', () => {
     const result = buildURL({
       protocol: 'https',
       hostname: 'example.com',
@@ -146,8 +138,8 @@ describe('buildURL', () => {
     expect(result).toBe('https://example.com#section');
   });
 
-  // Test case 15: IPv4 hostname
-  it('15. should build URL with IPv4 hostname', () => {
+  // Test case 14: IPv4 hostname
+  it('14. should build URL with IPv4 hostname', () => {
     const result = buildURL({
       protocol: 'http',
       hostname: '192.168.1.1',
@@ -156,8 +148,8 @@ describe('buildURL', () => {
     expect(result).toBe('http://192.168.1.1:8080');
   });
 
-  // Test case 16: IPv6 hostname
-  it('16. should build URL with IPv6 hostname', () => {
+  // Test case 15: IPv6 hostname
+  it('15. should build URL with IPv6 hostname', () => {
     const result = buildURL({
       protocol: 'http',
       hostname: '[2001:db8::1]',
@@ -165,8 +157,8 @@ describe('buildURL', () => {
     expect(result).toBe('http://[2001:db8::1]');
   });
 
-  // Test case 17: FTP protocol
-  it('17. should build FTP URL', () => {
+  // Test case 16: FTP protocol
+  it('16. should build FTP URL', () => {
     const result = buildURL({
       protocol: 'ftp',
       hostname: 'ftp.example.com',
@@ -175,8 +167,8 @@ describe('buildURL', () => {
     expect(result).toBe('ftp://ftp.example.com/files/document.pdf');
   });
 
-  // Test case 18: File protocol
-  it('18. should build file protocol URL', () => {
+  // Test case 17: File protocol
+  it('17. should build file protocol URL', () => {
     const result = buildURL({
       protocol: 'file',
       hostname: '',
@@ -185,8 +177,8 @@ describe('buildURL', () => {
     expect(result).toBe('file:///path/to/file.txt');
   });
 
-  // Test case 19: Complex query with arrays
-  it('19. should handle query parameters correctly', () => {
+  // Test case 18: Complex query with arrays
+  it('18. should handle query parameters correctly', () => {
     const result = buildURL({
       protocol: 'https',
       hostname: 'api.example.com',
@@ -198,8 +190,8 @@ describe('buildURL', () => {
     expect(result).toContain('sort=date');
   });
 
-  // Test case 20: Localhost with default HTTP port
-  it('20. should build localhost URL with port', () => {
+  // Test case 19: Localhost with default HTTP port
+  it('19. should build localhost URL with port', () => {
     const result = buildURL({
       protocol: 'http',
       hostname: 'localhost',
@@ -208,4 +200,13 @@ describe('buildURL', () => {
     });
     expect(result).toBe('http://localhost:3000/api');
   });
+
+  // Test case 20: Error case - non-object config
+  it('20. should throw TypeError for non-object config', () => {
+    const config = 'https://example.com' as unknown as Parameters<
+      typeof buildURL
+    >[0];
+    expect(() => buildURL(config)).toThrow(TypeError);
+  });
+
 });

@@ -44,37 +44,8 @@ describe('generateRandomString', () => {
     expect(result).toMatch(new RegExp(`^[${charset}]+$`));
   });
 
-  // Test case 5: Generate a random string with non-numeric length
-  it('5. should throw an error when length is non-numeric', () => {
-    const charset: string =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    expect(() =>
-      // Cast to match the function signature intentionally with invalid input
-      generateRandomString('a' as unknown as number, charset),
-    ).toThrow('Length must be a non-negative number');
-  });
-
-  // Test case 6: Generate a random string with negative length
-  it('6. should throw an error when length is negative', () => {
-    const length: number = -1;
-    const charset: string =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    expect(() => generateRandomString(length, charset)).toThrow(
-      'Length must be a non-negative number',
-    );
-  });
-
-  // Test case 7: Generate a random string with an empty charset
-  it('7. should throw an error when charset is empty', () => {
-    const length: number = 10;
-    const charset: string = '';
-    expect(() => generateRandomString(length, charset)).toThrow(
-      'Charset must contain at least one character',
-    );
-  });
-
-  // Test case 8: Generate a random string with a single character charset
-  it('8. should generate a string of repeated characters when charset has a single character', () => {
+  // Test case 5: Generate a random string with a single character charset
+  it('5. should generate a string of repeated characters when charset has a single character', () => {
     const length: number = 10;
     const charset: string = 'A';
     const expected: string = 'A'.repeat(length);
@@ -82,8 +53,8 @@ describe('generateRandomString', () => {
     expect(result).toBe(expected);
   });
 
-  // Test case 9: Generate a random string with special characters in charset
-  it('9. should generate a random string with special characters in charset', () => {
+  // Test case 6: Generate a random string with special characters in charset
+  it('6. should generate a random string with special characters in charset', () => {
     const length: number = 10;
     const charset: string = '!@#$%^&*()';
     const result: string = generateRandomString(length, charset);
@@ -93,12 +64,42 @@ describe('generateRandomString', () => {
     );
   });
 
-  // Test case 10: Generate a random string with numeric characters in charset
-  it('10. should generate a random string with numeric characters in charset', () => {
+  // Test case 7: Generate a random string with numeric characters in charset
+  it('7. should generate a random string with numeric characters in charset', () => {
     const length: number = 10;
     const charset: string = '0123456789';
     const result: string = generateRandomString(length, charset);
     expect(result).toHaveLength(length);
     expect(result).toMatch(new RegExp(`^[${charset}]+$`));
   });
+
+  // Test case 8: Generate a random string with non-numeric length
+  it('8. should throw an error when length is non-numeric', () => {
+    const charset: string =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    expect(() =>
+      // Cast to match the function signature intentionally with invalid input
+      generateRandomString('a' as unknown as number, charset),
+    ).toThrow('Length must be a non-negative number');
+  });
+
+  // Test case 9: Generate a random string with negative length
+  it('9. should throw an error when length is negative', () => {
+    const length: number = -1;
+    const charset: string =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    expect(() => generateRandomString(length, charset)).toThrow(
+      'Length must be a non-negative number',
+    );
+  });
+
+  // Test case 10: Generate a random string with an empty charset
+  it('10. should throw an error when charset is empty', () => {
+    const length: number = 10;
+    const charset: string = '';
+    expect(() => generateRandomString(length, charset)).toThrow(
+      'Charset must contain at least one character',
+    );
+  });
+
 });

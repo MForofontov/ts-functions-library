@@ -147,6 +147,7 @@ describe('isDeepSubset', () => {
   });
 
   // Error-handling test cases
+
   // Test case 19: Handle non-object subset
   it('19. should throw a TypeError if subset is not an object', () => {
     expect(() =>
