@@ -122,7 +122,7 @@ describe('repeatString', () => {
   });
 
   // Error handling test case 1: Repeat a string with a negative count
-  it('14. should throw an error when repeating a string with a negative count', () => {
+  it('13. should throw an error when repeating a string with a negative count', () => {
     const str: string = 'hello';
     const count: number = -1;
     expect(() => repeatString(str, count)).toThrow(
@@ -131,7 +131,7 @@ describe('repeatString', () => {
   });
 
   // Error handling test case 2: Repeat a string with a non-numeric count
-  it('15. should throw an error when repeating a string with a non-numeric count', () => {
+  it('13. should throw an error when repeating a string with a non-numeric count', () => {
     const str: string = 'hello';
     expect(() => repeatString(str, 'a' as unknown as number)).toThrow(
       'Count must be a number',

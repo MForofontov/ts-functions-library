@@ -35,19 +35,8 @@ describe('isValidIPv4', () => {
     expect(isValidIPv4('0.0.0.1')).toBe(true); // Mixed min/small
   });
 
-  // Test case 4: TypeError for invalid input type
-  it('4. should throw TypeError for non-string input', () => {
-    // Arrange
-    const invalidInputs: unknown[] = [null, undefined, 42, {}, [], true];
-
-    // Act & Assert
-    for (const input of invalidInputs) {
-      expect(() => isValidIPv4(input as string)).toThrow(TypeError);
-    }
-  });
-
-  // Test case 5: Leading zeros validation
-  it('5. should reject IPv4 addresses with leading zeros', () => {
+  // Test case 4: Leading zeros validation
+  it('4. should reject IPv4 addresses with leading zeros', () => {
     // Arrange & Act & Assert
     expect(isValidIPv4('192.168.01.1')).toBe(false);
     expect(isValidIPv4('192.168.001.1')).toBe(false);
@@ -59,8 +48,8 @@ describe('isValidIPv4', () => {
     expect(isValidIPv4('0.0.0.0')).toBe(true);
   });
 
-  // Test case 6: Performance with various IP addresses
-  it('6. should validate IP addresses efficiently', () => {
+  // Test case 5: Performance with various IP addresses
+  it('5. should validate IP addresses efficiently', () => {
     // Arrange
     const ipAddresses = [
       '192.168.1.1',
@@ -79,4 +68,16 @@ describe('isValidIPv4', () => {
     expect(results).toEqual([true, true, true, false, false]);
     expect(endTime - startTime).toBeLessThan(10); // Should complete quickly
   });
+
+  // Test case 6: TypeError for invalid input type
+  it('6. should throw TypeError for non-string input', () => {
+    // Arrange
+    const invalidInputs: unknown[] = [null, undefined, 42, {}, [], true];
+
+    // Act & Assert
+    for (const input of invalidInputs) {
+      expect(() => isValidIPv4(input as string)).toThrow(TypeError);
+    }
+  });
+
 });

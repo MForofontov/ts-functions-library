@@ -94,54 +94,55 @@ describe('normalizeURL', () => {
     expect(result).toBe('https://example.com/Path?a=2&empty=%2F&z=1');
   });
 
-  // Test case 13: Error case - non-string URL
-  it('13. should throw TypeError for non-string URL', () => {
+  // Test case 13: URL with query and hash
+  it('13. should normalize URL with query and hash', () => {
+    const result = normalizeURL('https://Example.COM/path?b=2&a=1#section');
+    expect(result).toBe('https://example.com/path?a=1&b=2#section');
+  });
+
+  // Test case 14: Root path preserves slash
+  it('14. should preserve root path slash', () => {
+    const result = normalizeURL('https://example.com/');
+    expect(result).toBe('https://example.com/');
+  });
+
+  // Test case 15: Empty query string handled
+  it('15. should handle URL with empty query string', () => {
+    const result = normalizeURL('https://example.com/path?');
+    // URL keeps the ? for empty query
+    expect(result).toBe('https://example.com/path?');
+  });
+
+  // Test case 16: IPv4 hostname
+  it('16. should normalize IPv4 URL', () => {
+    const result = normalizeURL('http://192.168.1.1:8080/path');
+    expect(result).toBe('http://192.168.1.1:8080/path');
+  });
+
+  // Test case 17: IPv6 hostname preserved
+  it('17. should normalize IPv6 URL', () => {
+    const result = normalizeURL('http://[2001:db8::1]:8080/path');
+    expect(result).toBe('http://[2001:db8::1]:8080/path');
+  });
+
+  // Test case 18: Error case - non-string URL
+  it('18. should throw TypeError for non-string URL', () => {
     const input = 12345 as unknown as string;
     expect(() => normalizeURL(input)).toThrow(TypeError);
     expect(() => normalizeURL(input)).toThrow('url must be a string');
   });
 
-  // Test case 14: Error case - invalid URL
-  it('14. should throw Error for invalid URL format', () => {
+  // Test case 19: Error case - invalid URL
+  it('19. should throw Error for invalid URL format', () => {
     expect(() => normalizeURL('not a valid url')).toThrow('Invalid URL');
   });
 
-  // Test case 15: Error case - non-object options
-  it('15. should throw TypeError for non-object options', () => {
+  // Test case 20: Error case - non-object options
+  it('20. should throw TypeError for non-object options', () => {
     const options = 'string' as unknown as Parameters<typeof normalizeURL>[1];
     expect(() => normalizeURL('https://example.com', options)).toThrow(
       TypeError,
     );
   });
 
-  // Test case 16: URL with query and hash
-  it('16. should normalize URL with query and hash', () => {
-    const result = normalizeURL('https://Example.COM/path?b=2&a=1#section');
-    expect(result).toBe('https://example.com/path?a=1&b=2#section');
-  });
-
-  // Test case 17: Root path preserves slash
-  it('17. should preserve root path slash', () => {
-    const result = normalizeURL('https://example.com/');
-    expect(result).toBe('https://example.com/');
-  });
-
-  // Test case 18: Empty query string handled
-  it('18. should handle URL with empty query string', () => {
-    const result = normalizeURL('https://example.com/path?');
-    // URL keeps the ? for empty query
-    expect(result).toBe('https://example.com/path?');
-  });
-
-  // Test case 19: IPv4 hostname
-  it('19. should normalize IPv4 URL', () => {
-    const result = normalizeURL('http://192.168.1.1:8080/path');
-    expect(result).toBe('http://192.168.1.1:8080/path');
-  });
-
-  // Test case 20: IPv6 hostname preserved
-  it('20. should normalize IPv6 URL', () => {
-    const result = normalizeURL('http://[2001:db8::1]:8080/path');
-    expect(result).toBe('http://[2001:db8::1]:8080/path');
-  });
 });

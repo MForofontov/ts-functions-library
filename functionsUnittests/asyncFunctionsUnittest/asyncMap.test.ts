@@ -55,88 +55,8 @@ describe('asyncMap', () => {
     expect(mockFn).toHaveBeenNthCalledWith(3, 'c', 2);
   });
 
-  // Test case 4: Error handling
-  it('4. should propagate errors from async function', async () => {
-    // Arrange
-    const numbers = [1, 2, 3];
-    const errorFn = (num: number) => {
-      if (num === 2) {
-        throw new Error('Error on second item');
-      }
-      return Promise.resolve(num * 2);
-    };
-
-    // Act & Assert
-    await expect(asyncMap(numbers, errorFn)).rejects.toThrow(
-      'Error on second item',
-    );
-  });
-
-  // Test case 5: TypeError for invalid input types
-  it('5. should throw TypeError for invalid input types', () => {
-    // Arrange
-    const invalidInputs = [123, null, undefined, {}, true, 'string'];
-    const mockFn = jest.fn().mockResolvedValue('test');
-
-    // Act & Assert
-    invalidInputs.forEach((input) => {
-      expect(() => asyncMap(input as unknown as unknown[], mockFn)).toThrow(
-        TypeError,
-      );
-      expect(() => asyncMap(input as unknown as unknown[], mockFn)).toThrow(
-        'array must be an array, got',
-      );
-    });
-  });
-
-  // Test case 6: TypeError for invalid async function
-  it('6. should throw TypeError for invalid async function', () => {
-    // Arrange
-    const validArray = [1, 2, 3];
-    const invalidFunctions = [123, null, undefined, {}, true, 'string', []];
-
-    // Act & Assert
-    invalidFunctions.forEach((fn) => {
-      expect(() =>
-        asyncMap(
-          validArray,
-          fn as unknown as (item: number, index: number) => Promise<unknown>,
-        ),
-      ).toThrow(TypeError);
-      expect(() =>
-        asyncMap(
-          validArray,
-          fn as unknown as (item: number, index: number) => Promise<unknown>,
-        ),
-      ).toThrow('asyncFn must be a function, got');
-    });
-  });
-
-  // Test case 7: Invalid concurrency
-  it('7. should throw TypeError for invalid concurrency', () => {
-    // Arrange
-    const validArray = [1, 2, 3];
-    const validFn = jest.fn().mockResolvedValue('test');
-    const invalidConcurrency = [null, undefined, {}, true, 'string', [], NaN];
-
-    // Act & Assert
-    invalidConcurrency.forEach((concurrency) => {
-      expect(() =>
-        asyncMap(validArray, validFn, concurrency as unknown as number),
-      ).toThrow(TypeError);
-      expect(() =>
-        asyncMap(validArray, validFn, concurrency as unknown as number),
-      ).toThrow('concurrency must be a number, got');
-    });
-
-    expect(() => asyncMap(validArray, validFn, 0)).toThrow(Error);
-    expect(() => asyncMap(validArray, validFn, 0)).toThrow(
-      'concurrency must be at least 1, got 0',
-    );
-  });
-
-  // Test case 8: Performance test with concurrency
-  it('8. should process items with respect to concurrency limit', async () => {
+  // Test case 4: Performance test with concurrency
+  it('4. should process items with respect to concurrency limit', async () => {
     // Arrange
     const items = [1, 2, 3, 4, 5, 6];
     let activeCount = 0;
@@ -158,8 +78,8 @@ describe('asyncMap', () => {
     expect(maxActiveCount).toBeLessThanOrEqual(3);
   });
 
-  // Test case 9: Small array should use Promise.all
-  it('9. should use Promise.all for small arrays', async () => {
+  // Test case 5: Small array should use Promise.all
+  it('5. should use Promise.all for small arrays', async () => {
     // Arrange
     const items = [1, 2];
     const mockFn = jest
@@ -174,8 +94,8 @@ describe('asyncMap', () => {
     expect(mockFn).toHaveBeenCalledTimes(2);
   });
 
-  // Test case 10: Different data types
-  it('10. should handle different input and output types', async () => {
+  // Test case 6: Different data types
+  it('6. should handle different input and output types', async () => {
     // Arrange
     const strings = ['hello', 'world', 'test'];
     const lengthFn = async (str: string) => {
@@ -189,4 +109,85 @@ describe('asyncMap', () => {
     // Assert
     expect(result).toEqual([5, 5, 4]);
   });
+
+  // Test case 7: Error handling
+  it('7. should propagate errors from async function', async () => {
+    // Arrange
+    const numbers = [1, 2, 3];
+    const errorFn = (num: number) => {
+      if (num === 2) {
+        throw new Error('Error on second item');
+      }
+      return Promise.resolve(num * 2);
+    };
+
+    // Act & Assert
+    await expect(asyncMap(numbers, errorFn)).rejects.toThrow(
+      'Error on second item',
+    );
+  });
+
+  // Test case 8: TypeError for invalid input types
+  it('8. should throw TypeError for invalid input types', () => {
+    // Arrange
+    const invalidInputs = [123, null, undefined, {}, true, 'string'];
+    const mockFn = jest.fn().mockResolvedValue('test');
+
+    // Act & Assert
+    invalidInputs.forEach((input) => {
+      expect(() => asyncMap(input as unknown as unknown[], mockFn)).toThrow(
+        TypeError,
+      );
+      expect(() => asyncMap(input as unknown as unknown[], mockFn)).toThrow(
+        'array must be an array, got',
+      );
+    });
+  });
+
+  // Test case 9: TypeError for invalid async function
+  it('9. should throw TypeError for invalid async function', () => {
+    // Arrange
+    const validArray = [1, 2, 3];
+    const invalidFunctions = [123, null, undefined, {}, true, 'string', []];
+
+    // Act & Assert
+    invalidFunctions.forEach((fn) => {
+      expect(() =>
+        asyncMap(
+          validArray,
+          fn as unknown as (item: number, index: number) => Promise<unknown>,
+        ),
+      ).toThrow(TypeError);
+      expect(() =>
+        asyncMap(
+          validArray,
+          fn as unknown as (item: number, index: number) => Promise<unknown>,
+        ),
+      ).toThrow('asyncFn must be a function, got');
+    });
+  });
+
+  // Test case 10: Invalid concurrency
+  it('10. should throw TypeError for invalid concurrency', () => {
+    // Arrange
+    const validArray = [1, 2, 3];
+    const validFn = jest.fn().mockResolvedValue('test');
+    const invalidConcurrency = [null, undefined, {}, true, 'string', [], NaN];
+
+    // Act & Assert
+    invalidConcurrency.forEach((concurrency) => {
+      expect(() =>
+        asyncMap(validArray, validFn, concurrency as unknown as number),
+      ).toThrow(TypeError);
+      expect(() =>
+        asyncMap(validArray, validFn, concurrency as unknown as number),
+      ).toThrow('concurrency must be a number, got');
+    });
+
+    expect(() => asyncMap(validArray, validFn, 0)).toThrow(Error);
+    expect(() => asyncMap(validArray, validFn, 0)).toThrow(
+      'concurrency must be at least 1, got 0',
+    );
+  });
+
 });

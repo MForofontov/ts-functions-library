@@ -36,75 +36,8 @@ describe('asyncRetry', () => {
     expect(mockFn).toHaveBeenCalledTimes(3);
   });
 
-  // Test case 3: All attempts fail
-  it('3. should throw last error when all attempts fail', async () => {
-    // Arrange
-    const expectedError = new Error('Final attempt failed');
-    const mockFn = jest
-      .fn()
-      .mockRejectedValueOnce(new Error('Attempt 1 failed'))
-      .mockRejectedValueOnce(new Error('Attempt 2 failed'))
-      .mockRejectedValue(expectedError);
-
-    // Act & Assert
-    await expect(
-      asyncRetry(mockFn, { maxAttempts: 3, delay: 10 }),
-    ).rejects.toThrow('Final attempt failed');
-    expect(mockFn).toHaveBeenCalledTimes(3);
-  });
-
-  // Test case 4: TypeError for invalid input types
-  it('4. should throw TypeError for invalid input types', () => {
-    // Arrange
-    const invalidInputs = [123, null, undefined, [], {}, true, 'string'];
-
-    // Act & Assert
-    invalidInputs.forEach((input) => {
-      expect(() =>
-        asyncRetry(input as unknown as () => Promise<unknown>),
-      ).toThrow(TypeError);
-      expect(() =>
-        asyncRetry(input as unknown as () => Promise<unknown>),
-      ).toThrow('fn must be a function, got');
-    });
-  });
-
-  // Test case 5: Error for invalid options
-  it('5. should throw Error for invalid options', () => {
-    // Arrange
-    const mockFn = jest.fn().mockResolvedValue('success');
-
-    // Act & Assert
-    expect(() => asyncRetry(mockFn, { maxAttempts: 0 })).toThrow(
-      'maxAttempts must be a positive number',
-    );
-
-    expect(() => asyncRetry(mockFn, { maxAttempts: -1 })).toThrow(
-      'maxAttempts must be a positive number',
-    );
-
-    expect(() => asyncRetry(mockFn, { delay: -100 })).toThrow(
-      'delay must be a non-negative number',
-    );
-
-    expect(() =>
-      asyncRetry(mockFn, {
-        backoff: 'invalid' as 'fixed' | 'linear' | 'exponential',
-      }),
-    ).toThrow("backoff must be 'fixed', 'linear', or 'exponential'");
-
-    expect(() =>
-      asyncRetry(mockFn, {
-        onRetry: 'not a function' as unknown as (
-          attempt: number,
-          error: Error,
-        ) => void,
-      }),
-    ).toThrow('onRetry must be a function');
-  });
-
-  // Test case 6: Backoff strategies
-  it('6. should implement different backoff strategies correctly', async () => {
+  // Test case 3: Backoff strategies
+  it('3. should implement different backoff strategies correctly', async () => {
     // Arrange
     const delays: number[] = [];
     const originalSetTimeout = global.setTimeout;
@@ -159,8 +92,8 @@ describe('asyncRetry', () => {
     global.setTimeout = originalSetTimeout;
   });
 
-  // Test case 7: onRetry callback
-  it('7. should call onRetry callback on each retry', async () => {
+  // Test case 4: onRetry callback
+  it('4. should call onRetry callback on each retry', async () => {
     // Arrange
     const onRetryMock = jest.fn();
     const mockFn = jest
@@ -182,8 +115,8 @@ describe('asyncRetry', () => {
     expect(onRetryMock).toHaveBeenNthCalledWith(2, 2, expect.any(Error));
   });
 
-  // Test case 8: Performance test with large input
-  it('8. should handle reasonable number of retries efficiently', async () => {
+  // Test case 5: Performance test with large input
+  it('5. should handle reasonable number of retries efficiently', async () => {
     // Arrange
     const mockFn = jest.fn().mockResolvedValue('success');
 
@@ -197,4 +130,72 @@ describe('asyncRetry', () => {
     expect(mockFn).toHaveBeenCalledTimes(1);
     expect(endTime - startTime).toBeLessThan(50); // Should complete quickly on first success
   });
+
+  // Test case 6: All attempts fail
+  it('6. should throw last error when all attempts fail', async () => {
+    // Arrange
+    const expectedError = new Error('Final attempt failed');
+    const mockFn = jest
+      .fn()
+      .mockRejectedValueOnce(new Error('Attempt 1 failed'))
+      .mockRejectedValueOnce(new Error('Attempt 2 failed'))
+      .mockRejectedValue(expectedError);
+
+    // Act & Assert
+    await expect(
+      asyncRetry(mockFn, { maxAttempts: 3, delay: 10 }),
+    ).rejects.toThrow('Final attempt failed');
+    expect(mockFn).toHaveBeenCalledTimes(3);
+  });
+
+  // Test case 7: TypeError for invalid input types
+  it('7. should throw TypeError for invalid input types', () => {
+    // Arrange
+    const invalidInputs = [123, null, undefined, [], {}, true, 'string'];
+
+    // Act & Assert
+    invalidInputs.forEach((input) => {
+      expect(() =>
+        asyncRetry(input as unknown as () => Promise<unknown>),
+      ).toThrow(TypeError);
+      expect(() =>
+        asyncRetry(input as unknown as () => Promise<unknown>),
+      ).toThrow('fn must be a function, got');
+    });
+  });
+
+  // Test case 8: Error for invalid options
+  it('8. should throw Error for invalid options', () => {
+    // Arrange
+    const mockFn = jest.fn().mockResolvedValue('success');
+
+    // Act & Assert
+    expect(() => asyncRetry(mockFn, { maxAttempts: 0 })).toThrow(
+      'maxAttempts must be a positive number',
+    );
+
+    expect(() => asyncRetry(mockFn, { maxAttempts: -1 })).toThrow(
+      'maxAttempts must be a positive number',
+    );
+
+    expect(() => asyncRetry(mockFn, { delay: -100 })).toThrow(
+      'delay must be a non-negative number',
+    );
+
+    expect(() =>
+      asyncRetry(mockFn, {
+        backoff: 'invalid' as 'fixed' | 'linear' | 'exponential',
+      }),
+    ).toThrow("backoff must be 'fixed', 'linear', or 'exponential'");
+
+    expect(() =>
+      asyncRetry(mockFn, {
+        onRetry: 'not a function' as unknown as (
+          attempt: number,
+          error: Error,
+        ) => void,
+      }),
+    ).toThrow('onRetry must be a function');
+  });
+
 });

@@ -45,7 +45,7 @@ describe('getRandomIntInRange', () => {
     );
   });
 
-  // Test case 11: Test for floating-point inputs
+  // Test case 6: Test for floating-point inputs
   it('6. should throw an error for floating-point inputs', () => {
     const min: number = 1.5;
     const max: number = 5.5;

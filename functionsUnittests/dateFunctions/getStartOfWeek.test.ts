@@ -92,19 +92,19 @@ describe('getStartOfWeek', () => {
     expect(result).toEqual(expected);
   });
 
-  // Test case 13: Get the start date of the week for a NaN date (should throw an error)
+  // Test case 12: Get the start date of the week for a NaN date (should throw an error)
   it('12. should throw an error for a NaN date', () => {
     const date: Date = new Date(NaN);
     expect(() => getStartOfWeek(date)).toThrow('Invalid date');
   });
 
-  // Test case 14: Get the start date of the week for an invalid date (should throw an error)
+  // Test case 13: Get the start date of the week for an invalid date (should throw an error)
   it('13. should throw an error for an invalid date', () => {
     const date: Date = new Date('invalid-date');
     expect(() => getStartOfWeek(date)).toThrow('Invalid date');
   });
 
-  // Test case 15: Get the start date of the week for an invalid startOfWeek value (should throw an error)
+  // Test case 14: Get the start date of the week for an invalid startOfWeek value (should throw an error)
   it('14. should throw an error for an invalid startOfWeek value', () => {
     const date: Date = new Date('2023-09-19');
     expect(() => getStartOfWeek(date, 7)).toThrow(
@@ -112,7 +112,7 @@ describe('getStartOfWeek', () => {
     );
   });
 
-  // Test case 16: Get the start date of the week for a NaN startOfWeek value (should throw an error)
+  // Test case 15: Get the start date of the week for a NaN startOfWeek value (should throw an error)
   it('15. should throw an error for a NaN startOfWeek value', () => {
     const date: Date = new Date('2023-09-19');
     expect(() => getStartOfWeek(date, NaN)).toThrow(
