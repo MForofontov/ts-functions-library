@@ -179,4 +179,159 @@ describe('groupBy', () => {
       expect(result[String(i)].length).toBe(100);
     }
   });
+
+  // Test case 12: Grouping by string property
+  it('12. should group objects by string property', () => {
+    const arr: { id: number; category: string }[] = [
+      { id: 1, category: 'fruit' },
+      { id: 2, category: 'vegetable' },
+      { id: 3, category: 'fruit' },
+      { id: 4, category: 'meat' },
+    ];
+    const result = groupBy(arr, 'category');
+    expect(result).toEqual({
+      fruit: [
+        { id: 1, category: 'fruit' },
+        { id: 3, category: 'fruit' },
+      ],
+      vegetable: [{ id: 2, category: 'vegetable' }],
+      meat: [{ id: 4, category: 'meat' }],
+    });
+  });
+
+  // Test case 13: Grouping by boolean property
+  it('13. should group objects by boolean property', () => {
+    const arr: { id: number; completed: boolean }[] = [
+      { id: 1, completed: true },
+      { id: 2, completed: false },
+      { id: 3, completed: true },
+      { id: 4, completed: false },
+    ];
+    const result = groupBy(arr, 'completed');
+    expect(result).toEqual({
+      true: [
+        { id: 1, completed: true },
+        { id: 3, completed: true },
+      ],
+      false: [
+        { id: 2, completed: false },
+        { id: 4, completed: false },
+      ],
+    });
+  });
+
+  // Test case 14: Single item array
+  it('14. should group single item array correctly', () => {
+    const arr: { name: string; age: number }[] = [{ name: 'Alice', age: 25 }];
+    const result = groupBy(arr, 'age');
+    expect(result).toEqual({
+      '25': [{ name: 'Alice', age: 25 }],
+    });
+  });
+
+  // Test case 15: Array with all unique values
+  it('15. should group array where all values are unique', () => {
+    const arr: { id: number; value: number }[] = [
+      { id: 1, value: 10 },
+      { id: 2, value: 20 },
+      { id: 3, value: 30 },
+      { id: 4, value: 40 },
+    ];
+    const result = groupBy(arr, 'value');
+    expect(result).toEqual({
+      '10': [{ id: 1, value: 10 }],
+      '20': [{ id: 2, value: 20 }],
+      '30': [{ id: 3, value: 30 }],
+      '40': [{ id: 4, value: 40 }],
+    });
+  });
+
+  // Test case 16: Array with all same values
+  it('16. should group array where all values are the same', () => {
+    const arr: { id: number; status: string }[] = [
+      { id: 1, status: 'active' },
+      { id: 2, status: 'active' },
+      { id: 3, status: 'active' },
+    ];
+    const result = groupBy(arr, 'status');
+    expect(result).toEqual({
+      active: [
+        { id: 1, status: 'active' },
+        { id: 2, status: 'active' },
+        { id: 3, status: 'active' },
+      ],
+    });
+  });
+
+  // Test case 17: Grouping with empty strings
+  it('17. should group objects with empty string values', () => {
+    const arr: { id: number; name: string }[] = [
+      { id: 1, name: '' },
+      { id: 2, name: 'Alice' },
+      { id: 3, name: '' },
+    ];
+    const result = groupBy(arr, 'name');
+    expect(result).toEqual({
+      '': [
+        { id: 1, name: '' },
+        { id: 3, name: '' },
+      ],
+      Alice: [{ id: 2, name: 'Alice' }],
+    });
+  });
+
+  // Test case 18: Grouping with zero values
+  it('18. should group objects with zero as property value', () => {
+    const arr: { id: number; count: number }[] = [
+      { id: 1, count: 0 },
+      { id: 2, count: 1 },
+      { id: 3, count: 0 },
+    ];
+    const result = groupBy(arr, 'count');
+    expect(result).toEqual({
+      '0': [
+        { id: 1, count: 0 },
+        { id: 3, count: 0 },
+      ],
+      '1': [{ id: 2, count: 1 }],
+    });
+  });
+
+  // Test case 19: Grouping with negative numbers
+  it('19. should group objects with negative number values', () => {
+    const arr: { id: number; temperature: number }[] = [
+      { id: 1, temperature: -5 },
+      { id: 2, temperature: 0 },
+      { id: 3, temperature: -5 },
+      { id: 4, temperature: 10 },
+    ];
+    const result = groupBy(arr, 'temperature');
+    expect(result).toEqual({
+      '-5': [
+        { id: 1, temperature: -5 },
+        { id: 3, temperature: -5 },
+      ],
+      '0': [{ id: 2, temperature: 0 }],
+      '10': [{ id: 4, temperature: 10 }],
+    });
+  });
+
+  // Test case 20: Grouping with numeric strings
+  it('20. should group objects treating numeric strings as distinct from numbers', () => {
+    const arr: { id: number; code: string | number }[] = [
+      { id: 1, code: '100' },
+      { id: 2, code: 100 },
+      { id: 3, code: '100' },
+      { id: 4, code: 100 },
+    ];
+    const result = groupBy(arr, 'code');
+    expect(result).toEqual({
+      '100': [
+        { id: 1, code: '100' },
+        { id: 2, code: 100 },
+        { id: 3, code: '100' },
+        { id: 4, code: 100 },
+      ],
+    });
+  });
 });
