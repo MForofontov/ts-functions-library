@@ -91,4 +91,18 @@ describe('safeSet', () => {
       safeSet(undefined as unknown as Record<string, unknown>, 'a.b.c', 100),
     ).toThrow(TypeError);
   });
+
+  // Test case 13: Create nested structure when path doesn't exist
+  it('13. should create nested objects when path does not exist', () => {
+    const obj = {};
+    safeSet(obj, 'a.b.c.d.e', 'deep value');
+    expect(obj).toEqual({ a: { b: { c: { d: { e: 'deep value' } } } } });
+  });
+
+  // Test case 14: Overwrite non-object values in path
+  it('14. should overwrite non-object values in the path', () => {
+    const obj = { a: 'string value' };
+    safeSet(obj, 'a.b.c', 42);
+    expect(obj).toEqual({ a: { b: { c: 42 } } });
+  });
 });

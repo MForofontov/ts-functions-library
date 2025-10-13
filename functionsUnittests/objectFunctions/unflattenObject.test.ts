@@ -93,4 +93,44 @@ describe('unflattenObject', () => {
       unflattenObject(undefined as unknown as Record<string, unknown>),
     ).toThrow(TypeError);
   });
+
+  // Test case 11: Handle array notation with brackets
+  it('11. should unflatten array notation with square brackets', () => {
+    const obj = { 'a[0]': 1, 'a[1]': 2, 'a[2]': 3 };
+    const result = unflattenObject(obj);
+    const expected = { a: [1, 2, 3] };
+    expect(result).toEqual(expected);
+  });
+
+  // Test case 12: Handle nested array notation
+  it('12. should unflatten nested array notation', () => {
+    const obj = { 'a[0].b': 1, 'a[1].b': 2 };
+    const result = unflattenObject(obj);
+    const expected = { a: [{ b: 1 }, { b: 2 }] };
+    expect(result).toEqual(expected);
+  });
+
+  // Test case 13: Handle mixed array and object paths
+  it('13. should unflatten mixed array and object paths', () => {
+    const obj = { 'a.0.b.c': 1, 'a.1.b.c': 2 };
+    const result = unflattenObject(obj);
+    const expected = { a: [{ b: { c: 1 } }, { b: { c: 2 } }] };
+    expect(result).toEqual(expected);
+  });
+
+  // Test case 14: Handle array with numeric string indices
+  it('14. should handle array indices as strings', () => {
+    const obj = { 'items.0.name': 'first', 'items.1.name': 'second' };
+    const result = unflattenObject(obj);
+    const expected = { items: [{ name: 'first' }, { name: 'second' }] };
+    expect(result).toEqual(expected);
+  });
+
+  // Test case 15: Handle deep array nesting
+  it('15. should handle deep array nesting', () => {
+    const obj = { 'a.0.0.b': 1, 'a.0.1.b': 2 };
+    const result = unflattenObject(obj);
+    const expected = { a: [[{ b: 1 }, { b: 2 }]] };
+    expect(result).toEqual(expected);
+  });
 });

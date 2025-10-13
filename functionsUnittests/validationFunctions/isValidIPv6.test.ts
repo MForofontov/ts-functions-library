@@ -71,8 +71,22 @@ describe('isValidIPv6', () => {
     expect(endTime - startTime).toBeLessThan(10); // Should complete quickly
   });
 
-  // Test case 6: TypeError for invalid input type
-  it('6. should throw TypeError for non-string input', () => {
+  // Test case 6: Group validation edge cases
+  it('6. should validate IPv6 group constraints', () => {
+    // Empty groups in non-compressed form
+    expect(isValidIPv6('2001:db8::8a2e:370:')).toBe(false);
+    expect(isValidIPv6(':2001:db8:8a2e:370:7334')).toBe(false);
+    
+    // Too many groups even with compression
+    expect(isValidIPv6('1:2:3:4:5:6:7::8')).toBe(false);
+    
+    // Valid compressions at different positions
+    expect(isValidIPv6('::1:2:3:4:5:6:7')).toBe(true);
+    expect(isValidIPv6('1::2:3:4:5:6:7')).toBe(true);
+  });
+
+  // Test case 7: TypeError for invalid input type
+  it('7. should throw TypeError for non-string input', () => {
     // Arrange
     const invalidInputs = [123, null, undefined, [], {}, true];
     const expectedMessage = 'ip must be a string, got';

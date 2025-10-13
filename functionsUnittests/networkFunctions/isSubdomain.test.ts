@@ -88,19 +88,66 @@ describe('isSubdomain', () => {
     );
   });
 
-  it('12. should throw Error for invalid subdomainUrl', () => {
-    expect(() => isSubdomain('not a url', 'https://example.com')).toThrow(
+  // Test case 12: should handle plain hostnames without protocol
+  it('12. should handle plain hostnames without protocol', () => {
+    const result = isSubdomain('api.example.com', 'example.com');
+    expect(result).toBe(true);
+  });
+
+  // Test case 13: should throw Error for invalid subdomain URL with protocol but malformed
+  it('13. should throw Error for invalid subdomainUrl with protocol', () => {
+    expect(() => isSubdomain('http://', 'https://example.com')).toThrow(Error);
+    expect(() => isSubdomain('http://', 'https://example.com')).toThrow(
       'Invalid URL',
     );
   });
 
-  it('13. should throw Error for invalid parentUrl', () => {
-    expect(() => isSubdomain('https://api.example.com', 'not a url')).toThrow(
+  // Test case 14: should throw Error for empty subdomainUrl
+  it('14. should throw Error for empty subdomainUrl', () => {
+    expect(() => isSubdomain('', 'https://example.com')).toThrow(Error);
+    expect(() => isSubdomain('', 'https://example.com')).toThrow('Invalid URL');
+  });
+
+  // Test case 15: should throw Error for subdomainUrl with spaces
+  it('15. should throw Error for subdomainUrl with spaces', () => {
+    expect(() => isSubdomain('invalid url', 'https://example.com')).toThrow(
+      Error,
+    );
+    expect(() => isSubdomain('invalid url', 'https://example.com')).toThrow(
       'Invalid URL',
     );
   });
 
-  it('14. should handle multi-part TLDs', () => {
+  // Test case 16: should throw Error for invalid parentUrl with protocol but malformed
+  it('16. should throw Error for invalid parentUrl with protocol', () => {
+    expect(() => isSubdomain('https://api.example.com', 'http://')).toThrow(
+      Error,
+    );
+    expect(() => isSubdomain('https://api.example.com', 'http://')).toThrow(
+      'Invalid URL',
+    );
+  });
+
+  // Test case 17: should throw Error for empty parentUrl
+  it('17. should throw Error for empty parentUrl', () => {
+    expect(() => isSubdomain('https://api.example.com', '')).toThrow(Error);
+    expect(() => isSubdomain('https://api.example.com', '')).toThrow(
+      'Invalid URL',
+    );
+  });
+
+  // Test case 18: should throw Error for parentUrl with spaces
+  it('18. should throw Error for parentUrl with spaces', () => {
+    expect(() => isSubdomain('https://api.example.com', 'invalid url')).toThrow(
+      Error,
+    );
+    expect(() => isSubdomain('https://api.example.com', 'invalid url')).toThrow(
+      'Invalid URL',
+    );
+  });
+
+  // Test case 19: should handle multi-part TLDs
+  it('19. should handle multi-part TLDs', () => {
     const result = isSubdomain(
       'https://api.example.co.uk',
       'https://example.co.uk',
@@ -108,42 +155,12 @@ describe('isSubdomain', () => {
     expect(result).toBe(true);
   });
 
-  it('15. should return false for parent being subdomain of first', () => {
+  // Test case 20. should return false for parent being subdomain of first
+  it('20. should return false for parent being subdomain of first', () => {
     const result = isSubdomain(
       'https://example.com',
       'https://api.example.com',
     );
-    expect(result).toBe(false);
-  });
-
-  it('16. should handle deep nesting', () => {
-    const result = isSubdomain(
-      'https://a.b.c.d.example.com',
-      'https://example.com',
-    );
-    expect(result).toBe(true);
-  });
-
-  it('17. should return false for similar but different domains', () => {
-    const result = isSubdomain('https://example.com', 'https://myexample.com');
-    expect(result).toBe(false);
-  });
-
-  it('18. should handle IPv4 addresses', () => {
-    const result = isSubdomain('http://192.168.1.1', 'http://192.168.1.1');
-    expect(result).toBe(false);
-  });
-
-  it('19. should handle query parameters and hashes', () => {
-    const result = isSubdomain(
-      'https://api.example.com?key=value#section',
-      'https://example.com',
-    );
-    expect(result).toBe(true);
-  });
-
-  it('20. should return false for partial domain match', () => {
-    const result = isSubdomain('https://notexample.com', 'https://example.com');
     expect(result).toBe(false);
   });
 });

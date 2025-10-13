@@ -84,7 +84,17 @@ describe('getDomainParts', () => {
     expect(() => getDomainParts('not a url')).toThrow('Invalid URL');
   });
 
-  it('10. should handle URL with path', () => {
+  it('10. should throw Error for URL with protocol but empty hostname', () => {
+    expect(() => getDomainParts('http://')).toThrow(Error);
+    expect(() => getDomainParts('http://')).toThrow('Invalid URL');
+  });
+
+  it('11. should throw Error for URL with spaces', () => {
+    expect(() => getDomainParts('invalid url')).toThrow(Error);
+    expect(() => getDomainParts('invalid url')).toThrow('Invalid URL');
+  });
+
+  it('12. should handle URL with path', () => {
     const result = getDomainParts('https://www.example.com/path/to/page');
     expect(result).toEqual({
       subdomain: 'www',
