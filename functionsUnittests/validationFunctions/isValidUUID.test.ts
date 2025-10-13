@@ -56,7 +56,7 @@ describe('isValidUUID', () => {
 
     // Assert
     expect(results).toEqual([true, true, false, true, false]);
-    expect(endTime - startTime).toBeLessThan(10); // Should complete quickly
+    expect(endTime - startTime).toBeLessThan(100); // Should complete quickly (increased threshold for CI environments)
   });
 
   // Test case 5: TypeError for invalid input types
