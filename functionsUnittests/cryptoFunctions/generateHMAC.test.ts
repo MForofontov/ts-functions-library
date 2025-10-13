@@ -97,16 +97,36 @@ describe('generateHMAC', () => {
     ).toThrow('secret must be a string');
   });
 
-  // Test case 12: Throw error for invalid algorithm
-  it('12. should throw Error for unsupported algorithm', () => {
+  // Test case 12: Throw error for algorithm type
+  it('12. should throw TypeError when algorithm is not a string', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(() => generateHMAC(testData, testKey, 123 as any)).toThrow(
+      TypeError,
+    );
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(() => generateHMAC(testData, testKey, 123 as any)).toThrow(
+      'algorithm must be a string',
+    );
+  });
+
+  // Test case 13: Throw error for empty secret
+  it('13. should throw Error when secret is empty', () => {
+    expect(() => generateHMAC(testData, '', 'sha256')).toThrow(Error);
+    expect(() => generateHMAC(testData, '', 'sha256')).toThrow(
+      'secret cannot be empty',
+    );
+  });
+
+  // Test case 14: Throw error for invalid algorithm value
+  it('14. should throw Error for unsupported algorithm', () => {
     const invalidAlgorithm = 'md5';
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    expect(() => generateHMAC(testData, testKey, invalidAlgorithm as any)).toThrow(
-      Error,
-    );
+    expect(() =>
+      generateHMAC(testData, testKey, invalidAlgorithm as any),
+    ).toThrow(Error);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    expect(() => generateHMAC(testData, testKey, invalidAlgorithm as any)).toThrow(
-      'algorithm must be one of',
-    );
+    expect(() =>
+      generateHMAC(testData, testKey, invalidAlgorithm as any),
+    ).toThrow('algorithm must be one of');
   });
 });

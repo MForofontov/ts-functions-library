@@ -32,6 +32,18 @@ ts-functions-library/
 │   ├── asyncFilter.ts              # Async array filtering
 │   ├── asyncMap.ts                 # Async array mapping
 │   └── asyncParallel.ts            # Controlled parallel execution
+├── cryptoFunctions/                # Cryptographic utilities (Node.js crypto)
+│   ├── hashSHA256.ts               # SHA-256 hashing
+│   ├── hashSHA512.ts               # SHA-512 hashing
+│   ├── hashMD5.ts                  # MD5 hashing (legacy support)
+│   ├── hashPassword.ts             # PBKDF2 password hashing
+│   ├── compareHash.ts              # Timing-safe hash comparison
+│   ├── encryptAES256.ts            # AES-256-GCM encryption
+│   ├── decryptAES256.ts            # AES-256-GCM decryption
+│   ├── generateHMAC.ts             # HMAC generation
+│   ├── verifyHMAC.ts               # Timing-safe HMAC verification
+│   ├── generateSalt.ts             # Cryptographic salt generation
+│   └── generateRandomBytes.ts      # Secure random byte generation
 ├── dateFunctions/                  # Date and time utilities
 │   ├── addDays.ts
 │   ├── formatDate.ts
@@ -465,6 +477,42 @@ export { groupBy as groupByObject } from './objectFunctions/groupBy';
 - Handle mathematical edge cases (division by zero, negative square roots)
 - Use appropriate precision for floating-point operations
 - Reference mathematical definitions in comments when helpful
+
+### Cryptographic Functions Specific Guidelines
+
+#### Function Categories
+
+- **Hashing Functions**: SHA-256, SHA-512, MD5 (legacy), password hashing (PBKDF2)
+- **Encryption Functions**: AES-256-GCM encryption and decryption
+- **HMAC Functions**: HMAC generation and timing-safe verification
+- **Utility Functions**: Salt generation, random bytes, hash comparison
+
+#### Cryptographic Function Requirements
+
+- **Security First**: Use Node.js built-in `crypto` module exclusively
+- **Timing-Safe Operations**: Use `timingSafeEqual` for all comparisons (hashes, HMACs)
+- **Input Validation**: Strict validation of all cryptographic parameters
+  - Validate hex string formats (hash, salt, HMAC)
+  - Check buffer/string lengths match algorithm requirements
+  - Verify algorithm parameter values
+- **Error Handling**: Clear, descriptive errors without exposing sensitive data
+- **Documentation**: 
+  - Include security warnings (e.g., MD5 for legacy only)
+  - Document timing-attack resistance where applicable
+  - Provide real-world usage examples (API signatures, password storage)
+- **Test Coverage**: Aim for >98% coverage
+  - Test valid and invalid inputs thoroughly
+  - Test all supported algorithms
+  - Test edge cases (empty strings, wrong lengths, invalid hex)
+  - Note: Some defensive catch blocks may be unreachable (document as such)
+
+#### Cryptographic Best Practices
+
+- **Never log or expose**: Keys, passwords, salts, or intermediate values
+- **Use secure defaults**: SHA-256 for hashing, AES-256-GCM for encryption
+- **Hex encoding**: Always use lowercase hex for consistency
+- **Algorithm support**: Document supported algorithms explicitly
+- **Legacy warnings**: Clearly mark MD5 and other weak algorithms as legacy/insecure
 
 ### Best Practices for GitHub Copilot
 

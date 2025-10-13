@@ -115,8 +115,20 @@ describe('compareHash', () => {
     ).toThrow('hash must be a string');
   });
 
-  // Test case 13: Throw error for invalid algorithm
-  it('13. should throw Error for unsupported algorithm', () => {
+  // Test case 13: Throw error for invalid algorithm type
+  it('13. should throw TypeError when algorithm is not a string', () => {
+    const data = 'test';
+    const hash = 'b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9';
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(() => compareHash(data, hash, 123 as any)).toThrow(TypeError);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(() => compareHash(data, hash, 123 as any)).toThrow(
+      'algorithm must be a string',
+    );
+  });
+
+  // Test case 14: Throw error for unsupported algorithm
+  it('14. should throw Error for unsupported algorithm', () => {
     const data = 'test';
     const hash = 'somehash';
     const invalidAlgorithm = 'invalid';
@@ -127,6 +139,16 @@ describe('compareHash', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     expect(() => compareHash(data, hash, invalidAlgorithm as any)).toThrow(
       'algorithm must be one of',
+    );
+  });
+
+  // Test case 15: Throw error for hash with non-hex characters
+  it('15. should throw Error when hash contains non-hexadecimal characters', () => {
+    const data = 'test';
+    const hash = 'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz'; // 64 chars but not hex
+    expect(() => compareHash(data, hash, 'sha256')).toThrow(Error);
+    expect(() => compareHash(data, hash, 'sha256')).toThrow(
+      'hash must contain only hexadecimal characters',
     );
   });
 });

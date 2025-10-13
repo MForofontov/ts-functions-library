@@ -117,8 +117,41 @@ describe('hashPassword', () => {
     );
   });
 
-  // Test case 14: Throw error for invalid iterations
-  it('14. should throw Error for invalid iterations', async () => {
+  // Test case 14: Throw error for salt with non-hex characters
+  it('14. should throw Error when salt contains non-hexadecimal characters', async () => {
+    const invalidSalt = 'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz';
+    await expect(hashPassword(testPassword, invalidSalt)).rejects.toThrow(
+      Error,
+    );
+    await expect(hashPassword(testPassword, invalidSalt)).rejects.toThrow(
+      'salt must contain only hexadecimal characters',
+    );
+  });
+
+  // Test case 15: Throw error for NaN iterations
+  it('15. should throw Error when iterations is NaN', async () => {
+    await expect(hashPassword(testPassword, testSalt, NaN)).rejects.toThrow(
+      Error,
+    );
+    await expect(hashPassword(testPassword, testSalt, NaN)).rejects.toThrow(
+      'iterations must be a valid number, not NaN',
+    );
+  });
+
+  // Test case 16: Throw error for invalid iterations type
+  it('16. should throw TypeError when iterations is not a number', async () => {
+    await expect(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      hashPassword(testPassword, testSalt, 'invalid' as any),
+    ).rejects.toThrow(TypeError);
+    await expect(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      hashPassword(testPassword, testSalt, 'invalid' as any),
+    ).rejects.toThrow('iterations must be a number');
+  });
+
+  // Test case 17: Throw error for zero iterations
+  it('17. should throw Error for zero iterations', async () => {
     await expect(hashPassword(testPassword, testSalt, 0)).rejects.toThrow(
       Error,
     );

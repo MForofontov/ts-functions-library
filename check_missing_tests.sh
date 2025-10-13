@@ -26,6 +26,16 @@ for file in asyncFunctions/*.ts; do
   fi
 done
 
+# Crypto functions
+for file in cryptoFunctions/*.ts; do
+  basename=$(basename "$file" .ts)
+  testfile="functionsUnittests/cryptoFunctions/${basename}.test.ts"
+  if [ ! -f "$testfile" ]; then
+    echo "❌ cryptoFunctions/${basename}.ts"
+    ((missing_count++))
+  fi
+done
+
 # Date functions
 for file in dateFunctions/*.ts; do
   basename=$(basename "$file" .ts)

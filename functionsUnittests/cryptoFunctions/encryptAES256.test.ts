@@ -117,8 +117,16 @@ describe('encryptAES256', () => {
     ).toThrow('key must be a string');
   });
 
-  // Test case 14: Throw error for empty key
-  it('14. should throw Error when key is empty', () => {
+  // Test case 14: Throw error for empty data
+  it('14. should throw Error when data is empty', () => {
+    expect(() => encryptAES256('', testPassword)).toThrow(Error);
+    expect(() => encryptAES256('', testPassword)).toThrow(
+      'data cannot be empty',
+    );
+  });
+
+  // Test case 15: Throw error for empty key
+  it('15. should throw Error when key is empty', () => {
     expect(() => encryptAES256(testData, '')).toThrow(Error);
     expect(() => encryptAES256(testData, '')).toThrow('key cannot be empty');
   });

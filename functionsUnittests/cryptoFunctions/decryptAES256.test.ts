@@ -118,4 +118,40 @@ describe('decryptAES256', () => {
     expect(() => decryptAES256(encrypted, '')).toThrow(Error);
     expect(() => decryptAES256(encrypted, '')).toThrow('key cannot be empty');
   });
+
+  // Test case 14: Throw error for empty encrypted string
+  it('14. should throw Error when encrypted is empty', () => {
+    expect(() => decryptAES256('', testPassword)).toThrow(Error);
+    expect(() => decryptAES256('', testPassword)).toThrow(
+      'encrypted cannot be empty',
+    );
+  });
+
+  // Test case 15: Throw error for invalid IV length
+  it('15. should throw Error when IV length is invalid', () => {
+    // Create encrypted data with incorrect IV length (too short)
+    const shortIV = Buffer.from('short', 'utf8').toString('base64');
+    const validAuthTag = Buffer.alloc(16).toString('base64');
+    const validCiphertext = Buffer.from('test', 'utf8').toString('base64');
+    const invalidEncrypted = `${shortIV}:${validAuthTag}:${validCiphertext}`;
+
+    expect(() => decryptAES256(invalidEncrypted, testPassword)).toThrow(Error);
+    expect(() => decryptAES256(invalidEncrypted, testPassword)).toThrow(
+      'invalid IV length',
+    );
+  });
+
+  // Test case 16: Throw error for invalid auth tag length
+  it('16. should throw Error when auth tag length is invalid', () => {
+    // Create encrypted data with incorrect auth tag length
+    const validIV = Buffer.alloc(16).toString('base64');
+    const shortAuthTag = Buffer.from('short', 'utf8').toString('base64');
+    const validCiphertext = Buffer.from('test', 'utf8').toString('base64');
+    const invalidEncrypted = `${validIV}:${shortAuthTag}:${validCiphertext}`;
+
+    expect(() => decryptAES256(invalidEncrypted, testPassword)).toThrow(Error);
+    expect(() => decryptAES256(invalidEncrypted, testPassword)).toThrow(
+      'invalid authentication tag length',
+    );
+  });
 });

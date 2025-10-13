@@ -111,4 +111,60 @@ describe('verifyHMAC', () => {
       verifyHMAC(testData, testKey, null as unknown as string, 'sha256'),
     ).toThrow('hmac must be a string');
   });
+
+  // Test case 13: Throw error for algorithm type
+  it('13. should throw TypeError when algorithm is not a string', () => {
+    const hmac = generateHMAC(testData, testKey, 'sha256');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(() => verifyHMAC(testData, testKey, hmac, 123 as any)).toThrow(
+      TypeError,
+    );
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(() => verifyHMAC(testData, testKey, hmac, 123 as any)).toThrow(
+      'algorithm must be a string',
+    );
+  });
+
+  // Test case 14: Throw error for empty secret
+  it('14. should throw Error when secret is empty', () => {
+    const hmac = generateHMAC(testData, testKey, 'sha256');
+    expect(() => verifyHMAC(testData, '', hmac, 'sha256')).toThrow(Error);
+    expect(() => verifyHMAC(testData, '', hmac, 'sha256')).toThrow(
+      'secret cannot be empty',
+    );
+  });
+
+  // Test case 15: Throw error for empty hmac
+  it('15. should throw Error when hmac is empty', () => {
+    expect(() => verifyHMAC(testData, testKey, '', 'sha256')).toThrow(Error);
+    expect(() => verifyHMAC(testData, testKey, '', 'sha256')).toThrow(
+      'hmac cannot be empty',
+    );
+  });
+
+  // Test case 16: Throw error for invalid algorithm
+  it('16. should throw Error for unsupported algorithm', () => {
+    const hmac = '0'.repeat(64);
+    const invalidAlgorithm = 'md5';
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(() =>
+      verifyHMAC(testData, testKey, hmac, invalidAlgorithm as any),
+    ).toThrow(Error);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(() =>
+      verifyHMAC(testData, testKey, hmac, invalidAlgorithm as any),
+    ).toThrow('algorithm must be one of');
+  });
+
+  // Test case 17: Throw error for non-hex hmac
+  it('17. should throw Error when hmac contains non-hexadecimal characters', () => {
+    const invalidHmac =
+      'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz';
+    expect(() => verifyHMAC(testData, testKey, invalidHmac, 'sha256')).toThrow(
+      Error,
+    );
+    expect(() => verifyHMAC(testData, testKey, invalidHmac, 'sha256')).toThrow(
+      'hmac must contain only hexadecimal characters',
+    );
+  });
 });
