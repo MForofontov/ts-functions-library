@@ -9,7 +9,7 @@ missing_count=0
 # Array functions
 for file in arrayFunctions/*.ts; do
   basename=$(basename "$file" .ts)
-  testfile="functionsUnittests/arrayFunctionsUnittests/${basename}.test.ts"
+  testfile="functionsUnittests/arrayFunctions/${basename}.test.ts"
   if [ ! -f "$testfile" ]; then
     echo "❌ arrayFunctions/${basename}.ts"
     ((missing_count++))
@@ -19,9 +19,19 @@ done
 # Async functions
 for file in asyncFunctions/*.ts; do
   basename=$(basename "$file" .ts)
-  testfile="functionsUnittests/asyncFunctionsUnittest/${basename}.test.ts"
+  testfile="functionsUnittests/asyncFunctions/${basename}.test.ts"
   if [ ! -f "$testfile" ]; then
     echo "❌ asyncFunctions/${basename}.ts"
+    ((missing_count++))
+  fi
+done
+
+# Crypto functions
+for file in cryptoFunctions/*.ts; do
+  basename=$(basename "$file" .ts)
+  testfile="functionsUnittests/cryptoFunctions/${basename}.test.ts"
+  if [ ! -f "$testfile" ]; then
+    echo "❌ cryptoFunctions/${basename}.ts"
     ((missing_count++))
   fi
 done
@@ -49,7 +59,7 @@ done
 # Math functions - algebra
 for file in mathFunctions/algebraFunctions/*.ts; do
   basename=$(basename "$file" .ts)
-  testfile="functionsUnittests/mathFunctionsUnittest/algebraFunctionsUnittest/${basename}.test.ts"
+  testfile="functionsUnittests/mathFunctions/algebraFunctions/${basename}.test.ts"
   if [ ! -f "$testfile" ]; then
     echo "❌ mathFunctions/algebraFunctions/${basename}.ts"
     ((missing_count++))
@@ -59,7 +69,7 @@ done
 # Math functions - arithmetic
 for file in mathFunctions/arithmeticFunctions/*.ts; do
   basename=$(basename "$file" .ts)
-  testfile="functionsUnittests/mathFunctionsUnittest/arithmeticFunctionsUnittest/${basename}.test.ts"
+  testfile="functionsUnittests/mathFunctions/arithmeticFunctions/${basename}.test.ts"
   if [ ! -f "$testfile" ]; then
     echo "❌ mathFunctions/arithmeticFunctions/${basename}.ts"
     ((missing_count++))
@@ -69,7 +79,7 @@ done
 # Math functions - combinatorics
 for file in mathFunctions/combinatoricsFunctions/*.ts; do
   basename=$(basename "$file" .ts)
-  testfile="functionsUnittests/mathFunctionsUnittest/combinatoricsFunctionsUnittest/${basename}.test.ts"
+  testfile="functionsUnittests/mathFunctions/combinatoricsFunctions/${basename}.test.ts"
   if [ ! -f "$testfile" ]; then
     echo "❌ mathFunctions/combinatoricsFunctions/${basename}.ts"
     ((missing_count++))
@@ -79,7 +89,7 @@ done
 # Math functions - geometric
 for file in mathFunctions/geometricFunctions/*.ts; do
   basename=$(basename "$file" .ts)
-  testfile="functionsUnittests/mathFunctionsUnittest/geometricFunctionsUnittest/${basename}.test.ts"
+  testfile="functionsUnittests/mathFunctions/geometricFunctions/${basename}.test.ts"
   if [ ! -f "$testfile" ]; then
     echo "❌ mathFunctions/geometricFunctions/${basename}.ts"
     ((missing_count++))
@@ -89,7 +99,7 @@ done
 # Math functions - number theory
 for file in mathFunctions/numberTheoryFunctions/*.ts; do
   basename=$(basename "$file" .ts)
-  testfile="functionsUnittests/mathFunctionsUnittest/numberTheoryFunctionsUnittest/${basename}.test.ts"
+  testfile="functionsUnittests/mathFunctions/numberTheoryFunctions/${basename}.test.ts"
   if [ ! -f "$testfile" ]; then
     echo "❌ mathFunctions/numberTheoryFunctions/${basename}.ts"
     ((missing_count++))
@@ -99,7 +109,7 @@ done
 # Math functions - sequences
 for file in mathFunctions/sequenceFunctions/*.ts; do
   basename=$(basename "$file" .ts)
-  testfile="functionsUnittests/mathFunctionsUnittest/sequenceFunctionsUnittest/${basename}.test.ts"
+  testfile="functionsUnittests/mathFunctions/sequenceFunctions/${basename}.test.ts"
   if [ ! -f "$testfile" ]; then
     echo "❌ mathFunctions/sequenceFunctions/${basename}.ts"
     ((missing_count++))
@@ -109,7 +119,7 @@ done
 # Math functions - statistics central tendency
 for file in mathFunctions/statisticsFunctions/centralTendency/*.ts; do
   basename=$(basename "$file" .ts)
-  testfile="functionsUnittests/mathFunctionsUnittest/statisticsFunctionsUnittest/centralTendencyUnittest/${basename}.test.ts"
+  testfile="functionsUnittests/mathFunctions/statisticsFunctions/centralTendency/${basename}.test.ts"
   if [ ! -f "$testfile" ]; then
     echo "❌ mathFunctions/statisticsFunctions/centralTendency/${basename}.ts"
     ((missing_count++))
@@ -119,7 +129,7 @@ done
 # Math functions - statistics dispersion
 for file in mathFunctions/statisticsFunctions/dispersion/*.ts; do
   basename=$(basename "$file" .ts)
-  testfile="functionsUnittests/mathFunctionsUnittest/statisticsFunctionsUnittest/dispersionUnittest/${basename}.test.ts"
+  testfile="functionsUnittests/mathFunctions/statisticsFunctions/dispersion/${basename}.test.ts"
   if [ ! -f "$testfile" ]; then
     echo "❌ mathFunctions/statisticsFunctions/dispersion/${basename}.ts"
     ((missing_count++))
@@ -159,9 +169,19 @@ done
 # Validation functions
 for file in validationFunctions/*.ts; do
   basename=$(basename "$file" .ts)
-  testfile="functionsUnittests/validationFunctionsUnittest/${basename}.test.ts"
+  testfile="functionsUnittests/validationFunctions/${basename}.test.ts"
   if [ ! -f "$testfile" ]; then
     echo "❌ validationFunctions/${basename}.ts"
+    ((missing_count++))
+  fi
+done
+
+# Network functions
+for file in networkFunctions/*.ts; do
+  basename=$(basename "$file" .ts)
+  testfile="functionsUnittests/networkFunctions/${basename}.test.ts"
+  if [ ! -f "$testfile" ]; then
+    echo "❌ networkFunctions/${basename}.ts"
     ((missing_count++))
   fi
 done

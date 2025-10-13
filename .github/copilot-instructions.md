@@ -32,6 +32,18 @@ ts-functions-library/
 │   ├── asyncFilter.ts              # Async array filtering
 │   ├── asyncMap.ts                 # Async array mapping
 │   └── asyncParallel.ts            # Controlled parallel execution
+├── cryptoFunctions/                # Cryptographic utilities (Node.js crypto)
+│   ├── hashSHA256.ts               # SHA-256 hashing
+│   ├── hashSHA512.ts               # SHA-512 hashing
+│   ├── hashMD5.ts                  # MD5 hashing (legacy support)
+│   ├── hashPassword.ts             # PBKDF2 password hashing
+│   ├── compareHash.ts              # Timing-safe hash comparison
+│   ├── encryptAES256.ts            # AES-256-GCM encryption
+│   ├── decryptAES256.ts            # AES-256-GCM decryption
+│   ├── generateHMAC.ts             # HMAC generation
+│   ├── verifyHMAC.ts               # Timing-safe HMAC verification
+│   ├── generateSalt.ts             # Cryptographic salt generation
+│   └── generateRandomBytes.ts      # Secure random byte generation
 ├── dateFunctions/                  # Date and time utilities
 │   ├── addDays.ts
 │   ├── formatDate.ts
@@ -355,18 +367,54 @@ describe('functionName', () => {
 
 #### Testing Requirements
 
-- **Minimum 6 test cases** per function covering:
-  1. Normal/typical usage
-  2. Edge cases (empty arrays, zero values, etc.)
-  3. Invalid input handling (TypeError)
-  4. Value validation errors (Error)
-  5. Boundary conditions
-  6. Performance considerations (for complex functions)
+- **Comprehensive test coverage based on actual needs** (CRITICAL):
+  - **Quality over quantity**: Create tests to cover functionality, NOT to reach a specific count
+  - **Test what matters**: Focus on code paths, edge cases, and error conditions
+  - **Avoid redundant tests**: Don't test the same thing multiple ways without added value
+  - **Typical coverage needs**:
+    - Simple functions: 5-10 meaningful tests (basic usage + edge cases + errors)
+    - Moderate complexity: 8-15 tests (multiple scenarios + boundaries + errors)
+    - Complex functions: 12-20+ tests (comprehensive scenarios + all branches + errors)
+  - **Stop when covered**: If all code paths, edge cases, and errors are tested, you're done
 
-- **Naming Convention**: Use descriptive test names with numbering: `'1. should...'`
-- **Test Structure**: Use Arrange-Act-Assert pattern for clarity
-- **Error Testing**: Use `toThrow()` with specific error types and messages
-- **Documentation**: Add descriptive comments for each test case explaining the scenario
+- **Test Organization Pattern** (CRITICAL):
+  1. **Normal/typical usage** (first ~60% of tests): Common use cases and expected behavior
+  2. **Edge cases** (middle ~30% of tests): Boundary conditions, empty inputs, special values
+  3. **Error cases** (last ~10% of tests): **ALWAYS LAST** - Type errors, validation errors, invalid inputs
+
+- **Naming Convention**: 
+  - Use numbered descriptive format: `'1. should...'`, `'2. should...'`, etc.
+  - Be specific and descriptive about what is being tested
+  - Examples:
+    - `'1. should return true for valid HTTP URL'`
+    - `'15. should handle empty string gracefully'`
+    - `'23. should throw TypeError when url is not a string'`
+
+- **Test Structure**: 
+  - Use **Arrange-Act-Assert** pattern for clarity
+  - Add descriptive comments for each test section
+  - Group related test cases together with comments
+
+- **Error Testing**: 
+  - **MUST be placed at the end** of the test file
+  - Use `toThrow()` with specific error types (TypeError, Error, RangeError, etc.)
+  - Always verify both error type AND error message
+  - Example:
+    ```typescript
+    expect(() => functionName(invalidInput)).toThrow(TypeError);
+    expect(() => functionName(invalidInput)).toThrow('param must be a number, got string');
+    ```
+
+- **Coverage Goals**:
+  - Target >95% code coverage
+  - Test all code paths and branches
+  - Include performance tests for complex functions
+  - Test boundary conditions thoroughly
+
+- **Documentation**: 
+  - Add descriptive comments for each test case explaining the scenario
+  - Group related tests with section comments
+  - Reference example: `functionsUnittests/networkFunctionsUnittest/isValidURL.test.ts`
 
 ### Code Style & Formatting
 
@@ -429,6 +477,42 @@ export { groupBy as groupByObject } from './objectFunctions/groupBy';
 - Handle mathematical edge cases (division by zero, negative square roots)
 - Use appropriate precision for floating-point operations
 - Reference mathematical definitions in comments when helpful
+
+### Cryptographic Functions Specific Guidelines
+
+#### Function Categories
+
+- **Hashing Functions**: SHA-256, SHA-512, MD5 (legacy), password hashing (PBKDF2)
+- **Encryption Functions**: AES-256-GCM encryption and decryption
+- **HMAC Functions**: HMAC generation and timing-safe verification
+- **Utility Functions**: Salt generation, random bytes, hash comparison
+
+#### Cryptographic Function Requirements
+
+- **Security First**: Use Node.js built-in `crypto` module exclusively
+- **Timing-Safe Operations**: Use `timingSafeEqual` for all comparisons (hashes, HMACs)
+- **Input Validation**: Strict validation of all cryptographic parameters
+  - Validate hex string formats (hash, salt, HMAC)
+  - Check buffer/string lengths match algorithm requirements
+  - Verify algorithm parameter values
+- **Error Handling**: Clear, descriptive errors without exposing sensitive data
+- **Documentation**: 
+  - Include security warnings (e.g., MD5 for legacy only)
+  - Document timing-attack resistance where applicable
+  - Provide real-world usage examples (API signatures, password storage)
+- **Test Coverage**: Aim for >98% coverage
+  - Test valid and invalid inputs thoroughly
+  - Test all supported algorithms
+  - Test edge cases (empty strings, wrong lengths, invalid hex)
+  - Note: Some defensive catch blocks may be unreachable (document as such)
+
+#### Cryptographic Best Practices
+
+- **Never log or expose**: Keys, passwords, salts, or intermediate values
+- **Use secure defaults**: SHA-256 for hashing, AES-256-GCM for encryption
+- **Hex encoding**: Always use lowercase hex for consistency
+- **Algorithm support**: Document supported algorithms explicitly
+- **Legacy warnings**: Clearly mark MD5 and other weak algorithms as legacy/insecure
 
 ### Best Practices for GitHub Copilot
 

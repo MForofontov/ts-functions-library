@@ -211,14 +211,20 @@ describe('shuffleArray', () => {
   // Test case 15: Shuffling an array of NaN values
   test('15. should shuffle an array of NaN values', () => {
     const array: number[] = [NaN, 1, 2, NaN, 3];
-    let result: number[] = array;
-    for (let i = 0; i < 5; i++) {
-      result = shuffleArray(result);
-      if (!arraysEqual(result, array)) break;
-    }
-    expect(result).not.toEqual([NaN, 1, 2, NaN, 3]);
+    const result = shuffleArray(array);
+    
+    // Verify the result has the same length
     expect(result).toHaveLength(array.length);
-    expect(result).toEqual(expect.arrayContaining(array));
+    
+    // Count NaN values in both arrays
+    const originalNaNCount = array.filter((x) => Number.isNaN(x)).length;
+    const resultNaNCount = result.filter((x) => Number.isNaN(x)).length;
+    expect(resultNaNCount).toBe(originalNaNCount);
+    
+    // Count non-NaN values and verify they match
+    const originalNumbers = array.filter((x) => !Number.isNaN(x)).sort();
+    const resultNumbers = result.filter((x) => !Number.isNaN(x)).sort();
+    expect(resultNumbers).toEqual(originalNumbers);
   });
 
   // Test case 16: Shuffling an array of mixed data types

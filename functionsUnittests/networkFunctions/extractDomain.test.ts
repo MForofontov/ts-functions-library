@@ -64,17 +64,27 @@ describe('extractDomain', () => {
     expect(() => extractDomain('not a url')).toThrow('Invalid URL');
   });
 
-  it('13. should extract domain from URL with port', () => {
+  it('13. should throw Error for URL with protocol but empty hostname', () => {
+    expect(() => extractDomain('http://')).toThrow(Error);
+    expect(() => extractDomain('http://')).toThrow('Invalid URL');
+  });
+
+  it('14. should throw Error for URL with spaces', () => {
+    expect(() => extractDomain('invalid url')).toThrow(Error);
+    expect(() => extractDomain('invalid url')).toThrow('Invalid URL');
+  });
+
+  it('15. should extract domain from URL with port', () => {
     const result = extractDomain('http://www.example.com:8080');
     expect(result).toBe('example.com');
   });
 
-  it('14. should handle IPv4 addresses', () => {
+  it('16. should handle IPv4 addresses', () => {
     const result = extractDomain('http://192.168.1.1');
     expect(result).toBe('192.168.1.1');
   });
 
-  it('15. should handle IPv6 addresses', () => {
+  it('17. should handle IPv6 addresses', () => {
     const result = extractDomain('http://[2001:db8::1]');
     expect(result).toBe('[2001:db8::1]');
   });
