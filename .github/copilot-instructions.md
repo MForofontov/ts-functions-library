@@ -355,18 +355,50 @@ describe('functionName', () => {
 
 #### Testing Requirements
 
-- **Minimum 6 test cases** per function covering:
-  1. Normal/typical usage
-  2. Edge cases (empty arrays, zero values, etc.)
-  3. Invalid input handling (TypeError)
-  4. Value validation errors (Error)
-  5. Boundary conditions
-  6. Performance considerations (for complex functions)
+- **Comprehensive test coverage** with sufficient test cases based on function complexity:
+  - Simple functions (e.g., arithmetic operations): 10-15 tests minimum
+  - Moderate complexity (e.g., string/array manipulations): 15-20 tests
+  - Complex functions (e.g., URL parsing, validation): 20-30+ tests
+  - Aim for thorough coverage of all code paths, not just a fixed number
 
-- **Naming Convention**: Use descriptive test names with numbering: `'1. should...'`
-- **Test Structure**: Use Arrange-Act-Assert pattern for clarity
-- **Error Testing**: Use `toThrow()` with specific error types and messages
-- **Documentation**: Add descriptive comments for each test case explaining the scenario
+- **Test Organization Pattern** (CRITICAL):
+  1. **Normal/typical usage** (first ~60% of tests): Common use cases and expected behavior
+  2. **Edge cases** (middle ~30% of tests): Boundary conditions, empty inputs, special values
+  3. **Error cases** (last ~10% of tests): **ALWAYS LAST** - Type errors, validation errors, invalid inputs
+
+- **Naming Convention**: 
+  - Use numbered descriptive format: `'1. should...'`, `'2. should...'`, etc.
+  - Be specific and descriptive about what is being tested
+  - Examples:
+    - `'1. should return true for valid HTTP URL'`
+    - `'15. should handle empty string gracefully'`
+    - `'23. should throw TypeError when url is not a string'`
+
+- **Test Structure**: 
+  - Use **Arrange-Act-Assert** pattern for clarity
+  - Add descriptive comments for each test section
+  - Group related test cases together with comments
+
+- **Error Testing**: 
+  - **MUST be placed at the end** of the test file
+  - Use `toThrow()` with specific error types (TypeError, Error, RangeError, etc.)
+  - Always verify both error type AND error message
+  - Example:
+    ```typescript
+    expect(() => functionName(invalidInput)).toThrow(TypeError);
+    expect(() => functionName(invalidInput)).toThrow('param must be a number, got string');
+    ```
+
+- **Coverage Goals**:
+  - Target >95% code coverage
+  - Test all code paths and branches
+  - Include performance tests for complex functions
+  - Test boundary conditions thoroughly
+
+- **Documentation**: 
+  - Add descriptive comments for each test case explaining the scenario
+  - Group related tests with section comments
+  - Reference example: `functionsUnittests/networkFunctionsUnittest/isValidURL.test.ts`
 
 ### Code Style & Formatting
 
