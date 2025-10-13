@@ -416,6 +416,144 @@ describe('functionName', () => {
   - Group related tests with section comments
   - Reference example: `functionsUnittests/networkFunctionsUnittest/isValidURL.test.ts`
 
+### Code Coverage Standards
+
+#### Current Coverage Metrics
+
+As of October 2025, the project maintains exceptional test coverage:
+
+| Metric | Coverage | Status |
+|--------|----------|--------|
+| **Statements** | **98.59%** | ✅ Excellent |
+| **Branches** | **96.95%** | ✅ Excellent |
+| **Functions** | **100%** | ✅ Perfect |
+| **Lines** | **98.63%** | ✅ Excellent |
+
+- **Total Test Suites**: 267
+- **Total Tests**: 3,487
+- **All tests passing**: ✅
+
+#### Coverage Philosophy
+
+**98.63% line coverage represents the practical maximum for this codebase.** The remaining 1.37% uncovered lines consist of:
+
+1. **Defensive Code** (intentionally unreachable):
+   - Catch blocks after comprehensive validation
+   - Double-checks after regex validation
+   - Safety nets for theoretically impossible states
+
+2. **Examples of Acceptable Uncovered Lines**:
+   - **Crypto catch blocks**: Lines in `compareHash.ts:99` and `verifyHMAC.ts:117` that can only be reached if Node.js built-ins throw unexpected errors
+   - **Regex-prevented validators**: Lines in `isValidTime.ts:131,138,143,147` and `isValidISODate.ts:83,87,115,121` that are unreachable because earlier regex patterns prevent invalid values
+   - **Edge case handlers**: Defensive checks for conditions prevented by earlier validation logic
+
+#### Coverage Best Practices
+
+**When Adding New Functions**:
+1. ✅ **Aim for >95% coverage** for all new code
+2. ✅ **100% function coverage** is mandatory - every function must be tested
+3. ✅ **Document why lines are uncovered** if below 95% (must be defensive code)
+4. ❌ **Never artificially inflate coverage** by:
+   - Mocking Node.js built-ins unnecessarily
+   - Creating synthetic errors just for coverage
+   - Bypassing validation to reach defensive code
+   - Writing meaningless tests
+
+**Running Coverage Reports**:
+```bash
+# Full coverage report
+npm test -- --coverage
+
+# Coverage for specific file
+npm test -- path/to/test.test.ts --coverage
+
+# Text-only coverage summary
+npm test -- --coverage --coverageReporters=text --silent
+```
+
+**Analyzing Uncovered Lines**:
+```bash
+# List all files with <100% coverage
+npm test -- --coverage --coverageReporters=text --silent 2>&1 | grep -E "^\s+\w+\.ts\s+\|" | grep -v "100 |.*100 |.*100 |"
+```
+
+#### Performance Test Guidelines
+
+Performance tests should use realistic thresholds:
+- ✅ **Use 100ms threshold** for most tests (accounts for CI environments)
+- ❌ **Avoid <10ms thresholds** - too strict, causes flaky tests
+- ✅ **Test with meaningful data sizes** (arrays of 100-10,000 elements)
+- ✅ **Focus on algorithmic efficiency**, not absolute timing
+
+**Example Performance Test**:
+```typescript
+it('should handle large inputs efficiently', () => {
+  const largeInput = new Array(10000).fill(0).map((_, i) => i);
+  
+  const startTime = performance.now();
+  const result = functionName(largeInput);
+  const endTime = performance.now();
+  
+  expect(result).toBeDefined();
+  expect(endTime - startTime).toBeLessThan(100); // 100ms threshold for CI
+});
+```
+
+#### Avoiding Flaky Tests
+
+**Common Causes of Flaky Tests**:
+1. **Strict timing thresholds** - Solution: Use 100ms minimum for performance tests
+2. **Randomness without verification** - Solution: Test properties, not exact values
+3. **NaN comparisons** - Solution: Use `Number.isNaN()` for NaN checks
+4. **Environment-dependent behavior** - Solution: Mock or control external dependencies
+
+**Example: Testing Random Functions**:
+```typescript
+// ❌ Bad: Expects exact random result
+expect(shuffleArray([1, 2, 3])).not.toEqual([1, 2, 3]);
+
+// ✅ Good: Verifies properties of random result
+const result = shuffleArray([1, 2, 3]);
+expect(result).toHaveLength(3);
+expect(result.sort()).toEqual([1, 2, 3]); // Same elements, possibly different order
+```
+
+**Example: Testing with NaN**:
+```typescript
+// ❌ Bad: NaN !== NaN, so equality checks fail
+expect(result).toEqual([NaN, 1, 2]);
+
+// ✅ Good: Count NaN values explicitly
+const nanCount = result.filter(x => Number.isNaN(x)).length;
+expect(nanCount).toBe(1);
+```
+
+#### Coverage Maintenance
+
+**When coverage drops below 98%**:
+1. Identify which files have uncovered lines
+2. Categorize uncovered lines:
+   - **Defensive code**: Document and accept
+   - **Missing tests**: Add comprehensive tests
+   - **Dead code**: Remove if truly unreachable
+3. Prioritize by impact:
+   - **HIGH**: 5+ uncovered lines (add tests immediately)
+   - **MEDIUM**: 2-4 uncovered lines (add tests soon)
+   - **LOW**: 1 uncovered line (evaluate if defensive)
+
+**Coverage should never prevent**:
+- Writing defensive error handling
+- Adding safety checks for edge cases
+- Using try-catch for external dependencies
+- Following security best practices (timing-safe comparisons, etc.)
+
+#### Integration with CI/CD
+
+- All PRs must maintain or improve coverage
+- Coverage reports are generated automatically
+- Flaky tests must be fixed immediately (not disabled)
+- Performance tests must account for slower CI environments
+
 ### Code Style & Formatting
 
 #### TypeScript Configuration
