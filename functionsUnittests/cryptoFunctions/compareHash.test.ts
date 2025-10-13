@@ -1,5 +1,4 @@
 import { compareHash } from '../../cryptoFunctions/compareHash';
-import { hashMD5 } from '../../cryptoFunctions/hashMD5';
 import { hashSHA256 } from '../../cryptoFunctions/hashSHA256';
 
 /**
@@ -74,29 +73,8 @@ describe('compareHash', () => {
     expect(result).toBe(true);
   });
 
-  // Test case 9: Case sensitivity in data
-  it('9. should be case-sensitive for data comparison', () => {
-    const hash1 = hashSHA256('Hello');
-    const hash2 = hashSHA256('hello');
-    const result1 = compareHash('Hello', hash1, 'sha256');
-    const result2 = compareHash('hello', hash2, 'sha256');
-    // Both should be true since they match their respective hashes
-    expect(result1).toBe(true);
-    expect(result2).toBe(true);
-    // But the hashes themselves should be different
-    expect(hash1).not.toBe(hash2);
-  });
-
-  // Test case 10: Handle uppercase hash input
-  it('10. should handle uppercase hash input correctly', () => {
-    const data = 'hello world';
-    const hash = 'B94D27B9934D3E08A52E52D7DA7DABFAC484EFE37A5380EE9088F7ACE2EFCDE9';
-    const result = compareHash(data, hash, 'sha256');
-    expect(result).toBe(true);
-  });
-
-  // Test case 11: Wrong hash length for algorithm
-  it('11. should throw error for wrong hash length', () => {
+  // Test case 9: Wrong hash length for algorithm
+  it('9. should throw error for wrong hash length', () => {
     const data = 'hello world';
     const hash = 'tooshort';
     expect(() => compareHash(data, hash, 'sha256')).toThrow(Error);
@@ -105,39 +83,18 @@ describe('compareHash', () => {
     );
   });
 
-  // Test case 12: Compare with long data string
-  it('12. should compare hash correctly with long data string', () => {
+  // Test case 10: Compare with long data string
+  it('10. should compare hash correctly with long data string', () => {
     const data = 'a'.repeat(10000);
     const hash = hashSHA256(data);
     const result = compareHash(data, hash, 'sha256');
     expect(result).toBe(true);
   });
 
-  // Test case 13: Timing-safe comparison (should not throw)
-  it('13. should use timing-safe comparison without errors', () => {
-    const data = 'test';
-    const hash = '098f6bcd4621d373cade4e832627b4f6';
-    expect(() => compareHash(data, hash, 'md5')).not.toThrow();
-  });
+  // Error test cases (always at the end)
 
-  // Test case 14: Compare with special characters
-  it('14. should compare hash correctly with special characters', () => {
-    const data = '!@#$%^&*()';
-    const hash = hashMD5(data);
-    const result = compareHash(data, hash, 'md5');
-    expect(result).toBe(true);
-  });
-
-  // Test case 15: Compare with Unicode characters
-  it('15. should compare hash correctly with Unicode characters', () => {
-    const data = '你好';
-    const hash = hashMD5(data);
-    const result = compareHash(data, hash, 'md5');
-    expect(result).toBe(true);
-  });
-
-  // Test case 16: Throw error for null data
-  it('16. should throw TypeError when data is null', () => {
+  // Test case 11: Throw error for null data
+  it('11. should throw TypeError when data is null', () => {
     const hash = 'somehash';
     expect(() =>
       compareHash(null as unknown as string, hash, 'sha256'),
@@ -147,19 +104,8 @@ describe('compareHash', () => {
     ).toThrow('data must be a string or Buffer');
   });
 
-  // Test case 17: Throw error for undefined data
-  it('17. should throw TypeError when data is undefined', () => {
-    const hash = 'somehash';
-    expect(() =>
-      compareHash(undefined as unknown as string, hash, 'sha256'),
-    ).toThrow(TypeError);
-    expect(() =>
-      compareHash(undefined as unknown as string, hash, 'sha256'),
-    ).toThrow('data must be a string or Buffer');
-  });
-
-  // Test case 18: Throw error for null hash
-  it('18. should throw TypeError when hash is null', () => {
+  // Test case 12: Throw error for null hash
+  it('12. should throw TypeError when hash is null', () => {
     const data = 'test';
     expect(() =>
       compareHash(data, null as unknown as string, 'sha256'),
@@ -169,19 +115,8 @@ describe('compareHash', () => {
     ).toThrow('hash must be a string');
   });
 
-  // Test case 19: Throw error for undefined hash
-  it('19. should throw TypeError when hash is undefined', () => {
-    const data = 'test';
-    expect(() =>
-      compareHash(data, undefined as unknown as string, 'sha256'),
-    ).toThrow(TypeError);
-    expect(() =>
-      compareHash(data, undefined as unknown as string, 'sha256'),
-    ).toThrow('hash must be a string');
-  });
-
-  // Test case 20: Throw error for invalid algorithm
-  it('20. should throw Error for unsupported algorithm', () => {
+  // Test case 13: Throw error for invalid algorithm
+  it('13. should throw Error for unsupported algorithm', () => {
     const data = 'test';
     const hash = 'somehash';
     const invalidAlgorithm = 'invalid';

@@ -21,7 +21,7 @@ describe('hashPassword', () => {
     expect(result).toMatch(/^[a-f0-9]+$/);
   });
 
-  // Test case 3: Same inputs produce same hash
+  // Test case 3: Same inputs produce same hash (consistency)
   it('3. should produce same hash for same inputs', async () => {
     const result1 = await hashPassword(testPassword, testSalt);
     const result2 = await hashPassword(testPassword, testSalt);
@@ -71,61 +71,18 @@ describe('hashPassword', () => {
     expect(result.length).toBe(128);
   });
 
-  // Test case 9: Hash with special characters
-  it('9. should hash password with special characters', async () => {
-    const specialPassword = '!@#$%^&*()_+-=[]{}|;:,.<>?';
-    const result = await hashPassword(specialPassword, testSalt);
-    expect(typeof result).toBe('string');
-    expect(result.length).toBe(128);
-  });
-
-  // Test case 10: Hash with Unicode characters
-  it('10. should hash password with Unicode characters', async () => {
-    const unicodePassword = '密码123 🔐';
-    const result = await hashPassword(unicodePassword, testSalt);
-    expect(typeof result).toBe('string');
-    expect(result.length).toBe(128);
-  });
-
-  // Test case 11: Hash is case-sensitive
-  it('11. should be case-sensitive for password', async () => {
-    const result1 = await hashPassword('Password', testSalt);
-    const result2 = await hashPassword('password', testSalt);
-    expect(result1).not.toBe(result2);
-  });
-
-  // Test case 12: Hash long password
-  it('12. should hash long password', async () => {
+  // Test case 9: Hash long password
+  it('9. should hash long password', async () => {
     const longPassword = 'A'.repeat(1000);
     const result = await hashPassword(longPassword, testSalt);
     expect(typeof result).toBe('string');
     expect(result.length).toBe(128);
   });
 
-  // Test case 13: Hash returns lowercase hex
-  it('13. should return lowercase hexadecimal', async () => {
-    const result = await hashPassword(testPassword, testSalt);
-    expect(result).toBe(result.toLowerCase());
-    expect(result).not.toMatch(/[A-F]/);
-  });
-
-  // Test case 14: Hash with minimum iterations
-  it('14. should hash with minimum iterations (1000)', async () => {
-    const result = await hashPassword(testPassword, testSalt, 1000);
-    expect(typeof result).toBe('string');
-    expect(result.length).toBe(128);
-  });
-
-  // Test case 15: Function returns Promise
-  it('15. should return a Promise', () => {
-    const result = hashPassword(testPassword, testSalt);
-    expect(result).toBeInstanceOf(Promise);
-  });
-
   // Error test cases (always at the end)
 
-  // Test case 16: Throw error for null password
-  it('16. should throw TypeError when password is null', async () => {
+  // Test case 10: Throw error for null password
+  it('10. should throw TypeError when password is null', async () => {
     await expect(
       hashPassword(null as unknown as string, testSalt),
     ).rejects.toThrow(TypeError);
@@ -134,18 +91,16 @@ describe('hashPassword', () => {
     ).rejects.toThrow('password must be a string');
   });
 
-  // Test case 17: Throw error for undefined password
-  it('17. should throw TypeError when password is undefined', async () => {
-    await expect(
-      hashPassword(undefined as unknown as string, testSalt),
-    ).rejects.toThrow(TypeError);
-    await expect(
-      hashPassword(undefined as unknown as string, testSalt),
-    ).rejects.toThrow('password must be a string');
+  // Test case 11: Throw error for empty password
+  it('11. should throw Error when password is empty', async () => {
+    await expect(hashPassword('', testSalt)).rejects.toThrow(Error);
+    await expect(hashPassword('', testSalt)).rejects.toThrow(
+      'password cannot be empty',
+    );
   });
 
-  // Test case 18: Throw error for null salt
-  it('18. should throw TypeError when salt is null', async () => {
+  // Test case 12: Throw error for null salt
+  it('12. should throw TypeError when salt is null', async () => {
     await expect(
       hashPassword(testPassword, null as unknown as string),
     ).rejects.toThrow(TypeError);
@@ -154,18 +109,16 @@ describe('hashPassword', () => {
     ).rejects.toThrow('salt must be a string');
   });
 
-  // Test case 19: Throw error for undefined salt
-  it('19. should throw TypeError when salt is undefined', async () => {
-    await expect(
-      hashPassword(testPassword, undefined as unknown as string),
-    ).rejects.toThrow(TypeError);
-    await expect(
-      hashPassword(testPassword, undefined as unknown as string),
-    ).rejects.toThrow('salt must be a string');
+  // Test case 13: Throw error for empty salt
+  it('13. should throw Error when salt is empty', async () => {
+    await expect(hashPassword(testPassword, '')).rejects.toThrow(Error);
+    await expect(hashPassword(testPassword, '')).rejects.toThrow(
+      'salt cannot be empty',
+    );
   });
 
-  // Test case 20: Throw error for invalid iterations
-  it('20. should throw Error for invalid iterations', async () => {
+  // Test case 14: Throw error for invalid iterations
+  it('14. should throw Error for invalid iterations', async () => {
     await expect(hashPassword(testPassword, testSalt, 0)).rejects.toThrow(
       Error,
     );

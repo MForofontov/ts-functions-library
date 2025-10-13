@@ -355,11 +355,15 @@ describe('functionName', () => {
 
 #### Testing Requirements
 
-- **Comprehensive test coverage** with sufficient test cases based on function complexity:
-  - Simple functions (e.g., arithmetic operations): 10-15 tests minimum
-  - Moderate complexity (e.g., string/array manipulations): 15-20 tests
-  - Complex functions (e.g., URL parsing, validation): 20-30+ tests
-  - Aim for thorough coverage of all code paths, not just a fixed number
+- **Comprehensive test coverage based on actual needs** (CRITICAL):
+  - **Quality over quantity**: Create tests to cover functionality, NOT to reach a specific count
+  - **Test what matters**: Focus on code paths, edge cases, and error conditions
+  - **Avoid redundant tests**: Don't test the same thing multiple ways without added value
+  - **Typical coverage needs**:
+    - Simple functions: 5-10 meaningful tests (basic usage + edge cases + errors)
+    - Moderate complexity: 8-15 tests (multiple scenarios + boundaries + errors)
+    - Complex functions: 12-20+ tests (comprehensive scenarios + all branches + errors)
+  - **Stop when covered**: If all code paths, edge cases, and errors are tested, you're done
 
 - **Test Organization Pattern** (CRITICAL):
   1. **Normal/typical usage** (first ~60% of tests): Common use cases and expected behavior

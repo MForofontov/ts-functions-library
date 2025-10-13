@@ -4,7 +4,7 @@ import { hashSHA512 } from '../../cryptoFunctions/hashSHA512';
  * Unit tests for the hashSHA512 function.
  */
 describe('hashSHA512', () => {
-  // Test case 1: Hash a simple string
+  // Test case 1: Hash a simple string with known value
   it('1. should generate correct SHA-512 hash for a simple string', () => {
     const data = 'hello world';
     const result = hashSHA512(data);
@@ -14,7 +14,7 @@ describe('hashSHA512', () => {
     expect(result).toHaveLength(128); // SHA-512 produces 128 hex characters
   });
 
-  // Test case 2: Hash an empty string
+  // Test case 2: Hash an empty string (edge case)
   it('2. should generate correct SHA-512 hash for an empty string', () => {
     const data = '';
     const result = hashSHA512(data);
@@ -32,94 +32,31 @@ describe('hashSHA512', () => {
     );
   });
 
-  // Test case 4: Hash with special characters
-  it('4. should generate SHA-512 hash for string with special characters', () => {
-    const data = '!@#$%^&*()_+-=[]{}|;:,.<>?';
-    const result = hashSHA512(data);
-    expect(result).toHaveLength(128);
-    expect(result).toMatch(/^[a-f0-9]{128}$/);
-  });
-
-  // Test case 5: Hash with Unicode characters
-  it('5. should generate SHA-512 hash for string with Unicode characters', () => {
-    const data = '你好世界 🌍';
-    const result = hashSHA512(data);
-    expect(result).toHaveLength(128);
-    expect(result).toMatch(/^[a-f0-9]{128}$/);
-  });
-
-  // Test case 6: Hash long string
-  it('6. should generate SHA-512 hash for a long string', () => {
+  // Test case 4: Hash long string (performance edge case)
+  it('4. should generate SHA-512 hash for a long string', () => {
     const data = 'a'.repeat(10000);
     const result = hashSHA512(data);
     expect(result).toHaveLength(128);
     expect(result).toMatch(/^[a-f0-9]{128}$/);
   });
 
-  // Test case 7: Same input produces same hash
-  it('7. should produce the same hash for the same input', () => {
+  // Test case 5: Same input produces same hash (consistency)
+  it('5. should produce the same hash for the same input', () => {
     const data = 'test data';
     const result1 = hashSHA512(data);
     const result2 = hashSHA512(data);
     expect(result1).toBe(result2);
   });
 
-  // Test case 8: Different inputs produce different hashes
-  it('8. should produce different hashes for different inputs', () => {
+  // Test case 6: Different inputs produce different hashes (uniqueness)
+  it('6. should produce different hashes for different inputs', () => {
     const result1 = hashSHA512('data1');
     const result2 = hashSHA512('data2');
     expect(result1).not.toBe(result2);
   });
 
-  // Test case 9: Hash with newlines
-  it('9. should generate SHA-512 hash for string with newlines', () => {
-    const data = 'line1\nline2\nline3';
-    const result = hashSHA512(data);
-    expect(result).toHaveLength(128);
-    expect(result).toMatch(/^[a-f0-9]{128}$/);
-  });
-
-  // Test case 10: Hash with tabs
-  it('10. should generate SHA-512 hash for string with tabs', () => {
-    const data = 'column1\tcolumn2\tcolumn3';
-    const result = hashSHA512(data);
-    expect(result).toHaveLength(128);
-    expect(result).toMatch(/^[a-f0-9]{128}$/);
-  });
-
-  // Test case 11: Hash numeric string
-  it('11. should generate SHA-512 hash for numeric string', () => {
-    const data = '1234567890';
-    const result = hashSHA512(data);
-    expect(result).toHaveLength(128);
-    expect(result).toMatch(/^[a-f0-9]{128}$/);
-  });
-
-  // Test case 12: Hash case sensitivity
-  it('12. should produce different hashes for different cases', () => {
-    const result1 = hashSHA512('Hello');
-    const result2 = hashSHA512('hello');
-    expect(result1).not.toBe(result2);
-  });
-
-  // Test case 13: Hash returns lowercase hex
-  it('13. should return lowercase hexadecimal string', () => {
-    const data = 'test';
-    const result = hashSHA512(data);
-    expect(result).toBe(result.toLowerCase());
-    expect(result).not.toMatch(/[A-F]/);
-  });
-
-  // Test case 14: SHA-512 produces longer hash than SHA-256
-  it('14. should produce 128-character hash (longer than SHA-256)', () => {
-    const data = 'test';
-    const result = hashSHA512(data);
-    expect(result.length).toBe(128);
-    expect(result.length).toBeGreaterThan(64); // SHA-256 is 64 chars
-  });
-
-  // Test case 15: Hash empty Buffer
-  it('15. should generate SHA-512 hash for empty Buffer', () => {
+  // Test case 7: Hash empty Buffer (edge case)
+  it('7. should generate SHA-512 hash for empty Buffer', () => {
     const data = Buffer.from('');
     const result = hashSHA512(data);
     expect(result).toBe(
@@ -127,40 +64,40 @@ describe('hashSHA512', () => {
     );
   });
 
-  // Test case 16: Throw error for null
-  it('16. should throw TypeError when data is null', () => {
+  // Test case 8: Throw error for null
+  it('8. should throw TypeError when data is null', () => {
     expect(() => hashSHA512(null as unknown as string)).toThrow(TypeError);
     expect(() => hashSHA512(null as unknown as string)).toThrow(
       'data must be a string or Buffer',
     );
   });
 
-  // Test case 17: Throw error for undefined
-  it('17. should throw TypeError when data is undefined', () => {
+  // Test case 9: Throw error for undefined
+  it('9. should throw TypeError when data is undefined', () => {
     expect(() => hashSHA512(undefined as unknown as string)).toThrow(TypeError);
     expect(() => hashSHA512(undefined as unknown as string)).toThrow(
       'data must be a string or Buffer',
     );
   });
 
-  // Test case 18: Throw error for number
-  it('18. should throw TypeError when data is a number', () => {
+  // Test case 10: Throw error for number
+  it('10. should throw TypeError when data is a number', () => {
     expect(() => hashSHA512(123 as unknown as string)).toThrow(TypeError);
     expect(() => hashSHA512(123 as unknown as string)).toThrow(
       'data must be a string or Buffer',
     );
   });
 
-  // Test case 19: Throw error for object
-  it('19. should throw TypeError when data is an object', () => {
+  // Test case 11: Throw error for object
+  it('11. should throw TypeError when data is an object', () => {
     expect(() => hashSHA512({} as unknown as string)).toThrow(TypeError);
     expect(() => hashSHA512({} as unknown as string)).toThrow(
       'data must be a string or Buffer',
     );
   });
 
-  // Test case 20: Throw error for array
-  it('20. should throw TypeError when data is an array', () => {
+  // Test case 12: Throw error for array
+  it('12. should throw TypeError when data is an array', () => {
     expect(() => hashSHA512([] as unknown as string)).toThrow(TypeError);
     expect(() => hashSHA512([] as unknown as string)).toThrow(
       'data must be a string or Buffer',

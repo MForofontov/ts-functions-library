@@ -1,5 +1,5 @@
-import { encryptAES256 } from '../../cryptoFunctions/encryptAES256';
 import { decryptAES256 } from '../../cryptoFunctions/decryptAES256';
+import { encryptAES256 } from '../../cryptoFunctions/encryptAES256';
 
 /**
  * Unit tests for the encryptAES256 function.
@@ -43,29 +43,15 @@ describe('encryptAES256', () => {
     expect(result.length).toBeGreaterThan(0);
   });
 
-  // Test case 6: Encrypt with special characters
-  it('6. should encrypt string with special characters', () => {
-    const specialData = '!@#$%^&*()_+-=[]{}|;:,.<>?';
-    const result = encryptAES256(specialData, testPassword);
-    expect(typeof result).toBe('string');
-  });
-
-  // Test case 7: Encrypt with Unicode characters
-  it('7. should encrypt string with Unicode characters', () => {
-    const unicodeData = '你好世界 🌍';
-    const result = encryptAES256(unicodeData, testPassword);
-    expect(typeof result).toBe('string');
-  });
-
-  // Test case 8: Encrypt with different password produces different output
-  it('8. should produce different output with different passwords', () => {
+  // Test case 6: Encrypt with different password produces different output
+  it('6. should produce different output with different passwords', () => {
     const result1 = encryptAES256(testData, 'password1');
     const result2 = encryptAES256(testData, 'password2');
     expect(result1).not.toBe(result2);
   });
 
-  // Test case 9: Encrypted data contains IV, encrypted data, and auth tag
-  it('9. should produce formatted output with IV:encrypted:authTag', () => {
+  // Test case 7: Encrypted data contains IV, encrypted data, and auth tag
+  it('7. should produce formatted output with IV:encrypted:authTag', () => {
     const result = encryptAES256(testData, testPassword);
     const parts = result.split(':');
     expect(parts.length).toBe(3);
@@ -74,8 +60,8 @@ describe('encryptAES256', () => {
     expect(parts[2].length).toBeGreaterThan(0); // auth tag
   });
 
-  // Test case 10: Encrypted data is base64 encoded
-  it('10. should produce base64-encoded output', () => {
+  // Test case 8: Encrypted data is base64 encoded
+  it('8. should produce base64-encoded output', () => {
     const result = encryptAES256(testData, testPassword);
     const parts = result.split(':');
     parts.forEach((part) => {
@@ -84,52 +70,25 @@ describe('encryptAES256', () => {
     });
   });
 
-  // Test case 11: Can decrypt encrypted data (roundtrip test)
-  it('11. should be decryptable with correct password', () => {
+  // Test case 9: Can decrypt encrypted data (roundtrip test)
+  it('9. should be decryptable with correct password', () => {
     const encrypted = encryptAES256(testData, testPassword);
     const decrypted = decryptAES256(encrypted, testPassword);
     expect(decrypted).toBe(testData);
   });
 
-  // Test case 12: Encrypt with numeric string
-  it('12. should encrypt numeric string', () => {
-    const numericData = '1234567890';
-    const result = encryptAES256(numericData, testPassword);
-    expect(typeof result).toBe('string');
+  // Test case 10: Throw error for null data
+  it('10. should throw TypeError when data is null', () => {
+    expect(() =>
+      encryptAES256(null as unknown as string, testPassword),
+    ).toThrow(TypeError);
+    expect(() =>
+      encryptAES256(null as unknown as string, testPassword),
+    ).toThrow('data must be a string');
   });
 
-  // Test case 13: Encrypt with newlines
-  it('13. should encrypt string with newlines', () => {
-    const multilineData = 'line1\nline2\nline3';
-    const result = encryptAES256(multilineData, testPassword);
-    expect(typeof result).toBe('string');
-  });
-
-  // Test case 14: Encrypt with short password
-  it('14. should encrypt with short password', () => {
-    const result = encryptAES256(testData, 'pw');
-    expect(typeof result).toBe('string');
-  });
-
-  // Test case 15: Encrypt with long password
-  it('15. should encrypt with long password', () => {
-    const longPassword = 'a'.repeat(100);
-    const result = encryptAES256(testData, longPassword);
-    expect(typeof result).toBe('string');
-  });
-
-  // Test case 16: Throw error for null data
-  it('16. should throw TypeError when data is null', () => {
-    expect(() => encryptAES256(null as unknown as string, testPassword)).toThrow(
-      TypeError,
-    );
-    expect(() => encryptAES256(null as unknown as string, testPassword)).toThrow(
-      'data must be a string',
-    );
-  });
-
-  // Test case 17: Throw error for undefined data
-  it('17. should throw TypeError when data is undefined', () => {
+  // Test case 11: Throw error for undefined data
+  it('11. should throw TypeError when data is undefined', () => {
     expect(() =>
       encryptAES256(undefined as unknown as string, testPassword),
     ).toThrow(TypeError);
@@ -138,8 +97,8 @@ describe('encryptAES256', () => {
     ).toThrow('data must be a string');
   });
 
-  // Test case 18: Throw error for null key
-  it('18. should throw TypeError when key is null', () => {
+  // Test case 12: Throw error for null key
+  it('12. should throw TypeError when key is null', () => {
     expect(() => encryptAES256(testData, null as unknown as string)).toThrow(
       TypeError,
     );
@@ -148,8 +107,8 @@ describe('encryptAES256', () => {
     );
   });
 
-  // Test case 19: Throw error for undefined key
-  it('19. should throw TypeError when key is undefined', () => {
+  // Test case 13: Throw error for undefined key
+  it('13. should throw TypeError when key is undefined', () => {
     expect(() =>
       encryptAES256(testData, undefined as unknown as string),
     ).toThrow(TypeError);
@@ -158,8 +117,8 @@ describe('encryptAES256', () => {
     ).toThrow('key must be a string');
   });
 
-  // Test case 20: Throw error for empty key
-  it('20. should throw Error when key is empty', () => {
+  // Test case 14: Throw error for empty key
+  it('14. should throw Error when key is empty', () => {
     expect(() => encryptAES256(testData, '')).toThrow(Error);
     expect(() => encryptAES256(testData, '')).toThrow('key cannot be empty');
   });

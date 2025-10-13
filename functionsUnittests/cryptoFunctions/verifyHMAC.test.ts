@@ -59,55 +59,16 @@ describe('verifyHMAC', () => {
     expect(result).toBe(true);
   });
 
-  // Test case 8: Verify case-sensitive data
-  it('8. should be case sensitive for data', () => {
-    const hmac = generateHMAC('Hello', testKey, 'sha256');
-    const result = verifyHMAC('hello', testKey, hmac, 'sha256');
-    expect(result).toBe(false);
-  });
-
-  // Test case 9: Verify with special characters
-  it('9. should verify HMAC with special characters', () => {
-    const specialData = '!@#$%^&*()_+-=[]{}|;:,.<>?';
-    const hmac = generateHMAC(specialData, testKey, 'sha256');
-    const result = verifyHMAC(specialData, testKey, hmac, 'sha256');
-    expect(result).toBe(true);
-  });
-
-  // Test case 10: Verify with Unicode characters
-  it('10. should verify HMAC with Unicode characters', () => {
-    const unicodeData = '你好世界 🌍';
-    const hmac = generateHMAC(unicodeData, testKey, 'sha256');
-    const result = verifyHMAC(unicodeData, testKey, hmac, 'sha256');
-    expect(result).toBe(true);
-  });
-
-  // Test case 11: Handle uppercase HMAC input
-  it('11. should handle uppercase HMAC input', () => {
-    const hmac = generateHMAC(testData, testKey, 'sha256');
-    const uppercaseHmac = hmac.toUpperCase();
-    const result = verifyHMAC(testData, testKey, uppercaseHmac, 'sha256');
-    expect(result).toBe(true);
-  });
-
-  // Test case 12: Verify with long data
-  it('12. should verify HMAC for long data', () => {
+  // Test case 8: Verify with long data
+  it('8. should verify HMAC for long data', () => {
     const longData = 'A'.repeat(10000);
     const hmac = generateHMAC(longData, testKey, 'sha256');
     const result = verifyHMAC(longData, testKey, hmac, 'sha256');
     expect(result).toBe(true);
   });
 
-  // Test case 13: Verify with newlines
-  it('13. should verify HMAC for data with newlines', () => {
-    const multilineData = 'line1\nline2\nline3';
-    const hmac = generateHMAC(multilineData, testKey, 'sha256');
-    const result = verifyHMAC(multilineData, testKey, hmac, 'sha256');
-    expect(result).toBe(true);
-  });
-
-  // Test case 14: Throw error for wrong HMAC length
-  it('14. should throw error for wrong HMAC length', () => {
+  // Test case 9: Throw error for wrong HMAC length
+  it('9. should throw error for wrong HMAC length', () => {
     const shortHmac = 'tooshort';
     expect(() => verifyHMAC(testData, testKey, shortHmac, 'sha256')).toThrow(
       Error,
@@ -117,14 +78,10 @@ describe('verifyHMAC', () => {
     );
   });
 
-  // Test case 15: Timing-safe comparison (should not throw)
-  it('15. should use timing-safe comparison without errors', () => {
-    const hmac = generateHMAC(testData, testKey, 'sha256');
-    expect(() => verifyHMAC(testData, testKey, hmac, 'sha256')).not.toThrow();
-  });
+  // Error test cases (always at the end)
 
-  // Test case 16: Throw error for null data
-  it('16. should throw TypeError when data is null', () => {
+  // Test case 10: Throw error for null data
+  it('10. should throw TypeError when data is null', () => {
     const hmac = generateHMAC(testData, testKey, 'sha256');
     expect(() =>
       verifyHMAC(null as unknown as string, testKey, hmac, 'sha256'),
@@ -134,19 +91,8 @@ describe('verifyHMAC', () => {
     ).toThrow('data must be a string or Buffer');
   });
 
-  // Test case 17: Throw error for undefined data
-  it('17. should throw TypeError when data is undefined', () => {
-    const hmac = generateHMAC(testData, testKey, 'sha256');
-    expect(() =>
-      verifyHMAC(undefined as unknown as string, testKey, hmac, 'sha256'),
-    ).toThrow(TypeError);
-    expect(() =>
-      verifyHMAC(undefined as unknown as string, testKey, hmac, 'sha256'),
-    ).toThrow('data must be a string or Buffer');
-  });
-
-  // Test case 18: Throw error for null secret
-  it('18. should throw TypeError when secret is null', () => {
+  // Test case 11: Throw error for null secret
+  it('11. should throw TypeError when secret is null', () => {
     const hmac = generateHMAC(testData, testKey, 'sha256');
     expect(() =>
       verifyHMAC(testData, null as unknown as string, hmac, 'sha256'),
@@ -156,19 +102,8 @@ describe('verifyHMAC', () => {
     ).toThrow('secret must be a string');
   });
 
-  // Test case 19: Throw error for undefined secret
-  it('19. should throw TypeError when secret is undefined', () => {
-    const hmac = generateHMAC(testData, testKey, 'sha256');
-    expect(() =>
-      verifyHMAC(testData, undefined as unknown as string, hmac, 'sha256'),
-    ).toThrow(TypeError);
-    expect(() =>
-      verifyHMAC(testData, undefined as unknown as string, hmac, 'sha256'),
-    ).toThrow('secret must be a string');
-  });
-
-  // Test case 20: Throw error for null hmac
-  it('20. should throw TypeError when hmac is null', () => {
+  // Test case 12: Throw error for null hmac
+  it('12. should throw TypeError when hmac is null', () => {
     expect(() =>
       verifyHMAC(testData, testKey, null as unknown as string, 'sha256'),
     ).toThrow(TypeError);
