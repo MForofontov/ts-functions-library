@@ -59,15 +59,23 @@ describe('keysToCamelCase', () => {
     expect(result).toEqual(expected);
   });
 
-  // Test case 7: Handle non-object input (number)
-  it('7. should throw a TypeError if input is a number', () => {
+    // Test case 7: Handle uppercase snake_case keys
+  it('7. should convert uppercase snake_case keys to camelCase', () => {
+    const obj = { USER_ID: 42, API_TOKEN: 'abc' };
+    const result = keysToCamelCase(obj);
+    const expected = { userId: 42, apiToken: 'abc' };
+    expect(result).toEqual(expected);
+  });
+
+  // Test case 8: Handle non-object input (number)
+  it('8. should throw a TypeError if input is a number', () => {
     expect(() =>
       keysToCamelCase(42 as unknown as Record<string, unknown> | unknown[]),
     ).toThrow(TypeError);
   });
 
-  // Test case 8: Handle non-object input (string)
-  it('8. should throw a TypeError if input is a string', () => {
+  // Test case 9: Handle non-object input (string)
+  it('9. should throw a TypeError if input is a string', () => {
     expect(() =>
       keysToCamelCase(
         'string' as unknown as Record<string, unknown> | unknown[],
@@ -75,34 +83,26 @@ describe('keysToCamelCase', () => {
     ).toThrow(TypeError);
   });
 
-  // Test case 9: Handle non-object input (boolean)
-  it('9. should throw a TypeError if input is a boolean', () => {
+  // Test case 10: Handle non-object input (boolean)
+  it('10. should throw a TypeError if input is a boolean', () => {
     expect(() =>
       keysToCamelCase(true as unknown as Record<string, unknown> | unknown[]),
     ).toThrow(TypeError);
   });
 
-  // Test case 10: Handle non-object input (null)
-  it('10. should throw a TypeError if input is null', () => {
+  // Test case 11: Handle non-object input (null)
+  it('11. should throw a TypeError if input is null', () => {
     expect(() =>
       keysToCamelCase(null as unknown as Record<string, unknown> | unknown[]),
     ).toThrow(TypeError);
   });
 
-  // Test case 11: Handle non-object input (undefined)
-  it('11. should throw a TypeError if input is undefined', () => {
+  // Test case 12: Handle non-object input (undefined)
+  it('12. should throw a TypeError if input is undefined', () => {
     expect(() =>
       keysToCamelCase(
         undefined as unknown as Record<string, unknown> | unknown[],
       ),
     ).toThrow(TypeError);
-  });
-
-  // Test case 12: Handle uppercase snake_case keys
-  it('12. should convert uppercase snake_case keys to camelCase', () => {
-    const obj = { USER_ID: 42, API_TOKEN: 'abc' };
-    const result = keysToCamelCase(obj);
-    const expected = { userId: 42, apiToken: 'abc' };
-    expect(result).toEqual(expected);
   });
 });
