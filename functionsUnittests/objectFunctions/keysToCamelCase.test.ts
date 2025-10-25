@@ -97,4 +97,12 @@ describe('keysToCamelCase', () => {
       ),
     ).toThrow(TypeError);
   });
+
+  // Test case 12: Handle uppercase snake_case keys
+  it('12. should convert uppercase snake_case keys to camelCase', () => {
+    const obj = { USER_ID: 42, API_TOKEN: 'abc' };
+    const result = keysToCamelCase(obj);
+    const expected = { userId: 42, apiToken: 'abc' };
+    expect(result).toEqual(expected);
+  });
 });
