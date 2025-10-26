@@ -46,7 +46,11 @@ describe('rgbToHex', () => {
 
   // Test case 9: Document behaviour when channels are missing
   it('9. should return #ffNaNNaN when green and blue channels are missing', () => {
-    const incomplete = { r: 255 } as unknown as { r: number; g: number; b: number };
+    const incomplete = { r: 255 } as unknown as {
+      r: number;
+      g: number;
+      b: number;
+    };
     expect(rgbToHex(incomplete)).toBe('#ffNaNNaN');
   });
 

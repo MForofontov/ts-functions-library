@@ -76,10 +76,10 @@ describe('isValidIPv6', () => {
     // Empty groups in non-compressed form
     expect(isValidIPv6('2001:db8::8a2e:370:')).toBe(false);
     expect(isValidIPv6(':2001:db8:8a2e:370:7334')).toBe(false);
-    
+
     // Too many groups even with compression
     expect(isValidIPv6('1:2:3:4:5:6:7::8')).toBe(false);
-    
+
     // Valid compressions at different positions
     expect(isValidIPv6('::1:2:3:4:5:6:7')).toBe(true);
     expect(isValidIPv6('1::2:3:4:5:6:7')).toBe(true);

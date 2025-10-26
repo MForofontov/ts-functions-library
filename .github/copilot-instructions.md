@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This is a comprehensive TypeScript utility functions library containing 200+ reusable functions organized into 7 specialized modules. The project emphasizes type safety, comprehensive testing, maintainability, and follows TypeScript best practices for enterprise-grade utility libraries.
+This is a comprehensive TypeScript utility functions library containing 200+ reusable functions organized into 8 specialized modules. The project emphasizes type safety, comprehensive testing, maintainability, and follows TypeScript best practices for enterprise-grade utility libraries.
 
 ## Architecture & Structure
 
@@ -52,6 +52,14 @@ ts-functions-library/
 ├── encodingFunctions/              # Base64 encoding/decoding
 │   ├── encodeBase64.ts
 │   └── decodeBase64.ts
+├── eventFunctions/                 # Event handling and management utilities
+│   ├── EventEmitter.ts             # Event emitter class (on, off, emit, once)
+│   ├── debounceEvent.ts            # Debounce event handlers
+│   ├── throttleEvent.ts            # Throttle event handlers
+│   ├── createEventBus.ts           # Publish-subscribe event bus
+│   ├── delegateEvent.ts            # Event delegation for dynamic content
+│   ├── waitForEvent.ts             # Promise-based event waiting
+│   └── onceEvent.ts                # Execute handler only once
 ├── mathFunctions/                  # Mathematical operations
 │   ├── algebraFunctions/           # Powers, roots, logarithms
 │   ├── arithmeticFunctions/        # Basic math operations
@@ -651,6 +659,40 @@ export { groupBy as groupByObject } from './objectFunctions/groupBy';
 - **Hex encoding**: Always use lowercase hex for consistency
 - **Algorithm support**: Document supported algorithms explicitly
 - **Legacy warnings**: Clearly mark MD5 and other weak algorithms as legacy/insecure
+
+### Event Functions Specific Guidelines
+
+#### Function Categories
+
+- **EventEmitter Class**: Custom event emitter with on, off, emit, once, removeAllListeners, listenerCount, eventNames methods
+- **Timing Control**: debounceEvent (delay until inactivity), throttleEvent (rate limiting)
+- **Event Bus**: createEventBus (publish-subscribe pattern for loose coupling)
+- **Event Utilities**: waitForEvent (Promise-based event waiting), onceEvent (execute once wrapper), delegateEvent (event delegation for dynamic content)
+
+#### Event Function Requirements
+
+- **Type Safety**: Use TypeScript generics for event data types
+- **Memory Management**: Always provide cleanup mechanisms (cancel methods, removeListener)
+- **Validation**: Strict validation of event names (must be strings) and handlers (must be functions)
+- **Performance**: Efficient for many listeners and rapid event firing
+- **Documentation**:
+  - Include real-world usage examples (DOM events, custom emitters)
+  - Document cleanup requirements and best practices
+  - Show method chaining patterns where applicable
+- **Test Coverage**: Aim for >95% coverage
+  - Test normal event flow (subscribe, publish, receive)
+  - Test cleanup (unsubscribe, cancel, cleanup)
+  - Test edge cases (multiple listeners, rapid firing, timing edge cases)
+  - Test error cases (invalid types, invalid values)
+
+#### Event Functions Best Practices
+
+- **Listener Management**: Clean up listeners to prevent memory leaks
+- **Event Names**: Use clear, namespaced event names (e.g., 'user:login', 'data:update')
+- **Timing Functions**: Use jest.useFakeTimers() for testing debounce/throttle
+- **Error Handling**: Validate all inputs with descriptive error messages
+- **Method Chaining**: Support fluent interfaces where appropriate (EventEmitter)
+- **Immutability**: Create copies of listener arrays before iterating to handle modifications during emit
 
 ### Best Practices for GitHub Copilot
 

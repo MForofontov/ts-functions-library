@@ -212,15 +212,15 @@ describe('shuffleArray', () => {
   test('15. should shuffle an array of NaN values', () => {
     const array: number[] = [NaN, 1, 2, NaN, 3];
     const result = shuffleArray(array);
-    
+
     // Verify the result has the same length
     expect(result).toHaveLength(array.length);
-    
+
     // Count NaN values in both arrays
     const originalNaNCount = array.filter((x) => Number.isNaN(x)).length;
     const resultNaNCount = result.filter((x) => Number.isNaN(x)).length;
     expect(resultNaNCount).toBe(originalNaNCount);
-    
+
     // Count non-NaN values and verify they match
     const originalNumbers = array.filter((x) => !Number.isNaN(x)).sort();
     const resultNumbers = result.filter((x) => !Number.isNaN(x)).sort();

@@ -146,11 +146,11 @@ describe('verifyHMAC', () => {
   it('16. should throw Error for unsupported algorithm', () => {
     const hmac = '0'.repeat(64);
     const invalidAlgorithm = 'md5';
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     expect(() =>
       verifyHMAC(testData, testKey, hmac, invalidAlgorithm as any),
     ).toThrow(Error);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     expect(() =>
       verifyHMAC(testData, testKey, hmac, invalidAlgorithm as any),
     ).toThrow('algorithm must be one of');

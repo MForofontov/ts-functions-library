@@ -8,7 +8,8 @@ describe('compareHash', () => {
   // Test case 1: Compare matching SHA-256 hashes
   it('1. should return true for matching SHA-256 hashes', () => {
     const data = 'hello world';
-    const hash = 'b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9';
+    const hash =
+      'b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9';
     const result = compareHash(data, hash, 'sha256');
     expect(result).toBe(true);
   });
@@ -60,7 +61,8 @@ describe('compareHash', () => {
   // Test case 7: Compare with Buffer input
   it('7. should compare hash correctly with Buffer input', () => {
     const data = Buffer.from('hello world');
-    const hash = 'b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9';
+    const hash =
+      'b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9';
     const result = compareHash(data, hash, 'sha256');
     expect(result).toBe(true);
   });
@@ -68,7 +70,8 @@ describe('compareHash', () => {
   // Test case 8: Compare empty string
   it('8. should compare hash correctly for empty string', () => {
     const data = '';
-    const hash = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855';
+    const hash =
+      'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855';
     const result = compareHash(data, hash, 'sha256');
     expect(result).toBe(true);
   });
@@ -118,7 +121,8 @@ describe('compareHash', () => {
   // Test case 13: Throw error for invalid algorithm type
   it('13. should throw TypeError when algorithm is not a string', () => {
     const data = 'test';
-    const hash = 'b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9';
+    const hash =
+      'b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9';
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     expect(() => compareHash(data, hash, 123 as any)).toThrow(TypeError);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -145,7 +149,8 @@ describe('compareHash', () => {
   // Test case 15: Throw error for hash with non-hex characters
   it('15. should throw Error when hash contains non-hexadecimal characters', () => {
     const data = 'test';
-    const hash = 'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz'; // 64 chars but not hex
+    const hash =
+      'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz'; // 64 chars but not hex
     expect(() => compareHash(data, hash, 'sha256')).toThrow(Error);
     expect(() => compareHash(data, hash, 'sha256')).toThrow(
       'hash must contain only hexadecimal characters',

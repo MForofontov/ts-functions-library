@@ -63,11 +63,11 @@ describe('isValidISODate', () => {
     // Invalid months
     expect(isValidISODate('2023-00-15')).toBe(false); // Month < 1
     expect(isValidISODate('2023-13-15')).toBe(false); // Month > 12
-    
+
     // Invalid days
     expect(isValidISODate('2023-12-00')).toBe(false); // Day < 1
     expect(isValidISODate('2023-12-32')).toBe(false); // Day > 31
-    
+
     // Valid boundaries
     expect(isValidISODate('2023-01-01')).toBe(true); // Min month/day
     expect(isValidISODate('2023-12-31')).toBe(true); // Max month/day
@@ -78,15 +78,15 @@ describe('isValidISODate', () => {
     // Invalid hours
     expect(isValidISODate('2023-12-25T24:00:00Z')).toBe(false); // Hour > 23
     expect(isValidISODate('2023-12-25T-1:00:00Z')).toBe(false); // Hour < 0
-    
+
     // Invalid minutes
     expect(isValidISODate('2023-12-25T10:60:00Z')).toBe(false); // Minute > 59
     expect(isValidISODate('2023-12-25T10:-1:00Z')).toBe(false); // Minute < 0
-    
+
     // Invalid seconds
     expect(isValidISODate('2023-12-25T10:30:60Z')).toBe(false); // Second > 59
     expect(isValidISODate('2023-12-25T10:30:-1Z')).toBe(false); // Second < 0
-    
+
     // Valid boundaries
     expect(isValidISODate('2023-12-25T00:00:00Z')).toBe(true);
     expect(isValidISODate('2023-12-25T23:59:59Z')).toBe(true);
