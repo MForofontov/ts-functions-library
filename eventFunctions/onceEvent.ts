@@ -13,7 +13,7 @@
  *   console.log('Initialization');
  *   return { initialized: true };
  * });
- * 
+ *
  * initOnce(); // Logs 'Initialization' and returns { initialized: true }
  * initOnce(); // Returns cached result, doesn't log
  * initOnce(); // Returns cached result, doesn't log
@@ -23,7 +23,7 @@
  * const handleFirstClick = onceEvent((event) => {
  *   console.log('First click!', event);
  * });
- * 
+ *
  * button.addEventListener('click', handleFirstClick);
  * // Only the first click will be logged
  *
@@ -33,7 +33,7 @@
  *   const response = await fetch('/api/token');
  *   return response.json();
  * });
- * 
+ *
  * const token1 = await getToken(); // Fetches from API
  * const token2 = await getToken(); // Returns cached promise
  *

@@ -18,7 +18,7 @@
  * const throttledHandler = throttleEvent((event) => {
  *   console.log('Scroll position:', window.scrollY);
  * }, 200);
- * 
+ *
  * window.addEventListener('scroll', throttledHandler);
  *
  * @example
@@ -26,7 +26,7 @@
  * const throttledClick = throttleEvent(() => {
  *   console.log('Clicked');
  * }, 1000, { leading: true, trailing: false });
- * 
+ *
  * button.addEventListener('click', throttledClick);
  *
  * @example

@@ -34,7 +34,9 @@ describe('delegateEvent', () => {
 
     // Act
     delegateEvent(parent, 'click', '.btn', handler);
-    const button = container.querySelector('[data-id="1"]') as HTMLButtonElement;
+    const button = container.querySelector(
+      '[data-id="1"]',
+    ) as HTMLButtonElement;
     button.click();
 
     // Assert
@@ -50,7 +52,9 @@ describe('delegateEvent', () => {
 
     // Act
     delegateEvent(parent, 'click', '.btn', handler);
-    const nestedButton = container.querySelector('[data-id="3"]') as HTMLButtonElement;
+    const nestedButton = container.querySelector(
+      '[data-id="3"]',
+    ) as HTMLButtonElement;
     nestedButton.click();
 
     // Assert
@@ -66,8 +70,12 @@ describe('delegateEvent', () => {
 
     // Act
     delegateEvent(parent, 'click', '.btn', handler);
-    const button1 = container.querySelector('[data-id="1"]') as HTMLButtonElement;
-    const button2 = container.querySelector('[data-id="2"]') as HTMLButtonElement;
+    const button1 = container.querySelector(
+      '[data-id="1"]',
+    ) as HTMLButtonElement;
+    const button2 = container.querySelector(
+      '[data-id="2"]',
+    ) as HTMLButtonElement;
     button1.click();
     button2.click();
 
@@ -85,7 +93,9 @@ describe('delegateEvent', () => {
 
     // Act
     const cleanup = delegateEvent(parent, 'click', '.btn', handler);
-    const button = container.querySelector('[data-id="1"]') as HTMLButtonElement;
+    const button = container.querySelector(
+      '[data-id="1"]',
+    ) as HTMLButtonElement;
     button.click();
     cleanup();
     button.click();
@@ -159,8 +169,12 @@ describe('delegateEvent', () => {
 
     // Act
     delegateEvent(parent, 'click', '.btn.primary', handler);
-    const primaryBtn = container.querySelector('.btn.primary') as HTMLButtonElement;
-    const secondaryBtn = container.querySelector('.btn.secondary') as HTMLButtonElement;
+    const primaryBtn = container.querySelector(
+      '.btn.primary',
+    ) as HTMLButtonElement;
+    const secondaryBtn = container.querySelector(
+      '.btn.secondary',
+    ) as HTMLButtonElement;
     primaryBtn.click();
     secondaryBtn.click();
 
@@ -201,7 +215,9 @@ describe('delegateEvent', () => {
 
     // Act
     delegateEvent(parent, 'click', '.btn', handler);
-    const button = container.querySelector('[data-id="1"]') as HTMLButtonElement;
+    const button = container.querySelector(
+      '[data-id="1"]',
+    ) as HTMLButtonElement;
     button.click();
 
     // Assert
@@ -299,20 +315,10 @@ describe('delegateEvent', () => {
     // Act & Assert
     invalidParents.forEach((invalid) => {
       expect(() =>
-        delegateEvent(
-          invalid as unknown as Element,
-          'click',
-          '.btn',
-          handler,
-        ),
+        delegateEvent(invalid as unknown as Element, 'click', '.btn', handler),
       ).toThrow(TypeError);
       expect(() =>
-        delegateEvent(
-          invalid as unknown as Element,
-          'click',
-          '.btn',
-          handler,
-        ),
+        delegateEvent(invalid as unknown as Element, 'click', '.btn', handler),
       ).toThrow('parent must be an Element');
     });
   });

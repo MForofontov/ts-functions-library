@@ -251,12 +251,12 @@ describe('throttleEvent', () => {
 
     // Act & Assert
     invalidInputs.forEach((input) => {
-      expect(() =>
-        throttleEvent(input as unknown as () => void, 1000),
-      ).toThrow(TypeError);
-      expect(() =>
-        throttleEvent(input as unknown as () => void, 1000),
-      ).toThrow('handler must be a function');
+      expect(() => throttleEvent(input as unknown as () => void, 1000)).toThrow(
+        TypeError,
+      );
+      expect(() => throttleEvent(input as unknown as () => void, 1000)).toThrow(
+        'handler must be a function',
+      );
     });
   });
 
@@ -268,12 +268,12 @@ describe('throttleEvent', () => {
 
     // Act & Assert
     invalidInputs.forEach((input) => {
-      expect(() =>
-        throttleEvent(handler, input as unknown as number),
-      ).toThrow(TypeError);
-      expect(() =>
-        throttleEvent(handler, input as unknown as number),
-      ).toThrow('limit must be a number');
+      expect(() => throttleEvent(handler, input as unknown as number)).toThrow(
+        TypeError,
+      );
+      expect(() => throttleEvent(handler, input as unknown as number)).toThrow(
+        'limit must be a number',
+      );
     });
   });
 

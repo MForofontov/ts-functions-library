@@ -1,5 +1,5 @@
-import { waitForEvent } from '../../eventFunctions/waitForEvent';
 import { EventEmitter } from '../../eventFunctions/EventEmitter';
+import { waitForEvent } from '../../eventFunctions/waitForEvent';
 
 /**
  * Unit tests for the waitForEvent function.
@@ -221,12 +221,12 @@ describe('waitForEvent', () => {
 
     // Act & Assert
     invalidInputs.forEach((input) => {
-      expect(() =>
-        waitForEvent(emitter, input as unknown as string),
-      ).toThrow(TypeError);
-      expect(() =>
-        waitForEvent(emitter, input as unknown as string),
-      ).toThrow('eventName must be a string');
+      expect(() => waitForEvent(emitter, input as unknown as string)).toThrow(
+        TypeError,
+      );
+      expect(() => waitForEvent(emitter, input as unknown as string)).toThrow(
+        'eventName must be a string',
+      );
     });
   });
 

@@ -120,11 +120,11 @@ describe('generateHMAC', () => {
   // Test case 14: Throw error for invalid algorithm value
   it('14. should throw Error for unsupported algorithm', () => {
     const invalidAlgorithm = 'md5';
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     expect(() =>
       generateHMAC(testData, testKey, invalidAlgorithm as any),
     ).toThrow(Error);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     expect(() =>
       generateHMAC(testData, testKey, invalidAlgorithm as any),
     ).toThrow('algorithm must be one of');

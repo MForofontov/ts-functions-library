@@ -210,7 +210,9 @@ describe('EventEmitter', () => {
     const names = emitter.eventNames();
 
     // Assert
-    expect(names).toEqual(expect.arrayContaining(['event1', 'event2', 'event3']));
+    expect(names).toEqual(
+      expect.arrayContaining(['event1', 'event2', 'event3']),
+    );
     expect(names).toHaveLength(3);
   });
 
@@ -312,7 +314,7 @@ describe('EventEmitter', () => {
   it('20. should handle large number of listeners efficiently', () => {
     // Arrange
     const handlers = Array.from({ length: 1000 }, () => jest.fn());
-    handlers.forEach(handler => emitter.on('event', handler));
+    handlers.forEach((handler) => emitter.on('event', handler));
 
     // Act
     const startTime = performance.now();
@@ -320,7 +322,7 @@ describe('EventEmitter', () => {
     const endTime = performance.now();
 
     // Assert
-    handlers.forEach(handler => {
+    handlers.forEach((handler) => {
       expect(handler).toHaveBeenCalledWith('data');
     });
     expect(endTime - startTime).toBeLessThan(100);
@@ -332,9 +334,13 @@ describe('EventEmitter', () => {
     const invalidInputs = [123, null, undefined, [], {}, true];
 
     // Act & Assert
-    invalidInputs.forEach(input => {
-      expect(() => emitter.on(input as unknown as string, () => {})).toThrow(TypeError);
-      expect(() => emitter.on(input as unknown as string, () => {})).toThrow('eventName must be a string');
+    invalidInputs.forEach((input) => {
+      expect(() => emitter.on(input as unknown as string, () => {})).toThrow(
+        TypeError,
+      );
+      expect(() => emitter.on(input as unknown as string, () => {})).toThrow(
+        'eventName must be a string',
+      );
     });
   });
 
@@ -344,9 +350,13 @@ describe('EventEmitter', () => {
     const invalidInputs = [123, 'string', null, undefined, [], {}, true];
 
     // Act & Assert
-    invalidInputs.forEach(input => {
-      expect(() => emitter.on('event', input as unknown as () => void)).toThrow(TypeError);
-      expect(() => emitter.on('event', input as unknown as () => void)).toThrow('listener must be a function');
+    invalidInputs.forEach((input) => {
+      expect(() => emitter.on('event', input as unknown as () => void)).toThrow(
+        TypeError,
+      );
+      expect(() => emitter.on('event', input as unknown as () => void)).toThrow(
+        'listener must be a function',
+      );
     });
   });
 
@@ -356,9 +366,13 @@ describe('EventEmitter', () => {
     const invalidInputs = [123, null, undefined, [], {}, true];
 
     // Act & Assert
-    invalidInputs.forEach(input => {
-      expect(() => emitter.off(input as unknown as string, () => {})).toThrow(TypeError);
-      expect(() => emitter.off(input as unknown as string, () => {})).toThrow('eventName must be a string');
+    invalidInputs.forEach((input) => {
+      expect(() => emitter.off(input as unknown as string, () => {})).toThrow(
+        TypeError,
+      );
+      expect(() => emitter.off(input as unknown as string, () => {})).toThrow(
+        'eventName must be a string',
+      );
     });
   });
 
@@ -368,9 +382,13 @@ describe('EventEmitter', () => {
     const invalidInputs = [123, 'string', null, undefined, [], {}, true];
 
     // Act & Assert
-    invalidInputs.forEach(input => {
-      expect(() => emitter.off('event', input as unknown as () => void)).toThrow(TypeError);
-      expect(() => emitter.off('event', input as unknown as () => void)).toThrow('listener must be a function');
+    invalidInputs.forEach((input) => {
+      expect(() =>
+        emitter.off('event', input as unknown as () => void),
+      ).toThrow(TypeError);
+      expect(() =>
+        emitter.off('event', input as unknown as () => void),
+      ).toThrow('listener must be a function');
     });
   });
 
@@ -380,9 +398,11 @@ describe('EventEmitter', () => {
     const invalidInputs = [123, null, undefined, [], {}, true];
 
     // Act & Assert
-    invalidInputs.forEach(input => {
+    invalidInputs.forEach((input) => {
       expect(() => emitter.emit(input as unknown as string)).toThrow(TypeError);
-      expect(() => emitter.emit(input as unknown as string)).toThrow('eventName must be a string');
+      expect(() => emitter.emit(input as unknown as string)).toThrow(
+        'eventName must be a string',
+      );
     });
   });
 
@@ -392,9 +412,13 @@ describe('EventEmitter', () => {
     const invalidInputs = [123, null, undefined, [], {}, true];
 
     // Act & Assert
-    invalidInputs.forEach(input => {
-      expect(() => emitter.once(input as unknown as string, () => {})).toThrow(TypeError);
-      expect(() => emitter.once(input as unknown as string, () => {})).toThrow('eventName must be a string');
+    invalidInputs.forEach((input) => {
+      expect(() => emitter.once(input as unknown as string, () => {})).toThrow(
+        TypeError,
+      );
+      expect(() => emitter.once(input as unknown as string, () => {})).toThrow(
+        'eventName must be a string',
+      );
     });
   });
 
@@ -404,9 +428,13 @@ describe('EventEmitter', () => {
     const invalidInputs = [123, 'string', null, undefined, [], {}, true];
 
     // Act & Assert
-    invalidInputs.forEach(input => {
-      expect(() => emitter.once('event', input as unknown as () => void)).toThrow(TypeError);
-      expect(() => emitter.once('event', input as unknown as () => void)).toThrow('listener must be a function');
+    invalidInputs.forEach((input) => {
+      expect(() =>
+        emitter.once('event', input as unknown as () => void),
+      ).toThrow(TypeError);
+      expect(() =>
+        emitter.once('event', input as unknown as () => void),
+      ).toThrow('listener must be a function');
     });
   });
 
@@ -416,9 +444,13 @@ describe('EventEmitter', () => {
     const invalidInputs = [123, [], {}, true];
 
     // Act & Assert
-    invalidInputs.forEach(input => {
-      expect(() => emitter.removeAllListeners(input as unknown as string)).toThrow(TypeError);
-      expect(() => emitter.removeAllListeners(input as unknown as string)).toThrow('eventName must be a string');
+    invalidInputs.forEach((input) => {
+      expect(() =>
+        emitter.removeAllListeners(input as unknown as string),
+      ).toThrow(TypeError);
+      expect(() =>
+        emitter.removeAllListeners(input as unknown as string),
+      ).toThrow('eventName must be a string');
     });
   });
 
@@ -428,9 +460,13 @@ describe('EventEmitter', () => {
     const invalidInputs = [123, null, undefined, [], {}, true];
 
     // Act & Assert
-    invalidInputs.forEach(input => {
-      expect(() => emitter.listenerCount(input as unknown as string)).toThrow(TypeError);
-      expect(() => emitter.listenerCount(input as unknown as string)).toThrow('eventName must be a string');
+    invalidInputs.forEach((input) => {
+      expect(() => emitter.listenerCount(input as unknown as string)).toThrow(
+        TypeError,
+      );
+      expect(() => emitter.listenerCount(input as unknown as string)).toThrow(
+        'eventName must be a string',
+      );
     });
   });
 });

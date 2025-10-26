@@ -24,7 +24,7 @@
  *     target.closest('.item')?.remove();
  *   }
  * );
- * 
+ *
  * // Later: cleanup(); // Removes the delegated listener
  *
  * @example

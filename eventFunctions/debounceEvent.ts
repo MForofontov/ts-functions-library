@@ -16,7 +16,7 @@
  * const debouncedHandler = debounceEvent((value) => {
  *   console.log('Search:', value);
  * }, 300);
- * 
+ *
  * input.addEventListener('input', (e) => debouncedHandler(e.target.value));
  *
  * @example
@@ -24,7 +24,7 @@
  * const debouncedClick = debounceEvent(() => {
  *   console.log('Clicked');
  * }, 1000, true);
- * 
+ *
  * button.addEventListener('click', debouncedClick);
  *
  * @example

@@ -9,20 +9,20 @@ import { EventEmitter } from './EventEmitter';
  * @example
  * // Basic usage
  * const bus = createEventBus();
- * 
+ *
  * bus.subscribe('user:login', (user) => {
  *   console.log('User logged in:', user.name);
  * });
- * 
+ *
  * bus.publish('user:login', { name: 'Alice', id: 123 });
  *
  * @example
  * // Multiple subscribers
  * const bus = createEventBus();
- * 
+ *
  * bus.subscribe('data:update', (data) => console.log('Handler 1:', data));
  * bus.subscribe('data:update', (data) => console.log('Handler 2:', data));
- * 
+ *
  * bus.publish('data:update', { value: 42 });
  * // Logs both handlers
  *
@@ -30,22 +30,28 @@ import { EventEmitter } from './EventEmitter';
  * // Unsubscribing
  * const bus = createEventBus();
  * const handler = (data) => console.log(data);
- * 
+ *
  * bus.subscribe('event', handler);
  * bus.unsubscribe('event', handler);
  * bus.publish('event', 'test'); // Nothing happens
  *
  * @note The event bus uses an EventEmitter internally for managing events.
  *
- * @complexity 
+ * @complexity
  * - subscribe: O(1)
  * - unsubscribe: O(n) where n is number of subscribers
  * - publish: O(n) where n is number of subscribers
  * - clear: O(1)
  */
 export function createEventBus(): {
-  subscribe: <T = unknown>(eventName: string, handler: (data: T) => void) => void;
-  unsubscribe: <T = unknown>(eventName: string, handler: (data: T) => void) => void;
+  subscribe: <T = unknown>(
+    eventName: string,
+    handler: (data: T) => void,
+  ) => void;
+  unsubscribe: <T = unknown>(
+    eventName: string,
+    handler: (data: T) => void,
+  ) => void;
   publish: <T = unknown>(eventName: string, data?: T) => void;
   clear: (eventName?: string) => void;
   getSubscriberCount: (eventName: string) => number;
@@ -59,7 +65,10 @@ export function createEventBus(): {
      * @param eventName - The name of the event to subscribe to.
      * @param handler - The callback function to execute when event is published.
      */
-    subscribe: <T = unknown>(eventName: string, handler: (data: T) => void): void => {
+    subscribe: <T = unknown>(
+      eventName: string,
+      handler: (data: T) => void,
+    ): void => {
       emitter.on<T>(eventName, handler);
     },
 
@@ -69,7 +78,10 @@ export function createEventBus(): {
      * @param eventName - The name of the event.
      * @param handler - The callback function to remove.
      */
-    unsubscribe: <T = unknown>(eventName: string, handler: (data: T) => void): void => {
+    unsubscribe: <T = unknown>(
+      eventName: string,
+      handler: (data: T) => void,
+    ): void => {
       emitter.off<T>(eventName, handler);
     },
 

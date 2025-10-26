@@ -30,7 +30,7 @@ export type EventListener<T = unknown> = (data: T) => void;
  *
  * @note All listeners are called synchronously in the order they were registered.
  *
- * @complexity 
+ * @complexity
  * - on: O(1)
  * - off: O(n) where n is number of listeners for the event
  * - emit: O(n) where n is number of listeners for the event
@@ -64,10 +64,14 @@ export class EventEmitter {
    */
   on<T = unknown>(eventName: string, listener: EventListener<T>): this {
     if (typeof eventName !== 'string') {
-      throw new TypeError(`eventName must be a string, got ${typeof eventName}`);
+      throw new TypeError(
+        `eventName must be a string, got ${typeof eventName}`,
+      );
     }
     if (typeof listener !== 'function') {
-      throw new TypeError(`listener must be a function, got ${typeof listener}`);
+      throw new TypeError(
+        `listener must be a function, got ${typeof listener}`,
+      );
     }
 
     if (!this.events.has(eventName)) {
@@ -99,10 +103,14 @@ export class EventEmitter {
    */
   off<T = unknown>(eventName: string, listener: EventListener<T>): this {
     if (typeof eventName !== 'string') {
-      throw new TypeError(`eventName must be a string, got ${typeof eventName}`);
+      throw new TypeError(
+        `eventName must be a string, got ${typeof eventName}`,
+      );
     }
     if (typeof listener !== 'function') {
-      throw new TypeError(`listener must be a function, got ${typeof listener}`);
+      throw new TypeError(
+        `listener must be a function, got ${typeof listener}`,
+      );
     }
 
     const listeners = this.events.get(eventName);
@@ -141,7 +149,9 @@ export class EventEmitter {
    */
   emit<T = unknown>(eventName: string, data?: T): boolean {
     if (typeof eventName !== 'string') {
-      throw new TypeError(`eventName must be a string, got ${typeof eventName}`);
+      throw new TypeError(
+        `eventName must be a string, got ${typeof eventName}`,
+      );
     }
 
     const listeners = this.events.get(eventName);
@@ -178,10 +188,14 @@ export class EventEmitter {
    */
   once<T = unknown>(eventName: string, listener: EventListener<T>): this {
     if (typeof eventName !== 'string') {
-      throw new TypeError(`eventName must be a string, got ${typeof eventName}`);
+      throw new TypeError(
+        `eventName must be a string, got ${typeof eventName}`,
+      );
     }
     if (typeof listener !== 'function') {
-      throw new TypeError(`listener must be a function, got ${typeof listener}`);
+      throw new TypeError(
+        `listener must be a function, got ${typeof listener}`,
+      );
     }
 
     const onceWrapper: EventListener<T> = (data: T) => {
@@ -213,7 +227,9 @@ export class EventEmitter {
    */
   removeAllListeners(eventName?: string): this {
     if (eventName !== undefined && typeof eventName !== 'string') {
-      throw new TypeError(`eventName must be a string, got ${typeof eventName}`);
+      throw new TypeError(
+        `eventName must be a string, got ${typeof eventName}`,
+      );
     }
 
     if (eventName) {
@@ -243,7 +259,9 @@ export class EventEmitter {
    */
   listenerCount(eventName: string): number {
     if (typeof eventName !== 'string') {
-      throw new TypeError(`eventName must be a string, got ${typeof eventName}`);
+      throw new TypeError(
+        `eventName must be a string, got ${typeof eventName}`,
+      );
     }
 
     const listeners = this.events.get(eventName);

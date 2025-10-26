@@ -222,12 +222,12 @@ describe('debounceEvent', () => {
 
     // Act & Assert
     invalidInputs.forEach((input) => {
-      expect(() =>
-        debounceEvent(input as unknown as () => void, 1000),
-      ).toThrow(TypeError);
-      expect(() =>
-        debounceEvent(input as unknown as () => void, 1000),
-      ).toThrow('handler must be a function');
+      expect(() => debounceEvent(input as unknown as () => void, 1000)).toThrow(
+        TypeError,
+      );
+      expect(() => debounceEvent(input as unknown as () => void, 1000)).toThrow(
+        'handler must be a function',
+      );
     });
   });
 
@@ -239,12 +239,12 @@ describe('debounceEvent', () => {
 
     // Act & Assert
     invalidInputs.forEach((input) => {
-      expect(() =>
-        debounceEvent(handler, input as unknown as number),
-      ).toThrow(TypeError);
-      expect(() =>
-        debounceEvent(handler, input as unknown as number),
-      ).toThrow('delay must be a number');
+      expect(() => debounceEvent(handler, input as unknown as number)).toThrow(
+        TypeError,
+      );
+      expect(() => debounceEvent(handler, input as unknown as number)).toThrow(
+        'delay must be a number',
+      );
     });
   });
 

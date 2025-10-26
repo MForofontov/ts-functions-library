@@ -62,7 +62,7 @@ describe('isValidTime', () => {
     // 24-hour format with seconds when not allowed
     expect(isValidTime('14:30:45', false)).toBe(false);
     expect(isValidTime('14:30:45:12', false)).toBe(false); // Extra colon
-    
+
     // 12-hour format with seconds when not allowed
     expect(isValidTime('2:30:45 PM', false, false)).toBe(false);
     expect(isValidTime('2:30:45:12 PM', false, false)).toBe(false); // Extra colon
@@ -72,7 +72,7 @@ describe('isValidTime', () => {
   it('7. should validate 12-hour format hour boundaries', () => {
     // Hour < 1 is invalid
     expect(isValidTime('0:30 AM', true, false)).toBe(false);
-    
+
     // Hour > 12 is invalid
     expect(isValidTime('13:30 PM', true, false)).toBe(false);
     expect(isValidTime('15:30 AM', true, false)).toBe(false);
@@ -83,7 +83,7 @@ describe('isValidTime', () => {
     // Minute > 59 in 24-hour format
     expect(isValidTime('14:60')).toBe(false);
     expect(isValidTime('14:65')).toBe(false);
-    
+
     // Minute > 59 in 12-hour format
     expect(isValidTime('2:60 PM', true, false)).toBe(false);
   });
@@ -93,7 +93,7 @@ describe('isValidTime', () => {
     // Second > 59 in 24-hour format
     expect(isValidTime('14:30:60')).toBe(false);
     expect(isValidTime('14:30:65')).toBe(false);
-    
+
     // Second > 59 in 12-hour format
     expect(isValidTime('2:30:60 PM', true, false)).toBe(false);
   });
@@ -103,7 +103,7 @@ describe('isValidTime', () => {
     // Hour >= 24 should be invalid
     expect(isValidTime('24:00')).toBe(false);
     expect(isValidTime('25:30')).toBe(false);
-    
+
     // Hour < 0 would be caught by regex but test edge
     expect(isValidTime('23:59')).toBe(true);
     expect(isValidTime('00:00')).toBe(true);
@@ -148,7 +148,7 @@ describe('isValidTime', () => {
     // Test boundary values
     expect(isValidTime('0:00')).toBe(true);
     expect(isValidTime('23:59')).toBe(true);
-    
+
     // These should be caught by regex but test anyway
     expect(isValidTime('-1:00')).toBe(false);
     expect(isValidTime('24:00')).toBe(false);

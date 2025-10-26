@@ -40,11 +40,23 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function waitForEvent<T = unknown>(
-  target: EventTarget | { addEventListener: (event: string, listener: (data: T) => void) => void; removeEventListener: (event: string, listener: (data: T) => void) => void },
+  target:
+    | EventTarget
+    | {
+        addEventListener: (event: string, listener: (data: T) => void) => void;
+        removeEventListener: (
+          event: string,
+          listener: (data: T) => void,
+        ) => void;
+      },
   eventName: string,
   timeout?: number,
 ): Promise<T> {
-  if (!target || typeof (target as { addEventListener?: unknown }).addEventListener !== 'function') {
+  if (
+    !target ||
+    typeof (target as { addEventListener?: unknown }).addEventListener !==
+      'function'
+  ) {
     throw new TypeError('target must have an addEventListener method');
   }
   if (typeof eventName !== 'string') {
@@ -74,19 +86,41 @@ export function waitForEvent<T = unknown>(
         clearTimeout(timeoutId);
       }
 
-      (target as { removeEventListener: (event: string, listener: (data: T) => void) => void }).removeEventListener(eventName, listener);
+      (
+        target as {
+          removeEventListener: (
+            event: string,
+            listener: (data: T) => void,
+          ) => void;
+        }
+      ).removeEventListener(eventName, listener);
       resolve(event);
     };
 
-    (target as { addEventListener: (event: string, listener: (data: T) => void) => void }).addEventListener(eventName, listener);
+    (
+      target as {
+        addEventListener: (event: string, listener: (data: T) => void) => void;
+      }
+    ).addEventListener(eventName, listener);
 
     if (timeout !== undefined) {
       timeoutId = setTimeout(() => {
         if (resolved) return;
         resolved = true;
 
-        (target as { removeEventListener: (event: string, listener: (data: T) => void) => void }).removeEventListener(eventName, listener);
-        reject(new Error(`Timeout waiting for event '${eventName}' after ${timeout}ms`));
+        (
+          target as {
+            removeEventListener: (
+              event: string,
+              listener: (data: T) => void,
+            ) => void;
+          }
+        ).removeEventListener(eventName, listener);
+        reject(
+          new Error(
+            `Timeout waiting for event '${eventName}' after ${timeout}ms`,
+          ),
+        );
       }, timeout);
     }
   });
