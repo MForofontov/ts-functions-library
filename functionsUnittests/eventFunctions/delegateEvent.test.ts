@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { delegateEvent } from '../../eventFunctions/delegateEvent';
 
 /**

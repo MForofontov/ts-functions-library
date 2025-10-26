@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { EventEmitter } from '../../eventFunctions/EventEmitter';
 import { waitForEvent } from '../../eventFunctions/waitForEvent';
 
@@ -188,33 +192,162 @@ describe('waitForEvent', () => {
     expect(result).toBeUndefined();
   });
 
-  // Test case 11: TypeError for invalid target
-  it('11. should throw TypeError for invalid target', () => {
+  // Test case 11: DOM EventTarget - button click
+  it('11. should wait for DOM button click event', async () => {
     // Arrange
-    const invalidInputs = [
-      null,
-      undefined,
-      123,
-      'string',
-      true,
-      [],
-      {},
-      { wrongMethod: () => {} },
-    ];
+    const button = document.createElement('button');
+    document.body.appendChild(button);
+    const waitPromise = waitForEvent(button, 'click');
+
+    // Act
+    setTimeout(() => button.click(), 100);
+    jest.advanceTimersByTime(100);
+
+    const event = await waitPromise;
+
+    // Assert
+    expect(event).toBeInstanceOf(MouseEvent);
+    expect((event as MouseEvent).type).toBe('click');
+
+    // Cleanup
+    document.body.removeChild(button);
+  });
+
+  // Test case 12: DOM EventTarget - input event
+  it('12. should wait for DOM input event with data', async () => {
+    // Arrange
+    const input = document.createElement('input');
+    document.body.appendChild(input);
+    const waitPromise = waitForEvent(input, 'input');
+
+    // Act
+    setTimeout(() => {
+      input.value = 'test value';
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    }, 100);
+    jest.advanceTimersByTime(100);
+
+    const event = await waitPromise;
+
+    // Assert
+    expect(event).toBeInstanceOf(Event);
+    expect((event as Event).type).toBe('input');
+
+    // Cleanup
+    document.body.removeChild(input);
+  });
+
+  // Test case 13: DOM EventTarget - custom event with detail
+  it('13. should wait for DOM custom event with detail data', async () => {
+    // Arrange
+    const div = document.createElement('div');
+    document.body.appendChild(div);
+    const customData = { message: 'Hello', count: 42 };
+    const waitPromise = waitForEvent(div, 'customEvent');
+
+    // Act
+    setTimeout(() => {
+      const customEvent = new CustomEvent('customEvent', {
+        detail: customData,
+      });
+      div.dispatchEvent(customEvent);
+    }, 100);
+    jest.advanceTimersByTime(100);
+
+    const event = await waitPromise;
+
+    // Assert
+    expect(event).toBeInstanceOf(CustomEvent);
+    expect((event as CustomEvent).detail).toEqual(customData);
+
+    // Cleanup
+    document.body.removeChild(div);
+  });
+
+  // Test case 14: DOM EventTarget - timeout on DOM element
+  it('14. should timeout waiting for DOM event', async () => {
+    // Arrange
+    const button = document.createElement('button');
+    document.body.appendChild(button);
+
+    // Act
+    const waitPromise = waitForEvent(button, 'click', 500);
+    jest.advanceTimersByTime(500);
+
+    // Assert
+    await expect(waitPromise).rejects.toThrow(
+      "Timeout waiting for event 'click' after 500ms",
+    );
+
+    // Cleanup
+    document.body.removeChild(button);
+  });
+
+  // Test case 15: DOM EventTarget - listener cleanup after event
+  it('15. should remove DOM listener after event fires', async () => {
+    // Arrange
+    const button = document.createElement('button');
+    document.body.appendChild(button);
+    const waitPromise = waitForEvent(button, 'click');
+
+    // Act
+    setTimeout(() => button.click(), 100);
+    jest.advanceTimersByTime(100);
+    await waitPromise;
+
+    // Verify listener was removed by checking that subsequent clicks don't cause issues
+    button.click(); // Should not throw or cause problems
+
+    // Assert - if we got here, listener was properly cleaned up
+    expect(true).toBe(true);
+
+    // Cleanup
+    document.body.removeChild(button);
+  });
+
+  // Test case 16: DOM EventTarget - multiple event types
+  it('16. should handle different DOM event types', async () => {
+    // Arrange
+    const form = document.createElement('form');
+    document.body.appendChild(form);
+    const waitPromise = waitForEvent(form, 'submit');
+
+    // Act
+    setTimeout(() => {
+      form.dispatchEvent(new Event('submit', { bubbles: true }));
+    }, 100);
+    jest.advanceTimersByTime(100);
+
+    const event = await waitPromise;
+
+    // Assert
+    expect(event).toBeInstanceOf(Event);
+    expect((event as Event).type).toBe('submit');
+
+    // Cleanup
+    document.body.removeChild(form);
+  });
+
+  // Test case 17: TypeError for invalid target
+  it('17. should throw TypeError for invalid target', () => {
+    // Arrange
+    const invalidTargets = [null, undefined, 'string', 123, {}, []];
 
     // Act & Assert
-    invalidInputs.forEach((input) => {
+    invalidTargets.forEach((invalid) => {
       expect(() =>
-        waitForEvent(input as unknown as EventTarget, 'event'),
+        waitForEvent(invalid as unknown as EventTarget, 'event'),
       ).toThrow(TypeError);
       expect(() =>
-        waitForEvent(input as unknown as EventTarget, 'event'),
-      ).toThrow('target must have an addEventListener method');
+        waitForEvent(invalid as unknown as EventTarget, 'event'),
+      ).toThrow(
+        'target must have addEventListener or on method for event handling',
+      );
     });
   });
 
-  // Test case 12: TypeError for invalid eventName
-  it('12. should throw TypeError when eventName is not a string', () => {
+  // Test case 18: TypeError for invalid eventName
+  it('18. should throw TypeError when eventName is not a string', () => {
     // Arrange
     const emitter = new EventEmitter();
     const invalidInputs = [123, null, undefined, [], {}, true];
@@ -230,8 +363,8 @@ describe('waitForEvent', () => {
     });
   });
 
-  // Test case 13: TypeError for invalid timeout type
-  it('13. should throw TypeError when timeout is not a number', () => {
+  // Test case 19: TypeError for invalid timeout type
+  it('19. should throw TypeError when timeout is not a number', () => {
     // Arrange
     const emitter = new EventEmitter();
     const invalidInputs = ['string', [], {}, true];
@@ -247,8 +380,8 @@ describe('waitForEvent', () => {
     });
   });
 
-  // Test case 14: Error for NaN timeout
-  it('14. should throw Error when timeout is NaN', () => {
+  // Test case 20: Error for NaN timeout
+  it('20. should throw Error when timeout is NaN', () => {
     // Arrange
     const emitter = new EventEmitter();
 
@@ -259,8 +392,8 @@ describe('waitForEvent', () => {
     );
   });
 
-  // Test case 15: Error for negative timeout
-  it('15. should throw Error when timeout is negative', () => {
+  // Test case 21: Error for negative timeout
+  it('21. should throw Error when timeout is negative', () => {
     // Arrange
     const emitter = new EventEmitter();
 

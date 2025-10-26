@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import { onceEvent } from '../../eventFunctions/onceEvent';
 
 /**
@@ -304,8 +307,83 @@ describe('onceEvent', () => {
     expect(handler).toHaveBeenCalledTimes(1);
   });
 
-  // Test case 17: TypeError for invalid handler
-  it('17. should throw TypeError when handler is not a function', () => {
+  // Test case 17: DOM event - button click handler executes once
+  it('17. should execute DOM click handler only once', () => {
+    // Arrange
+    const button = document.createElement('button');
+    document.body.appendChild(button);
+    const handler = jest.fn((event: Event) => {
+      return (event.target as HTMLButtonElement).textContent;
+    });
+    const onceClick = onceEvent(handler);
+
+    button.addEventListener('click', onceClick);
+    button.textContent = 'Click me';
+
+    // Act
+    button.click();
+    button.click();
+    button.click();
+
+    // Assert - handler should be called only once
+    expect(handler).toHaveBeenCalledTimes(1);
+
+    // Cleanup
+    document.body.removeChild(button);
+  });
+
+  // Test case 18: DOM event - form submit once
+  it('18. should handle DOM form submit once', () => {
+    // Arrange
+    const form = document.createElement('form');
+    document.body.appendChild(form);
+    const handler = jest.fn((event: Event) => {
+      event.preventDefault();
+      return 'submitted';
+    });
+    const onceSubmit = onceEvent(handler);
+
+    form.addEventListener('submit', onceSubmit);
+
+    // Act
+    form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+    form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+
+    // Assert
+    expect(handler).toHaveBeenCalledTimes(1);
+
+    // Cleanup
+    document.body.removeChild(form);
+  });
+
+  // Test case 19: DOM event - initialization function
+  it('19. should execute DOM initialization once across multiple elements', () => {
+    // Arrange
+    const div1 = document.createElement('div');
+    const div2 = document.createElement('div');
+    document.body.appendChild(div1);
+    document.body.appendChild(div2);
+
+    const initHandler = jest.fn(() => {
+      return { initialized: true, timestamp: Date.now() };
+    });
+    const initOnce = onceEvent(initHandler);
+
+    // Act
+    const init1 = initOnce();
+    const init2 = initOnce();
+
+    // Assert
+    expect(initHandler).toHaveBeenCalledTimes(1);
+    expect(init1).toBe(init2); // Same reference
+
+    // Cleanup
+    document.body.removeChild(div1);
+    document.body.removeChild(div2);
+  });
+
+  // Test case 20: TypeError for invalid handler
+  it('20. should throw TypeError when handler is not a function', () => {
     // Arrange
     const invalidInputs = [123, 'string', null, undefined, [], {}, true];
 

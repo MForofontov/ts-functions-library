@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { debounceEvent } from '../../eventFunctions/debounceEvent';
 
 /**
@@ -215,8 +219,100 @@ describe('debounceEvent', () => {
     expect(handler).toHaveBeenCalledTimes(1);
   });
 
-  // Test case 12: TypeError for invalid handler
-  it('12. should throw TypeError when handler is not a function', () => {
+  // Test case 12: DOM event - debounced input handler
+  it('12. should debounce DOM input events', () => {
+    // Arrange
+    const input = document.createElement('input');
+    document.body.appendChild(input);
+    const handler = jest.fn((event: Event) => {
+      return (event.target as HTMLInputElement).value;
+    });
+    const debouncedHandler = debounceEvent(handler, 300);
+
+    input.addEventListener('input', debouncedHandler);
+
+    // Act - Simulate rapid typing
+    input.value = 'h';
+    input.dispatchEvent(new Event('input'));
+    jest.advanceTimersByTime(100);
+
+    input.value = 'he';
+    input.dispatchEvent(new Event('input'));
+    jest.advanceTimersByTime(100);
+
+    input.value = 'hel';
+    input.dispatchEvent(new Event('input'));
+    jest.advanceTimersByTime(100);
+
+    // Assert - handler should not be called yet
+    expect(handler).not.toHaveBeenCalled();
+
+    // Fast-forward past debounce delay
+    jest.advanceTimersByTime(300);
+
+    // Assert - handler should be called once with final value
+    expect(handler).toHaveBeenCalledTimes(1);
+
+    // Cleanup
+    document.body.removeChild(input);
+  });
+
+  // Test case 13: DOM event - debounced button click
+  it('13. should debounce DOM button clicks', () => {
+    // Arrange
+    const button = document.createElement('button');
+    document.body.appendChild(button);
+    const handler = jest.fn();
+    const debouncedClick = debounceEvent(handler, 500);
+
+    button.addEventListener('click', debouncedClick);
+
+    // Act - Multiple rapid clicks
+    button.click();
+    button.click();
+    button.click();
+
+    // Assert - handler should not be called yet
+    expect(handler).not.toHaveBeenCalled();
+
+    // Fast-forward past debounce delay
+    jest.advanceTimersByTime(500);
+
+    // Assert - handler should be called once
+    expect(handler).toHaveBeenCalledTimes(1);
+
+    // Cleanup
+    document.body.removeChild(button);
+  });
+
+  // Test case 14: DOM event - cancel debounced scroll
+  it('14. should cancel debounced DOM scroll event', () => {
+    // Arrange
+    const div = document.createElement('div');
+    document.body.appendChild(div);
+    const handler = jest.fn();
+    const debouncedScroll = debounceEvent(handler, 200);
+
+    div.addEventListener('scroll', debouncedScroll);
+
+    // Act - Trigger scroll then cancel
+    div.dispatchEvent(new Event('scroll'));
+    jest.advanceTimersByTime(100);
+
+    debouncedScroll.cancel();
+
+    // Fast-forward past original delay
+    jest.advanceTimersByTime(200);
+
+    // Assert - handler should not be called
+    expect(handler).not.toHaveBeenCalled();
+
+    // Cleanup
+    document.body.removeChild(div);
+  });
+
+  // Test case 15: TypeError for invalid handler
+  it('15. should throw TypeError when handler is not a function', () => {
     // Arrange
     const invalidInputs = [123, 'string', null, undefined, [], {}, true];
 
@@ -231,8 +327,8 @@ describe('debounceEvent', () => {
     });
   });
 
-  // Test case 13: TypeError for invalid delay type
-  it('13. should throw TypeError when delay is not a number', () => {
+  // Test case 16: TypeError for invalid delay type
+  it('16. should throw TypeError when delay is not a number', () => {
     // Arrange
     const handler = jest.fn();
     const invalidInputs = ['string', null, undefined, [], {}, true];
@@ -248,8 +344,8 @@ describe('debounceEvent', () => {
     });
   });
 
-  // Test case 14: Error for NaN delay
-  it('14. should throw Error when delay is NaN', () => {
+  // Test case 17: Error for NaN delay
+  it('17. should throw Error when delay is NaN', () => {
     // Arrange
     const handler = jest.fn();
 
@@ -260,8 +356,8 @@ describe('debounceEvent', () => {
     );
   });
 
-  // Test case 15: Error for negative delay
-  it('15. should throw Error when delay is negative', () => {
+  // Test case 18: Error for negative delay
+  it('18. should throw Error when delay is negative', () => {
     // Arrange
     const handler = jest.fn();
 
@@ -272,8 +368,8 @@ describe('debounceEvent', () => {
     );
   });
 
-  // Test case 16: TypeError for invalid immediate type
-  it('16. should throw TypeError when immediate is not a boolean', () => {
+  // Test case 19: TypeError for invalid immediate type
+  it('19. should throw TypeError when immediate is not a boolean', () => {
     // Arrange
     const handler = jest.fn();
     const invalidInputs = [123, 'string', null, [], {}];

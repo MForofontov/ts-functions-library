@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { throttleEvent } from '../../eventFunctions/throttleEvent';
 
 /**
@@ -244,8 +248,85 @@ describe('throttleEvent', () => {
     expect(handler).toHaveBeenCalledTimes(1);
   });
 
-  // Test case 13: TypeError for invalid handler
-  it('13. should throw TypeError when handler is not a function', () => {
+  // Test case 13: DOM event - throttled scroll handler
+  it('13. should throttle DOM scroll events', () => {
+    // Arrange
+    const div = document.createElement('div');
+    document.body.appendChild(div);
+    const handler = jest.fn();
+    const throttledScroll = throttleEvent(handler, 200);
+
+    div.addEventListener('scroll', throttledScroll);
+
+    // Act - Simulate rapid scrolling
+    for (let i = 0; i < 10; i++) {
+      div.dispatchEvent(new Event('scroll'));
+      jest.advanceTimersByTime(50); // 50ms between events
+    }
+
+    // Assert - handler should be called limited number of times
+    // Total time: 10 * 50ms = 500ms
+    // With 200ms throttle, expect ~3 calls (0ms, 200ms, 400ms)
+    expect(handler).toHaveBeenCalledTimes(3);
+
+    // Cleanup
+    document.body.removeChild(div);
+  });
+
+  // Test case 14: DOM event - throttled mousemove
+  it('14. should throttle DOM mousemove events', () => {
+    // Arrange
+    const div = document.createElement('div');
+    document.body.appendChild(div);
+    const handler = jest.fn();
+    const throttledMove = throttleEvent(handler, 100);
+
+    div.addEventListener('mousemove', throttledMove);
+
+    // Act - Simulate rapid mouse movement (within throttle window)
+    div.dispatchEvent(new MouseEvent('mousemove', { clientX: 10, clientY: 10 }));
+    jest.advanceTimersByTime(30);
+    div.dispatchEvent(new MouseEvent('mousemove', { clientX: 20, clientY: 20 }));
+    jest.advanceTimersByTime(30);
+    div.dispatchEvent(new MouseEvent('mousemove', { clientX: 30, clientY: 30 }));
+
+    // Assert - First call immediate (leading edge), others throttled
+    expect(handler).toHaveBeenCalledTimes(1);
+
+    // Fast-forward to trigger trailing edge
+    jest.advanceTimersByTime(100);
+    expect(handler).toHaveBeenCalledTimes(2);
+
+    // Cleanup
+    document.body.removeChild(div);
+  });
+
+  // Test case 15: DOM event - throttled window resize
+  it('15. should throttle DOM window resize events', () => {
+    // Arrange
+    const handler = jest.fn();
+    const throttledResize = throttleEvent(handler, 250);
+
+    window.addEventListener('resize', throttledResize);
+
+    // Act - Simulate rapid resizing
+    for (let i = 0; i < 5; i++) {
+      window.dispatchEvent(new Event('resize'));
+      jest.advanceTimersByTime(100);
+    }
+
+    // Assert - handler should be throttled
+    // Total time: 5 * 100ms = 500ms
+    // With 250ms throttle, expect ~3 calls (0ms, 250ms, 500ms trailing)
+    expect(handler).toHaveBeenCalled();
+    expect(handler.mock.calls.length).toBeLessThan(5);
+
+    // Cleanup
+    window.removeEventListener('resize', throttledResize);
+  });
+
+  // Test case 16: TypeError for invalid handler
+  it('16. should throw TypeError when handler is not a function', () => {
     // Arrange
     const invalidInputs = [123, 'string', null, undefined, [], {}, true];
 
@@ -260,8 +341,8 @@ describe('throttleEvent', () => {
     });
   });
 
-  // Test case 14: TypeError for invalid limit type
-  it('14. should throw TypeError when limit is not a number', () => {
+  // Test case 17: TypeError for invalid limit type
+  it('17. should throw TypeError when limit is not a number', () => {
     // Arrange
     const handler = jest.fn();
     const invalidInputs = ['string', null, undefined, [], {}, true];
@@ -277,8 +358,8 @@ describe('throttleEvent', () => {
     });
   });
 
-  // Test case 15: Error for NaN limit
-  it('15. should throw Error when limit is NaN', () => {
+  // Test case 18: Error for NaN limit
+  it('18. should throw Error when limit is NaN', () => {
     // Arrange
     const handler = jest.fn();
 
@@ -289,8 +370,8 @@ describe('throttleEvent', () => {
     );
   });
 
-  // Test case 16: Error for negative limit
-  it('16. should throw Error when limit is negative', () => {
+  // Test case 19: Error for negative limit
+  it('19. should throw Error when limit is negative', () => {
     // Arrange
     const handler = jest.fn();
 
@@ -301,8 +382,8 @@ describe('throttleEvent', () => {
     );
   });
 
-  // Test case 17: TypeError for invalid leading option
-  it('17. should throw TypeError when leading is not a boolean', () => {
+  // Test case 20: TypeError for invalid leading option
+  it('20. should throw TypeError when leading is not a boolean', () => {
     // Arrange
     const handler = jest.fn();
     const invalidInputs = [123, 'string', null, [], {}];
@@ -322,8 +403,8 @@ describe('throttleEvent', () => {
     });
   });
 
-  // Test case 18: TypeError for invalid trailing option
-  it('18. should throw TypeError when trailing is not a boolean', () => {
+  // Test case 21: TypeError for invalid trailing option
+  it('21. should throw TypeError when trailing is not a boolean', () => {
     // Arrange
     const handler = jest.fn();
     const invalidInputs = [123, 'string', null, [], {}];

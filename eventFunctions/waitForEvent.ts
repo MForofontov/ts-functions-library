@@ -1,20 +1,21 @@
 /**
  * Waits for a specific event to be emitted and returns the event data as a Promise.
  * Useful for converting event-based APIs to Promise-based async/await patterns.
+ * Supports both DOM EventTarget and custom EventEmitter instances.
  *
- * @param target - The event target (EventTarget or object with addEventListener/removeEventListener).
+ * @param target - The event target (EventTarget, EventEmitter, or object with on/off or addEventListener/removeEventListener).
  * @param eventName - The name of the event to wait for.
  * @param timeout - Optional timeout in milliseconds. If provided, rejects after timeout.
  * @returns Promise that resolves with the event data when the event occurs.
  *
- * @throws {TypeError} If target doesn't have addEventListener method.
+ * @throws {TypeError} If target doesn't have event listener methods.
  * @throws {TypeError} If eventName is not a string.
  * @throws {TypeError} If timeout is provided but not a number.
  * @throws {Error} If timeout is negative or NaN.
  * @throws {Error} If timeout expires before event occurs.
  *
  * @example
- * // Basic usage
+ * // Basic usage with DOM element
  * const button = document.querySelector('button');
  * const clickEvent = await waitForEvent(button, 'click');
  * console.log('Button was clicked', clickEvent);
@@ -48,16 +49,31 @@ export function waitForEvent<T = unknown>(
           event: string,
           listener: (data: T) => void,
         ) => void;
+      }
+    | {
+        on: <U = unknown>(
+          event: string,
+          listener: (data: U) => void,
+        ) => unknown;
+        off: <U = unknown>(
+          event: string,
+          listener: (data: U) => void,
+        ) => unknown;
       },
   eventName: string,
   timeout?: number,
 ): Promise<T> {
-  if (
-    !target ||
-    typeof (target as { addEventListener?: unknown }).addEventListener !==
-      'function'
-  ) {
-    throw new TypeError('target must have an addEventListener method');
+  // Check if target has either addEventListener or on method
+  const hasAddEventListener =
+    target &&
+    typeof (target as { addEventListener?: unknown }).addEventListener ===
+      'function';
+  const hasOn = target && typeof (target as { on?: unknown }).on === 'function';
+
+  if (!hasAddEventListener && !hasOn) {
+    throw new TypeError(
+      'target must have addEventListener or on method for event handling',
+    );
   }
   if (typeof eventName !== 'string') {
     throw new TypeError(`eventName must be a string, got ${typeof eventName}`);
@@ -86,28 +102,8 @@ export function waitForEvent<T = unknown>(
         clearTimeout(timeoutId);
       }
 
-      (
-        target as {
-          removeEventListener: (
-            event: string,
-            listener: (data: T) => void,
-          ) => void;
-        }
-      ).removeEventListener(eventName, listener);
-      resolve(event);
-    };
-
-    (
-      target as {
-        addEventListener: (event: string, listener: (data: T) => void) => void;
-      }
-    ).addEventListener(eventName, listener);
-
-    if (timeout !== undefined) {
-      timeoutId = setTimeout(() => {
-        if (resolved) return;
-        resolved = true;
-
+      // Remove listener using appropriate method
+      if (hasAddEventListener) {
         (
           target as {
             removeEventListener: (
@@ -116,6 +112,67 @@ export function waitForEvent<T = unknown>(
             ) => void;
           }
         ).removeEventListener(eventName, listener);
+      } else {
+        (
+          target as {
+            off: <U = unknown>(
+              event: string,
+              listener: (data: U) => void,
+            ) => unknown;
+          }
+        ).off(eventName, listener);
+      }
+
+      resolve(event);
+    };
+
+    // Add listener using appropriate method
+    if (hasAddEventListener) {
+      (
+        target as {
+          addEventListener: (
+            event: string,
+            listener: (data: T) => void,
+          ) => void;
+        }
+      ).addEventListener(eventName, listener);
+    } else {
+      (
+        target as {
+          on: <U = unknown>(
+            event: string,
+            listener: (data: U) => void,
+          ) => unknown;
+        }
+      ).on(eventName, listener);
+    }
+
+    if (timeout !== undefined) {
+      timeoutId = setTimeout(() => {
+        if (resolved) return;
+        resolved = true;
+
+        // Remove listener using appropriate method
+        if (hasAddEventListener) {
+          (
+            target as {
+              removeEventListener: (
+                event: string,
+                listener: (data: T) => void,
+              ) => void;
+            }
+          ).removeEventListener(eventName, listener);
+        } else {
+          (
+            target as {
+              off: <U = unknown>(
+                event: string,
+                listener: (data: U) => void,
+              ) => unknown;
+            }
+          ).off(eventName, listener);
+        }
+
         reject(
           new Error(
             `Timeout waiting for event '${eventName}' after ${timeout}ms`,
