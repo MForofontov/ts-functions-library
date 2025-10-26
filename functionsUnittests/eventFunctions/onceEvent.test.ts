@@ -64,9 +64,9 @@ describe('onceEvent', () => {
   it('4. should cache promise results', async () => {
     // Arrange
     let callCount = 0;
-    const handler = jest.fn(async () => {
+    const handler = jest.fn(() => {
       callCount++;
-      return `async-result-${callCount}`;
+      return Promise.resolve(`async-result-${callCount}`);
     });
     const once = onceEvent(handler);
 
