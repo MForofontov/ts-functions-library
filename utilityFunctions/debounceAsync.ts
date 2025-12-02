@@ -7,6 +7,7 @@
  * @returns A debounced version of the function that returns a Promise.
  *
  * @throws {TypeError} If func is not a function or wait is not a number.
+ * @throws {Error} If wait is negative or NaN.
  *
  * @example
  * // Basic usage with API calls
@@ -49,6 +50,16 @@ export function debounceAsync<Args extends unknown[], R>(
   func: (...args: Args) => Promise<R>,
   wait: number,
 ): (...args: Args) => Promise<R> {
+  if (typeof func !== 'function') {
+    throw new TypeError(`func must be a function, got ${typeof func}`);
+  }
+  if (typeof wait !== 'number') {
+    throw new TypeError(`wait must be a number, got ${typeof wait}`);
+  }
+  if (Number.isNaN(wait) || wait < 0) {
+    throw new Error('wait must be a non-negative number');
+  }
+
   let timeoutId: ReturnType<typeof setTimeout>;
   return (...args: Args) =>
     new Promise((resolve) => {

@@ -49,6 +49,16 @@ export function debounce<Args extends unknown[], R>(
   func: (...args: Args) => R,
   delay: number,
 ): (...args: Args) => void {
+  if (typeof func !== 'function') {
+    throw new TypeError(`func must be a function, got ${typeof func}`);
+  }
+  if (typeof delay !== 'number') {
+    throw new TypeError(`delay must be a number, got ${typeof delay}`);
+  }
+  if (Number.isNaN(delay) || delay < 0) {
+    throw new Error('delay must be a non-negative number');
+  }
+
   let timeoutId: ReturnType<typeof setTimeout>;
   return function (this: unknown, ...args: Args) {
     clearTimeout(timeoutId);

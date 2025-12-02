@@ -32,5 +32,12 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function delay(ms: number): Promise<void> {
+  if (typeof ms !== 'number') {
+    throw new TypeError(`ms must be a number, got ${typeof ms}`);
+  }
+  if (Number.isNaN(ms) || ms < 0) {
+    throw new Error('ms must be a non-negative number');
+  }
+
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
