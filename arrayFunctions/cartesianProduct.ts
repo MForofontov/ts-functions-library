@@ -29,11 +29,26 @@
  * cartesianProduct([], [1, 2]); // Returns: []
  * cartesianProduct([1, 2], []); // Returns: []
  *
+ * @example
+ * // Single array
+ * cartesianProduct([1, 2, 3]); // Returns: [[1], [2], [3]]
+ *
+ * @example
+ * // Real-world: Generate all product variants
+ * const colors = ['Black', 'White'];
+ * const sizes = ['XS', 'S', 'M', 'L', 'XL'];
+ * const styles = ['Regular', 'Slim'];
+ * const variants = cartesianProduct(colors, sizes, styles);
+ * // Generates 20 product variants (2 × 5 × 2)
+ *
  * @note The function uses array.reduce() with flatMap and map to build
  * the combinations. The number of resulting combinations grows exponentially
  * with the number of input arrays and their sizes.
+ * @note Result size is the product of all input array lengths.
+ * @note Useful for generating test cases, configuration combinations, and product variants.
+ * @note Memory usage can become very large with many or large input arrays.
  *
- * @complexity O(n^m) where n is the average array length and m is the number of arrays
+ * @complexity Time: O(n^m), Space: O(n^m) - Where n is avg array length, m is number of arrays
  */
 type CartesianTuple<T extends unknown[][]> = { [K in keyof T]: T[K][number] };
 

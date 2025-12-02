@@ -5,7 +5,8 @@
  * @param obj - The nested object to flatten.
  * @param prefix - The prefix for nested keys (used internally for recursion).
  * @returns A flat object with keys in dot or square bracket notation.
- * @throws When input is not a non-null object.
+ *
+ * @throws {TypeError} If obj is not an object or is null.
  *
  * @example
  * // Complex nested structure with arrays and special characters
@@ -17,7 +18,7 @@
  * };
  *
  * flattenObject(nested);
- * // => {
+ * // {
  * //   'user.name': 'John',
  * //   'user.address.city': 'NY',
  * //   'scores[0]': 85,
@@ -30,9 +31,40 @@
  * //   'property\\.with\\.dots': true
  * // }
  *
+ * @example
+ * // Simple nested object
+ * flattenObject({ user: { name: 'Alice', age: 30 } });
+ * // { 'user.name': 'Alice', 'user.age': 30 }
+ *
+ * @example
+ * // Array of primitives
+ * flattenObject({ numbers: [1, 2, 3] });
+ * // { 'numbers[0]': 1, 'numbers[1]': 2, 'numbers[2]': 3 }
+ *
+ * @example
+ * // Empty object
+ * flattenObject({}); // {}
+ *
+ * @example
+ * // Real-world: Flatten API response for form data
+ * const apiResponse = {
+ *   user: { profile: { firstName: 'John', lastName: 'Doe' } },
+ *   settings: { notifications: true }
+ * };
+ * flattenObject(apiResponse);
+ * // {
+ * //   'user.profile.firstName': 'John',
+ * //   'user.profile.lastName': 'Doe',
+ * //   'settings.notifications': true
+ * // }
+ *
  * @note Array indices use square bracket notation: 'items[0].name'
  * @note Dots in property names are escaped with backslashes: 'property\\.with\\.dots'
  * @note Empty objects and arrays are preserved in the flattened structure
+ * @note Useful for form data serialization and database queries.
+ * @note Opposite operation can be performed with unflattenObject().
+ *
+ * @complexity Time: O(n), Space: O(n) - Where n is total properties including nested
  */
 export function flattenObject(
   obj: Record<string, unknown>,

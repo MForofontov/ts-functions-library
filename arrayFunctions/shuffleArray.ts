@@ -24,11 +24,20 @@
  * // Single element
  * shuffleArray([42]); // Returns [42] (only one possible arrangement)
  *
+ * @example
+ * // Real-world: Randomize quiz questions
+ * const questions = ['Q1', 'Q2', 'Q3', 'Q4', 'Q5'];
+ * const randomized = shuffleArray(questions);
+ * // Present questions in random order to each user
+ *
  * @note This implementation uses the Fisher-Yates algorithm which produces an unbiased
  * permutation (all possible arrangements are equally likely). The function creates a
  * new array and does not modify the original.
+ * @note Uses Math.random() which is not cryptographically secure.
+ * @note Useful for randomizing data, creating random samples, and shuffling decks.
+ * @note Also known as the Knuth shuffle.
  *
- * @complexity O(n) where n is the length of the input array
+ * @complexity Time: O(n), Space: O(n) - Where n is array length
  */
 export function shuffleArray<T>(arr: T[]): T[] {
   const shuffled = [...arr];
