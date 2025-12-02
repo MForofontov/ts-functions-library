@@ -24,7 +24,7 @@
  * @note This function uses array.reduce() with an initial value of 0.
  * Be cautious with very large arrays as the sum might exceed Number.MAX_SAFE_INTEGER.
  *
- * @complexity O(n) where n is the length of the input array
+ * @complexity Time: O(n), Space: O(n) - Where n is array length
  */
 export function sumArrayElements(arr: number[]): number {
   return arr.reduce((sum, num) => sum + num, 0);

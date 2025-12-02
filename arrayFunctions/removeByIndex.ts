@@ -25,7 +25,7 @@
  * @note This function does not modify the original array. It returns a new array
  * with the filtered results. Indices that don't exist in the array are ignored.
  *
- * @complexity O(n) where n is the length of the input array
+ * @complexity Time: O(n), Space: O(n) - Where n is array length
  */
 export function removeByIndex<T>(arr: T[], indices: number[]): T[] {
   return arr.filter((_, index) => !indices.includes(index));
