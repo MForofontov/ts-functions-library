@@ -2,17 +2,50 @@ import { getEndOfWeek } from './getEndOfWeek';
 import { getStartOfWeek } from './getStartOfWeek';
 
 /**
- * Gets the first and last day of the week for a given Date object.
+ * Calculates the start and end dates of the week containing a given date.
  *
- * @param date - The Date object to get the week's start and end dates for.
- * @param startOfWeek - The start day of the week (0 for Sunday, 1 for Monday, etc.).
- * @returns An object with the start and end dates of the week.
- * @throws Will throw an error if the date is invalid or if startOfWeek is not a valid number.
+ * @param date - The Date object to get the week range for.
+ * @param startOfWeek - The first day of the week (0=Sunday, 1=Monday, ..., 6=Saturday). Default: 0.
+ * @returns An object with 'start' (first moment) and 'end' (last moment) Date objects for the week.
+ *
+ * @throws {Error} If date is invalid.
+ * @throws {Error} If startOfWeek is not between 0 and 6.
  *
  * @example
- * const date = new Date('2024-09-19');
- * getWeekRange(date); // { start: '2024-09-15', end: '2024-09-21' }
+ * // Week starting Sunday (default)
+ * const thursday = new Date('2025-01-09');
+ * getWeekRange(thursday);
+ * // Returns: { start: 2025-01-05T00:00:00.000, end: 2025-01-11T23:59:59.999 }
  *
+ * @example
+ * // Week starting Monday (ISO week)
+ * const thursday = new Date('2025-01-09');
+ * getWeekRange(thursday, 1);
+ * // Returns: { start: 2025-01-06T00:00:00.000, end: 2025-01-12T23:59:59.999 }
+ *
+ * @example
+ * // Week starting Wednesday
+ * const friday = new Date('2025-01-10');
+ * getWeekRange(friday, 3);
+ * // Returns: { start: 2025-01-08T00:00:00.000, end: 2025-01-14T23:59:59.999 }
+ *
+ * @example
+ * // Real-world: weekly report range
+ * const today = new Date();
+ * const { start, end } = getWeekRange(today, 1); // Monday-based week
+ * const report = await generateReport(start, end);
+ *
+ * @example
+ * // Display week range
+ * const { start, end } = getWeekRange(new Date());
+ * console.log(`Week: ${start.toDateString()} - ${end.toDateString()}`);
+ *
+ * @note Start date is set to 00:00:00.000 (first moment of the day).
+ * @note End date is set to 23:59:59.999 (last moment of the day).
+ * @note Useful for date range queries covering an entire week.
+ * @note Uses getStartOfWeek and getEndOfWeek internally.
+ *
+ * @complexity Time: O(1), Space: O(1)
  */
 export function getWeekRange(
   date: Date,

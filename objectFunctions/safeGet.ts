@@ -4,17 +4,44 @@
  *
  * @param obj - The source object to retrieve the value from.
  * @param path - A dot-notation string representing the property path (e.g., 'user.address.city').
- * @param defaultValue - The value to return if the path cannot be resolved, defaults to undefined.
+ * @param defaultValue - The value to return if the path cannot be resolved (default: undefined).
  * @returns The value at the specified path or the default value if not found.
- * @throws When the input object is not a non-null object.
+ *
+ * @throws {TypeError} If obj is not a non-null object.
  *
  * @example
- * // Basic property access
+ * // Basic nested property access
  * const user = { name: 'John', address: { city: 'New York', zip: 10001 } };
- * safeGet(user, 'address.city'); // => 'New York'
+ * safeGet(user, 'address.city'); // 'New York'
+ * safeGet(user, 'name'); // 'John'
  *
- * @note Returns the default value if any segment of the path doesn't exist.
- * @note Only supports dot notation and doesn't handle array indices.
+ * @example
+ * // Deep nesting
+ * const data = { a: { b: { c: { d: 'value' } } } };
+ * safeGet(data, 'a.b.c.d'); // 'value'
+ *
+ * @example
+ * // Non-existent paths return default
+ * safeGet(user, 'address.country', 'USA'); // 'USA' (default)
+ * safeGet(user, 'phone.mobile'); // undefined
+ * safeGet(user, 'settings.theme', 'dark'); // 'dark'
+ *
+ * @example
+ * // Empty path returns entire object
+ * safeGet(user, ''); // { name: 'John', address: { city: 'New York', zip: 10001 } }
+ *
+ * @example
+ * // Top-level property with dots in key name
+ * const obj = { 'user.name': 'Alice', user: { name: 'Bob' } };
+ * safeGet(obj, 'user.name'); // 'Alice' (exact key match has priority)
+ *
+ * @note Returns default value if any segment of the path doesn't exist or is null/undefined.
+ * @note Only supports dot notation (e.g., 'a.b.c'); does NOT handle array indices (e.g., 'items[0]').
+ * @note If the path exactly matches a top-level key, returns that value directly.
+ * @note Empty string segments in path (e.g., 'a..b') return the default value.
+ * @note Useful for safely accessing configuration, API responses, or user data.
+ *
+ * @complexity Time: O(n) where n is the depth of the path, Space: O(1)
  */
 export function safeGet<T extends Record<string, unknown>, D>(
   obj: T,
