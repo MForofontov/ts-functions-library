@@ -27,7 +27,7 @@
  * @note Functions in the array are executed and their return values are used.
  * Other non-string elements are converted to strings using String().
  *
- * @complexity O(n) where n is the length of the input array
+ * @complexity Time: O(n), Space: O(1) - Where n is array length
  */
 export function joinStrings(arr: Array<unknown>, separator: string): string {
   return arr

@@ -28,7 +28,7 @@ import { calculateAverage } from '../centralTendency/calculateAverage';
  * not the sample variance (which would divide by n-1). It uses the arithmetic
  * mean calculated by the calculateAverage function.
  *
- * @complexity O(n) where n is the length of the input array
+ * @complexity Time: O(n), Space: O(1) - Where n is array length
  */
 export function calculateVariance(arr: number[]): number {
   if (arr.length === 0) {

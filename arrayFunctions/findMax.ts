@@ -27,7 +27,7 @@
  * depending on the JavaScript engine). For very large arrays, consider using
  * a manual loop-based approach instead.
  *
- * @complexity O(n) where n is the length of the input array
+ * @complexity Time: O(n), Space: O(1) - Where n is array length
  */
 export function findMax(arr: number[]): number {
   return Math.max(...arr);

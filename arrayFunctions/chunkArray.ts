@@ -26,7 +26,7 @@
  * @note The final chunk may contain fewer elements than the specified size
  * if the array length is not a multiple of the chunk size.
  *
- * @complexity O(n) where n is the length of the input array
+ * @complexity Time: O(n), Space: O(n) - Where n is array length
  */
 export function chunkArray<T>(arr: T[], size: number): T[][] {
   if (size <= 0) {

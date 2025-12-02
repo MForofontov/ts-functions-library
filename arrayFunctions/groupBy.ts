@@ -37,7 +37,7 @@
  * are always converted to strings. The original property values are preserved in
  * the grouped items.
  *
- * @complexity O(n) where n is the length of the input array
+ * @complexity Time: O(n), Space: O(n) - Where n is array length
  */
 export function groupBy<T>(arr: T[], key: keyof T): Record<string, T[]> {
   return arr.reduce(

@@ -27,7 +27,7 @@ import { deepEqual } from '../objectFunctions/deepEqual';
  * @note This implementation uses deep equality comparison which makes it suitable
  * for comparing objects and nested structures, but has higher computational cost.
  * For large arrays with primitive values only, a Set-based approach would be more efficient.
- * @complexity O(n*m) where n is the length of arr1 and m is the length of arr2
+ * @complexity Time: O(n*m), Space: O(n) - Where n, m are arr1, arr2 lengths
  */
 export function arrayDifference<T>(arr1: T[], arr2: T[]): T[] {
   return arr1.filter((item1) => !arr2.some((item2) => deepEqual(item1, item2)));

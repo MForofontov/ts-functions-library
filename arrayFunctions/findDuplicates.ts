@@ -28,7 +28,7 @@ import { deepEqual } from '../objectFunctions/deepEqual';
  * which makes it suitable for finding duplicates of complex objects and nested structures.
  * Each duplicate is included exactly once in the result, regardless of how many times it appears.
  *
- * @complexity O(n²) where n is the length of the input array, due to the nested array searches
+ * @complexity Time: O(n²), Space: O(n) - Where n is array length, due to the nested array searches
  */
 export function findDuplicates<T>(arr: T[]): T[] {
   const duplicates: T[] = [];

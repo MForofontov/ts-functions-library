@@ -25,7 +25,7 @@ import { sumArrayElements } from '../../../arrayFunctions/sumArrayElements';
  * @note This function delegates to sumArrayElements for the summation,
  * then divides by the array length to get the average.
  *
- * @complexity O(n) where n is the length of the input array
+ * @complexity Time: O(n), Space: O(1) - Where n is array length
  */
 export function calculateAverage(arr: number[]): number {
   // Get the total sum of the array

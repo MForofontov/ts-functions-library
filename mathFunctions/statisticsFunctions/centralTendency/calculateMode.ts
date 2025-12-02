@@ -26,7 +26,7 @@
  * @note The function returns multiple values when there are multiple modes.
  * The returned array is always sorted in ascending numerical order.
  *
- * @complexity O(n) where n is the length of the input array
+ * @complexity Time: O(n), Space: O(n) - Where n is array length
  */
 export function calculateMode(arr: number[]): number[] {
   const frequency: { [key: string]: number } = {};

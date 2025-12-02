@@ -27,7 +27,7 @@ import { deepEqual } from '../objectFunctions/deepEqual';
  * which makes it suitable for removing duplicates from arrays with complex objects
  * and nested structures. The original order is preserved for the first occurrence of each value.
  *
- * @complexity O(n²) where n is the length of the input array, due to the some() method with deep equality checks
+ * @complexity Time: O(n²), Space: O(n) - Where n is array length
  */
 export function removeDuplicates<T>(arr: T[]): T[] {
   const uniqueItems: T[] = [];

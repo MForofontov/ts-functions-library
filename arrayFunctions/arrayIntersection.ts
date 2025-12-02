@@ -28,7 +28,7 @@ import { deepEqual } from '../objectFunctions/deepEqual';
  * which has O(n*m) complexity. For arrays containing only primitive values,
  * a Set-based approach would be more efficient.
  *
- * @complexity O(n*m) where n is the length of arr1 and m is the length of arr2
+ * @complexity Time: O(n*m), Space: O(n) - Where n, m are arr1, arr2 lengths
  */
 export function arrayIntersection<T>(arr1: T[], arr2: T[]): T[] {
   // Validate input

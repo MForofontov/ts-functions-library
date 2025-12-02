@@ -24,7 +24,7 @@
  * @note The function uses Math.min and Math.max with the spread operator,
  * which may cause stack overflow for very large arrays.
  *
- * @complexity O(n) where n is the length of the input array
+ * @complexity Time: O(n), Space: O(1) - Where n is array length
  */
 export function calculateRange(arr: number[]): number {
   if (arr.length === 0) {

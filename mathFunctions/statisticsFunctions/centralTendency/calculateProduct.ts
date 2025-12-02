@@ -24,7 +24,7 @@
  * An empty array will return 1 (the multiplicative identity).
  * Be cautious with large arrays as the product can quickly exceed Number.MAX_SAFE_INTEGER.
  *
- * @complexity O(n) where n is the length of the input array
+ * @complexity Time: O(n), Space: O(1) - Where n is array length
  */
 export function calculateProduct(arr: number[]): number {
   return arr.reduce((product, num) => product * num, 1);

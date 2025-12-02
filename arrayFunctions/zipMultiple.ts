@@ -34,7 +34,7 @@
  * Elements from longer arrays that don't have corresponding elements in the
  * shortest array will be ignored.
  *
- * @complexity O(n*m) where n is the length of the shortest array and m is the number of arrays
+ * @complexity Time: O(n*m), Space: O(n*m) - Where n is shortest array, m is array count
  */
 type ZippedTuple<T extends unknown[][]> = { [K in keyof T]: T[K][number] };
 
