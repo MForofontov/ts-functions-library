@@ -25,7 +25,6 @@ export function fromDotNotation(
 
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      // eslint-disable-next-line no-control-regex -- Using \u0000 as temporary placeholder for escaped dots
       const parts = key
         .replace(/\\\./g, '\u0000') // Temporarily replace escaped dots
         .replace(/\[(\d+)\]/g, '.$1') // Convert array indices to dot notation
