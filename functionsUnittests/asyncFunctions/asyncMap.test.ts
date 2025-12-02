@@ -172,7 +172,8 @@ describe('asyncMap', () => {
     // Arrange
     const validArray = [1, 2, 3];
     const validFn = jest.fn().mockResolvedValue('test');
-    const invalidConcurrency = [null, undefined, {}, true, 'string', [], NaN];
+    // Note: undefined is excluded as it's a valid value (optional parameter)
+    const invalidConcurrency = [null, {}, true, 'string', [], NaN];
 
     // Act & Assert
     invalidConcurrency.forEach((concurrency) => {
