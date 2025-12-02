@@ -42,9 +42,18 @@ export interface ParsedURL {
  * parseURL('http://example.com/api/users');
  * // Returns: { protocol: 'http:', hostname: 'example.com', port: '', ... }
  *
- * @note Uses the built-in URL API for robust parsing.
+ * @example
+ * // URL with query parameters and hash
+ * parseURL('https://api.example.com/search?q=test&limit=10#results');
+ * // Returns: { search: 'q=test&limit=10', hash: 'results', ... }
  *
- * @complexity Time: O(n), Space: O(n)
+ * @note Uses the built-in URL API for robust parsing.
+ * @note Port is an empty string if not specified in the URL.
+ * @note Query string does not include the leading '?' character.
+ * @note Hash fragment does not include the leading '#' character.
+ * @note Throws an error for malformed URLs (e.g., missing protocol).
+ *
+ * @complexity Time: O(n), Space: O(n) - Where n is URL length
  */
 export function parseURL(url: string): ParsedURL {
   // Input validation
