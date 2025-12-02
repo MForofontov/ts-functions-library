@@ -48,7 +48,7 @@
 export function asyncMap<T, R>(
   array: T[],
   asyncFn: (item: T, index: number) => Promise<R>,
-  concurrency: number = 5,
+  concurrency?: number,
 ): Promise<R[]> {
   if (!Array.isArray(array)) {
     throw new TypeError(`array must be an array, got ${typeof array}`);
@@ -58,18 +58,21 @@ export function asyncMap<T, R>(
     throw new TypeError(`asyncFn must be a function, got ${typeof asyncFn}`);
   }
 
-  // Always validate concurrency if explicitly provided
+  // Validate concurrency if provided
   if (
-    arguments.length > 2 &&
-    (typeof arguments[2] !== 'number' || isNaN(arguments[2]))
+    concurrency !== undefined &&
+    (typeof concurrency !== 'number' || isNaN(concurrency))
   ) {
     throw new TypeError(
-      `concurrency must be a number, got ${typeof arguments[2]}`,
+      `concurrency must be a number, got ${typeof concurrency}`,
     );
   }
 
-  if (concurrency < 1) {
-    throw new Error(`concurrency must be at least 1, got ${concurrency}`);
+  // Default concurrency
+  const actualConcurrency = concurrency ?? 5;
+
+  if (actualConcurrency < 1) {
+    throw new Error(`concurrency must be at least 1, got ${actualConcurrency}`);
   }
 
   // After validation, return the async implementation
@@ -79,7 +82,7 @@ export function asyncMap<T, R>(
     }
 
     // For small arrays or high concurrency, just use Promise.all
-    if (array.length <= concurrency) {
+    if (array.length <= actualConcurrency) {
       return Promise.all(array.map((item, index) => asyncFn(item, index)));
     }
 
@@ -87,8 +90,8 @@ export function asyncMap<T, R>(
     const results: R[] = new Array<R>(array.length);
 
     // Process items in batches
-    for (let i = 0; i < array.length; i += concurrency) {
-      const batch = array.slice(i, i + concurrency);
+    for (let i = 0; i < array.length; i += actualConcurrency) {
+      const batch = array.slice(i, i + actualConcurrency);
       const batchPromises = batch.map(async (item, batchIndex) => {
         const actualIndex = i + batchIndex;
         const result = await asyncFn(item, actualIndex);

@@ -39,24 +39,27 @@
  */
 export function asyncParallel<T>(
   tasks: Array<() => Promise<T>>,
-  concurrency: number = 5,
+  concurrency?: number,
 ): Promise<T[]> {
   if (!Array.isArray(tasks)) {
     throw new TypeError(`tasks must be an array, got ${typeof tasks}`);
   }
 
-  // Always validate concurrency if explicitly provided
+  // Validate concurrency if provided
   if (
-    arguments.length > 1 &&
-    (typeof arguments[1] !== 'number' || isNaN(arguments[1]))
+    concurrency !== undefined &&
+    (typeof concurrency !== 'number' || isNaN(concurrency))
   ) {
     throw new TypeError(
-      `concurrency must be a number, got ${typeof arguments[1]}`,
+      `concurrency must be a number, got ${typeof concurrency}`,
     );
   }
 
-  if (concurrency < 1) {
-    throw new Error(`concurrency must be at least 1, got ${concurrency}`);
+  // Default concurrency
+  const actualConcurrency = concurrency ?? 5;
+
+  if (actualConcurrency < 1) {
+    throw new Error(`concurrency must be at least 1, got ${actualConcurrency}`);
   }
 
   // Validate all tasks are functions
@@ -78,8 +81,8 @@ export function asyncParallel<T>(
     const results: T[] = new Array<T>(tasks.length);
 
     // Process tasks in batches
-    for (let i = 0; i < tasks.length; i += concurrency) {
-      const batch = tasks.slice(i, i + concurrency);
+    for (let i = 0; i < tasks.length; i += actualConcurrency) {
+      const batch = tasks.slice(i, i + actualConcurrency);
       const batchPromises = batch.map(async (task, batchIndex) => {
         const actualIndex = i + batchIndex;
         const result = await task();

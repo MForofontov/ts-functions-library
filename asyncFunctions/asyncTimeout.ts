@@ -42,8 +42,9 @@
 export function asyncTimeout<T>(
   promise: Promise<T>,
   timeoutMs: number,
-  timeoutMessage: string = 'Operation timed out',
+  timeoutMessage?: string,
 ): Promise<T> {
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises
   if (!promise || typeof promise.then !== 'function') {
     throw new TypeError(`promise must be a Promise, got ${typeof promise}`);
   }
@@ -56,17 +57,20 @@ export function asyncTimeout<T>(
     throw new Error(`timeoutMs must be non-negative, got ${timeoutMs}`);
   }
 
-  // Always validate timeoutMessage if explicitly provided
-  if (arguments.length > 2 && typeof arguments[2] !== 'string') {
+  // Validate timeoutMessage if provided
+  if (timeoutMessage !== undefined && typeof timeoutMessage !== 'string') {
     throw new Error(
-      `timeoutMessage must be a string, got ${typeof arguments[2]}`,
+      `timeoutMessage must be a string, got ${typeof timeoutMessage}`,
     );
   }
+
+  // Default message
+  const actualMessage = timeoutMessage ?? 'Operation timed out';
 
   return new Promise<T>((resolve, reject) => {
     // Set up timeout
     const timeoutId = setTimeout(() => {
-      reject(new Error(timeoutMessage));
+      reject(new Error(actualMessage));
     }, timeoutMs);
 
     // Wait for original promise
@@ -75,8 +79,9 @@ export function asyncTimeout<T>(
         clearTimeout(timeoutId);
         resolve(result);
       })
-      .catch((error) => {
+      .catch((error: unknown) => {
         clearTimeout(timeoutId);
+        // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
         reject(error);
       });
   });
