@@ -4,7 +4,6 @@
  * @param n - The number to round.
  * @returns The nearest integer to n (rounds half up for .5).
  *
- * @throws {TypeError} If n is not a number.
  * @throws {Error} If n is NaN.
  *
  * @example

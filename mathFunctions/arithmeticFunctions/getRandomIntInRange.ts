@@ -5,10 +5,7 @@
  * @param max - The maximum value (inclusive, must be an integer).
  * @returns A random integer between min and max (inclusive).
  *
- * @throws {TypeError} If min or max is not a number.
- * @throws {Error} If min or max is NaN.
- * @throws {Error} If min or max is not an integer.
- * @throws {Error} If min is greater than max.
+ * @throws {Error} If min or max is not a valid integer or if min is greater than max.
  *
  * @example
  * // Basic usage

@@ -4,9 +4,6 @@
  * @param rgb - The object containing red (r), green (g), and blue (b) values (0-255).
  * @returns The hexadecimal color string in the format #RRGGBB (lowercase).
  *
- * @throws {TypeError} If rgb is not an object or is missing r, g, or b properties.
- * @throws {TypeError} If r, g, or b values are not numbers.
- *
  * @example
  * // Basic usage
  * rgbToHex({ r: 255, g: 87, b: 51 }); // '#ff5733'

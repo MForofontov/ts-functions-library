@@ -5,10 +5,6 @@
  * @param part - The part value to calculate the percentage of (numerator).
  * @returns The percentage of the part with respect to the total (unrounded).
  *
- * @throws {TypeError} If total or part is not a number.
- * @throws {Error} If total or part is NaN.
- * @throws {Error} If total is zero (division by zero).
- *
  * @example
  * // Basic usage
  * calculatePercentage(200, 50); // 25 (50 is 25% of 200)
@@ -31,8 +27,8 @@
  * calculatePercentage(-100, 50); // -50 (negative total)
  *
  * @note Formula: (part / total) * 100
+ * @note A zero total returns Infinity; NaN inputs propagate to the result.
  * @note The result is not rounded; use roundToDecimals() if rounding is needed.
- * @note Dividing by zero will throw an error.
  * @note Can return values > 100% when part is greater than total.
  * @note Can handle negative numbers, resulting in negative percentages.
  *

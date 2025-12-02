@@ -4,9 +4,6 @@
  * @param n - The number to check (must be non-negative).
  * @returns True if the number is a perfect square, false otherwise.
  *
- * @throws {TypeError} If n is not a number.
- * @throws {Error} If n is NaN or negative.
- *
  * @example
  * // Perfect squares
  * isPerfectSquare(16); // true (4²)

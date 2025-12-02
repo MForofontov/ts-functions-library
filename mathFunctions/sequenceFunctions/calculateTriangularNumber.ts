@@ -4,10 +4,7 @@
  * @param n - The position in the triangular number sequence (must be non-negative integer).
  * @returns The nth triangular number (sum of integers from 1 to n).
  *
- * @throws {TypeError} If n is not a number.
- * @throws {Error} If n is NaN.
- * @throws {Error} If n is not an integer.
- * @throws {Error} If n is negative.
+ * @throws {Error} If n is not a non-negative integer.
  *
  * @example
  * // Triangular number sequence: 0, 1, 3, 6, 10, 15, 21, 28...

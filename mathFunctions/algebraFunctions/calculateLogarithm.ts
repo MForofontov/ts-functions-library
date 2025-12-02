@@ -5,10 +5,7 @@
  * @param base - The base of the logarithm (default: Math.E for natural logarithm).
  * @returns The logarithm of n with the specified base.
  *
- * @throws {TypeError} If n or base is not a number.
- * @throws {Error} If n or base is NaN.
- * @throws {Error} If n is not positive (n <= 0).
- * @throws {Error} If base is not positive or equals 1.
+ * @throws {Error} If n or base is not a valid number, if n is not positive, or if base is not positive or equals 1.
  *
  * @example
  * // Common logarithm (base 10)

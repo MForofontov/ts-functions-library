@@ -4,7 +4,6 @@
  * @param n - The number to find the absolute value of.
  * @returns The absolute value of the number (always non-negative).
  *
- * @throws {TypeError} If n is not a number.
  * @throws {Error} If n is NaN.
  *
  * @example

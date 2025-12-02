@@ -5,9 +5,7 @@
  * @param height - The height of the triangle (perpendicular to the base, must be non-negative).
  * @returns The area of the triangle in square units.
  *
- * @throws {TypeError} If base or height is not a number.
- * @throws {Error} If base or height is NaN.
- * @throws {Error} If base or height is negative.
+ * @throws {Error} If base or height is not a valid, non-negative number.
  *
  * @example
  * // Right triangle
