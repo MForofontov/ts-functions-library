@@ -52,6 +52,16 @@ export function throttle<Args extends unknown[]>(
   func: (...args: Args) => void,
   limit: number,
 ): (...args: Args) => void {
+  if (typeof func !== 'function') {
+    throw new TypeError(`func must be a function, got ${typeof func}`);
+  }
+  if (typeof limit !== 'number') {
+    throw new TypeError(`limit must be a number, got ${typeof limit}`);
+  }
+  if (Number.isNaN(limit) || limit < 0) {
+    throw new Error('limit must be a non-negative number');
+  }
+
   let lastFunc: NodeJS.Timeout | null;
   let lastRan: number | null = null;
   return function (this: unknown, ...args: Args) {
