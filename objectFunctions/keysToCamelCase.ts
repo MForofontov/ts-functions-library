@@ -4,15 +4,36 @@
  *
  * @param obj - The object or array whose keys should be converted.
  * @returns A new object or array with all keys converted to camelCase.
- * @throws When input is not an object, array, or is null.
+ *
+ * @throws {TypeError} If input is not an object, array, or is null.
  *
  * @example
- * // Basic key conversion
+ * // Basic snake_case to camelCase
  * keysToCamelCase({ 'first_name': 'John', 'last_name': 'Doe' });
- * // => { firstName: 'John', lastName: 'Doe' }
+ * // { firstName: 'John', lastName: 'Doe' }
  *
- * @note Converts both snake_case and kebab-case to camelCase.
- * @note Creates a new object/array and does not modify the original.
+ * @example
+ * // Kebab-case to camelCase
+ * keysToCamelCase({ 'user-id': 123, 'is-active': true });
+ * // { userId: 123, isActive: true }
+ *
+ * @example
+ * // Nested objects
+ * keysToCamelCase({ user_profile: { first_name: 'Alice', home_address: { street_name: 'Main' } } });
+ * // { userProfile: { firstName: 'Alice', homeAddress: { streetName: 'Main' } } }
+ *
+ * @example
+ * // Arrays with objects
+ * keysToCamelCase({ user_list: [{ first_name: 'Bob' }, { first_name: 'Carol' }] });
+ * // { userList: [{ firstName: 'Bob' }, { firstName: 'Carol' }] }
+ *
+ * @note Converts both snake_case (using underscores) and kebab-case (using hyphens) to camelCase.
+ * @note Creates a new object/array and does not modify the original input.
+ * @note Recursively processes nested objects and arrays at any depth.
+ * @note Non-object values (strings, numbers, etc.) are preserved as-is.
+ * @note Useful for converting API responses from backend conventions to JavaScript conventions.
+ *
+ * @complexity Time: O(n), Space: O(n) where n is the total number of keys in all nested objects
  */
 export function keysToCamelCase(
   obj: Record<string, unknown> | unknown[],

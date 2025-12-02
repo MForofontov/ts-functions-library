@@ -4,15 +4,36 @@
  *
  * @param obj - The object or array whose keys should be converted.
  * @returns A new object or array with all keys converted to snake_case.
- * @throws When input is not an object, array, or is null.
+ *
+ * @throws {TypeError} If input is not an object, array, or is null.
  *
  * @example
- * // Basic key conversion
+ * // Basic camelCase to snake_case
  * keysToSnakeCase({ firstName: 'John', lastName: 'Doe' });
- * // => { first_name: 'John', last_name: 'Doe' }
+ * // { first_name: 'John', last_name: 'Doe' }
  *
- * @note Creates a new object/array and does not modify the original.
- * @note Treats consecutive capital letters as a single word when converting.
+ * @example
+ * // With acronyms and multiple capitals
+ * keysToSnakeCase({ userId: 123, isHTTPSEnabled: true });
+ * // { user_id: 123, is_https_enabled: true }
+ *
+ * @example
+ * // Nested objects
+ * keysToSnakeCase({ userProfile: { firstName: 'Alice', homeAddress: { streetName: 'Main' } } });
+ * // { user_profile: { first_name: 'Alice', home_address: { street_name: 'Main' } } }
+ *
+ * @example
+ * // Arrays with objects
+ * keysToSnakeCase({ userList: [{ firstName: 'Bob' }, { firstName: 'Carol' }] });
+ * // { user_list: [{ first_name: 'Bob' }, { first_name: 'Carol' }] }
+ *
+ * @note Creates a new object/array and does not modify the original input.
+ * @note Treats consecutive capital letters as a single word (HTTPSEnabled → https_enabled).
+ * @note Recursively processes nested objects and arrays at any depth.
+ * @note Non-object values (strings, numbers, etc.) are preserved as-is.
+ * @note Useful for converting JavaScript objects to backend/database naming conventions.
+ *
+ * @complexity Time: O(n), Space: O(n) where n is the total number of keys in all nested objects
  */
 export function keysToSnakeCase(
   obj: Record<string, unknown> | unknown[],
