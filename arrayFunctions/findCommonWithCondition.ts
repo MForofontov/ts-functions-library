@@ -29,7 +29,7 @@
  * JSON.stringify has limitations with circular references and non-serializable values
  * like functions, undefined, or symbols.
  *
- * @complexity O(n*m) where n and m are the lengths of arr1 and arr2 respectively
+ * @complexity Time: O(n*m), Space: O(n) - Where n, m are arr1, arr2 lengths
  */
 export function findCommonWithCondition<T>(
   arr1: T[],

@@ -3,15 +3,42 @@
  *
  * @param a - The first value to compare.
  * @param b - The second value to compare.
- * @returns `true` if the values are deeply equal, `false` otherwise.
+ * @returns True if the values are deeply equal, false otherwise.
+ *
+ * @example
+ * // Primitive comparisons
+ * deepEqual(42, 42); // true
+ * deepEqual('hello', 'hello'); // true
+ * deepEqual(NaN, NaN); // true (special NaN handling)
  *
  * @example
  * // Objects with nested structures
- * deepEqual({a: {b: 1}}, {a: {b: 1}}); // => true
- * deepEqual({a: {b: 1}}, {a: {b: 2}}); // => false
+ * deepEqual({a: {b: 1}}, {a: {b: 1}}); // true
+ * deepEqual({a: {b: 1}}, {a: {b: 2}}); // false
  *
- * @note Handles primitive types, objects, arrays, NaN, Dates, and RegExp objects.
- * Does not support Maps, Sets, or detecting circular references.
+ * @example
+ * // Array comparisons
+ * deepEqual([1, 2, [3, 4]], [1, 2, [3, 4]]); // true
+ * deepEqual([1, 2, 3], [1, 2]); // false (different lengths)
+ *
+ * @example
+ * // Date objects
+ * deepEqual(new Date('2025-01-01'), new Date('2025-01-01')); // true
+ * deepEqual(new Date('2025-01-01'), new Date('2025-01-02')); // false
+ *
+ * @example
+ * // RegExp objects
+ * deepEqual(/test/gi, /test/gi); // true
+ * deepEqual(/test/gi, /test/i); // false (different flags)
+ *
+ * @note Handles primitives, objects, arrays, NaN, Date, and RegExp objects.
+ * @note NaN is considered equal to NaN (unlike === comparison).
+ * @note Compares object properties recursively.
+ * @note Arrays must have same length and elements in same order.
+ * @note Does NOT support Map, Set, or circular references.
+ * @note Property order doesn't matter for objects.
+ *
+ * @complexity Time: O(n) where n is total number of values across both structures, Space: O(d) where d is max depth (recursion stack)
  */
 export function deepEqual(a: unknown, b: unknown): boolean {
   // Special case for NaN

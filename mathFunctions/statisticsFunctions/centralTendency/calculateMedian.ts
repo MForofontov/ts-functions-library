@@ -25,7 +25,7 @@
  * @note The function filters out NaN and non-finite numbers before calculation.
  * If the array contains no valid numbers, it returns NaN.
  *
- * @complexity O(n log n) where n is the length of the input array (due to sorting)
+ * @complexity Time: O(n log n), Space: O(n) - Where n is array length (due to sorting)
  */
 export function calculateMedian(arr: number[]): number {
   const filtered = arr.filter((num) => isFinite(num) && !isNaN(num));

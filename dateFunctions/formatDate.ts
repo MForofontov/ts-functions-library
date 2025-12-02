@@ -1,20 +1,41 @@
 /**
- * Formats a `Date` object into a human-readable string.
+ * Formats a `Date` object into a human-readable string using specified tokens.
  *
  * @param date - The `Date` object to format.
- * @param format - The format string (e.g., 'YYYY-MM-DD', 'MM/DD/YYYY').
+ * @param format - The format string using tokens (YYYY, MM, DD, HH, mm, ss).
  * @returns The formatted date string.
- * @throws Will throw an error if the date is invalid or if the format string contains unsupported tokens.
+ *
+ * @throws {Error} If the date is invalid (NaN timestamp).
+ * @throws {Error} If the format string contains unsupported tokens.
  *
  * @example
- * // Basic usage
- * const date = new Date();
- * formatDate(date, 'YYYY-MM-DD HH:mm:ss'); // e.g., '2024-09-19 15:45:30'
+ * // Basic date formatting
+ * const date = new Date('2024-09-19T15:45:30');
+ * formatDate(date, 'YYYY-MM-DD'); // '2024-09-19'
+ * formatDate(date, 'MM/DD/YYYY'); // '09/19/2024'
  *
- * @note Supports tokens YYYY, MM, DD, HH, mm and ss.
- * Throws an error for unknown tokens.
+ * @example
+ * // Date and time formatting
+ * formatDate(date, 'YYYY-MM-DD HH:mm:ss'); // '2024-09-19 15:45:30'
+ * formatDate(date, 'DD/MM/YYYY HH:mm'); // '19/09/2024 15:45'
  *
- * @complexity O(n) where n is the length of the format string
+ * @example
+ * // Custom separators
+ * formatDate(date, 'YYYY.MM.DD'); // '2024.09.19'
+ * formatDate(date, 'YYYY/MM/DD - HH:mm'); // '2024/09/19 - 15:45'
+ *
+ * @example
+ * // Edge cases
+ * formatDate(new Date('2000-01-01'), 'YYYY-MM-DD'); // '2000-01-01'
+ * formatDate(new Date('2024-12-31T23:59:59'), 'HH:mm:ss'); // '23:59:59'
+ *
+ * @note Supported tokens: YYYY (year), MM (month), DD (day), HH (hours), mm (minutes), ss (seconds).
+ * @note All numeric tokens are zero-padded (e.g., month 1 becomes "01").
+ * @note Throws an error for unknown tokens to prevent formatting mistakes.
+ * @note Negative years are formatted with leading minus and zero-padded to 6 digits.
+ * @note Months are 1-indexed in the output (January = 01, December = 12).
+ *
+ * @complexity Time: O(n), Space: O(n) where n is the length of the format string
  */
 export function formatDate(date: Date, format: string): string {
   if (isNaN(date.getTime())) {

@@ -24,7 +24,7 @@
  * @note This implementation uses recursion, which may cause stack overflow errors
  * for extremely deep nested arrays. The function handles arrays of any depth.
  *
- * @complexity O(n) where n is the total number of elements in all nested arrays
+ * @complexity Time: O(n), Space: O(n) - Where n is total nested elements
  */
 export type Nested<T> = T | Array<Nested<T>>;
 
@@ -32,7 +32,7 @@ export function flattenArray<T>(arr: Array<Nested<T>>): T[] {
   return arr.reduce<T[]>(
     (acc, val) =>
       acc.concat(
-        Array.isArray(val) ? flattenArray(val as Array<Nested<T>>) : (val as T),
+        Array.isArray(val) ? flattenArray(val as Array<Nested<T>>) : val,
       ),
     [] as T[],
   );

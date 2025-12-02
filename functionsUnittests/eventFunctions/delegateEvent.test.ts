@@ -225,7 +225,7 @@ describe('delegateEvent', () => {
     button.click();
 
     // Assert
-    const [event, target] = handler.mock.calls[0];
+    const [event, target] = handler.mock.calls[0] as [MouseEvent, Element];
     expect(event).toBeInstanceOf(MouseEvent);
     expect(event.type).toBe('click');
     expect(target).toBe(button);
@@ -278,7 +278,7 @@ describe('delegateEvent', () => {
 
     // Assert
     expect(handler).toHaveBeenCalledTimes(1);
-    const [, target] = handler.mock.calls[0];
+    const [, target] = handler.mock.calls[0] as [MouseEvent, Element];
     expect(target).toBe(container.querySelector('.btn'));
   });
 

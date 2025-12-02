@@ -3,21 +3,53 @@
  *
  * @param obj - The flat object with dot-notation keys.
  * @returns A nested object structure representing the original hierarchy.
- * @throws When input is not a non-null object.
+ *
+ * @throws {TypeError} If obj is not an object or is null.
  *
  * @example
  * // Basic dot notation
  * unflattenObject({ 'a.b.c': 1, 'a.b.d': 2, 'e': 3 });
- * // => { a: { b: { c: 1, d: 2 } }, e: 3 }
+ * // { a: { b: { c: 1, d: 2 } }, e: 3 }
  *
  * @example
  * // With nested paths
  * unflattenObject({ 'user.profile.name': 'John', 'user.profile.age': 30, 'user.active': true });
- * // => { user: { profile: { name: 'John', age: 30 }, active: true } }
+ * // { user: { profile: { name: 'John', age: 30 }, active: true } }
  *
- * @note Only handles simple dot notation and doesn't support array indices in square brackets.
+ * @example
+ * // Array indices in square brackets
+ * unflattenObject({ 'items[0]': 'A', 'items[1]': 'B', 'items[2]': 'C' });
+ * // { items: ['A', 'B', 'C'] }
+ *
+ * @example
+ * // Mixed arrays and objects
+ * unflattenObject({ 'users[0].name': 'Alice', 'users[1].name': 'Bob', 'count': 2 });
+ * // { users: [{ name: 'Alice' }, { name: 'Bob' }], count: 2 }
+ *
+ * @example
+ * // Real-world: Parse flattened database query result
+ * const flatResult = {
+ *   'order.id': 123,
+ *   'order.customer.name': 'John Doe',
+ *   'order.items[0].product': 'Laptop',
+ *   'order.items[0].quantity': 1
+ * };
+ * unflattenObject(flatResult);
+ * // {
+ * //   order: {
+ * //     id: 123,
+ * //     customer: { name: 'John Doe' },
+ * //     items: [{ product: 'Laptop', quantity: 1 }]
+ * //   }
+ * // }
+ *
+ * @note Only handles simple dot notation and supports array indices in square brackets.
  * @note If properties conflict during reconstruction, the last one processed will override previous values.
  * @note Doesn't handle escaped dots in property names.
+ * @note Similar to fromDotNotation but simpler implementation.
+ * @note Useful for expanding query results and configuration data.
+ *
+ * @complexity Time: O(n * d), Space: O(n) - Where n is keys, d is average depth
  */
 export function unflattenObject(
   obj: Record<string, unknown>,
@@ -42,7 +74,7 @@ export function unflattenObject(
           if (!Array.isArray(current)) {
             current = [];
           }
-          (current as unknown[])[Number(part)] = value;
+          current[Number(part)] = value;
         } else {
           (current as Record<string, unknown>)[part] = value;
         }
@@ -50,7 +82,7 @@ export function unflattenObject(
         if (!Array.isArray(current)) {
           current = [];
         }
-        const arr = current as unknown[];
+        const arr = current;
         if (!arr[Number(part)] || typeof arr[Number(part)] !== 'object') {
           arr[Number(part)] = nextIsIndex ? [] : {};
         }

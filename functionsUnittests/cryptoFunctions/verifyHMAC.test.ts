@@ -115,14 +115,12 @@ describe('verifyHMAC', () => {
   // Test case 13: Throw error for algorithm type
   it('13. should throw TypeError when algorithm is not a string', () => {
     const hmac = generateHMAC(testData, testKey, 'sha256');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    expect(() => verifyHMAC(testData, testKey, hmac, 123 as any)).toThrow(
-      TypeError,
-    );
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    expect(() => verifyHMAC(testData, testKey, hmac, 123 as any)).toThrow(
-      'algorithm must be a string',
-    );
+    expect(() =>
+      verifyHMAC(testData, testKey, hmac, 123 as unknown as 'sha256'),
+    ).toThrow(TypeError);
+    expect(() =>
+      verifyHMAC(testData, testKey, hmac, 123 as unknown as 'sha256'),
+    ).toThrow('algorithm must be a string');
   });
 
   // Test case 14: Throw error for empty secret
@@ -148,11 +146,21 @@ describe('verifyHMAC', () => {
     const invalidAlgorithm = 'md5';
 
     expect(() =>
-      verifyHMAC(testData, testKey, hmac, invalidAlgorithm as any),
+      verifyHMAC(
+        testData,
+        testKey,
+        hmac,
+        invalidAlgorithm as unknown as 'sha256',
+      ),
     ).toThrow(Error);
 
     expect(() =>
-      verifyHMAC(testData, testKey, hmac, invalidAlgorithm as any),
+      verifyHMAC(
+        testData,
+        testKey,
+        hmac,
+        invalidAlgorithm as unknown as 'sha256',
+      ),
     ).toThrow('algorithm must be one of');
   });
 

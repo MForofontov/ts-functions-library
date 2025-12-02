@@ -30,7 +30,7 @@ import { deepEqual } from '../objectFunctions/deepEqual';
  * which makes it suitable for merging arrays with complex objects and nested structures.
  * Elements from the first array are added first, followed by unique elements from the second array.
  *
- * @complexity O(n*m) where n and m are the lengths of the input arrays
+ * @complexity Time: O(n*m), Space: O(n) - Where n, m are input array lengths
  */
 export function mergeUnique<T>(arr1: T[], arr2: T[]): T[] {
   const result: T[] = [];

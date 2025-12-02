@@ -125,7 +125,8 @@ describe('asyncTimeout', () => {
   it('9. should throw Error for invalid timeout message', () => {
     // Arrange
     const validPromise = Promise.resolve('test');
-    const invalidMessages = [123, null, undefined, {}, true, []];
+    // Note: undefined is excluded as it's a valid value (optional parameter)
+    const invalidMessages = [123, null, {}, true, []];
 
     // Act & Assert
     invalidMessages.forEach((message) => {

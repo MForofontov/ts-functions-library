@@ -22,7 +22,7 @@
  * for finding all primes up to a moderate limit. For very large limits, memory usage
  * may become a concern as the sieve requires O(n) space.
  *
- * @complexity O(n log log n) where n is the input limit
+ * @complexity Time: O(n log log n), Space: O(n) - Where n is the limit
  */
 export function generatePrimes(limit: number): number[] {
   if (!Number.isInteger(limit)) {

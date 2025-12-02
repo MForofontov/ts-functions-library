@@ -231,7 +231,7 @@ describe('waitForEvent', () => {
 
     // Assert
     expect(event).toBeInstanceOf(Event);
-    expect((event as Event).type).toBe('input');
+    expect(event.type).toBe('input');
 
     // Cleanup
     document.body.removeChild(input);
@@ -322,7 +322,7 @@ describe('waitForEvent', () => {
 
     // Assert
     expect(event).toBeInstanceOf(Event);
-    expect((event as Event).type).toBe('submit');
+    expect(event.type).toBe('submit');
 
     // Cleanup
     document.body.removeChild(form);

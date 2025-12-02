@@ -284,11 +284,17 @@ describe('throttleEvent', () => {
     div.addEventListener('mousemove', throttledMove);
 
     // Act - Simulate rapid mouse movement (within throttle window)
-    div.dispatchEvent(new MouseEvent('mousemove', { clientX: 10, clientY: 10 }));
+    div.dispatchEvent(
+      new MouseEvent('mousemove', { clientX: 10, clientY: 10 }),
+    );
     jest.advanceTimersByTime(30);
-    div.dispatchEvent(new MouseEvent('mousemove', { clientX: 20, clientY: 20 }));
+    div.dispatchEvent(
+      new MouseEvent('mousemove', { clientX: 20, clientY: 20 }),
+    );
     jest.advanceTimersByTime(30);
-    div.dispatchEvent(new MouseEvent('mousemove', { clientX: 30, clientY: 30 }));
+    div.dispatchEvent(
+      new MouseEvent('mousemove', { clientX: 30, clientY: 30 }),
+    );
 
     // Assert - First call immediate (leading edge), others throttled
     expect(handler).toHaveBeenCalledTimes(1);

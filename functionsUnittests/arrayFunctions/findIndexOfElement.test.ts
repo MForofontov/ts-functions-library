@@ -73,7 +73,7 @@ describe('findIndexOfElement', () => {
   it('11. should handle arrays containing functions', () => {
     const func1: (x: number) => number = (x: number) => x + 1;
     const func2: (x: number) => number = (x: number) => x * 2;
-    const arr: Function[] = [func1, func2];
+    const arr: Array<(x: number) => number> = [func1, func2];
     expect(findIndexOfElement(arr, func2)).toBe(1);
   });
 
@@ -134,7 +134,7 @@ describe('findIndexOfElement', () => {
   it('18. should handle arrays containing nested functions', () => {
     const func1: () => () => number = () => () => 1;
     const func2: () => () => number = () => () => 2;
-    const arr: Function[] = [func1, func2];
+    const arr: Array<() => () => number> = [func1, func2];
     expect(findIndexOfElement(arr, func2)).toBe(1);
   });
 

@@ -27,7 +27,7 @@
  * control over the flattening process. For complete flattening regardless of depth,
  * see the flattenArray function instead.
  *
- * @complexity O(n) where n is the total number of elements in all nested arrays
+ * @complexity Time: O(n), Space: O(n) - Where n is total nested elements
  */
 type Nested<T> = T | Array<Nested<T>>;
 
@@ -41,7 +41,7 @@ export function flattenArrayDepth<T>(
           acc.concat(
             Array.isArray(val)
               ? flattenArrayDepth(val as Array<Nested<T>>, depth - 1)
-              : (val as T),
+              : val,
           ),
         [] as T[],
       )

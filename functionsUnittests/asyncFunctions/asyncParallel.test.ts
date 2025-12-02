@@ -145,7 +145,8 @@ describe('asyncParallel', () => {
   it('8. should throw TypeError for invalid concurrency', () => {
     // Arrange
     const validTasks = [jest.fn().mockResolvedValue('test')];
-    const invalidConcurrency = [null, undefined, {}, true, 'string', [], NaN];
+    // Note: undefined is excluded as it's a valid value (optional parameter)
+    const invalidConcurrency = [null, {}, true, 'string', [], NaN];
 
     // Act & Assert
     invalidConcurrency.forEach((concurrency) => {

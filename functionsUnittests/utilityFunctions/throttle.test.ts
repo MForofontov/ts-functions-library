@@ -9,10 +9,10 @@ describe('throttle', () => {
       },
     };
 
-    const throttledIncrement = throttle(obj.increment, 20);
+    const throttledIncrement = throttle(obj.increment.bind(obj), 20);
 
-    throttledIncrement.call(obj);
-    throttledIncrement.call(obj);
+    throttledIncrement();
+    throttledIncrement();
 
     setTimeout(() => {
       expect(obj.count).toBe(2);

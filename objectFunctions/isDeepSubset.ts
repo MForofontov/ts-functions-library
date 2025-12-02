@@ -6,16 +6,46 @@
  * @param subset - The object to check if it's a subset.
  * @param obj - The target object to check against.
  * @returns True if all properties in subset exist with identical values in obj, false otherwise.
- * @throws When either input is not a non-null object.
+ *
+ * @throws {TypeError} If subset is not an object or is null.
+ * @throws {TypeError} If obj is not an object or is null.
  *
  * @example
  * // Basic subset check
- * isDeepSubset({ a: 1, b: 2 }, { a: 1, b: 2, c: 3 }); // => true
- * isDeepSubset({ a: 1, b: 3 }, { a: 1, b: 2, c: 3 }); // => false
+ * isDeepSubset({ a: 1, b: 2 }, { a: 1, b: 2, c: 3 }); // true
+ * isDeepSubset({ a: 1, b: 3 }, { a: 1, b: 2, c: 3 }); // false
+ *
+ * @example
+ * // Nested subset
+ * const subset = { user: { name: 'Alice' } };
+ * const obj = { user: { name: 'Alice', age: 30 }, active: true };
+ * isDeepSubset(subset, obj); // true
+ *
+ * @example
+ * // Not a subset - different nested value
+ * isDeepSubset(
+ *   { settings: { theme: 'dark' } },
+ *   { settings: { theme: 'light', lang: 'en' } }
+ * ); // false
+ *
+ * @example
+ * // Identical objects
+ * const same = { a: 1, b: 2 };
+ * isDeepSubset(same, same); // true
+ *
+ * @example
+ * // Real-world: Validate partial configuration
+ * const requiredSettings = { api: { timeout: 5000 } };
+ * const userConfig = { api: { timeout: 5000, retries: 3 }, debug: true };
+ * isDeepSubset(requiredSettings, userConfig); // true (required settings present)
  *
  * @note Uses strict equality (===) for comparing primitive values.
  * @note Recursively checks nested objects for subset relationship.
  * @note Does not handle array comparisons specially - arrays are treated as objects.
+ * @note Empty object {} is a subset of any object.
+ * @note Useful for configuration validation and partial matching.
+ *
+ * @complexity Time: O(n), Space: O(d) - Where n is subset properties, d is recursion depth
  */
 export function isDeepSubset<T extends Record<string, unknown>>(
   subset: T,

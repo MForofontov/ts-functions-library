@@ -141,12 +141,10 @@ describe('hashPassword', () => {
   // Test case 16: Throw error for invalid iterations type
   it('16. should throw TypeError when iterations is not a number', async () => {
     await expect(
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      hashPassword(testPassword, testSalt, 'invalid' as any),
+      hashPassword(testPassword, testSalt, 'invalid' as unknown as number),
     ).rejects.toThrow(TypeError);
     await expect(
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      hashPassword(testPassword, testSalt, 'invalid' as any),
+      hashPassword(testPassword, testSalt, 'invalid' as unknown as number),
     ).rejects.toThrow('iterations must be a number');
   });
 

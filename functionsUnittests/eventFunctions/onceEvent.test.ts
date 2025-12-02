@@ -123,10 +123,10 @@ describe('onceEvent', () => {
     expect(handler).toHaveBeenCalledTimes(1);
   });
 
-  // Test case 7: With undefined return
-  it('7. should handle undefined return value', () => {
+  // Test case 7: Preserves undefined return value
+  it('7. should preserve undefined return value', () => {
     // Arrange
-    const handler = jest.fn();
+    const handler = jest.fn<undefined, []>();
     const once = onceEvent(handler);
 
     // Act
@@ -346,8 +346,12 @@ describe('onceEvent', () => {
     form.addEventListener('submit', onceSubmit);
 
     // Act
-    form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
-    form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+    form.dispatchEvent(
+      new Event('submit', { bubbles: true, cancelable: true }),
+    );
+    form.dispatchEvent(
+      new Event('submit', { bubbles: true, cancelable: true }),
+    );
 
     // Assert
     expect(handler).toHaveBeenCalledTimes(1);

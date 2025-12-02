@@ -6,23 +6,42 @@
  * @param obj1 - The first object to compare.
  * @param obj2 - The second object to compare.
  * @returns True if objects have identical own enumerable properties, false otherwise.
- * @throws When either input is not a non-null object.
+ *
+ * @throws {TypeError} If either input is not an object or is null.
  *
  * @example
  * // Objects with same properties and values
- * shallowEqual({ a: 1, b: 2 }, { a: 1, b: 2 }); // => true
+ * shallowEqual({ a: 1, b: 2 }, { a: 1, b: 2 }); // true
  *
  * @example
  * // Different property values
- * shallowEqual({ a: 1, b: 2 }, { a: 1, b: 3 }); // => false
+ * shallowEqual({ a: 1, b: 2 }, { a: 1, b: 3 }); // false
  *
  * @example
  * // Different property sets
- * shallowEqual({ a: 1, b: 2 }, { a: 1, c: 2 }); // => false
+ * shallowEqual({ a: 1, b: 2 }, { a: 1, c: 2 }); // false
  *
- * @note Reference equality is used for nested objects and arrays.
+ * @example
+ * // Nested objects compared by reference
+ * const nested = { x: 10 };
+ * shallowEqual({ a: nested }, { a: nested }); // true (same reference)
+ * shallowEqual({ a: { x: 10 } }, { a: { x: 10 } }); // false (different references)
+ *
+ * @example
+ * // Real-world: Optimizing React re-renders
+ * const prevProps = { count: 5, label: 'Items' };
+ * const nextProps = { count: 5, label: 'Items' };
+ * if (shallowEqual(prevProps, nextProps)) {
+ *   // Skip re-render
+ * }
+ *
+ * @note Reference equality (===) is used for nested objects and arrays.
  * @note Two objects with identical nested structures but different references will return false.
  * @note Only compares own enumerable properties, not inherited ones.
+ * @note Use deepEqual() for deep comparison of nested structures.
+ * @note Useful for performance optimization in frameworks like React (shouldComponentUpdate).
+ *
+ * @complexity Time: O(n), Space: O(n) - Where n is the number of properties
  */
 export function shallowEqual(
   obj1: Record<string, unknown>,

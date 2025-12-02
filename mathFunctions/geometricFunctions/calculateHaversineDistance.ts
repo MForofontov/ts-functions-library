@@ -3,12 +3,47 @@ import { degreesToRadians } from './degreesToRadians';
 /**
  * Calculates the distance between two geographical points given their latitude and longitude using the Haversine formula.
  *
- * @param lat1 - Latitude of the first point.
- * @param lon1 - Longitude of the first point.
- * @param lat2 - Latitude of the second point.
- * @param lon2 - Longitude of the second point.
+ * @param lat1 - Latitude of the first point in degrees.
+ * @param lon1 - Longitude of the first point in degrees.
+ * @param lat2 - Latitude of the second point in degrees.
+ * @param lon2 - Longitude of the second point in degrees.
  * @returns The distance between the two points in kilometers.
- * @throws Will throw an error if any of the inputs are NaN or out of valid range.
+ *
+ * @throws {Error} If any input is NaN.
+ * @throws {Error} If latitude values are outside the range -90 to 90 degrees.
+ * @throws {Error} If longitude values are outside the range -180 to 180 degrees.
+ *
+ * @example
+ * // Basic usage - London to Paris
+ * calculateHaversineDistance(51.5074, -0.1278, 48.8566, 2.3522); // ~343.56 km
+ *
+ * @example
+ * // New York to Los Angeles
+ * calculateHaversineDistance(40.7128, -74.0060, 34.0522, -118.2437); // ~3935.75 km
+ *
+ * @example
+ * // Same location (zero distance)
+ * calculateHaversineDistance(0, 0, 0, 0); // 0
+ *
+ * @example
+ * // Equator crossing
+ * calculateHaversineDistance(0, 0, 0, 90); // ~10007.54 km (1/4 Earth circumference)
+ *
+ * @example
+ * // Real-world: Calculate delivery distance
+ * const warehouseLat = 37.7749, warehouseLon = -122.4194; // San Francisco
+ * const customerLat = 37.3541, customerLon = -121.9552; // San Jose
+ * const distance = calculateHaversineDistance(warehouseLat, warehouseLon, customerLat, customerLon);
+ * // ~67.23 km
+ *
+ * @note Uses the Haversine formula: assumes Earth is a perfect sphere with radius 6371.0088 km.
+ * @note For very precise calculations, consider using more complex models (e.g., Vincenty formula).
+ * @note The result is in kilometers; multiply by 0.621371 to convert to miles.
+ * @note Great-circle distance (shortest path on sphere surface), not actual travel distance.
+ * @note Valid latitude range: -90° (South Pole) to +90° (North Pole).
+ * @note Valid longitude range: -180° (west) to +180° (east).
+ *
+ * @complexity Time: O(1), Space: O(1)
  */
 export function calculateHaversineDistance(
   lat1: number,

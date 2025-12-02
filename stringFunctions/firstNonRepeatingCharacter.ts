@@ -1,12 +1,36 @@
 /**
- * Finds the first non-repeating character in a string.
+ * Finds the first character in a string that appears only once.
  *
  * @param str - The string to analyze.
- * @returns The first non-repeating character, or null if none exist.
+ * @returns The first non-repeating character, or null if all characters repeat or string is empty.
+ *
+ * @throws {TypeError} If str is not a string.
  *
  * @example
+ * // Basic usage
  * firstNonRepeatingCharacter("abacabad"); // 'c'
+ * firstNonRepeatingCharacter("aabbcc"); // null
  *
+ * @example
+ * // First occurrence is returned
+ * firstNonRepeatingCharacter("stress"); // 't'
+ * firstNonRepeatingCharacter("leetcode"); // 'l'
+ *
+ * @example
+ * // Case-sensitive matching
+ * firstNonRepeatingCharacter("AaBbCc"); // 'A'
+ *
+ * @example
+ * // Edge cases
+ * firstNonRepeatingCharacter(""); // null
+ * firstNonRepeatingCharacter("a"); // 'a'
+ * firstNonRepeatingCharacter("aaa"); // null
+ *
+ * @note Comparison is case-sensitive (A and a are different characters).
+ * @note Whitespace and special characters are treated as regular characters.
+ * @note Returns the first character that appears exactly once in the entire string.
+ *
+ * @complexity Time: O(n), Space: O(k) where n is string length and k is number of unique characters
  */
 export function firstNonRepeatingCharacter(str: string): string | null {
   // Create an object to store the count of each character

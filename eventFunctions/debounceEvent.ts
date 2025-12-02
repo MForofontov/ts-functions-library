@@ -59,10 +59,8 @@ export function debounceEvent<T extends unknown[]>(
   }
 
   let timeoutId: ReturnType<typeof setTimeout> | null = null;
-  let lastCallTime = 0;
 
   const debouncedFn = (...args: T): void => {
-    const now = Date.now();
     const callNow = immediate && timeoutId === null;
 
     if (timeoutId !== null) {
@@ -71,14 +69,12 @@ export function debounceEvent<T extends unknown[]>(
 
     timeoutId = setTimeout(() => {
       timeoutId = null;
-      lastCallTime = Date.now();
       if (!immediate) {
         handler(...args);
       }
     }, delay);
 
     if (callNow) {
-      lastCallTime = now;
       handler(...args);
     }
   };

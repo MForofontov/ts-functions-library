@@ -1,14 +1,43 @@
 /**
- * Gets the last date of the month for a given date.
+ * Calculates the last day of the month for a given date.
  *
- * @param date - The Date object to get the month's end date from.
- * @returns A new Date object representing the last day of the month.
- * @throws Will throw an error if the date is invalid.
+ * @param date - The Date object to get the month's end from.
+ * @returns A new Date object representing the last day of the month at midnight.
+ *
+ * @throws {Error} If date is invalid.
  *
  * @example
- * const date = new Date('2024-09-15');
- * getEndOfMonth(date); // Gets '2024-09-30'
+ * // Basic usage
+ * const date = new Date('2025-01-15');
+ * getEndOfMonth(date); // Returns 2025-01-31T00:00:00
  *
+ * @example
+ * // February in regular year
+ * const feb = new Date('2025-02-10');
+ * getEndOfMonth(feb); // Returns 2025-02-28T00:00:00
+ *
+ * @example
+ * // February in leap year
+ * const febLeap = new Date('2024-02-10');
+ * getEndOfMonth(febLeap); // Returns 2024-02-29T00:00:00
+ *
+ * @example
+ * // Months with 30 days
+ * const april = new Date('2025-04-15');
+ * getEndOfMonth(april); // Returns 2025-04-30T00:00:00
+ *
+ * @example
+ * // Real-world: billing period
+ * const today = new Date();
+ * const billingEnd = getEndOfMonth(today);
+ * console.log(`Billing ends on: ${billingEnd.toDateString()}`);
+ *
+ * @note Creates a new Date object without modifying the original.
+ * @note Automatically handles different month lengths (28, 29, 30, 31 days).
+ * @note Correctly handles leap years for February.
+ * @note Time is set to midnight (00:00:00.000).
+ *
+ * @complexity Time: O(1), Space: O(1)
  */
 export function getEndOfMonth(date: Date): Date {
   if (isNaN(date.getTime())) {

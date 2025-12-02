@@ -36,7 +36,7 @@
  * String properties are sorted using localeCompare for proper language-sensitive ordering.
  * Boolean sorting puts true values before false values.
  *
- * @complexity O(n log n) where n is the length of the input array (dominated by the sort algorithm)
+ * @complexity Time: O(n log n), Space: O(n) - Where n is array length
  */
 export function sortBy<T>(arr: T[], key: keyof T): T[] {
   return arr.slice().sort((a, b) => {

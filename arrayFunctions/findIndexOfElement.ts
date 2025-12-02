@@ -30,7 +30,7 @@ import { deepEqual } from '../objectFunctions/deepEqual';
  * @note This implementation uses the deepEqual function for comparison,
  * which makes it more powerful than the native indexOf method for complex objects.
  *
- * @complexity O(n) where n is the length of the input array
+ * @complexity Time: O(n), Space: O(1) - Where n is array length
  */
 export function findIndexOfElement<T>(arr: T[], element: T): number {
   for (let i = 0; i < arr.length; i++) {

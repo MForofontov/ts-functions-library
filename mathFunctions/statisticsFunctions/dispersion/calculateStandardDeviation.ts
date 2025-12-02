@@ -29,7 +29,7 @@ import { calculateVariance } from './calculateVariance';
  * returns the square root of the variance. It uses the population standard
  * deviation formula (not the sample standard deviation).
  *
- * @complexity O(n) where n is the length of the input array
+ * @complexity Time: O(n), Space: O(1) - Where n is array length
  */
 export function calculateStandardDeviation(arr: number[]): number {
   if (arr.length === 0) {

@@ -1,14 +1,44 @@
 /**
- * Gets the ISO week date (YYYY-Www-D) for a given Date object.
+ * Formats a date as an ISO 8601 week date string (YYYY-Www-D format).
  *
- * @param date - The Date object to get the ISO week date for.
- * @returns The ISO week date as a string.
- * @throws Will throw an error if the date is invalid.
+ * @param date - The Date object to format.
+ * @returns The ISO week date string in format 'YYYY-Www-D' (e.g., '2025-W03-4').
+ *
+ * @throws {Error} If date is invalid.
+ * @throws {Error} If year is negative.
  *
  * @example
- * const date = new Date('2024-09-19');
- * console.log(getISOWeekDate(date)); // e.g., '2024-W38-4'
+ * // Basic usage
+ * const date = new Date('2025-01-16'); // Thursday
+ * getISOWeekDate(date); // Returns '2025-W03-4'
  *
+ * @example
+ * // Week 1 of year
+ * const jan1 = new Date('2025-01-01'); // Wednesday
+ * getISOWeekDate(jan1); // Returns '2025-W01-3'
+ *
+ * @example
+ * // Week crossing year boundary
+ * const dec29 = new Date('2024-12-29'); // Sunday
+ * getISOWeekDate(dec29); // Returns '2024-W52-7'
+ *
+ * @example
+ * // Monday (day 1 in ISO)
+ * const monday = new Date('2025-01-13');
+ * getISOWeekDate(monday); // Returns '2025-W03-1'
+ *
+ * @example
+ * // Real-world: weekly report identifier
+ * const today = new Date();
+ * const weekId = getISOWeekDate(today);
+ * console.log(`Report for ${weekId}`); // e.g., "Report for 2025-W03-4"
+ *
+ * @note ISO 8601 week dates use Monday as the first day of the week (day 1).
+ * @note Sunday is represented as day 7 (not 0 like in JavaScript Date).
+ * @note Week 1 is the first week with at least 4 days in the new year.
+ * @note Format: YYYY = year, Www = week number (padded), D = day of week (1-7).
+ *
+ * @complexity Time: O(1), Space: O(1)
  */
 export function getISOWeekDate(date: Date): string {
   if (isNaN(date.getTime())) {

@@ -86,7 +86,7 @@ describe('findDuplicates', () => {
   it('11. should handle arrays containing functions', () => {
     const func1 = (x: number) => x + 1;
     const func2 = (x: number) => x * 2;
-    const arr: Function[] = [func1, func2, func1];
+    const arr: Array<(x: number) => number> = [func1, func2, func1];
     expect(findDuplicates(arr)).toEqual([func1]);
   });
 

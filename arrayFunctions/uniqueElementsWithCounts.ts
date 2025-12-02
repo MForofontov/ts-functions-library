@@ -30,7 +30,7 @@ import { getDeepEqualityHash } from '../objectFunctions/getDeepEqualityHash';
  * suitable for counting occurrences of complex objects and nested structures.
  * The order of elements in the result follows their first occurrence in the input array.
  *
- * @complexity O(n) on average where n is the length of the input array, using
+ * @complexity Time: O(n), Space: O(n) - Where n is array length (avg case)
  * hashing and Map lookups to count elements while preserving insertion order
  */
 export function uniqueElementsWithCounts<T>(

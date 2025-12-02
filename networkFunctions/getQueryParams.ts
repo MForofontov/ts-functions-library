@@ -42,10 +42,10 @@ export function getQueryParams(url: string): Record<string, string | string[]> {
         // Parameter already exists
         if (Array.isArray(params[key])) {
           // Already an array, add to it
-          (params[key] as string[]).push(value);
+          params[key].push(value);
         } else {
           // Convert to array
-          params[key] = [params[key] as string, value];
+          params[key] = [params[key], value];
         }
       } else {
         // First occurrence of this parameter

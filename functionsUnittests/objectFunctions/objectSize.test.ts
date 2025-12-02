@@ -35,7 +35,7 @@ describe('objectSize', () => {
   it('4. should only count own enumerable properties', () => {
     const parent = { a: 1 };
     const obj = Object.create(parent) as Record<string, unknown>;
-    (obj as Record<string, unknown>).b = 2;
+    obj.b = 2;
     const result = objectSize(obj);
     const expected = 1;
     expect(result).toBe(expected);

@@ -1,14 +1,43 @@
 /**
- * Gets the number of days left in the current year from a given date.
+ * Calculates the number of days remaining in the year from a given date.
  *
- * @param date - The Date object to calculate the remaining days from.
- * @returns The number of days left in the current year.
- * @throws Will throw an error if the date is invalid.
+ * @param date - The Date object to calculate from.
+ * @returns The number of complete days left in the year (including the date itself if at midnight).
+ *
+ * @throws {Error} If date is invalid.
  *
  * @example
- * const today = new Date();
- * daysLeftInYear(today); // Number of days left in the year from today
+ * // Basic usage
+ * const dec30 = new Date('2025-12-30');
+ * daysLeftInYear(dec30); // 2 (Dec 30 and Dec 31)
  *
+ * @example
+ * // Beginning of year
+ * const jan1 = new Date('2025-01-01');
+ * daysLeftInYear(jan1); // 365
+ *
+ * @example
+ * // Leap year
+ * const leapYear = new Date('2024-01-01');
+ * daysLeftInYear(leapYear); // 366
+ *
+ * @example
+ * // End of year
+ * const dec31 = new Date('2025-12-31');
+ * daysLeftInYear(dec31); // 1
+ *
+ * @example
+ * // Real-world: countdown to year end
+ * const today = new Date();
+ * const daysLeft = daysLeftInYear(today);
+ * console.log(`${daysLeft} days left in the year`);
+ *
+ * @note Calculates from the given date to December 31st of that year.
+ * @note Result is rounded up (ceiling) to include partial days.
+ * @note Works correctly with leap years.
+ * @note Returns number of days including the current date.
+ *
+ * @complexity Time: O(1), Space: O(1)
  */
 export function daysLeftInYear(date: Date): number {
   if (isNaN(date.getTime())) {
