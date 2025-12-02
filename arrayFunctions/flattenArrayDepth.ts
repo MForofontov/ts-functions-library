@@ -41,7 +41,7 @@ export function flattenArrayDepth<T>(
           acc.concat(
             Array.isArray(val)
               ? flattenArrayDepth(val as Array<Nested<T>>, depth - 1)
-              : (val as T),
+              : val,
           ),
         [] as T[],
       )

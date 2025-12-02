@@ -37,7 +37,7 @@ export function safeSet<T extends Record<string, unknown>, V>(
     const key = keys[i];
     const rest = keys.slice(i).join('.');
     if (Object.prototype.hasOwnProperty.call(current, rest)) {
-      (current as Record<string, unknown>)[rest] = value as unknown;
+      current[rest] = value as unknown;
       return;
     }
     if (!current[key] || typeof current[key] !== 'object') {
@@ -45,6 +45,5 @@ export function safeSet<T extends Record<string, unknown>, V>(
     }
     current = current[key] as Record<string, unknown>;
   }
-  (current as Record<string, unknown>)[keys[keys.length - 1]] =
-    value as unknown;
+  current[keys[keys.length - 1]] = value as unknown;
 }

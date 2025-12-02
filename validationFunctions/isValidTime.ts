@@ -56,7 +56,7 @@ export function isValidTime(
     );
   }
 
-  let cleanTimeString = timeString.trim();
+  const cleanTimeString = timeString.trim();
   let hour: number;
   let minute: number;
   let second: number = 0;

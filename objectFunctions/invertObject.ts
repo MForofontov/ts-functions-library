@@ -27,7 +27,7 @@ export function invertObject(
   }
   const result: Record<string, string | number | symbol> = {};
   for (const key of Reflect.ownKeys(obj)) {
-    const value = (obj as Record<string | number | symbol, unknown>)[key];
+    const value = obj[key];
     result[String(value)] = key;
   }
   return result;

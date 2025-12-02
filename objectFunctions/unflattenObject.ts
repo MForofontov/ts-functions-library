@@ -42,7 +42,7 @@ export function unflattenObject(
           if (!Array.isArray(current)) {
             current = [];
           }
-          (current as unknown[])[Number(part)] = value;
+          current[Number(part)] = value;
         } else {
           (current as Record<string, unknown>)[part] = value;
         }
@@ -50,7 +50,7 @@ export function unflattenObject(
         if (!Array.isArray(current)) {
           current = [];
         }
-        const arr = current as unknown[];
+        const arr = current;
         if (!arr[Number(part)] || typeof arr[Number(part)] !== 'object') {
           arr[Number(part)] = nextIsIndex ? [] : {};
         }

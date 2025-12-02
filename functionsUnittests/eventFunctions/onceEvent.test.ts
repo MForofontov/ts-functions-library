@@ -346,8 +346,12 @@ describe('onceEvent', () => {
     form.addEventListener('submit', onceSubmit);
 
     // Act
-    form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
-    form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+    form.dispatchEvent(
+      new Event('submit', { bubbles: true, cancelable: true }),
+    );
+    form.dispatchEvent(
+      new Event('submit', { bubbles: true, cancelable: true }),
+    );
 
     // Assert
     expect(handler).toHaveBeenCalledTimes(1);

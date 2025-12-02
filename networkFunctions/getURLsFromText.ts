@@ -60,7 +60,7 @@ export function getURLsFromText(
   // Process URLs
   const urls = matches.map((url) => {
     // Remove trailing punctuation that's likely not part of the URL
-    let cleanUrl = url.replace(/[,)\s]+$/, '');
+    const cleanUrl = url.replace(/[,)\s]+$/, '');
 
     // Add protocol to www. URLs if needed
     if (cleanUrl.startsWith('www.') && !cleanUrl.startsWith('http')) {

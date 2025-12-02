@@ -46,7 +46,7 @@ describe('flattenArray', () => {
   // Test case 7: Array containing NaN
   it('7. should flatten an array containing NaN', () => {
     const arr = [1, [NaN, [2, NaN]], 3];
-    expect(flattenArray<number | typeof NaN>(arr)).toEqual([1, NaN, 2, NaN, 3]);
+    expect(flattenArray<number>(arr)).toEqual([1, NaN, 2, NaN, 3]);
   });
 
   // Test case 8: Array containing objects

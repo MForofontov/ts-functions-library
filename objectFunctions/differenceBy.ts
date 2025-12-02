@@ -37,7 +37,7 @@ export function differenceBy<T extends Record<string, unknown>>(
   for (const key of keys) {
     const k = key as keyof T;
     if (!comparator(obj1[k], obj2[k])) {
-      (result as Partial<T>)[k] = obj1[k];
+      result[k] = obj1[k];
     }
   }
   return result;
