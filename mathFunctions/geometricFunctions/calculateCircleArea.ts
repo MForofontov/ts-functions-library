@@ -4,9 +4,7 @@
  * @param radius - The radius of the circle (must be non-negative).
  * @returns The area of the circle in square units.
  *
- * @throws {TypeError} If radius is not a number.
- * @throws {Error} If radius is NaN.
- * @throws {Error} If radius is negative.
+ * @throws {Error} If radius is not a valid, non-negative number.
  *
  * @example
  * // Basic usage

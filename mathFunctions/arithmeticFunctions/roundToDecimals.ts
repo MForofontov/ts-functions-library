@@ -5,8 +5,7 @@
  * @param decimals - The number of decimal places (must be a non-negative integer).
  * @returns The rounded number.
  *
- * @throws {TypeError} If value or decimals is not a number.
- * @throws {Error} If value or decimals is NaN, if decimals is not an integer, or if decimals is negative.
+ * @throws {Error} If value or decimals is not a number, if decimals is not an integer, or if decimals is negative.
  *
  * @example
  * // Basic rounding

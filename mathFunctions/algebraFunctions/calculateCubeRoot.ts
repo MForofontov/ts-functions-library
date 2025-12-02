@@ -4,9 +4,6 @@
  * @param n - The number to find the cube root of (can be positive, negative, or zero).
  * @returns The cube root of the number.
  *
- * @throws {TypeError} If n is not a number.
- * @throws {Error} If n is NaN.
- *
  * @example
  * // Basic usage with positive numbers
  * calculateCubeRoot(27); // 3

@@ -4,8 +4,7 @@
  * @param n - The integer number to check.
  * @returns "odd" if the number is odd, "even" if the number is even.
  *
- * @throws {TypeError} If n is not a number.
- * @throws {Error} If n is NaN or not an integer.
+ * @throws {Error} If n is not a valid integer.
  *
  * @example
  * // Positive numbers

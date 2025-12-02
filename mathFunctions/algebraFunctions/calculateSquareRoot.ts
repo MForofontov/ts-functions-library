@@ -1,12 +1,8 @@
 /**
  * Calculates the square root of a number.
  *
- * @param n - The number to find the square root of (must be non-negative).
+ * @param n - The number to find the square root of.
  * @returns The square root of the number.
- *
- * @throws {TypeError} If n is not a number.
- * @throws {Error} If n is NaN.
- * @throws {Error} If n is negative (square root of negative numbers is undefined in real numbers).
  *
  * @example
  * // Perfect squares
@@ -30,9 +26,8 @@
  * calculateSquareRoot(1000000); // 1000
  * calculateSquareRoot(144); // 12
  *
- * @note Wraps Math.sqrt() with input validation.
- * @note Only works with non-negative numbers (real number square roots).
- * @note For negative numbers, consider using complex number libraries.
+ * @note Wraps Math.sqrt(); negative inputs return NaN in JavaScript.
+ * @note For complex results, consider using complex number libraries.
  * @note The square root of x is the number that, when multiplied by itself, equals x.
  * @note Useful for distance calculations, standard deviation, and geometric formulas.
  *

@@ -4,9 +4,6 @@
  * @param n - The number to check.
  * @returns True if the number is even (divisible by 2), false if it is odd.
  *
- * @throws {TypeError} If n is not a number.
- * @throws {Error} If n is NaN.
- *
  * @example
  * // Even numbers
  * isEven(0); // true

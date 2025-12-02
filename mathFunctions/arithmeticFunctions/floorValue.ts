@@ -4,7 +4,6 @@
  * @param n - The number to round down.
  * @returns The largest integer less than or equal to n.
  *
- * @throws {TypeError} If n is not a number.
  * @throws {Error} If n is NaN.
  *
  * @example

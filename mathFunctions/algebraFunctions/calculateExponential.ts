@@ -4,9 +4,6 @@
  * @param n - The exponent (can be positive, negative, or zero).
  * @returns The result of `e` raised to the power of `n`.
  *
- * @throws {TypeError} If n is not a number.
- * @throws {Error} If n is NaN.
- *
  * @example
  * // Basic usage
  * calculateExponential(1); // 2.718281828459045

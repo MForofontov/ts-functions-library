@@ -5,9 +5,7 @@
  * @param b - The second integer.
  * @returns The greatest common divisor (GCD) of a and b (always non-negative).
  *
- * @throws {TypeError} If a or b is not a number.
- * @throws {Error} If a or b is NaN.
- * @throws {Error} If a or b is not an integer.
+ * @throws {Error} If a or b is not a valid integer.
  *
  * @example
  * // Basic GCD

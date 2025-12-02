@@ -4,7 +4,6 @@
  * @param degrees - The angle value in degrees.
  * @returns The angle value in radians.
  *
- * @throws {TypeError} If degrees is not a number.
  * @throws {Error} If degrees is NaN.
  *
  * @example

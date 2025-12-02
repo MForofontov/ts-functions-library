@@ -7,8 +7,7 @@
  * @param y2 - The y-coordinate of the second point.
  * @returns The distance between the two points (always non-negative).
  *
- * @throws {TypeError} If any coordinate is not a number.
- * @throws {Error} If any coordinate is NaN.
+ * @throws {Error} If any coordinate is not a finite number.
  *
  * @example
  * // Classic 3-4-5 right triangle

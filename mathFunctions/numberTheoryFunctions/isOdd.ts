@@ -4,9 +4,7 @@
  * @param n - The number to check (must be an integer).
  * @returns True if the number is odd (not divisible by 2), false if it is even.
  *
- * @throws {TypeError} If n is not a number.
- * @throws {Error} If n is NaN.
- * @throws {Error} If n is not an integer.
+ * @throws {Error} If n is not a valid integer.
  *
  * @example
  * // Odd numbers
