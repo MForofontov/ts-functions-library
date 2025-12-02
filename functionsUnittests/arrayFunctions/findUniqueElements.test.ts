@@ -113,7 +113,7 @@ describe('findUniqueElements', () => {
   it('16. should return unique elements from an array containing functions', () => {
     const func1: () => number = () => 1;
     const func2: () => number = () => 2;
-    const arr: Function[] = [func1, func2, func1];
+    const arr: Array<() => number> = [func1, func2, func1];
     expect(findUniqueElements(arr)).toEqual([func1, func2]);
   });
 

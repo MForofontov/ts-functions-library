@@ -47,8 +47,8 @@ describe('debounce', () => {
         this.count += amount;
       },
     };
-    const debounced = debounce(obj.inc, 50);
-    debounced.call(obj, 2);
+    const debounced = debounce(obj.inc.bind(obj), 50);
+    debounced(2);
     jest.advanceTimersByTime(50);
     expect(obj.count).toBe(2);
   });

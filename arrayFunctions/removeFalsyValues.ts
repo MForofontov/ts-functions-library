@@ -29,11 +29,9 @@
  */
 export function removeFalsyValues<T>(
   arr: unknown[],
-): Exclude<T, false | 0 | '' | null | undefined | typeof NaN>[] {
+): NonNullable<Exclude<T, false | '' | 0>>[] {
   return arr.filter(
-    (
-      value,
-    ): value is Exclude<T, false | 0 | '' | null | undefined | typeof NaN> => {
+    (value): value is NonNullable<Exclude<T, false | '' | 0>> => {
       return (
         value !== false &&
         value !== 0 &&
