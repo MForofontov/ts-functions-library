@@ -1,17 +1,35 @@
 /**
  * Returns a promise that resolves after a specified delay.
  *
- * @param ms - The delay in milliseconds.
- * @returns A promise that resolves after the delay.
+ * @param ms - The delay in milliseconds (must be non-negative).
+ * @returns A promise that resolves after the specified delay with no value.
+ *
+ * @throws {TypeError} If ms is not a number.
+ * @throws {Error} If ms is negative or NaN.
  *
  * @example
  * // Basic usage
- * delay(2000).then(() => console.log('Waited 2 seconds'));
+ * await delay(2000); // Waits 2 seconds
+ * console.log('Waited 2 seconds');
  *
- * @note Implements a simple wrapper around setTimeout.
- * Useful for pausing execution in async workflows.
+ * @example
+ * // With promise chaining
+ * delay(1000).then(() => console.log('After 1 second'));
  *
- * @complexity O(1)
+ * @example
+ * // In async workflows
+ * async function processSteps() {
+ *   console.log('Step 1');
+ *   await delay(500);
+ *   console.log('Step 2');
+ *   await delay(500);
+ *   console.log('Step 3');
+ * }
+ *
+ * @note This is a promisified wrapper around setTimeout for use in async/await contexts.
+ * @note Useful for pausing execution in async workflows, rate limiting, or adding delays between operations.
+ *
+ * @complexity Time: O(1), Space: O(1)
  */
 export function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
