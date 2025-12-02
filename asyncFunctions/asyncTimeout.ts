@@ -44,7 +44,8 @@ export function asyncTimeout<T>(
   timeoutMs: number,
   timeoutMessage?: string,
 ): Promise<T> {
-  // eslint-disable-next-line @typescript-eslint/no-misused-promises
+  // Runtime validation for promise parameter (defensive check despite TypeScript typing)
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises -- Validating promise interface at runtime
   if (!promise || typeof promise.then !== 'function') {
     throw new TypeError(`promise must be a Promise, got ${typeof promise}`);
   }
@@ -81,7 +82,8 @@ export function asyncTimeout<T>(
       })
       .catch((error: unknown) => {
         clearTimeout(timeoutId);
-        // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
+        // Propagate original error without wrapping to preserve error type and stack
+        // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors -- Preserving original rejection reason
         reject(error);
       });
   });

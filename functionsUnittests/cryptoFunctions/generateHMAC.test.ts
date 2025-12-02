@@ -99,12 +99,12 @@ describe('generateHMAC', () => {
 
   // Test case 12: Throw error for algorithm type
   it('12. should throw TypeError when algorithm is not a string', () => {
-    expect(() => generateHMAC(testData, testKey, 123 as unknown as 'sha256')).toThrow(
-      TypeError,
-    );
-    expect(() => generateHMAC(testData, testKey, 123 as unknown as 'sha256')).toThrow(
-      'algorithm must be a string',
-    );
+    expect(() =>
+      generateHMAC(testData, testKey, 123 as unknown as 'sha256'),
+    ).toThrow(TypeError);
+    expect(() =>
+      generateHMAC(testData, testKey, 123 as unknown as 'sha256'),
+    ).toThrow('algorithm must be a string');
   });
 
   // Test case 13: Throw error for empty secret

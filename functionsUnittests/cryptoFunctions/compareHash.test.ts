@@ -123,7 +123,9 @@ describe('compareHash', () => {
     const data = 'test';
     const hash =
       'b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9';
-    expect(() => compareHash(data, hash, 123 as unknown as 'sha256')).toThrow(TypeError);
+    expect(() => compareHash(data, hash, 123 as unknown as 'sha256')).toThrow(
+      TypeError,
+    );
     expect(() => compareHash(data, hash, 123 as unknown as 'sha256')).toThrow(
       'algorithm must be a string',
     );
@@ -134,12 +136,12 @@ describe('compareHash', () => {
     const data = 'test';
     const hash = 'somehash';
     const invalidAlgorithm = 'invalid';
-    expect(() => compareHash(data, hash, invalidAlgorithm as unknown as 'sha256')).toThrow(
-      Error,
-    );
-    expect(() => compareHash(data, hash, invalidAlgorithm as unknown as 'sha256')).toThrow(
-      'algorithm must be one of',
-    );
+    expect(() =>
+      compareHash(data, hash, invalidAlgorithm as unknown as 'sha256'),
+    ).toThrow(Error);
+    expect(() =>
+      compareHash(data, hash, invalidAlgorithm as unknown as 'sha256'),
+    ).toThrow('algorithm must be one of');
   });
 
   // Test case 15: Throw error for hash with non-hex characters
