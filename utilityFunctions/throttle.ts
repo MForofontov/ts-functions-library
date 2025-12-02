@@ -1,18 +1,52 @@
 /**
- * Throttles a function, ensuring it is called at most once per specified interval.
+ * Creates a throttled function that only invokes func at most once per every limit milliseconds.
  *
  * @param func - The function to throttle.
- * @param limit - The time interval in milliseconds.
- * @returns A throttled version of the function.
+ * @param limit - The time interval in milliseconds (minimum time between executions).
+ * @returns A throttled version of the function that enforces rate limiting.
+ *
+ * @throws {TypeError} If func is not a function.
+ * @throws {TypeError} If limit is not a number.
+ * @throws {Error} If limit is negative or NaN.
  *
  * @example
- * // Basic usage
- * const throttledLog = throttle(() => console.log('Throttled!'), 1000);
- * throttledLog(); // Logs at most once every second
+ * // Scroll event throttling
+ * const throttledScroll = throttle(() => {
+ *   console.log('Scrolled!');
+ * }, 1000);
+ * window.addEventListener('scroll', throttledScroll);
+ * // Logs at most once per second, even with rapid scrolling
  *
- * @note Uses timestamps to track last execution and setTimeout for trailing calls.
+ * @example
+ * // Mouse move tracking
+ * const throttledMove = throttle((event) => {
+ *   console.log('Mouse position:', event.clientX, event.clientY);
+ * }, 100);
+ * document.addEventListener('mousemove', throttledMove);
  *
- * @complexity O(1) per invocation
+ * @example
+ * // Button click rate limiting
+ * const throttledClick = throttle(() => {
+ *   console.log('Button clicked!');
+ * }, 2000);
+ * button.addEventListener('click', throttledClick);
+ * // Ignores rapid clicks, max one execution per 2 seconds
+ *
+ * @example
+ * // API polling control
+ * const throttledPoll = throttle(async () => {
+ *   await fetch('/api/status');
+ * }, 5000);
+ * // Ensures polling doesn't exceed once per 5 seconds
+ *
+ * @note Executes immediately on first call, then enforces rate limit.
+ * @note Uses timestamps to track last execution time.
+ * @note Includes trailing call mechanism - ensures last call executes if within limit.
+ * @note Preserves function context (this) and passes through all arguments.
+ * @note Common use cases: scroll events, mouse movements, window resize, API polling.
+ * @note Different from debounce: throttle enforces max rate, debounce waits for quiet period.
+ *
+ * @complexity Time: O(1) per invocation, Space: O(1)
  */
 export function throttle<Args extends unknown[]>(
   func: (...args: Args) => void,
