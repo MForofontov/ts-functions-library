@@ -20,6 +20,7 @@ export function safeGet<T extends Record<string, unknown>, D>(
   obj: T,
   path: string,
   defaultValue: D = undefined as unknown as D,
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 ): D | unknown {
   if (typeof obj !== 'object' || obj === null) {
     throw new TypeError('Input must be a non-null object');

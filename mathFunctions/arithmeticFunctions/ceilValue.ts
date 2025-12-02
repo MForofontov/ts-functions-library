@@ -14,5 +14,5 @@ export function ceilValue(n: number): number {
     throw new Error('Input must be a number');
   }
   const result = Math.ceil(n);
-  return result === -0 ? 0 : result;
+  return Object.is(result, -0) ? 0 : result;
 }

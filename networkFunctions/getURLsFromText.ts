@@ -48,8 +48,8 @@ export function getURLsFromText(
   // Regex pattern for URLs - matches http://, https://, ftp://, and www. URLs
   // More restrictive to avoid capturing trailing punctuation
   const urlPattern = includeWWW
-    ? /(?:(?:https?|ftp):\/\/|www\.)[a-zA-Z0-9\-._~:/?#\[\]@!$&'()*+,;=%]+[a-zA-Z0-9\-_~:/?#\[\]@!$&*+=%]/gi
-    : /(?:https?|ftp):\/\/[a-zA-Z0-9\-._~:/?#\[\]@!$&'()*+,;=%]+[a-zA-Z0-9\-_~:/?#\[\]@!$&*+=%]/gi;
+    ? /(?:(?:https?|ftp):\/\/|www\.)[a-zA-Z0-9\-._~:/?#[\]@!$&'()*+,;=%]+[a-zA-Z0-9\-_~:/?#[\]@!$&*+=%]/gi
+    : /(?:https?|ftp):\/\/[a-zA-Z0-9\-._~:/?#[\]@!$&'()*+,;=%]+[a-zA-Z0-9\-_~:/?#[\]@!$&*+=%]/gi;
 
   const matches = text.match(urlPattern);
 

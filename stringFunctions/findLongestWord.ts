@@ -11,7 +11,7 @@
 export function findLongestWord(str: string): string {
   // Remove punctuation and special characters
   const cleanedStr = str.replace(
-    /[.,\/#!$%\^&\*;:{}=\-_`~()"\t\n\r\b\f\v\\\'\"]/g,
+    /[.,/#!$%^&*;:{}=\-_`~()"\t\n\r\b\f\v\\']/g,
     ' ',
   );
 

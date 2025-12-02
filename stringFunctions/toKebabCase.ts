@@ -13,7 +13,7 @@ export function toKebabCase(str: string): string {
     .trim() // Trim leading and trailing spaces
     .toLowerCase()
     .replace(/[\s_]+/g, '-') // Replace spaces and underscores with hyphens
-    .replace(/[^\w\-]+/g, '') // Remove non-word chars
+    .replace(/[^\w-]+/g, '') // Remove non-word chars
     .replace(/--+/g, '-') // Replace multiple hyphens with a single one
     .replace(/^-+|-+$/g, ''); // Trim hyphens from start and end
 }
