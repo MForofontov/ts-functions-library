@@ -390,7 +390,7 @@ describe('functionName', () => {
   2. **Edge cases** (middle ~30% of tests): Boundary conditions, empty inputs, special values
   3. **Error cases** (last ~10% of tests): **ALWAYS LAST** - Type errors, validation errors, invalid inputs
 
-- **Naming Convention**: 
+- **Naming Convention**:
   - Use numbered descriptive format: `'1. should...'`, `'2. should...'`, etc.
   - Be specific and descriptive about what is being tested
   - Examples:
@@ -398,19 +398,21 @@ describe('functionName', () => {
     - `'15. should handle empty string gracefully'`
     - `'23. should throw TypeError when url is not a string'`
 
-- **Test Structure**: 
+- **Test Structure**:
   - Use **Arrange-Act-Assert** pattern for clarity
   - Add descriptive comments for each test section
   - Group related test cases together with comments
 
-- **Error Testing**: 
+- **Error Testing**:
   - **MUST be placed at the end** of the test file
   - Use `toThrow()` with specific error types (TypeError, Error, RangeError, etc.)
   - Always verify both error type AND error message
   - Example:
     ```typescript
     expect(() => functionName(invalidInput)).toThrow(TypeError);
-    expect(() => functionName(invalidInput)).toThrow('param must be a number, got string');
+    expect(() => functionName(invalidInput)).toThrow(
+      'param must be a number, got string',
+    );
     ```
 
 - **Coverage Goals**:
@@ -419,7 +421,7 @@ describe('functionName', () => {
   - Include performance tests for complex functions
   - Test boundary conditions thoroughly
 
-- **Documentation**: 
+- **Documentation**:
   - Add descriptive comments for each test case explaining the scenario
   - Group related tests with section comments
   - Reference example: `functionsUnittests/networkFunctionsUnittest/isValidURL.test.ts`
@@ -430,12 +432,12 @@ describe('functionName', () => {
 
 As of October 2025, the project maintains exceptional test coverage:
 
-| Metric | Coverage | Status |
-|--------|----------|--------|
+| Metric         | Coverage   | Status       |
+| -------------- | ---------- | ------------ |
 | **Statements** | **98.59%** | ✅ Excellent |
-| **Branches** | **96.95%** | ✅ Excellent |
-| **Functions** | **100%** | ✅ Perfect |
-| **Lines** | **98.63%** | ✅ Excellent |
+| **Branches**   | **96.95%** | ✅ Excellent |
+| **Functions**  | **100%**   | ✅ Perfect   |
+| **Lines**      | **98.63%** | ✅ Excellent |
 
 - **Total Test Suites**: 267
 - **Total Tests**: 3,487
@@ -458,6 +460,7 @@ As of October 2025, the project maintains exceptional test coverage:
 #### Coverage Best Practices
 
 **When Adding New Functions**:
+
 1. ✅ **Aim for >95% coverage** for all new code
 2. ✅ **100% function coverage** is mandatory - every function must be tested
 3. ✅ **Document why lines are uncovered** if below 95% (must be defensive code)
@@ -468,6 +471,7 @@ As of October 2025, the project maintains exceptional test coverage:
    - Writing meaningless tests
 
 **Running Coverage Reports**:
+
 ```bash
 # Full coverage report
 npm test -- --coverage
@@ -480,6 +484,7 @@ npm test -- --coverage --coverageReporters=text --silent
 ```
 
 **Analyzing Uncovered Lines**:
+
 ```bash
 # List all files with <100% coverage
 npm test -- --coverage --coverageReporters=text --silent 2>&1 | grep -E "^\s+\w+\.ts\s+\|" | grep -v "100 |.*100 |.*100 |"
@@ -488,20 +493,22 @@ npm test -- --coverage --coverageReporters=text --silent 2>&1 | grep -E "^\s+\w+
 #### Performance Test Guidelines
 
 Performance tests should use realistic thresholds:
+
 - ✅ **Use 100ms threshold** for most tests (accounts for CI environments)
 - ❌ **Avoid <10ms thresholds** - too strict, causes flaky tests
 - ✅ **Test with meaningful data sizes** (arrays of 100-10,000 elements)
 - ✅ **Focus on algorithmic efficiency**, not absolute timing
 
 **Example Performance Test**:
+
 ```typescript
 it('should handle large inputs efficiently', () => {
   const largeInput = new Array(10000).fill(0).map((_, i) => i);
-  
+
   const startTime = performance.now();
   const result = functionName(largeInput);
   const endTime = performance.now();
-  
+
   expect(result).toBeDefined();
   expect(endTime - startTime).toBeLessThan(100); // 100ms threshold for CI
 });
@@ -510,12 +517,14 @@ it('should handle large inputs efficiently', () => {
 #### Avoiding Flaky Tests
 
 **Common Causes of Flaky Tests**:
+
 1. **Strict timing thresholds** - Solution: Use 100ms minimum for performance tests
 2. **Randomness without verification** - Solution: Test properties, not exact values
 3. **NaN comparisons** - Solution: Use `Number.isNaN()` for NaN checks
 4. **Environment-dependent behavior** - Solution: Mock or control external dependencies
 
 **Example: Testing Random Functions**:
+
 ```typescript
 // ❌ Bad: Expects exact random result
 expect(shuffleArray([1, 2, 3])).not.toEqual([1, 2, 3]);
@@ -527,18 +536,20 @@ expect(result.sort()).toEqual([1, 2, 3]); // Same elements, possibly different o
 ```
 
 **Example: Testing with NaN**:
+
 ```typescript
 // ❌ Bad: NaN !== NaN, so equality checks fail
 expect(result).toEqual([NaN, 1, 2]);
 
 // ✅ Good: Count NaN values explicitly
-const nanCount = result.filter(x => Number.isNaN(x)).length;
+const nanCount = result.filter((x) => Number.isNaN(x)).length;
 expect(nanCount).toBe(1);
 ```
 
 #### Coverage Maintenance
 
 **When coverage drops below 98%**:
+
 1. Identify which files have uncovered lines
 2. Categorize uncovered lines:
    - **Defensive code**: Document and accept
@@ -550,6 +561,7 @@ expect(nanCount).toBe(1);
    - **LOW**: 1 uncovered line (evaluate if defensive)
 
 **Coverage should never prevent**:
+
 - Writing defensive error handling
 - Adding safety checks for edge cases
 - Using try-catch for external dependencies
@@ -642,7 +654,7 @@ export { groupBy as groupByObject } from './objectFunctions/groupBy';
   - Check buffer/string lengths match algorithm requirements
   - Verify algorithm parameter values
 - **Error Handling**: Clear, descriptive errors without exposing sensitive data
-- **Documentation**: 
+- **Documentation**:
   - Include security warnings (e.g., MD5 for legacy only)
   - Document timing-attack resistance where applicable
   - Provide real-world usage examples (API signatures, password storage)

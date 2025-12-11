@@ -5,9 +5,6 @@
  * @param exponent - The exponent (power to raise the base to).
  * @returns The base raised to the power of the exponent (base^exponent).
  *
- * @throws {TypeError} If base or exponent is not a number.
- * @throws {Error} If base or exponent is NaN.
- *
  * @example
  * // Basic powers
  * calculatePower(2, 3); // 8 (2^3 = 2 * 2 * 2)

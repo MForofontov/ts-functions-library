@@ -5,9 +5,7 @@
  * @param height - The height of the rectangle (must be non-negative).
  * @returns The area of the rectangle in square units.
  *
- * @throws {TypeError} If width or height is not a number.
- * @throws {Error} If width or height is NaN.
- * @throws {Error} If width or height is negative.
+ * @throws {Error} If width or height is not a valid, non-negative number.
  *
  * @example
  * // Basic rectangles

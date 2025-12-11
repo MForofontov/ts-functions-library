@@ -19,10 +19,12 @@
     "cryptoFunctions",
     "dateFunctions",
     "encodingFunctions",
+    "eventFunctions",
     "mathFunctions",
     "networkFunctions",
     "objectFunctions",
     "stringFunctions",
+    "testingUtilities",
     "utilityFunctions",
     "validationFunctions"
   ],

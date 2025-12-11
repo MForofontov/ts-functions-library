@@ -7,10 +7,7 @@ import { gcd } from './gcd';
  * @param b - The second integer.
  * @returns The least common multiple (LCM) of a and b (always non-negative).
  *
- * @throws {TypeError} If a or b is not a number.
- * @throws {Error} If a or b is NaN.
- * @throws {Error} If a or b is not an integer.
- * @throws {Error} If both a and b are zero.
+ * @throws {Error} If a or b is not a valid integer or both are zero.
  *
  * @example
  * // Basic LCM

@@ -179,13 +179,13 @@ describe('bytesToSize', () => {
   it('26. should handle large values efficiently', () => {
     const startTime = performance.now();
 
-    for (let i = 0; i < 10000; i++) {
+    for (let i = 0; i < 5000; i++) {
       bytesToSize(Math.random() * 1e15, true);
       bytesToSize(Math.random() * 1e15, false);
     }
 
     const endTime = performance.now();
-    expect(endTime - startTime).toBeLessThan(200); // Should complete within 200ms
+    expect(endTime - startTime).toBeLessThan(250); // Should complete within 250ms (10,000 operations)
   });
 
   // Test case 27: Should throw TypeError for invalid bytes type

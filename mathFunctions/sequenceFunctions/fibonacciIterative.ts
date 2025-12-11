@@ -4,10 +4,7 @@
  * @param n - The position in the Fibonacci sequence (0-indexed, must be non-negative integer).
  * @returns The nth Fibonacci number.
  *
- * @throws {TypeError} If n is not a number.
- * @throws {Error} If n is NaN.
- * @throws {Error} If n is not an integer.
- * @throws {Error} If n is negative.
+ * @throws {Error} If n is not a non-negative integer.
  *
  * @example
  * // Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34...

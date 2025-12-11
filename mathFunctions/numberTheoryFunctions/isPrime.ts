@@ -4,8 +4,7 @@
  * @param n - The number to check (must be an integer).
  * @returns True if the number is prime, false otherwise.
  *
- * @throws {TypeError} If n is not a number.
- * @throws {Error} If n is NaN.
+ * @throws {Error} If n is not a valid number.
  *
  * @example
  * // Prime numbers

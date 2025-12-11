@@ -26,7 +26,7 @@
  * the array length, and empty arrays. The function creates a new array without
  * modifying the original.
  *
- * @complexity O(n) where n is the length of the input array
+ * @complexity Time: O(n), Space: O(n) - Where n is array length
  */
 export function rotateArrayRight<T>(arr: T[], positions: number): T[] {
   const len = arr.length;

@@ -31,7 +31,7 @@
  * @note This function does not modify the original array. It returns a new array
  * with the filtered results using Array.filter() internally with the predicate negated.
  *
- * @complexity O(n) where n is the length of the input array
+ * @complexity Time: O(n), Space: O(n) - Where n is array length
  */
 export function removeByCondition<T>(
   arr: T[],

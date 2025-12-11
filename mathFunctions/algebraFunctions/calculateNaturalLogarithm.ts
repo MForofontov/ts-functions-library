@@ -1,11 +1,8 @@
 /**
  * Calculates the natural logarithm (base e) of a number.
  *
- * @param n - The number to find the natural logarithm of (must be positive).
+ * @param n - The number to find the natural logarithm of.
  * @returns The natural logarithm of the number.
- *
- * @throws {TypeError} If n is not a number.
- * @throws {Error} If n is NaN, negative, or zero.
  *
  * @example
  * // Basic usage with Euler's number
@@ -31,9 +28,7 @@
  * const probability = 0.25;
  * const information = -calculateNaturalLogarithm(probability); // 1.386... nats
  *
- * @note Wraps Math.log() with validation for consistency with other library functions.
- * @note Returns `-Infinity` for input of 0.
- * @note Returns `NaN` for negative inputs.
+ * @note Wraps Math.log(); returns `-Infinity` for 0 and `NaN` for negative inputs.
  * @note Natural logarithm is the inverse of the exponential function (e^x).
  * @note Commonly used in calculus, physics, and information theory.
  * @note Natural log uses base e (Euler's number ≈ 2.71828).
