@@ -1,7 +1,7 @@
 /**
  * Testing Utilities Index
  *
- * Exports all testing helper functions and constants for streamlined test development.
+ * Exports all testing helper functions and random data generators for streamlined test development.
  *
  * @module testingUtilities
  */
@@ -31,10 +31,12 @@ export { cloneTestData } from './cloneTestData';
 export { generateRandomString, type CharsetType } from './generateRandomString';
 export { assertArraysEqual } from './assertArraysEqual';
 
-// Mock data constants
-export { MOCK_EMAILS } from './constants/mockEmails';
-export { MOCK_URLS } from './constants/mockUrls';
-export { MOCK_IP_ADDRESSES } from './constants/mockIpAddresses';
-export { MOCK_JSON } from './constants/mockJson';
-export { MOCK_ARRAYS } from './constants/mockArrays';
-export { MOCK_OBJECTS } from './constants/mockObjects';
+// Random data generators
+export { generateRandomEmail } from './generateRandomEmail';
+export { generateRandomIPv4 } from './generateRandomIPv4';
+export { generateRandomUUID } from './generateRandomUUID';
+export { generateRandomURL } from './generateRandomURL';
+export { generateRandomDate } from './generateRandomDate';
+export { generateRandomNumber } from './generateRandomNumber';
+export { generateRandomBoolean } from './generateRandomBoolean';
+export { generateRandomObject } from './generateRandomObject';
