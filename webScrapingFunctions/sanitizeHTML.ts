@@ -22,7 +22,17 @@
  */
 export function sanitizeHTML(
   html: string,
-  allowedTags: string[] = ['p', 'br', 'strong', 'em', 'u', 'b', 'i', 'span', 'div'],
+  allowedTags: string[] = [
+    'p',
+    'br',
+    'strong',
+    'em',
+    'u',
+    'b',
+    'i',
+    'span',
+    'div',
+  ],
 ): string {
   if (typeof html !== 'string') {
     throw new TypeError(`html must be a string, got ${typeof html}`);
@@ -35,15 +45,9 @@ export function sanitizeHTML(
   let sanitized = html.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
   sanitized = sanitized.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '');
 
-  // Remove event handlers (onclick, onerror, etc.)
-  sanitized = sanitized.replace(/\s+on\w+\s*=\s*["'][^"']*["']/gi, '');
-
-  // Remove javascript: URLs
-  sanitized = sanitized.replace(/href\s*=\s*["']javascript:[^"']*["']/gi, '');
-
   // Remove all tags except allowed ones
   const tagRegex = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi;
-  sanitized = sanitized.replace(tagRegex, (match, tagName) => {
+  sanitized = sanitized.replace(tagRegex, (match, tagName: string) => {
     if (allowedTags.includes(tagName.toLowerCase())) {
       // Remove dangerous attributes from allowed tags
       let cleanTag = match.replace(/\s+on\w+\s*=\s*["'][^"']*["']/gi, '');

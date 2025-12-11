@@ -36,7 +36,12 @@ export function extractImages(html: string, baseUrl?: string): string[] {
     let src = match[1];
 
     // Resolve relative URLs if baseUrl is provided
-    if (baseUrl && !src.startsWith('http://') && !src.startsWith('https://') && !src.startsWith('data:')) {
+    if (
+      baseUrl &&
+      !src.startsWith('http://') &&
+      !src.startsWith('https://') &&
+      !src.startsWith('data:')
+    ) {
       try {
         const base = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
         src = src.startsWith('/') ? `${base}${src}` : `${base}/${src}`;

@@ -36,7 +36,11 @@ export function extractLinks(html: string, baseUrl?: string): string[] {
     let link = match[1];
 
     // Resolve relative URLs if baseUrl is provided
-    if (baseUrl && !link.startsWith('http://') && !link.startsWith('https://')) {
+    if (
+      baseUrl &&
+      !link.startsWith('http://') &&
+      !link.startsWith('https://')
+    ) {
       try {
         const base = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
         link = link.startsWith('/') ? `${base}${link}` : `${base}/${link}`;

@@ -20,7 +20,9 @@
  */
 export function parseJSON<T = unknown>(jsonString: string): T | null {
   if (typeof jsonString !== 'string') {
-    throw new TypeError(`jsonString must be a string, got ${typeof jsonString}`);
+    throw new TypeError(
+      `jsonString must be a string, got ${typeof jsonString}`,
+    );
   }
 
   try {
