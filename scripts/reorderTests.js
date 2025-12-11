@@ -37,7 +37,10 @@ function updateNumbering(lines, newNumber) {
     if (line.trim().startsWith('// Test case ')) {
       return line.replace(/(\/\/ Test case )\d+/, `$1${numberString}`);
     }
-    return line.replace(/((?:it|test)\(\s*['"`])\d+(\.)/, `$1${numberString}$2`);
+    return line.replace(
+      /((?:it|test)\(\s*['"`])\d+(\.)/,
+      `$1${numberString}$2`,
+    );
   });
 }
 
@@ -52,7 +55,10 @@ function processFile(filePath) {
     if (workingLines[i].trim().startsWith('// Test case ')) {
       const start = i;
       let end = i + 1;
-      while (end < workingLines.length && !workingLines[end].trim().startsWith('// Test case ')) {
+      while (
+        end < workingLines.length &&
+        !workingLines[end].trim().startsWith('// Test case ')
+      ) {
         end += 1;
       }
       const blockLines = workingLines.slice(start, end);
