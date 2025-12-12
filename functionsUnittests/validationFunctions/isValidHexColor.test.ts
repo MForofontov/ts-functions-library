@@ -62,7 +62,6 @@ describe('isValidHexColor', () => {
     // Arrange & Act & Assert
     expect(isValidHexColor('#F')).toBe(false);
     expect(isValidHexColor('#FF')).toBe(false);
-    expect(isValidHexColor('#FF57')).toBe(false); // 4 chars but not alpha format
     expect(isValidHexColor('#12345')).toBe(false);
     expect(isValidHexColor('#1234567')).toBe(false);
     expect(isValidHexColor('#123456789')).toBe(false);

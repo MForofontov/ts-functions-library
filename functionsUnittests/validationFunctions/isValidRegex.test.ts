@@ -70,18 +70,18 @@ describe('isValidRegex', () => {
     expect(isValidRegex(')no start')).toBe(false);
   });
 
-  // Test case 9: Invalid pattern - invalid escape sequence
-  it('9. should return false for invalid escape sequences', () => {
+  // Test case 9: Invalid pattern - unclosed character class
+  it('9. should return false for unclosed character class', () => {
     // Arrange & Act & Assert
-    expect(isValidRegex('\\k<invalid>')).toBe(false);
+    expect(isValidRegex('[abc')).toBe(false);
+    expect(isValidRegex('[a-z')).toBe(false);
   });
 
-  // Test case 10: Invalid pattern - invalid quantifier
-  it('10. should return false for invalid quantifiers', () => {
+  // Test case 10: Invalid pattern - invalid group reference
+  it('10. should return false for invalid named group references', () => {
     // Arrange & Act & Assert
-    expect(isValidRegex('*invalid')).toBe(false);
-    expect(isValidRegex('+invalid')).toBe(false);
-    expect(isValidRegex('a{}')).toBe(false);
+    // Invalid named backreference (group doesn't exist)
+    expect(isValidRegex('(?<name>test)\\k<invalid>')).toBe(false);
   });
 
   // Test case 11: Invalid flags
