@@ -2,7 +2,7 @@ import { mapToObject } from '../../collectionFunctions/mapToObject';
 
 describe('mapToObject', () => {
   it('1. should convert map to object', () => {
-    const map = new Map([
+    const map = new Map<string, string | number>([
       ['name', 'John'],
       ['age', 30],
     ]);
@@ -12,7 +12,7 @@ describe('mapToObject', () => {
 
   it('2. should handle symbol keys', () => {
     const sym = Symbol('id');
-    const map = new Map<string | symbol, any>([
+    const map = new Map<string | symbol, string | number>([
       ['name', 'John'],
       [sym, 123],
     ]);

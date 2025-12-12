@@ -26,7 +26,7 @@ describe('mapMap', () => {
       key === 'age' ? parseInt(value) : value,
     );
     expect(result).toEqual(
-      new Map([
+      new Map<string, string | number>([
         ['name', 'john'],
         ['age', 30],
       ]),

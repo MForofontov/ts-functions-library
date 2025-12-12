@@ -5,7 +5,7 @@ describe('objectToMap', () => {
     const obj = { name: 'John', age: 30 };
     const result = objectToMap(obj);
     expect(result).toEqual(
-      new Map([
+      new Map<string, string | number>([
         ['name', 'John'],
         ['age', 30],
       ]),
@@ -14,10 +14,10 @@ describe('objectToMap', () => {
 
   it('2. should handle symbol keys', () => {
     const sym = Symbol('id');
-    const obj = { name: 'John', [sym]: 123 };
+    const obj: Record<string | symbol, string | number> = { name: 'John', [sym]: 123 };
     const result = objectToMap(obj);
     expect(result).toEqual(
-      new Map([
+      new Map<string | symbol, string | number>([
         ['name', 'John'],
         [sym, 123],
       ]),
