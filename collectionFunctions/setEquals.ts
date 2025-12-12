@@ -38,15 +38,11 @@
  */
 export function setEquals<T>(set1: Set<T>, set2: Set<T>): boolean {
   if (!(set1 instanceof Set)) {
-    throw new TypeError(
-      `First argument must be a Set, got ${typeof set1}`,
-    );
+    throw new TypeError(`First argument must be a Set, got ${typeof set1}`);
   }
 
   if (!(set2 instanceof Set)) {
-    throw new TypeError(
-      `Second argument must be a Set, got ${typeof set2}`,
-    );
+    throw new TypeError(`Second argument must be a Set, got ${typeof set2}`);
   }
 
   // Quick check: if sizes differ, sets are not equal

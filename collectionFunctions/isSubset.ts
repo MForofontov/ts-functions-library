@@ -37,9 +37,7 @@
  */
 export function isSubset<T>(subset: Set<T>, superset: Set<T>): boolean {
   if (!(subset instanceof Set)) {
-    throw new TypeError(
-      `First argument must be a Set, got ${typeof subset}`,
-    );
+    throw new TypeError(`First argument must be a Set, got ${typeof subset}`);
   }
 
   if (!(superset instanceof Set)) {

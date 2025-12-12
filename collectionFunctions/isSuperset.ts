@@ -37,15 +37,11 @@
  */
 export function isSuperset<T>(superset: Set<T>, subset: Set<T>): boolean {
   if (!(superset instanceof Set)) {
-    throw new TypeError(
-      `First argument must be a Set, got ${typeof superset}`,
-    );
+    throw new TypeError(`First argument must be a Set, got ${typeof superset}`);
   }
 
   if (!(subset instanceof Set)) {
-    throw new TypeError(
-      `Second argument must be a Set, got ${typeof subset}`,
-    );
+    throw new TypeError(`Second argument must be a Set, got ${typeof subset}`);
   }
 
   // If superset is smaller, it cannot be a superset

@@ -36,20 +36,13 @@
  *
  * @complexity Time: O(n + m) where n and m are set sizes, Space: O(n + m)
  */
-export function setSymmetricDifference<T>(
-  set1: Set<T>,
-  set2: Set<T>,
-): Set<T> {
+export function setSymmetricDifference<T>(set1: Set<T>, set2: Set<T>): Set<T> {
   if (!(set1 instanceof Set)) {
-    throw new TypeError(
-      `First argument must be a Set, got ${typeof set1}`,
-    );
+    throw new TypeError(`First argument must be a Set, got ${typeof set1}`);
   }
 
   if (!(set2 instanceof Set)) {
-    throw new TypeError(
-      `Second argument must be a Set, got ${typeof set2}`,
-    );
+    throw new TypeError(`Second argument must be a Set, got ${typeof set2}`);
   }
 
   const result = new Set<T>();

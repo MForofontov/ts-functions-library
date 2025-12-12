@@ -37,15 +37,11 @@
  */
 export function isDisjoint<T>(set1: Set<T>, set2: Set<T>): boolean {
   if (!(set1 instanceof Set)) {
-    throw new TypeError(
-      `First argument must be a Set, got ${typeof set1}`,
-    );
+    throw new TypeError(`First argument must be a Set, got ${typeof set1}`);
   }
 
   if (!(set2 instanceof Set)) {
-    throw new TypeError(
-      `Second argument must be a Set, got ${typeof set2}`,
-    );
+    throw new TypeError(`Second argument must be a Set, got ${typeof set2}`);
   }
 
   // Optimize: iterate over the smaller set

@@ -175,8 +175,7 @@ describe('setUnion', () => {
     // Arrange
     const invalidSet = [1, 2, 3] as unknown as Set<number>;
     const validSet = new Set([4, 5, 6]);
-    const expectedMessage =
-      'All arguments must be Sets, argument 0 is object';
+    const expectedMessage = 'All arguments must be Sets, argument 0 is object';
 
     // Act & Assert
     expect(() => setUnion(invalidSet, validSet)).toThrow(TypeError);
@@ -188,8 +187,7 @@ describe('setUnion', () => {
     // Arrange
     const validSet = new Set([1, 2, 3]);
     const invalidSet = 'not a set' as unknown as Set<number>;
-    const expectedMessage =
-      'All arguments must be Sets, argument 1 is string';
+    const expectedMessage = 'All arguments must be Sets, argument 1 is string';
 
     // Act & Assert
     expect(() => setUnion(validSet, invalidSet)).toThrow(TypeError);
@@ -202,8 +200,7 @@ describe('setUnion', () => {
     const set1 = new Set([1, 2]);
     const set2 = new Set([3, 4]);
     const invalidSet = null as unknown as Set<number>;
-    const expectedMessage =
-      'All arguments must be Sets, argument 2 is object';
+    const expectedMessage = 'All arguments must be Sets, argument 2 is object';
 
     // Act & Assert
     expect(() => setUnion(set1, set2, invalidSet)).toThrow(TypeError);

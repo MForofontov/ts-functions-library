@@ -33,9 +33,7 @@
  */
 export function mapMerge<K, V>(...maps: Map<K, V>[]): Map<K, V> {
   if (maps.length < 2) {
-    throw new Error(
-      `At least two maps are required, got ${maps.length}`,
-    );
+    throw new Error(`At least two maps are required, got ${maps.length}`);
   }
 
   for (let i = 0; i < maps.length; i++) {

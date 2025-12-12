@@ -38,9 +38,7 @@ export function mapMap<K, V, R>(
   }
 
   if (typeof mapper !== 'function') {
-    throw new TypeError(
-      `mapper must be a function, got ${typeof mapper}`,
-    );
+    throw new TypeError(`mapper must be a function, got ${typeof mapper}`);
   }
 
   const result = new Map<K, R>();

@@ -16,6 +16,7 @@
     "index.ts",
     "arrayFunctions",
     "asyncFunctions",
+    "collectionFunctions",
     "cryptoFunctions",
     "dateFunctions",
     "encodingFunctions",

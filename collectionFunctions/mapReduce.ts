@@ -39,9 +39,7 @@ export function mapReduce<K, V, R>(
   }
 
   if (typeof reducer !== 'function') {
-    throw new TypeError(
-      `reducer must be a function, got ${typeof reducer}`,
-    );
+    throw new TypeError(`reducer must be a function, got ${typeof reducer}`);
   }
 
   let accumulator = initialValue;

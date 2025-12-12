@@ -43,9 +43,7 @@ export function setDifference<T>(
   }
 
   if (!(firstSet instanceof Set)) {
-    throw new TypeError(
-      `First argument must be a Set, got ${typeof firstSet}`,
-    );
+    throw new TypeError(`First argument must be a Set, got ${typeof firstSet}`);
   }
 
   for (let i = 0; i < otherSets.length; i++) {
