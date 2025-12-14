@@ -45,7 +45,11 @@ export function getConfigValue<T = any>(
   let current: any = config;
 
   for (const key of keys) {
-    if (current === null || current === undefined || typeof current !== 'object') {
+    if (
+      current === null ||
+      current === undefined ||
+      typeof current !== 'object'
+    ) {
       return defaultValue;
     }
     current = current[key];

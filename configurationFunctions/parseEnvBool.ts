@@ -23,13 +23,18 @@
  *
  * @complexity Time: O(1), Space: O(1)
  */
-export function parseEnvBool(key: string, defaultValue?: boolean): boolean | undefined {
+export function parseEnvBool(
+  key: string,
+  defaultValue?: boolean,
+): boolean | undefined {
   if (typeof key !== 'string') {
     throw new TypeError(`key must be a string, got ${typeof key}`);
   }
 
   if (defaultValue !== undefined && typeof defaultValue !== 'boolean') {
-    throw new TypeError(`defaultValue must be a boolean, got ${typeof defaultValue}`);
+    throw new TypeError(
+      `defaultValue must be a boolean, got ${typeof defaultValue}`,
+    );
   }
 
   if (key.length === 0) {

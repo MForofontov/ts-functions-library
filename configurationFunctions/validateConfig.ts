@@ -32,18 +32,24 @@ export function validateConfig<T extends Record<string, any>>(
   }
 
   if (!Array.isArray(requiredKeys)) {
-    throw new TypeError(`requiredKeys must be an array, got ${typeof requiredKeys}`);
+    throw new TypeError(
+      `requiredKeys must be an array, got ${typeof requiredKeys}`,
+    );
   }
 
   for (const key of requiredKeys) {
     if (typeof key !== 'string') {
-      throw new TypeError(`All required keys must be strings, got ${typeof key}`);
+      throw new TypeError(
+        `All required keys must be strings, got ${typeof key}`,
+      );
     }
 
     const value = getNestedValue(config, key);
 
     if (value === undefined) {
-      throw new Error(`Required configuration key '${key}' is missing or undefined`);
+      throw new Error(
+        `Required configuration key '${key}' is missing or undefined`,
+      );
     }
   }
 
@@ -58,7 +64,11 @@ function getNestedValue(obj: any, path: string): any {
   let current = obj;
 
   for (const key of keys) {
-    if (current === null || current === undefined || typeof current !== 'object') {
+    if (
+      current === null ||
+      current === undefined ||
+      typeof current !== 'object'
+    ) {
       return undefined;
     }
     current = current[key];

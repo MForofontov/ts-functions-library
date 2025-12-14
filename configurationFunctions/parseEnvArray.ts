@@ -35,7 +35,9 @@ export function parseEnvArray(
   }
 
   if (defaultValue !== undefined && !Array.isArray(defaultValue)) {
-    throw new TypeError(`defaultValue must be an array, got ${typeof defaultValue}`);
+    throw new TypeError(
+      `defaultValue must be an array, got ${typeof defaultValue}`,
+    );
   }
 
   if (key.length === 0) {
@@ -52,5 +54,8 @@ export function parseEnvArray(
     return defaultValue;
   }
 
-  return value.split(delimiter).map((item) => item.trim()).filter((item) => item.length > 0);
+  return value
+    .split(delimiter)
+    .map((item) => item.trim())
+    .filter((item) => item.length > 0);
 }

@@ -21,7 +21,10 @@
  *
  * @complexity Time: O(n), Space: O(n) where n is JSON string length
  */
-export function parseEnvJSON<T = any>(key: string, defaultValue?: T): T | undefined {
+export function parseEnvJSON<T = any>(
+  key: string,
+  defaultValue?: T,
+): T | undefined {
   if (typeof key !== 'string') {
     throw new TypeError(`key must be a string, got ${typeof key}`);
   }

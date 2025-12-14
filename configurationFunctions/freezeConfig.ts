@@ -21,7 +21,9 @@
  *
  * @complexity Time: O(n), Space: O(1) where n is total number of properties
  */
-export function freezeConfig<T extends Record<string, any>>(config: T): Readonly<T> {
+export function freezeConfig<T extends Record<string, any>>(
+  config: T,
+): Readonly<T> {
   if (config === null || typeof config !== 'object') {
     throw new TypeError(`config must be an object, got ${typeof config}`);
   }
@@ -33,7 +35,11 @@ export function freezeConfig<T extends Record<string, any>>(config: T): Readonly
   Object.keys(config).forEach((key) => {
     const value = config[key];
 
-    if (value !== null && typeof value === 'object' && !Object.isFrozen(value)) {
+    if (
+      value !== null &&
+      typeof value === 'object' &&
+      !Object.isFrozen(value)
+    ) {
       freezeConfig(value);
     }
   });

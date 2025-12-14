@@ -48,7 +48,12 @@ export function setConfigValue(
   for (let i = 0; i < keys.length - 1; i++) {
     const key = keys[i];
 
-    if (current[key] === undefined || current[key] === null || typeof current[key] !== 'object' || Array.isArray(current[key])) {
+    if (
+      current[key] === undefined ||
+      current[key] === null ||
+      typeof current[key] !== 'object' ||
+      Array.isArray(current[key])
+    ) {
       current[key] = {};
     }
 
