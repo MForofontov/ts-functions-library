@@ -17,6 +17,7 @@
     "arrayFunctions",
     "asyncFunctions",
     "collectionFunctions",
+    "configurationFunctions",
     "cryptoFunctions",
     "dateFunctions",
     "encodingFunctions",
