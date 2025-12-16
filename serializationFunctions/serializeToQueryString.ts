@@ -22,7 +22,10 @@
  */
 export function serializeToQueryString(
   data: Record<string, any>,
-  options: { encodeValues?: boolean; arrayFormat?: 'repeat' | 'brackets' | 'comma' } = {},
+  options: {
+    encodeValues?: boolean;
+    arrayFormat?: 'repeat' | 'brackets' | 'comma';
+  } = {},
 ): string {
   if (data === null || typeof data !== 'object' || Array.isArray(data)) {
     throw new TypeError(
@@ -33,7 +36,9 @@ export function serializeToQueryString(
   const { encodeValues = true, arrayFormat = 'repeat' } = options;
 
   if (typeof encodeValues !== 'boolean') {
-    throw new TypeError(`encodeValues must be a boolean, got ${typeof encodeValues}`);
+    throw new TypeError(
+      `encodeValues must be a boolean, got ${typeof encodeValues}`,
+    );
   }
 
   if (!['repeat', 'brackets', 'comma'].includes(arrayFormat)) {
@@ -59,18 +64,24 @@ export function serializeToQueryString(
         parts.push(`${encodedKey}=${encodedValue}`);
       } else if (arrayFormat === 'brackets') {
         value.forEach((v) => {
-          const encodedValue = encodeValues ? encodeURIComponent(String(v)) : String(v);
+          const encodedValue = encodeValues
+            ? encodeURIComponent(String(v))
+            : String(v);
           parts.push(`${encodedKey}[]=${encodedValue}`);
         });
       } else {
         // repeat
         value.forEach((v) => {
-          const encodedValue = encodeValues ? encodeURIComponent(String(v)) : String(v);
+          const encodedValue = encodeValues
+            ? encodeURIComponent(String(v))
+            : String(v);
           parts.push(`${encodedKey}=${encodedValue}`);
         });
       }
     } else {
-      const encodedValue = encodeValues ? encodeURIComponent(String(value)) : String(value);
+      const encodedValue = encodeValues
+        ? encodeURIComponent(String(value))
+        : String(value);
       parts.push(`${encodedKey}=${encodedValue}`);
     }
   }

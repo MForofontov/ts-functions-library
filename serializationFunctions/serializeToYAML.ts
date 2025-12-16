@@ -59,7 +59,11 @@ export function serializeToYAML(data: any, indent: number = 2): string {
         obj
           .map((item) => {
             const serialized = serialize(item, depth + 1);
-            if (typeof item === 'object' && !Array.isArray(item) && item !== null) {
+            if (
+              typeof item === 'object' &&
+              !Array.isArray(item) &&
+              item !== null
+            ) {
               return `${spacing}${' '.repeat(indent)}-${serialized.slice(spacing.length + indent)}`;
             }
             return `${spacing}${' '.repeat(indent)}- ${serialized}`;

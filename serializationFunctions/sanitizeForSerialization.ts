@@ -25,7 +25,9 @@ export function sanitizeForSerialization(
   removeNull: boolean = false,
 ): any {
   if (typeof removeNull !== 'boolean') {
-    throw new TypeError(`removeNull must be a boolean, got ${typeof removeNull}`);
+    throw new TypeError(
+      `removeNull must be a boolean, got ${typeof removeNull}`,
+    );
   }
 
   const sanitize = (value: any): any => {

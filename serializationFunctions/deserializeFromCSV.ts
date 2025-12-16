@@ -41,7 +41,9 @@ export function deserializeFromCSV(
   }
 
   if (typeof hasHeaders !== 'boolean') {
-    throw new TypeError(`hasHeaders must be a boolean, got ${typeof hasHeaders}`);
+    throw new TypeError(
+      `hasHeaders must be a boolean, got ${typeof hasHeaders}`,
+    );
   }
 
   const parseRow = (row: string): string[] => {

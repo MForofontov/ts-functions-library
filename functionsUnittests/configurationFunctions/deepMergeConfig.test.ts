@@ -13,7 +13,9 @@ describe('deepMergeConfig', () => {
   });
 
   it('2. should merge nested objects', () => {
-    const config1: Record<string, any> = { db: { host: 'localhost', port: 5432 } };
+    const config1: Record<string, any> = {
+      db: { host: 'localhost', port: 5432 },
+    };
     const config2: Record<string, any> = { db: { port: 3306, user: 'admin' } };
     const result = deepMergeConfig(config1, config2);
     expect(result).toEqual({

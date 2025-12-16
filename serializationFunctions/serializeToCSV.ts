@@ -41,7 +41,9 @@ export function serializeToCSV(
   }
 
   if (typeof includeHeaders !== 'boolean') {
-    throw new TypeError(`includeHeaders must be a boolean, got ${typeof includeHeaders}`);
+    throw new TypeError(
+      `includeHeaders must be a boolean, got ${typeof includeHeaders}`,
+    );
   }
 
   const keys = Object.keys(data[0]);

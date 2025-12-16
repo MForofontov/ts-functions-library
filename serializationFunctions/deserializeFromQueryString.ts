@@ -25,21 +25,29 @@ export function deserializeFromQueryString(
   options: { decodeValues?: boolean; arrayFormat?: 'brackets' | 'auto' } = {},
 ): Record<string, any> {
   if (typeof queryString !== 'string') {
-    throw new TypeError(`queryString must be a string, got ${typeof queryString}`);
+    throw new TypeError(
+      `queryString must be a string, got ${typeof queryString}`,
+    );
   }
 
   const { decodeValues = true, arrayFormat = 'auto' } = options;
 
   if (typeof decodeValues !== 'boolean') {
-    throw new TypeError(`decodeValues must be a boolean, got ${typeof decodeValues}`);
+    throw new TypeError(
+      `decodeValues must be a boolean, got ${typeof decodeValues}`,
+    );
   }
 
   if (!['brackets', 'auto'].includes(arrayFormat)) {
-    throw new TypeError(`arrayFormat must be 'brackets' or 'auto', got ${arrayFormat}`);
+    throw new TypeError(
+      `arrayFormat must be 'brackets' or 'auto', got ${arrayFormat}`,
+    );
   }
 
   // Remove leading ?
-  const cleanString = queryString.startsWith('?') ? queryString.slice(1) : queryString;
+  const cleanString = queryString.startsWith('?')
+    ? queryString.slice(1)
+    : queryString;
 
   if (cleanString.length === 0) {
     return {};

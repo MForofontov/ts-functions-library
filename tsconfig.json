@@ -25,6 +25,7 @@
     "mathFunctions",
     "networkFunctions",
     "objectFunctions",
+    "serializationFunctions",
     "stringFunctions",
     "testingUtilities",
     "utilityFunctions",

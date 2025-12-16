@@ -20,9 +20,14 @@
  *
  * @complexity Time: O(n), Space: O(n) where n is binary string length
  */
-export function deserializeFromBinary(binaryString: string, separator: string = ''): string {
+export function deserializeFromBinary(
+  binaryString: string,
+  separator: string = '',
+): string {
   if (typeof binaryString !== 'string') {
-    throw new TypeError(`binaryString must be a string, got ${typeof binaryString}`);
+    throw new TypeError(
+      `binaryString must be a string, got ${typeof binaryString}`,
+    );
   }
 
   if (typeof separator !== 'string') {
@@ -34,7 +39,9 @@ export function deserializeFromBinary(binaryString: string, separator: string = 
   // If no separator, split into 8-bit chunks
   if (!separator) {
     if (binaryString.length % 8 !== 0) {
-      throw new Error('Binary string length must be divisible by 8 when no separator is used');
+      throw new Error(
+        'Binary string length must be divisible by 8 when no separator is used',
+      );
     }
 
     for (let i = 0; i < binaryString.length; i += 8) {

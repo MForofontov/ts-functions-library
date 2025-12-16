@@ -26,7 +26,9 @@ export function deserializeFromJSON<T = any>(
   validate?: (data: any) => boolean,
 ): T {
   if (typeof jsonString !== 'string') {
-    throw new TypeError(`jsonString must be a string, got ${typeof jsonString}`);
+    throw new TypeError(
+      `jsonString must be a string, got ${typeof jsonString}`,
+    );
   }
 
   if (validate !== undefined && typeof validate !== 'function') {

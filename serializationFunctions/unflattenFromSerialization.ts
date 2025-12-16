@@ -22,7 +22,11 @@
 export function unflattenFromSerialization(
   flatObj: Record<string, any>,
 ): Record<string, any> {
-  if (flatObj === null || typeof flatObj !== 'object' || Array.isArray(flatObj)) {
+  if (
+    flatObj === null ||
+    typeof flatObj !== 'object' ||
+    Array.isArray(flatObj)
+  ) {
     throw new TypeError(
       `flatObj must be an object, got ${Array.isArray(flatObj) ? 'array' : typeof flatObj}`,
     );

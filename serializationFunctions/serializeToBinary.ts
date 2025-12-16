@@ -19,7 +19,10 @@
  *
  * @complexity Time: O(n), Space: O(n) where n is string length
  */
-export function serializeToBinary(input: string, separator: string = ''): string {
+export function serializeToBinary(
+  input: string,
+  separator: string = '',
+): string {
   if (typeof input !== 'string') {
     throw new TypeError(`input must be a string, got ${typeof input}`);
   }

@@ -35,42 +35,91 @@ export function deserializeFromXML(xmlString: string): Record<string, any> {
       .replace(/&amp;/g, '&');
   };
 
-  const tagRegex = /<([^/>\s]+)([^>]*)>(.*?)<\/\1>|<([^/>\s]+)([^>]*)\/>/gs;
-
   const parse = (xml: string): any => {
     const trimmed = xml.trim();
 
-    // Check for self-closing tag
-    const selfClosingMatch = trimmed.match(/^<([^/>\s]+)([^>]*)\/>$/);
-    if (selfClosingMatch) {
-      return null;
-    }
-
-    // Check for simple text content
+    // Check for simple text content (no tags)
     if (!trimmed.includes('<')) {
       return unescapeXML(trimmed);
     }
 
     const result: Record<string, any> = {};
-    let match: RegExpExecArray | null;
+    let pos = 0;
 
-    while ((match = tagRegex.exec(trimmed)) !== null) {
-      const tag = match[1] || match[4];
-      const content = match[3] || null;
+    while (pos < trimmed.length) {
+      // Skip whitespace
+      while (pos < trimmed.length && /\s/.test(trimmed[pos])) {
+        pos++;
+      }
 
-      if (!tag) continue;
+      if (pos >= trimmed.length || trimmed[pos] !== '<') {
+        break;
+      }
 
-      const parsedContent = content ? parse(content) : null;
-
-      if (result[tag] !== undefined) {
-        // Tag already exists - convert to array
-        if (Array.isArray(result[tag])) {
-          result[tag].push(parsedContent);
+      // Check for self-closing tag
+      const selfClosingMatch = trimmed.slice(pos).match(/^<([^/>\s]+)[^>]*\/>/);
+      if (selfClosingMatch) {
+        const tag = selfClosingMatch[1];
+        if (result[tag] !== undefined) {
+          if (Array.isArray(result[tag])) {
+            result[tag].push(null);
+          } else {
+            result[tag] = [result[tag], null];
+          }
         } else {
-          result[tag] = [result[tag], parsedContent];
+          result[tag] = null;
+        }
+        pos += selfClosingMatch[0].length;
+        continue;
+      }
+
+      // Check for regular tag
+      const tagMatch = trimmed.slice(pos).match(/^<([^/>\s]+)[^>]*>/);
+      if (tagMatch) {
+        const tag = tagMatch[1];
+        pos += tagMatch[0].length;
+
+        // Find the closing tag
+        const closingTag = `</${tag}>`;
+        let depth = 1;
+        let contentStart = pos;
+
+        while (pos < trimmed.length && depth > 0) {
+          if (trimmed.slice(pos).startsWith(`<${tag}`)) {
+            // Another opening tag
+            const nextTag = trimmed.slice(pos).match(/^<[^/>\s]+[^>]*>/);
+            if (nextTag) {
+              pos += nextTag[0].length;
+              depth++;
+            } else {
+              pos++;
+            }
+          } else if (trimmed.slice(pos).startsWith(closingTag)) {
+            depth--;
+            if (depth === 0) {
+              const content = trimmed.slice(contentStart, pos);
+              const parsedContent = content ? parse(content) : null;
+
+              if (result[tag] !== undefined) {
+                if (Array.isArray(result[tag])) {
+                  result[tag].push(parsedContent);
+                } else {
+                  result[tag] = [result[tag], parsedContent];
+                }
+              } else {
+                result[tag] = parsedContent;
+              }
+
+              pos += closingTag.length;
+            } else {
+              pos++;
+            }
+          } else {
+            pos++;
+          }
         }
       } else {
-        result[tag] = parsedContent;
+        pos++;
       }
     }
 
