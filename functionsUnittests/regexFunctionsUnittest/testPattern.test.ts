@@ -21,7 +21,7 @@ describe('testPattern', () => {
   });
 
   it('4. should handle case-insensitive matching', () => {
-    const result = testPattern('Hello World', 'hello', 'i');
+    const result = testPattern('Hello World', /hello/i);
     expect(result).toBe(true);
   });
 
@@ -46,7 +46,7 @@ describe('testPattern', () => {
   });
 
   it('9. should handle multiline matching', () => {
-    const result = testPattern('line1\nline2', /^line2$/, 'm');
+    const result = testPattern('line1\nline2', /^line2$/m);
     expect(result).toBe(true);
   });
 

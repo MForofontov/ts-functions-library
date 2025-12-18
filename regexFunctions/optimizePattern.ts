@@ -63,7 +63,7 @@ export function optimizePattern(
     const hasBackrefs = /\\[1-9]/.test(source);
     if (!hasBackrefs) {
       suggestions.push(
-        'Consider using non-capturing groups (?:...) instead of capturing groups (...) if you don\'t need the captures',
+        "Consider using non-capturing groups (?:...) instead of capturing groups (...) if you don't need the captures",
       );
       optimized = optimized.replace(/\((?!\?)/g, '(?:');
     }
