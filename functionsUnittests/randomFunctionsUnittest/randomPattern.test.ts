@@ -1,4 +1,4 @@
-import { randomPattern } from '../randomPattern';
+import { randomPattern } from '../../randomFunctions/randomPattern';
 
 /**
  * Unit tests for the randomPattern function.
@@ -77,11 +77,11 @@ describe('randomPattern', () => {
   // Test case 11: Randomness verification
   it('11. should produce different results over multiple calls', () => {
     const results = new Set<string>();
-    
+
     for (let i = 0; i < 100; i++) {
       results.add(randomPattern('AAA-###'));
     }
-    
+
     expect(results.size).toBeGreaterThan(90);
   });
 
@@ -96,28 +96,28 @@ describe('randomPattern', () => {
   // Test case 13: All digit types appear
   it('13. should use all digits (0-9)', () => {
     const digits = new Set<string>();
-    
+
     for (let i = 0; i < 500; i++) {
       const result = randomPattern('##########');
       for (const char of result) {
         digits.add(char);
       }
     }
-    
+
     expect(digits.size).toBe(10);
   });
 
   // Test case 14: All uppercase letters appear
   it('14. should use all uppercase letters (A-Z)', () => {
     const letters = new Set<string>();
-    
+
     for (let i = 0; i < 1000; i++) {
       const result = randomPattern('AAAAAAAAAA');
       for (const char of result) {
         letters.add(char);
       }
     }
-    
+
     expect(letters.size).toBeGreaterThan(20);
   });
 
@@ -128,7 +128,7 @@ describe('randomPattern', () => {
       randomPattern('AAA-###-aaa');
     }
     const endTime = performance.now();
-    
+
     expect(endTime - startTime).toBeLessThan(100);
   });
 

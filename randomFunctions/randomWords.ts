@@ -28,7 +28,10 @@
  *
  * @complexity Time: O(n*m), Space: O(n*m) where n is count, m is wordLength
  */
-export function randomWords(count: number = 3, wordLength: number = 6): string[] {
+export function randomWords(
+  count: number = 3,
+  wordLength: number = 6,
+): string[] {
   if (typeof count !== 'number') {
     throw new TypeError(`count must be a number, got ${typeof count}`);
   }
@@ -43,7 +46,9 @@ export function randomWords(count: number = 3, wordLength: number = 6): string[]
   }
 
   if (typeof wordLength !== 'number') {
-    throw new TypeError(`wordLength must be a number, got ${typeof wordLength}`);
+    throw new TypeError(
+      `wordLength must be a number, got ${typeof wordLength}`,
+    );
   }
   if (isNaN(wordLength)) {
     throw new Error('wordLength must be a valid number, not NaN');
@@ -52,9 +57,7 @@ export function randomWords(count: number = 3, wordLength: number = 6): string[]
     throw new Error(`wordLength must be an integer, got ${wordLength}`);
   }
   if (wordLength < 1 || wordLength > 20) {
-    throw new Error(
-      `wordLength must be between 1 and 20, got ${wordLength}`,
-    );
+    throw new Error(`wordLength must be between 1 and 20, got ${wordLength}`);
   }
 
   const vowels = 'aeiou';

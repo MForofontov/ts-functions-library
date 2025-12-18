@@ -37,9 +37,7 @@ export function randomWord(length: number = 6): string {
     throw new Error(`length must be an integer, got ${length}`);
   }
   if (length < 1 || length > 20) {
-    throw new Error(
-      `length must be between 1 and 20, got ${length}`,
-    );
+    throw new Error(`length must be between 1 and 20, got ${length}`);
   }
 
   const vowels = 'aeiou';

@@ -1,4 +1,4 @@
-import { randomBase64 } from '../randomBase64';
+import { randomBase64 } from '../../randomFunctions/randomBase64';
 
 /**
  * Unit tests for the randomBase64 function.
@@ -50,25 +50,25 @@ describe('randomBase64', () => {
   // Test case 7: Randomness verification
   it('7. should produce different strings over multiple calls', () => {
     const results = new Set<string>();
-    
+
     for (let i = 0; i < 100; i++) {
       results.add(randomBase64(20));
     }
-    
+
     expect(results.size).toBeGreaterThan(95);
   });
 
   // Test case 8: All base64 characters appear
   it('8. should use all base64 characters', () => {
     const allChars = new Set<string>();
-    
+
     for (let i = 0; i < 2000; i++) {
       const str = randomBase64(10);
       for (const char of str) {
         allChars.add(char);
       }
     }
-    
+
     // Should see all 64 base64 characters (might take many iterations)
     expect(allChars.size).toBeGreaterThan(50);
   });
@@ -80,18 +80,18 @@ describe('randomBase64', () => {
       randomBase64(32);
     }
     const endTime = performance.now();
-    
+
     expect(endTime - startTime).toBeLessThan(100);
   });
 
   // Test case 10: Contains uppercase letters
   it('10. should contain uppercase letters', () => {
     const results: string[] = [];
-    
+
     for (let i = 0; i < 100; i++) {
       results.push(randomBase64(50));
     }
-    
+
     const combined = results.join('');
     expect(combined).toMatch(/[A-Z]/);
   });
@@ -99,11 +99,11 @@ describe('randomBase64', () => {
   // Test case 11: Contains lowercase letters
   it('11. should contain lowercase letters', () => {
     const results: string[] = [];
-    
+
     for (let i = 0; i < 100; i++) {
       results.push(randomBase64(50));
     }
-    
+
     const combined = results.join('');
     expect(combined).toMatch(/[a-z]/);
   });

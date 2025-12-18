@@ -1,4 +1,4 @@
-import { randomWord } from '../randomWord';
+import { randomWord } from '../../randomFunctions/randomWord';
 
 /**
  * Unit tests for the randomWord function.
@@ -44,7 +44,7 @@ describe('randomWord', () => {
     const result = randomWord(10);
     const vowels = 'aeiou';
     const consonants = 'bcdfghjklmnprstvwxyz';
-    
+
     for (let i = 0; i < result.length; i++) {
       if (i % 2 === 0) {
         // Even positions should be consonants
@@ -59,11 +59,11 @@ describe('randomWord', () => {
   // Test case 7: Randomness verification
   it('7. should produce different words over multiple calls', () => {
     const results = new Set<string>();
-    
+
     for (let i = 0; i < 100; i++) {
       results.add(randomWord(8));
     }
-    
+
     expect(results.size).toBeGreaterThan(90);
   });
 
@@ -72,7 +72,7 @@ describe('randomWord', () => {
     const word = randomWord(10);
     const hasVowel = /[aeiou]/.test(word);
     const hasConsonant = /[bcdfghjklmnprstvwxyz]/.test(word);
-    
+
     expect(hasVowel).toBe(true);
     expect(hasConsonant).toBe(true);
   });
@@ -84,7 +84,7 @@ describe('randomWord', () => {
       randomWord(10);
     }
     const endTime = performance.now();
-    
+
     expect(endTime - startTime).toBeLessThan(100);
   });
 
@@ -93,7 +93,7 @@ describe('randomWord', () => {
     for (let i = 0; i < 50; i++) {
       const word = randomWord(12);
       const vowels = 'aeiou';
-      
+
       // Check pattern: even indices = consonants, odd indices = vowels
       for (let j = 0; j < word.length; j++) {
         const isVowel = vowels.includes(word[j]);

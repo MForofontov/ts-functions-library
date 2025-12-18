@@ -48,9 +48,7 @@ export function randomWeighted<T>(items: T[], weights: number[]): T {
     throw new Error('weights array cannot be empty');
   }
   if (items.length !== weights.length) {
-    throw new Error(
-      `items and weights must have the same length, got ${items.length} and ${weights.length}`,
-    );
+    throw new Error('items and weights arrays must have the same length');
   }
 
   // Validate weights
@@ -63,10 +61,8 @@ export function randomWeighted<T>(items: T[], weights: number[]): T {
     if (isNaN(weights[i])) {
       throw new Error(`Weight at index ${i} is NaN`);
     }
-    if (weights[i] <= 0) {
-      throw new Error(
-        `All weights must be positive numbers, got ${weights[i]} at index ${i}`,
-      );
+    if (weights[i] < 0) {
+      throw new Error('All weights must be non-negative');
     }
   }
 
@@ -74,7 +70,7 @@ export function randomWeighted<T>(items: T[], weights: number[]): T {
   const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
 
   if (totalWeight === 0) {
-    throw new Error('Sum of weights cannot be zero');
+    throw new Error('Sum of weights must be greater than zero');
   }
 
   // Generate random value between 0 and totalWeight

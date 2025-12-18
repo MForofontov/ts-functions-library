@@ -44,13 +44,14 @@ export function randomSample<T>(array: T[], count: number): T[] {
   if (isNaN(count)) {
     throw new Error('count must be a valid number, not NaN');
   }
-  if (count < 0 || !Number.isInteger(count)) {
-    throw new Error(`count must be a non-negative integer, got ${count}`);
+  if (!Number.isInteger(count)) {
+    throw new Error('count must be an integer');
+  }
+  if (count < 0) {
+    throw new Error('count must be non-negative');
   }
   if (count > array.length) {
-    throw new Error(
-      `count (${count}) cannot be greater than array length (${array.length})`,
-    );
+    throw new Error('count cannot exceed array length');
   }
 
   // Create a copy of the array to avoid modifying the original

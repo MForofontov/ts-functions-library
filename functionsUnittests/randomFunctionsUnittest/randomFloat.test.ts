@@ -1,4 +1,4 @@
-import { randomFloat } from '../randomFloat';
+import { randomFloat } from '../../randomFunctions/randomFloat';
 
 /**
  * Unit tests for the randomFloat function.
@@ -80,7 +80,7 @@ describe('randomFloat', () => {
     let lowCount = 0;
     let highCount = 0;
     const iterations = 1000;
-    
+
     for (let i = 0; i < iterations; i++) {
       const value = randomFloat(0, 10, 2);
       if (value < 5) {
@@ -89,7 +89,7 @@ describe('randomFloat', () => {
         highCount++;
       }
     }
-    
+
     // Should be roughly 50/50 split (±15%)
     expect(lowCount).toBeGreaterThan(350);
     expect(lowCount).toBeLessThan(650);
@@ -161,6 +161,8 @@ describe('randomFloat', () => {
   // Error Test case 19: Error for non-integer decimals
   it('19. should throw Error when decimals is not an integer', () => {
     expect(() => randomFloat(5, 10, 2.5)).toThrow(Error);
-    expect(() => randomFloat(5, 10, 2.5)).toThrow('decimals must be an integer');
+    expect(() => randomFloat(5, 10, 2.5)).toThrow(
+      'decimals must be an integer',
+    );
   });
 });

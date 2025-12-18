@@ -1,4 +1,4 @@
-import { randomInt } from '../randomInt';
+import { randomInt } from '../../randomFunctions/randomInt';
 
 /**
  * Unit tests for the randomInt function.
@@ -80,12 +80,12 @@ describe('randomInt', () => {
       const value = randomInt(1, 5);
       counts.set(value, (counts.get(value) || 0) + 1);
     }
-    
+
     // Each value should appear roughly 20% of the time (±10%)
     for (const count of counts.values()) {
       const percentage = count / iterations;
-      expect(percentage).toBeGreaterThan(0.10);
-      expect(percentage).toBeLessThan(0.30);
+      expect(percentage).toBeGreaterThan(0.1);
+      expect(percentage).toBeLessThan(0.3);
     }
   });
 
@@ -140,6 +140,8 @@ describe('randomInt', () => {
   // Error Test case 17: Error when min > max
   it('17. should throw Error when min is greater than max', () => {
     expect(() => randomInt(10, 5)).toThrow(Error);
-    expect(() => randomInt(10, 5)).toThrow('min must be less than or equal to max');
+    expect(() => randomInt(10, 5)).toThrow(
+      'min must be less than or equal to max',
+    );
   });
 });

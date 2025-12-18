@@ -54,12 +54,13 @@ export function randomFloat(
     throw new Error('decimals must be a valid number, not NaN');
   }
   if (min >= max) {
-    throw new Error(`min (${min}) must be less than max (${max})`);
+    throw new Error('min must be less than max');
   }
-  if (decimals < 0 || !Number.isInteger(decimals)) {
-    throw new Error(
-      `decimals must be a non-negative integer, got ${decimals}`,
-    );
+  if (!Number.isInteger(decimals)) {
+    throw new Error('decimals must be an integer');
+  }
+  if (decimals < 0) {
+    throw new Error('decimals must be non-negative');
   }
 
   const random = Math.random() * (max - min) + min;

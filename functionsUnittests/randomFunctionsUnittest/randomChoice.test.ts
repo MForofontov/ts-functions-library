@@ -1,4 +1,4 @@
-import { randomChoice } from '../randomChoice';
+import { randomChoice } from '../../randomFunctions/randomChoice';
 
 /**
  * Unit tests for the randomChoice function.
@@ -50,11 +50,11 @@ describe('randomChoice', () => {
   it('7. should produce different values over multiple calls', () => {
     const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const results = new Set<number>();
-    
+
     for (let i = 0; i < 100; i++) {
       results.add(randomChoice(array));
     }
-    
+
     // Should see at least 7 unique values out of 10 possible
     expect(results.size).toBeGreaterThan(7);
   });
@@ -78,12 +78,12 @@ describe('randomChoice', () => {
     const array = [1, 2, 3, 4, 5];
     const counts = new Map<number, number>();
     const iterations = 5000;
-    
+
     for (let i = 0; i < iterations; i++) {
       const value = randomChoice(array);
       counts.set(value, (counts.get(value) || 0) + 1);
     }
-    
+
     // Each value should appear roughly 20% of the time (±8%)
     for (const count of counts.values()) {
       const percentage = count / iterations;

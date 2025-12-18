@@ -1,4 +1,4 @@
-import { randomWords } from '../randomWords';
+import { randomWords } from '../../randomFunctions/randomWords';
 
 /**
  * Unit tests for the randomWords function.
@@ -54,7 +54,7 @@ describe('randomWords', () => {
     const result = randomWords(5, 8);
     const vowels = 'aeiou';
     const consonants = 'bcdfghjklmnprstvwxyz';
-    
+
     result.forEach((word) => {
       for (let i = 0; i < word.length; i++) {
         if (i % 2 === 0) {
@@ -69,12 +69,12 @@ describe('randomWords', () => {
   // Test case 8: Randomness verification
   it('8. should produce different words over multiple calls', () => {
     const results = new Set<string>();
-    
+
     for (let i = 0; i < 50; i++) {
       const words = randomWords(3, 6);
       results.add(words.join(','));
     }
-    
+
     expect(results.size).toBeGreaterThan(45);
   });
 
@@ -82,7 +82,7 @@ describe('randomWords', () => {
   it('9. should typically generate different words in same call', () => {
     // Over many iterations, words should differ
     let allSameCount = 0;
-    
+
     for (let i = 0; i < 100; i++) {
       const words = randomWords(3, 6);
       const uniqueWords = new Set(words);
@@ -90,7 +90,7 @@ describe('randomWords', () => {
         allSameCount++;
       }
     }
-    
+
     // Very unlikely that all 3 words are the same frequently
     expect(allSameCount).toBeLessThan(5);
   });
@@ -107,7 +107,7 @@ describe('randomWords', () => {
     const startTime = performance.now();
     randomWords(50, 10);
     const endTime = performance.now();
-    
+
     expect(endTime - startTime).toBeLessThan(100);
   });
 
@@ -170,12 +170,16 @@ describe('randomWords', () => {
   // Error Test case 20: Error for wordLength < 1
   it('20. should throw Error when wordLength is less than 1', () => {
     expect(() => randomWords(3, 0)).toThrow(Error);
-    expect(() => randomWords(3, 0)).toThrow('wordLength must be between 1 and 20');
+    expect(() => randomWords(3, 0)).toThrow(
+      'wordLength must be between 1 and 20',
+    );
   });
 
   // Error Test case 21: Error for wordLength > 20
   it('21. should throw Error when wordLength is greater than 20', () => {
     expect(() => randomWords(3, 21)).toThrow(Error);
-    expect(() => randomWords(3, 21)).toThrow('wordLength must be between 1 and 20');
+    expect(() => randomWords(3, 21)).toThrow(
+      'wordLength must be between 1 and 20',
+    );
   });
 });

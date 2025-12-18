@@ -1,4 +1,4 @@
-import { randomRGB, RGB } from '../randomRGB';
+import { randomRGB, RGB } from '../../randomFunctions/randomRGB';
 
 /**
  * Unit tests for the randomRGB function.
@@ -48,40 +48,40 @@ describe('randomRGB', () => {
   // Test case 5: Randomness verification
   it('5. should produce different RGB values over multiple calls', () => {
     const results = new Set<string>();
-    
+
     for (let i = 0; i < 100; i++) {
       const rgb = randomRGB();
       results.add(`${rgb.r},${rgb.g},${rgb.b}`);
     }
-    
+
     expect(results.size).toBeGreaterThan(90);
   });
 
   // Test case 6: All channels can be 0
   it('6. should occasionally generate 0 values', () => {
     const values = new Set<number>();
-    
-    for (let i = 0; i < 500; i++) {
+
+    for (let i = 0; i < 1000; i++) {
       const rgb = randomRGB();
       values.add(rgb.r);
       values.add(rgb.g);
       values.add(rgb.b);
     }
-    
+
     expect(values.has(0)).toBe(true);
   });
 
   // Test case 7: All channels can be 255
   it('7. should occasionally generate 255 values', () => {
     const values = new Set<number>();
-    
-    for (let i = 0; i < 500; i++) {
+
+    for (let i = 0; i < 1000; i++) {
       const rgb = randomRGB();
       values.add(rgb.r);
       values.add(rgb.g);
       values.add(rgb.b);
     }
-    
+
     expect(values.has(255)).toBe(true);
   });
 
@@ -103,7 +103,7 @@ describe('randomRGB', () => {
     let lowCount = 0;
     let highCount = 0;
     const iterations = 1000;
-    
+
     for (let i = 0; i < iterations; i++) {
       const rgb = randomRGB();
       if (rgb.r < 128) {
@@ -112,7 +112,7 @@ describe('randomRGB', () => {
         highCount++;
       }
     }
-    
+
     // Should be roughly 50/50 split (±15%)
     expect(lowCount).toBeGreaterThan(350);
     expect(lowCount).toBeLessThan(650);
@@ -125,7 +125,7 @@ describe('randomRGB', () => {
       randomRGB();
     }
     const endTime = performance.now();
-    
+
     expect(endTime - startTime).toBeLessThan(100);
   });
 });

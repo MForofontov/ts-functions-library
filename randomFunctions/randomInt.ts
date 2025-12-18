@@ -48,7 +48,7 @@ export function randomInt(min: number, max: number): number {
     throw new Error(`max must be a safe integer, got ${max}`);
   }
   if (min > max) {
-    throw new Error(`min (${min}) must be less than or equal to max (${max})`);
+    throw new Error('min must be less than or equal to max');
   }
 
   return Math.floor(Math.random() * (max - min + 1)) + min;

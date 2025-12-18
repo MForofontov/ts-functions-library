@@ -1,4 +1,4 @@
-import { randomWeighted } from '../randomWeighted';
+import { randomWeighted } from '../../randomFunctions/randomWeighted';
 
 /**
  * Unit tests for the randomWeighted function.
@@ -18,12 +18,12 @@ describe('randomWeighted', () => {
     const weights = [1, 99];
     const results = new Map<string, number>();
     const iterations = 1000;
-    
+
     for (let i = 0; i < iterations; i++) {
       const result = randomWeighted(items, weights);
       results.set(result, (results.get(result) || 0) + 1);
     }
-    
+
     // 'common' should appear much more frequently than 'rare'
     expect(results.get('common')! / iterations).toBeGreaterThan(0.9);
   });
@@ -58,12 +58,12 @@ describe('randomWeighted', () => {
     const weights = [1, 1000];
     const results = new Map<string, number>();
     const iterations = 10000;
-    
+
     for (let i = 0; i < iterations; i++) {
       const result = randomWeighted(items, weights);
       results.set(result, (results.get(result) || 0) + 1);
     }
-    
+
     // 'B' should appear approximately 1000 times more often than 'A'
     const ratioB = results.get('B')! / iterations;
     expect(ratioB).toBeGreaterThan(0.95);
@@ -74,11 +74,11 @@ describe('randomWeighted', () => {
     const items = ['never', 'always'];
     const weights = [0, 1];
     const results = new Set<string>();
-    
+
     for (let i = 0; i < 100; i++) {
       results.add(randomWeighted(items, weights));
     }
-    
+
     expect(results.has('never')).toBe(false);
     expect(results.has('always')).toBe(true);
   });
@@ -87,13 +87,13 @@ describe('randomWeighted', () => {
   it('8. should handle large arrays efficiently', () => {
     const items = Array.from({ length: 100 }, (_, i) => i);
     const weights = Array.from({ length: 100 }, () => 1);
-    
+
     const startTime = performance.now();
     for (let i = 0; i < 1000; i++) {
       randomWeighted(items, weights);
     }
     const endTime = performance.now();
-    
+
     expect(endTime - startTime).toBeLessThan(100);
   });
 
@@ -102,11 +102,11 @@ describe('randomWeighted', () => {
     const items = [1, 2, 3, 4, 5];
     const weights = [1, 1, 1, 1, 1];
     const results = new Set<number>();
-    
+
     for (let i = 0; i < 100; i++) {
       results.add(randomWeighted(items, weights));
     }
-    
+
     expect(results.size).toBeGreaterThan(3);
   });
 
@@ -116,12 +116,12 @@ describe('randomWeighted', () => {
     const weights = [10, 20, 70]; // 10%, 20%, 70%
     const results = new Map<string, number>();
     const iterations = 10000;
-    
+
     for (let i = 0; i < iterations; i++) {
       const result = randomWeighted(items, weights);
       results.set(result, (results.get(result) || 0) + 1);
     }
-    
+
     // Check distribution (±5%)
     expect(results.get('A')! / iterations).toBeGreaterThan(0.05);
     expect(results.get('A')! / iterations).toBeLessThan(0.15);
@@ -167,6 +167,12 @@ describe('randomWeighted', () => {
     expect(() => randomWeighted([1, 2], [1, 'two' as any])).toThrow(
       'All weights must be numbers',
     );
+  });
+
+  // Error Test case 15b: Error for NaN weight
+  it('15b. should throw Error when weight is NaN', () => {
+    expect(() => randomWeighted([1, 2], [1, NaN])).toThrow(Error);
+    expect(() => randomWeighted([1, 2], [1, NaN])).toThrow('Weight at index');
   });
 
   // Error Test case 16: Error for negative weight

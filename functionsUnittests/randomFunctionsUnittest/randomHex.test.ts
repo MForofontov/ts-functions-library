@@ -1,4 +1,4 @@
-import { randomHex } from '../randomHex';
+import { randomHex } from '../../randomFunctions/randomHex';
 
 /**
  * Unit tests for the randomHex function.
@@ -48,25 +48,25 @@ describe('randomHex', () => {
   // Test case 7: Randomness verification
   it('7. should produce different hex strings over multiple calls', () => {
     const results = new Set<string>();
-    
+
     for (let i = 0; i < 100; i++) {
       results.add(randomHex(16));
     }
-    
+
     expect(results.size).toBeGreaterThan(95);
   });
 
   // Test case 8: All hex characters appear
   it('8. should use all hex characters (0-9, a-f)', () => {
     const allChars = new Set<string>();
-    
+
     for (let i = 0; i < 1000; i++) {
       const hex = randomHex(10);
       for (const char of hex) {
         allChars.add(char);
       }
     }
-    
+
     // Should see all 16 hex characters
     expect(allChars.size).toBe(16);
   });
@@ -78,7 +78,7 @@ describe('randomHex', () => {
       randomHex(32);
     }
     const endTime = performance.now();
-    
+
     expect(endTime - startTime).toBeLessThan(100);
   });
 
@@ -86,17 +86,17 @@ describe('randomHex', () => {
   it('10. should have relatively even character distribution', () => {
     const counts = new Map<string, number>();
     const iterations = 16000;
-    
+
     for (let i = 0; i < iterations; i++) {
       const char = randomHex(1);
       counts.set(char, (counts.get(char) || 0) + 1);
     }
-    
+
     // Each of 16 hex chars should appear roughly 6.25% of the time (±3%)
     for (const count of counts.values()) {
       const percentage = count / iterations;
       expect(percentage).toBeGreaterThan(0.03);
-      expect(percentage).toBeLessThan(0.10);
+      expect(percentage).toBeLessThan(0.1);
     }
   });
 

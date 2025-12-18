@@ -43,14 +43,68 @@ export function loremIpsum(sentences: number = 3): string {
   }
 
   const words = [
-    'lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing', 'elit',
-    'sed', 'do', 'eiusmod', 'tempor', 'incididunt', 'ut', 'labore', 'et', 'dolore',
-    'magna', 'aliqua', 'enim', 'ad', 'minim', 'veniam', 'quis', 'nostrud',
-    'exercitation', 'ullamco', 'laboris', 'nisi', 'aliquip', 'ex', 'ea', 'commodo',
-    'consequat', 'duis', 'aute', 'irure', 'in', 'reprehenderit', 'voluptate',
-    'velit', 'esse', 'cillum', 'fugiat', 'nulla', 'pariatur', 'excepteur', 'sint',
-    'occaecat', 'cupidatat', 'non', 'proident', 'sunt', 'culpa', 'qui', 'officia',
-    'deserunt', 'mollit', 'anim', 'id', 'est', 'laborum',
+    'lorem',
+    'ipsum',
+    'dolor',
+    'sit',
+    'amet',
+    'consectetur',
+    'adipiscing',
+    'elit',
+    'sed',
+    'do',
+    'eiusmod',
+    'tempor',
+    'incididunt',
+    'ut',
+    'labore',
+    'et',
+    'dolore',
+    'magna',
+    'aliqua',
+    'enim',
+    'ad',
+    'minim',
+    'veniam',
+    'quis',
+    'nostrud',
+    'exercitation',
+    'ullamco',
+    'laboris',
+    'nisi',
+    'aliquip',
+    'ex',
+    'ea',
+    'commodo',
+    'consequat',
+    'duis',
+    'aute',
+    'irure',
+    'in',
+    'reprehenderit',
+    'voluptate',
+    'velit',
+    'esse',
+    'cillum',
+    'fugiat',
+    'nulla',
+    'pariatur',
+    'excepteur',
+    'sint',
+    'occaecat',
+    'cupidatat',
+    'non',
+    'proident',
+    'sunt',
+    'culpa',
+    'qui',
+    'officia',
+    'deserunt',
+    'mollit',
+    'anim',
+    'id',
+    'est',
+    'laborum',
   ];
 
   const result: string[] = [];
@@ -71,7 +125,9 @@ export function loremIpsum(sentences: number = 3): string {
         const randomIndex = Math.floor(Math.random() * words.length);
         const word = words[randomIndex];
         // Capitalize first word of sentence
-        sentenceWords.push(w === 0 ? word.charAt(0).toUpperCase() + word.slice(1) : word);
+        sentenceWords.push(
+          w === 0 ? word.charAt(0).toUpperCase() + word.slice(1) : word,
+        );
       }
     }
 

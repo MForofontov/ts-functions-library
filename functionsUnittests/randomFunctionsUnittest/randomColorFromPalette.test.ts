@@ -1,4 +1,4 @@
-import { randomColorFromPalette } from '../randomColorFromPalette';
+import { randomColorFromPalette } from '../../randomFunctions/randomColorFromPalette';
 
 /**
  * Unit tests for the randomColorFromPalette function.
@@ -41,13 +41,20 @@ describe('randomColorFromPalette', () => {
 
   // Test case 6: Randomness verification
   it('6. should produce different colors over multiple calls', () => {
-    const palette = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'];
+    const palette = [
+      '#FF0000',
+      '#00FF00',
+      '#0000FF',
+      '#FFFF00',
+      '#FF00FF',
+      '#00FFFF',
+    ];
     const results = new Set<string>();
-    
+
     for (let i = 0; i < 100; i++) {
       results.add(randomColorFromPalette(palette));
     }
-    
+
     // Should see at least 4 different colors
     expect(results.size).toBeGreaterThan(4);
   });
@@ -55,8 +62,14 @@ describe('randomColorFromPalette', () => {
   // Test case 7: Material design palette
   it('7. should work with material design palette', () => {
     const palette = [
-      '#F44336', '#E91E63', '#9C27B0', '#673AB7',
-      '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4',
+      '#F44336',
+      '#E91E63',
+      '#9C27B0',
+      '#673AB7',
+      '#3F51B5',
+      '#2196F3',
+      '#03A9F4',
+      '#00BCD4',
     ];
     const result = randomColorFromPalette(palette);
     expect(palette).toContain(result);
@@ -67,12 +80,12 @@ describe('randomColorFromPalette', () => {
     const palette = ['red', 'green', 'blue'];
     const counts = new Map<string, number>();
     const iterations = 3000;
-    
+
     for (let i = 0; i < iterations; i++) {
       const color = randomColorFromPalette(palette);
       counts.set(color, (counts.get(color) || 0) + 1);
     }
-    
+
     // Each color should appear roughly 33% of the time (±10%)
     for (const count of counts.values()) {
       const percentage = count / iterations;
@@ -83,14 +96,17 @@ describe('randomColorFromPalette', () => {
 
   // Test case 9: Large palette
   it('9. should handle large palettes efficiently', () => {
-    const palette = Array.from({ length: 100 }, (_, i) => `#${i.toString(16).padStart(6, '0')}`);
-    
+    const palette = Array.from(
+      { length: 100 },
+      (_, i) => `#${i.toString(16).padStart(6, '0')}`,
+    );
+
     const startTime = performance.now();
     for (let i = 0; i < 1000; i++) {
       randomColorFromPalette(palette);
     }
     const endTime = performance.now();
-    
+
     expect(endTime - startTime).toBeLessThan(100);
   });
 
@@ -125,7 +141,9 @@ describe('randomColorFromPalette', () => {
 
   // Error Test case 14: Error for non-string palette items
   it('14. should throw Error when palette contains non-string items', () => {
-    expect(() => randomColorFromPalette(['red', 123 as any, 'blue'])).toThrow(Error);
+    expect(() => randomColorFromPalette(['red', 123 as any, 'blue'])).toThrow(
+      Error,
+    );
     expect(() => randomColorFromPalette(['red', 123 as any, 'blue'])).toThrow(
       'All palette items must be strings, got number at index 1',
     );
@@ -133,9 +151,11 @@ describe('randomColorFromPalette', () => {
 
   // Error Test case 15: Error for object in palette
   it('15. should throw Error when palette contains object', () => {
-    expect(() => randomColorFromPalette(['red', { color: 'blue' } as any])).toThrow(Error);
-    expect(() => randomColorFromPalette(['red', { color: 'blue' } as any])).toThrow(
-      'All palette items must be strings, got object at index 1',
-    );
+    expect(() =>
+      randomColorFromPalette(['red', { color: 'blue' } as any]),
+    ).toThrow(Error);
+    expect(() =>
+      randomColorFromPalette(['red', { color: 'blue' } as any]),
+    ).toThrow('All palette items must be strings, got object at index 1');
   });
 });

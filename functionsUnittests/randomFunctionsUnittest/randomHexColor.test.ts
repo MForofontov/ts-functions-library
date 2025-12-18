@@ -1,4 +1,4 @@
-import { randomHexColor } from '../randomHexColor';
+import { randomHexColor } from '../../randomFunctions/randomHexColor';
 
 /**
  * Unit tests for the randomHexColor function.
@@ -38,22 +38,22 @@ describe('randomHexColor', () => {
   // Test case 5: Randomness verification
   it('5. should produce different colors over multiple calls', () => {
     const results = new Set<string>();
-    
+
     for (let i = 0; i < 100; i++) {
       results.add(randomHexColor());
     }
-    
+
     expect(results.size).toBeGreaterThan(95);
   });
 
   // Test case 6: Can generate black (#000000)
   it('6. should occasionally generate black color', () => {
     const colors = new Set<string>();
-    
+
     for (let i = 0; i < 5000; i++) {
       colors.add(randomHexColor());
     }
-    
+
     // Very low probability, but possible
     // Just check it doesn't fail on edge case
     expect(colors.size).toBeGreaterThan(1000);
@@ -62,11 +62,11 @@ describe('randomHexColor', () => {
   // Test case 7: Can generate white (#FFFFFF)
   it('7. should occasionally generate white or near-white colors', () => {
     const colors = new Set<string>();
-    
+
     for (let i = 0; i < 5000; i++) {
       colors.add(randomHexColor());
     }
-    
+
     // Very low probability for exact white, but should have variety
     expect(colors.size).toBeGreaterThan(1000);
   });
@@ -82,14 +82,14 @@ describe('randomHexColor', () => {
   // Test case 9: All hex digits appear
   it('9. should use all hex digits (0-9, A-F)', () => {
     const allChars = new Set<string>();
-    
+
     for (let i = 0; i < 500; i++) {
       const color = randomHexColor(false);
       for (const char of color) {
         allChars.add(char);
       }
     }
-    
+
     // Should see all 16 hex characters
     expect(allChars.size).toBe(16);
   });
@@ -98,13 +98,13 @@ describe('randomHexColor', () => {
   it('10. should have relatively even color distribution', () => {
     const firstDigits = new Map<string, number>();
     const iterations = 1600;
-    
+
     for (let i = 0; i < iterations; i++) {
       const color = randomHexColor(false);
       const firstDigit = color[0];
       firstDigits.set(firstDigit, (firstDigits.get(firstDigit) || 0) + 1);
     }
-    
+
     // Each hex digit should appear roughly 6.25% of the time as first digit (±4%)
     for (const count of firstDigits.values()) {
       const percentage = count / iterations;
@@ -120,7 +120,7 @@ describe('randomHexColor', () => {
       randomHexColor();
     }
     const endTime = performance.now();
-    
+
     expect(endTime - startTime).toBeLessThan(100);
   });
 

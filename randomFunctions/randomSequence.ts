@@ -41,8 +41,11 @@ export function randomSequence(
   if (isNaN(length)) {
     throw new Error('length must be a valid number, not NaN');
   }
-  if (length < 0 || !Number.isInteger(length)) {
-    throw new Error(`length must be a non-negative integer, got ${length}`);
+  if (!Number.isInteger(length)) {
+    throw new Error('length must be an integer');
+  }
+  if (length < 0) {
+    throw new Error('length must be non-negative');
   }
   if (alphabet.length === 0) {
     throw new Error('alphabet cannot be empty');

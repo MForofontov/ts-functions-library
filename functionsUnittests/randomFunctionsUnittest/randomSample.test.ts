@@ -1,4 +1,4 @@
-import { randomSample } from '../randomSample';
+import { randomSample } from '../../randomFunctions/randomSample';
 
 /**
  * Unit tests for the randomSample function.
@@ -58,12 +58,12 @@ describe('randomSample', () => {
   it('7. should produce different samples over multiple calls', () => {
     const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const samples = new Set<string>();
-    
+
     for (let i = 0; i < 50; i++) {
       const result = randomSample(array, 3);
       samples.add(result.sort().join(','));
     }
-    
+
     // Should see many different combinations
     expect(samples.size).toBeGreaterThan(20);
   });
@@ -79,11 +79,11 @@ describe('randomSample', () => {
   // Test case 9: Large array performance
   it('9. should handle large arrays efficiently', () => {
     const array = Array.from({ length: 10000 }, (_, i) => i);
-    
+
     const startTime = performance.now();
     randomSample(array, 100);
     const endTime = performance.now();
-    
+
     expect(endTime - startTime).toBeLessThan(100);
   });
 
@@ -99,20 +99,20 @@ describe('randomSample', () => {
     const array = [1, 2, 3, 4, 5];
     const counts = new Map<number, number>();
     const iterations = 5000;
-    
+
     for (let i = 0; i < iterations; i++) {
       const sample = randomSample(array, 2);
       sample.forEach((item) => {
         counts.set(item, (counts.get(item) || 0) + 1);
       });
     }
-    
+
     // Each element should appear in roughly 40% of samples (2 out of 5)
     // Allow ±10% variance
     for (const count of counts.values()) {
       const percentage = count / iterations;
-      expect(percentage).toBeGreaterThan(0.30);
-      expect(percentage).toBeLessThan(0.50);
+      expect(percentage).toBeGreaterThan(0.3);
+      expect(percentage).toBeLessThan(0.5);
     }
   });
 

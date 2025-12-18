@@ -1,4 +1,4 @@
-import { randomSequence } from '../randomSequence';
+import { randomSequence } from '../../randomFunctions/randomSequence';
 
 /**
  * Unit tests for the randomSequence function.
@@ -47,11 +47,11 @@ describe('randomSequence', () => {
   // Test case 7: Randomness verification
   it('7. should produce different sequences over multiple calls', () => {
     const results = new Set<string>();
-    
+
     for (let i = 0; i < 100; i++) {
       results.add(randomSequence(10));
     }
-    
+
     // Should have many unique sequences
     expect(results.size).toBeGreaterThan(95);
   });
@@ -75,12 +75,12 @@ describe('randomSequence', () => {
     const alphabet = 'ABC';
     const counts = new Map<string, number>();
     const iterations = 3000;
-    
+
     for (let i = 0; i < iterations; i++) {
       const char = randomSequence(1, alphabet);
       counts.set(char, (counts.get(char) || 0) + 1);
     }
-    
+
     // Each character should appear roughly 33% of the time (±10%)
     for (const count of counts.values()) {
       const percentage = count / iterations;

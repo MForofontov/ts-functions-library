@@ -1,4 +1,4 @@
-import { loremIpsum } from '../loremIpsum';
+import { loremIpsum } from '../../randomFunctions/loremIpsum';
 
 /**
  * Unit tests for the loremIpsum function.
@@ -21,7 +21,8 @@ describe('loremIpsum', () => {
   // Test case 3: Single sentence
   it('3. should generate single sentence', () => {
     const result = loremIpsum(1);
-    expect(result).toMatch(/^Lorem ipsum dolor sit amet.+\.$/);
+    expect(result).toMatch(/^Lorem ipsum dolor sit amet.+$/);
+    expect(result.endsWith('.')).toBe(true);
   });
 
   // Test case 4: First sentence starts with Lorem ipsum
@@ -36,7 +37,7 @@ describe('loremIpsum', () => {
   it('5. should end each sentence with a period', () => {
     const result = loremIpsum(5);
     const sentences = result.split('. ');
-    
+
     sentences.forEach((sentence, index) => {
       if (index < sentences.length - 1) {
         expect(sentence).not.toMatch(/\.$/);
@@ -51,7 +52,7 @@ describe('loremIpsum', () => {
     const result = loremIpsum(3);
     // Remove periods and check words
     const words = result.replace(/\./g, '').split(' ');
-    
+
     words.forEach((word) => {
       expect(word).toMatch(/^[A-Z]?[a-z]+$/);
     });
@@ -60,11 +61,11 @@ describe('loremIpsum', () => {
   // Test case 7: Randomness verification
   it('7. should produce different text over multiple calls', () => {
     const results = new Set<string>();
-    
+
     for (let i = 0; i < 50; i++) {
       results.add(loremIpsum(2));
     }
-    
+
     // Should have many unique results (except first sentence is always same)
     expect(results.size).toBeGreaterThan(40);
   });
@@ -73,7 +74,7 @@ describe('loremIpsum', () => {
   it('8. should generate sentences with variable length (5-15 words)', () => {
     const result = loremIpsum(10);
     const sentences = result.split('. ');
-    
+
     sentences.forEach((sentence) => {
       const words = sentence.replace(/\.$/, '').split(' ');
       expect(words.length).toBeGreaterThanOrEqual(5);
@@ -85,7 +86,7 @@ describe('loremIpsum', () => {
   it('9. should capitalize first letter of each sentence after first', () => {
     const result = loremIpsum(5);
     const sentences = result.split('. ');
-    
+
     sentences.slice(1).forEach((sentence) => {
       const cleanSentence = sentence.replace(/\.$/, '');
       expect(cleanSentence[0]).toMatch(/[A-Z]/);
@@ -106,7 +107,7 @@ describe('loremIpsum', () => {
       loremIpsum(10);
     }
     const endTime = performance.now();
-    
+
     expect(endTime - startTime).toBeLessThan(100);
   });
 
