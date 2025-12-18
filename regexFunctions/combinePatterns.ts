@@ -77,8 +77,7 @@ export function combinePatterns(
   } else {
     // AND: (?=.*pattern1)(?=.*pattern2)(?=.*pattern3).*
     // Uses positive lookaheads to ensure all patterns match
-    combinedPattern =
-      sources.map((s) => `(?=.*(?:${s}))`).join('') + '.*';
+    combinedPattern = sources.map((s) => `(?=.*(?:${s}))`).join('') + '.*';
   }
 
   try {

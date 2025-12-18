@@ -19,11 +19,12 @@ describe('replaceWithCallback', () => {
     expect(result).toBe(expected);
   });
 
-  it('2. should use capture groups in callback', () => {
+  it('2. should use capture groups', () => {
     // Arrange
     const text = 'Price: 99.99';
     const pattern = /(\d+)\.(\d+)/g;
-    const callback = (match: string, dollars: string, cents: string) => {
+    const callback = (match: string, ...args: (string | number)[]) => {
+      const [dollars, cents] = args;
       return `$${dollars} and ${cents} cents`;
     };
     const expected = 'Price: $99 and 99 cents';
@@ -39,12 +40,8 @@ describe('replaceWithCallback', () => {
     // Arrange
     const text = 'Date: 2023-12-25';
     const pattern = /(\d{4})-(\d{2})-(\d{2})/g;
-    const callback = (
-      match: string,
-      year: string,
-      month: string,
-      day: string,
-    ) => {
+    const callback = (match: string, ...args: (string | number)[]) => {
+      const [year, month, day] = args;
       return `${month}/${day}/${year}`;
     };
     const expected = 'Date: 12/25/2023';

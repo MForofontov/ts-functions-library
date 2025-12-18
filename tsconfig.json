@@ -25,6 +25,7 @@
     "mathFunctions",
     "networkFunctions",
     "objectFunctions",
+    "randomFunctions",
     "regexFunctions",
     "serializationFunctions",
     "stringFunctions",

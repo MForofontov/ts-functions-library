@@ -26,7 +26,7 @@ describe('highlightMatches', () => {
   });
 
   it('4. should highlight case-insensitive matches', () => {
-    const result = highlightMatches('Test TEST test', 'test', 'i');
+    const result = highlightMatches('Test TEST test', 'test', {}, 'i');
     expect(result).toBe(
       '<mark>Test</mark> <mark>TEST</mark> <mark>test</mark>',
     );
