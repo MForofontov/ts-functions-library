@@ -186,7 +186,9 @@ describe('randomElement', () => {
   it('16. should throw Error when weight is not a number', () => {
     const elements = [{ value: 'test', weight: '1' }] as any;
     expect(() => randomElement(elements)).toThrow(Error);
-    expect(() => randomElement(elements)).toThrow('Weight at index 0 must be a number');
+    expect(() => randomElement(elements)).toThrow(
+      'Weight at index 0 must be a number',
+    );
   });
 
   // Error Test case 17: Error for NaN weight
@@ -200,9 +202,7 @@ describe('randomElement', () => {
 
   // Error Test case 18: Error for negative weight
   it('18. should throw Error when weight is negative', () => {
-    const elements: WeightedElement<string>[] = [
-      { value: 'test', weight: -1 },
-    ];
+    const elements: WeightedElement<string>[] = [{ value: 'test', weight: -1 }];
     expect(() => randomElement(elements)).toThrow(Error);
     expect(() => randomElement(elements)).toThrow(
       'All weights must be non-negative',

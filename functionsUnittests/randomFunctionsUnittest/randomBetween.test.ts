@@ -93,17 +93,13 @@ describe('randomBetween', () => {
   // Error Test case 12: TypeError for non-number min
   it('12. should throw TypeError when min is not a number', () => {
     expect(() => randomBetween('1' as any, 10)).toThrow(TypeError);
-    expect(() => randomBetween('1' as any, 10)).toThrow(
-      'min must be a number',
-    );
+    expect(() => randomBetween('1' as any, 10)).toThrow('min must be a number');
   });
 
   // Error Test case 13: TypeError for non-number max
   it('13. should throw TypeError when max is not a number', () => {
     expect(() => randomBetween(1, '10' as any)).toThrow(TypeError);
-    expect(() => randomBetween(1, '10' as any)).toThrow(
-      'max must be a number',
-    );
+    expect(() => randomBetween(1, '10' as any)).toThrow('max must be a number');
   });
 
   // Error Test case 14: TypeError for non-boolean integer

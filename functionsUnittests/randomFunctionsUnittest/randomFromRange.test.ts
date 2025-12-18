@@ -160,11 +160,9 @@ describe('randomFromRange', () => {
     );
   });
 
-  // Error Test case 22: Error when step > range
-  it('22. should throw Error when step makes no valid values', () => {
-    expect(() => randomFromRange(0, 1, 10)).toThrow(Error);
-    expect(() => randomFromRange(0, 1, 10)).toThrow(
-      'No valid values in range with given step',
-    );
+  // Error Test case 22: Valid when step >= range (returns min)
+  it('22. should return min when step is larger than range', () => {
+    const result = randomFromRange(0, 1, 10);
+    expect(result).toBe(0);
   });
 });

@@ -22,10 +22,7 @@
  *
  * @complexity Time: O(n), Space: O(n) for new array or O(1) for in-place
  */
-export function randomShuffle<T>(
-  array: T[],
-  inPlace: boolean = false,
-): T[] {
+export function randomShuffle<T>(array: T[], inPlace: boolean = false): T[] {
   if (!Array.isArray(array)) {
     throw new TypeError(`array must be an array, got ${typeof array}`);
   }

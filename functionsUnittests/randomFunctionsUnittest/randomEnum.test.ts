@@ -54,10 +54,10 @@ describe('randomEnum', () => {
 
   // Test case 5: Distribution for numeric enum
   it('5. should produce varied results from numeric enum', () => {
-    const results = new Set<string>();
+    const results = new Set<number>();
 
     for (let i = 0; i < 100; i++) {
-      results.add(randomEnum(Direction));
+      results.add(randomEnum(Direction) as number);
     }
 
     expect(results.size).toBeGreaterThan(1);
