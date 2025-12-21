@@ -14,6 +14,8 @@ This is a comprehensive TypeScript utility functions library containing 200+ reu
 - **Comprehensive Testing**: Every function must have unit tests with >95% coverage
 - **Documentation**: JSDoc comments with examples and complexity notes
 - **Error Handling**: Explicit validation with descriptive error messages
+- **Use Battle-Tested Packages**: Leverage existing mature libraries as building blocks, don't reimplement their core functionality
+- **Add Value, Don't Wrap**: Functions should add meaningful logic (validation, workflows, convenience) beyond simple one-line calls to existing packages
 
 ### Directory Structure
 
