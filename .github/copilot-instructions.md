@@ -111,6 +111,136 @@ ts-functions-library/
 - **Error Handling**: Explicit validation with descriptive error messages
 - **No Library Duplication**: Avoid implementing functions that exist in well-established libraries
 
+### Package Usage Philosophy
+
+#### When to Use Battle-Tested Packages
+This library follows a clear philosophy: **Use battle-tested packages as building blocks, but add meaningful logic on top**.
+
+**DO use existing packages for:**
+- HTTP client/server → `axios`, `node-fetch`, `http` (stdlib)
+- Date/time manipulation → `date-fns`, `dayjs`, `luxon`
+- Validation → `zod`, `yup`, `joi`
+- Logging → `winston`, `pino`
+- Testing → `jest`, `vitest`, `mocha`
+- File system operations → `fs-extra`, `glob`
+- Path manipulation → `path` (stdlib)
+- Cryptography → **ALWAYS** use Node.js `crypto` module, never implement custom crypto
+- UUID generation → `uuid` package (for cryptographically secure UUIDs)
+- JSON/YAML parsing → `JSON` (stdlib), `js-yaml`
+- Stream processing → Node.js `stream` API
+- Event emitters → Node.js `events` API
+- Async utilities → Native Promises, `async/await`
+
+**DO add value on top with:**
+- ✅ **Workflow logic**: Retry strategies, error recovery, orchestration
+- ✅ **Validation & type safety**: Input validation, TypeScript generics, runtime checks
+- ✅ **Convenience features**: Smart defaults, method chaining, fluent APIs
+- ✅ **Resource management**: Cleanup, memory management, connection pooling
+- ✅ **Common patterns**: Rate limiting, debouncing, throttling, batching
+- ✅ **Integration**: Combining multiple packages with unified TypeScript API
+- ✅ **Error handling**: Consistent error types and descriptive messages
+- ✅ **Documentation**: Clear JSDoc with examples and complexity analysis
+
+**Examples of Good Patterns:**
+
+```typescript
+// ✅ GOOD: Uses Node.js crypto but adds validation and convenience
+export function hashPassword(
+  password: string,
+  salt: string,
+  iterations: number = 100000,
+): string {
+  // Uses: crypto.pbkdf2Sync
+  // Adds: Input validation, safe defaults, error handling, hex encoding
+  if (typeof password !== 'string') {
+    throw new TypeError(`password must be a string, got ${typeof password}`);
+  }
+  if (typeof salt !== 'string' || salt.length !== 32) {
+    throw new TypeError('salt must be a 32-character hex string');
+  }
+  
+  const hash = crypto.pbkdf2Sync(password, salt, iterations, 64, 'sha512');
+  return hash.toString('hex');
+}
+
+// ✅ GOOD: Uses native promises but adds retry logic
+export async function asyncRetry<T>(
+  fn: () => Promise<T>,
+  maxRetries: number = 3,
+  delayMs: number = 1000,
+): Promise<T> {
+  // Uses: Native Promises
+  // Adds: Exponential backoff, configurable retries, error aggregation
+  let lastError: Error;
+  
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      return await fn();
+    } catch (error) {
+      lastError = error as Error;
+      if (attempt < maxRetries) {
+        await new Promise(resolve => setTimeout(resolve, delayMs * Math.pow(2, attempt)));
+      }
+    }
+  }
+  
+  throw new Error(`Failed after ${maxRetries} retries: ${lastError.message}`);
+}
+
+// ✅ GOOD: Adds weighted selection logic (not in stdlib)
+export function randomElement<T>(elements: WeightedElement<T>[]): WeightedElement<T> {
+  // Uses: Math.random()
+  // Adds: Weighted selection algorithm, validation, TypeScript generics
+  if (!Array.isArray(elements) || elements.length === 0) {
+    throw new Error('elements array cannot be empty');
+  }
+  
+  const totalWeight = elements.reduce((sum, el) => sum + el.weight, 0);
+  let random = Math.random() * totalWeight;
+  
+  for (const element of elements) {
+    random -= element.weight;
+    if (random <= 0) return element;
+  }
+  
+  return elements[elements.length - 1];
+}
+
+// ❌ BAD: Just a thin wrapper with no added value
+export function parseJSON(text: string): any {
+  return JSON.parse(text);  // No validation, no error handling, no value added
+}
+
+// ❌ BAD: Reimplementing existing package functionality
+export function formatDate(date: Date, format: string): string {
+  // Don't reimplement date formatting! Use date-fns or dayjs
+  // Complex string manipulation and locale handling already solved
+}
+
+// ❌ BAD: Wrapper that adds nothing beyond type annotation
+export function readFileSync(path: string): string {
+  return fs.readFileSync(path, 'utf-8');  // Just use fs directly
+}
+```
+
+**Value Proposition:**
+This library provides a **convenience layer with TypeScript best practices** on top of battle-tested foundations:
+1. **Consistent TypeScript API** across different underlying libraries
+2. **Type safety with generics** and strict type checking
+3. **Runtime validation** with descriptive error messages
+4. **Convenience features** (smart defaults, method chaining)
+5. **Comprehensive JSDoc** with examples and complexity notes
+6. **Common patterns** (retry, rate limiting, debouncing, throttling)
+7. **Enterprise-ready** error handling and edge case coverage
+
+#### When Adding New Functionality
+Before adding a new function or module, ask:
+1. **Does a battle-tested package already solve this?** → Use it as a foundation
+2. **What value am I adding?** → Ensure you're adding workflow logic, validation, or convenience
+3. **Is this a thin wrapper?** → Consider if users should just use the underlying package directly
+4. **Am I reimplementing core functionality?** → Don't reimplement protocols, parsers, or well-solved algorithms
+5. **Does this add meaningful logic?** → Validation, error handling, convenience, or integration logic
+
 ### Function Development Standards
 
 #### 1. Function Structure Template
