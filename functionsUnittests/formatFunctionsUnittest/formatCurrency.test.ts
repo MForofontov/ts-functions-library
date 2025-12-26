@@ -5,11 +5,11 @@ import { formatCurrency } from '../../formatFunctions/formatCurrency';
  */
 describe('formatCurrency', () => {
   // Test case 1: Format USD with automatic symbol detection
-  it('1. should format USD with automatic symbol', () => {
+  it('1. should format USD currency correctly', () => {
     // Arrange
     const value = 1234.56;
     const currency = 'USD';
-    const expected = '1,234.56 USD ($)';
+    const expected = '$1,234.56';
 
     // Act
     const result = formatCurrency(value, currency);
@@ -23,7 +23,7 @@ describe('formatCurrency', () => {
     // Arrange
     const value = 1234.56;
     const currency = 'EUR';
-    const expected = '1,234.56 EUR (€)';
+    const expected = '€1,234.56';
 
     // Act
     const result = formatCurrency(value, currency);
@@ -37,7 +37,7 @@ describe('formatCurrency', () => {
     // Arrange
     const value = 1234.56;
     const currency = 'GBP';
-    const expected = '1,234.56 GBP (£)';
+    const expected = '£1,234.56';
 
     // Act
     const result = formatCurrency(value, currency);
@@ -51,7 +51,7 @@ describe('formatCurrency', () => {
     // Arrange
     const value = 1234;
     const currency = 'JPY';
-    const expected = '1,234 JPY (¥)';
+    const expected = '¥1,234';
 
     // Act
     const result = formatCurrency(value, currency, 0);
@@ -65,7 +65,7 @@ describe('formatCurrency', () => {
     // Arrange
     const value = 1234.56;
     const currency = 'BTC';
-    const expected = '1,234.56 BTC (₿)';
+    const expected = '₿1,234.56';
 
     // Act
     const result = formatCurrency(value, currency, 2, '₿');
@@ -93,7 +93,7 @@ describe('formatCurrency', () => {
     // Arrange
     const value = -1234.56;
     const currency = 'USD';
-    const expected = '-1,234.56 USD ($)';
+    const expected = '-$1,234.56';
 
     // Act
     const result = formatCurrency(value, currency);
@@ -103,11 +103,11 @@ describe('formatCurrency', () => {
   });
 
   // Test case 8: Format zero
-  it('8. should format zero currency', () => {
+  it('7. should handle zero value', () => {
     // Arrange
     const value = 0;
-    const currency = 'USD';
-    const expected = '0.00 USD ($)';
+    const currency = 'EUR';
+    const expected = '€0.00';
 
     // Act
     const result = formatCurrency(value, currency);
@@ -121,7 +121,7 @@ describe('formatCurrency', () => {
     // Arrange
     const value = 1234.567;
     const currency = 'USD';
-    const expected = '1,234.567 USD ($)';
+    const expected = '$1,234.567';
 
     // Act
     const result = formatCurrency(value, currency, 3);
@@ -135,7 +135,7 @@ describe('formatCurrency', () => {
     // Arrange
     const value = 1234.56;
     const currency = 'CHF';
-    const expected = '1,234.56 CHF (₣)';
+    const expected = '₣1,234.56';
 
     // Act
     const result = formatCurrency(value, currency);
@@ -149,7 +149,7 @@ describe('formatCurrency', () => {
     // Arrange
     const value = 1234.56;
     const currency = 'CAD';
-    const expected = '1,234.56 CAD ($)';
+    const expected = '$1,234.56';
 
     // Act
     const result = formatCurrency(value, currency);
@@ -163,7 +163,7 @@ describe('formatCurrency', () => {
     // Arrange
     const value = 1234567890.12;
     const currency = 'USD';
-    const expected = '1,234,567,890.12 USD ($)';
+    const expected = '$1,234,567,890.12';
 
     // Act
     const result = formatCurrency(value, currency);

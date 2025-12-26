@@ -43,7 +43,7 @@ const CURRENCY_SYMBOLS: Record<string, string> = {
  * @param currency - Currency code (USD, EUR, etc.) or custom symbol (default: "USD").
  * @param decimals - Number of decimal places (default: 2).
  * @param customSymbol - Optional custom symbol to use instead of auto-detected (default: undefined).
- * @returns A formatted currency string in format "1,234.56 USD ($)" or "1,234.56 XXX".
+ * @returns A formatted currency string in standard format "$1,234.56" or "1,234.56 XXX" for unknown currencies.
  *
  * @throws {TypeError} If value is not a number or is NaN.
  * @throws {TypeError} If currency is not a string.
@@ -52,26 +52,26 @@ const CURRENCY_SYMBOLS: Record<string, string> = {
  *
  * @example
  * // Basic usage (USD)
- * formatCurrency(1234.56, "USD"); // Returns "1,234.56 USD ($)"
+ * formatCurrency(1234.56, "USD"); // Returns "$1,234.56"
  *
  * @example
  * // European currency
- * formatCurrency(1234.56, "EUR"); // Returns "1,234.56 EUR (€)"
+ * formatCurrency(1234.56, "EUR"); // Returns "€1,234.56"
  *
  * @example
  * // Japanese Yen (no decimals)
- * formatCurrency(1234, "JPY", 0); // Returns "1,234 JPY (¥)"
+ * formatCurrency(1234, "JPY", 0); // Returns "¥1,234"
  *
  * @example
- * // Unknown currency (no symbol)
+ * // Unknown currency (uses code)
  * formatCurrency(1234.56, "XXX"); // Returns "1,234.56 XXX"
  *
  * @example
  * // Custom symbol
- * formatCurrency(1234.56, "BTC", 2, "₿"); // Returns "1,234.56 BTC (₿)"
+ * formatCurrency(1234.56, "BTC", 2, "₿"); // Returns "₿1,234.56"
  *
  * @note Automatically detects currency symbols for 30+ major currencies.
- * Unknown currencies are displayed without symbol in parentheses.
+ * Unknown currencies are displayed with code after amount.
  * Custom symbols can override auto-detection.
  *
  * @complexity Time: O(n) where n is number of digits, Space: O(n)
@@ -135,12 +135,12 @@ export function formatCurrency(
   // Format with currency
   let result: string;
   if (symbol) {
-    // Format: "1,234.56 USD ($)"
-    result = `${formattedNumber} ${currencyUpper} (${symbol})`;
+    // Standard format: "$1,234.56"
+    result = isNegative ? `-${symbol}${formattedNumber}` : `${symbol}${formattedNumber}`;
   } else {
     // Unknown currency format: "1,234.56 XXX"
-    result = `${formattedNumber} ${currencyUpper}`;
+    result = isNegative ? `-${formattedNumber} ${currencyUpper}` : `${formattedNumber} ${currencyUpper}`;
   }
 
-  return isNegative ? `-${result}` : result;
+  return result;
 }
