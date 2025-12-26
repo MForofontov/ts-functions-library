@@ -1,65 +1,92 @@
 /**
- * Formats a number as currency with symbol, decimals, and locale options.
- * Supports custom currency symbols and formatting patterns.
+ * Currency code to symbol mapping for common currencies.
+ */
+const CURRENCY_SYMBOLS: Record<string, string> = {
+  USD: '$',
+  EUR: '€',
+  GBP: '£',
+  JPY: '¥',
+  CNY: '¥',
+  INR: '₹',
+  RUB: '₽',
+  BRL: 'R$',
+  KRW: '₩',
+  AUD: 'A$',
+  CAD: 'C$',
+  CHF: 'CHF',
+  SEK: 'kr',
+  NZD: 'NZ$',
+  MXN: '$',
+  SGD: 'S$',
+  HKD: 'HK$',
+  NOK: 'kr',
+  TRY: '₺',
+  ZAR: 'R',
+  PLN: 'zł',
+  THB: '฿',
+  IDR: 'Rp',
+  MYR: 'RM',
+  PHP: '₱',
+  DKK: 'kr',
+  CZK: 'Kč',
+  ILS: '₪',
+  AED: 'د.إ',
+  SAR: '﷼',
+};
+
+/**
+ * Formats a number as currency with automatic symbol detection or custom formatting.
+ * Supports currency codes (USD, EUR, etc.) which automatically add the appropriate symbol,
+ * or direct symbol input for custom formatting.
  *
  * @param value - The numeric value to format.
- * @param currencySymbol - Currency symbol to use (default: "$").
+ * @param currency - Currency code (USD, EUR, etc.) or custom symbol (default: "USD").
  * @param decimals - Number of decimal places (default: 2).
- * @param symbolPosition - Position of currency symbol: "before" or "after" (default: "before").
  * @param thousandsSeparator - Character for thousands separator (default: ",").
  * @param decimalSeparator - Character for decimal separator (default: ".").
  * @returns A formatted currency string.
  *
  * @throws {TypeError} If value is not a number or is NaN.
- * @throws {TypeError} If currencySymbol is not a string.
+ * @throws {TypeError} If currency is not a string.
  * @throws {TypeError} If decimals is not a number or is NaN.
- * @throws {TypeError} If symbolPosition is not a string.
  * @throws {TypeError} If thousandsSeparator is not a string.
  * @throws {TypeError} If decimalSeparator is not a string.
  * @throws {Error} If decimals is negative.
- * @throws {Error} If symbolPosition is not "before" or "after".
  * @throws {Error} If thousandsSeparator or decimalSeparator is not exactly one character.
- *
- * @example
- * // Basic usage
- * formatCurrency(1234.56); // Returns "$1,234.56"
- *
- * @example
- * // Euro format
- * formatCurrency(1234.56, "€", 2, "after", ".", ","); // Returns "1.234,56€"
- *
- * @example
- * // No decimals
- * formatCurrency(1234, "$", 0); // Returns "$1,234"
- *
- * @example
- * // Negative amount
- * formatCurrency(-500.25); // Returns "-$500.25"
- *
- * @example
- * // Custom symbol
- * formatCurrency(100, "USD ", 2, "before"); // Returns "USD 100.00"
- *
- * @note The function handles negative numbers by placing the minus sign before the currency symbol.
- * Supports flexible formatting for different locales and currencies.
- *
- * @complexity Time: O(n), Space: O(n) - Where n is the number of digits
- */
-export function formatCurrency(
-  value: number,
-  currencySymbol: string = '$',
-  decimals: number = 2,
-  symbolPosition: 'before' | 'after' = 'before',
-  thousandsSeparator: string = ',',
-  decimalSeparator: string = '.',
-): string {
   // Input validation
   if (typeof value !== 'number' || isNaN(value)) {
     throw new TypeError(`value must be a number, got ${typeof value}`);
   }
-  if (typeof currencySymbol !== 'string') {
+  if (typeof currency !== 'string') {
+    throw new TypeError(`currency must be a string, got ${typeof currency}`);
+  }
+  if (typeof decimals !== 'number' || isNaN(decimals)) {
+    throw new TypeError(`decimals must be a number, got ${typeof decimals}`);
+  }
+  if (typeof thousandsSeparator !== 'string') {
     throw new TypeError(
-      `currencySymbol must be a string, got ${typeof currencySymbol}`,
+      `thousandsSeparator must be a string, got ${typeof thousandsSeparator}`,
+    );
+  }
+  if (typeof decimalSeparator !== 'string') {
+    throw new TypeError(
+      `decimalSeparator must be a string, got ${typeof decimalSeparator}`,
+    );
+  }
+
+  if (decimals < 0) {
+    throw new Error(`decimals must be non-negative, got ${decimals}`);
+  }
+  if (thousandsSeparator.length !== 1) {
+    throw new Error(
+      `thousandsSeparator must be exactly one character, got "${thousandsSeparator}"`,
+    );
+  }
+  if (decimalSeparator.length !== 1) {
+    throw new Error(
+      `decimalSeparator must be exactly one character, got "${decimalSeparator}"`,
+    );
+  }   `currencySymbol must be a string, got ${typeof currencySymbol}`,
     );
   }
   if (typeof decimals !== 'number' || isNaN(decimals)) {
@@ -130,6 +157,27 @@ export function formatCurrency(
     symbolPosition === 'before'
       ? `${currencySymbol}${formattedNumber}`
       : `${formattedNumber}${currencySymbol}`;
+
+  // Combine parts
+  let formattedNumber = formattedInteger;
+  if (decimals > 0) {
+    formattedNumber += decimalSeparator + decimalPart;
+  }
+
+  // Check if currency is a currency code
+  const currencyUpper = currency.toUpperCase();
+  const isCurrencyCode = currencyUpper.length === 3 && currencyUpper in CURRENCY_SYMBOLS;
+
+  // Format with currency
+  let result: string;
+  if (isCurrencyCode) {
+    // Format: "1,234.56 USD ($)"
+    const symbol = CURRENCY_SYMBOLS[currencyUpper];
+    result = `${formattedNumber} ${currencyUpper} (${symbol})`;
+  } else {
+    // Custom symbol format: "1,234.56 $"
+    result = `${formattedNumber} ${currency}`;
+  }
 
   return isNegative ? `-${result}` : result;
 }
