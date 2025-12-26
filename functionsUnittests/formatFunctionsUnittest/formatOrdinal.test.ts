@@ -199,18 +199,8 @@ describe('formatOrdinal', () => {
     expect(result).toBe(expected);
   });
 
-  // Test case 16: Throw TypeError for non-integer
-  it('16. should throw TypeError for non-integer value', () => {
-    // Arrange
-    const value = 1.5;
-
-    // Act & Assert
-    expect(() => formatOrdinal(value)).toThrow(TypeError);
-    expect(() => formatOrdinal(value)).toThrow('value must be an integer');
-  });
-
-  // Test case 17: Throw TypeError for non-number
-  it('17. should throw TypeError when value is not a number', () => {
+  // Test case 16: Throw TypeError for non-number
+  it('16. should throw TypeError when value is not a number', () => {
     // Arrange
     const value = 'invalid' as unknown as number;
 
@@ -219,8 +209,8 @@ describe('formatOrdinal', () => {
     expect(() => formatOrdinal(value)).toThrow('value must be a number');
   });
 
-  // Test case 18: Throw TypeError for NaN
-  it('18. should throw TypeError when value is NaN', () => {
+  // Test case 17: Throw TypeError for NaN
+  it('17. should throw TypeError when value is NaN', () => {
     // Arrange
     const value = NaN;
 

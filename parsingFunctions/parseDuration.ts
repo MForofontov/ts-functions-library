@@ -74,7 +74,7 @@ export function parseDuration(input: string): number {
   let totalMilliseconds = 0;
 
   // Match all number-unit pairs
-  const regex = /([\d.]+)\s*([a-zA-Z]+)/g;
+  const regex = /(-?[\d.]+)\s*([a-zA-Z]+)/g;
   let match: RegExpExecArray | null;
   let hasMatches = false;
 

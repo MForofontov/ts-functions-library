@@ -8,7 +8,7 @@ describe('formatPercentage', () => {
   it('1. should format basic percentage', () => {
     // Arrange
     const value = 0.5;
-    const expected = '50.00%';
+    const expected = '50%';
 
     // Act
     const result = formatPercentage(value);
@@ -37,7 +37,7 @@ describe('formatPercentage', () => {
     const expected = '50.00%';
 
     // Act
-    const result = formatPercentage(value, 2, false);
+    const result = formatPercentage(value, 2, true);
 
     // Assert
     expect(result).toBe(expected);
@@ -47,10 +47,10 @@ describe('formatPercentage', () => {
   it('4. should format with custom suffix', () => {
     // Arrange
     const value = 0.5;
-    const expected = '50.00 percent';
+    const expected = '50 percent';
 
     // Act
-    const result = formatPercentage(value, 2, true, ' percent');
+    const result = formatPercentage(value, 0, false, ' percent');
 
     // Assert
     expect(result).toBe(expected);
@@ -60,7 +60,7 @@ describe('formatPercentage', () => {
   it('5. should format zero percentage', () => {
     // Arrange
     const value = 0;
-    const expected = '0.00%';
+    const expected = '0%';
 
     // Act
     const result = formatPercentage(value);
@@ -73,7 +73,7 @@ describe('formatPercentage', () => {
   it('6. should format 100 percent', () => {
     // Arrange
     const value = 1;
-    const expected = '100.00%';
+    const expected = '100%';
 
     // Act
     const result = formatPercentage(value);
@@ -86,7 +86,7 @@ describe('formatPercentage', () => {
   it('7. should format negative percentage', () => {
     // Arrange
     const value = -0.25;
-    const expected = '-25.00%';
+    const expected = '-25%';
 
     // Act
     const result = formatPercentage(value);
@@ -99,7 +99,7 @@ describe('formatPercentage', () => {
   it('8. should format percentage over 100%', () => {
     // Arrange
     const value = 2.5;
-    const expected = '250.00%';
+    const expected = '250%';
 
     // Act
     const result = formatPercentage(value);

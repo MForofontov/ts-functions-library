@@ -52,7 +52,7 @@ export function parseDataSize(input: string, binary: boolean = true): number {
   }
 
   // Parse the input
-  const match = input.trim().match(/^([\d.]+)\s*([a-zA-Z]+)$/);
+  const match = input.trim().match(/^(-?[\d.]+)\s*([a-zA-Z]+)$/);
   if (!match) {
     throw new Error(
       `Invalid data size format: "${input}" (expected format: "5KB" or "5 KB")`,
